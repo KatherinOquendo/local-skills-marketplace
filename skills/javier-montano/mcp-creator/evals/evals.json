@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mcp-happy-stdio",
+    "title": "Configure stdio MCP server for local database",
+    "prompt": "Set up an MCP server for my PostgreSQL database",
+    "expected_behavior": "Creates stdio MCP config using npx @modelcontextprotocol/server-postgres with ${DATABASE_URL} env var. Checks for existing servers first, validates name uniqueness, uses kebab-case name."
+  },
+  {
+    "id": "mcp-happy-http",
+    "title": "Configure HTTP MCP server for remote API",
+    "prompt": "Connect Claude to our analytics API at https://api.analytics.com/mcp",
+    "expected_behavior": "Creates HTTP transport config with the provided URL, uses ${API_TOKEN} for auth (never hardcoded), saves to appropriate scope."
+  },
+  {
+    "id": "mcp-edge-name-collision",
+    "title": "Server name already exists",
+    "prompt": "Add an MCP server called postgres for my new database",
+    "expected_behavior": "Checks existing servers via 'claude mcp list', detects name collision with existing 'postgres' server, suggests alternative name or confirms replacement."
+  },
+  {
+    "id": "mcp-edge-deprecated-sse",
+    "title": "User requests deprecated SSE transport",
+    "prompt": "Set up an SSE MCP server for my remote tool",
+    "expected_behavior": "Warns that SSE transport is deprecated, recommends HTTP transport instead, configures with HTTP if user agrees."
+  },
+  {
+    "id": "mcp-false-positive",
+    "title": "False positive — one-off API call",
+    "prompt": "Make a quick curl request to check if our API is up",
+    "expected_behavior": "Does NOT activate this skill. Recognizes this is a one-off API call better served by Bash with curl, not an MCP server configuration."
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "skill_name": "solution-roadmap",
+  "description": "Evaluates the transformation roadmap skill across different project scales, budget ranges, and governance scenarios. Each eval targets a specific capability of phased execution planning.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "standard-18month-transformation",
+      "prompt": "Create a roadmap for migrating our monolithic ERP to microservices. Duration: 18 months, budget: 2m-5m.",
+      "expected_output": "Full 7-section roadmap with 5 phases (Foundation through Scale), investment horizon with 3-year TCO, team ramp-up, estimation pivot points with PoC validation criteria, risk management, and governance framework.",
+      "files": [],
+      "expectations": [
+        "All 5 phases defined with explicit GO/NO-GO gate criteria",
+        "Investment horizon includes 3-year TCO with phased funding model and kill points",
+        "At least 5 estimation pivot points with PoC validation criteria",
+        "Team ramp-up shows month-by-month headcount with role introduction sequence",
+        "Risk timeline shows when each risk peaks with interdependencies",
+        "Governance includes steering committee, decision authority, and escalation paths",
+        "Estimates use P50/P80/P95 ranges, never single numbers"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "large-budget-governance",
+      "prompt": "Build an investment case for a $8M digital transformation over 24 months with multi-region deployment.",
+      "expected_output": "Roadmap triggers large-budget conditional logic: adds governance layer (PMO, steering committee, investment review board), quarterly re-calibration, and multi-region rollout wave planning.",
+      "files": [],
+      "expectations": [
+        "Detects budget >$5M and adds governance layer with PMO and investment review board",
+        "Quarterly re-calibration gates present due to >12 month transformation",
+        "Multi-region deployment triggers rollout wave planning (low-risk to high-risk sequence)",
+        "Phased funding model with kill points at each phase gate",
+        "Break-even and ROI calculated with stated assumptions",
+        "Sensitivity analysis covers optimistic/likely/pessimistic/severe scenarios"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "poc-invalidation-scenario",
+      "prompt": "Create a roadmap for migrating to event-driven architecture. Our team has no Kafka experience and the PoC may fail.",
+      "expected_output": "Roadmap accounts for high PoC failure risk: pivot decision framework applied, team skill gap addressed, kill criteria explicit for Phase 1.",
+      "files": [],
+      "expectations": [
+        "Pivot decision framework includes PASS, minor FAIL, major FAIL, and showstopper paths",
+        "Team skill gap (no Kafka experience) addressed in Phase 1 with training roadmap",
+        "Kill criteria defined for Phase 1 gate if PoC invalidates >2 major assumptions",
+        "Estimation pivot points include Kafka performance validation as MUST-DO",
+        "Contingency budget allocated for pivot scenarios",
+        "Phase 2 explicitly conditional on Phase 1 PoC success"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "executive-variant",
+      "prompt": "Create a roadmap for our cloud migration. Duration: 12 months, budget: under2m. Use variante ejecutiva.",
+      "expected_output": "Abbreviated roadmap (~40%) covering only S1 (transformation vision), S2 (phases), and S3 (investment horizon).",
+      "files": [],
+      "expectations": [
+        "Output contains only sections S1, S2, and S3 (not full 7 sections)",
+        "Transformation vision includes success metrics and north star metric",
+        "Phases defined with gates even in abbreviated form",
+        "Investment horizon includes TCO and phased funding",
+        "Does not include full team roadmap, pivot points, risk management, or governance"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "team-resistance-edge-case",
+      "prompt": "Plan the transformation for a legacy Java monolith. The development team is resistant to change and we have no PMO.",
+      "expected_output": "Roadmap triggers team resistance and no-PMO edge cases: extends Phase 1 for change management, embeds PM capacity, requires department head alignment.",
+      "files": [],
+      "expectations": [
+        "Team resistance detected: Phase 1 extended by 1 month for change management",
+        "Department head alignment required before Phase 2 proceeds",
+        "No-PMO edge case: PM capacity embedded in Phase 1 and budgeted as permanent overhead",
+        "Change management track added as parallel workstream",
+        "Risk register includes team attrition and adoption failure scenarios",
+        "Roadmap is immediately actionable: steering committee can approve Phase 1 funding"
+      ]
+    }
+  ]
+}

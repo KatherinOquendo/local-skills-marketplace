@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mobile-assess-happy-full",
+    "title": "Full mobile app health assessment",
+    "prompt": "Assess the health of our Android app — we're seeing user complaints about performance",
+    "expected_behavior": "Produces all 6 sections: health profile (crash rate, ANR, cold start, app size, memory), dependency audit (CVEs, licenses, abandoned libs), platform compliance (Play Data Safety, target API), code quality, UX metrics, and prioritized remediation roadmap."
+  },
+  {
+    "id": "mobile-assess-happy-compliance",
+    "title": "App store compliance audit",
+    "prompt": "Check if our iOS app meets current App Store requirements before we submit",
+    "expected_behavior": "Focuses on S3 compliance: PrivacyInfo.xcprivacy audit, ATT prompt, privacy nutrition labels, minimum deployment target, used entitlements, and provides a pass/fail checklist."
+  },
+  {
+    "id": "mobile-assess-edge-no-analytics",
+    "title": "App with no crash reporting or analytics",
+    "prompt": "Assess our mobile app health — we don't have any monitoring set up yet",
+    "expected_behavior": "Recognizes the edge case: recommends installing Crashlytics + basic analytics as prerequisite, establishes baseline from manual testing, and includes monitoring setup as a critical remediation item."
+  },
+  {
+    "id": "mobile-assess-edge-emerging-market",
+    "title": "Emerging market app constraints",
+    "prompt": "Our app targets users in rural India — assess if it's suitable",
+    "expected_behavior": "Applies emerging market benchmarks: app size <15MB target, performance on low-end 2GB RAM devices, 3G network tolerance, and offline behavior assessment."
+  },
+  {
+    "id": "mobile-assess-false-positive",
+    "title": "False positive — new app design request",
+    "prompt": "Design a new mobile architecture for our upcoming food delivery app",
+    "expected_behavior": "Does NOT activate this skill. Recognizes this is new architecture design, not assessment of an existing app. Defers to mobile-architecture skill."
+  }
+]

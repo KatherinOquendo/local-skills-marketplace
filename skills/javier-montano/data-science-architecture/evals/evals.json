@@ -1,0 +1,65 @@
+{
+  "skill_name": "data-science-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "name": "ml_system_design",
+      "prompt": "Design an ML system for our fraud detection platform",
+      "expected_output": "success",
+      "expectations": [
+        "Includes ML system topology with training and serving paths",
+        "Addresses feature store design for fraud signals",
+        "Covers model serving architecture with latency requirements",
+        "Includes drift detection and retraining triggers"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "feature_store_architecture",
+      "prompt": "Architect a feature store for our recommendation engine",
+      "expected_output": "success",
+      "expectations": [
+        "Compares feature store options (Feast, Tecton, Hopsworks)",
+        "Addresses training-serving skew prevention",
+        "Covers online and offline store design",
+        "Includes feature registry and lineage tracking"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "experiment_tracking",
+      "prompt": "Set up experiment tracking and model registry for our data science team",
+      "expected_output": "success",
+      "expectations": [
+        "Compares tracking tools (MLflow, W&B, Vertex AI)",
+        "Covers model versioning and promotion workflow",
+        "Includes reproducibility framework",
+        "Addresses lineage tracking across data, code, and parameters"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "mlops_pipeline",
+      "prompt": "Plan an MLOps pipeline with automated retraining for our credit scoring models",
+      "expected_output": "success",
+      "expectations": [
+        "Defines CI/CD pipeline stages for ML",
+        "Includes automated retraining triggers",
+        "Covers model testing framework with bias checks",
+        "Addresses GPU cost optimization"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "responsible_ai_governance",
+      "prompt": "We need governance and responsible AI controls for our healthcare ML models",
+      "expected_output": "success",
+      "expectations": [
+        "Includes responsible AI checklist with model cards",
+        "Covers bias detection framework with fairness metrics",
+        "Addresses explainability tooling (SHAP, LIME)",
+        "Includes compliance mapping for regulated industry"
+      ]
+    }
+  ]
+}

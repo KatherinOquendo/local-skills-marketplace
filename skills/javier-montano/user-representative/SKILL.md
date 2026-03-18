@@ -207,4 +207,4 @@ Default output is Markdown with structured scorecard tables. HTML generation req
 **Secondary:** Readability metrics summary, persona-specific recommendations, before/after copy examples.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-18

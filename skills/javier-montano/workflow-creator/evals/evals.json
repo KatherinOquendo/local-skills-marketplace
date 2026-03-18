@@ -1,0 +1,32 @@
+[
+  {
+    "id": "workflow-creator-basic",
+    "input": "Create a workflow for user-onboarding in the customer-management skill.",
+    "expected_behavior": "Produces a 17-field YAML workflow with 3-7 steps, each having all 12 fields. Reads the customer-management skill spec first. Includes measurable objective, specific trigger, and checkable preconditions.",
+    "tags": ["basic", "17-field", "yaml"]
+  },
+  {
+    "id": "workflow-creator-interview",
+    "input": "Create a workflow for incident-response.",
+    "expected_behavior": "Since no owning skill is specified, asks for the owning skill context. Interviews for missing information before generating. Produces complete 17-field spec with RACI, KPIs, and fallback routes.",
+    "tags": ["interview", "missing-context", "raci"]
+  },
+  {
+    "id": "workflow-creator-step-quality",
+    "input": "Generate a data-validation workflow for the data-quality skill with high traceability.",
+    "expected_behavior": "Each step has specific whyThisMatters (not restating title), concrete actionInstruction (with API calls), testable validationRule, observable failureSignal, and concrete recoveryAction.",
+    "tags": ["step-quality", "traceability", "12-fields"]
+  },
+  {
+    "id": "workflow-creator-edge-external",
+    "input": "Create a workflow that calls an external payment gateway API in one of its steps.",
+    "expected_behavior": "Adds explicit timeout in actionInstruction, timeout-specific failureSignal, health-check or retry logic in recoveryAction, and escalation route for unrecoverable failures.",
+    "tags": ["edge-case", "external-service", "timeout"]
+  },
+  {
+    "id": "workflow-creator-validation-gate",
+    "input": "Create a workflow for automated-testing in the quality-engineering skill.",
+    "expected_behavior": "Passes all validation gate checks: 17 top-level fields present, measurable objective, specific trigger, checkable preconditions, 3-7 steps with all 12 fields, verifiable DoD, named agents in RACI, KPIs with units.",
+    "tags": ["validation-gate", "completeness", "kpis"]
+  }
+]

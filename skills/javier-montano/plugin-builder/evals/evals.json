@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pb-1-full-scaffold",
+    "input": "Create a plugin called 'code-review' for automated code review workflows",
+    "expected_behavior": "Scaffolds complete plugin directory: .claude-plugin/plugin.json, commands/, agents/, skills/, hooks/hooks.json, scripts/, settings.json, CLAUDE.md, README.md. All files have valid frontmatter.",
+    "criteria": ["plugin.json has name/version/description", "directory structure complete", "settings.json present", "CLAUDE.md created", "README.md created"]
+  },
+  {
+    "id": "pb-2-command-creation",
+    "input": "Add a 'run-review' command to the code-review plugin",
+    "expected_behavior": "Creates commands/run-review.md with proper frontmatter (description, user-invocable: true), ROLE section, PROTOCOL section, OUTPUT CONFIGURATION, and CONSTRAINTS. Verb-first naming enforced.",
+    "criteria": ["frontmatter has description", "user-invocable: true present", "verb-first filename", "ROLE section defined", "PROTOCOL steps listed"]
+  },
+  {
+    "id": "pb-3-agent-creation",
+    "input": "Create an agent called 'reviewer' for the code-review plugin",
+    "expected_behavior": "Creates agents/reviewer.md with frontmatter (name, description, co-authored-by), role definition, responsibilities, and assigned skills.",
+    "criteria": ["frontmatter complete", "role clearly defined", "responsibilities listed", "skills assigned", "naming convention followed"]
+  },
+  {
+    "id": "pb-4-skill-with-moat",
+    "input": "Add a skill called 'static-analysis' with full MOAT structure",
+    "expected_behavior": "Creates skills/static-analysis/SKILL.md with frontmatter (name, description with triggers, allowed-tools), guiding principle, procedure, quality criteria, and anti-patterns. References directory structure included.",
+    "criteria": ["SKILL.md in subdirectory", "description has trigger phrases", "allowed-tools listed", "procedure defined", "anti-patterns documented"]
+  },
+  {
+    "id": "pb-5-hooks-setup",
+    "input": "Set up hooks for the code-review plugin that validate on file writes",
+    "expected_behavior": "Creates hooks/hooks.json with PostToolUse hook matching Write|Edit, referencing a validation script in scripts/. Script file created and marked executable.",
+    "criteria": ["hooks.json valid JSON", "PostToolUse matcher correct", "script path uses CLAUDE_PLUGIN_ROOT", "timeout configured", "script file created"]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pe-1-baseline-assessment",
+    "input": "Analyze performance for our e-commerce checkout service",
+    "expected_behavior": "Produces S1 Performance Baseline with latency distribution (p50/p90/p95/p99), throughput metrics, resource utilization breakdown, bottleneck classification, and dependency chain analysis.",
+    "criteria": ["percentile distribution present", "throughput measured", "resource utilization per component", "bottleneck classified", "profiling approach recommended"]
+  },
+  {
+    "id": "pe-2-load-testing-strategy",
+    "input": "Design load tests for a microservices API gateway handling 10K rps",
+    "expected_behavior": "Delivers S2 Load Testing Strategy with tool recommendation (k6 for CI-native), all 5 test types (baseline/ramp/stress/spike/soak), CI/CD gating with p95 regression threshold, and synthetic monitoring plan.",
+    "criteria": ["tool selected with rationale", "5 test types defined", "CI/CD gating criteria", "pass/fail thresholds", "synthetic monitoring included"]
+  },
+  {
+    "id": "pe-3-capacity-planning-usl",
+    "input": "Plan capacity for a service growing 20% month-over-month",
+    "expected_behavior": "Produces S3 Capacity Planning with USL-based model, scaling trigger thresholds, capacity runway calculation, horizontal vs vertical scaling recommendation, and cost per transaction at scale points.",
+    "criteria": ["USL formula applied", "scaling triggers with warning/critical thresholds", "capacity runway in months", "scaling direction recommended", "cost implications quantified"]
+  },
+  {
+    "id": "pe-4-caching-architecture",
+    "input": "Optimize caching for a content platform with 90% read traffic",
+    "expected_behavior": "Delivers S4 Caching Architecture with multi-layer design (browser/CDN/app/DB), cache-aside strategy recommendation, invalidation strategy comparison, cache key design pattern, hit ratio targets (>90% static, >70% dynamic), and thundering herd protection.",
+    "criteria": ["multi-layer cache design", "strategy selected with rationale", "invalidation approach defined", "hit ratio targets set", "thundering herd protection included"]
+  },
+  {
+    "id": "pe-5-slo-design",
+    "input": "Define SLOs for a fintech payment processing service",
+    "expected_behavior": "Produces S6 SLA/SLO Design with percentile-based targets per service tier, error budget calculation, multi-window burn rate alerts (fast-burn page + slow-burn ticket), and budget exhaustion policy (feature freeze).",
+    "criteria": ["percentile-based SLOs not averages", "error budget calculated", "burn rate alerts configured", "exhaustion policy defined", "tier classification applied"]
+  }
+]

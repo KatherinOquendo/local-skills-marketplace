@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mermaid-happy-flowchart",
+    "title": "Generate flowchart for process",
+    "prompt": "Create a Mermaid diagram showing the order fulfillment process from cart to delivery",
+    "expected_behavior": "Produces a syntactically valid flowchart (flowchart TD or LR) with descriptive node IDs, labeled edges, subgraphs for logical groupings, max 20 nodes, and an accessibility text summary before the diagram."
+  },
+  {
+    "id": "mermaid-happy-c4",
+    "title": "Generate C4 architecture diagram",
+    "prompt": "Visualize the system architecture for our microservices platform as a C4 context diagram",
+    "expected_behavior": "Produces a valid C4Context Mermaid diagram with Person, System, and System_Ext nodes, labeled relationships, and appropriate boundary groupings."
+  },
+  {
+    "id": "mermaid-edge-too-many-nodes",
+    "title": "Content requires more than 20 nodes",
+    "prompt": "Diagram all 30 services in our platform and their dependencies",
+    "expected_behavior": "Splits into 2+ diagrams with cross-references rather than cramming 30 nodes into one. Each sub-diagram has max 20 nodes with clear indication of how they connect."
+  },
+  {
+    "id": "mermaid-edge-auto-type-selection",
+    "title": "No diagram type specified",
+    "prompt": "Visualize how the authentication flow works between the mobile app, API gateway, and identity provider",
+    "expected_behavior": "Auto-selects sequenceDiagram as the optimal type for actor interactions over time. Includes participant declarations, labeled messages, and alt/opt blocks for conditional flows."
+  },
+  {
+    "id": "mermaid-false-positive",
+    "title": "False positive — data better as table",
+    "prompt": "Show me a comparison of the response times for each of our 5 API endpoints",
+    "expected_behavior": "Does NOT generate a diagram. Recognizes that metric comparisons are better represented as a table, and produces a markdown table instead."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ocb-1-scaffold-telegram",
+    "input": "Build me a Telegram bot agent called support-bot",
+    "expected_behavior": "Scaffolds a Node.js project with src/tools/, installs grammy + groq-sdk + better-sqlite3, creates all 12 source files in dependency-safe order (logger → config → security → tokens → memory → registry → tool → delegate → llm → agent → bot → index)",
+    "criteria": ["directory structure created", "package.json has correct scripts", "tsconfig.json has strict:true", "all 12 files present", "no circular imports"]
+  },
+  {
+    "id": "ocb-2-security-checkpoints",
+    "input": "Create an HTTP agent called api-guard with all 3 security checkpoints",
+    "expected_behavior": "Generates security.ts with sanitizeInput (CP1), buildSecurePrompt (CP2), and validateOutput (CP3). Each checkpoint logs but does not block. Regex patterns cover 8+ injection patterns.",
+    "criteria": ["CP1 sanitizeInput exists", "CP2 buildSecurePrompt exists", "CP3 validateOutput exists", "log-but-don't-block strategy", "SECURITY_SUFFIX appended"]
+  },
+  {
+    "id": "ocb-3-token-management",
+    "input": "Build a Discord agent with proper token budget management",
+    "expected_behavior": "Creates tokens.ts with estimation via Math.ceil(text.length/4), budget calculation (modelContext - maxTokens - systemPrompt - 10% margin), and oldest-first trimming that never drops the most recent user message.",
+    "criteria": ["token estimation function", "budget calculation formula", "trim strategy preserves recent message", "budget recalculated before each LLM call"]
+  },
+  {
+    "id": "ocb-4-multi-agent-delegation",
+    "input": "Create a Telegram agent with sub-agent delegation support",
+    "expected_behavior": "Generates delegate.ts with sub-agent definitions, registry.ts with dynamic executor slot, and agent.ts that calls initDelegation() at startup. Depth=1 limit enforced — sub-agents cannot delegate.",
+    "criteria": ["delegate.ts defines sub-agents", "registry.ts has executor function slot", "initDelegation() called in index.ts", "depth=1 limit prevents recursion"]
+  },
+  {
+    "id": "ocb-5-dual-provider-fallback",
+    "input": "Build an agent with Groq primary and OpenRouter fallback",
+    "expected_behavior": "Creates llm.ts with Groq as primary provider, OpenRouter as automatic fallback on rate limit or timeout (30s). Provider switch is logged. Both providers use the same tool-calling interface.",
+    "criteria": ["Groq configured as primary", "OpenRouter fallback on error", "30s timeout", "fallback switch logged", "consistent tool-calling interface"]
+  }
+]

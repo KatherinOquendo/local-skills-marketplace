@@ -1,0 +1,32 @@
+[
+  {
+    "id": "workshop-facilitator-event-storming",
+    "input": "Plan an event storming workshop for a new e-commerce platform with 8 participants.",
+    "expected_behavior": "Selects Event Storming technique based on domain exploration goal. Designs time-boxed agenda with diverge-converge rhythm, silent-before-spoken rule. Includes domain events, commands, aggregates, bounded contexts. Participant count within ideal 5-8 range.",
+    "tags": ["event-storming", "technique-selection", "agenda"]
+  },
+  {
+    "id": "workshop-facilitator-remote",
+    "input": "Facilitate a remote impact mapping session for a team of 12 across 3 time zones.",
+    "expected_behavior": "Adapts for remote format (Miro/FigJam), limits sessions to 2-3 hours, plans breakout rooms for the 12-person group, avoids remote anti-patterns (death by screen-share, phantom consensus). Addresses time zone scheduling.",
+    "tags": ["remote", "impact-mapping", "large-group"]
+  },
+  {
+    "id": "workshop-facilitator-design-sprint",
+    "input": "Design a 3-day compressed design sprint for validating a new mobile banking feature.",
+    "expected_behavior": "Produces compressed 3-day sprint format covering understand, sketch, decide, prototype, test. Includes 5 user interview slots on Day 3. Assigns roles. Accounts for prototype creation time.",
+    "tags": ["design-sprint", "compressed", "prototype"]
+  },
+  {
+    "id": "workshop-facilitator-story-mapping",
+    "input": "Run a user story mapping session to plan MVP release for a SaaS project.",
+    "expected_behavior": "Produces backbone construction, walking skeleton identification, vertical slicing, horizontal release lines, MVP as thinnest slice. Includes dependency flagging between stories.",
+    "tags": ["story-mapping", "mvp", "release-planning"]
+  },
+  {
+    "id": "workshop-facilitator-conflicting-stakeholders",
+    "input": "Plan a workshop where two VPs have opposing views on product direction and the team has workshop fatigue.",
+    "expected_behavior": "Uses structured techniques to reduce power dynamics (silent brainstorming, anonymous voting). Keeps session shorter and action-oriented. Plans to demonstrate follow-through from prior workshops. Facilitator remains neutral.",
+    "tags": ["conflict", "stakeholder", "edge-case"]
+  }
+]

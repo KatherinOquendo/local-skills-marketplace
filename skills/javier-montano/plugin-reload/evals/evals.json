@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pr-1-validate-structure",
+    "input": "Validate the structure of my local plugin at ./my-plugin",
+    "expected_behavior": "Checks for .claude-plugin/plugin.json, commands/, agents/, skills/, hooks/hooks.json, and CLAUDE.md. Reports counts of each artifact type and flags any missing required files.",
+    "criteria": ["plugin.json validated", "directory existence checked", "artifact counts reported", "missing items flagged", "frontmatter validity checked"]
+  },
+  {
+    "id": "pr-2-detect-issues",
+    "input": "Check my plugin for common issues before deploying",
+    "expected_behavior": "Scans for orphaned files, missing prefixes, stale versions, invalid hook matchers, and broken file references in CLAUDE.md. Reports each issue with suggested fix.",
+    "criteria": ["orphaned files detected", "naming conventions checked", "version staleness flagged", "hook matchers validated", "cross-references verified"]
+  },
+  {
+    "id": "pr-3-sync-and-reload",
+    "input": "Deploy and reload my plugin changes",
+    "expected_behavior": "Verifies plugin is in active location, checks discoverability, and instructs user to run /reload-plugins. If hooks changed, advises running /hooks. If LSP changed, advises full restart.",
+    "criteria": ["active location verified", "discoverability checked", "reload instruction given", "hook change detection", "LSP change detection"]
+  },
+  {
+    "id": "pr-4-fix-missing-dirs",
+    "input": "My plugin is missing some directories, fix it",
+    "expected_behavior": "Detects missing required directories (commands/, agents/, skills/, hooks/, scripts/) and creates them with mkdir -p. Reports what was created.",
+    "criteria": ["missing directories identified", "directories created", "report of changes", "no existing files overwritten", "structure re-validated after fix"]
+  },
+  {
+    "id": "pr-5-reload-report",
+    "input": "Give me a full reload report for the sofka-discovery-framework plugin",
+    "expected_behavior": "Produces formatted reload report showing plugin name, version, location, counts for commands/agents/skills/hooks, and final status (READY or issues found).",
+    "criteria": ["report format matches template", "all counts accurate", "version displayed", "location path shown", "status verdict clear"]
+  }
+]

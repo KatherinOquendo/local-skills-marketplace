@@ -1,0 +1,32 @@
+[
+  {
+    "id": "naming-happy-slug",
+    "title": "Basic slug generation",
+    "prompt": "Generate a slug for 'My New API Client v2'",
+    "expected_behavior": "Produces 'my-new-api-client-v2' as the basic slug. With --clean mode, produces 'api-client' (strips version marker and 'new' prefix). Explains that versions belong in git, not filenames."
+  },
+  {
+    "id": "naming-happy-audit",
+    "title": "Project naming audit",
+    "prompt": "Audit the naming conventions in my project directory",
+    "expected_behavior": "Scans files for naming violations: underscores, uppercase, version markers, status prefixes, consecutive hyphens. Reports issues with suggested fixes and entity type pattern compliance."
+  },
+  {
+    "id": "naming-edge-acronyms",
+    "title": "Acronym handling in slugs",
+    "prompt": "What should I name a file about our REST API client?",
+    "expected_behavior": "Produces 'rest-api-client' — acronyms become lowercase but are NOT hyphenated per letter (not 'r-e-s-t-a-p-i'). Treats acronyms as single words."
+  },
+  {
+    "id": "naming-edge-compound-ext",
+    "title": "Compound extensions preserved",
+    "prompt": "Rename 'MyComponent.test.tsx' to follow naming conventions",
+    "expected_behavior": "Produces 'my-component.test.tsx' — converts to kebab-case but preserves compound extension '.test.tsx' as semantic, not a violation."
+  },
+  {
+    "id": "naming-false-positive",
+    "title": "False positive — content writing request",
+    "prompt": "Write the content for our API documentation page",
+    "expected_behavior": "Does NOT activate this skill. Recognizes this is a content writing request, not a naming/slugging task. The word 'API' alone does not trigger naming conventions."
+  }
+]

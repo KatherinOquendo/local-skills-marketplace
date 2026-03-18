@@ -1,0 +1,32 @@
+[
+  {
+    "id": "workflow-forge-create",
+    "input": "Create a workflow for deploying a React application to staging with tests and rollback.",
+    "expected_behavior": "Produces a workflow with atomic steps (no 'and' in descriptions), turbo annotations only on safe/reversible actions, verification as the last step with remediation path, and frontmatter with description.",
+    "tags": ["create", "atomic-steps", "turbo"]
+  },
+  {
+    "id": "workflow-forge-lint",
+    "input": "Lint this workflow: it has 14 steps, a 'rm -rf' marked as turbo, and no verification step.",
+    "expected_behavior": "Flags exceeding 10-step limit, flags destructive rm -rf as incorrectly turbo-annotated, flags missing verification step, recommends decomposing into sub-workflows.",
+    "tags": ["lint", "safety", "validation"]
+  },
+  {
+    "id": "workflow-forge-optimize",
+    "input": "Optimize this workflow that has 12 steps for database migration with setup, execution, and verification phases.",
+    "expected_behavior": "Decomposes into 3 sub-workflows (setup, execution, verification) each under 10 steps. Creates parent workflow calling sub-workflows. Each sub-workflow is independently testable.",
+    "tags": ["optimize", "sub-workflows", "decomposition"]
+  },
+  {
+    "id": "workflow-forge-callgraph",
+    "input": "Generate a callgraph for a set of workflows that reference each other across skills.",
+    "expected_behavior": "Produces a dependency visualization showing which workflows call which sub-workflows, identifies circular dependencies, notes which skill each workflow belongs to.",
+    "tags": ["callgraph", "dependencies", "multi-skill"]
+  },
+  {
+    "id": "workflow-forge-safety-edge",
+    "input": "Create a workflow that includes git push --force and dropping a database table. Mark appropriate safety levels.",
+    "expected_behavior": "Neither destructive operation is marked turbo. Both require explicit user confirmation steps. Includes rollback/recovery actions. Flags these as irreversible in step annotations.",
+    "tags": ["safety", "destructive", "edge-case"]
+  }
+]

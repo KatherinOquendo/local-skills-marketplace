@@ -241,4 +241,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Quadrant chart: feasibility dimensions positioning
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-18

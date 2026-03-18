@@ -1,0 +1,65 @@
+{
+  "skill_name": "database-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "name": "schema_design",
+      "prompt": "Design the database schema for our e-commerce order management system",
+      "expected_output": "success",
+      "expectations": [
+        "Includes entity-relationship model with cardinality",
+        "Covers normalization analysis with denormalization justification",
+        "Addresses naming conventions and constraint design",
+        "Includes data type selection with storage implications"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "indexing_strategy",
+      "prompt": "Plan an indexing strategy for our PostgreSQL database with slow read queries",
+      "expected_output": "success",
+      "expectations": [
+        "Identifies appropriate index types (B-tree, GIN, BRIN)",
+        "Covers composite and covering indexes",
+        "Includes index maintenance and bloat monitoring",
+        "Recommends EXPLAIN ANALYZE validation approach"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "partitioning_sharding",
+      "prompt": "We have a 500GB table growing 10GB/month. Design a partitioning strategy",
+      "expected_output": "success",
+      "expectations": [
+        "Evaluates range vs list vs hash partitioning",
+        "Addresses partition pruning for query performance",
+        "Covers partition maintenance and archival",
+        "Includes sharding considerations if single-node insufficient"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "zero_downtime_migration",
+      "prompt": "Plan a zero-downtime migration to rename columns and change types in production",
+      "expected_output": "success",
+      "expectations": [
+        "Uses expand-contract or dual-write pattern",
+        "Includes rollback strategy with time window",
+        "Covers data backfill with batch processing",
+        "Addresses backward compatibility during transition"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "replication_ha",
+      "prompt": "Set up replication and high availability for our financial transaction database",
+      "expected_output": "success",
+      "expectations": [
+        "Evaluates sync vs async replication for financial data",
+        "Defines RPO and RTO targets",
+        "Covers failover strategy with automatic promotion",
+        "Includes read replica lag monitoring and routing"
+      ]
+    }
+  ]
+}

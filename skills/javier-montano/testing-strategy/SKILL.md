@@ -327,4 +327,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Test framework configuration files, Pact contract examples, quality gate definitions, flaky test management runbook.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-18

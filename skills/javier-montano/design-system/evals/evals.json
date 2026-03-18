@@ -1,0 +1,65 @@
+{
+  "skill_name": "design-system",
+  "evals": [
+    {
+      "id": 1,
+      "name": "brand_config_html",
+      "prompt": "Generate a styled HTML template using our brand-config.json",
+      "expected_output": "success",
+      "expectations": [
+        "Loads brand tokens from brand-config.json",
+        "Injects CSS custom properties into :root",
+        "Uses var() references instead of hex literals",
+        "Includes hero header with brand-primary border"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "component_library",
+      "prompt": "Show me the available components in the design system",
+      "expected_output": "success",
+      "expectations": [
+        "Lists all component classes (card, badge, callout, etc.)",
+        "Includes semantic color usage rules",
+        "Covers severity levels with correct colors (low=yellow)",
+        "References component snippets for HTML usage"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "neutral_defaults",
+      "prompt": "Apply design system to a report without any brand config",
+      "expected_output": "success",
+      "expectations": [
+        "Uses neutral blue defaults when no brand-config.json exists",
+        "All tokens have fallback values",
+        "Maintains WCAG AA contrast ratios",
+        "Includes responsive breakpoints"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "validate_colors",
+      "prompt": "Validate that all colors in dashboard.html match the token reference",
+      "expected_output": "success",
+      "expectations": [
+        "Checks for hex literals outside :root block",
+        "Verifies semantic colors are correctly applied",
+        "Confirms positive state uses yellow not green",
+        "Reports any WCAG contrast violations"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "dark_brand_edge_case",
+      "prompt": "Configure brand colors for a client whose primary color is very dark (#1A1A2E)",
+      "expected_output": "success",
+      "expectations": [
+        "Adapts hover states using brand-light derivative",
+        "Ensures contrast on dark hero sections",
+        "Maintains readability for all text elements",
+        "Documents edge case adaptation in output"
+      ]
+    }
+  ]
+}

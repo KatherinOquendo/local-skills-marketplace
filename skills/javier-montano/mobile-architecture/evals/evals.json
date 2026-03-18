@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mobile-arch-happy-flutter",
+    "title": "Flutter app architecture design",
+    "prompt": "Design the mobile architecture for our fintech app using Flutter",
+    "expected_behavior": "Produces all 6 sections with Flutter-specific guidance: Impeller renderer, BLoC/Riverpod state management, offline-first with drift/sqflite, performance targets (<2s cold start), BFF pattern, and CI/CD with Fastlane + Shorebird OTA."
+  },
+  {
+    "id": "mobile-arch-happy-platform-choice",
+    "title": "Platform selection decision",
+    "prompt": "Should we go native or cross-platform for our new consumer app? We have a JavaScript team.",
+    "expected_behavior": "Presents the S1 platform comparison matrix, identifies React Native New Architecture as strong fit given JS team, discusses trade-offs (Fabric/TurboModules benefits), and provides clear decision criteria."
+  },
+  {
+    "id": "mobile-arch-edge-offline",
+    "title": "Offline-first for field workers",
+    "prompt": "Our field workers need an app that works without internet in remote areas",
+    "expected_behavior": "Emphasizes S3 offline-first design: persistent action queue, conflict resolution strategy (CRDT or field-level merge), background sync with WorkManager/BGTaskScheduler, and optimistic UI patterns."
+  },
+  {
+    "id": "mobile-arch-edge-super-app",
+    "title": "Super app with multiple feature teams",
+    "prompt": "We're building a super app with 8 feature teams, each owning a module",
+    "expected_behavior": "Covers micro-frontend architecture, dynamic feature delivery (Play Feature Delivery / On-Demand Resources), navigation contracts between modules, feature module independence enforcement."
+  },
+  {
+    "id": "mobile-arch-false-positive",
+    "title": "False positive — existing app health check",
+    "prompt": "Our app has a 2% crash rate and slow cold starts, can you assess what's wrong?",
+    "expected_behavior": "Does NOT activate this skill. Recognizes this is an assessment of an existing app (AS-IS), not new architecture design. Defers to mobile-assessment skill."
+  }
+]
