@@ -1,0 +1,78 @@
+{
+  "skill_name": "step-creator",
+  "description": "Evaluates the step creator helper skill for generating workflow steps with all 12 mandatory fields, covering mechanical steps, LLM steps, handoff steps, and quality bar adherence.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "standard-llm-step",
+      "prompt": "Generate step 3 of a content moderation workflow: 'Classify User Input'. The workflow objective is to analyze user-submitted content for policy violations. Previous steps: 1. Receive Input, 2. Sanitize Input.",
+      "expected_output": "A step with all 12 fields populated, including a full LLM prompt with placeholders for classification, specific validation rules, and concrete failure/recovery actions.",
+      "files": [],
+      "expectations": [
+        "All 12 fields present: stepNumber, title, desc, whyThisMatters, inputNeeded, actionInstruction, promptToUse, expectedOutput, validationRule, failureSignal, recoveryAction, handoffIfNeeded",
+        "promptToUse contains a full LLM prompt with {{placeholders}} (not just a description)",
+        "whyThisMatters explains business rationale (not a restatement of title)",
+        "validationRule is testable (e.g., 'result.category IN [safe, warning, violation]')",
+        "failureSignal is observable (e.g., specific error types, timeouts)",
+        "recoveryAction is concrete (not just 'try again')"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "mechanical-step-no-llm",
+      "prompt": "Generate step 1 of an API validation workflow: 'Validate Request Schema'. This is a mechanical step, no LLM involved. Workflow objective: validate incoming API requests against OpenAPI schema.",
+      "expected_output": "A step with promptToUse set to 'null (mechanical step)' but all other 11 fields fully populated with concrete values.",
+      "files": [],
+      "expectations": [
+        "promptToUse is explicitly 'null (mechanical step)'",
+        "All other 11 fields are fully populated (not skipped because it's mechanical)",
+        "actionInstruction references specific validation library or function call",
+        "failureSignal includes infrastructure failures even though the step 'always succeeds' logically",
+        "inputNeeded specifies data types (e.g., 'requestBody: JSON, schema: OpenAPISpec')",
+        "expectedOutput describes specific success output format"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "step-with-handoff",
+      "prompt": "Generate step 5 of a security review workflow: 'Escalate Critical Finding'. When severity is critical, hand off to the security-agent. Workflow objective: review code changes for security vulnerabilities.",
+      "expected_output": "A step with handoffIfNeeded containing decision logic for routing to different agents based on severity levels.",
+      "files": [],
+      "expectations": [
+        "handoffIfNeeded contains decision logic (e.g., 'If severity=critical -> security-agent; if medium -> review-agent; else continue')",
+        "handoffIfNeeded is not just a single agent ID but includes routing conditions",
+        "validationRule covers the handoff decision criteria",
+        "failureSignal includes 'handoff target unavailable' scenario",
+        "recoveryAction addresses what happens if the handoff fails"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "quality-bar-bad-fields",
+      "prompt": "Generate step 2 of an agent loading workflow: 'Load Agent Configuration'. Workflow context: multi-agent orchestration system that loads and validates agent definitions.",
+      "expected_output": "Step follows the GOOD column quality bar, not the BAD column. Each field has specific, implementable content.",
+      "files": [],
+      "expectations": [
+        "actionInstruction follows GOOD pattern (e.g., 'Call loader.loadAgent(agentId), destructure response') not BAD ('Load the agent')",
+        "validationRule follows GOOD pattern (e.g., 'response.fields.length === 21') not BAD ('Check it works')",
+        "failureSignal follows GOOD pattern (e.g., 'loadAgent throws AgentNotFoundError') not BAD ('It fails')",
+        "recoveryAction follows GOOD pattern (e.g., 'Load default template, log warning') not BAD ('Try again')",
+        "whyThisMatters justifies the step's existence, not restates the title"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "always-succeeds-step",
+      "prompt": "Generate step 4 of a logging workflow: 'Write Audit Log Entry'. This step writes to an append-only audit log and should always succeed under normal conditions. Workflow objective: maintain compliance audit trail.",
+      "expected_output": "Even though the step 'always succeeds', failureSignal still covers infrastructure failures (timeout, disk full, network error).",
+      "files": [],
+      "expectations": [
+        "failureSignal includes infrastructure failures: timeout, out of memory, disk full, network error",
+        "Does not set failureSignal to 'N/A' or 'none' even though the step logically always succeeds",
+        "recoveryAction addresses infrastructure failure scenarios (e.g., 'retry with exponential backoff, write to fallback log')",
+        "validationRule verifies the log entry was written (e.g., 'response.status === 201 OR entry appears in log within 5s')",
+        "whyThisMatters explains compliance rationale for audit logging"
+      ]
+    }
+  ]
+}
