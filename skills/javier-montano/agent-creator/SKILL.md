@@ -1,6 +1,13 @@
 ---
 name: agent-creator
-description: Create Claude Code custom agent definitions with system prompts, tool restrictions, and model selection.
+description: >
+  This skill should be used when the user asks to "create an agent",
+  "add a subagent", "make a custom agent", "define agent definition",
+  or "build an agent for X". Creates Claude Code custom agent definitions
+  with system prompts, tool restrictions, model selection, and reasoning
+  discipline. Use this skill whenever someone needs a new autonomous
+  subprocess for their project, even if they just say "I need something
+  to handle X automatically".
 argument-hint: <agent-name> [description]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
@@ -186,4 +193,4 @@ Audit all dependency files (package.json, requirements.txt, Cargo.toml, go.mod) 
 - [ ] File saved to correct scope (project vs global)
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026
