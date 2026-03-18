@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetodologIA × V&A Consulting - Pitch Ejecutivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mia-navy: #0A122A;
+      --mia-navy-light: #111D3A;
+      --mia-navy-mid: #1e293b;
+      --mia-blue: #137DC5;
+      --mia-blue-light: #38BDF8;
+      --mia-blue-dim: rgba(19,125,197,0.12);
+      --mia-gold: #E5A100;
+      --mia-gold-dim: rgba(229,161,0,0.12);
+      --mia-gold-dark: #8B6D00;
+      --mia-white: #FFFFFF;
+      --mia-offwhite: #F8F9FC;
+      --mia-light: #E2E8F0;
+      --mia-text: #C8D1E0;
+      --mia-text-muted: #8892A8;
+      --mia-dark-text: #1F2833;
+      --mia-positive: #42D36F;
+      --mia-positive-dim: rgba(66,211,111,0.10);
+      --mia-warning: #F59E0B;
+      --mia-warning-dim: rgba(245,158,11,0.10);
+      --mia-critical: #EF4444;
+      --mia-critical-dim: rgba(239,68,68,0.10);
+      --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+      --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--mia-navy);
+      color: var(--mia-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ==================== HEADER & NAVIGATION ==================== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(229,161,0,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(19,125,197,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: -150px;
+      left: -150px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 900px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-logo { margin-bottom: 2rem; }
+    .hero-logo svg { width: 56px; height: 56px; }
+
+    .hero-brand {
+      font-size: 2.5rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin-bottom: 0.5rem;
+      color: var(--mia-white);
+      letter-spacing: -1px;
+    }
+    .hero-brand span { color: var(--mia-gold); }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--mia-text-muted);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-display);
+      color: var(--mia-white);
+    }
+    .hero-title span { color: var(--mia-gold); }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--mia-text);
+      margin-bottom: 2rem;
+      max-width: 650px;
+      line-height: 1.8;
+    }
+
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+      max-width: 800px;
+    }
+
+    .kpi-card {
+      background: rgba(229,161,0,0.08);
+      border: 1px solid rgba(229,161,0,0.2);
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .kpi-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--mia-gold);
+      margin-bottom: 0.25rem;
+      font-family: var(--font-display);
+    }
+
+    .kpi-label {
+      font-size: 0.8rem;
+      color: var(--mia-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--mia-blue) 0%, var(--mia-blue-light) 100%);
+      color: var(--mia-white);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(19,125,197,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--mia-gold);
+      border: 2px solid var(--mia-gold);
+    }
+    .btn-secondary:hover { background: rgba(229,161,0,0.1); }
+
+    /* ==================== STICKY NAV ==================== */
+    .sticky-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10, 18, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(229,161,0,0.1);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-nav.visible { transform: translateY(0); }
+
+    .sticky-nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sticky-nav-brand {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--mia-white);
+    }
+    .sticky-nav-brand span { color: var(--mia-gold); }
+
+    .sticky-nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .sticky-nav-links a {
+      color: var(--mia-text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s ease;
+    }
+    .sticky-nav-links a:hover,
+    .sticky-nav-links a.active { color: var(--mia-gold); }
+
+    /* ==================== SECTIONS ==================== */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    section.light {
+      background-color: var(--mia-offwhite);
+      color: var(--mia-dark-text);
+      max-width: none;
+      padding: 5rem 2rem;
+    }
+
+    section.light > * {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.light p,
+    section.light li { color: var(--mia-dark-text); }
+    section.light .section-header h2 { color: var(--mia-navy); }
+
+    .section-header {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+    }
+
+    .section-number {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .section-number::before {
+      content: attr(data-number);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(229,161,0,0.1);
+      border: 2px solid var(--mia-gold);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--mia-gold);
+      font-family: var(--font-display);
+    }
+    section.light .section-number::before {
+      background: rgba(229,161,0,0.15);
+      border-color: var(--mia-gold-dark);
+      color: var(--mia-gold-dark);
+    }
+
+    .section-title { flex: 1; }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      color: var(--mia-white);
+      font-family: var(--font-display);
+    }
+    section.light .section-title h2 { color: var(--mia-navy); }
+    .section-title h2 span { color: var(--mia-gold); }
+
+    .section-subtitle {
+      color: var(--mia-text-muted);
+      font-size: 1.125rem;
+    }
+
+    /* ==================== CARDS ==================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(229,161,0,0.15);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(229,161,0,0.4);
+      background: rgba(229,161,0,0.08);
+      transform: translateY(-4px);
+    }
+
+    section.light .card {
+      background: rgba(19,125,197,0.05);
+      border-color: rgba(19,125,197,0.15);
+    }
+    section.light .card:hover {
+      background: rgba(19,125,197,0.12);
+      border-color: rgba(19,125,197,0.4);
+    }
+
+    .card-clickable { cursor: pointer; }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(229,161,0,0.15);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .card-icon svg { width: 24px; height: 24px; color: var(--mia-gold); }
+    section.light .card-icon { background: rgba(19,125,197,0.15); }
+    section.light .card-icon svg { color: var(--mia-blue); }
+    section.light .card-meta { color: var(--mia-gold-dark); }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--mia-white);
+      font-family: var(--font-display);
+    }
+    section.light .card-title { color: var(--mia-navy); }
+
+    .card-description {
+      font-size: 0.95rem;
+      color: var(--mia-text);
+      line-height: 1.6;
+    }
+    section.light .card-description { color: var(--mia-dark-text); }
+
+    .card-meta {
+      font-size: 0.875rem;
+      color: var(--mia-gold);
+      margin-top: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* ==================== PUNCHLINE ==================== */
+    .punchline {
+      background: rgba(229,161,0,0.08);
+      border-left: 4px solid var(--mia-gold);
+      padding: 1.5rem 2rem;
+      border-radius: var(--radius-md);
+      margin: 2rem 0;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: var(--mia-white);
+      font-weight: 600;
+    }
+    section.light .punchline {
+      background: rgba(19,125,197,0.08);
+      border-left-color: var(--mia-blue);
+      color: var(--mia-navy);
+    }
+
+    /* ==================== CONTRAST BLOCK (Duarte "what is / what could be") ==================== */
+    .contrast-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .contrast-box {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+
+    .contrast-box.today {
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.2);
+    }
+
+    .contrast-box.future {
+      background: rgba(66,211,111,0.08);
+      border: 1px solid rgba(66,211,111,0.2);
+    }
+
+    .contrast-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .contrast-box.today .contrast-label { color: var(--mia-warning); }
+    .contrast-box.future .contrast-label { color: var(--mia-positive); }
+
+    .contrast-box p {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.4;
+      font-family: var(--font-display);
+    }
+
+    .contrast-box.today p { color: var(--mia-text-muted); }
+    .contrast-box.future p { color: var(--mia-white); }
+
+    section.light .contrast-box.today p { color: #666; }
+    section.light .contrast-box.future p { color: var(--mia-navy); }
+
+    /* ==================== MICRO-COMMIT ==================== */
+    .micro-commit {
+      background: rgba(229,161,0,0.12);
+      border: 1px solid rgba(229,161,0,0.3);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .micro-commit-check {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .micro-commit-check svg { width: 20px; height: 20px; color: var(--mia-gold); }
+    .micro-commit-text { flex: 1; }
+    .micro-commit-text p { margin: 0; font-weight: 500; }
+
+    section.light .micro-commit {
+      background: rgba(19,125,197,0.12);
+      border-color: rgba(19,125,197,0.3);
+    }
+    section.light .micro-commit-check svg { color: var(--mia-blue); }
+
+    /* ==================== BADGES ==================== */
+    .modal-badge-row {
+      display: flex;
+      gap: 0.75rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(229,161,0,0.15);
+      color: var(--mia-gold);
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge.positive { background: rgba(66,211,111,0.15); color: var(--mia-positive); }
+    .badge.warning { background: rgba(245,158,11,0.15); color: var(--mia-warning); }
+    .badge.blue { background: rgba(19,125,197,0.15); color: var(--mia-blue-light); }
+    section.light .badge { color: var(--mia-gold-dark); }
+    section.light .badge.positive { color: #1a8a3e; }
+    section.light .badge.blue { color: var(--mia-blue); }
+
+    /* ==================== MODALS ==================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active { display: flex; animation: fadeInDown 0.3s ease-out; }
+
+    .modal-box {
+      background: var(--mia-navy-mid);
+      border: 1px solid rgba(229,161,0,0.2);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      animation: fadeInUp 0.3s ease-out;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      width: 36px; height: 36px;
+      background: rgba(229,161,0,0.1);
+      border: none;
+      border-radius: 50%;
+      color: var(--mia-gold);
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .modal-close:hover { background: rgba(229,161,0,0.2); }
+
+    .modal-box h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--mia-white);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-display);
+      padding-right: 2rem;
+    }
+    .modal-box h2 span { color: var(--mia-gold); }
+
+    .modal-section {
+      margin: 1.5rem 0;
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      border-left: 4px solid rgba(229,161,0,0.3);
+    }
+    .modal-section.anticipation { background: rgba(245,158,11,0.08); border-left-color: var(--mia-warning); }
+    .modal-section.resolution { background: rgba(19,125,197,0.08); border-left-color: var(--mia-blue); }
+    .modal-section.success { background: rgba(66,211,111,0.08); border-left-color: var(--mia-positive); }
+
+    .modal-section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      color: var(--mia-text-muted);
+    }
+
+    .modal-section p {
+      color: var(--mia-text);
+      line-height: 1.7;
+      margin: 0.5rem 0;
+    }
+
+    /* ==================== TABLES ==================== */
+    .table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+
+    th {
+      background: rgba(229,161,0,0.1);
+      color: var(--mia-gold);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 2px solid rgba(229,161,0,0.2);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(229,161,0,0.1);
+      color: var(--mia-text);
+    }
+    tr:hover { background: rgba(229,161,0,0.05); }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      background: var(--mia-navy-light);
+      border-top: 1px solid rgba(229,161,0,0.1);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    footer p { color: var(--mia-text-muted); font-size: 0.875rem; }
+    footer .footer-id { color: var(--mia-gold); font-weight: 700; margin-top: 1rem; }
+    footer a { color: var(--mia-gold); text-decoration: none; transition: color 0.3s ease; }
+    footer a:hover { color: var(--mia-white); }
+
+    /* ==================== LISTS ==================== */
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.5rem; line-height: 1.7; }
+
+    code {
+      background: rgba(229,161,0,0.1);
+      color: var(--mia-gold);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+
+    /* ==================== EVOLUTION STEPS ==================== */
+    .evolution-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .evo-step {
+      text-align: center;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(229,161,0,0.15);
+      border-radius: var(--radius-md);
+      min-width: 180px;
+    }
+
+    .evo-step-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--mia-white);
+      margin-bottom: 0.25rem;
+    }
+
+    .evo-step-desc {
+      font-size: 0.8rem;
+      color: var(--mia-text-muted);
+    }
+
+    .evo-arrow {
+      font-size: 1.5rem;
+      color: var(--mia-gold);
+      padding: 0 0.5rem;
+      font-weight: 800;
+    }
+
+    /* ==================== PRICING PAIR ==================== */
+    .pricing-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .pricing-card {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .pricing-card.primary {
+      background: rgba(229,161,0,0.08);
+      border: 2px solid rgba(229,161,0,0.3);
+    }
+
+    .pricing-card.alt {
+      background: rgba(66,211,111,0.08);
+      border: 2px solid rgba(66,211,111,0.3);
+    }
+
+    .pricing-amount {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      margin: 0.5rem 0;
+    }
+
+    .pricing-card.primary .pricing-amount { color: var(--mia-gold-dark); }
+    .pricing-card.alt .pricing-amount { color: #1a8a3e; }
+
+    .pricing-detail {
+      font-size: 0.9rem;
+      color: var(--mia-text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* ==================== PHASE TIMELINE ==================== */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 2rem 0;
+    }
+
+    .phase-block {
+      padding: 2rem;
+      border: 1px solid rgba(229,161,0,0.15);
+      position: relative;
+    }
+
+    .phase-block:first-child { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+    .phase-block:last-child { border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+
+    .phase-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--mia-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--mia-white);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-display);
+    }
+
+    .phase-text {
+      font-size: 0.9rem;
+      color: var(--mia-text);
+      line-height: 1.6;
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-brand { font-size: 1.75rem; }
+      .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .section-header { flex-direction: column; gap: 1rem; }
+      .section-title h2 { font-size: 1.75rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .contrast-row { grid-template-columns: 1fr; }
+      .pricing-pair { grid-template-columns: 1fr; }
+      .phase-grid { grid-template-columns: 1fr; }
+      .phase-block { border-radius: var(--radius-md) !important; margin-bottom: 1rem; }
+      .modal-box { padding: 1.5rem; }
+      .sticky-nav-links { display: none; }
+      .hero-cta-group { flex-direction: column; }
+      .btn { width: 100%; text-align: center; }
+      .evolution-steps { flex-direction: column; gap: 0.5rem; }
+      .evo-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== STICKY NAV ==================== -->
+<nav class="sticky-nav" id="stickyNav">
+  <div class="sticky-nav-content">
+    <div class="sticky-nav-brand">
+      Metodo<span>IA</span>
+    </div>
+    <ul class="sticky-nav-links">
+      <li><a href="#section-1" class="nav-link">Programa</a></li>
+      <li><a href="#section-2" class="nav-link">Dream Team</a></li>
+      <li><a href="#section-3" class="nav-link">Camino</a></li>
+      <li><a href="#section-4" class="nav-link">Inversi&oacute;n</a></li>
+      <li><a href="#section-5" class="nav-link">Preguntas</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg width="56" height="56" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#E5A100"/>
+      </svg>
+    </div>
+
+    <div class="hero-brand">
+      Metodo<span>IA</span>
+    </div>
+    <div class="hero-tagline">Success as a Service</div>
+
+    <h1 class="hero-title">
+      Son 2.<br>
+      <span>Operan como 8.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Formaci&oacute;n + 6 asistentes IA + acompa&ntilde;amiento semanal.<br>
+      En 16 semanas, V&A tiene m&eacute;todo, equipo y soberan&iacute;a.
+    </p>
+
+    <div class="hero-kpis">
+      <div class="kpi-card">
+        <div class="kpi-value">128h</div>
+        <div class="kpi-label">Liberadas/Mes</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">16</div>
+        <div class="kpi-label">Semanas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">6</div>
+        <div class="kpi-label">Asistentes IA</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">9h/sem</div>
+        <div class="kpi-label">Acompa&ntilde;amiento</div>
+      </div>
+    </div>
+
+    <div class="hero-cta-group">
+      <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank" class="btn btn-primary">Agendar Sesi&oacute;n</a>
+      <button class="btn btn-secondary" onclick="document.getElementById('section-4').scrollIntoView({behavior:'smooth'})">Ver Inversi&oacute;n</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 1: QUÉ INCLUYE ==================== -->
+<section id="section-1">
+  <div class="section-header">
+    <div class="section-number" data-number="1"></div>
+    <div class="section-title">
+      <h2>Tres <span>Componentes</span></h2>
+      <p class="section-subtitle">Cada uno refuerza a los otros dos.</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card card-clickable" onclick="openModal('modal-formacion')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <h3 class="card-title">Formaci&oacute;n</h3>
+      <p class="card-description">
+        Aprendes a dise&ntilde;ar con IA: prompts, flujos, criterios de calidad.<br>
+        Al final, no dependes de nadie.
+      </p>
+      <div class="card-meta">3h conjuntas + 3h independientes/semana &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-asistentes')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+          <polyline points="13 2 13 9 20 9"></polyline>
+        </svg>
+      </div>
+      <h3 class="card-title">6 Asistentes IA</h3>
+      <p class="card-description">
+        Dise&ntilde;ados para tu operaci&oacute;n. Propuestas, prospecci&oacute;n, reportes,<br>
+        tareas, calidad, reuniones. 24/7.
+      </p>
+      <div class="card-meta">500k COP por asistente &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-acompanamiento')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      </div>
+      <h3 class="card-title">Acompa&ntilde;amiento</h3>
+      <p class="card-description">
+        Sincronizaci&oacute;n semanal, dailys, cl&iacute;nicas.<br>
+        MetodologIA camina contigo hasta que operes solo.
+      </p>
+      <div class="card-meta">2h sync + 1h cl&iacute;nica/semana &rarr;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 2: DREAM TEAM ==================== -->
+<section id="section-2" class="light">
+  <div class="section-header">
+    <div class="section-number" data-number="2"></div>
+    <div class="section-title">
+      <h2>Tu <span>Dream Team</span></h2>
+      <p class="section-subtitle">6 especialistas. 128 horas liberadas cada mes.</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card card-clickable" onclick="openModal('modal-a1')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+          <polyline points="13 2 13 9 20 9"></polyline>
+        </svg>
+      </div>
+      <h3 class="card-title">Asistente de Propuestas</h3>
+      <p class="card-description">Decks profesionales en 2 minutos.<br>Narrativa, datos, dise&ntilde;o.</p>
+      <div class="card-meta">20h/mes liberadas &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-a2')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+      <h3 class="card-title">Task Tracker IA</h3>
+      <p class="card-description">Centraliza tareas de todas tus apps.<br>Lista ejecutable cada ma&ntilde;ana.</p>
+      <div class="card-meta">12h/mes liberadas &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-a3')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </div>
+      <h3 class="card-title">Asistente de Prospecci&oacute;n</h3>
+      <p class="card-description">Busca, valida y prepara leads.<br>T&uacute; solo llamas.</p>
+      <div class="card-meta">18h/mes liberadas &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-a4')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+      </div>
+      <h3 class="card-title">Motor de Reportes</h3>
+      <p class="card-description">Dashboards autom&aacute;ticos, an&aacute;lisis semanal.<br>Datos listos para decidir.</p>
+      <div class="card-meta">25h/mes liberadas &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-a5')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
+        </svg>
+      </div>
+      <h3 class="card-title">Peer Reviewer IA</h3>
+      <p class="card-description">Revisa tono, marca, gram&aacute;tica, l&oacute;gica.<br>Nada imperfecto sale.</p>
+      <div class="card-meta">15h/mes liberadas &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-a6')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </div>
+      <h3 class="card-title">Meeting Analyst</h3>
+      <p class="card-description">Transcribe, sintetiza, genera follow-ups.<br>Cero notas manuales.</p>
+      <div class="card-meta">8h/mes liberadas &rarr;</div>
+    </div>
+  </div>
+
+  <!-- EVOLUTION PATH -->
+  <div style="margin-top: 3rem; padding: 2rem; background: rgba(10,18,42,0.06); border-radius: var(--radius-lg); border: 1px solid rgba(19,125,197,0.15);">
+    <p style="text-align: center; font-weight: 600; color: var(--mia-navy); margin-bottom: 1.5rem; font-size: 1rem;">
+      Los asistentes evolucionan contigo
+    </p>
+    <div class="evolution-steps">
+      <div class="evo-step" style="background: rgba(19,125,197,0.08); border-color: rgba(19,125,197,0.2);">
+        <div class="evo-step-name" style="color: var(--mia-navy);">Asistente</div>
+        <div class="evo-step-desc">T&uacute; instruyes, &eacute;l ejecuta</div>
+      </div>
+      <div class="evo-arrow" style="color: var(--mia-blue);">&rarr;</div>
+      <div class="evo-step" style="background: rgba(19,125,197,0.08); border-color: rgba(19,125,197,0.2);">
+        <div class="evo-step-name" style="color: var(--mia-navy);">Flujo Ag&eacute;ntico</div>
+        <div class="evo-step-desc">Pasos automatizados</div>
+      </div>
+      <div class="evo-arrow" style="color: var(--mia-blue);">&rarr;</div>
+      <div class="evo-step" style="background: rgba(19,125,197,0.08); border-color: rgba(19,125,197,0.2);">
+        <div class="evo-step-name" style="color: var(--mia-navy);">Agente</div>
+        <div class="evo-step-desc">Autonom&iacute;a real, tus par&aacute;metros</div>
+      </div>
+    </div>
+    <p style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 1rem;">
+      Empezamos con asistentes. La evoluci&oacute;n depende de tu ritmo.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== SECTION 3: EL CAMINO ==================== -->
+<section id="section-3">
+  <div class="section-header">
+    <div class="section-number" data-number="3"></div>
+    <div class="section-title">
+      <h2>El <span>Camino</span></h2>
+      <p class="section-subtitle">16 semanas. Tres fases. Independencia al final.</p>
+    </div>
+  </div>
+
+  <div class="phase-grid">
+    <div class="phase-block">
+      <div class="phase-label">Semanas 1&ndash;4</div>
+      <div class="phase-title">Fundamento</div>
+      <div class="phase-text">
+        Aprendes a dise&ntilde;ar prompts y flujos.<br>
+        Primeros 2 asistentes operativos.<br>
+        Cl&iacute;nica semanal + dailys.
+      </div>
+    </div>
+    <div class="phase-block">
+      <div class="phase-label">Semanas 5&ndash;10</div>
+      <div class="phase-title">Expansi&oacute;n</div>
+      <div class="phase-text">
+        Dise&ntilde;o avanzado e iteraci&oacute;n.<br>
+        4 asistentes m&aacute;s se integran.<br>
+        Cl&iacute;nica quincenal.
+      </div>
+    </div>
+    <div class="phase-block">
+      <div class="phase-label">Semanas 11&ndash;16</div>
+      <div class="phase-title">Autonom&iacute;a</div>
+      <div class="phase-text">
+        Dise&ntilde;as nuevos flujos sin ayuda.<br>
+        6 asistentes optimizados.<br>
+        MetodologIA se retira.
+      </div>
+    </div>
+  </div>
+
+  <div class="punchline" style="margin-top: 2.5rem;">
+    Al final no solo tienes herramientas.<br>
+    Sabes dise&ntilde;ar con IA. Eso es lo que queda.
+  </div>
+
+  <!-- SOVEREIGNTY -->
+  <div class="micro-commit" style="margin-top: 2rem;">
+    <div class="micro-commit-check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      </svg>
+    </div>
+    <div class="micro-commit-text">
+      <p><strong>Soberan&iacute;a Digital:</strong> Tus asistentes viven en tu Google Drive. Durante el programa, MetodologIA tiene acceso de editor. En suscripci&oacute;n, solo lectura. Despu&eacute;s: sin acceso. El Dream Team es 100% tuyo. Sin lock-in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 4: LA INVERSIÓN ==================== -->
+<section id="section-4" class="light">
+  <div class="section-header">
+    <div class="section-number" data-number="4"></div>
+    <div class="section-title">
+      <h2>La <span>Inversi&oacute;n</span></h2>
+      <p class="section-subtitle">Cu&aacute;nto cuesta, qu&eacute; genera, y qu&eacute; pasa si no act&uacute;as.</p>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="pricing-pair">
+    <div class="pricing-card primary">
+      <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--mia-text-muted); font-weight: 700;">Por Asistente</div>
+      <div class="pricing-amount">500k COP</div>
+      <div class="pricing-detail">6 asistentes = 3M COP total<br>Empieza con uno, escala cuando quieras</div>
+    </div>
+    <div class="pricing-card alt">
+      <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--mia-text-muted); font-weight: 700;">Alternativa</div>
+      <div class="pricing-amount">6M COP</div>
+      <div class="pricing-detail">Compromiso de ventas<br>Pagas con resultados, no con caja</div>
+    </div>
+  </div>
+
+  <div class="micro-commit" style="margin-bottom: 2.5rem;">
+    <div class="micro-commit-check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <div class="micro-commit-text">
+      <p><strong>Evoluci&oacute;n a agente:</strong> Cotizaci&oacute;n individual seg&uacute;n el caso. No pagas por capacidad que no necesitas.</p>
+    </div>
+  </div>
+
+  <!-- BUSINESS CASE: 3 clickable cards -->
+  <h3 style="color: var(--mia-navy); margin-bottom: 1.5rem; font-size: 1.3rem;">El Caso de Negocio</h3>
+
+  <div class="card-grid" style="margin-bottom: 2.5rem;">
+    <div class="card card-clickable" onclick="openModal('modal-drivers')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+          <polyline points="17 6 23 6 23 12"></polyline>
+        </svg>
+      </div>
+      <h3 class="card-title">Inductores de Valor</h3>
+      <p class="card-description">5 fuentes de retorno: tiempo, ingresos, calidad, capacidad, soberan&iacute;a.</p>
+      <div class="card-meta">Ver detalle &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-breakeven')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="2" x2="12" y2="22"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+      </div>
+      <h3 class="card-title">ROI y Break-Even</h3>
+      <p class="card-description">F&oacute;rmula, escenarios, stress test. Los n&uacute;meros que importan.</p>
+      <div class="card-meta">Ver an&aacute;lisis &rarr;</div>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-coi')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h3 class="card-title">Costo de No Actuar</h3>
+      <p class="card-description">Qu&eacute; pierde V&A cada mes que opera sin asistentes IA.</p>
+      <div class="card-meta">Ver impacto &rarr;</div>
+    </div>
+  </div>
+
+  <!-- SUMMARY NUMBERS -->
+  <div class="contrast-row">
+    <div class="contrast-box today">
+      <div class="contrast-label">Break-Even</div>
+      <p style="color: var(--mia-navy);">~2.3 meses</p>
+      <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">A 25k COP/hora, R=40%</div>
+    </div>
+    <div class="contrast-box future">
+      <div class="contrast-label">ROI A&ntilde;o 1</div>
+      <p style="color: var(--mia-navy);">5.1x</p>
+      <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">Stress test (R=20%): a&uacute;n 2.6x</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 5: PREGUNTAS ==================== -->
+<section id="section-5">
+  <div class="section-header">
+    <div class="section-number" data-number="5"></div>
+    <div class="section-title">
+      <h2>Preguntas <span>Frecuentes</span></h2>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card card-clickable" onclick="openModal('modal-faq-1')">
+      <h3 class="card-title">&iquest;Qu&eacute; pasa si algo sale mal?</h3>
+      <p class="card-description">Kill clause en semana 8. Rehacemos sin costo o terminamos limpio.</p>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-faq-2')">
+      <h3 class="card-title">&iquest;Cu&aacute;nto tiempo debo invertir?</h3>
+      <p class="card-description">9h/semana: 3h juntos, 3h independiente, 2h sync, 1h cl&iacute;nica.</p>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-faq-3')">
+      <h3 class="card-title">&iquest;Funciona con nuestras herramientas?</h3>
+      <p class="card-description">Google Stack, Slack, Notion. Se integra donde ya trabajas.</p>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-faq-4')">
+      <h3 class="card-title">&iquest;Tengo que cambiar mi proceso?</h3>
+      <p class="card-description">No. Los asistentes se adaptan a ti, no al rev&eacute;s.</p>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-faq-5')">
+      <h3 class="card-title">&iquest;Qu&eacute; pasa despu&eacute;s de 16 semanas?</h3>
+      <p class="card-description">El Dream Team es tuyo. Suscripci&oacute;n continua opcional (~600k/mes).</p>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-faq-6')">
+      <h3 class="card-title">&iquest;Podemos probar antes?</h3>
+      <p class="card-description">S&iacute;. 90 minutos con prospecci&oacute;n IA en vivo. Sin compromiso.</p>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div style="text-align: center; margin-top: 4rem;">
+    <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.25rem 3rem;">
+      Agendar Sesi&oacute;n de Prueba
+    </a>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--mia-text-muted);">
+      90 minutos. Caso real. Sin costo.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== MODALS ==================== -->
+
+<!-- Section 1: Tres Componentes -->
+<div class="modal-overlay" id="modal-formacion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-formacion')">&times;</button>
+    <h2>Formaci&oacute;n en <span>Dise&ntilde;o IA</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge blue">16 SEMANAS</div>
+      <div class="badge">6h/SEMANA</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qu&eacute; Aprendes</div>
+      <p>Dise&ntilde;o de prompts efectivos, construcci&oacute;n de flujos IA, criterios de calidad para validar resultados, y metodolog&iacute;a para crear nuevos asistentes sin ayuda externa.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">C&oacute;mo Funciona</div>
+      <p><strong>3h conjuntas/semana:</strong> Sesiones pr&aacute;cticas con MetodologIA. Casos reales de V&A.<br>
+      <strong>3h independientes/semana:</strong> Pr&aacute;ctica aut&oacute;noma con gu&iacute;a y feedback.</p>
+      <p style="margin-top: 1rem;">Al final de 16 semanas, dise&ntilde;as con IA sin depender de nadie. Esa capacidad es tuya para siempre.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-asistentes">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-asistentes')">&times;</button>
+    <h2>6 <span>Asistentes IA</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge positive">128h/MES LIBERADAS</div>
+      <div class="badge">500k COP C/U</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu Dream Team</div>
+      <p><strong>Asistente de Propuestas</strong> &mdash; Decks profesionales en 2 min (20h/mes)<br>
+      <strong>Task Tracker IA</strong> &mdash; Tareas centralizadas y priorizadas (12h/mes)<br>
+      <strong>Asistente de Prospecci&oacute;n</strong> &mdash; Leads validados y preparados (18h/mes)<br>
+      <strong>Motor de Reportes</strong> &mdash; Dashboards y an&aacute;lisis autom&aacute;ticos (25h/mes)<br>
+      <strong>Peer Reviewer IA</strong> &mdash; Calidad antes de enviar (15h/mes)<br>
+      <strong>Meeting Analyst</strong> &mdash; S&iacute;ntesis y follow-ups (8h/mes)</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Modelo</div>
+      <p>500k COP por asistente. 6 asistentes = 3M COP total. Empieza con uno, escala cuando quieras. Alternativa: compromiso de ventas 6M COP.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-acompanamiento">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-acompanamiento')">&times;</button>
+    <h2>Acompa&ntilde;amiento <span>Semanal</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge blue">9h/SEMANA TOTAL</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Desglose</div>
+      <p><strong>4 dailys (~15 min c/u):</strong> Sincronizaci&oacute;n r&aacute;pida, bloqueos, prioridades.<br>
+      <strong>1 weekly (1h):</strong> Revisi&oacute;n de avance, ajustes, pr&oacute;ximos pasos.<br>
+      <strong>1 cl&iacute;nica (1h):</strong> Resoluci&oacute;n profunda de casos complejos.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Progresi&oacute;n</div>
+      <p>Mes 1: cl&iacute;nica semanal (intensivo). Meses 2&ndash;3: quincenal. Despu&eacute;s: mensual. MetodologIA se retira gradualmente hasta que operes solo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Assistants (compact Duarte-style: what + impact) -->
+<div class="modal-overlay" id="modal-a1">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-a1')">&times;</button>
+    <h2>Asistente de <span>Propuestas</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge positive">20h/mes</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qu&eacute; Hace</div>
+      <p>Le das el brief: industria, desaf&iacute;o, presupuesto. En 2 minutos tienes un deck con narrativa, casos de &eacute;xito, propuesta de valor y timeline. Editas y env&iacute;as en 10 minutos.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Impacto</div>
+      <p>De 4&ndash;6 horas por propuesta a 12 minutos. 5 propuestas/mes = 20 horas recuperadas.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-a2">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-a2')">&times;</button>
+    <h2>Task Tracker <span>IA</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge positive">12h/mes</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qu&eacute; Hace</div>
+      <p>Centraliza tareas de Slack, email, calendario. Prioriza por urgencia y cliente. Cada ma&ntilde;ana: lista ejecutable ordenada.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Impacto</div>
+      <p>Un lugar, un orden. 3h/semana recuperadas en claridad.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-a3">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-a3')">&times;</button>
+    <h2>Asistente de <span>Prospecci&oacute;n</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge positive">18h/mes</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qu&eacute; Hace</div>
+      <p>Define criterios (tama&ntilde;o, industria, regi&oacute;n). El asistente busca, valida, prepara contexto y genera script para tu llamada.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Impacto</div>
+      <p>De 20h en research a 2h de validaci&oacute;n. Mejores conversiones porque la preparaci&oacute;n es mejor.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-a4">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-a4')">&times;</button>
+    <h2>Motor de <span>Reportes</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge positive">25h/mes</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qu&eacute; Hace</div>
+      <p>Se conecta a tus fuentes (CRM, Slack, Calendar). Genera reportes, dashboards, an&aacute;lisis de tendencias. Todo autom&aacute;tico, en tu marca.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Impacto</div>
+      <p>25h/mes de extracci&oacute;n y formato a 1h de revisi&oacute;n. Cada decisi&oacute;n respaldada por datos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-a5">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-a5')">&times;</button>
+    <h2>Peer Reviewer <span>IA</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge positive">15h/mes</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qu&eacute; Hace</div>
+      <p>Revisa cada documento antes de enviar: tono, marca, gram&aacute;tica, l&oacute;gica, consistencia. Retroalimentaci&oacute;n instant&aacute;nea.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Impacto</div>
+      <p>De 3h/semana de revisi&oacute;n manual a 30 minutos autom&aacute;ticos. Cero documentos imperfectos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-a6">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-a6')">&times;</button>
+    <h2>Meeting <span>Analyst</span></h2>
+    <div class="modal-badge-row">
+      <div class="badge positive">8h/mes</div>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qu&eacute; Hace</div>
+      <p>Transcribe llamadas, sintetiza decisiones, genera follow-ups autom&aacute;ticos. Todo en tu Notion en 10 minutos.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Impacto</div>
+      <p>Escuchas sin anotar. 2h/semana de notas eliminadas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Break-Even Modal (Enhanced) -->
+<div class="modal-overlay" id="modal-breakeven">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-breakeven')">&times;</button>
+    <h2>ROI y <span>Caso de Negocio</span></h2>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">La L&oacute;gica del Caso</div>
+      <p>El Dream Team libera <strong>128 horas/mes</strong> de trabajo operativo. No todas se convierten en ingreso directo&mdash;pero una parte s&iacute;. El framework 80/50/20 calcula qu&eacute; porcentaje de cada tipo de tarea genera valor monetizable:</p>
+      <p style="font-size: .85rem; margin-top: .75rem; padding: .75rem; background: rgba(229,161,0,0.08); border-radius: 8px;">
+        <strong>50% tareas simples</strong> &rarr; 80% realizaci&oacute;n IA<br>
+        <strong>35% tareas medias</strong> &rarr; 50% realizaci&oacute;n IA<br>
+        <strong>15% tareas complejas</strong> &rarr; 20% realizaci&oacute;n IA<br>
+        <strong>Promedio ponderado: ~40% de realizaci&oacute;n</strong>
+      </p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">F&oacute;rmula de Break-Even</div>
+      <p style="font-family: monospace; background: rgba(10,25,47,0.06); padding: 1rem; border-radius: 8px; text-align: center; font-size: 1.05rem;">
+        Break-Even = I &divide; (H &times; R &times; V)
+      </p>
+      <p style="font-size: .85rem; margin-top: .75rem;">
+        <strong>I</strong> = Inversi&oacute;n mensual (3M COP) &middot;
+        <strong>H</strong> = Horas liberadas (128h/mes) &middot;
+        <strong>R</strong> = Tasa de realizaci&oacute;n (40%) &middot;
+        <strong>V</strong> = Valor por hora consultora
+      </p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Escenarios (6 asistentes, 3M COP, R=40%)</div>
+      <div class="table-wrapper">
+        <table>
+          <tr><th>Valor/Hora</th><th>Break-Even</th><th>ROI A&ntilde;o 1</th></tr>
+          <tr><td>20k COP</td><td>2.9 meses</td><td>4.1x</td></tr>
+          <tr style="font-weight: 600;"><td>25k COP (base)</td><td>2.3 meses</td><td>5.1x</td></tr>
+          <tr><td>30k COP</td><td>1.9 meses</td><td>6.1x</td></tr>
+          <tr><td>40k COP</td><td>1.5 meses</td><td>8.2x</td></tr>
+          <tr><td>60k COP</td><td>1.0 meses</td><td>12.3x</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Stress Test: &iquest;Y si las cosas no salen perfecto?</div>
+      <p>Escenario pesimista: <strong>R=20%</strong> (la mitad de lo esperado), <strong>V=25k COP</strong>.</p>
+      <p style="margin-top: .5rem;">Resultado: break-even en <strong>4.7 meses</strong>, ROI de <strong>2.6x</strong>. Incluso en el peor caso, la inversi&oacute;n se recupera antes de que termine el programa.</p>
+      <p style="margin-top: .75rem; font-size: .85rem; opacity: .8;">
+        <strong>Alternativa de entrada:</strong> Empieza con 2 asistentes (1M COP). Valida resultados reales. Escala cuando tengas certeza.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Value Drivers Modal -->
+<div class="modal-overlay" id="modal-drivers">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-drivers')">&times;</button>
+    <h2>Inductores de <span>Valor</span></h2>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">1. Liberaci&oacute;n de Tiempo</div>
+      <p><strong>128 horas/mes</strong> de trabajo operativo automatizado. No es una promesa abstracta&mdash;es la suma real de los 6 asistentes: Propuestas (20h), Task Tracker (12h), Prospecci&oacute;n (18h), Reportes (25h), Peer Reviewer (15h), Meeting Analyst (8h). Tiempo que hoy se va en tareas repetitivas y que se redirige a consultor&iacute;a estrat&eacute;gica y cierre de negocios.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">2. Aceleraci&oacute;n de Ingresos</div>
+      <p>Una propuesta que hoy toma <strong>4-6 horas</strong> se reduce a <strong>~12 minutos</strong> de revisi&oacute;n. Ciclos de venta m&aacute;s cortos = m&aacute;s propuestas enviadas = m&aacute;s contratos cerrados. El asistente de Prospecci&oacute;n prepara cada reuni&oacute;n con ficha del prospecto lista para usar.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">3. Consistencia de Calidad</div>
+      <p>Cada propuesta, reporte y entregable sigue el mismo est&aacute;ndar de marca. Sin variaci&oacute;n por cansancio, prisa o d&iacute;a malo. El Peer Reviewer revisa todo antes de que salga. Brand consistente = confianza del cliente.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">4. Multiplicaci&oacute;n de Capacidad</div>
+      <p><strong>2 personas operan como 8.</strong> No necesitas contratar para escalar. Los asistentes absorben el trabajo operativo que hoy limita cu&aacute;ntos clientes pueden atender simult&aacute;neamente. M&aacute;s capacidad sin m&aacute;s n&oacute;mina.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">5. Soberan&iacute;a Digital</div>
+      <p>Todo vive en <strong>Google Drive de V&A</strong>. No en servidores de MetodologIA, no en plataformas de terceros. Los prompts, los datos, las plantillas&mdash;son de ustedes. Si el programa termina, el Dream Team se queda. Cero dependencia, cero lock-in.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cost of Inaction Modal -->
+<div class="modal-overlay" id="modal-coi">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-coi')">&times;</button>
+    <h2>Costo de <span>No Actuar</span></h2>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">El N&uacute;mero</div>
+      <p style="font-size: 1.3rem; font-weight: 700; text-align: center; padding: .75rem 0;">
+        128h/mes &times; 25k COP = <span style="color: var(--mia-gold);">3.2M COP/mes</span>
+      </p>
+      <p>Cada mes sin asistentes IA, V&A deja de capturar el equivalente a <strong>3.2 millones de pesos</strong> en valor operativo. Son <strong>38.4M COP al a&ntilde;o</strong>&mdash;m&aacute;s de 12 veces la inversi&oacute;n mensual del programa.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">D&oacute;nde Se Pierde</div>
+      <div class="table-wrapper">
+        <table>
+          <tr><th>Actividad Manual</th><th>Tiempo Perdido</th><th>Consecuencia</th></tr>
+          <tr><td>Propuestas manuales</td><td>4-6h cada una</td><td>Menos propuestas enviadas, ciclos lentos</td></tr>
+          <tr><td>Prospecci&oacute;n sin preparar</td><td>~2h/reuni&oacute;n</td><td>Reuniones fr&iacute;as, menor tasa de cierre</td></tr>
+          <tr><td>Reportes manuales</td><td>~25h/mes</td><td>Datos desactualizados, decisiones tard&iacute;as</td></tr>
+          <tr><td>Seguimiento disperso</td><td>~12h/mes</td><td>Tareas ca&iacute;das, clientes insatisfechos</td></tr>
+          <tr><td>Revisi&oacute;n de calidad ad-hoc</td><td>~15h/mes</td><td>Errores, marca inconsistente</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">M&aacute;s All&aacute; del Dinero</div>
+      <p>El costo invisible: <strong>burnout</strong>. Dos personas haciendo el trabajo de ocho genera fatiga, errores y rotaci&oacute;n mental. Los asistentes no resuelven solo un problema financiero&mdash;resuelven un problema de sostenibilidad.</p>
+      <p style="margin-top: .75rem; font-size: .9rem;">Cada mes que pasa sin sistema, la brecha entre V&A y competidores que ya usan IA se hace m&aacute;s amplia.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ Modals (compact) -->
+<div class="modal-overlay" id="modal-faq-1">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-faq-1')">&times;</button>
+    <h2>&iquest;Qu&eacute; Pasa Si Algo <span>Sale Mal</span>?</h2>
+    <div class="modal-badge-row"><div class="badge warning">KILL CLAUSE</div></div>
+    <div class="modal-section resolution">
+      <p>Semana 8: revisi&oacute;n formal. Si los asistentes no cumplen expectativas, pausamos y rehacemos sin costo adicional, o terminamos limpio. Sin riesgo.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-faq-2">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-faq-2')">&times;</button>
+    <h2>&iquest;Cu&aacute;nto Tiempo <span>Debo Invertir</span>?</h2>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Desglose Semanal</div>
+      <p><strong>3h conjuntas</strong> &mdash; Capacitaci&oacute;n hands-on<br>
+      <strong>3h independientes</strong> &mdash; Pr&aacute;ctica aut&oacute;noma<br>
+      <strong>2h sync</strong> &mdash; 4 dailys (~15min) + 1 weekly (1h)<br>
+      <strong>1h cl&iacute;nica</strong> &mdash; Resoluci&oacute;n de bloqueos</p>
+      <p style="margin-top: 1rem;">Total: 9h/semana. Menos de 1.3h/d&iacute;a. Si una semana es ca&oacute;tica, nos ajustamos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-faq-3">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-faq-3')">&times;</button>
+    <h2>&iquest;Funciona Con Nuestras <span>Herramientas</span>?</h2>
+    <div class="modal-badge-row"><div class="badge positive">COMPATIBLE</div></div>
+    <div class="modal-section resolution">
+      <p>Google Workspace, Slack, Notion, Zapier/Make, CRM b&aacute;sicos (Google Sheets como fuente). Para Salesforce, HubSpot o Workday: compatibilidad parcial, lo revisamos en la sesi&oacute;n de prueba.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-faq-4">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-faq-4')">&times;</button>
+    <h2>&iquest;Tengo Que Cambiar <span>Mi Proceso</span>?</h2>
+    <div class="modal-badge-row"><div class="badge positive">NO</div></div>
+    <div class="modal-section resolution">
+      <p>Los asistentes se adaptan a tu flujo. Peque&ntilde;os ajustes (ej: actualizar en Sheets en vez de email), pero m&iacute;nimos. T&uacute; defines el flujo, los asistentes lo mejoran.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-faq-5">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-faq-5')">&times;</button>
+    <h2>&iquest;Qu&eacute; Pasa Despu&eacute;s <span>de 16 Semanas</span>?</h2>
+    <div class="modal-section resolution">
+      <p><strong>Opci&oacute;n 1:</strong> Suscripci&oacute;n continua (~600k COP/mes). Mantenemos y optimizamos.<br>
+      <strong>Opci&oacute;n 2:</strong> Independencia total. El Dream Team es tuyo. Costo: 0.<br>
+      <strong>Opci&oacute;n 3:</strong> H&iacute;brido. Algunos asistentes en suscripci&oacute;n, otros los manejas solo.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-faq-6">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-faq-6')">&times;</button>
+    <h2>&iquest;Podemos Probar <span>Antes</span>?</h2>
+    <div class="modal-badge-row"><div class="badge positive">S&Iacute;</div></div>
+    <div class="modal-section resolution">
+      <p>90 minutos en vivo. Caso real de prospecci&oacute;n. El asistente funciona en directo. Si despu&eacute;s es "no", sin costo. Si es "s&iacute;", ese trabajo cuenta como parte del programa.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <p>
+    MetodologIA &times; V&A Consulting<br>
+    Success as a Service
+  </p>
+  <p style="margin-top: 1rem;">
+    <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank">Agendar Sesi&oacute;n</a>
+  </p>
+  <div class="footer-id">MTIA-08-PITCH-VA-SE</div>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+  const stickyNav = document.getElementById('stickyNav');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    stickyNav.classList.toggle('visible', scrollTop > 300);
+
+    document.querySelectorAll('section').forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const link = document.querySelector(`a[href="#${section.id}"]`);
+      if (link && rect.top >= 0 && rect.top <= 200) {
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  });
+
+  function openModal(id) {
+    const m = document.getElementById(id);
+    if (m) m.classList.add('active');
+  }
+
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    if (m) m.classList.remove('active');
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m) m.classList.remove('active'); });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (href !== '#') {
+        e.preventDefault();
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.card, .punchline, .micro-commit, .phase-block, .pricing-card, .contrast-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

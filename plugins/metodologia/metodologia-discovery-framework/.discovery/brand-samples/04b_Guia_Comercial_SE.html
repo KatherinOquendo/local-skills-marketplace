@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04b Guia Comercial Directa — V&A Consulting × MetodologIA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E8ECF4;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--mia-dark-text);
+  background: var(--mia-offwhite);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  color: white;
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+.hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.2; }
+.hero h1 span { color: var(--mia-gold); }
+.hero .subtitle { color: var(--mia-text); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; }
+.hero-kpis { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+.hero-kpi { text-align: center; }
+.hero-kpi .value { font-size: 1.8rem; font-weight: 800; color: var(--mia-gold); }
+.hero-kpi .label { font-size: 0.8rem; color: var(--mia-text-muted); }
+
+/* STICKY TOC */
+.toc-sticky {
+  position: sticky; top: 0; z-index: var(--z-sticky-nav);
+  background: var(--mia-white); border-bottom: 1px solid var(--mia-light);
+  padding: 0.6rem 0; overflow-x: auto;
+}
+.toc-inner { display: flex; gap: 0.3rem; justify-content: center; flex-wrap: nowrap; padding: 0 1rem; }
+.toc-link {
+  text-decoration: none; color: var(--mia-dark-text); font-size: 0.75rem; font-weight: 500;
+  padding: 0.4rem 0.8rem; border-radius: var(--radius-sm);
+  transition: var(--transition-fast); white-space: nowrap;
+}
+.toc-link:hover, .toc-link.active { background: var(--mia-blue); color: white; }
+
+/* SECTIONS */
+section { padding: 3rem 0; }
+section.dark { background: var(--mia-navy); color: white; }
+section.dark h2, section.dark h3, section.dark h4 { color: white; }
+section.dark p, section.dark li { color: var(--mia-text); }
+
+.section-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; }
+.section-number {
+  width: 48px; height: 48px; min-width: 48px; border-radius: 50%;
+  background: var(--mia-blue); color: white; display: flex;
+  align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem;
+}
+section.dark .section-number { background: var(--mia-gold); color: var(--mia-navy); }
+.section-subtitle { color: #64748B; font-size: 0.95rem; margin-top: 0.3rem; }
+section.dark .section-subtitle { color: var(--mia-text-muted); }
+
+/* CARDS */
+.card {
+  background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem;
+  box-shadow: var(--shadow-card); margin-bottom: 1.5rem;
+}
+section.dark .card { background: var(--mia-navy-light); }
+.card-gold { border-left: 4px solid var(--mia-gold); }
+.card-accent { border-left: 4px solid var(--mia-blue); }
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+/* PRICING TABLE */
+.pricing-table {
+  width: 100%; border-collapse: collapse; margin: 1.5rem 0;
+  background: var(--mia-white); border-radius: var(--radius-md); overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.pricing-table th {
+  background: var(--mia-navy); color: white; padding: 1rem;
+  font-size: 0.85rem; text-align: left; font-weight: 600;
+}
+.pricing-table td {
+  padding: 1rem; border-bottom: 1px solid var(--mia-light);
+  font-size: 0.9rem; vertical-align: top;
+}
+.pricing-table tr:last-child td { border-bottom: none; }
+.pricing-table .price { font-weight: 700; color: var(--mia-blue); font-size: 1rem; }
+.pricing-table .free { color: var(--mia-positive); font-weight: 700; }
+.pricing-table .highlight-row { background: var(--mia-gold-dim); }
+
+/* ROI CARDS */
+.roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+.roi-card {
+  background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem;
+  text-align: center; box-shadow: var(--shadow-card);
+}
+section.dark .roi-card { background: var(--mia-navy-light); }
+.roi-pct { font-size: 2.5rem; font-weight: 900; line-height: 1; margin-bottom: 0.5rem; }
+.roi-pct.high { color: var(--mia-positive); }
+.roi-pct.mid { color: var(--mia-warning); }
+.roi-pct.low { color: var(--mia-blue); }
+
+/* CALLOUTS */
+.callout {
+  border-radius: var(--radius-md); padding: 1.5rem; margin: 1.5rem 0;
+  font-size: 0.95rem; line-height: 1.6;
+}
+.callout-blue { background: var(--mia-blue-dim); border-left: 4px solid var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-left: 4px solid var(--mia-gold); }
+.callout-green { background: var(--mia-positive-dim); border-left: 4px solid var(--mia-positive); }
+
+/* PUNCHLINE */
+.punchline {
+  text-align: center; font-size: 1.2rem; font-weight: 700;
+  padding: 2rem 0; color: var(--mia-navy);
+  font-style: italic; border-top: 2px solid var(--mia-gold);
+  margin-top: 2rem;
+}
+section.dark .punchline { color: var(--mia-gold); border-top-color: var(--mia-gold); }
+
+/* RESELLER COMPARE */
+.reseller-compare { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 1.5rem 0; }
+.reseller-col {
+  border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-card);
+}
+.reseller-col.before { background: var(--mia-white); border-top: 4px solid var(--mia-blue); }
+.reseller-col.after { background: var(--mia-white); border-top: 4px solid var(--mia-gold); }
+section.dark .reseller-col.before { background: var(--mia-navy-light); }
+section.dark .reseller-col.after { background: var(--mia-navy-light); }
+
+/* CTA */
+.cta-button {
+  display: inline-block; padding: 1rem 2.5rem;
+  background: var(--mia-blue); color: white; text-decoration: none;
+  border-radius: var(--radius-xl); font-weight: 700; font-size: 1rem;
+  transition: var(--transition-normal); border: none; cursor: pointer;
+}
+.cta-button:hover { background: var(--mia-blue-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.cta-button.gold { background: var(--mia-gold); color: var(--mia-navy); }
+.cta-button.gold:hover { background: #FFE44D; }
+
+/* BADGE */
+.badge {
+  display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.badge-green { background: var(--mia-positive-dim); color: #16A34A; }
+
+/* FAQ ACCORDION */
+.faq-item { margin-bottom: 0.5rem; }
+.faq-question {
+  width: 100%; text-align: left; padding: 1.2rem 1.5rem;
+  background: var(--mia-white); border: 1px solid var(--mia-light);
+  border-radius: var(--radius-md); cursor: pointer;
+  font-size: 0.95rem; font-weight: 600; color: var(--mia-dark-text);
+  display: flex; justify-content: space-between; align-items: center;
+  transition: var(--transition-fast);
+}
+.faq-question:hover { background: var(--mia-blue-dim); }
+.faq-question .arrow { transition: var(--transition-fast); font-size: 1.2rem; }
+.faq-question.open .arrow { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+  padding: 0 1.5rem;
+}
+.faq-answer.open { max-height: 500px; padding: 1rem 1.5rem; }
+.faq-answer p { font-size: 0.9rem; color: #475569; line-height: 1.7; }
+section.dark .faq-question { background: var(--mia-navy-light); border-color: var(--mia-navy-mid); color: white; }
+section.dark .faq-question:hover { background: var(--mia-navy-mid); }
+section.dark .faq-answer p { color: var(--mia-text); }
+
+/* FOOTER */
+footer {
+  background: var(--mia-navy); color: var(--mia-text-muted);
+  padding: 2rem 0; text-align: center; font-size: 0.8rem;
+}
+.footer-inner { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+.footer-code { font-family: monospace; color: var(--mia-gold); margin-top: 0.5rem; }
+
+/* ANIMATIONS */
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.6rem; }
+  .hero-kpis { gap: 1rem; }
+  .card-grid-2, .card-grid-3, .roi-grid, .reseller-compare { grid-template-columns: 1fr; }
+  .pricing-table { font-size: 0.8rem; }
+  .pricing-table th, .pricing-table td { padding: 0.7rem; }
+  .toc-inner { justify-content: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <h1>Guia Comercial <span>Directa</span></h1>
+    <p class="subtitle">Todo lo que necesitas saber sobre precios, modulos, retorno y como empezar. Sin rodeos.</p>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><div class="value">$0</div><div class="label">Diagnostico</div></div>
+      <div class="hero-kpi"><div class="value">200k</div><div class="label">Workshop</div></div>
+      <div class="hero-kpi"><div class="value">800k</div><div class="label">Bootcamp</div></div>
+      <div class="hero-kpi"><div class="value">500k</div><div class="label">Programa/asistente</div></div>
+    </div>
+    <p style="color: var(--mia-text-muted); font-size: 0.8rem; margin-top: 1rem;">Precios en COP por persona. Hasta 5 personas por sesion.</p>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc-sticky">
+  <div class="toc-inner">
+    <a href="#precios" class="toc-link">Precios</a>
+    <a href="#modulos" class="toc-link">Modulos</a>
+    <a href="#retorno" class="toc-link">Retorno</a>
+    <a href="#caminos" class="toc-link">Caminos</a>
+    <a href="#reseller" class="toc-link">Reseller</a>
+    <a href="#preguntas" class="toc-link">Preguntas</a>
+    <a href="#empezar" class="toc-link">Empezar</a>
+  </div>
+</nav>
+
+<!-- SECCION 1: PRECIOS -->
+<section id="precios">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div>
+        <h2>Precios Claros</h2>
+        <p class="section-subtitle">Cada modulo tiene dos caminos de acceso: inversion directa o compromiso de ventas</p>
+      </div>
+    </div>
+
+    <table class="pricing-table animate-on-scroll">
+      <thead>
+        <tr>
+          <th>Modulo</th>
+          <th>Inversion Directa</th>
+          <th>Compromiso de Ventas</th>
+          <th>Duracion</th>
+          <th>Participantes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-row">
+          <td><strong>Diagnostico</strong></td>
+          <td class="free">Gratuito</td>
+          <td class="free">Gratuito</td>
+          <td>1 sesion (1h)</td>
+          <td>Ilimitado</td>
+        </tr>
+        <tr>
+          <td><strong>Workshop</strong></td>
+          <td class="price">200k COP/persona</td>
+          <td>3M COP en ventas comprometidas</td>
+          <td>3h en 1-3 sesiones</td>
+          <td>Hasta 5</td>
+        </tr>
+        <tr>
+          <td><strong>Bootcamp de Ventas</strong></td>
+          <td class="price">800k COP/persona</td>
+          <td>12M COP en ventas comprometidas</td>
+          <td>18h en 3 semanas</td>
+          <td>Hasta 5</td>
+        </tr>
+        <tr>
+          <td><strong>Programa (R)Evolución</strong></td>
+          <td class="price">500k COP/asistente (3M COP por 6 asistentes)</td>
+          <td>6M COP en ventas comprometidas</td>
+          <td>48h en 16 semanas</td>
+          <td>Hasta 6 asistentes</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>Suscripcion Anual</strong></td>
+          <td class="price" colspan="2" style="text-align:center;">Primer mes prepagado. Todos los beneficios desde el dia 1.</td>
+          <td>12 meses</td>
+          <td>Dedicado</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-blue animate-on-scroll">
+      <strong>Dos caminos, un destino.</strong> La inversion directa es para quien quiere resultados inmediatos. El compromiso de ventas es para quien prefiere pagar con traccion comercial. Ambos caminos llevan al mismo contenido y calidad.
+    </div>
+
+    <div class="punchline">Cada modulo construye sobre el anterior. Puedes empezar gratis y escalar a tu ritmo.</div>
+  </div>
+</section>
+
+<!-- SECCION 2: MODULOS EN DETALLE -->
+<section id="modulos" class="dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div>
+        <h2>Que incluye cada modulo</h2>
+        <p class="section-subtitle">Del diagnostico gratuito hasta el programa completo</p>
+      </div>
+    </div>
+
+    <div class="card animate-on-scroll" style="margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3>Diagnostico</h3>
+        <span class="badge badge-green">Gratuito</span>
+      </div>
+      <p style="margin-bottom: 1rem;">Sesion de 1 hora donde evaluamos tu operacion actual, identificamos oportunidades de automatizacion y definimos si hay fit entre tus necesidades y lo que MetodologIA ofrece.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <span class="badge badge-blue">Evaluacion operacional</span>
+        <span class="badge badge-blue">Mapa de oportunidades</span>
+        <span class="badge badge-blue">Recomendacion personalizada</span>
+      </div>
+    </div>
+
+    <div class="card animate-on-scroll" style="margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3>Workshop</h3>
+        <span class="badge badge-gold">200k COP/persona</span>
+      </div>
+      <p style="margin-bottom: 1rem;">Incluye Diagnostico previo. 3 horas en 1-3 sesiones, hasta 5 personas. Sesion practica donde tu equipo aprende ofimatica IA y herramientas aplicadas a un proceso real de tu negocio. Sales con un protocolo funcional.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <span class="badge badge-blue">1 protocolo funcional</span>
+        <span class="badge badge-blue">Hands-on con IA</span>
+        <span class="badge badge-blue">Templates listos</span>
+      </div>
+    </div>
+
+    <div class="card animate-on-scroll" style="margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3>Bootcamp de Ventas</h3>
+        <span class="badge badge-gold">800k COP/persona</span>
+      </div>
+      <p style="margin-bottom: 1rem;">Incluye todo lo del Workshop. 18 horas en 3 semanas, hasta 5 personas. Inmersion en automatizacion comercial: diseño, construccion y testing de 2-3 protocolos de ventas y prospeccion. Tu equipo termina operando con flujos reales.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <span class="badge badge-blue">2-3 protocolos</span>
+        <span class="badge badge-blue">Flujos automatizados</span>
+        <span class="badge badge-blue">Gemas entrenadas</span>
+      </div>
+    </div>
+
+    <div class="card card-gold animate-on-scroll" style="margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3>Programa (R)Evolución</h3>
+        <span class="badge badge-gold">500k COP/asistente (3M COP por 6 asistentes)</span>
+      </div>
+      <p style="margin-bottom: 1rem;">Incluye todo lo del Bootcamp de Ventas. 48 horas en 16 semanas, hasta 5 personas. (R)Evolución completa de toda la operacion: 5 protocolos sistematizados, 5 Gemas vitaminadas, Dream Team de 6 agentes IA configurados y operativos.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <span class="badge badge-blue">5 protocolos</span>
+        <span class="badge badge-blue">Dream Team IA</span>
+        <span class="badge badge-blue">Autonomia operativa</span>
+      </div>
+    </div>
+
+    <div class="card card-accent animate-on-scroll">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3>Suscripcion Anual</h3>
+        <span class="badge badge-green">Primer mes prepagado</span>
+      </div>
+      <p style="margin-bottom: 1rem;">12 meses de acompañamiento continuo: 9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica). Incluye todo lo anterior mas soporte permanente, iteracion constante y optimizacion progresiva. Al mes 12, operas autonomamente.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <span class="badge badge-blue">9h/semana</span>
+        <span class="badge badge-blue">Soporte continuo</span>
+        <span class="badge badge-blue">Autonomia al mes 12</span>
+      </div>
+    </div>
+
+    <div class="punchline">No compras tecnologia. Compras capacidad operativa que se multiplica sola.</div>
+  </div>
+</section>
+
+<!-- SECCION 3: RETORNO -->
+<section id="retorno">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div>
+        <h2>Como calcular tu retorno</h2>
+        <p class="section-subtitle">Marco de estimacion 80/50/20 — conservador, medible, real</p>
+      </div>
+    </div>
+
+    <p class="animate-on-scroll" style="margin-bottom: 2rem; font-size: 1rem; color: #475569;">Intervenir significa automatizar, acelerar o amplificar. No todas las tareas se automatizan igual. Por eso usamos tres niveles:</p>
+
+    <div class="roi-grid animate-on-scroll">
+      <div class="roi-card">
+        <div class="roi-pct high">80%</div>
+        <h4 style="margin-bottom: 0.5rem;">Tareas Simples</h4>
+        <p style="font-size: 0.85rem; color: #64748B;">Repetitivas, basadas en reglas, alto volumen. Emails, reportes, clasificacion, agendamiento. 8 de cada 10 se automatizan completamente.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-pct mid">50%</div>
+        <h4 style="margin-bottom: 0.5rem;">Tareas Medias</h4>
+        <p style="font-size: 0.85rem; color: #64748B;">Requieren juicio parcial. Propuestas, analisis de datos, seguimiento de clientes. La mitad se acelera significativamente con IA.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-pct low">20%</div>
+        <h4 style="margin-bottom: 0.5rem;">Tareas Complejas</h4>
+        <p style="font-size: 0.85rem; color: #64748B;">Estrategia, negociacion, relaciones. La IA amplifica (contexto, datos, borradores) pero el humano decide. 2 de cada 10 se benefician.</p>
+      </div>
+    </div>
+
+    <div class="card card-gold animate-on-scroll">
+      <h3 style="margin-bottom: 1rem;">Tu caso: V&A Consulting</h3>
+      <div class="card-grid-2">
+        <div>
+          <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">Hoy</h4>
+          <p style="font-size: 0.9rem;"><strong>160 horas/mes</strong> en tareas operativas. Propuestas, seguimiento, documentos, reportes, respuestas a clientes.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--mia-positive); margin-bottom: 0.5rem;">Con MetodologIA</h4>
+          <p style="font-size: 0.9rem;"><strong>64 horas/mes recuperadas</strong> (40% de ahorro). 768 horas/año que se convierten en estrategia, ventas y crecimiento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-green animate-on-scroll">
+      <strong>Estandar 9:1</strong> — De cada 10 tareas operativas, 9 las ejecuta la IA y 1 la supervisa el humano. Ese es el objetivo a 12 meses.
+    </div>
+
+    <div class="punchline">No prometemos magia. Prometemos matematica aplicada a tu operacion.</div>
+  </div>
+</section>
+
+<!-- SECCION 4: CAMINOS -->
+<section id="caminos" class="dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div>
+        <h2>Cual es tu camino</h2>
+        <p class="section-subtitle">Encuentra tu punto de entrada segun tu situacion actual</p>
+      </div>
+    </div>
+
+    <div class="card-grid-2">
+      <div class="card animate-on-scroll">
+        <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">Tengo curiosidad pero no estoy seguro</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Quieres ver si la IA aplica a tu negocio antes de invertir tiempo o dinero.</p>
+        <span class="badge badge-green" style="font-size: 0.85rem;">Empieza con: Diagnostico (gratuito)</span>
+      </div>
+      <div class="card animate-on-scroll">
+        <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">Quiero probar algo concreto con mi equipo</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Ya sabes que quieres IA pero necesitas una experiencia practica antes de comprometerte.</p>
+        <span class="badge badge-gold" style="font-size: 0.85rem;">Empieza con: Workshop (200k COP)</span>
+      </div>
+      <div class="card animate-on-scroll">
+        <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">Necesito resultados rapidos y tangibles</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Tu equipo esta listo, necesitas flujos automatizados funcionando esta semana.</p>
+        <span class="badge badge-gold" style="font-size: 0.85rem;">Empieza con: Bootcamp de Ventas (800k COP)</span>
+      </div>
+      <div class="card animate-on-scroll">
+        <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">Quiero transformar toda mi operacion</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Estas listo para el compromiso completo: protocolos, agentes IA, autonomia operativa.</p>
+        <span class="badge badge-gold" style="font-size: 0.85rem;">Empieza con: Programa (R)Evolución (500k COP/asistente)</span>
+      </div>
+      <div class="card animate-on-scroll">
+        <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">Quiero vender MetodologIA a mis clientes</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Tienes una red de contactos y quieres generar ingresos recurrentes como Reseller certificado.</p>
+        <span class="badge badge-blue" style="font-size: 0.85rem;">Ver: Programa Reseller (seccion siguiente)</span>
+      </div>
+      <div class="card animate-on-scroll">
+        <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">Quiero acompañamiento continuo</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">No busco un proyecto puntual sino un socio permanente que evolucione mi operacion mes a mes.</p>
+        <span class="badge badge-green" style="font-size: 0.85rem;">Empieza con: Suscripcion Anual</span>
+      </div>
+    </div>
+
+    <div class="punchline">No existe un unico camino correcto. Existe el camino que se ajusta a tu momento.</div>
+  </div>
+</section>
+
+<!-- SECCION 5: RESELLER -->
+<section id="reseller">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div>
+        <h2>Programa Reseller</h2>
+        <p class="section-subtitle">Dos etapas con beneficios progresivos</p>
+      </div>
+    </div>
+
+    <div class="reseller-compare animate-on-scroll">
+      <div class="reseller-col before">
+        <h3 style="color: var(--mia-blue); margin-bottom: 1rem;">Antes de Certificarse</h3>
+        <ul style="list-style: none; margin: 0;">
+          <li style="margin-bottom: 1rem; padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Comision: 5%</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Sobre cada venta referida que se cierre</span>
+          </li>
+          <li style="margin-bottom: 1rem; padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Costo de entrada: $0</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Solo necesitas referir. MetodologIA ejecuta todo</span>
+          </li>
+          <li style="margin-bottom: 1rem; padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Responsabilidad: Cero</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Tu refieres, nosotros vendemos, cerramos y entregamos</span>
+          </li>
+          <li style="padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Ideal para: Probar el modelo</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Sin riesgo, sin inversion, sin compromiso</span>
+          </li>
+        </ul>
+      </div>
+      <div class="reseller-col after">
+        <h3 style="color: var(--mia-gold-dark); margin-bottom: 1rem;">Despues de Certificarse</h3>
+        <ul style="list-style: none; margin: 0;">
+          <li style="margin-bottom: 1rem; padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Comision: Hasta 20%</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Escala progresiva: 5% → 10% → 15% → 20%</span>
+          </li>
+          <li style="margin-bottom: 1rem; padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Costo de certificacion: 1 SMLV</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Inversion unica que desbloquea todos los beneficios</span>
+          </li>
+          <li style="margin-bottom: 1rem; padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Tarifas especiales desbloqueadas</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Acceso a precios preferentes para tus clientes</span>
+          </li>
+          <li style="padding-left: 0;">
+            <strong style="display: block; margin-bottom: 0.3rem;">Ideal para: Escalar ingresos</strong>
+            <span style="color: #64748B; font-size: 0.9rem;">Construir tu propia linea de negocio con MetodologIA</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-gold animate-on-scroll">
+      <strong>Escala progresiva de comisiones:</strong> Arrancas en 5% con tus primeras ventas. Al acumular volumen, subes a 10%, luego 15%, y finalmente 20%. El umbral exacto de cada nivel se define en tu acuerdo de certificacion.
+    </div>
+
+    <div class="punchline">Primero prueba sin riesgo. Despues certifícate y escala tus margenes.</div>
+  </div>
+</section>
+
+<!-- SECCION 6: PREGUNTAS FRECUENTES -->
+<section id="preguntas" class="dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div>
+        <h2>Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Las dudas mas comunes, respondidas sin rodeos</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate-on-scroll">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Puedo empezar gratis de verdad?
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="faq-answer">
+        <p>Si. El Diagnostico es una sesion gratuita de 1 hora. No hay compromiso, no hay letra pequeña. Si despues del diagnostico decides que no es para ti, no pasa nada. El objetivo es filtrar: si hay fit, avanzamos. Si no, cada quien por su lado.</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate-on-scroll">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Que significa "compromiso de ventas" como alternativa al pago directo?
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="faq-answer">
+        <p>En vez de pagar el modulo directamente, te comprometes a generar un monto en ventas referidas. Por ejemplo: en vez de pagar 200k COP por el Workshop, te comprometes a referir 3M COP en ventas. Si cumples, el modulo queda cubierto. Es una forma de alinear incentivos: tu creces, nosotros crecemos.</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate-on-scroll">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Necesito conocimientos tecnicos para participar?
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="faq-answer">
+        <p>No. MetodologIA esta diseñada para personas de negocio, no para ingenieros. Si sabes usar Google (Gmail, Sheets, Drive), puedes usar MetodologIA. Todo se construye sobre Google Workspace, que ya conoces.</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate-on-scroll">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Cuanto tiempo toma ver resultados?
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="faq-answer">
+        <p>En el Workshop Introductorio (3 horas) ya sales con un protocolo funcional. En el Bootcamp de Ventas (2 dias, incluye todo lo del Workshop) tienes flujos automatizados operativos. En el Programa (R)Evolución (16 semanas, incluye todo lo del Bootcamp) tienes toda tu operacion transformada. La suscripcion anual lleva eso al maximo nivel con 12 meses de optimizacion continua.</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate-on-scroll">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Que pasa si no me funciona?
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="faq-answer">
+        <p>El Diagnostico gratuito existe exactamente para eso: validar antes de invertir. Si despues del diagnostico identificamos que no hay fit, te lo decimos directamente. Preferimos un "no" honesto a un cliente insatisfecho.</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate-on-scroll">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Que es el Dream Team de 6 agentes IA?
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="faq-answer">
+        <p>Son 6 agentes de IA configurados especificamente para tu negocio: Asistente de Propuestas, Agente de Prospeccion, Motor de Reportes, Peer Reviewer IA, Task Tracker y Meeting Analyst. Cada uno se encarga de una dimension operativa. Juntos, implementan el estandar 9:1 (9 tareas IA, 1 humano).</p>
+      </div>
+    </div>
+
+    <div class="faq-item animate-on-scroll">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Puedo ser Reseller sin haber hecho el Programa?
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="faq-answer">
+        <p>Si. Puedes empezar a referir desde el dia 1 y ganar 5% de comision sin ninguna inversion. Para certificarte y escalar hasta 20%, necesitas invertir 1 SMLV. No necesitas haber pasado por ningun modulo previo, aunque la experiencia directa ayuda a vender mejor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCION 7: EMPEZAR -->
+<section id="empezar">
+  <div class="container" style="text-align: center; padding: 4rem 0;">
+    <h2 style="margin-bottom: 1rem;">Tu Siguiente Paso</h2>
+    <p style="font-size: 1.1rem; color: #64748B; max-width: 500px; margin: 0 auto 2rem;">Agenda una sesion de diagnostico gratuita. 30 minutos. Sin compromiso. Validamos si hay fit y diseñamos tu ruta personalizada.</p>
+    <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" class="cta-button gold" target="_blank" style="margin-bottom: 1.5rem;">Agendar Diagnostico Gratuito</a>
+    <div class="card-grid-3" style="margin-top: 2rem;">
+      <div class="card" style="text-align: center;">
+        <h4 style="color: var(--mia-blue); margin-bottom: 0.5rem;">30 minutos</h4>
+        <p style="font-size: 0.85rem; color: #64748B;">Sesion corta y directa. Sin presentaciones largas.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <h4 style="color: var(--mia-positive); margin-bottom: 0.5rem;">Cero compromiso</h4>
+        <p style="font-size: 0.85rem; color: #64748B;">Si no hay fit, lo decimos. Sin presion comercial.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <h4 style="color: var(--mia-gold-dark); margin-bottom: 0.5rem;">Ruta personalizada</h4>
+        <p style="font-size: 0.85rem; color: #64748B;">Sales con un plan claro: que modulo, cuando y por que.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <svg viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg" style="width: 100px; height: 22px; margin-bottom: 0.5rem;">
+      <rect width="180" height="40" rx="8" fill="url(#miaGradF)"/>
+      <defs>
+        <linearGradient id="miaGradF" x1="0" y1="0" x2="180" y2="40">
+          <stop offset="0%" stop-color="#0A122A"/>
+          <stop offset="100%" stop-color="#1e293b"/>
+        </linearGradient>
+      </defs>
+      <path d="M16 28V12h4.5l4.5 10 4.5-10H34v16h-3V17l-4 9h-3l-4-9v11z" fill="white"/>
+      <path d="M38 28V12h3v16z" fill="white"/>
+      <path d="M46 28l5-16h3l5 16h-3l-1.2-4h-4.6L49 28zm3.5-7h3l-1.5-5z" fill="white"/>
+      <circle cx="160" cy="20" r="12" fill="#FFD700" opacity="0.9"/>
+    </svg>
+    <p>V&A Consulting × MetodologIA Prolipa</p>
+    <div class="footer-code">MTIA-04b-GUIA-COMERCIAL-VA-SE</div>
+  </div>
+</footer>
+
+<script>
+// FAQ Toggle
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
+  document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+  // Open clicked if it was closed
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// Active TOC tracking
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (pageYOffset >= top) current = section.getAttribute('id');
+  });
+  tocLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

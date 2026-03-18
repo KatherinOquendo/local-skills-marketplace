@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Soberanía Digital | V&A x MetodologIA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E8ECF4;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--mia-dark-text);
+  background-color: var(--mia-offwhite);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--mia-navy);
+  line-height: 1.2;
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; line-height: 1.6; }
+a { color: var(--mia-blue); text-decoration: none; transition: all var(--transition-normal); }
+a:hover { color: var(--mia-blue-light); }
+strong { font-weight: 600; }
+
+/* ============================== HERO ============================== */
+.hero {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 2rem 4rem;
+  color: var(--mia-white);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 80%; height: 200%;
+  background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue));
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+  text-align: center;
+}
+.brand-logo {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 2rem;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--mia-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--mia-text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--mia-text);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto; margin-right: auto;
+}
+.hero-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.hero-kpi {
+  text-align: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  transition: all var(--transition-normal);
+}
+.hero-kpi:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+.hero-kpi-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 700; line-height: 1;
+  color: var(--mia-gold);
+}
+.hero-kpi-value.blue { color: var(--mia-blue-light); }
+.hero-kpi-label {
+  font-size: .72rem; color: var(--mia-text-muted);
+  margin-top: .5rem; font-weight: 500; letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.hero-punchline {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--mia-blue-light);
+  margin-top: 2.5rem;
+  opacity: 0.85;
+}
+
+/* ============================== STICKY TOC ============================== */
+nav.toc {
+  background: var(--mia-white);
+  position: sticky; top: 0;
+  z-index: var(--z-sticky-nav);
+  border-bottom: 1px solid #E2E8F0;
+  box-shadow: var(--shadow-sm);
+}
+nav.toc .toc-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 2rem;
+}
+nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+nav.toc a {
+  display: block; padding: .9rem 1.1rem;
+  font-size: .68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: #64748B; white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-normal);
+}
+nav.toc a:hover, nav.toc a.active {
+  color: var(--mia-blue);
+  border-bottom-color: var(--mia-blue);
+  text-decoration: none;
+}
+
+/* ============================== CONTAINER ============================== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* ============================== SECTIONS ============================== */
+section {
+  scroll-margin-top: 60px;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid #E2E8F0;
+}
+section.dark {
+  background: var(--mia-navy);
+  color: white;
+  border-bottom-color: var(--mia-navy-mid);
+}
+section.dark h2, section.dark h3, section.dark h4 { color: white; }
+section.dark p, section.dark li { color: var(--mia-text); }
+section.dark .card { background: var(--mia-navy-light); }
+section.dark .punchline { color: var(--mia-gold); border-top-color: var(--mia-gold); }
+section.dark .section-subtitle { color: var(--mia-text-muted); }
+section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex; gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.section-number {
+  width: 52px; height: 52px; min-width: 52px;
+  background: var(--mia-navy);
+  color: var(--mia-gold);
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+}
+.section-header h2 { margin: 0; color: var(--mia-navy); }
+.section-header .section-subtitle {
+  font-size: .9rem; color: #64748B; margin-top: .25rem;
+}
+
+/* ============================== CARDS ============================== */
+.card {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1.5rem;
+  border: 1px solid #E2E8F0;
+  transition: all var(--transition-normal);
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card-accent { border-top: 4px solid var(--mia-blue); }
+.card-gold { border-top: 4px solid var(--mia-gold); }
+.card-clickable { cursor: pointer; }
+.card-clickable:hover { border-color: var(--mia-blue); box-shadow: var(--shadow-md), var(--shadow-glow-blue); }
+.card-dark {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  color: var(--mia-white);
+  border: none;
+}
+.card-dark h3, .card-dark h4 { color: var(--mia-gold); }
+.card-dark p, .card-dark li { color: var(--mia-text); }
+
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.card-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* Card icon */
+.card-icon {
+  width: 48px; height: 48px;
+  background: var(--mia-blue-dim);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--mia-blue);
+}
+.card-icon.gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.card-icon.critical { background: var(--mia-critical-dim); color: var(--mia-critical); }
+.card-icon.positive { background: var(--mia-positive-dim); color: var(--mia-positive); }
+.card-icon svg { width: 24px; height: 24px; }
+
+/* Card click hint */
+.card-click-hint {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mia-blue);
+  opacity: 0.7;
+  transition: opacity var(--transition-normal);
+}
+.card-clickable:hover .card-click-hint { opacity: 1; }
+
+/* ============================== DARK SECTIONS ============================== */
+.section-dark {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  color: var(--mia-white);
+  padding: 4rem 2rem;
+  margin: 0 -2rem;
+  border-bottom: none;
+}
+.section-dark h2, .section-dark h3 { color: var(--mia-white); }
+.section-dark h2 span { color: var(--mia-gold); }
+.section-dark p { color: var(--mia-text); }
+.section-dark .section-number { background: rgba(255,255,255,0.1); color: var(--mia-gold); }
+.section-dark .card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--mia-white);
+}
+.section-dark .card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+.section-dark .card h3, .section-dark .card h4 { color: var(--mia-gold); }
+.section-dark .card p { color: var(--mia-text); }
+.section-dark .card-icon { background: rgba(255,255,255,0.06); color: var(--mia-blue-light); }
+.section-dark .card-icon.gold { color: var(--mia-gold); }
+.section-dark .card-click-hint { color: var(--mia-blue-light); }
+
+/* ============================== COMPARISON GRID ============================== */
+.comparison-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.comp-col {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+}
+.comp-col.before { border-top: 4px solid var(--mia-critical); }
+.comp-col.after { border-top: 4px solid var(--mia-positive); }
+.comp-col h3 { margin-bottom: 1.5rem; }
+.comp-item {
+  padding: .75rem 0;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex; gap: .75rem; align-items: flex-start;
+}
+.comp-item:last-child { border-bottom: none; }
+.comp-time {
+  font-weight: 700; font-size: .85rem;
+  min-width: 80px; color: var(--mia-navy);
+}
+.comp-desc { font-size: .92rem; color: #475569; }
+
+/* ============================== TIMELINE ============================== */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+  margin-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--mia-blue), var(--mia-gold));
+  border-radius: 3px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 40px;
+}
+.timeline-dot {
+  position: absolute;
+  left: -8px; top: 6px;
+  width: 19px; height: 19px;
+  background: var(--mia-blue);
+  border: 4px solid var(--mia-offwhite);
+  border-radius: 50%;
+  z-index: 2;
+}
+.timeline-content {
+  background: var(--mia-white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+.timeline-content:hover {
+  border-color: var(--mia-blue);
+  box-shadow: var(--shadow-md), var(--shadow-glow-blue);
+  transform: translateX(4px);
+}
+.timeline-title {
+  font-weight: 700;
+  color: var(--mia-navy);
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+}
+.timeline-subtitle {
+  font-size: .78rem;
+  color: var(--mia-blue);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: .5rem;
+}
+.timeline-text {
+  font-size: .92rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ============================== BADGES ============================== */
+.badge {
+  display: inline-block; padding: .25rem .75rem; border-radius: 20px;
+  font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px;
+}
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); border: 1px solid rgba(19,125,197,0.3); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); border: 1px solid rgba(255,215,0,0.3); }
+.badge-green { background: var(--mia-positive-dim); color: #16a34a; border: 1px solid rgba(66,211,111,0.3); }
+.badge-red { background: var(--mia-critical-dim); color: var(--mia-critical); border: 1px solid rgba(239,68,68,0.3); }
+
+/* ============================== KPI BAR ============================== */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.kpi-item {
+  background: var(--mia-white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+.kpi-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 800;
+  color: var(--mia-blue);
+  line-height: 1;
+}
+.kpi-value.gold { color: var(--mia-gold-dark); }
+.kpi-value.green { color: #16a34a; }
+.kpi-value.red { color: var(--mia-critical); }
+.kpi-label {
+  font-size: .78rem; color: #64748B;
+  margin-top: .5rem; font-weight: 500;
+}
+
+/* ============================== CALLOUTS ============================== */
+.callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+}
+.callout-blue { background: var(--mia-blue-dim); border-color: var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-color: var(--mia-gold); }
+.callout strong { display: block; margin-bottom: .35rem; }
+
+/* ============================== MODALS ============================== */
+.modal-overlay {
+  display: none; position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10,18,42,.7);
+  z-index: var(--z-modal);
+  justify-content: center; align-items: center;
+  backdrop-filter: blur(6px);
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--mia-white);
+  border-radius: var(--radius-xl);
+  max-width: 680px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  animation: modalSlideUp .3s ease;
+}
+@keyframes modalSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: #F1F5F9; border: none;
+  width: 2.2rem; height: 2.2rem;
+  border-radius: 50%; cursor: pointer;
+  font-size: 1.1rem; color: #64748B;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition-fast);
+}
+.modal-close:hover { background: #E2E8F0; color: var(--mia-navy); }
+.modal-box h2 { margin-bottom: 0.5rem; }
+.modal-box h2 span { color: var(--mia-blue); }
+.modal-badge-row { margin-bottom: 1.5rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+
+/* Standardized modal sections */
+.modal-section {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+}
+.modal-section.friction {
+  background: var(--mia-critical-dim);
+  border-color: var(--mia-critical);
+}
+.modal-section.anticipation {
+  background: var(--mia-warning-dim);
+  border-color: var(--mia-warning);
+}
+.modal-section.resolution {
+  background: var(--mia-blue-dim);
+  border-color: var(--mia-blue);
+}
+.modal-section.success {
+  background: var(--mia-positive-dim);
+  border-color: var(--mia-positive);
+}
+.modal-section-label {
+  font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: .5rem;
+}
+.modal-section.friction .modal-section-label { color: var(--mia-critical); }
+.modal-section.anticipation .modal-section-label { color: var(--mia-warning); }
+.modal-section.resolution .modal-section-label { color: var(--mia-blue); }
+.modal-section.success .modal-section-label { color: #16a34a; }
+.modal-section p { margin-bottom: .5rem; font-size: .92rem; }
+.modal-section p:last-child { margin-bottom: 0; }
+.modal-section ul { margin: .5rem 0 0 1.25rem; }
+.modal-section li { font-size: .9rem; margin-bottom: .3rem; }
+
+/* ============================== CTA ============================== */
+.cta-button {
+  display: inline-block;
+  background: var(--mia-blue);
+  color: var(--mia-white);
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  border: none; cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(19,125,197,0.3);
+}
+.cta-button:hover {
+  background: var(--mia-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(19,125,197,0.4);
+}
+
+/* ============================== PUNCHLINE ============================== */
+.punchline {
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--mia-blue);
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+.section-dark .punchline { color: var(--mia-blue-light); border-top-color: rgba(255,255,255,0.08); }
+
+/* ============================== FOOTER ============================== */
+footer {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, #060D1F 100%);
+  color: var(--mia-white);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue));
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-bottom: 1rem;
+}
+.footer-brand-name {
+  font-size: .85rem; font-weight: 700;
+  color: var(--mia-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+footer p { color: var(--mia-text); margin: .5rem 0; font-size: .9rem; }
+.footer-code {
+  margin-top: 1.5rem;
+  font-size: .72rem;
+  color: var(--mia-text-muted);
+  letter-spacing: 1px;
+}
+
+/* ============================== SCROLL ANIMATIONS ============================== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .hero-kpi-value { font-size: 2rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  .section-header { flex-direction: column; gap: .75rem; }
+  .card-grid-2, .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; }
+  .comparison-wrap { grid-template-columns: 1fr; }
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  nav.toc .toc-inner { padding: 0 1rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  .section-dark { margin: 0 -1rem; padding: 3rem 1rem; }
+  .timeline { margin-left: 16px; }
+  .timeline-item { padding-left: 30px; }
+}
+
+@media print {
+  nav.toc, footer, .modal-overlay { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { color: #000; background: #fff; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+
+    <h1>Construye Una Organización <span>AI Native</span></h1>
+    <p class="hero-subtitle">V&A nace con la ventaja de diseñar sus procesos desde cero con IA. Estándar 9:1 &mdash; de cada 10 tareas operativas, 9 las ejecuta la IA. Las decisiones estratégicas siguen siendo 100% humanas.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">3 min</div>
+        <div class="hero-kpi-label">Job Description generada</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">30+</div>
+        <div class="hero-kpi-label">Pruebas antes de desayuno</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">12 meses</div>
+        <div class="hero-kpi-label">Para dejar de necesitar consultores externos</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">100%</div>
+        <div class="hero-kpi-label">Pipeline cualificado</div>
+      </div>
+    </div>
+
+    <p class="hero-punchline">Best Practices desde el día uno. Procesos disenados para escalar. Solo tu equipo, amplificado con IA.</p>
+  </div>
+</header>
+
+<!-- ============================== STICKY TOC ============================== -->
+<nav class="toc" role="navigation" aria-label="Tabla de contenidos">
+  <div class="toc-inner">
+    <a href="#contexto">Contexto</a>
+    <a href="#hoy-vs-manana">Hoy vs. Futuro</a>
+    <a href="#plataforma">Plataforma</a>
+    <a href="#ruta">La Ruta</a>
+    <a href="#dream-team">Dream Team</a>
+    <a href="#inversion">Inversión</a>
+    <a href="#roi">ROI</a>
+    <a href="#resellers">Resellers</a>
+    <a href="#embajadores">Embajadores</a>
+    <a href="#consolidacion">Consolidación</a>
+    <a href="#costo-inaccion">Costo de Inaccion</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ============================== 1. CONTEXTO ============================== -->
+<section id="contexto">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">01</div>
+    <div>
+      <h2>Para Quien Lee Esto Por Primera Vez</h2>
+      <div class="section-subtitle">La oportunidad de construir una organización AI Native desde el día uno</div>
+    </div>
+  </div>
+
+  <div class="card-grid-2 animate-on-scroll">
+    <div class="card card-clickable" onclick="openModal('modal-contexto-tiempo')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Estándar 9:1 desde el día uno</h3>
+      <p>De cada 10 tareas operativas, 9 las ejecuta IA. Tu equipo se enfoca en lo estratégico desde el arranque.</p>
+      <span class="card-click-hint">Qué tareas absorbe la IA por ti &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-contexto-roadmap')">
+      <div class="card-icon gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h3>12 meses de roadmap claro</h3>
+      <p>3 horas síncronas + 3 horas de tareas por semana. Con milestones medibles, hasta que tu equipo opere con autonomía total.</p>
+      <span class="card-click-hint">Explorar tu roadmap semana a semana &rarr;</span>
+    </div>
+  </div>
+
+  <div class="callout callout-blue animate-on-scroll">
+    <strong>V&A esta naciendo como consultoria de HR de alto impacto.</strong>
+    <p style="margin:0;">Tienen la ventaja única de diseñar cada proceso con Best Practices e IA integrada desde el origen. Estándar 9:1: de cada 10 tareas operativas, 9 las ejecuta la IA. Las decisiones estratégicas &mdash; relaciones, negociación, visión &mdash; siguen siendo 100% de ustedes.</p>
+  </div>
+
+  <p class="punchline animate-on-scroll">No heredan deuda operativa. Construyen desde cero con la diseño correcto.</p>
+</section>
+
+<!-- ============================== 2. HOY VS. FUTURO ============================== -->
+<section id="hoy-vs-manana">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">02</div>
+    <div>
+      <h2>Hoy vs. Soberanía Digital</h2>
+      <div class="section-subtitle">El lunes que ya puedes tener</div>
+    </div>
+  </div>
+
+  <div class="comparison-wrap animate-on-scroll">
+    <div class="comp-col before">
+      <h3 style="color: var(--mia-critical);">Organización Tradicional (sin IA)</h3>
+      <div class="comp-item"><span class="comp-time">8:30 AM</span><span class="comp-desc">4 horas escribiendo y reescribiendo Job Descriptions</span></div>
+      <div class="comp-item"><span class="comp-time">12:30 PM</span><span class="comp-desc">30 CVs, 6 horas leyendo y clasificando</span></div>
+      <div class="comp-item"><span class="comp-time">6:30 PM</span><span class="comp-desc">Excel, CRM manual, 2 horas de reportes</span></div>
+      <div class="comp-item"><span class="comp-time">8:30 PM</span><span class="comp-desc">Copiar-pegar propuestas desde templates</span></div>
+    </div>
+    <div class="comp-col after">
+      <h3 style="color: #16a34a;">V&A: AI Native (Estándar 9:1)</h3>
+      <div class="comp-item"><span class="comp-time">8:30 AM</span><span class="comp-desc">JD generada en 3 minutos (Asistente de Propuestas)</span></div>
+      <div class="comp-item"><span class="comp-time">8:45 AM</span><span class="comp-desc">30 CVs evaluados y rankeados automáticamente</span></div>
+      <div class="comp-item"><span class="comp-time">9:00 AM</span><span class="comp-desc">Motor de Reportes genera dashboards en vivo</span></div>
+      <div class="comp-item"><span class="comp-time">9:30 AM</span><span class="comp-desc">Agente de Prospección califica leads automáticamente</span></div>
+    </div>
+  </div>
+
+  <p class="punchline animate-on-scroll">Donde otros heredan ineficiencia, ustedes arrancan con procesos optimizados. Eso es ser AI Native.</p>
+</section>
+
+<!-- ============================== SUPUESTO DE PLATAFORMA ============================== -->
+<section id="plataforma" style="background:linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); padding:3rem 0;">
+  <div class="container">
+    <div class="section-header animate-on-scroll" style="margin-bottom:2rem;">
+      <div class="section-number" style="background:var(--mia-gold);color:var(--mia-navy);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <h2 style="color:white;">Tu Plataforma: <span>Google Workspace + Gemini + Hostinger</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-blue-light);">Tu secretario virtual, tus artesanos IA, tus flujos automáticos y tu presencia en línea — todo conectado.</div>
+      </div>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll">
+      <div class="card card-clickable" onclick="openModal('modal-plataforma-workspace')" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h4 style="color:white;">Gemini: Tu Secretario Virtual</h4>
+        <p style="font-size:.9rem;color:var(--mia-text-muted);">Toma notas, transcribe reuniones, genera borradores de email y convierte cada sesión en un input que gatilla flujos automáticos. Agenda pública incluida.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Cómo Gemini trabaja para ti cada día &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-plataforma-notebooklm')" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h4 style="color:white;">NotebookLM + Gemas</h4>
+        <p style="font-size:.9rem;color:var(--mia-text-muted);">Asistentes vitaminados con NotebookLM: cada agente se entrena con tus datos, tu tono, tus procesos. Gemas personalizadas para cada rol.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Cómo se construyen tus asistentes &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-plataforma-automatizacion')" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h4 style="color:white;">Automatización de Flujos</h4>
+        <p style="font-size:.9rem;color:var(--mia-text-muted);">AntiGravity + herramientas nativas de Google (AppSheet, Apps Script, Workflows) para automatizar sin código. Escalable desde el día uno.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Qué flujos se automatizan primero &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-plataforma-hostinger')" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4 style="color:white;">Presencia en Línea: Hostinger</h4>
+        <p style="font-size:.9rem;color:var(--mia-text-muted);">Tu sitio web profesional vinculado a Gmail, con hosting para mini apps y landing pages que capturan leads directo a tu ecosistema Google.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Cómo tu sitio alimenta tu pipeline &rarr;</span>
+      </div>
+    </div>
+
+    <p class="punchline animate-on-scroll" style="color:var(--mia-gold);">Gemini es tu secretario virtual. NotebookLM y Gemas son tus artesanos. AntiGravity conecta los flujos. Hostinger apalanca tu presencia en línea.</p>
+  </div>
+</section>
+
+<!-- Modals: Plataforma -->
+<div class="modal-overlay" id="modal-plataforma-workspace">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-plataforma-workspace')">X</button>
+    <h2>Gemini: Tu <span>Secretario Virtual</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Supuesto de Plataforma</span><span class="badge badge-blue">Asistente Central</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Sin un secretario dedicado, cada reunión pierde contexto. Las notas se olvidan, los compromisos se diluyen, los emails de seguimiento no salen a tiempo y los prospectos se enfrían porque nadie les dio continuidad.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Gemini se convierte en tu secretario virtual 24/7 dentro de Google Workspace. Toma notas en Meet, transcribe cada sesión, genera borradores de email inteligentes y convierte cada interacción en un input que gatilla flujos automáticos — sin intervención manual.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qué hace Gemini por ti cada día</div>
+      <ul>
+        <li><strong>Meet + Gemini:</strong> Transcripción automática, resumen ejecutivo y action items de cada reunión — listos en tu inbox al terminar</li>
+        <li><strong>Gmail + Gemini:</strong> Respuestas inteligentes, borradores con contexto, resúmenes de hilos largos. Interactúa con tu correo sin esfuerzo</li>
+        <li><strong>Calendar + Agenda Pública:</strong> Agenda compartida donde tus prospectos eligen cuándo conversar. <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank" rel="noopener" style="color:var(--mia-blue-light);text-decoration:underline;">Como esta</a> — cada cita gatilla un flujo de preparación automático</li>
+        <li><strong>Sesión → Input → Flujo:</strong> Cada reunión transcrita se convierte en inputs que alimentan: actualización de CRM, envío de propuesta, asignación de tareas — todo automático</li>
+        <li><strong>Docs + Sheets + Gemini:</strong> Generación de propuestas, reportes, análisis de datos con IA inline integrada en cada documento</li>
+        <li><strong>Drive:</strong> Base de conocimiento centralizada, fuente de verdad para NotebookLM y tus Gemas vitaminadas</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un secretario virtual que nunca olvida, nunca se atrasa y mejora con cada interacción. Cada reunión genera valor automáticamente. Cada email tiene contexto. Tu agenda trabaja para ti, no al revés. La base perfecta para una organización AI Native.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plataforma-notebooklm">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-plataforma-notebooklm')">X</button>
+    <h2>NotebookLM + <span>Gemas Vitaminadas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Supuesto de Plataforma</span><span class="badge badge-blue">Asistentes</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Los chatbots genéricos no conocen tu negocio. Responden con información general que requiere supervisión constante. No tienen contexto de tus procesos, tus clientes, tu tono.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Cada asistente IA del Dream Team se construye sobre NotebookLM, entrenado con los documentos, procesos y datos reales de V&A. Las Gemas de Gemini se personalizan para cada rol específico: prospección, propuestas, reportes, CRM.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo se construyen</div>
+      <ul>
+        <li><strong>NotebookLM como base:</strong> Se alimenta con tus docs, propuestas ganadoras, plantillas, FAQs. Entiende TU negocio.</li>
+        <li><strong>Gemas personalizadas:</strong> Cada Gema es un asistente con instrucciones específicas, tono definido y acceso a las fuentes correctas</li>
+        <li><strong>Vitaminadas:</strong> Cada gema se optimiza iterativamente con feedback real de uso — no son estáticas, evolucionan contigo</li>
+        <li><strong>Escalables:</strong> Nuevos roles = nuevas gemas. Sin desarrollo. Solo alimentar con los docs correctos.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Asistentes que hablan como V&A, conocen tus clientes y mejoran con cada interacción. No es IA genérica: es IA artesanal, construida a la medida de tu operación. El estándar 9:1 empieza aquí.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plataforma-automatizacion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-plataforma-automatizacion')">X</button>
+    <h2>Automatización de <span>Flujos</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Supuesto de Plataforma</span><span class="badge badge-blue">Conexiones</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Los procesos manuales entre herramientas son el cuello de botella invisible. Copiar datos de un formulario a un Sheet, de un Sheet a un email, de un email a un CRM — cada paso manual es una oportunidad de error y tiempo perdido.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Combinamos AntiGravity con las herramientas nativas de automatización de Google (AppSheet para apps sin código, Apps Script para lógica personalizada, Google Workflows para orquestación) para crear flujos que conectan todo sin intervención humana.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Flujos que se automatizan primero</div>
+      <ul>
+        <li><strong>Lead capturado → CRM actualizado → email de seguimiento:</strong> Automático, sin tocar un botón</li>
+        <li><strong>Reunión → transcripción Gemini → action items → tareas:</strong> Cada sesión con Gemini se convierte en input que gatilla el flujo siguiente automáticamente</li>
+        <li><strong>Propuesta aprobada → contrato generado → firma enviada:</strong> Flujo completo sin intervención</li>
+        <li><strong>Reporte semanal → dashboard → alerta por email:</strong> Datos frescos cada lunes sin Excel</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Procesos que fluyen solos. Sin copiar-pegar. Sin "se me olvidó actualizar el CRM". AntiGravity conecta las piezas; Google las ejecuta. Escalable desde 2 personas hasta 200, sin cambiar la plataforma.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-plataforma-hostinger">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-plataforma-hostinger')">X</button>
+    <h2>Presencia en Línea: <span>Hostinger</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Supuesto de Plataforma</span><span class="badge badge-blue">Presencia Digital</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Una consultora HR sin presencia digital profesional pierde credibilidad antes de la primera conversación. Los prospectos buscan tu nombre en Google y si no encuentran un sitio sólido, la confianza cae antes de que puedas demostrar tu valor.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Hostinger ofrece hosting profesional con integración directa a cuentas de Gmail, dominio personalizado y la capacidad de subir mini apps en el mismo hosting — todo sin necesitar un equipo de desarrollo. Ideal para founders que arrancan.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qué incluye tu presencia digital</div>
+      <ul>
+        <li><strong>Sitio web profesional:</strong> Landing pages que capturan leads directo a tu ecosistema Google — formulario → Sheet → CRM → email de seguimiento automático</li>
+        <li><strong>Dominio + Gmail vinculado:</strong> Tu correo @tudominio.com con toda la potencia de Gmail + Gemini detrás. Profesionalismo desde el día uno</li>
+        <li><strong>Mini apps en tu hosting:</strong> Calculadoras, self-assessments, formularios inteligentes — publicados en tu dominio, alimentando tus flujos automáticos</li>
+        <li><strong>Blog + SEO:</strong> Contenido generado con Gemini, publicado desde tu propio sitio, posicionando a V&A como referente en HR + IA</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu sitio web no es un folleto estático: es una máquina de captura conectada a tu ecosistema Google. Cada visita puede convertirse en un lead. Cada lead entra directo a tu flujo automático. Presencia profesional desde el día uno, escalable sin límite.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== 3. LA RUTA ============================== -->
+<section id="ruta" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">03</div>
+      <div>
+        <h2>Tu Ruta: <span>4 Actos</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Cada acto, una victoria. Cada victoria, un escalon.</div>
+      </div>
+    </div>
+
+    <div class="timeline animate-on-scroll">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content" onclick="openModal('modal-act1')">
+          <div class="timeline-subtitle">Acto 1</div>
+          <div class="timeline-title">El Espejo</div>
+          <div class="timeline-text">Nivel Cero (N0) Diagnóstico, 100% GRATIS. Mapeamos tus procesos y diseñamos la Diseño AI Native.</div>
+          <span class="card-click-hint">Qué descubrimos en tu diagnóstico &rarr;</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--mia-blue-light);"></div>
+        <div class="timeline-content" onclick="openModal('modal-act2')">
+          <div class="timeline-subtitle">Acto 2</div>
+          <div class="timeline-title">Las Herramientas</div>
+          <div class="timeline-text">Nivel Dos (N2) Ofimatica + Nivel Tres (N3) Comercial (3-4 semanas cada una). Las herramientas core con Best Practices integradas.</div>
+          <span class="card-click-hint">Qué herramientas se activan y cuando &rarr;</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:#42D36F;"></div>
+        <div class="timeline-content" onclick="openModal('modal-act3')">
+          <div class="timeline-subtitle">Acto 3</div>
+          <div class="timeline-title">La (R)Evolución</div>
+          <div class="timeline-text">Nivel Siete (N7) Empoderamiento: 48 horas en 16 semanas. Tu equipo domina la IA, entrena sus propios agentes.</div>
+          <span class="card-click-hint">Cómo tu equipo se gradúa en 16 semanas &rarr;</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--mia-gold);"></div>
+        <div class="timeline-content" onclick="openModal('modal-act4')">
+          <div class="timeline-subtitle">Acto 4</div>
+          <div class="timeline-title">La Consolidación</div>
+          <div class="timeline-text">Nivel Cinco (N5) a Nivel Nueve (N9): Elige tu camino. Trabajar Amplificado, GerencIA, Vibe Coding, o Digital Champions.</div>
+          <span class="card-click-hint">Qué camino le conviene a V&amp;A &rarr;</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="punchline animate-on-scroll">Cada acto es un escalon. Cada escalon, una victoria.</p>
+  </div>
+</section>
+
+<!-- ============================== 4. DREAM TEAM ============================== -->
+<section id="dream-team">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">04</div>
+    <div>
+      <h2>Tu Dream Team: 6 Asistentes IA</h2>
+      <div class="section-subtitle">Cada uno experto en una tarea. Cada uno a tu servicio.</div>
+    </div>
+  </div>
+
+  <div class="card-grid-3 animate-on-scroll">
+    <div class="card card-clickable" onclick="openModal('modal-dream1')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+      <h4>Asistente de Propuestas</h4>
+      <p style="font-size:.9rem;color:#64748B;">Genera propuestas impactantes en minutos, no horas</p>
+      <span class="card-click-hint">De 4 horas a 15 minutos: como &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-dream2')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <h4>Agente de Prospección</h4>
+      <p style="font-size:.9rem;color:#64748B;">Identifica, califica y prioriza leads automáticamente</p>
+      <span class="card-click-hint">Quién debería llamarte mañana &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-dream3')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+      </div>
+      <h4>Motor de Reportes</h4>
+      <p style="font-size:.9rem;color:#64748B;">Dashboards en vivo que cuentan la historia de tus datos</p>
+      <span class="card-click-hint">Lunes sin Excel: como se ve &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-dream4')">
+      <div class="card-icon gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h4>Peer Reviewer IA</h4>
+      <p style="font-size:.9rem;color:#64748B;">Carga job descriptions, califica hojas de vida, evalúa pruebas técnicas. El corazón de tu operación HR.</p>
+      <span class="card-click-hint">De asistente a agente: tu producto estrella &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-dream5')">
+      <div class="card-icon gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h4>Task Tracker</h4>
+      <p style="font-size:.9rem;color:#64748B;">Tareas, seguimientos y pipeline siempre al día — sin tocar un formulario</p>
+      <span class="card-click-hint">Tu operación organizada automáticamente &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-dream6')">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </div>
+      <h4>Meeting Analyst</h4>
+      <p style="font-size:.9rem;color:#64748B;">Analiza cada reunión: transcribe, detecta compromisos, mide efectividad, sugiere mejoras</p>
+      <span class="card-click-hint">Cada reunión genera inteligencia accionable &rarr;</span>
+    </div>
+  </div>
+
+  <p class="punchline animate-on-scroll">Seis especialistas IA. Estándar 9:1 aplicado. Toda la carpinteria operativa resuelta desde el día uno.</p>
+</section>
+
+<!-- ============================== 5. INVERSION ============================== -->
+<section id="inversion" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">05</div>
+      <div>
+        <h2>Tu Inversión: <span>Modelo Modular</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Elige tu punto de entrada. Cada módulo construye sobre el anterior.</div>
+      </div>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll">
+      <div class="card card-clickable" style="border-top:4px solid var(--mia-positive);" onclick="openModal('modal-mod-diagnostico')">
+        <h4 style="color:var(--mia-gold);">Diagnóstico N0</h4>
+        <p style="color:var(--mia-text);font-size:.95rem;font-weight:700;">Gratuito</p>
+        <p style="color:var(--mia-text);font-size:.88rem;">Punto de entrada. Mapeo de procesos, ROI estimado, roadmap personalizado. 2-3 semanas.</p>
+        <span class="card-click-hint">Ver detalle del modulo &rarr;</span>
+      </div>
+      <div class="card card-clickable" style="border-top:4px solid var(--mia-blue);" onclick="openModal('modal-mod-workshop')">
+        <h4 style="color:var(--mia-gold);">Workshop Introductorio</h4>
+        <p style="color:var(--mia-text);font-size:.95rem;font-weight:700;">200k COP/persona</p>
+        <p style="color:var(--mia-text);font-size:.88rem;">Incluye Diagnostico. 3 horas practicas de ofimatica IA con aceleradores. Hasta 5 personas. Alt: compromiso de ventas 3M COP.</p>
+        <span class="card-click-hint">Ver detalle del modulo &rarr;</span>
+      </div>
+      <div class="card card-clickable" style="border-top:4px solid var(--mia-blue);" onclick="openModal('modal-mod-bootcamp')">
+        <h4 style="color:var(--mia-gold);">Bootcamp de Ventas</h4>
+        <p style="color:var(--mia-text);font-size:.95rem;font-weight:700;">800k COP/persona</p>
+        <p style="color:var(--mia-text);font-size:.88rem;">Incluye todo lo del Workshop. 2 dias de automatizacion comercial con flujos reales. Hasta 5 personas. Alt: compromiso de ventas 12M COP.</p>
+        <span class="card-click-hint">Ver detalle del modulo &rarr;</span>
+      </div>
+      <div class="card card-clickable" style="border-top:4px solid var(--mia-gold);" onclick="openModal('modal-mod-programa')">
+        <h4 style="color:var(--mia-gold);">Programa (R)Evolución</h4>
+        <p style="color:var(--mia-text);font-size:.95rem;font-weight:700;">500k COP/asistente (3M COP por 6 asistentes)</p>
+        <p style="color:var(--mia-text);font-size:.88rem;">Incluye todo lo del Bootcamp de Ventas. 16 semanas de (R)Evolución completa con Dream Team IA. Hasta 6 asistentes por organización. Alt: compromiso de ventas 6M COP.</p>
+        <span class="card-click-hint">Ver detalle del modulo &rarr;</span>
+      </div>
+    </div>
+
+    <div class="callout animate-on-scroll" style="background:rgba(255,215,0,0.06);border-color:var(--mia-gold);">
+      <strong style="color:var(--mia-gold);">Dos caminos de acceso</strong>
+      <p style="margin:0;color:var(--mia-text);font-size:.9rem;">Inversión directa por persona o compromiso de ventas. Mismo contenido, mismas herramientas, mismo acompañamiento. El detalle completo está en la Diseño Comercial (doc 04).</p>
+    </div>
+
+    <p class="punchline animate-on-scroll">Invierte en la diseño correcto desde el día uno. Best Practices, no parches.</p>
+  </div>
+</section>
+
+<!-- ============================== 6. ROI ============================== -->
+<section id="roi">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">06</div>
+    <div>
+      <h2>Tu ROI: Cuantificado</h2>
+      <div class="section-subtitle">Numeros basados en implementaciones reales.</div>
+    </div>
+  </div>
+
+  <div class="kpi-strip animate-on-scroll">
+    <div class="kpi-item" onclick="openModal('modal-roi')">
+      <div class="kpi-value gold">9:1</div>
+      <div class="kpi-label">Tareas operativas IA vs humanas</div>
+    </div>
+    <div class="kpi-item" onclick="openModal('modal-roi')">
+      <div class="kpi-value">3x</div>
+      <div class="kpi-label">Ciclos prospección-venta más rápidos</div>
+    </div>
+    <div class="kpi-item" onclick="openModal('modal-roi')">
+      <div class="kpi-value green">+150%</div>
+      <div class="kpi-label">Leads calificados automáticamente</div>
+    </div>
+    <div class="kpi-item" onclick="openModal('modal-roi')">
+      <div class="kpi-value red">5x</div>
+      <div class="kpi-label">Deals más profundos y cerrados</div>
+    </div>
+  </div>
+
+  <div class="callout callout-blue animate-on-scroll">
+    <strong>Marco de estimación 80/50/20:</strong>
+    <p style="margin:0;">Con IA se puede intervenir hasta el 80% de tareas simples, 50% de tareas medias y 20% de tareas complejas. "Intervenir" significa automatizar, acelerar o amplificar según la naturaleza de cada tarea. Resultado neto: de 160h operativas mensuales, 64h/mes recuperadas (40%) para reinvertir en crecimiento. 768 horas al año.</p>
+  </div>
+
+  <p class="punchline animate-on-scroll">Procesos AI Native que generan crecimiento exponencial. Sin deuda operativa.</p>
+</section>
+
+<!-- ============================== 7. RESELLERS COMERCIALES ============================== -->
+<section id="resellers" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">07</div>
+      <div>
+        <h2>Programa <span>Resellers Comerciales</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Tu red comercial. Nuestra plataforma. Un negocio listo para escalar.</div>
+      </div>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll">
+      <div class="card card-clickable" onclick="openModal('modal-reseller-upselling')">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Antes de Certificarse</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Refiere oportunidades sin inversión. Comisión: 5%. MetodologIA ejecuta todo: dossier, demos, pruebas de concepto, soporte completo.</p>
+        <span class="card-click-hint">Ver detalles completos &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" style="border:1px solid rgba(255,215,0,0.3);" onclick="openModal('modal-reseller-comision')">
+        <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Después de Certificarse</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Inversión: 1 SMLV. Comisión: hasta 20% (escala progresiva). Tarifas especiales desbloqueadas. Marca blanca y materiales profesionales.</p>
+        <span class="card-click-hint">Ver detalles completos &rarr;</span>
+      </div>
+    </div>
+
+    <p class="punchline animate-on-scroll">Para consultores, partners y profesionales con red comercial activa. Tu vendes, nosotros entregamos. Ambos crecemos.</p>
+  </div>
+</section>
+
+<!-- ============================== 7b. PROGRAMA EMBAJADORES ============================== -->
+<section id="embajadores" class="dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number" style="background:var(--mia-gold);color:var(--mia-navy);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      </div>
+      <div>
+        <h2>Programa <span>Embajadores</span></h2>
+        <div class="section-subtitle">Exclusivo para egresados del programa de empoderamiento (N7+).</div>
+      </div>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll">
+      <div class="card card-clickable" onclick="openModal('modal-embajador-programa')">
+        <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Recomendacion por Experiencia</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Completaste el programa. Viviste la (R)Evolución. Tu testimonio es la mejor carta de presentacion. Cada organizacion que recomiendes y se active, genera beneficios para ti.</p>
+        <span class="card-click-hint">Como tu historia genera valor &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-embajador-beneficios')">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Comunidad + Beneficios Exclusivos</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Acceso a comunidad de egresados, clinicas mensuales avanzadas, acceso anticipado a nuevas herramientas, y reconocimiento como referente AI Native en tu sector.</p>
+        <span class="card-click-hint">Accede a la comunidad de egresados &rarr;</span>
+      </div>
+    </div>
+
+    <p class="punchline animate-on-scroll">No es venta. Es compartir lo que viviste. Los mejores embajadores son quienes ya dejaron de necesitar consultores externos.</p>
+  </div>
+</section>
+
+<!-- ============================== 8. CONSOLIDACION ============================== -->
+<section id="consolidacion">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">08</div>
+    <div>
+      <h2>Consolidación: Elige Tu Camino</h2>
+      <div class="section-subtitle">Después de Nivel Siete (N7), 4 rutas personalizadas te esperan.</div>
+    </div>
+  </div>
+
+  <div class="card-grid-2 animate-on-scroll">
+    <div class="card card-clickable card-accent" onclick="openModal('modal-n5')">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+        <h4>Nivel Cinco (N5): Trabajar Amplificado</h4>
+        <span class="badge badge-gold">Sugerido V&A</span>
+      </div>
+      <p style="font-size:.9rem;color:#64748B;">Cada miembro usa IA como su cofundador invisible. Productividad triplicada, misma plantilla.</p>
+      <span class="card-click-hint">Tu equipo x3 sin contratar a nadie &rarr;</span>
+    </div>
+
+    <div class="card card-clickable card-accent" onclick="openModal('modal-n6')">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+        <h4>Nivel Seis (N6): GerencIA</h4>
+        <span class="badge badge-gold">Sugerido V&A</span>
+      </div>
+      <p style="font-size:.9rem;color:#64748B;">Gestión del equipo amplificada. Análisis de reuniones y compromisos. Decisiones basadas en datos.</p>
+      <span class="card-click-hint">Liderar con datos, no con intuición &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-n8')">
+      <div class="card-icon positive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <h4>Nivel Ocho (N8): Vibe Coding</h4>
+      <p style="font-size:.9rem;color:#64748B;">Código e integración. Automatiza procesos internos únicos sin ser developer.</p>
+      <span class="card-click-hint">Automatizar sin saber programar &rarr;</span>
+    </div>
+
+    <div class="card card-clickable" onclick="openModal('modal-n9')">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h4>Nivel Nueve (N9): Digital Champions</h4>
+      <p style="font-size:.9rem;color:#64748B;">Mentoría avanzada. Conviertete en experto IA. Lidera (R)Evoluciónes.</p>
+      <span class="card-click-hint">Convertirte en referente AI Native &rarr;</span>
+    </div>
+  </div>
+
+  <p class="punchline animate-on-scroll">Tu especialización define tu ventaja competitiva. Nosotros diseñamos la ruta.</p>
+</section>
+
+<!-- ============================== 9. COSTO DE INACCION ============================== -->
+<section id="costo-inaccion" class="section-dark" style="margin-bottom:0;border-bottom:none;">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">09</div>
+      <div>
+        <h2>El Costo de <span>No Hacer Nada</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Cada semana sin construir AI Native, tu competencia te alcanza.</div>
+      </div>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll">
+      <div class="card card-clickable" style="border-left:4px solid var(--mia-critical);" onclick="openModal('modal-riesgo-talento')">
+        <div class="card-icon critical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg></div>
+        <h4 style="color:var(--mia-critical);">Talento exige IA</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Los mejores profesionales eligen organizaciones AI Native. Sin IA, no atraes al top talent.</p>
+        <span class="card-click-hint">Ver impacto detallado &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" style="border-left:4px solid var(--mia-critical);" onclick="openModal('modal-riesgo-competencia')">
+        <div class="card-icon critical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h4 style="color:var(--mia-critical);">Competencia se digitaliza</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Otras consultorias ya operan con IA. Cada trimestre sin construir AI Native = una ventana que se cierra.</p>
+        <span class="card-click-hint">Ver impacto detallado &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" style="border-left:4px solid var(--mia-critical);" onclick="openModal('modal-riesgo-deuda')">
+        <div class="card-icon critical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4 style="color:var(--mia-critical);">Deuda operativa desde el día uno</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Procesos manuales que se vuelven costosos de corregir después. Mejor diseñar bien desde el arranque.</p>
+        <span class="card-click-hint">Ver impacto detallado &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" style="border-left:4px solid var(--mia-critical);" onclick="openModal('modal-riesgo-escala')">
+        <div class="card-icon critical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 17"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h4 style="color:var(--mia-critical);">Escalamiento imposible</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Sin procesos AI Native, escalar requiere contratar linealmente. Con el estándar 9:1, escalas exponencialmente.</p>
+        <span class="card-click-hint">Ver impacto detallado &rarr;</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;" class="animate-on-scroll">
+      <p style="font-size:1.3rem;color:var(--mia-gold);font-weight:700;margin-bottom:1.5rem;">Cuánto cuesta no construir con la diseño correcto desde hoy?</p>
+      <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank" rel="noopener" class="cta-button">Construye Tu Organización AI Native</a>
+    </div>
+
+    <p class="punchline animate-on-scroll">No es un costo. Es la diferencia entre heredar deuda operativa o arrancar con Best Practices.</p>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="32" height="32" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="10" fill="#0A122A"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <span class="footer-brand-name">Metodolog<span class="golden-accent">IA</span></span>
+    </div>
+    <p>Soberanía Estrategica apalancada en IA</p>
+    <p style="font-size:.8rem;">2026 &mdash; Success as a Service</p>
+    <div class="footer-code">MTIA-PLAN-SOBERANIA-VA-SE | CONFIDENCIAL</div>
+  </div>
+</footer>
+
+<!-- ======================================================================
+     MODALS (Standardized: Friction / Anticipation / Resolution / Success)
+     ====================================================================== -->
+
+<!-- CONTEXTO: Tiempo Modal -->
+<div class="modal-overlay" id="modal-contexto-tiempo">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-contexto-tiempo')">X</button>
+    <h2>40% del Tiempo <span>Automatizable</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Diagnóstico</span><span class="badge badge-gold">Anticipacion</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Las organizaciones tradicionales invierten más del 40% de su jornada en tareas operativas repetitivas. Como founders, tienen la oportunidad única de diseñar procesos donde esas tareas las ejecute IA desde el primer día. Estándar 9:1: de cada 10 tareas operativas, 9 son de la IA.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Antes de proponer soluciones, hacemos un diagnóstico Nivel Cero (N0) gratuito que mapea exactamente como diseñar cada proceso con Best Practices. No asumimos: medimos. Cada proceso se clasifica en operativo-IA, parcialmente asistido, o estratégico-humano.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <p>Cada tarea automatizable se asigna a un Asistente IA especializado. No es un chatbot genérico; es un agente entrenado con tus datos, tu tono, tus KPIs. La transición es gradúal: primero asiste, luego ejecuta, finalmente opera autonomamente bajo tu supervision.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Como organización AI Native, V&amp;A nace con procesos donde el 90% de las tareas operativas son ejecutadas por IA (Estándar 9:1). Los founders se enfocan desde el día uno en decisiones estratégicas, relaciones de alto valor y crecimiento del pipeline. Sin contratar equipos enormes, sin externizar lo esencial.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXTO: Roadmap Modal -->
+<div class="modal-overlay" id="modal-contexto-roadmap">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-contexto-roadmap')">X</button>
+    <h2>12 Meses de <span>Roadmap Claro</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Planificacion</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Las (R)Evoluciónes digitales fallan cuando se improvisan. Como founders, tienen la ventaja de construir la ruta correcta desde el inicio, sin arrastrar procesos heredados.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Desde el día 1, trazamos un roadmap con milestones medibles cada 2-4 semanas. Cada milestone tiene un entregable concreto que tu equipo puede tocar, probar y validar. No hay "fases invisibles".</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Semanas 1-4: Nivel Cero (N0) Diagnóstico (GRATIS)</li>
+        <li>Semanas 5-12: Nivel Dos (N2) Ofimática (plantillas, automatización)</li>
+        <li>Semanas 13-20: Nivel Tres (N3) Comercial (prospección, CRM, pipeline)</li>
+        <li>Semanas 21-40: Nivel Siete (N7) Empoderamiento (autonomía total)</li>
+        <li>Semanas 41-52: Nivel Cinco (N5) a Nivel Nueve (N9) Consolidación (especialización elegida)</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>A los 12 meses, tu equipo opera con IA de forma autónoma. Tu equipo deja de necesitar consultores externos. Con documentación, campus online 24/7 y clínicas mensuales de soporte continuo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ACT 1: El Espejo -->
+<div class="modal-overlay" id="modal-act1">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-act1')">X</button>
+    <h2>Acto 1: <span>El Espejo</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Nivel Cero (N0)</span><span class="badge badge-gold">GRATIS</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Toda organización nueva enfrenta la tentación de copiar procesos tradicionales. Sin un diagnóstico previo, se heredan ineficiencias que nunca debieron existir.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El Espejo es eso: un reflejo honesto. Auditamos tus 3-5 procesos core, mapeamos tareas automatizables vs. estratégicas, y cuantificamos el impacto en horas y velocidad.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Auditoria completa de procesos operativos</li>
+        <li>Mapeo automatizable vs. estratégico</li>
+        <li>Reporte con ROI estimado (en horas recuperadas)</li>
+        <li>Roadmap personalizado para los proximos 12 meses (9h/semana: 3h conjuntas + 3h independientes + 2h sync + 1h clínica)</li>
+        <li>Sesión de presentación ejecutiva (1 hora)</li>
+      </ul>
+      <p><strong>Duracion:</strong> 2-3 semanas</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Claridad total sobre como diseñar una organización AI Native desde cero. Best Practices mapeadas. Los números hablan solos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ACT 2: Las Herramientas -->
+<div class="modal-overlay" id="modal-act2">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-act2')">X</button>
+    <h2>Acto 2: <span>Las Herramientas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Nivel Dos (N2)</span><span class="badge badge-blue">Nivel Tres (N3)</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>En organizaciones tradicionales, documentos, reportes y prospección consumen horas valiosas. Como founders AI Native, pueden diseñar estos procesos para que la IA los ejecute desde el día uno.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Sabemos que la adopción falla cuando la herramienta es ajena al flujo real. Por eso Nivel Dos (N2) y Nivel Tres (N3) se integran directamente con Google Workspace y Office 365, dentro del flujo que tu equipo ya conoce.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <p><strong>Nivel Dos (N2) Ofimatica (3-4 semanas):</strong> Plantillas inteligentes, automatización de documentos, integración con tu suite actual, training hands-on (8h).</p>
+      <p><strong>Nivel Tres (N3) Comercial (3-4 semanas):</strong> Prospección automatica, análisis de CRM, reportes dinamicos de pipeline, training especializado (8h).</p>
+      <p>Ambos pueden ejecutarse en paralelo. Formato: sesiones semanales + campus online.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Desde el arranque, tu equipo opera con procesos AI Native: propuestas en minutos, leads clasificados automáticamente, dashboards en vivo. Estándar 9:1 aplicado a la operación comercial.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ACT 3: La (R)Evolución -->
+<div class="modal-overlay" id="modal-act3">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-act3')">X</button>
+    <h2>Acto 3: <span>La (R)Evolución</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Nivel Siete (N7) Empoderamiento</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>En 12 meses, tu equipo domina la tecnología y deja de necesitar consultores externos. Eso es soberanía digital real: una organización AI Native donde el conocimiento queda adentro.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Nivel Siete (N7) esta diseñado para que tu equipo no nos necesite. Suena contraproducente, pero es la base del modelo "Success as a Service": tu exito es nuestra mejor referencia.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>48 horas de contenido en 16 semanas (3h/semana)</li>
+        <li>Fundamentos de IA (sin código innecesario)</li>
+        <li>Como entrenar IA con tus propios datos</li>
+        <li>Prompting avanzado (engineering)</li>
+        <li>Validacion y quality assurance</li>
+        <li>Clinicas en vivo (2h semanales) + Campus 24/7</li>
+        <li>Proyectos aplicados con prueba real en vivo</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu equipo es autónomo en IA. Crea, entrena y controla sus propios agentes. Soberanía digital real: ustedes son dueños de su tecnología y sus procesos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ACT 4: La Consolidacion -->
+<div class="modal-overlay" id="modal-act4">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-act4')">X</button>
+    <h2>Acto 4: <span>La Consolidación</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Nivel Cinco (N5) a Nivel Nueve (N9)</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Después del empoderamiento, el equipo domina la IA general. Pero cada rol necesita especialización. Sin direccion, la adopción se estanca en "uso básico".</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Antes de que llegues a Nivel Siete (N7), ya tenemos mapeado tu perfil de especialización. No improvisamos la ruta; la anticipamos con datos de tu diagnóstico y tu avance real.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <p><strong>Nivel Cinco (N5) - Trabajar Amplificado</strong> (sugerido para V&A): Cada rol tiene un "cofundador invisible" IA especializado.</p>
+      <p><strong>Nivel Seis (N6) - GerencIA</strong> (sugerido para V&A): Gestión amplificada, análisis de reuniones y seguimiento de compromisos, análisis de desempeno en tiempo real.</p>
+      <p><strong>Nivel Ocho (N8) - Vibe Coding:</strong> Automatizaciones custom, APIs, integraciones unicas sin ser developer.</p>
+      <p><strong>Nivel Nueve (N9) - Digital Champions:</strong> Mentoría avanzada, liderazgo en (R)Evolución digital.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu equipo no solo usa IA: la domina. Cada persona opera con su especialista invisible. V&A se consolida como organización AI Native referente en HR.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DREAM TEAM MODALS -->
+<div class="modal-overlay" id="modal-dream1">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dream1')">X</button>
+    <h2>Asistente de <span>Propuestas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Dream Team</span><span class="badge badge-gold">Oferta Core</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Escribir una propuesta comercial toma 2-4 horas. Cada hora de redaccion es una hora que no estas cerrando. El cliente pide urgencia y tu equipo no puede responder.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El Asistente ya conoce tu portafolio, tu tono, tus KPIs y los patrones de propuestas que cierran. Antes de que describas el deal, ya tiene la estructura lista.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Describes el deal en 30 segúndos (voz o texto)</li>
+        <li>Propuesta generada en 3-5 minutos, lista para editar</li>
+        <li>Incluye ROI estimado, KPIs relevantes, call-to-action</li>
+        <li>Aprende de cada correccion: mejora continuamente</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Mientras tu competencia sigue redactando, tu ya estas cerrando. Propuestas de alta calidad en minutos, no horas. Velocidad comercial multiplicada.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dream2">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dream2')">X</button>
+    <h2>Agente de <span>Prospección</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Dream Team</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Prospección manual = persecución de aire. Tu equipo gasta horas en leads que nunca convertiran. Sin priorizacion inteligente, la energía se dispersa.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El Agente aprende que tipo de lead cierra en tu industria. Detecta patrones de alta probabilidad antes de que tu equipo los contacte.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Cargas leads: el agente clasifica por probabilidad de cierre</li>
+        <li>Top 20% van directo a pipeline con razones claras</li>
+        <li>Los frios entran en nurturing automatico</li>
+        <li>Alertas cuando un lead frio se "calienta"</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>+150% leads calificados. 3x ciclos más rápidos. Cero leads muertos. Tu equipo solo habla con quien va a comprar.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dream3">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dream3')">X</button>
+    <h2>Motor de <span>Reportes</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Dream Team</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Reportes manuales en Excel. Dos horas cada lunes para armar números que ya estan obsoletos cuando los presentas. Sin visibilidad en tiempo real, las decisiones llegan tarde.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El Motor se conecta a tus fuentes de datos existentes y construye dashboards que se actualizan solos. Genera alertas automaticas si algo cae bajo umbral.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Dashboard dinamico: cierre, velocidad, pipeline health</li>
+        <li>Alertas automaticas por umbrales criticos</li>
+        <li>Reportes semanales generados sin intervencion</li>
+        <li>Insights automaticos: "este mes los ciclos se alargaron 15%"</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Decisiones basadas en datos reales, no intuición. Cero horas perdidas en Excel. Tu lunes empieza con claridad, no con carpinteria.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dream4">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dream4')">X</button>
+    <h2>Peer Reviewer <span>IA — Corazón Core</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Dream Team</span><span class="badge badge-gold">Producto Estrella</span><span class="badge badge-green">Spin-off Potencial</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Filtrar 200 hojas de vida para una posición toma días. Evaluar pruebas técnicas es subjetivo y lento. Los job descriptions se escriben desde cero cada vez. El cuello de botella del recruiting es la revisión humana — y V&A no puede escalar vendiendo horas de revisión.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El Peer Reviewer es el corazón de la operación HR de V&A. Carga job descriptions (generales o de clientes específicos), califica hojas de vida contra criterios objetivos, evalúa pruebas técnicas con rúbricas configurables, y genera reportes de shortlist con scoring transparente. Nace como asistente, pero su Diseño permite evolucionar a agente autónomo o aplicación completa.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li><strong>Job Description Loader:</strong> Carga perfiles por cliente, industria y nivel — banco creciente de posiciones</li>
+        <li><strong>CV Scoring:</strong> Califica hojas de vida contra job description con criterios ponderados (experiencia, skills, fit cultural)</li>
+        <li><strong>Evaluación Técnica:</strong> Revisa pruebas técnicas con rúbricas personalizables por posición</li>
+        <li><strong>Shortlist Generator:</strong> Top 5-10 candidatos con scoring transparente y justificación</li>
+        <li><strong>Evolución:</strong> Asistente (Mes 1-4) → Agente autónomo (Mes 5-8) → Aplicación productizable (Mes 9-12)</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A pasa de vender horas de revisión a vender un producto escalable. Cada cliente corporativo recibe un Peer Reviewer configurado a medida. Spin-off potencial: Joint Venture donde MetodologIA aporta la IA y V&A aporta el know-how de recruiting — desarrollo agéntico conjunto de una aplicación HR que escala más allá de la consultoría.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dream5">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dream5')">X</button>
+    <h2>Task <span>Tracker</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Dream Team</span><span class="badge badge-green">Operaciones</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Las tareas viven en la cabeza de las fundadoras. Los seguimientos se pierden. Los compromisos con clientes no tienen tracking. Nadie sabe qué está pendiente hasta que es tarde.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El Task Tracker captura automáticamente cada compromiso: de reuniones, emails y conversaciones. Organiza tareas por prioridad, cliente y deadline. Pipeline de deals visible sin formularios manuales.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li><strong>Reunión termina:</strong> Gemini extrae action items → Task Tracker los organiza automáticamente</li>
+        <li><strong>Email recibido:</strong> Detecta compromisos, crea tareas con deadline sugerido</li>
+        <li><strong>Pipeline de deals:</strong> "Estos 5 prospectos necesitan seguimiento esta semana"</li>
+        <li><strong>Vista semanal:</strong> Todo lo pendiente de V&A en una sola pantalla, priorizado por impacto</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Nada se cae entre las grietas. Cada compromiso tiene dueño y fecha. El pipeline refleja la realidad. V&A pasa de "creo que tenemos algo pendiente" a "sé exactamente qué sigue".</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dream6">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dream6')">X</button>
+    <h2>Meeting <span>Analyst</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Dream Team</span><span class="badge badge-green">Inteligencia de Reuniones</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Las reuniones consumen horas pero generan poca inteligencia accionable. Las notas se pierden. Los compromisos quedan ambiguos. Nadie analiza si las reuniones son efectivas o si se repiten los mismos patrones improductivos.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El Meeting Analyst convierte cada reunión en inteligencia estructurada. Transcribe con Gemini, extrae compromisos, detecta patrones de efectividad, mide participación y genera reportes de mejora continua. No solo "qué se dijo" sino "qué tan bien se usó el tiempo".</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li><strong>Transcripción + resumen ejecutivo:</strong> Listo en tu inbox al terminar la reunión</li>
+        <li><strong>Extracción de compromisos:</strong> Quién, qué, cuándo — automático al Task Tracker</li>
+        <li><strong>Análisis de efectividad:</strong> "Esta reunión fue 60% productiva — el 40% fue repetición de temas ya resueltos"</li>
+        <li><strong>Patrones:</strong> "Las reuniones con cliente X siempre se extienden 30 min — sugiero agenda más estricta"</li>
+        <li><strong>Feedback comercial:</strong> Detecta objeciones recurrentes, oportunidades no capturadas, señales de cierre</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cada reunión genera valor medible. Compromisos no se pierden. Reuniones improductivas se detectan y corrigen. V&A tiene inteligencia de sus interacciones con clientes que ningún competidor manual puede igualar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ROI Modal -->
+<div class="modal-overlay" id="modal-roi">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-roi')">X</button>
+    <h2>ROI <span>Detallado</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Basado en implementaciones reales</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Las promesas de ROI sin sustento generan escepticismo. Una organización AI Native necesita metricas reales que validen la inversión en diseño correcto.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Todos nuestros números vienen de implementaciones reales. El diagnóstico Nivel Cero (N0) genera TU propio calculo de ROI antes de que inviertas.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Los números</div>
+      <p><strong style="color:var(--mia-gold-dark);">Estándar 9:1 desde el día uno.</strong> De cada 10 tareas operativas, 9 ejecutadas por IA. Los founders concentrados en lo estratégico.</p>
+      <p><strong style="color:var(--mia-blue);">3x más rápido</strong> en ciclos de prospección-cierre. De 60 dias a 20 dias promedio.</p>
+      <p><strong style="color:#16a34a;">+150% leads cualificados.</strong> De 20 a 50+ leads/mes. Menos persecución de aire, más conversión real.</p>
+      <p><strong style="color:var(--mia-critical);">5x deals más profundos.</strong> Mejor análisis = propuestas más relevantes = cierre más rápido = deals más grandes.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>64 h/mes recuperadas (40% de 160h operativas). En 12 meses: 768 horas reinvertidas en crecimiento. Eficiencia que genera escala sin sacrificar calidad.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RESELLERS COMERCIALES Modals -->
+<div class="modal-overlay" id="modal-reseller-upselling">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-reseller-upselling')">X</button>
+    <h2>Antes de <span>Certificarse</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Resellers Comerciales</span><span class="badge badge-blue">5% Comision</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Quieres ofrecer IA a tus clientes pero no tienes producto propio. Construir una oferta desde cero toma años. El mercado se mueve mas rapido que tu capacidad de construir.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>Empiezas sin inversion. Solo refieres oportunidades. MetodologIA se encarga de todo: dossier, demos, pruebas de concepto, soporte completo. Tu ganas 5% de cada venta cerrada.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como funciona</div>
+      <ul>
+        <li><strong>Inversion:</strong> $0. Cero riesgo.</li>
+        <li><strong>Tu rol:</strong> Identificar oportunidades y hacer la introduccion.</li>
+        <li><strong>Nuestro rol:</strong> Ejecutar todo: venta, entrega, soporte.</li>
+        <li><strong>Comision:</strong> 5% sobre cada venta cerrada que tu hayas referido.</li>
+        <li><strong>Ideal para:</strong> Probar el modelo sin comprometer capital ni tiempo.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Ingresos pasivos por referidos. Sin riesgo, sin inversion, sin compromiso. Si funciona, certifícate y escala hasta 20%.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-reseller-comision">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-reseller-comision')">X</button>
+    <h2>Despues de <span>Certificarse</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Resellers Certificados</span><span class="badge badge-green">Hasta 20%</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Ya probaste el modelo y funciona. Pero 5% no escala tu negocio. Necesitas margenes mas altos, tarifas especiales y herramientas profesionales para vender con volumen.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>La certificacion desbloquea todo: comisiones progresivas hasta 20%, tarifas especiales para tus clientes, materiales profesionales y tu propia marca sobre nuestra plataforma.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Escala progresiva</div>
+      <ul>
+        <li><strong>Inversion unica:</strong> 1 SMLV para certificarte.</li>
+        <li><strong>Nivel 1:</strong> 5% comision (primeras ventas).</li>
+        <li><strong>Nivel 2:</strong> 10% comision (al acumular volumen).</li>
+        <li><strong>Nivel 3:</strong> 15% comision (volumen sostenido).</li>
+        <li><strong>Nivel 4:</strong> 20% comision (socio estrategico).</li>
+        <li><strong>Bonus:</strong> Tarifas especiales desbloqueadas para tus clientes.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un negocio propio construido sobre una plataforma probada. Margenes crecientes. Tarifas competitivas. Escala sin limites.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EMBAJADORES Modals -->
+<div class="modal-overlay" id="modal-embajador-programa">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-embajador-programa')">X</button>
+    <h2>Recomendación por <span>Experiencia</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Programa Embajadores</span><span class="badge badge-blue">Exclusivo Egresados N7+</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Los programas de referidos genéricos piden que recomiendes algo que no viviste. El resultado: recomendaciones frias, sin conviccion, con baja conversión.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Solo invitamos como embajadores a quienes completaron el programa de empoderamiento (Nivel Siete o superior). Tu viviste la (R)Evolución. Tu equipo dejo de necesitar consultores externos. Esa es la mejor credencial.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo funciona</div>
+      <p><strong>Tu historia es tu herramienta:</strong> Compartes tu experiencia real. No es un pitch de ventas: es un testimonio de (R)Evolución vivida.</p>
+      <p><strong>Activación simple:</strong> Cada organización que recomiendes y que active su Nivel Cero (N0) Diagnóstico, genera beneficios directos para ti.</p>
+      <p><strong>Acompañamiento opcional:</strong> Si quieres, puedes acompañar a tu referido en sus primeras semanas como mentor. No es obligatorio, pero multiplica la conversión.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La recomendación más poderosa es la que nace de la experiencia propia. Los mejores embajadores son quienes construyeron su organización AI Native y quieren que otros hagan lo mismo.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-embajador-beneficios">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-embajador-beneficios')">X</button>
+    <h2>Comunidad + <span>Beneficios Exclusivos</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Programa Embajadores</span><span class="badge badge-blue">Exclusivo Egresados N7+</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Después de completar un programa de (R)Evolución, la mayoría de las organizaciones quedan solas. Sin comunidad, sin acceso a actualizaciones, sin red de pares que enfrentan los mismos desafios.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El programa de Embajadores no termina con la referencia. Es una comunidad activa de egresados que comparten aprendizajes, acceden a herramientas nuevas antes que nadie, y se posicionan como referentes AI Native en su sector.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qué incluye</div>
+      <ul>
+        <li><strong>Comunidad de Egresados:</strong> Red exclusiva de organizaciones AI Native gradúadas</li>
+        <li><strong>Clinicas Avanzadas:</strong> Sesiones mensuales con nuevas tecnicas, herramientas y casos de uso</li>
+        <li><strong>Acceso Anticipado:</strong> Acceso anticipado a nuevos asistentes, flujos de trabajo y funcionalidades</li>
+        <li><strong>Reconocimiento Sectorial:</strong> Posicionamiento como referente AI Native en tu industria</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>No es un programa que termina. Es una comunidad que crece. Los embajadores son la prueba viviente de que la soberanía digital es alcanzable, y su red es el motor de crecimiento más autentico que existe.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONSOLIDACION Modals -->
+<div class="modal-overlay" id="modal-n5">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-n5')">X</button>
+    <h2>Nivel Cinco (N5): <span>Trabajar Amplificado</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Sugerido para V&A</span><span class="badge badge-blue">Consolidación</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Después de Nivel Siete (N7), el equipo domina la IA general. Pero cada rol necesita una IA especializada. Un recruiter no necesita lo mismo que un analista. La IA genérica no maximiza el potencial individual.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Desde el diagnóstico, mapeamos los roles clave y sus procesos específicos. Cada "cofundador invisible" se entrena con los datos, KPIs y flujos de ese rol concreto.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li><strong>Recruiter:</strong> IA que filtra CVs, redacta JDs, screening automatico</li>
+        <li><strong>Sales:</strong> IA que prepara calls, analiza competencia, sugiere estrategia por lead</li>
+        <li><strong>Manager:</strong> IA que analiza desempeno, sugiere coaching, calcula compensacion</li>
+        <li><strong>Analista:</strong> IA que genera reportes, detecta anomalias, predice tendencias</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>3x más productividad, misma plantilla. Cada persona opera con su especialista invisible. "Cuánto tiempo perderia SIN IA?" se convierte en la pregunta cotidiana.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-n6">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-n6')">X</button>
+    <h2>Nivel Seis (N6): <span>GerencIA</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Sugerido para V&A</span><span class="badge badge-blue">Consolidación</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Gestionar equipos con intuición es caro. Los problemas de desempeno se detectan tarde. La rotación llega cuando ya es irreversible. Los 1:1 son reactivos, no preventivos.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>GerencIA analiza senales tempranas: caida en engagement, cambio en patrones de llamadas, baja en productividad. Sugiere intervenciones antes de que el problema sea visible.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Analizar desempeno sin bias emocional</li>
+        <li>Detectar quien necesita apoyo (antes de que sea problema)</li>
+        <li>Planes de desarrollo personalizados automaticos</li>
+        <li>Forecast de retencion: "quien podria irse en 3 meses"</li>
+        <li>Reporte cultural anonimizado: "como se siente el equipo"</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Menos rotación, equipo más feliz, jefes menos estresados. Gestión basada en datos, no en sensaciones. Prevencion, no reaccion.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-n8">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-n8')">X</button>
+    <h2>Nivel Ocho (N8): <span>Vibe Coding</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Consolidación</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Tu empresa tiene procesos únicos que ningún software genérico resuelve. Contratar un developer es caro y lento. Las integraciones manuales se rompen constantemente.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Identificamos tus procesos únicos desde el diagnóstico. Vibe Coding te permite construir automatizaciones custom usando IA como tu "developer": sin código, sin infraestructura.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Integracion HR software a CRM a Reporting</li>
+        <li>Pipeline auto-generado desde email</li>
+        <li>Propuestas que actualizan CRM automáticamente</li>
+        <li>Análisis de competencia cada mañana</li>
+        <li>Notificaciones inteligentes cuando importa</li>
+      </ul>
+      <p><strong>Formato:</strong> 4 semanas. 1 automatización principal + entrenamientos. Sin saber programar.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Procesos únicos que la competencia no puede copiar. Automatizaciones propias que evolucionan contigo. Tu operación, tu logica, tu ventaja.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-n9">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-n9')">X</button>
+    <h2>Nivel Nueve (N9): <span>Digital Champions</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Consolidación</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>El mercado necesita líderes en (R)Evolución digital, no solo usuarios de IA. La diferencia entre "usar" y "liderar" es la diferencia entre sobrevivir y dominar tu industria.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Digital Champions prepara a tus líderes para diseñar estrategias IA a nivel C-suite, gestionar cambio organizacional y medir impacto con OKRs IA-driven.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Estrategia IA a nivel C-suite (roadmap 18 meses)</li>
+        <li>Diseño de sistemas IA empresariales</li>
+        <li>Gestión de cambio (como lograr adopción real)</li>
+        <li>Metricas que importan (OKRs IA-driven)</li>
+        <li>Liderazgo en (R)Evolución digital</li>
+      </ul>
+      <p><strong>Formato:</strong> 1:1 mentoring intensivo + group mastermind + proyectos aplicados. 8-12 semanas.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Puedes liderar (R)Evoluciónes IA en empresas de cualquier tamano. No solo usas IA: eres el referente que otros buscan para aprender.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== SCRIPTS ============================== -->
+<script>
+// Modal Functions
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+}
+function closeModalOnOverlay(event, id) {
+  if (event.target.id === id) {
+    closeModal(id);
+  }
+}
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => {
+    if (e.target === m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => {
+      m.classList.remove('active'); document.body.style.overflow = '';
+    });
+  }
+});
+
+// TOC scroll tracking
+const tocLinks = document.querySelectorAll('nav.toc a');
+const tocSections = document.querySelectorAll('section[id]');
+if (tocLinks.length > 0) {
+  window.addEventListener('scroll', () => {
+    let current = '';
+    tocSections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 200) current = s.id;
+    });
+    tocLinks.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  });
+}
+
+// Scroll animations
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => animObserver.observe(el));
+</script>
+
+<!-- ============================== NEW MODALS: PRICING MODULES ============================== -->
+
+<!-- modal-mod-diagnostico -->
+<div class="modal-overlay" id="modal-mod-diagnostico" onclick="closeModalOnOverlay(event, 'modal-mod-diagnostico')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-diagnostico')">X</button>
+    <h2>Diagnostico <span>N0</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Gratuito</span><span class="badge badge-blue">1 Sesion</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>No sabes si la IA aplica a tu negocio. No quieres invertir sin ver resultados primero. Necesitas un filtro antes de comprometer tiempo o dinero.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>El diagnostico es gratuito y sin compromiso. En 1 hora evaluamos tu operacion, identificamos oportunidades y te damos un mapa personalizado. Si no hay fit, te lo decimos.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Que incluye</div>
+      <ul>
+        <li>Evaluacion de tu operacion actual (procesos, herramientas, equipo).</li>
+        <li>Mapa de oportunidades de automatizacion con IA.</li>
+        <li>Estimacion de ROI personalizada (marco 80/50/20).</li>
+        <li>Recomendacion del modulo ideal para tu caso.</li>
+        <li>Roadmap personalizado con pasos concretos.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Claridad total sobre tu potencial con IA. Sin venta agresiva. Si hay fit, avanzas. Si no, cada quien por su lado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- modal-mod-workshop -->
+<div class="modal-overlay" id="modal-mod-workshop" onclick="closeModalOnOverlay(event, 'modal-mod-workshop')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-workshop')">X</button>
+    <h2>Workshop <span>Introductorio</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">200k COP/persona</span><span class="badge badge-blue">3 Horas</span><span class="badge badge-blue">Incluye Diagnostico</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Tu equipo sabe que necesita IA pero no ha tenido una experiencia practica. Necesitan ver con sus propias manos que funciona antes de comprometerse a algo mas grande.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>Incluye el Diagnostico previo. 3 horas de sesion practica de ofimatica IA con hasta 5 personas. Tu equipo trabaja sobre un proceso real de tu negocio usando Gemini y herramientas de IA. Sales con un protocolo funcional.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Que incluye</div>
+      <ul>
+        <li>1 protocolo funcional implementado sobre tu proceso real.</li>
+        <li>Templates listos para usar desde el dia siguiente.</li>
+        <li>Entrenamiento hands-on con Gemini y herramientas de IA.</li>
+        <li>Alternativa: compromiso de ventas de 3M COP en vez de pago directo.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu equipo experimenta IA aplicada a su realidad. No teoria, sino herramientas que usan desde mañana.</p>
+    </div>
+  </div>
+</div>
+
+<!-- modal-mod-bootcamp -->
+<div class="modal-overlay" id="modal-mod-bootcamp" onclick="closeModalOnOverlay(event, 'modal-mod-bootcamp')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-bootcamp')">X</button>
+    <h2>Bootcamp <span>de Ventas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">800k COP/persona</span><span class="badge badge-blue">2 Dias</span><span class="badge badge-blue">Incluye Workshop</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Necesitas resultados rapidos. No puedes esperar semanas para ver flujos automatizados funcionando. Tu equipo esta listo pero necesita una inmersion intensiva en automatizacion comercial.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>Incluye todo lo del Workshop Introductorio. 2 dias intensivos con hasta 5 personas. Diseño, construccion y testing de 2-3 protocolos de automatizacion comercial. Tu equipo termina operando con flujos reales de ventas y prospeccion.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Que incluye</div>
+      <ul>
+        <li>2-3 protocolos de automatizacion implementados y testeados.</li>
+        <li>Flujos funcionales sobre Google Workspace.</li>
+        <li>Gemas vitaminadas entrenadas con tu contexto.</li>
+        <li>Alternativa: compromiso de ventas de 12M COP en vez de pago directo.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Flujos reales operando desde el dia 3. Tu equipo paso de teoria a ejecucion en 48 horas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- modal-mod-programa -->
+<div class="modal-overlay" id="modal-mod-programa" onclick="closeModalOnOverlay(event, 'modal-mod-programa')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-programa')">X</button>
+    <h2>Programa de <span>(R)Evolución</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">500k COP/asistente (3M COP por 6 asistentes)</span><span class="badge badge-blue">16 Semanas</span><span class="badge badge-blue">Incluye Bootcamp de Ventas</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Quieres transformar toda tu operacion, no solo un proceso. Necesitas el paquete completo: protocolos, agentes IA, autonomia operativa.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>Incluye todo lo del Bootcamp de Ventas. 16 semanas de (R)Evolución completa. 5 protocolos sistematizados, 5 Gemas vitaminadas, Dream Team de 6 agentes IA configurados y operativos. Soberania digital real.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Que incluye</div>
+      <ul>
+        <li>5 protocolos sistematizados (Ventas, Propuestas, Entrega, FAQs, Documentos).</li>
+        <li>5 Gemas vitaminadas entrenadas con expertise de tu negocio.</li>
+        <li>Dream Team de 6 agentes IA operativos.</li>
+        <li>Estandar 9:1 implementado: 9 tareas IA, 1 humano.</li>
+        <li>Alternativa: compromiso de ventas de 6M COP en vez de pago directo.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Operacion transformada. 64h/mes recuperadas. Tu organizacion escala sin agregar consultores.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== NEW MODALS: RISK CARDS ============================== -->
+
+<!-- modal-riesgo-talento -->
+<div class="modal-overlay" id="modal-riesgo-talento" onclick="closeModalOnOverlay(event, 'modal-riesgo-talento')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-talento')">X</button>
+    <h2>Talento <span>Exige IA</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-critical" style="background:rgba(239,68,68,0.1);color:#EF4444;">Riesgo Critico</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Los mejores profesionales ya no aceptan trabajar con herramientas manuales. Organizaciones sin IA nativa pierden talento ante competidores que si la tienen.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Impacto medible</div>
+      <p>Cada contratacion fallida cuesta entre 50% y 200% del salario anual del puesto. Si tu organizacion no es AI Native, atraes al segundo nivel. El primero ya eligio organizaciones digitalizadas.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Con MetodologIA, tu organizacion se posiciona como AI Native desde el dia uno. El talento de primer nivel quiere trabajar donde la IA amplifica su impacto.</p>
+    </div>
+  </div>
+</div>
+
+<!-- modal-riesgo-competencia -->
+<div class="modal-overlay" id="modal-riesgo-competencia" onclick="closeModalOnOverlay(event, 'modal-riesgo-competencia')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-competencia')">X</button>
+    <h2>Competencia se <span>Digitaliza</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-critical" style="background:rgba(239,68,68,0.1);color:#EF4444;">Ventana que se Cierra</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Otras consultorias ya operan con IA. Cada trimestre sin construir AI Native es una ventana de oportunidad que se cierra permanentemente.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Impacto medible</div>
+      <p>En 12 meses, las consultorias que adoptaron IA entregan propuestas 3x mas rapido, a menor costo. Las que no, compiten en precio — una carrera hacia el fondo.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Con MetodologIA, no compites en precio. Compites en velocidad, calidad y capacidad de escala. Esa es una ventaja estructural, no temporal.</p>
+    </div>
+  </div>
+</div>
+
+<!-- modal-riesgo-deuda -->
+<div class="modal-overlay" id="modal-riesgo-deuda" onclick="closeModalOnOverlay(event, 'modal-riesgo-deuda')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-deuda')">X</button>
+    <h2>Deuda <span>Operativa</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-critical" style="background:rgba(239,68,68,0.1);color:#EF4444;">Desde el Dia Uno</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Cada proceso manual que creas hoy se convierte en deuda operativa mañana. Corregir despues es 5-10x mas costoso que diseñar bien desde el arranque.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Impacto medible</div>
+      <p>Una organizacion que arranca con procesos manuales y luego intenta automatizar, paga el costo de la migracion mas el costo del tiempo perdido. Es como construir una casa sin cimientos y despues intentar ponerlos.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Con MetodologIA, construyes con la diseño correcto desde el dia uno. Cero deuda operativa. Cada proceso nace automatizado, sistematizado, escalable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- modal-riesgo-escala -->
+<div class="modal-overlay" id="modal-riesgo-escala" onclick="closeModalOnOverlay(event, 'modal-riesgo-escala')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-escala')">X</button>
+    <h2>Escalamiento <span>Imposible</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-critical" style="background:rgba(239,68,68,0.1);color:#EF4444;">Trampa Lineal</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Sin procesos AI Native, cada nuevo cliente requiere mas gente. Mas consultores, mas coordinacion, mas costos. El crecimiento lineal tiene un techo bajo.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Impacto medible</div>
+      <p>La paradoja: mas clientes = menos margen. Mas propuestas = menos tiempo para estrategia. Sin IA, escalar tu consultoria requiere duplicar tu equipo por cada 3-5 clientes nuevos.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Con el estandar 9:1, escalas exponencialmente. 2-3 clientes nuevos por mes sin agregar consultores. La IA absorbe el 90% de las tareas operativas. Tu equipo se dedica a lo estrategico.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

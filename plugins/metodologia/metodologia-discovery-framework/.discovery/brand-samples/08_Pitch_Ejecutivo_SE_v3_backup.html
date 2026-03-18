@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 Pitch Ejecutivo — V&A Consulting × MetodologIA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E2E8F0;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--mia-dark-text); background: var(--mia-offwhite); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.3px; color: var(--mia-navy); line-height: 1.2; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; line-height: 1.6; }
+a { color: var(--mia-blue); text-decoration: none; }
+
+.hero { background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); position: relative; overflow: hidden; padding: 5rem 2rem 4rem; color: var(--mia-white); }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue)); }
+.hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; text-align: center; }
+.brand-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+.brand-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline { display: block; font-size: 0.7rem; color: var(--mia-text-muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle { font-size: 1.15rem; color: var(--mia-text); margin-bottom: 2.5rem; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+.hero-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.hero-kpi { text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 1.25rem 1rem; transition: all var(--transition-normal); }
+.hero-kpi:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.hero-kpi-value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--mia-gold); }
+.hero-kpi-value.blue { color: var(--mia-blue-light); }
+.hero-kpi-label { font-size: .72rem; color: var(--mia-text-muted); margin-top: .5rem; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+.hero-punchline { font-style: italic; font-size: 1.1rem; color: var(--mia-blue-light); margin-top: 2.5rem; opacity: 0.85; }
+
+nav.toc { background: var(--mia-white); position: sticky; top: 0; z-index: var(--z-sticky-nav); border-bottom: 1px solid #E2E8F0; box-shadow: var(--shadow-sm); }
+.toc-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: .25rem; padding: .6rem 1rem; overflow-x: auto; justify-content: center; }
+.toc-link { text-decoration: none; color: var(--mia-dark-text); font-size: .78rem; font-weight: 500; padding: .4rem .8rem; border-radius: var(--radius-sm); transition: var(--transition-fast); white-space: nowrap; }
+.toc-link:hover, .toc-link.active { background: var(--mia-blue); color: white; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+section { scroll-margin-top: 60px; padding: 3.5rem 0; border-bottom: 1px solid #E2E8F0; }
+section.dark { background: var(--mia-navy); color: white; border-bottom-color: var(--mia-navy-mid); }
+section.dark h2, section.dark h3, section.dark h4 { color: white; }
+section.dark p, section.dark li { color: var(--mia-text); }
+section.dark .card { background: var(--mia-navy-light); }
+section.dark .punchline { color: var(--mia-gold); border-top-color: var(--mia-gold); }
+section.dark .section-subtitle { color: var(--mia-text-muted); }
+
+.section-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; }
+.section-number { width: 52px; height: 52px; min-width: 52px; border-radius: 50%; background: var(--mia-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; }
+section.dark .section-number { background: var(--mia-gold); color: var(--mia-navy); }
+.section-subtitle { color: #64748B; font-size: 0.95rem; margin-top: 0.3rem; }
+
+.card { background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-card); margin-bottom: 1.5rem; }
+.card-clickable { cursor: pointer; transition: all var(--transition-normal); }
+.card-clickable:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.card-gold { border-left: 4px solid var(--mia-gold); }
+.card-accent { border-left: 4px solid var(--mia-blue); }
+.card-click-hint { display: block; margin-top: 1rem; color: var(--mia-blue); font-size: .85rem; font-weight: 500; }
+section.dark .card-click-hint { color: var(--mia-blue-light); }
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.badge-green { background: var(--mia-positive-dim); color: #16A34A; }
+.badge-red { background: var(--mia-critical-dim); color: var(--mia-critical); }
+.badge-warning { background: var(--mia-warning-dim); color: var(--mia-warning); }
+
+.callout { border-radius: var(--radius-md); padding: 1.5rem; margin: 1.5rem 0; font-size: 0.95rem; }
+.callout-blue { background: var(--mia-blue-dim); border-left: 4px solid var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-left: 4px solid var(--mia-gold); }
+.callout-green { background: var(--mia-positive-dim); border-left: 4px solid var(--mia-positive); }
+.callout-red { background: var(--mia-critical-dim); border-left: 4px solid var(--mia-critical); }
+
+.punchline { text-align: center; font-size: 1.2rem; font-weight: 700; padding: 2rem 0; color: var(--mia-navy); font-style: italic; border-top: 2px solid var(--mia-gold); margin-top: 2rem; }
+
+/* BIG NUMBER */
+.big-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--mia-gold); }
+.big-number.blue { color: var(--mia-blue); }
+.big-number.red { color: var(--mia-critical); }
+.big-number-label { font-size: .85rem; font-weight: 600; margin-top: .5rem; color: #64748B; }
+
+/* VS COMPARISON */
+.vs-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: center; margin: 2rem 0; }
+.vs-box { text-align: center; padding: 2rem; border-radius: var(--radius-lg); }
+.vs-box.before { background: var(--mia-critical-dim); border: 2px solid var(--mia-critical); }
+.vs-box.after { background: var(--mia-positive-dim); border: 2px solid var(--mia-positive); }
+.vs-divider { font-size: 1.5rem; font-weight: 800; color: var(--mia-gold); }
+
+/* TIMELINE MINI */
+.timeline-mini { display: flex; gap: 0; margin: 2rem 0; }
+.timeline-step { flex: 1; text-align: center; position: relative; padding: 1rem .5rem; }
+.timeline-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--mia-light); }
+.timeline-step.active::before { background: var(--mia-blue); }
+.timeline-step.gold::before { background: var(--mia-gold); }
+
+/* MODALS */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,18,42,0.85); z-index: var(--z-modal); align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.modal-overlay.active { display: flex; }
+.modal-box { background: white; border-radius: var(--radius-lg); max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: var(--shadow-lg); }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748B; }
+.modal-box h2 { margin-bottom: 0.5rem; }
+.modal-box h2 span { color: var(--mia-gold); }
+.modal-badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.modal-section { padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1rem; }
+.modal-section-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .75rem; }
+.modal-section.friction { background: var(--mia-critical-dim); }
+.modal-section.friction .modal-section-label { color: var(--mia-critical); }
+.modal-section.anticipation { background: var(--mia-warning-dim); }
+.modal-section.anticipation .modal-section-label { color: var(--mia-warning); }
+.modal-section.resolution { background: var(--mia-blue-dim); }
+.modal-section.resolution .modal-section-label { color: var(--mia-blue); }
+.modal-section.success { background: var(--mia-positive-dim); }
+.modal-section.success .modal-section-label { color: var(--mia-positive); }
+
+.cta-button { display: inline-block; padding: 1rem 2.5rem; background: var(--mia-blue); color: white; text-decoration: none; border-radius: var(--radius-xl); font-weight: 700; font-size: 1rem; transition: var(--transition-normal); }
+.cta-button:hover { background: var(--mia-blue-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.cta-button.gold { background: var(--mia-gold); color: var(--mia-navy); }
+.cta-button.gold:hover { background: #FFE44D; }
+
+footer { background: var(--mia-navy); color: var(--mia-text-muted); padding: 2rem; text-align: center; font-size: .8rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand-name { font-size: .85rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.footer-code { font-family: monospace; color: var(--mia-gold); margin-top: .5rem; }
+
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .hero-kpi-value { font-size: 2rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  .section-header { flex-direction: column; gap: .75rem; }
+  .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
+  .vs-row { grid-template-columns: 1fr; gap: 1rem; }
+  .timeline-mini { flex-direction: column; }
+  .big-number { font-size: 2.5rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+}
+@media print {
+  nav.toc, footer, .modal-overlay { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* LOOP FLYWHEEL */
+.loop-container { display: flex; justify-content: center; margin: 2rem 0; }
+.loop-ring { width: 320px; height: 320px; border-radius: 50%; border: 4px solid var(--mia-blue); position: relative; display: flex; align-items: center; justify-content: center; }
+.loop-center { text-align: center; padding: 2rem; }
+.loop-node { position: absolute; width: 110px; text-align: center; font-size: .75rem; font-weight: 600; padding: .5rem; border-radius: var(--radius-md); background: var(--mia-white); box-shadow: var(--shadow-sm); }
+.loop-arrow { color: var(--mia-gold); font-weight: 800; font-size: 1.2rem; }
+/* OBJECTION KILLER */
+.objection-card { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; padding: 1.5rem; background: var(--mia-white); border-radius: var(--radius-md); margin-bottom: 1rem; }
+.objection-q { font-weight: 700; color: var(--mia-critical); font-size: .95rem; }
+.objection-a { color: var(--mia-dark-text); font-size: .95rem; }
+.independence-card { text-align: center; padding: 2rem 1.5rem; }
+.independence-card .cost-saved { font-size: 1.1rem; font-weight: 700; color: var(--mia-positive); margin-top: .75rem; }
+
+/* DRIVER TABLE */
+.driver-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
+.driver-table th { background: var(--mia-navy); color: var(--mia-gold); padding: .75rem 1rem; text-align: left; font-weight: 600; font-size: .75rem; text-transform: uppercase; letter-spacing: .5px; }
+.driver-table td { padding: .75rem 1rem; border-bottom: 1px solid var(--mia-light); }
+.driver-table tr:hover { background: var(--mia-blue-dim); }
+.driver-var { font-family: 'Courier New', monospace; font-weight: 700; color: var(--mia-blue); font-size: 1rem; }
+section.dark .driver-table th { background: rgba(255,255,255,0.08); }
+section.dark .driver-table td { border-bottom-color: rgba(255,255,255,0.08); color: var(--mia-text); }
+section.dark .driver-var { color: var(--mia-gold); }
+/* FORMULA */
+.formula-block { background: var(--mia-navy); color: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem; text-align: center; margin: 1.5rem 0; font-family: 'Courier New', monospace; }
+.formula-block .formula { font-size: 1.3rem; font-weight: 700; color: var(--mia-gold); margin: 1rem 0; letter-spacing: 1px; }
+.formula-block .formula-label { font-size: .8rem; color: var(--mia-text-muted); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 1px; }
+.formula-block .formula-result { font-size: 2rem; font-weight: 800; color: var(--mia-positive); margin-top: .5rem; }
+/* SENSITIVITY */
+.sensitivity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; margin: 1.5rem 0; }
+.sensitivity-cell { text-align: center; padding: 1rem .5rem; border-radius: var(--radius-md); }
+.sensitivity-cell.header { background: var(--mia-navy); color: var(--mia-gold); font-weight: 700; font-size: .75rem; text-transform: uppercase; }
+.sensitivity-cell.green { background: var(--mia-positive-dim); }
+.sensitivity-cell.gold { background: var(--mia-gold-dim); }
+.sensitivity-val { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; }
+.sensitivity-label { font-size: .7rem; margin-top: .25rem; color: #64748B; }
+/* MICRO COMMITMENT */
+.micro-commit { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--mia-gold-dim); border-radius: var(--radius-md); margin: 1rem 0; border-left: 4px solid var(--mia-gold); }
+.micro-commit-check { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: var(--mia-gold); display: flex; align-items: center; justify-content: center; }
+.micro-commit-text { font-size: .95rem; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+
+    <h1>2 Personas. 320 Horas.<br><span>Una Decision.</span></h1>
+    <p class="hero-subtitle">V&A Consulting son 2 fundadores que dedican<br>320 horas al mes a operar su negocio.<br>Este documento no pide que crean en la IA.<br>Pide que hagan una cuenta.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">2</div>
+        <div class="hero-kpi-label">Fundadores</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">40%</div>
+        <div class="hero-kpi-label">Tiempo Operativo Recuperable</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">&lt;1</div>
+        <div class="hero-kpi-label">Mes de Break-Even</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">6</div>
+        <div class="hero-kpi-label">Agentes IA del Dream Team</div>
+      </div>
+    </div>
+
+    <p class="hero-punchline">No es una propuesta de tecnologia.<br>Es una cuenta que se hace sola.</p>
+  </div>
+</header>
+
+<!-- ============================== STICKY TOC ============================== -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#realidad" class="toc-link">La Realidad</a>
+    <a href="#drivers" class="toc-link">Los Drivers</a>
+    <a href="#breakeven" class="toc-link">Break-Even</a>
+    <a href="#independencia" class="toc-link">Independencia</a>
+    <a href="#loop" class="toc-link">El Loop</a>
+    <a href="#objeciones" class="toc-link">Objeciones</a>
+    <a href="#decision" class="toc-link">La Decision</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ============================== SECTION 1: LA REALIDAD ============================== -->
+<section id="realidad" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div>
+      <h2>La Realidad:<br>Lo Que Ya Saben Pero No Han Calculado</h2>
+      <p class="section-subtitle">Antes de hablar de IA hay que hablar de una sola cosa: tiempo.</p>
+    </div>
+  </div>
+
+  <div class="card card-gold">
+    <p>V&A son 2 fundadores. Cada uno dedica aproximadamente 160 horas al mes al negocio. En total: 320 horas mensuales. Esas horas se reparten entre prospectar clientes, armar propuestas, hacer evaluaciones, dar seguimiento, compilar reportes, asistir a reuniones, administrar, y docenas de tareas que no generan ingreso directo pero que sin ellas el negocio no funciona.</p>
+    <p>Aqui no hay opinion. Es un hecho observable: cada hora dedicada a armar un reporte es una hora que no se dedica a cerrar un cliente. Cada tarde compilando datos es una tarde en la que un prospecto se enfrio esperando.</p>
+    <p style="font-weight:600;color:var(--mia-navy);">La pregunta que abre este documento no es "necesitan IA".<br>Es: "de esas 320 horas, cuantas deberia estar haciendo una maquina<br>mientras ustedes hacen lo que solo ustedes pueden hacer".</p>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-fundadores')">
+      <h4>Ser 2 No Es Pequeño. Es Rapido.</h4>
+      <p>Sin comites. Sin ciclos presupuestarios. Sin 6 meses de procurement. La misma persona que decide es la que ejecuta. Lo que a una corporacion le cuesta 18 meses de gestion del cambio, V&A puede tenerlo funcionando en 16 semanas. Ese es el privilegio del fundador que entiende que su tiempo es su unico activo no renovable.</p>
+      <span class="card-click-hint">Ver por que el tamaño es la ventaja</span>
+    </div>
+    <div class="card card-gold card-clickable" onclick="openModal('modal-ventana')">
+      <h4>La Ventana Tiene Fecha de Cierre</h4>
+      <p>Las consultoras que integren IA en los proximos 12 meses generan una ventaja de 3-5 años. No porque la IA sea magica — sino porque los procesos, las bases de conocimiento y los flujos automatizados se construyen con tiempo. Quien empieza primero, acumula primero. Y esa acumulacion es la barrera competitiva real.</p>
+      <span class="card-click-hint">Ver la dinamica de ventana competitiva</span>
+    </div>
+  </div>
+
+  <div class="micro-commit">
+    <div class="micro-commit-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-navy)" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="micro-commit-text">Punto de acuerdo: V&A tiene 320h/mes operativas y el tiempo es el recurso mas escaso de un fundador.</div>
+  </div>
+
+  <p class="punchline">320 horas al mes. 3,840 horas al año.<br>La unica pregunta es cuantas de esas horas<br>deberia hacer una maquina.</p>
+</section>
+
+<!-- ============================== SECTION 2: LOS DRIVERS ============================== -->
+<section id="drivers" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div>
+      <h2>Los Drivers:<br>La Formula, No El Numero</h2>
+      <p class="section-subtitle">Los numeros cambian. Los drivers no.<br>Aqui importa la estructura del argumento, no la cifra.</p>
+    </div>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-drivers')">
+    <h4>Las 5 Variables Que Definen Todo</h4>
+    <table class="driver-table">
+      <thead><tr><th>Variable</th><th>Driver</th><th>Valor Base</th><th>Por Que Ese Valor</th></tr></thead>
+      <tbody>
+        <tr><td><span class="driver-var">P</span></td><td>Personas</td><td>2</td><td>Fundadores de V&A. Hecho observable.</td></tr>
+        <tr><td><span class="driver-var">H</span></td><td>Horas operativas / mes / persona</td><td>160</td><td>Mes laboral estandar. Verificable.</td></tr>
+        <tr><td><span class="driver-var">R</span></td><td>% de horas recuperables con IA</td><td>40%</td><td>Framework 80/50/20. Conservador a proposito.</td></tr>
+        <tr><td><span class="driver-var">V</span></td><td>Valor hora consultor (COP)</td><td>Ustedes lo definen</td><td>Puede ser 30k, 40k, 60k. El modelo funciona con cualquiera.</td></tr>
+        <tr><td><span class="driver-var">I</span></td><td>Inversion por asistente (COP)</td><td>500k COP</td><td>Programa de Transformacion. Precio fijo.</td></tr>
+      </tbody>
+    </table>
+    <span class="card-click-hint">Ver como se calcula cada driver</span>
+  </div>
+
+  <div class="formula-block">
+    <div class="formula-label">Horas Recuperadas / Mes</div>
+    <div class="formula">P &times; H &times; R = 2 &times; 160 &times; 0.4 = 128h/mes</div>
+    <div class="formula-label" style="margin-top:1.5rem;">Horas Recuperadas / Año</div>
+    <div class="formula">P &times; H &times; R &times; 12 = 1,536h/año</div>
+    <div class="formula-label" style="margin-top:1.5rem;">Valor Mensual Recuperado</div>
+    <div class="formula">P &times; H &times; R &times; V = 128 &times; V</div>
+    <div class="formula-label" style="margin-top:1.5rem;">Break-Even (meses)</div>
+    <div class="formula">I &divide; (H &times; R &times; V) = 500k &divide; (64 &times; V)</div>
+    <div class="formula-label" style="margin-top:1.5rem;">ROI Anual</div>
+    <div class="formula">(H &times; R &times; V &times; 12) &divide; I</div>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-framework')">
+    <h4>De Donde Sale el 40%: Framework 80/50/20</h4>
+    <p>No todas las tareas se recuperan igual. El framework clasifica las 320h en 3 niveles y aplica un porcentaje de intervencion IA diferente a cada uno. El resultado teorico es ~60%. Usamos 40% porque preferimos prometer menos y entregar mas.</p>
+    <div class="card-grid-3" style="margin-top:1rem;">
+      <div style="text-align:center;padding:1rem;background:rgba(66,211,111,0.08);border-radius:var(--radius-md);">
+        <div class="big-number" style="font-size:1.8rem;color:var(--mia-positive);">80%</div>
+        <div class="big-number-label" style="color:var(--mia-text);">Tareas Simples</div>
+        <p style="font-size:.75rem;color:var(--mia-text-muted);margin-top:.5rem;">50% del tiempo. Seguimientos, recordatorios, compilacion.</p>
+      </div>
+      <div style="text-align:center;padding:1rem;background:rgba(245,158,11,0.08);border-radius:var(--radius-md);">
+        <div class="big-number" style="font-size:1.8rem;color:var(--mia-warning);">50%</div>
+        <div class="big-number-label" style="color:var(--mia-text);">Tareas Medias</div>
+        <p style="font-size:.75rem;color:var(--mia-text-muted);margin-top:.5rem;">35% del tiempo. Propuestas, evaluaciones, reportes.</p>
+      </div>
+      <div style="text-align:center;padding:1rem;background:rgba(19,125,197,0.08);border-radius:var(--radius-md);">
+        <div class="big-number blue" style="font-size:1.8rem;">20%</div>
+        <div class="big-number-label" style="color:var(--mia-text);">Tareas Complejas</div>
+        <p style="font-size:.75rem;color:var(--mia-text-muted);margin-top:.5rem;">15% del tiempo. Negociaciones, decisiones.</p>
+      </div>
+    </div>
+    <span class="card-click-hint">Ver desglose detallado por tipo de tarea</span>
+  </div>
+
+  <div class="micro-commit" style="background:rgba(255,215,0,0.08);border-left-color:var(--mia-gold);">
+    <div class="micro-commit-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-navy)" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="micro-commit-text" style="color:var(--mia-text);">Punto de acuerdo: el 40% es el piso conservador, no el techo. Los drivers son verificables.</div>
+  </div>
+
+  <p class="punchline">No importa que valor le pongan a V.<br>La formula no cambia.<br>Solo cambia la velocidad a la que se paga sola.</p>
+</section>
+
+<!-- ============================== SECTION 3: BREAK-EVEN ============================== -->
+<section id="breakeven" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <div>
+      <h2>Break-Even:<br>El Numero Que Cierra la Conversacion</h2>
+      <p class="section-subtitle">No depende de proyecciones optimistas. Depende de una division.</p>
+    </div>
+  </div>
+
+  <div class="card card-gold card-clickable" onclick="openModal('modal-breakeven')">
+    <h4>Pongan el valor de hora que quieran. Sigue funcionando.</h4>
+    <div class="formula-block" style="margin:1.5rem 0;">
+      <div class="formula-label">Break-Even = Inversion / Valor Mensual Recuperado</div>
+      <div class="formula">I &divide; (H &times; R &times; V) = 2.4M &divide; (64 &times; V)</div>
+      <div class="formula-label" style="margin-top:.5rem;">(por persona)</div>
+    </div>
+
+    <div class="sensitivity-grid">
+      <div class="sensitivity-cell header">Valor Hora (V)</div>
+      <div class="sensitivity-cell header">Break-Even</div>
+      <div class="sensitivity-cell header">ROI Año 1</div>
+      <div class="sensitivity-cell header">Valor Anual</div>
+
+      <div class="sensitivity-cell gold"><div class="sensitivity-val" style="color:var(--mia-gold-dark);">20k</div><div class="sensitivity-label">COP/hora</div></div>
+      <div class="sensitivity-cell gold"><div class="sensitivity-val" style="color:var(--mia-gold-dark);">1.9</div><div class="sensitivity-label">meses</div></div>
+      <div class="sensitivity-cell gold"><div class="sensitivity-val" style="color:var(--mia-gold-dark);">6.4x</div><div class="sensitivity-label">retorno</div></div>
+      <div class="sensitivity-cell gold"><div class="sensitivity-val" style="color:var(--mia-gold-dark);">30.7M</div><div class="sensitivity-label">COP</div></div>
+
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">30k</div><div class="sensitivity-label">COP/hora</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">1.3</div><div class="sensitivity-label">meses</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">9.6x</div><div class="sensitivity-label">retorno</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">46.1M</div><div class="sensitivity-label">COP</div></div>
+
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">40k</div><div class="sensitivity-label">COP/hora</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">0.9</div><div class="sensitivity-label">meses</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">12.8x</div><div class="sensitivity-label">retorno</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">61.4M</div><div class="sensitivity-label">COP</div></div>
+
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">60k</div><div class="sensitivity-label">COP/hora</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">0.6</div><div class="sensitivity-label">meses</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">19.2x</div><div class="sensitivity-label">retorno</div></div>
+      <div class="sensitivity-cell green"><div class="sensitivity-val" style="color:#16A34A;">92.2M</div><div class="sensitivity-label">COP</div></div>
+    </div>
+    <span class="card-click-hint">Ver analisis de sensibilidad completo</span>
+  </div>
+
+  <div class="card card-accent card-clickable" onclick="openModal('modal-stress')">
+    <h4>Prueba de estres: Y si todo sale peor de lo esperado?</h4>
+    <p>Supongamos el peor escenario razonable: solo recuperan el 20% (la mitad del objetivo), y su hora vale 25k COP (por debajo del mercado). Incluso asi:</p>
+    <div class="formula-block" style="margin:1rem 0;">
+      <div class="formula">500k &divide; (160 &times; 0.20 &times; 25,000) = 0.6 meses</div>
+      <div class="formula-result" style="font-size:1.5rem;">Break-even en 3 meses,<br>incluso en el peor caso</div>
+    </div>
+    <p>Tres meses. Ese es el peor escenario razonable. No el mejor — el peor. Y despues de esos 3 meses, cada hora recuperada es ganancia neta. Indefinidamente.</p>
+    <span class="card-click-hint">Ver todos los escenarios de estres</span>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Lo que hace este argumento<br>dificilmente objetable:</strong> No depende de una tasa de recuperacion especifica. No depende de un valor hora especifico. No depende de proyecciones de crecimiento.<br>Depende de una division. Y en cualquier combinacion razonable de las variables, el break-even esta por debajo de 4 meses.<br>La unica manera de que no funcione es que V&A valore su hora en 0 COP — y si ese fuera el caso, el negocio tendria un problema mucho mas grande que la IA.
+  </div>
+
+  <div class="micro-commit">
+    <div class="micro-commit-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-navy)" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="micro-commit-text">Punto de acuerdo: con cualquier valor hora razonable, la inversion se paga sola en menos de 4 meses. En el caso base, en menos de 1.</div>
+  </div>
+
+  <p class="punchline">No es un acto de fe. Es una division.<br>Y la division no necesita que crean en nada.</p>
+</section>
+
+<!-- ============================== SECTION 4: INDEPENDENCIA ============================== -->
+<section id="independencia" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">4</div>
+    <div>
+      <h2>Lo Que Hoy No Hacen<br>(Porque No Pueden)</h2>
+      <p class="section-subtitle">El ROI de horas es solo la mitad de la historia.<br>La otra mitad es lo que el tiempo libre habilita.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p>Hay una trampa en la que caen todas las consultoras pequeñas: no contratan diseñador, programador ni publicista porque no pueden pagarlo. Pero eso no significa que no los necesiten. Significa que las cosas que esos profesionales harian simplemente no se hacen. Las propuestas salen sin diseño. Las automatizaciones no existen. El contenido no se publica. El costo real no es lo que pagarian — es lo que pierden por no tener esas capacidades.</p>
+  </div>
+
+  <div class="card-grid-3">
+    <div class="card independence-card card-clickable" onclick="openModal('modal-sin-disenador')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-blue-light)" stroke-width="2" style="width:40px;height:40px;margin:0 auto .75rem;display:block;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <h4>Capacidad de Diseño</h4>
+      <p style="font-size:.85rem;color:var(--mia-text);">Propuestas con identidad visual. Presentaciones profesionales. Material de marca. Lo que hoy no hacen porque toma tiempo que no tienen.</p>
+      <div class="cost-saved">Equivalente: 1.5-3M COP/mes en freelancer</div>
+      <span class="card-click-hint">Ver como se habilita</span>
+    </div>
+    <div class="card independence-card card-clickable" onclick="openModal('modal-sin-programador')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-gold)" stroke-width="2" style="width:40px;height:40px;margin:0 auto .75rem;display:block;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <h4>Capacidad de Automatizacion</h4>
+      <p style="font-size:.85rem;color:var(--mia-text);">Flujos de seguimiento, envio de propuestas, notificaciones. Google Opal (N3) permite automatizar sin codigo. Sin depender de un desarrollador.</p>
+      <div class="cost-saved">Equivalente: 3-5M COP/mes en desarrollador</div>
+      <span class="card-click-hint">Ver como se habilita</span>
+    </div>
+    <div class="card independence-card card-clickable" onclick="openModal('modal-sin-publicista')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-blue-light)" stroke-width="2" style="width:40px;height:40px;margin:0 auto .75rem;display:block;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <h4>Capacidad de Contenido</h4>
+      <p style="font-size:.85rem;color:var(--mia-text);">Posts, correos de prospeccion, textos web. Con el tono de V&A, alimentados por su base de conocimiento. Publicar deja de ser un proyecto — es un habito.</p>
+      <div class="cost-saved">Equivalente: 1-2M COP/mes en CM</div>
+      <span class="card-click-hint">Ver como se habilita</span>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>El driver oculto:</strong> El Dream Team IA no reemplaza empleados que V&A tiene.<br>Habilita capacidades que V&A nunca tuvo.<br>Eso es mas valioso que las horas recuperadas, porque abre puertas que antes estaban cerradas: mejores propuestas, mas presencia digital, procesos que antes eran imposibles.<br>Y ese valor no aparece en la formula de ROI — es un bonus.
+  </div>
+
+  <p class="punchline">La IA no ahorra empleados.<br>Habilita capacidades que un fundador de 2 personas<br>nunca tuvo acceso.</p>
+</section>
+
+<!-- ============================== SECTION 5: EL LOOP ============================== -->
+<section id="loop" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">5</div>
+    <div>
+      <h2>El Loop:<br>Por Que Funciona Mejor Cada Mes</h2>
+      <p class="section-subtitle">La diferencia entre una herramienta y un sistema<br>es que el sistema mejora solo.</p>
+    </div>
+  </div>
+
+  <div class="card card-gold card-clickable" onclick="openModal('modal-loop')">
+    <h4>El Ciclo Virtuoso de Mejora Continua</h4>
+    <div class="card-grid-2" style="margin-top:1rem;">
+      <div>
+        <p><strong>V&A trabaja con los agentes.</strong> Cada propuesta, evaluacion, reporte alimenta la base de conocimiento en Google Drive. No es trabajo extra — es el trabajo normal que ahora deja rastro.</p>
+        <p><strong>Los agentes absorben el contexto.</strong> NotebookLM (N2) integra cada documento nuevo. La proxima respuesta es mejor porque tiene mas datos de V&A, no datos genericos de internet.</p>
+        <p><strong>El tiempo libre genera mas mejora.</strong> Las 128h/mes recuperadas no se evaporan. Se reinvierten en refinar agentes, explorar automatizaciones, probar nuevos flujos. Es como interes compuesto, pero de productividad.</p>
+        <p><strong>El ciclo se acelera.</strong> Cada iteracion alimenta la siguiente. No hay techo. Solo acumulacion.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.75rem;">
+        <div style="text-align:center;padding:1.25rem;background:var(--mia-blue-dim);border-radius:var(--radius-lg);width:100%;">
+          <div class="big-number blue" style="font-size:1.5rem;">Mes 1-2</div>
+          <div class="big-number-label">Agentes siguen instrucciones</div>
+        </div>
+        <div class="loop-arrow">&#8595;</div>
+        <div style="text-align:center;padding:1.25rem;background:var(--mia-gold-dim);border-radius:var(--radius-lg);width:100%;">
+          <div class="big-number" style="font-size:1.5rem;">Mes 3-6</div>
+          <div class="big-number-label">Agentes conocen el negocio</div>
+        </div>
+        <div class="loop-arrow">&#8595;</div>
+        <div style="text-align:center;padding:1.25rem;background:var(--mia-positive-dim);border-radius:var(--radius-lg);width:100%;">
+          <div class="big-number" style="font-size:1.5rem;color:var(--mia-positive);">Mes 7-12</div>
+          <div class="big-number-label">Agentes son la memoria operativa</div>
+        </div>
+      </div>
+    </div>
+    <span class="card-click-hint">Ver detalle del efecto compuesto</span>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-ecosistema-tech')">
+      <h4>Evolucion N1 a N4: De Chat a Producto</h4>
+      <p>Cada agente nace como una Gema de Gemini (N1) — un chat especializado. Se potencia con NotebookLM (N2). Puede automatizarse con Google Opal (N3). Los mas valiosos pueden convertirse en mini apps propias con AntiGravity (N4): productos de V&A para sus clientes.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+        <span class="badge badge-blue">N1 Gema</span><span style="color:var(--mia-blue);">&#8594;</span>
+        <span class="badge badge-gold">N2 +NLM</span><span style="color:var(--mia-gold-dark);">&#8594;</span>
+        <span class="badge badge-green">N3 Opal</span><span style="color:#16A34A;">&#8594;</span>
+        <span class="badge" style="background:rgba(139,92,246,0.10);color:#8B5CF6;">N4 App</span>
+      </div>
+      <span class="card-click-hint">Ver ruta de evolucion por agente</span>
+    </div>
+    <div class="card card-gold card-clickable" onclick="openModal('modal-dreamteam-resumen')">
+      <h4>Dream Team: 6 Especialistas 24/7</h4>
+      <ul>
+        <li><strong>Asistente de Propuestas:</strong> De 4h a 30min por propuesta</li>
+        <li><strong>Task Tracker:</strong> Cero seguimientos perdidos</li>
+        <li><strong>Agente de Prospeccion:</strong> Funnel siempre activo</li>
+        <li><strong>Motor de Reportes:</strong> Viernes con reporte listo</li>
+        <li><strong>Peer Reviewer IA:</strong> Evaluaciones HR 24/7</li>
+        <li><strong>Meeting Analyst:</strong> Reuniones → acciones</li>
+      </ul>
+      <span class="card-click-hint">Ver cada agente</span>
+    </div>
+  </div>
+
+  <div class="micro-commit">
+    <div class="micro-commit-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-navy)" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="micro-commit-text">Punto de acuerdo: un sistema que mejora con el uso es mas valioso que una herramienta que se deprecia.</div>
+  </div>
+
+  <p class="punchline">No es una herramienta que se compra.<br>Es un sistema que crece.<br>Y cuanto mas tarde empiece, mas ventaja pierde.</p>
+</section>
+
+<!-- ============================== SECTION 6: OBJECIONES ============================== -->
+<section id="objeciones" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">6</div>
+    <div>
+      <h2>Lo Que Podrian Objetar<br>(Y Por Que No Se Sostiene)</h2>
+      <p class="section-subtitle">Un buen caso de negocio<br>responde las preguntas antes de que las hagan.</p>
+    </div>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-obj-caro')" style="background:var(--mia-navy-light);">
+    <div style="display:flex;align-items:baseline;gap:.75rem;"><span class="objection-q">"Es caro"</span><span class="badge badge-red" style="font-size:.65rem;">Objecion de precio</span></div>
+    <p style="color:var(--mia-text);margin-top:.75rem;">El Programa cuesta 500k COP/asistente. Para 6 asistentes: 3M COP. Ahora, la formula dice que se recupera en menos de 4 meses incluso en el peor escenario. Y si V&A contratara un diseñador parcial + un community manager, pagaria 2.5-5M COP <em>cada mes</em>, indefinidamente, por una fraccion de lo que el Dream Team habilita. La pregunta no es si es caro. Es comparado con que.</p>
+    <span class="card-click-hint">Ver alternativas de acceso</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-obj-tiempo')" style="background:var(--mia-navy-light);">
+    <div style="display:flex;align-items:baseline;gap:.75rem;"><span class="objection-q">"No tenemos tiempo"</span><span class="badge badge-warning" style="font-size:.65rem;">Objecion de capacidad</span></div>
+    <p style="color:var(--mia-text);margin-top:.75rem;">La transformacion requiere 9h/semana durante 16 semanas. Eso es el 5.6% del tiempo operativo mensual. A cambio, recuperan el 40%. Es invertir 1 para recuperar 7. La pregunta correcta no es "tenemos tiempo". Es "podemos permitirnos seguir sin tiempo el proximo año tambien".</p>
+    <span class="card-click-hint">Ver estructura de dedicacion</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-obj-falla')" style="background:var(--mia-navy-light);">
+    <div style="display:flex;align-items:baseline;gap:.75rem;"><span class="objection-q">"Que pasa si no funciona"</span><span class="badge badge-blue" style="font-size:.65rem;">Objecion de riesgo</span></div>
+    <p style="color:var(--mia-text);margin-top:.75rem;">Gates de decision con criterios medibles en G1, G2 y G3. Kill/pivot en semana 8. Clausula de salida limpia en cualquier gate: toda la documentacion, configuraciones y base de conocimiento se quedan con V&A. Sin penalidades. Sin retencion de datos. Sin periodos de aviso. V&A se queda porque quiere, nunca porque debe.</p>
+    <span class="card-click-hint">Ver red de seguridad completa</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-obj-dependencia')" style="background:var(--mia-navy-light);">
+    <div style="display:flex;align-items:baseline;gap:.75rem;"><span class="objection-q">"Nos volvemos dependientes"</span><span class="badge badge-gold" style="font-size:.65rem;">Objecion de autonomia</span></div>
+    <p style="color:var(--mia-text);margin-top:.75rem;">Los permisos de MetodologIA decrecen con el tiempo: Editor → Lector → Sin acceso. La base de conocimiento vive en el Google Drive de V&A. Los agentes son Gemas de Gemini en la cuenta de V&A. Post-graduacion, MetodologIA pierde acceso. La soberania no es un eslogan — es una estructura de permisos que la garantiza en cada fase.</p>
+    <span class="card-click-hint">Ver modelo de transferencia</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-obj-solos')" style="background:var(--mia-navy-light);">
+    <div style="display:flex;align-items:baseline;gap:.75rem;"><span class="objection-q">"Podemos aprenderlo solos"</span><span class="badge badge-green" style="font-size:.65rem;">Objecion de alternativa</span></div>
+    <p style="color:var(--mia-text);margin-top:.75rem;">Pueden. Pero cada mes de aprendizaje autodidacta son 128 horas que siguen sin recuperarse. MetodologIA comprime 12-18 meses de curva de aprendizaje en 16 semanas porque ya recorrio ese camino. Es la diferencia entre explorar un territorio y tener el mapa. Y mientras V&A explora, la ventana competitiva se cierra.</p>
+    <span class="card-click-hint">Ver comparativa de tiempos</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-obj-ia')" style="background:var(--mia-navy-light);">
+    <div style="display:flex;align-items:baseline;gap:.75rem;"><span class="objection-q">"La IA todavia no esta lista"</span><span class="badge badge-blue" style="font-size:.65rem;">Objecion de madurez</span></div>
+    <p style="color:var(--mia-text);margin-top:.75rem;">Ecosistema 100% Google Workspace: Gemini, NotebookLM, Opal. No startups fragiles, no herramientas experimentales. Google tiene roadmap publico, millones de usuarios enterprise, y compromiso a largo plazo. La evolucion N1→N4 es progresiva — se valida cada nivel antes de avanzar al siguiente.</p>
+    <span class="card-click-hint">Ver estrategia tecnologica</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-obj-noentienden')" style="background:var(--mia-navy-light);">
+    <div style="display:flex;align-items:baseline;gap:.75rem;"><span class="objection-q">"No entendemos de IA"</span><span class="badge badge-warning" style="font-size:.65rem;">Objecion de conocimiento</span></div>
+    <p style="color:var(--mia-text);margin-top:.75rem;">Eso es exactamente lo que resuelven las 16 semanas. La escalera es gradual y aditiva: primero ofimatica IA (Workshop, 200k COP/persona), luego automatizacion comercial (Bootcamp, 800k COP/persona), luego Dream Team completo (Programa, 2.4M COP/persona). Cada paso incluye todo lo anterior. Nadie empieza por lo complejo.</p>
+    <span class="card-click-hint">Ver escalera de aprendizaje</span>
+  </div>
+
+  <p class="punchline">Cada objecion tiene respuesta<br>porque el modelo fue diseñado para tenerla.<br>No es improvisacion. Es ingenieria de decision.</p>
+</section>
+
+<!-- ============================== SECTION 7: LA DECISION ============================== -->
+<section id="decision" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">7</div>
+    <div>
+      <h2>La Decision</h2>
+      <p class="section-subtitle">Todo lo anterior se resume en esto.</p>
+    </div>
+  </div>
+
+  <div class="card card-gold">
+    <h4>Lo que acaban de leer, condensado</h4>
+    <div class="card-grid-2" style="margin-top:1rem;">
+      <div>
+        <h4 style="color:var(--mia-critical);font-size:1rem;">Cada mes sin actuar</h4>
+        <ul>
+          <li>128 horas de productividad no capturada</li>
+          <li>Propuestas sin diseño profesional</li>
+          <li>Automatizaciones que no existen</li>
+          <li>Contenido que no se publica</li>
+          <li>Una ventana competitiva que se achica</li>
+          <li>Una base de conocimiento que no se construye</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--mia-positive);font-size:1rem;">Cada mes despues de actuar</h4>
+        <ul>
+          <li>128 horas reinvertidas en alto valor</li>
+          <li>6 agentes con capacidades de equipo de 4-5 personas</li>
+          <li>Independencia de diseñadores, programadores, publicistas</li>
+          <li>Un sistema que mejora con cada uso</li>
+          <li>Datos propios, en Drive propio, con permisos que garantizan soberania</li>
+          <li>La posibilidad de construir productos propios (N4)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-accent card-clickable" onclick="openModal('modal-inversion')">
+    <h4>Los 3 caminos de acceso</h4>
+    <div class="card-grid-3" style="margin-top:1rem;">
+      <div style="text-align:center;padding:1.5rem;background:var(--mia-blue-dim);border-radius:var(--radius-md);">
+        <h4 style="font-size:1rem;color:var(--mia-blue);">Pago Directo</h4>
+        <p style="font-size:.85rem;">500k COP/asistente (3M para 6). 16 semanas + 6 agentes. Incluye Workshop + Bootcamp + Dream Team.</p>
+      </div>
+      <div style="text-align:center;padding:1.5rem;background:var(--mia-gold-dim);border-radius:var(--radius-md);">
+        <h4 style="font-size:1rem;color:var(--mia-gold-dark);">Compromiso de Ventas</h4>
+        <p style="font-size:.85rem;">36M COP en ventas. MetodologIA invierte en V&A porque V&A genera ingresos. Sin desembolso inicial.</p>
+      </div>
+      <div style="text-align:center;padding:1.5rem;background:var(--mia-positive-dim);border-radius:var(--radius-md);">
+        <h4 style="font-size:1rem;color:#16A34A;">Diagnostico Gratuito</h4>
+        <p style="font-size:.85rem;">3 horas. Sin compromiso. Verifican sus drivers reales. Despues deciden con datos, no con promesas.</p>
+      </div>
+    </div>
+    <span class="card-click-hint">Ver escalera de precios completa</span>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Trazabilidad:</strong> Este documento (08) resume los hallazgos de 9 documentos de discovery: Plan de Soberania Digital (00), Stakeholder Map (01), Brief Tecnico (02), Analisis AS-IS (03), Mapeo de Flujos (04/04b), Escenarios (05), Roadmap (06/06b) y Especificacion Funcional (07).<br>Cada afirmacion tiene evidencia.<br>Cada driver es verificable.<br>Cada formula es reproducible.
+  </div>
+
+  <div style="text-align:center;padding:3rem 0;">
+    <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" class="cta-button gold" target="_blank" style="font-size:1.15rem;padding:1.25rem 3rem;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;vertical-align:middle;margin-right:10px;display:inline-block;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Agendar Diagnostico Gratuito
+    </a>
+    <p style="margin-top:1.5rem;font-size:1rem;color:#64748B;">3 horas donde verificamos juntos los drivers. Sin compromiso. Sin costo. Con datos reales.</p>
+    <p style="margin-top:.5rem;font-size:.85rem;color:#94A3B8;">Despues del diagnostico, V&A decide con su propia matematica si continuar.</p>
+  </div>
+
+  <p class="punchline">2 personas. 320 horas.<br>Una formula que se resuelve sola.<br>La decision ya esta tomada — solo falta firmarla.</p>
+</section>
+
+</div>
+
+<!-- ============================== MODALS ============================== -->
+
+<!-- Modal: Fundadores -->
+<div class="modal-overlay" id="modal-fundadores">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-fundadores')">&times;</button>
+    <h2>Ser 2: La <span>Ventaja Oculta</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">2 personas</span><span class="badge badge-gold">Velocidad maxima</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Lo que las corporaciones envidian</div>
+      <p>Una empresa de 200 personas necesita aprobacion del board, ciclo presupuestario, comite de tecnologia, gestion de cambio con multiples departamentos, y 6-12 meses de procurement. V&A necesita una conversacion entre 2 personas y una decision. Esa velocidad de decision es un activo estrategico que no se puede comprar.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">El multiplicador del compromiso personal</div>
+      <p>Las 9h/semana de la suscripcion las dedica quien toma las decisiones del negocio. No un "equipo de innovacion" desconectado de la operacion. No un pasante explorando herramientas. Los fundadores. Eso significa que cada hora de aprendizaje se traduce inmediatamente en decision operativa. No hay capa de traduccion. No hay diluciones.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Lo que a una corporacion le toma 18 meses, V&A puede tenerlo funcionando en 16 semanas. Y lo que a una corporacion le cuesta 50M+ COP en consultoria de gestion de cambio, V&A lo resuelve con una decision sobre el desayuno.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Ventana Competitiva -->
+<div class="modal-overlay" id="modal-ventana">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ventana')">&times;</button>
+    <h2>La Ventana <span>Competitiva</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-red">12 meses</span><span class="badge badge-gold">Efecto acumulativo</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Por que hay una ventana y no un plazo indefinido</div>
+      <p>La IA en consultoria no es como comprar un software. Es como entrenar un musculo. Quien empieza hoy tiene 12 meses de datos acumulados, agentes entrenados, y flujos optimizados cuando la competencia apenas empiece. Esa ventaja no se compra — se construye con tiempo. Y el tiempo es el recurso que no se puede acelerar despues.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Señales que ya son visibles</div>
+      <p>Clientes de consultoria ya preguntan por soluciones con IA. Profesionales independientes usan Gemini y ChatGPT para tareas que antes requerian equipos. Las grandes firmas estan invirtiendo en automatizacion. Quien no se posicione como "AI Native" en 2025-2026 se posiciona, por defecto, como "legacy".</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A no compite por tamaño. Compite por inteligencia operativa. Y la inteligencia operativa se construye ahora, no despues.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Drivers -->
+<div class="modal-overlay" id="modal-drivers">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-drivers')">&times;</button>
+    <h2>Los 5 <span>Drivers</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Verificables</span><span class="badge badge-gold">Independientes de opinion</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Por que drivers y no numeros</div>
+      <p>Un numero se puede discutir. Un driver se verifica. P (personas) es un hecho. H (horas/mes) es medible. R (% recuperable) tiene un framework detras que lo sustenta. I (inversion) es un precio publicado. Solo V (valor hora) es variable — y por eso construimos la tabla de sensibilidad: para que V&A use su propio numero y vea que el resultado sigue siendo el mismo.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como verificar cada driver en el diagnostico</div>
+      <p>En las 3 horas de diagnostico gratuito, mapeamos las horas reales de V&A contra el framework 80/50/20. El resultado es un R verificado con datos propios, no con promedios de industria. Si R resulta ser 30% en vez de 40%, el modelo sigue funcionando. Si resulta ser 50%, mejor aun. Pero el diagnostico elimina la incertidumbre: despues de esas 3 horas, V&A tiene sus propios drivers.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los drivers convierten "creemos que la IA puede ayudar" en "sabemos exactamente cuanto y en cuanto tiempo". Eso no es marketing. Es ingenieria de decision.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Framework -->
+<div class="modal-overlay" id="modal-framework">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-framework')">&times;</button>
+    <h2>Framework <span>80/50/20</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Conservador</span><span class="badge badge-blue">Verificable en diagnostico</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Desglose para 320h/mes</div>
+      <p><strong>Tareas simples (160h/mes, 50%):</strong> Seguimientos, recordatorios, compilacion, agendamiento, correos rutinarios. IA interviene el 80% = 128h. <strong>Tareas medias (112h/mes, 35%):</strong> Propuestas, evaluaciones iniciales, reportes, contenido. IA genera borrador, humano refina = 50% = 56h. <strong>Tareas complejas (48h/mes, 15%):</strong> Negociaciones, decisiones estrategicas, relaciones clave. IA aporta datos, humano decide = 20% = 9.6h.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Por que usamos 40% y no 60%</div>
+      <p>El total teorico es ~194h/mes (~60%). Usamos 128h (40%) porque: la adopcion es gradual (no instantanea), no todos los procesos se automatizan desde el dia 1, y preferimos que la realidad supere la expectativa. Si V&A logra mas del 40%, es un bonus. Si logra exactamente el 40%, el modelo se cumple. Es un piso, no un techo.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El 40% no es una promesa. Es un calculo conservador basado en un framework que se verifica en el diagnostico con las horas reales de V&A.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Break-Even -->
+<div class="modal-overlay" id="modal-breakeven">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-breakeven')">&times;</button>
+    <h2>Analisis de <span>Break-Even</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Parametrico</span><span class="badge badge-green">Stress-tested</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">La formula</div>
+      <p>Break-Even (meses) = I / (H x R x V). Para 6 asistentes: 500k / (160 x 0.4 x V) = 500k / (64 x V). Donde V es el valor que se asigna a una hora de tiempo. La formula es por asistente — cada uno tiene su propio break-even identico porque I, H y R son iguales para todos.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Tabla de sensibilidad extendida</div>
+      <p>Si V = 15k COP (minimo absoluto): break-even en 2.5 meses. Si V = 20k: 1.9 meses. Si V = 30k: 1.3 meses. Si V = 40k: 0.9 meses. Si V = 50k: 0.75 meses. Si V = 60k: 0.6 meses. No existe un valor razonable de V en el que el break-even supere 3 meses. Y despues del break-even, cada hora recuperada es ganancia neta. Cada mes. Indefinidamente.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El break-even no depende de que la IA sea perfecta. No depende de un valor hora especifico. No depende de proyecciones de crecimiento. Depende de una division. Y la division no miente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Stress Test -->
+<div class="modal-overlay" id="modal-stress">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-stress')">&times;</button>
+    <h2>Prueba de <span>Estres</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-red">Peor caso</span><span class="badge badge-gold">Sigue funcionando</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Escenario pesimista: R = 20%, V = 25k COP</div>
+      <p>Solo se recupera el 20% de las horas (la mitad del objetivo). La hora se valora en 25k COP (por debajo del mercado para consultoria HR). Resultado: 500k / (160 x 0.20 x 25,000) = 500k / 800,000 = 0.6 meses de break-even. Menos de un mes. En el peor caso razonable. Con la mitad de la recuperacion esperada y un valor hora por debajo del mercado.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Escenario catastrofico: R = 10%, V = 20k COP</div>
+      <p>Solo 10% de recuperacion (una cuarta parte del objetivo). Valor hora de 20k (asistente, no consultor). Resultado: 2.4M / (160 x 0.10 x 20,000) = 2.4M / 320,000 = 7.5 meses. Siete meses y medio. Incluso en un escenario que requeriria que casi nada funcione, la inversion se paga antes del año. Y esto es con supuestos tan conservadores que contradecen la evidencia de los documentos 03 a 07.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>No hay combinacion razonable de variables en la que la inversion no se recupere. El peor caso razonable: 3 meses. El peor caso catastrofico: 7.5 meses. El caso base: menos de 1 mes. La matematica no tiene opinion politica.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Sin Diseñador -->
+<div class="modal-overlay" id="modal-sin-disenador">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-sin-disenador')">&times;</button>
+    <h2>Capacidad de <span>Diseño</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Habilitada por IA</span><span class="badge badge-gold">Sin costo recurrente</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Lo que hoy no se hace</div>
+      <p>Las propuestas salen en Word basico. Las presentaciones a clientes no tienen identidad visual consistente. El material de marca no existe o se improvisa. No es que V&A no quiera — es que generar material visual profesional requiere un diseñador que cobra 1.5-3M COP/mes, o horas que los fundadores no tienen. Resultado: oportunidades que se pierden por presentacion, no por sustancia.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Lo que cambia</div>
+      <p>El Asistente de Propuestas genera documentos con identidad de marca. Los agentes producen material visual consistente. Las plantillas se alimentan de la base de conocimiento de V&A. No es diseño generico — es diseño con el ADN de V&A. Disponible 24/7. Sin tiempos de espera. Sin "mandame el brief y te lo tengo en 5 dias".</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A adquiere capacidad de diseño como efecto secundario de la transformacion. No paga extra por ello. Y el resultado mejora cada mes porque los agentes aprenden el estilo de V&A con cada documento generado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Sin Programador -->
+<div class="modal-overlay" id="modal-sin-programador">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-sin-programador')">&times;</button>
+    <h2>Capacidad de <span>Automatizacion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">N3 Google Opal</span><span class="badge badge-gold">Sin codigo</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Lo que hoy se hace a mano</div>
+      <p>Seguimiento de clientes: manual. Envio de propuestas: manual. Actualizacion de pipeline: manual. Notificaciones internas: "me acorde" o "se me olvido". Automatizar esto requiere un programador (3-5M COP/mes) o una herramienta que V&A no tiene tiempo de aprender. El resultado: todo opera con la velocidad y la memoria de 2 personas, no mas.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Lo que cambia</div>
+      <p>Google Opal (N3) permite crear flujos automatizados sin escribir una linea de codigo: triggers, condiciones, acciones. Nativo de Google Workspace. Task Tracker automatiza seguimientos. Los flujos comerciales conectan prospeccion → propuesta → cierre sin intervencion manual. V&A configura sus propias automatizaciones, las modifica cuando quiere, sin depender de nadie.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Automatizar deja de ser "un proyecto de tecnologia" y se convierte en "asi funciona nuestro negocio". Sin dependencia. Sin costo recurrente. Sin esperar a que alguien mas tenga tiempo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Sin Publicista -->
+<div class="modal-overlay" id="modal-sin-publicista">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-sin-publicista')">&times;</button>
+    <h2>Capacidad de <span>Contenido</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Voz propia</span><span class="badge badge-gold">Alimentado por datos de V&A</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">La ausencia que cuesta</div>
+      <p>V&A necesita presencia digital: contenido para LinkedIn, correos de prospeccion que no suenen genericos, textos para su sitio web, comunicaciones a clientes. Pero generar contenido de calidad requiere tiempo o un publicista (1-2M COP/mes). El resultado: presencia digital minima. Los prospectos que buscan V&A en internet encuentran poco. Los que podrian llegar por contenido, no llegan.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Lo que cambia</div>
+      <p>El Agente de Prospeccion genera correos personalizados con datos del CRM. Los agentes producen contenido con el tono y vocabulario de V&A, alimentados por NotebookLM (N2). No es contenido generico de ChatGPT — es contenido que suena a V&A porque aprendio de V&A. Posts, correos, textos: minutos, no dias.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Publicar deja de ser un proyecto y se convierte en un habito. Y cada pieza de contenido alimenta el loop: mas visibilidad, mas prospectos, mas datos, mejores agentes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Loop -->
+<div class="modal-overlay" id="modal-loop">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-loop')">&times;</button>
+    <h2>El Loop de <span>Mejora Continua</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Efecto compuesto</span><span class="badge badge-green">Automatico</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Por que esto es diferente a comprar software</div>
+      <p>Un CRM se deprecia: el dia que lo compras es el dia que mas vale. Un equipo de agentes IA se aprecia: el dia que lo construyes es el dia que menos vale. Cada propuesta generada, cada evaluacion hecha, cada reporte compilado enriquece la base de conocimiento. NotebookLM absorbe cada documento. La proxima respuesta es mejor porque tiene mas contexto. Es interes compuesto de productividad.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cuantificado por fase</div>
+      <p>Mes 1-2: agentes responden con instrucciones + plantillas basicas. Precision ~60%. Mes 3-6: agentes conocen servicios, clientes, tono de V&A. Precision ~80%. Mes 7-12: agentes anticipan patrones, sugieren mejoras, son la memoria operativa. Precision ~90%+. El conocimiento no se pierde cuando alguien esta enfermo, de vacaciones, o ocupado con un cliente critico.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El R del mes 1 es 40%. El R del mes 12 sera mayor — porque los agentes son mejores, los flujos estan mas afinados, y V&A sabe exactamente que automatizar. El ROI real supera la formula porque la formula usa el R del dia 1, no el del dia 365.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Ecosistema Tech -->
+<div class="modal-overlay" id="modal-ecosistema-tech">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ecosistema-tech')">&times;</button>
+    <h2>Evolucion <span>N1 a N4</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">N1</span><span class="badge badge-gold">N2</span><span class="badge badge-green">N3</span><span class="badge" style="background:rgba(139,92,246,0.10);color:#8B5CF6;">N4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">N1 — Gema de Gemini</div>
+      <p>Chat especializado con prompt diseñado. Accesible por movil o escritorio. Barrera de entrada: cero. Todos los agentes empiezan aqui. No requiere habilidades tecnicas.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">N2 — Gema + NotebookLM</div>
+      <p>Fuentes de datos ampliadas desde repos gobernados en Google Drive. El agente responde con datos reales de V&A, no con conocimiento generico. La diferencia entre "una IA que sabe de HR" y "la IA que sabe como trabaja V&A".</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">N3 — Flujos con Google Opal</div>
+      <p>Automatizacion de pasos repetitivos sin codigo. Triggers, condiciones, acciones. Nativo de Google. V&A configura sus propios flujos sin necesidad de programador. El agente pasa de responder a actuar.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">N4 — Mini App / AntiGravity</div>
+      <p>Interfaz propia con logica estructurada. Candidatos: Peer Reviewer IA (producto estrella para clientes de V&A), Task Tracker, Agente de Prospeccion. Decision en Gate 2 o Gate 3 con datos de adopcion. Aqui V&A deja de ser "consultora que usa IA" y se convierte en "consultora que vende productos de IA".</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dream Team -->
+<div class="modal-overlay" id="modal-dreamteam-resumen">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dreamteam-resumen')">&times;</button>
+    <h2>Dream Team: <span>6 Agentes</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Fase 1: 2</span><span class="badge badge-gold">Fase 2: +4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fase 1 — Semanas 1-4</div>
+      <p><strong>Asistente de Propuestas</strong> (N1→N2→N3): De 4 horas a 30 minutos por propuesta. El agente conoce los servicios de V&A, su tono, y su formato. <strong>Task Tracker</strong> (N1→N4): Cero seguimientos perdidos. Cada compromiso con un cliente se rastrea automaticamente.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Fase 2 — Semanas 5-10</div>
+      <p><strong>Agente de Prospeccion</strong> (N1→N4): Funnel siempre activo, scoring de leads, correos personalizados. <strong>Motor de Reportes</strong> (N1→N3): Viernes con reporte ejecutivo listo, sin compilar datos manualmente. <strong>Peer Reviewer IA</strong> (N1→N4): Evaluaciones HR 24/7 — el candidato a producto propio. <strong>Meeting Analyst</strong> (N1→N3): Reuniones que terminan con acciones claras y documentadas.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>6 especialistas que trabajan 24/7. Equivalente funcional a un equipo de 4-5 personas. No se cansan, no olvidan, no tienen malos dias. Y mejoran con cada interaccion. Eso no se compra con dinero — se construye con tiempo. Y el tiempo empieza cuando V&A decide.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Inversion -->
+<div class="modal-overlay" id="modal-inversion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-inversion')">&times;</button>
+    <h2>Detalle de <span>Inversion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Transparencia total</span><span class="badge badge-blue">2 personas</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Escalera de precios canonica (cada modulo incluye el anterior)</div>
+      <p>Diagnostico: Gratuito (3h, sin compromiso). Workshop Introductorio: 200k COP/persona (incluye Diagnostico + ofimatica IA). Bootcamp de Ventas: 800k COP/persona (incluye Workshop + automatizacion comercial). Programa de Transformacion: 500k COP/asistente (incluye Bootcamp + 16 semanas + Dream Team IA completo). Para 6 asistentes: 3M COP total. Suscripcion Anual: primer mes prepagado (12 meses, 9h/semana, todo lo del Programa).</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Alternativa: compromiso de ventas (sin desembolso)</div>
+      <p>Workshop: 3M COP en ventas. Bootcamp: 12M COP en ventas. Programa: 36M COP en ventas. MetodologIA invierte en V&A porque V&A genera ingresos para MetodologIA. Sin desembolso inicial. Incentivos perfectamente alineados: si V&A no vende, MetodologIA no cobra. Riesgo compartido.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Dos caminos. Un destino. El pago directo es mas rapido. El compromiso de ventas elimina el riesgo financiero. V&A elige segun su situacion. En ambos casos, el break-even es el mismo porque el valor de las horas recuperadas no cambia.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Objecion Caro -->
+<div class="modal-overlay" id="modal-obj-caro">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-obj-caro')">&times;</button>
+    <h2>"Es <span>Caro</span>"</h2>
+    <div class="modal-badge-row"><span class="badge badge-red">Objecion de precio</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">La objecion</div>
+      <p>3M COP es una inversion significativa para cualquier organizacion. Es natural preguntarse si vale la pena.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">La respuesta desde drivers</div>
+      <p>La formula dice: break-even = I / (H x R x V). Incluso con V = 20k COP/hora (asistente, no consultor), el break-even es 1.9 meses. Despues de eso, cada mes genera valor neto. Ahora, un diseñador freelance parcial + un community manager cuesta 2.5-5M COP cada mes, indefinidamente, y cubre una fraccion de lo que el Dream Team habilita. La inversion de 4.8M es equivalente a 1-2 meses de esas alternativas parciales.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>"Caro" es un concepto relativo. 4.8M que se recuperan en menos de 4 meses (peor caso) no son un gasto. Son una inversion con payback documentado. Y si el argumento financiero no alcanza, esta la alternativa de compromiso de ventas: 36M COP en ventas, sin desembolso inicial.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Objecion Tiempo -->
+<div class="modal-overlay" id="modal-obj-tiempo">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-obj-tiempo')">&times;</button>
+    <h2>"No Tenemos <span>Tiempo</span>"</h2>
+    <div class="modal-badge-row"><span class="badge badge-warning">Objecion de capacidad</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">La paradoja</div>
+      <p>"No tenemos tiempo" es simultaneamente la razon por la que la transformacion es dificil y la razon por la que es urgente. Si V&A no tiene tiempo hoy con 320h/mes operativas, menos tendra el proximo año cuando quiera crecer.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Los numeros reales</div>
+      <p>La dedicacion es 9h/semana. De las 640h/mes combinadas de 2 personas, eso es ~36h/mes, o el 5.6%. A cambio de esas 36h invertidas, recuperan ~128h. Es invertir 1 hora para recuperar 3.5. No existe otra inversion de tiempo con ese retorno en el negocio de V&A.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La pregunta no es "tenemos 9 horas". Es "podemos permitirnos perder 128 horas al mes durante otro año". Si la respuesta es no, entonces las 9 horas se encuentran.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Objecion Falla -->
+<div class="modal-overlay" id="modal-obj-falla">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-obj-falla')">&times;</button>
+    <h2>"Y Si No <span>Funciona</span>"</h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Objecion de riesgo</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">La red de seguridad</div>
+      <p>Tres gates de decision (G1, G2, G3) con criterios medibles. Kill/pivot en semana 8 si los indicadores no avanzan. Umbral minimo de adopcion: 40%. Protocolo de recuperacion si la dedicacion baja de 6h/semana durante 2 semanas consecutivas. Cada gate tiene criterios de go/no-go documentados en la Especificacion Funcional (Doc 07).</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">La clausula de confianza</div>
+      <p>En cualquier gate, V&A puede decidir no continuar. Se entrega toda la documentacion, configuraciones, flujos y base de conocimiento generada hasta ese momento. Sin penalidades. Sin retencion de datos. Sin periodos de aviso. Todo lo construido es propiedad de V&A desde el dia 1.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A nunca se queda atrapado. Peor caso: decide no continuar en semana 8 y se queda con el workspace configurado, los primeros 2 agentes funcionando, y el aprendizaje de 2 meses de ofimatica IA. Eso solo ya vale la inversion.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Objecion Dependencia -->
+<div class="modal-overlay" id="modal-obj-dependencia">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-obj-dependencia')">&times;</button>
+    <h2>"Nos Volvemos <span>Dependientes</span>"</h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Objecion de autonomia</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El modelo de permisos lo responde</div>
+      <p>Programa (semanas 1-16): MetodologIA = Editor (necesario para construir). Suscripcion (meses 5-16): MetodologIA = Lector + Comentador (acompaña sin controlar). Post-Graduacion: MetodologIA pierde acceso completamente. V&A es autonomo.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Donde viven los activos</div>
+      <p>Base de conocimiento: Google Drive de V&A. Agentes: Gemas de Gemini en la cuenta de V&A. Flujos: Google Opal en el workspace de V&A. Documentacion: carpeta /V&A/Dream-Team/ con repos gobernados. Nada vive en servidores de MetodologIA. Nada requiere una licencia de MetodologIA. La soberania es arquitectonica, no contractual.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El objetivo de MetodologIA es crear autonomia, no dependencia. Por eso se llama "Success as a Service" — el servicio se acaba, el success se queda.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Objecion Solos -->
+<div class="modal-overlay" id="modal-obj-solos">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-obj-solos')">&times;</button>
+    <h2>"Podemos <span>Aprenderlo Solos</span>"</h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Objecion de alternativa</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El costo del autodidacta</div>
+      <p>Aprender IA de forma autodidacta es posible. Pero tiene un costo que no aparece en la factura: tiempo. Cada mes de exploracion son 128 horas que siguen sin recuperarse. MetodologIA comprime 12-18 meses de curva de aprendizaje en 16 semanas porque ya recorrio ese camino con otros clientes.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">La matematica de la alternativa</div>
+      <p>Si V&A aprende sola en 12 meses lo que MetodologIA enseña en 4: pierde 8 meses x 128h = 1,024 horas de productividad no capturada. A 40k COP/hora: 40.9M COP en valor perdido por elegir el camino lento. La "economia" de aprender solo cuesta mas que el programa.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>No es que no puedan. Es que cada mes que tardan tiene un costo verificable. Y mientras V&A explora, la ventana competitiva se cierra.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Objecion IA -->
+<div class="modal-overlay" id="modal-obj-ia">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-obj-ia')">&times;</button>
+    <h2>"La IA No Esta <span>Lista</span>"</h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Objecion de madurez</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">La apuesta tecnologica</div>
+      <p>Ecosistema 100% Google Workspace. Gemini: producto GA con millones de usuarios enterprise. NotebookLM: producto GA en expansion. Opal: roadmap publico de Google. No son startups de 10 personas que pueden desaparecer. Es la infraestructura de una de las 5 empresas mas grandes del mundo.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">La progresividad como mitigacion</div>
+      <p>No se apuesta todo al N4 desde el dia 1. Se empieza con N1 (chat basico), se valida, se avanza a N2 (datos propios), se valida, se avanza a N3 (automatizacion). N4 solo se explora si los niveles anteriores funcionan. Cada nivel se prueba antes de invertir en el siguiente. Si N3 falla, V&A se queda con N2 — que ya genera valor.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La IA de hoy hace el 80% de lo que V&A necesita. La de dentro de 6 meses hara mas. La pregunta no es si esta lista — es si V&A estara lista cuando la competencia la adopte.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Objecion No Entienden -->
+<div class="modal-overlay" id="modal-obj-noentienden">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-obj-noentienden')">&times;</button>
+    <h2>"No Entendemos <span>de IA</span>"</h2>
+    <div class="modal-badge-row"><span class="badge badge-warning">Objecion de conocimiento</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El punto de partida honesto</div>
+      <p>V&A no necesita entender de IA para empezar. Necesita entender su negocio — y eso ya lo domina. La IA es la herramienta; V&A es el expertise. MetodologIA enseña a usar la herramienta. V&A pone el conocimiento de su sector.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">La escalera graduada</div>
+      <p>Workshop (200k COP/persona): ofimatica IA. Usar Gemini para tareas cotidianas. Nivel: "saber pedir". Bootcamp (800k COP/persona): automatizacion comercial. Flujos basicos, prospeccion asistida. Nivel: "saber configurar". Programa (500k COP/asistente): Dream Team completo. 6 agentes, gobernanza, evolucion N1-N4. Nivel: "saber construir". Cada paso incluye todo lo anterior. Nadie empieza por lo complejo.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>En 16 semanas, V&A pasa de "no entendemos de IA" a "construimos nuestros propios agentes de IA". Ese es el recorrido. Y esta diseñado para personas que no son tecnicas — porque los fundadores de V&A son consultores, no programadores.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="footer-inner">
+    <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 1rem;">
+      <defs><linearGradient id="footerLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
+      <rect width="40" height="40" rx="10" fill="url(#footerLogo)"/>
+      <path d="M11 12h4v16h-4V12zm7 0h4v10h-4V12zm0 13h4v3h-4v-3zm7-13h4v7h-4V12zm0 10h4v6h-4v-6z" fill="white"/>
+      <circle cx="20" cy="8" r="2.5" fill="#FFD700"/>
+      <path d="M52 28V14h4.2l3.5 9.1L63.3 14h4.1v14h-3V18.5L61 27h-2.2l-3.5-8.5V28H52zm22.5 0V14h3.2v14h-3.2zm8.5 0V14h3.2l5.8 9.3V14h3v14h-3.1L86.1 19V28H83z" fill="white" opacity="0.7"/>
+    </svg>
+    <p class="footer-brand-name">Metodolog<span style="color:var(--mia-gold)">IA</span></p>
+    <p style="margin-top:.5rem;">Success as a Service</p>
+    <p class="footer-code">MTIA-08-PITCH-VA-SE</p>
+    <p style="margin-top:.75rem;font-size:.7rem;">Documento confidencial preparado para V&A Consulting. Prohibida su reproduccion sin autorizacion.</p>
+  </div>
+</footer>
+
+<script>
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+}
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  tocLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

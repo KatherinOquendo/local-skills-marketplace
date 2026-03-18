@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Stakeholders | V&A x MetodologIA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E8ECF4;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--mia-dark-text);
+  background-color: var(--mia-offwhite);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--mia-navy);
+  line-height: 1.2;
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; line-height: 1.6; }
+a { color: var(--mia-blue); text-decoration: none; transition: all var(--transition-normal); }
+a:hover { color: var(--mia-blue-light); }
+strong { font-weight: 600; }
+
+/* ============================== HERO ============================== */
+.hero {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 2rem 4rem;
+  color: var(--mia-white);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 80%; height: 200%;
+  background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue));
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+  text-align: center;
+}
+.brand-logo {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 2rem;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--mia-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--mia-text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--mia-text);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto; margin-right: auto;
+}
+.hero-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.hero-kpi {
+  text-align: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  transition: all var(--transition-normal);
+}
+.hero-kpi:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+.hero-kpi-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 700; line-height: 1;
+  color: var(--mia-gold);
+}
+.hero-kpi-value.blue { color: var(--mia-blue-light); }
+.hero-kpi-label {
+  font-size: .72rem; color: var(--mia-text-muted);
+  margin-top: .5rem; font-weight: 500; letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.hero-punchline {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--mia-blue-light);
+  margin-top: 2.5rem;
+  opacity: 0.85;
+}
+
+/* ============================== STICKY TOC ============================== */
+nav.toc {
+  background: var(--mia-white);
+  position: sticky; top: 0;
+  z-index: var(--z-sticky-nav);
+  border-bottom: 1px solid #E2E8F0;
+  box-shadow: var(--shadow-sm);
+}
+nav.toc .toc-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 2rem;
+}
+nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+nav.toc a {
+  display: block; padding: .9rem 1.1rem;
+  font-size: .68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: #64748B; white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-normal);
+}
+nav.toc a:hover, nav.toc a.active {
+  color: var(--mia-blue);
+  border-bottom-color: var(--mia-blue);
+  text-decoration: none;
+}
+
+/* ============================== CONTAINER ============================== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* ============================== SECTIONS ============================== */
+section {
+  scroll-margin-top: 60px;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid #E2E8F0;
+}
+section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex; gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.section-number {
+  width: 52px; height: 52px; min-width: 52px;
+  background: var(--mia-navy);
+  color: var(--mia-gold);
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+}
+.section-header h2 { margin: 0; color: var(--mia-navy); }
+.section-header .section-subtitle {
+  font-size: .9rem; color: #64748B; margin-top: .25rem;
+}
+
+/* ============================== CARDS ============================== */
+.card {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1.5rem;
+  border: 1px solid #E2E8F0;
+  transition: all var(--transition-normal);
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card-accent { border-top: 4px solid var(--mia-blue); }
+.card-gold { border-top: 4px solid var(--mia-gold); }
+.card-clickable { cursor: pointer; }
+.card-clickable:hover { border-color: var(--mia-blue); box-shadow: var(--shadow-md), var(--shadow-glow-blue); }
+.card-dark {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  color: var(--mia-white);
+  border: none;
+}
+.card-dark h3, .card-dark h4 { color: var(--mia-gold); }
+.card-dark p, .card-dark li { color: var(--mia-text); }
+
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.card-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* Card icon */
+.card-icon {
+  width: 48px; height: 48px;
+  background: var(--mia-blue-dim);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--mia-blue);
+}
+.card-icon.gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.card-icon.critical { background: var(--mia-critical-dim); color: var(--mia-critical); }
+.card-icon.positive { background: var(--mia-positive-dim); color: var(--mia-positive); }
+.card-icon svg { width: 24px; height: 24px; }
+
+/* Card click hint */
+.card-click-hint {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mia-blue);
+  opacity: 0.7;
+  transition: opacity var(--transition-normal);
+}
+.card-clickable:hover .card-click-hint { opacity: 1; }
+
+/* ============================== DARK SECTIONS ============================== */
+.section-dark {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  color: var(--mia-white);
+  padding: 4rem 2rem;
+  margin: 0 -2rem;
+  border-bottom: none;
+}
+.section-dark h2, .section-dark h3 { color: var(--mia-white); }
+.section-dark h2 span { color: var(--mia-gold); }
+.section-dark p { color: var(--mia-text); }
+.section-dark .section-number { background: rgba(255,255,255,0.1); color: var(--mia-gold); }
+.section-dark .card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--mia-white);
+}
+.section-dark .card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+.section-dark .card h3, .section-dark .card h4 { color: var(--mia-gold); }
+.section-dark .card p { color: var(--mia-text); }
+.section-dark .card-icon { background: rgba(255,255,255,0.06); color: var(--mia-blue-light); }
+.section-dark .card-icon.gold { color: var(--mia-gold); }
+.section-dark .card-click-hint { color: var(--mia-blue-light); }
+
+/* ============================== COMPARISON GRID ============================== */
+.comparison-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.comp-col {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+}
+.comp-col.before { border-top: 4px solid var(--mia-critical); }
+.comp-col.after { border-top: 4px solid var(--mia-positive); }
+.comp-col h3 { margin-bottom: 1.5rem; }
+.comp-item {
+  padding: .75rem 0;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex; gap: .75rem; align-items: flex-start;
+}
+.comp-item:last-child { border-bottom: none; }
+.comp-time {
+  font-weight: 700; font-size: .85rem;
+  min-width: 80px; color: var(--mia-navy);
+}
+.comp-desc { font-size: .92rem; color: #475569; }
+
+/* ============================== TIMELINE ============================== */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+  margin-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--mia-blue), var(--mia-gold));
+  border-radius: 3px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 40px;
+}
+.timeline-dot {
+  position: absolute;
+  left: -8px; top: 6px;
+  width: 19px; height: 19px;
+  background: var(--mia-blue);
+  border: 4px solid var(--mia-offwhite);
+  border-radius: 50%;
+  z-index: 2;
+}
+.timeline-content {
+  background: var(--mia-white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+.timeline-content:hover {
+  border-color: var(--mia-blue);
+  box-shadow: var(--shadow-md), var(--shadow-glow-blue);
+  transform: translateX(4px);
+}
+.timeline-title {
+  font-weight: 700;
+  color: var(--mia-navy);
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+}
+.timeline-subtitle {
+  font-size: .78rem;
+  color: var(--mia-blue);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: .5rem;
+}
+.timeline-text {
+  font-size: .92rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ============================== BADGES ============================== */
+.badge {
+  display: inline-block; padding: .25rem .75rem; border-radius: 20px;
+  font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px;
+}
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); border: 1px solid rgba(19,125,197,0.3); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); border: 1px solid rgba(255,215,0,0.3); }
+.badge-green { background: var(--mia-positive-dim); color: #16a34a; border: 1px solid rgba(66,211,111,0.3); }
+.badge-red { background: var(--mia-critical-dim); color: var(--mia-critical); border: 1px solid rgba(239,68,68,0.3); }
+
+/* ============================== KPI BAR ============================== */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.kpi-item {
+  background: var(--mia-white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+.kpi-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 800;
+  color: var(--mia-blue);
+  line-height: 1;
+}
+.kpi-value.gold { color: var(--mia-gold-dark); }
+.kpi-value.green { color: #16a34a; }
+.kpi-value.red { color: var(--mia-critical); }
+.kpi-label {
+  font-size: .78rem; color: #64748B;
+  margin-top: .5rem; font-weight: 500;
+}
+
+/* ============================== CALLOUTS ============================== */
+.callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+}
+.callout-blue { background: var(--mia-blue-dim); border-color: var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-color: var(--mia-gold); }
+.callout strong { display: block; margin-bottom: .35rem; }
+
+/* ============================== MODALS ============================== */
+.modal-overlay {
+  display: none; position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10,18,42,.7);
+  z-index: var(--z-modal);
+  justify-content: center; align-items: center;
+  backdrop-filter: blur(6px);
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--mia-white);
+  border-radius: var(--radius-xl);
+  max-width: 680px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  animation: modalSlideUp .3s ease;
+}
+@keyframes modalSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: #F1F5F9; border: none;
+  width: 2.2rem; height: 2.2rem;
+  border-radius: 50%; cursor: pointer;
+  font-size: 1.1rem; color: #64748B;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition-fast);
+}
+.modal-close:hover { background: #E2E8F0; color: var(--mia-navy); }
+.modal-box h2 { margin-bottom: 0.5rem; }
+.modal-box h2 span { color: var(--mia-blue); }
+.modal-badge-row { margin-bottom: 1.5rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+
+/* Standardized modal sections */
+.modal-section {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+}
+.modal-section.friction {
+  background: var(--mia-critical-dim);
+  border-color: var(--mia-critical);
+}
+.modal-section.anticipation {
+  background: var(--mia-warning-dim);
+  border-color: var(--mia-warning);
+}
+.modal-section.resolution {
+  background: var(--mia-blue-dim);
+  border-color: var(--mia-blue);
+}
+.modal-section.success {
+  background: var(--mia-positive-dim);
+  border-color: var(--mia-positive);
+}
+.modal-section-label {
+  font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: .5rem;
+}
+.modal-section.friction .modal-section-label { color: var(--mia-critical); }
+.modal-section.anticipation .modal-section-label { color: var(--mia-warning); }
+.modal-section.resolution .modal-section-label { color: var(--mia-blue); }
+.modal-section.success .modal-section-label { color: #16a34a; }
+.modal-section p { margin-bottom: .5rem; font-size: .92rem; }
+.modal-section p:last-child { margin-bottom: 0; }
+.modal-section ul { margin: .5rem 0 0 1.25rem; }
+.modal-section li { font-size: .9rem; margin-bottom: .3rem; }
+
+/* ============================== CTA ============================== */
+.cta-button {
+  display: inline-block;
+  background: var(--mia-blue);
+  color: var(--mia-white);
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  border: none; cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(19,125,197,0.3);
+}
+.cta-button:hover {
+  background: var(--mia-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(19,125,197,0.4);
+}
+
+/* ============================== PUNCHLINE ============================== */
+.punchline {
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--mia-blue);
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+.section-dark .punchline { color: var(--mia-blue-light); border-top-color: rgba(255,255,255,0.08); }
+
+/* ============================== FOOTER ============================== */
+footer {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, #060D1F 100%);
+  color: var(--mia-white);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue));
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-bottom: 1rem;
+}
+.footer-brand-name {
+  font-size: .85rem; font-weight: 700;
+  color: var(--mia-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+footer p { color: var(--mia-text); margin: .5rem 0; font-size: .9rem; }
+.footer-code {
+  margin-top: 1.5rem;
+  font-size: .72rem;
+  color: var(--mia-text-muted);
+  letter-spacing: 1px;
+}
+
+/* ============================== SCROLL ANIMATIONS ============================== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .hero-kpi-value { font-size: 2rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  .section-header { flex-direction: column; gap: .75rem; }
+  .card-grid-2, .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; }
+  .comparison-wrap { grid-template-columns: 1fr; }
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  nav.toc .toc-inner { padding: 0 1rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  .section-dark { margin: 0 -1rem; padding: 3rem 1rem; }
+  .timeline { margin-left: 16px; }
+  .timeline-item { padding-left: 30px; }
+}
+
+@media print {
+  nav.toc, footer, .modal-overlay { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { color: #000; background: #fff; }
+}
+
+/* ============================== STAKEHOLDER-SPECIFIC ============================== */
+.influence-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.quadrant {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+}
+.quadrant h4 {
+  display: flex; align-items: center; gap: .5rem;
+  margin-bottom: 1rem;
+}
+.q-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.chip {
+  display: inline-block;
+  background: var(--mia-blue-dim);
+  color: var(--mia-blue);
+  padding: .3rem .75rem;
+  border-radius: 20px;
+  font-size: .8rem;
+  font-weight: 600;
+  margin: .25rem .25rem .25rem 0;
+}
+.chip.gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.chip.green { background: var(--mia-positive-dim); color: #16a34a; }
+
+/* RACI Table */
+.raci-wrap { overflow-x: auto; margin: 2rem 0; }
+.raci-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.raci-table th {
+  background: var(--mia-navy);
+  color: var(--mia-gold);
+  padding: 1rem;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  text-align: center;
+}
+.raci-table th:first-child { text-align: left; }
+.raci-table td {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid #E2E8F0;
+  text-align: center;
+  font-size: .9rem;
+}
+.raci-table td:first-child { text-align: left; font-weight: 500; }
+.raci-table tbody tr:nth-child(even) { background: var(--mia-offwhite); }
+.raci-table tbody tr:hover { background: var(--mia-gold-dim); }
+.raci-role {
+  display: inline-flex;
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  font-size: .78rem;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.role-r { background: var(--mia-blue); }
+.role-a { background: var(--mia-gold); color: var(--mia-navy); }
+.role-c { background: #8B5CF6; }
+.role-i { background: #94A3B8; }
+
+/* Readiness bars */
+.readiness-bar {
+  display: grid;
+  grid-template-columns: 180px 1fr 140px;
+  align-items: center;
+  gap: 1rem;
+  padding: .75rem 0;
+}
+.readiness-name { font-weight: 600; font-size: .9rem; color: var(--mia-navy); }
+.progress-track {
+  height: 24px;
+  background: #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold));
+  border-radius: 12px;
+  transition: width .8s ease;
+}
+.readiness-score { font-size: .8rem; font-weight: 600; color: var(--mia-blue); text-align: right; }
+
+/* Risk cards */
+.risk-card {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  margin-bottom: 1.25rem;
+  border-left: 4px solid var(--mia-warning);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+.risk-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.risk-card.high { border-left-color: var(--mia-critical); }
+.risk-card.medium { border-left-color: var(--mia-warning); }
+.risk-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.risk-title { font-weight: 600; color: var(--mia-navy); margin: 0; }
+
+@media (max-width: 768px) {
+  .influence-matrix { grid-template-columns: 1fr; }
+  .readiness-bar { grid-template-columns: 1fr; gap: .5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+
+    <h1>Mapa de <span>Stakeholders</span></h1>
+    <p class="hero-subtitle">Quién decide, quién influye, quién multiplica. El mapa de relaciones que garantiza que cada persona correcta reciba el mensaje correcto en el momento correcto.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">4</div>
+        <div class="hero-kpi-label">Grupos de stakeholders</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">85%</div>
+        <div class="hero-kpi-label">Disposición promedio al cambio</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">7</div>
+        <div class="hero-kpi-label">Actividades RACI mapeadas</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">5</div>
+        <div class="hero-kpi-label">Riesgos identificados</div>
+      </div>
+    </div>
+
+    <p class="hero-punchline">Cada stakeholder tiene un rol. Cada rol tiene un canal. Cada canal tiene una cadencia. Nada al azar.</p>
+  </div>
+</header>
+
+<!-- ============================== STICKY TOC ============================== -->
+<nav class="toc" role="navigation" aria-label="Tabla de contenidos">
+  <div class="toc-inner">
+    <a href="#matriz">Matriz</a>
+    <a href="#perfiles">Perfiles</a>
+    <a href="#raci">RACI</a>
+    <a href="#comunicacion">Comunicación</a>
+    <a href="#readiness">Disposición</a>
+    <a href="#riesgos">Riesgos</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ============================== 1. MENSAJE CLAVE ============================== -->
+<section id="mensaje-clave">
+  <div class="callout callout-gold animate-on-scroll">
+    <strong>Mensaje Clave</strong>
+    Identificamos 4 grupos de stakeholders con alineación fuerte. V&A como co-fundadoras construyen una organización AI Native desde cero (ciclos más rápidos, más conversación, menos carpintería). Daniel Zuluaga como enabler MetodologIA. Directores RRHH como multiplicadores de impacto operacional. Red MetodologIA como ecosistema de crecimiento orgánico.
+  </div>
+  <div class="callout callout-blue animate-on-scroll">
+    <strong>Supuesto de Plataforma</strong>
+    Google Workspace + Gemini como base unificada. Gemini actúa como secretario virtual (notas, transcripciones, borradores). NotebookLM + Gemas vitaminadas para cada rol. AntiGravity para automatización de flujos. Hostinger para presencia en línea con mini apps integradas.
+  </div>
+</section>
+
+<!-- ============================== 2. MATRIZ DE INFLUENCIA ============================== -->
+<section id="matriz">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">01</div>
+    <div>
+      <h2>Matriz de Influencia e Interés</h2>
+      <div class="section-subtitle">Quién tiene poder, quién tiene interés, y cómo gestionamos a cada uno</div>
+    </div>
+  </div>
+
+  <div class="influence-matrix animate-on-scroll">
+    <div class="quadrant" style="border-top: 4px solid var(--mia-gold);">
+      <h4><span class="q-dot" style="background:var(--mia-gold);"></span> Gestionar Activamente</h4>
+      <p style="font-size:.85rem;color:#64748B;margin-bottom:1rem;">Alto interés + Alta influencia</p>
+      <div class="card-clickable" onclick="openModal('modal-veronica')">
+        <span class="chip gold">Verónica Sánchez</span>
+        <span style="font-size:.8rem;color:var(--mia-blue);cursor:pointer;"> — Cómo escala su consultoría &rarr;</span>
+      </div>
+      <div class="card-clickable" onclick="openModal('modal-angela')">
+        <span class="chip gold">Ángela Sánchez</span>
+        <span style="font-size:.8rem;color:var(--mia-blue);cursor:pointer;"> — Su rol operacional amplificado &rarr;</span>
+      </div>
+      <div class="card-clickable" onclick="openModal('modal-daniel')">
+        <span class="chip gold">Daniel Zuluaga</span>
+        <span style="font-size:.8rem;color:var(--mia-blue);cursor:pointer;"> — El multiplicador 10-100x &rarr;</span>
+      </div>
+    </div>
+
+    <div class="quadrant" style="border-top: 4px solid var(--mia-blue);">
+      <h4><span class="q-dot" style="background:var(--mia-blue);"></span> Mantener Satisfechos</h4>
+      <p style="font-size:.85rem;color:#64748B;margin-bottom:1rem;">Bajo interés + Alta influencia</p>
+      <div class="card-clickable" onclick="openModal('modal-gerencia')">
+        <span class="chip">Gerencia General</span>
+        <span style="font-size:.8rem;color:var(--mia-blue);cursor:pointer;"> — Aprobadores de inversión &rarr;</span>
+      </div>
+    </div>
+
+    <div class="quadrant" style="border-top: 4px solid #8B5CF6;">
+      <h4><span class="q-dot" style="background:#8B5CF6;"></span> Mantener Informados</h4>
+      <p style="font-size:.85rem;color:#64748B;margin-bottom:1rem;">Alto interés + Baja influencia</p>
+      <div class="card-clickable" onclick="openModal('modal-rrhh')">
+        <span class="chip green">Directores RRHH</span>
+        <span style="font-size:.8rem;color:var(--mia-blue);cursor:pointer;"> — Impacto operacional masivo &rarr;</span>
+      </div>
+      <div class="card-clickable" onclick="openModal('modal-red')">
+        <span class="chip green">Red MetodologIA</span>
+        <span style="font-size:.8rem;color:var(--mia-blue);cursor:pointer;"> — El ecosistema multiplicador &rarr;</span>
+      </div>
+      <span class="chip">Empleados (usuarios finales)</span>
+    </div>
+
+    <div class="quadrant" style="border-top: 4px solid #94A3B8;">
+      <h4><span class="q-dot" style="background:#94A3B8;"></span> Monitorear</h4>
+      <p style="font-size:.85rem;color:#64748B;margin-bottom:1rem;">Bajo interés + Baja influencia</p>
+      <span class="chip">Área TI (escalabilidad)</span>
+    </div>
+  </div>
+
+  <p class="punchline animate-on-scroll">Cada cuadrante tiene una estrategia distinta. Cada stakeholder, un canal dedicado.</p>
+</section>
+
+<!-- ============================== 3. PERFILES DE STAKEHOLDERS ============================== -->
+<section id="perfiles" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">02</div>
+      <div>
+        <h2>Perfiles de <span>Stakeholders</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Necesidades, escalera de adopción y estrategia de engagement de cada actor clave</div>
+      </div>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll">
+      <div class="card card-clickable" onclick="openModal('modal-veronica')">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h4>Verónica Sánchez</h4>
+        <p style="font-size:.85rem;">Co-Fundadora | Nivel Cero (N0) &rarr; Nivel Tres (N3) | ROI exponencial. Escala consultoría sin sumar costos. Propuestas de 6h a 1h con Gemini.</p>
+        <span class="card-click-hint">Su escalera de adopción completa &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-angela')">
+        <div class="card-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h4>Ángela Sánchez</h4>
+        <p style="font-size:.85rem;">Co-Fundadora | N0 &rarr; N3 | Operaciones amplificadas. Sistematización con Gemas vitaminadas: propuestas, FAQs, documentos laborales. Margen +40%.</p>
+        <span class="card-click-hint">Cómo amplifica su operación &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-daniel')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Daniel Zuluaga</h4>
+        <p style="font-size:.85rem;">Enabler MetodologIA | N3 &rarr; Nivel Cinco (N5) | Multiplicador 10-100x. Orquesta red de embajadores. Co-diseña soluciones con V&A para corporativos.</p>
+        <span class="card-click-hint">Su rol como multiplicador &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-rrhh')">
+        <div class="card-icon positive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h4>Director RRHH (Cliente Potencial)</h4>
+        <p style="font-size:.85rem;">Decisor comercial | Reducción masiva de tickets HR. Chatbot 24/7, documentos automáticos, insights predictivos. Recurrencia mensual escalable.</p>
+        <span class="card-click-hint">Qué gana al trabajar con V&A &rarr;</span>
+      </div>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll" style="margin-top:1.5rem;">
+      <div class="card card-clickable" onclick="openModal('modal-red')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <h4>Red MetodologIA</h4>
+        <p style="font-size:.85rem;">Ecosistema de soporte y multiplicador. Referrals de calidad. Learning compartido. Programa de comisión formalizado.</p>
+        <span class="card-click-hint">Cómo la red potencia el crecimiento &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-gerencia')">
+        <div class="card-icon critical">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>Gerencia General + Área TI</h4>
+        <p style="font-size:.85rem;">Aprobadores de inversión y guardianes de infraestructura. Necesitan ROI claro, diseño escalable, SLAs documentados.</p>
+        <span class="card-click-hint">Qué necesitan para aprobar &rarr;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== 4. RACI ============================== -->
+<section id="raci">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">03</div>
+    <div>
+      <h2>Matriz RACI</h2>
+      <div class="section-subtitle">Quién ejecuta, quién aprueba, quién aporta, quién se entera</div>
+    </div>
+  </div>
+
+  <div class="raci-wrap animate-on-scroll">
+    <table class="raci-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">Actividad</th>
+          <th>Verónica</th>
+          <th>Ángela</th>
+          <th>Daniel</th>
+          <th>Dir. RRHH</th>
+          <th>TI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Kickoff & Alineación Estratégica</strong></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-a">A</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-c">C</span></td>
+          <td><span class="raci-role role-i">I</span></td>
+        </tr>
+        <tr>
+          <td><strong>Análisis AS-IS Operativo</strong></td>
+          <td><span class="raci-role role-c">C</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-a">A</span></td>
+          <td><span class="raci-role role-i">I</span></td>
+          <td><span class="raci-role role-c">C</span></td>
+        </tr>
+        <tr>
+          <td><strong>Validación de Propuesta de Valor</strong></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-c">C</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-a">A</span></td>
+          <td><span class="raci-role role-i">I</span></td>
+        </tr>
+        <tr>
+          <td><strong>Configuración Google Workspace + Gemini</strong></td>
+          <td><span class="raci-role role-i">I</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-a">A</span></td>
+          <td><span class="raci-role role-i">I</span></td>
+          <td><span class="raci-role role-c">C</span></td>
+        </tr>
+        <tr>
+          <td><strong>Construcción Gemas + NotebookLM</strong></td>
+          <td><span class="raci-role role-c">C</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-i">I</span></td>
+          <td><span class="raci-role role-i">I</span></td>
+        </tr>
+        <tr>
+          <td><strong>Plan de Adopción & Cambio</strong></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-a">A</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-c">C</span></td>
+        </tr>
+        <tr>
+          <td><strong>Propuesta Comercial & Cierre</strong></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-c">C</span></td>
+          <td><span class="raci-role role-r">R</span></td>
+          <td><span class="raci-role role-a">A</span></td>
+          <td><span class="raci-role role-i">I</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:.85rem;color:#64748B;margin-top:1.5rem;">
+    <strong>R</strong> = Responsable (ejecuta) &nbsp;|&nbsp; <strong>A</strong> = Accountable (aprueba) &nbsp;|&nbsp; <strong>C</strong> = Consultado (aporta) &nbsp;|&nbsp; <strong>I</strong> = Informado
+  </p>
+</section>
+
+<!-- ============================== 5. COMUNICACIÓN ============================== -->
+<section id="comunicacion">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">04</div>
+    <div>
+      <h2>Plan de Comunicación</h2>
+      <div class="section-subtitle">Canal, cadencia y contenido para cada grupo de stakeholders</div>
+    </div>
+  </div>
+
+  <div class="card-grid-2 animate-on-scroll">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-com-cofundadoras')">
+      <h4>Co-Fundadoras (V&A)</h4>
+      <p><strong>Cadencia:</strong> Bi-semanal steering + semanal en hitos</p>
+      <p><strong>Formato:</strong> Google Meet 90 min con transcripción Gemini automática</p>
+      <p><strong>Contenido:</strong> Progreso, riesgos, decisiones comerciales</p>
+      <p><strong>Flujo automático:</strong> Cada reunión genera resumen + action items + actualización CRM vía AntiGravity</p>
+      <span class="card-click-hint">Ver estrategia de comunicacion &rarr;</span>
+    </div>
+    <div class="card card-accent card-clickable" onclick="openModal('modal-com-daniel')">
+      <h4>Daniel Zuluaga</h4>
+      <p><strong>Cadencia:</strong> Bi-semanal + escalación inmediata</p>
+      <p><strong>Formato:</strong> Meet ejecutiva + dashboard asincrónico en Sheets</p>
+      <p><strong>Contenido:</strong> Progreso, riesgos, oportunidades de co-venta</p>
+      <p><strong>Flujo automático:</strong> Dashboard actualizado por Gemini con métricas de avance</p>
+      <span class="card-click-hint">Ver estrategia de comunicacion &rarr;</span>
+    </div>
+    <div class="card card-accent card-clickable" onclick="openModal('modal-com-rrhh')">
+      <h4>Directores RRHH (Clientes)</h4>
+      <p><strong>Cadencia:</strong> Mensual post-discovery; ad-hoc en validaciones</p>
+      <p><strong>Formato:</strong> Sesiones de trabajo, demostraciones, reportes</p>
+      <p><strong>Contenido:</strong> Propuesta de valor, casos de uso, ROI documentado</p>
+      <p><strong>Captura:</strong> Agenda pública con formulario que alimenta pipeline automáticamente</p>
+      <span class="card-click-hint">Ver estrategia de comunicacion &rarr;</span>
+    </div>
+    <div class="card card-accent card-clickable" onclick="openModal('modal-com-red')">
+      <h4>Red MetodologIA + Empleados</h4>
+      <p><strong>Cadencia:</strong> Mensual comunitario + post-implementación</p>
+      <p><strong>Formato:</strong> Boletín, llamadas de red, comunicados internos</p>
+      <p><strong>Contenido:</strong> Learning, éxitos compartidos, guías de uso</p>
+      <p><strong>Flujo automático:</strong> Newsletter generado con Gemini, distribuido vía Gmail</p>
+      <span class="card-click-hint">Ver estrategia de comunicacion &rarr;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== 6. DISPOSICIÓN AL CAMBIO ============================== -->
+<section id="readiness" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">05</div>
+      <div>
+        <h2>Disposición al <span>Cambio</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Nivel de preparación de cada stakeholder para adoptar la (R)Evolución AI Native</div>
+      </div>
+    </div>
+
+    <div class="card animate-on-scroll" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+      <div class="readiness-bar">
+        <div class="readiness-name" style="color:var(--mia-gold);">Daniel Zuluaga</div>
+        <div class="progress-track"><div class="progress-fill" style="width:90%;"></div></div>
+        <div class="readiness-score" style="color:var(--mia-gold);">90% — Muy preparado</div>
+      </div>
+      <div class="readiness-bar">
+        <div class="readiness-name" style="color:var(--mia-text);">Verónica Sánchez</div>
+        <div class="progress-track"><div class="progress-fill" style="width:85%;"></div></div>
+        <div class="readiness-score" style="color:var(--mia-blue-light);">85% — Muy preparada</div>
+      </div>
+      <div class="readiness-bar">
+        <div class="readiness-name" style="color:var(--mia-text);">Ángela Sánchez</div>
+        <div class="progress-track"><div class="progress-fill" style="width:78%;"></div></div>
+        <div class="readiness-score" style="color:var(--mia-blue-light);">78% — Preparada</div>
+      </div>
+      <div class="readiness-bar">
+        <div class="readiness-name" style="color:var(--mia-text);">Director RRHH</div>
+        <div class="progress-track"><div class="progress-fill" style="width:65%;"></div></div>
+        <div class="readiness-score" style="color:var(--mia-text-muted);">65% — Moderado</div>
+      </div>
+      <div class="readiness-bar">
+        <div class="readiness-name" style="color:var(--mia-text);">Área TI</div>
+        <div class="progress-track"><div class="progress-fill" style="width:60%;"></div></div>
+        <div class="readiness-score" style="color:var(--mia-text-muted);">60% — Moderado</div>
+      </div>
+      <div class="readiness-bar">
+        <div class="readiness-name" style="color:var(--mia-text);">Gerencia General</div>
+        <div class="progress-track"><div class="progress-fill" style="width:55%;"></div></div>
+        <div class="readiness-score" style="color:var(--mia-text-muted);">55% — Incipiente</div>
+      </div>
+    </div>
+
+    <div class="callout callout-gold animate-on-scroll" style="margin-top:2rem;background:rgba(255,215,0,0.08);border-color:var(--mia-gold);">
+      <strong style="color:var(--mia-gold);">Interpretación</strong>
+      <p style="color:var(--mia-text);">Los co-fundadores y Daniel tienen disposición alta (78-90%). El riesgo está en los clientes potenciales (55-65%): requieren educación con demostraciones tangibles y ROI inequívoco. La estrategia es usar los éxitos internos de V&A como caso de estudio para acelerar la adopción externa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== 7. RIESGOS ============================== -->
+<section id="riesgos">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">06</div>
+    <div>
+      <h2>Riesgos de Stakeholders</h2>
+      <div class="section-subtitle">Fricciones anticipadas y cómo las removemos antes de que impacten</div>
+    </div>
+  </div>
+
+  <div class="animate-on-scroll">
+    <div class="risk-card high card-clickable" onclick="openModal('modal-riesgo-dependencia')">
+      <div class="risk-header">
+        <h4 class="risk-title">Dependencia de Verónica en decisiones comerciales</h4>
+        <span class="badge badge-red">Alto</span>
+      </div>
+      <p style="font-size:.9rem;color:#475569;">Si Verónica se ausenta o cambia prioridades, el engagement comercial se ralentiza.</p>
+      <span class="card-click-hint">Cómo mitigamos esta dependencia &rarr;</span>
+    </div>
+
+    <div class="risk-card high card-clickable" onclick="openModal('modal-riesgo-alineacion')">
+      <div class="risk-header">
+        <h4 class="risk-title">Falta de alineación interna V&A sobre visión TO-BE</h4>
+        <span class="badge badge-red">Alto</span>
+      </div>
+      <p style="font-size:.9rem;color:#475569;">Visiones distintas sobre prioridades, scope o timeline generan conflictos en ejecución.</p>
+      <span class="card-click-hint">La sesión que previene este riesgo &rarr;</span>
+    </div>
+
+    <div class="risk-card high card-clickable" onclick="openModal('modal-riesgo-expectativas')">
+      <div class="risk-header">
+        <h4 class="risk-title">Desalineación de expectativas con clientes potenciales</h4>
+        <span class="badge badge-red">Alto</span>
+      </div>
+      <p style="font-size:.9rem;color:#475569;">Directores RRHH esperan automatización total. Expectativa vs. realidad genera fricción.</p>
+      <span class="card-click-hint">El framework que gestiona expectativas &rarr;</span>
+    </div>
+
+    <div class="risk-card medium card-clickable" onclick="openModal('modal-riesgo-fatiga')">
+      <div class="risk-header">
+        <h4 class="risk-title">Fatiga de adopción por exceso de herramientas nuevas</h4>
+        <span class="badge badge-gold">Medio</span>
+      </div>
+      <p style="font-size:.9rem;color:#475569;">Google Workspace + Gemini + NotebookLM + AntiGravity — muchas herramientas nuevas a la vez.</p>
+      <span class="card-click-hint">La secuencia que evita la fatiga &rarr;</span>
+    </div>
+
+    <div class="risk-card medium card-clickable" onclick="openModal('modal-riesgo-incentivos')">
+      <div class="risk-header">
+        <h4 class="risk-title">Compresión de incentivos: MetodologIA vs. V&A</h4>
+        <span class="badge badge-gold">Medio</span>
+      </div>
+      <p style="font-size:.9rem;color:#475569;">MetodologIA incentiva venta de servicios IA. V&A busca márgenes operativos. Posible conflicto de margen.</p>
+      <span class="card-click-hint">El acuerdo que alinea incentivos &rarr;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CTA FINAL ============================== -->
+<section style="text-align:center;padding:3rem 0;">
+  <h3 style="margin-bottom:1rem;">El mapa está trazado. El siguiente paso es tuyo.</h3>
+  <p style="color:#64748B;margin-bottom:2rem;">Agenda una sesión para validar este mapa con tu equipo y definir las primeras acciones.</p>
+  <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank" rel="noopener" class="cta-button">Agendar sesión de validación</a>
+</section>
+
+</div>
+
+<!-- ============================== MODALS ============================== -->
+
+<!-- VERÓNICA -->
+<div class="modal-overlay" id="modal-veronica">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-veronica')">X</button>
+    <h2>Verónica <span>Sánchez</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Co-Fundadora</span><span class="badge badge-blue">N0 &rarr; N3</span><span class="badge badge-green">ROI Exponencial</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Verónica dedica 6+ horas a cada propuesta comercial: busca referencias, calcula timelines, arma presupuesto, formatea en Word, envía a revisión. Mientras tanto, los prospectos se enfrían esperando.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Con Gemini como secretario virtual y Gemas vitaminadas en NotebookLM, Verónica genera propuestas en menos de 1 hora. Cada reunión con prospectos se transcribe automáticamente y alimenta el CRM sin intervención manual.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Escalera de adopción</div>
+      <ul>
+        <li><strong>Actual: Nivel Cero (N0)</strong> — Diagnóstico inicial completado</li>
+        <li><strong>Objetivo: Nivel Tres (N3)</strong> — Competente embajadora en 12 meses</li>
+        <li><strong>Motivación:</strong> Comercial + diferenciación competitiva</li>
+        <li><strong>Barrera:</strong> Curva de aprendizaje con herramientas nuevas</li>
+        <li><strong>Habilitador:</strong> Bootcamp de Ventas 20h + mentoria personalizada + Gemas pre-configuradas</li>
+        <li><strong>Cadencia:</strong> Bi-semanal steering + semanal en hitos críticos</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Propuestas en menos de 1 hora (antes 6h). Más tiempo para conversación con clientes. Menos carpintería operativa. Pipeline cualificado creciendo. En 12 meses, para dejar de necesitar consultores externos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ÁNGELA -->
+<div class="modal-overlay" id="modal-angela">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-angela')">X</button>
+    <h2>Ángela <span>Sánchez</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Co-Fundadora</span><span class="badge badge-blue">N0 &rarr; N3</span><span class="badge badge-green">Operaciones Amplificadas</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Ángela gestiona toda la operación manual: propuestas, FAQs de clientes, documentos laborales, seguimiento de proyectos. Cada tarea repetitiva consume tiempo que debería invertirse en calidad y estrategia.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Tres Gemas vitaminadas (Propuestas, FAQs, Documentos Laborales) absorben el 90% de las tareas operativas repetitivas. Ángela valida y ajusta en vez de crear desde cero. Estándar 9:1 en acción.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Impacto operacional</div>
+      <ul>
+        <li><strong>Reducción:</strong> 40% menos tiempo en tareas administrativas</li>
+        <li><strong>Ciclos:</strong> Entrega 3x más rápida a clientes</li>
+        <li><strong>Calidad:</strong> Consistencia garantizada por Gemas entrenadas con sus mejores trabajos</li>
+        <li><strong>Escalabilidad:</strong> Atiende más clientes sin agregar FTE</li>
+        <li><strong>Herramientas:</strong> Google Docs + Gemini inline para generación, Sheets + Gemini para análisis</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Ángela pasa de ejecutora a directora de calidad. Las Gemas producen, ella valida. Márgenes más amplios. Más clientes atendidos con la misma calidad. La operación escala sin quebrarse.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DANIEL -->
+<div class="modal-overlay" id="modal-daniel">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-daniel')">X</button>
+    <h2>Daniel <span>Zuluaga</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Enabler MetodologIA</span><span class="badge badge-blue">N3 &rarr; N5</span><span class="badge badge-green">Multiplicador 10-100x</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>El modelo de consultoría tradicional escala linealmente: más clientes = más horas vendidas = más consultores. Eso tiene un techo. Daniel necesita demostrar que el modelo "Success as a Service" rompe ese techo.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>V&A se convierte en el caso de estudio que demuestra el modelo. Una embajadora graduada (N7+) genera 3-5 clientes corporativos. La red multiplica sin que Daniel necesite estar en cada conversación.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Evolución del rol</div>
+      <ul>
+        <li><strong>Actual (N2):</strong> Sponsor del discovery + capacitación directa</li>
+        <li><strong>Target (N5 Q4 2026):</strong> Orquestador de red de embajadoras</li>
+        <li><strong>Co-diseño:</strong> Soluciones con V&A para corporativos</li>
+        <li><strong>Multiplicador:</strong> 1 embajadora genera 3-5 clientes (30-50x ROI distribución)</li>
+        <li><strong>Cadencia:</strong> Bi-semanal steering, semanal en hitos comerciales</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Caso de estudio V&A publicado. Red de aliados con ingresos distribuidos. Crecimiento orgánico sin depender de horas vendidas. El modelo "Success as a Service" validado con números reales.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIRECTOR RRHH -->
+<div class="modal-overlay" id="modal-rrhh">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rrhh')">X</button>
+    <h2>Director <span>RRHH</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Cliente Potencial</span><span class="badge badge-blue">Decisor Comercial</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Procesos HR manuales generan cuellos de botella: 100+ tickets mensuales sin resolver a tiempo, documentos que tardan días, empleados frustrados esperando respuestas que deberían ser inmediatas.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>V&A ofrece diagnóstico gratuito (2h, cero costo) que demuestra el impacto inmediato. Luego un workshop de activación (3h, aplicable) donde el Director ve resultados concretos antes de comprometerse.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Impacto para el Director RRHH</div>
+      <ul>
+        <li><strong>Chatbot 24/7:</strong> Absorbe la mayoría de consultas FAQ sin intervención humana</li>
+        <li><strong>Documentos automáticos:</strong> Contratos, certificados, cartas — generados por Gemas</li>
+        <li><strong>Insights predictivos:</strong> Rotación, clima, tendencias de tickets con Gemini + Sheets</li>
+        <li><strong>Satisfacción:</strong> +40% en experiencia de empleados (respuestas en minutos, no días)</li>
+        <li><strong>Compliance:</strong> Framework LGPD/GDPR validado, audit trail automático</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El departamento de RRHH pasa de apagar incendios a generar inteligencia de negocio. Menos tickets, más insights. Recurrencia mensual escalable para V&A. Todo sobre Google Workspace — sin plataformas nuevas que aprender.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RED METODOLOGIA -->
+<div class="modal-overlay" id="modal-red">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-red')">X</button>
+    <h2>Red <span>MetodologIA</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Ecosistema</span><span class="badge badge-blue">Multiplicador</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Sin un ecosistema estructurado, cada cliente nuevo requiere esfuerzo de adquisición completo. No hay referrals sistemáticos, no hay learning compartido, no hay economía de red.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>La Red MetodologIA formaliza el programa de referral con comisiones claras, templates compartidos y casos de estudio que alimentan la credibilidad colectiva. Cada éxito de V&A fortalece toda la red.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Estructura de la red</div>
+      <ul>
+        <li><strong>Comunicación mensual:</strong> Boletín con learning y oportunidades</li>
+        <li><strong>Templates compartidos:</strong> Recursos de alta artesanía reutilizables</li>
+        <li><strong>Programa de referral:</strong> Comisión clara por cada cliente referido</li>
+        <li><strong>Casos de estudio:</strong> V&A como primer caso publicable</li>
+        <li><strong>Learning cruzado:</strong> Sesiones donde embajadores comparten tácticas</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Una red que crece orgánicamente. Cada embajador graduado multiplica el alcance sin costo marginal. Learning compartido eleva la calidad de toda la red. Economía de red en acción.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GERENCIA -->
+<div class="modal-overlay" id="modal-gerencia">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-gerencia')">X</button>
+    <h2>Gerencia General + <span>Área TI</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Aprobadores</span><span class="badge badge-blue">Guardianes</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>La Gerencia necesita ROI claro antes de aprobar. TI necesita garantías de seguridad y diseño escalable. Sin estos dos alineados, ningún proyecto avanza — por bueno que sea.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Documentación de ROI inequívoco con métricas medibles antes de pedir aprobación. Diseño sobre Google Workspace — sin plataformas desconocidas, sin riesgo de vendor lock-in exótico. SLAs documentados desde el día uno.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Qué necesitan para aprobar</div>
+      <ul>
+        <li><strong>Gerencia:</strong> Executive summary visual, benchmarking con pares, clara separación de costos e impactos</li>
+        <li><strong>TI:</strong> Diseño en Google Workspace (conocida), integración limpia, documentación técnica clara</li>
+        <li><strong>Ambos:</strong> KPIs establecidos antes de implementación, governance claro, SLAs explícitos</li>
+        <li><strong>Cadencia:</strong> Hito-driven (no reuniones periódicas innecesarias)</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Aprobación rápida porque el business case es inequívoco. Sin fricciones de TI porque la plataforma es Google Workspace — ya la conocen. Reporte trimestral de implementación que confirma el ROI prometido.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RIESGO: DEPENDENCIA -->
+<div class="modal-overlay" id="modal-riesgo-dependencia">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-dependencia')">X</button>
+    <h2>Riesgo: <span>Dependencia de Verónica</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-red">Alto</span><span class="badge badge-blue">Stakeholder Risk</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Verónica concentra autoridad en decisiones de cierre comercial. Si se ausenta o cambia prioridades, todo el engagement se ralentiza. Single point of failure.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Documentamos la estructura de decisiones desde el día uno. Desarrollamos capacidad de negociación en Ángela en paralelo. Autoridades alternativas claras para cada tipo de decisión.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Mitigación concreta</div>
+      <ul>
+        <li><strong>Estructura documentada:</strong> Qué decide Verónica, qué decide Ángela, qué decide Daniel</li>
+        <li><strong>Capacitación cruzada:</strong> Ángela practica negociación en workshops Q3</li>
+        <li><strong>Automation backup:</strong> Las Gemas generan propuestas incluso si Verónica no está disponible</li>
+        <li><strong>Cadencia redundante:</strong> Si steering se cancela, dashboard asincrónico cubre el gap</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cero días de parálisis comercial. Si Verónica viaja, Ángela tiene contexto, herramientas y autoridad para continuar. La operación no depende de una sola persona.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RIESGO: ALINEACIÓN -->
+<div class="modal-overlay" id="modal-riesgo-alineacion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-alineacion')">X</button>
+    <h2>Riesgo: <span>Alineación Interna V&A</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-red">Alto</span><span class="badge badge-blue">Stakeholder Risk</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Co-fundadoras pueden tener visiones distintas sobre prioridades, alcance y timeline. Sin alineación temprana, los conflictos surgen durante la ejecución — cuando son más costosos de resolver.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Sesión de alineación ejecutiva en la semana 1. Documento de "Visión Compartida" con ambas firmas. Governance claro que define cómo se resuelven desacuerdos antes de que escalen.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Herramientas de alineación</div>
+      <ul>
+        <li><strong>Sesión semana 1:</strong> 90 min de alineación estratégica con Gemini tomando notas</li>
+        <li><strong>Documento "Visión Compartida":</strong> Firmado por ambas, almacenado en Drive como fuente de verdad</li>
+        <li><strong>Check-in bi-semanal:</strong> Espacio dedicado para recalibrar si hay divergencias</li>
+        <li><strong>Protocolo de desacuerdo:</strong> Si no hay consenso en 48h, Daniel media</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Verónica y Ángela avanzan como un frente unido. Los desacuerdos se resuelven en horas, no semanas. El equipo externo nunca percibe fricción interna.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RIESGO: EXPECTATIVAS -->
+<div class="modal-overlay" id="modal-riesgo-expectativas">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-expectativas')">X</button>
+    <h2>Riesgo: <span>Expectativas de Clientes</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-red">Alto</span><span class="badge badge-blue">Commercial Risk</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Directores RRHH pueden esperar automatización total de procesos complejos desde el día uno. Cuando la realidad es iterativa y gradual, la brecha genera frustración y riesgo de churn.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Business case documentado con alcances claros desde la primera conversación. Demostraciones de MVP reales (no PowerPoints). SLAs explícitos que definen qué se entrega, cuándo y con qué nivel de automatización.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Framework de gestión de expectativas</div>
+      <ul>
+        <li><strong>Diagnóstico gratuito (2h):</strong> Mapea la realidad del cliente antes de prometer</li>
+        <li><strong>Workshop de activación (3h):</strong> Resultados tangibles que calibran expectativas</li>
+        <li><strong>SOW con KPIs:</strong> Entregables medibles, no promesas genéricas</li>
+        <li><strong>Estándar 9:1 explicado:</strong> 9 tareas IA, 1 humana — decisiones siempre humanas</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Clientes que entienden el proceso antes de comprarlo. Cero sorpresas. ROI que supera expectativas porque las expectativas fueron calibradas correctamente desde el inicio.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RIESGO: FATIGA -->
+<div class="modal-overlay" id="modal-riesgo-fatiga">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-fatiga')">X</button>
+    <h2>Riesgo: <span>Fatiga de Adopción</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Medio</span><span class="badge badge-blue">Adoption Risk</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Google Workspace + Gemini + NotebookLM + Gemas + AntiGravity — son muchas herramientas nuevas para founders que están arrancando. El riesgo es que la curva de aprendizaje genere fatiga antes de ver resultados.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Introducción escalonada: primero Google Workspace + Gemini (lo que ya conocen). Luego NotebookLM con una sola Gema. Después automatizaciones graduales. Nunca todo a la vez.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Secuencia anti-fatiga</div>
+      <ul>
+        <li><strong>Semana 1-2:</strong> Solo Gmail + Docs + Gemini (lo familiar, potenciado)</li>
+        <li><strong>Semana 3-4:</strong> Primera Gema en NotebookLM (Propuestas)</li>
+        <li><strong>Semana 5-8:</strong> Segunda y tercera Gema (FAQs, Documentos)</li>
+        <li><strong>Semana 9+:</strong> AntiGravity para automatizaciones de flujo</li>
+        <li><strong>Principio:</strong> Cada herramienta se domina antes de agregar la siguiente</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Adopción gradual sin fatiga. Cada semana, una victoria visible. Cada victoria refuerza la motivación para la siguiente herramienta. En 16 semanas, todo el stack funcionando sin estrés.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RIESGO: INCENTIVOS -->
+<div class="modal-overlay" id="modal-riesgo-incentivos">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-incentivos')">X</button>
+    <h2>Riesgo: <span>Compresión de Incentivos</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Medio</span><span class="badge badge-blue">Partnership Risk</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>MetodologIA incentiva venta de servicios IA. V&A busca márgenes operativos propios. Si la solución "consume" demasiadas horas de consultoría MetodologIA, el margen de V&A se comprime.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Claridad contractual desde el día uno: modelo de negocio explícito, comisiones compartidas documentadas, línea clara entre servicios MetodologIA y operación V&A.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Alineación de incentivos</div>
+      <ul>
+        <li><strong>Modelo documentado:</strong> Qué vende MetodologIA, qué vende V&A, dónde se solapan</li>
+        <li><strong>Comisiones claras:</strong> Porcentajes definidos para Resellers y Embajadores</li>
+        <li><strong>Ruta de graduacion:</strong> En 12 meses V&A opera autonomamente — para dejar de necesitar consultoria externa</li>
+        <li><strong>Win-win:</strong> MetodologIA gana con la red, V&A gana con sus márgenes. Sin competencia interna.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Partnership donde ambas partes ganan. MetodologIA multiplica vía red. V&A escala con márgenes saludables. El modelo se replica con otros embajadores sin conflicto.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ESTRATEGIA COMUNICACION - CO-FUNDADORAS -->
+<div class="modal-overlay" id="modal-com-cofundadoras" onclick="closeModalOnOverlay(event, 'modal-com-cofundadoras')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-com-cofundadoras')">X</button>
+    <h2>Estrategia de Comunicación<span>Co-Fundadoras (V&A)</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Stewardship</span><span class="badge badge-blue">Bi-semanal</span><span class="badge badge-green">Transcripción automática</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Las co-fundadoras requieren actualización constante sobre progreso, riesgos y decisiones comerciales. Sin visibilidad estructurada, surge desconfianza y decisiones reactivas. Reuniones ad-hoc generan duplicación de información y pérdida de contexto.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Reuniones de steering bi-semanales con transcripción automática vía Gemini. Cada reunión genera resumen ejecutivo, action items y actualización automática del CRM vía AntiGravity. Las co-fundadoras siempre ven el estado completo sin intervención manual. En hitos críticos, escalamos a semanal.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cadencia de comunicación</div>
+      <ul>
+        <li><strong>Reunión base:</strong> Google Meet 90 minutos, bi-semanal fijo (p.ej. lunes 10am)</li>
+        <li><strong>Participantes:</strong> Verónica, Ángela, Daniel (asincrónico), Product Lead</li>
+        <li><strong>Temas:</strong> Progreso de hitos, riesgos identificados, decisiones comerciales pendientes, oportunidades nuevas</li>
+        <li><strong>Flujo:</strong> Gemini transcribe en tiempo real → resumen automático en Notion → AntiGravity actualiza CRM → Slack notifica a stakeholders en 15 min</li>
+        <li><strong>Escalación hitos:</strong> En semanas críticas (lanzamiento, cierre grande), adicional semanal</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Co-fundadoras con visibilidad 100% al día siguiente de cada reunión. Decisiones más rápidas sin ruido. Confianza sostenida basada en datos, no en percepciones. En 12 meses, steering totalmente asincrónico con dashboards auto-alimentados.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ESTRATEGIA COMUNICACION - DANIEL ZULUAGA -->
+<div class="modal-overlay" id="modal-com-daniel" onclick="closeModalOnOverlay(event, 'modal-com-daniel')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-com-daniel')">X</button>
+    <h2>Estrategia de Comunicación<span>Daniel Zuluaga</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Ejecutivo</span><span class="badge badge-blue">Bi-semanal + escalación</span><span class="badge badge-green">Dashboard asincrónico</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Daniel necesita acceso ágil a métricas de progreso, identificación rápida de riesgos y ventanas de oportunidad para co-venta. Las reuniones tradicionales no escalan y la información fragmentada en múltiples herramientas genera retraso en decisiones.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Dashboard ejecutivo en Google Sheets actualizado diariamente por Gemini con KPIs de avance, riesgos en semáforo y oportunidades de co-venta identificadas. Reuniones bi-semanales ejecutivas de 45 min. Escalación inmediata si P1 surge. Daniel ve todo en mobile y toma decisiones en tiempo real.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cadencia y canales</div>
+      <ul>
+        <li><strong>Dashboard base:</strong> Google Sheets con refresh diario a las 6am, acceso mobile 24/7</li>
+        <li><strong>KPIs principales:</strong> % avance hito, riesgos detectados, pipeline co-venta, ROI proyectado</li>
+        <li><strong>Meet ejecutiva:</strong> Bi-semanal 45 min (p.ej. viernes 4pm) — sólo decisiones y oportunidades</li>
+        <li><strong>Escalación P1:</strong> Slack inmediato + call 24h si surge riesgo crítico o oportunidad tiempo-sensible</li>
+        <li><strong>Frecuencia temas:</strong> Semana 1 progreso + riesgos; Semana 2 co-venta + pipeline</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Daniel monitorea en 5 minutos via dashboard. Toma decisiones de co-venta en horas, no días. Riesgos identificados antes de convertirse en problemas. En 12 meses, ejecutado 3+ co-ventas exitosas. Relación de confianza basada en datos, no en reportes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ESTRATEGIA COMUNICACION - DIRECTORES RRHH -->
+<div class="modal-overlay" id="modal-com-rrhh" onclick="closeModalOnOverlay(event, 'modal-com-rrhh')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-com-rrhh')">X</button>
+    <h2>Estrategia de Comunicación<span>Directores RRHH (Clientes)</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Sales enablement</span><span class="badge badge-blue">Mensual + ad-hoc</span><span class="badge badge-green">ROI documentado</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Directores de RRHH comparan propuestas, necesitan casos de uso específicos y ROI documentado. Sin demos activas post-discovery, el momentum se pierde. Múltiples reuniones desconectadas generan confusión sobre alcance y valor.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Agenda pública con formulario integrado que alimenta pipeline automáticamente. Sesiones de trabajo mensuales post-discovery donde validamos casos de uso reales. Demostraciones personalizadas basadas en su contexto HR. Reportes con ROI proyectado en sus métricas (reducción tiempo, costo, engagement).</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Flujo de engagement</div>
+      <ul>
+        <li><strong>Discovery → Sesión trabajo:</strong> Máximo 2 semanas post-reunión inicial</li>
+        <li><strong>Demostración:</strong> Casos de uso reales de su industria + benchmarks de otras empresas</li>
+        <li><strong>Validación ROI:</strong> Reporte en Sheets con su contexto (ej. horas ahorradas/año, costo por decisión HR)</li>
+        <li><strong>Reuniones mensuales:</strong> Ad-hoc en validaciones complejas; Check-in post-piloto si implementan</li>
+        <li><strong>Formulario públiico:</strong> Calendario abierto en Calendly integrado con CRM — elimina fricción de agendamiento</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Directores RRHH ven ROI concreto antes de firmar. Momentum sostenido de discovery a piloto. En 12 meses, 60% de pilotos se convierten en clientes. Referencias activas de estos directores para nuevos prospectos en su red.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ESTRATEGIA COMUNICACION - RED METODOLOGIA -->
+<div class="modal-overlay" id="modal-com-red" onclick="closeModalOnOverlay(event, 'modal-com-red')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-com-red')">X</button>
+    <h2>Estrategia de Comunicación<span>Red MetodologIA + Empleados</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Community</span><span class="badge badge-blue">Mensual + post-impl</span><span class="badge badge-green">Newsletter automático</span></div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Comunidad y empleados internos desconectados del progreso. Sin visibilidad sobre aprendizajes y éxitos, adopción se ralentiza. Comunicación manual dispersa genera silos y pierde contexto de impacto colectivo.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Newsletter mensual generada automáticamente por Gemini que consolida aprendizajes del mes, casos de éxito de la comunidad y guías de uso. Llamadas mensuales de red donde embajadores comparten experiencias y vinculamos a nuevos miembros. Comunicados internos para hitos visibles (lanzamiento, partnership).</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Canales y cadencia</div>
+      <ul>
+        <li><strong>Newsletter mensual:</strong> 1º día de mes, Gemini genera contenido de: 3 learnings claves, 2 casos de éxito, 1 guía de uso, distribuido vía Gmail</li>
+        <li><strong>Llamadas de red:</strong> 2º martes de mes, 60 min, para embajadores y empleados interesados — open space, no agenda cerrada</li>
+        <li><strong>Comunicados:</strong> Hitos visibles (lanzamiento, partnership, milestone de clientes) — máximo 2/mes, en Slack + email</li>
+        <li><strong>Contenido post-implementación:</strong> Guías detalladas de uso por rol, FAQ consolidado, testimonios de usuarios reales</li>
+        <li><strong>Métricas community:</strong> Embajadores activos, adopción interna, sugerencias implementadas</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Red energizada mensualmente con historias reales. Adopción interna acelera por efecto comunitario. Nuevos embajadores se onboarden con context histórico completo. En 12 meses, comunidad auto-sostenible con líderes locales que trainean nuevos usuarios.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="32" height="32" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="footerLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#footerLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <span class="footer-brand-name">Metodolog<span class="golden-accent">IA</span></span>
+    </div>
+    <p>V&A Consulting &times; MetodologIA &mdash; Mapa de Stakeholders</p>
+    <div class="footer-code">MTIA-VA-SD-01-SE &middot; Confidencial &middot; 2026</div>
+  </div>
+</footer>
+
+<!-- ============================== SCRIPTS ============================== -->
+<script>
+function openModal(id) {
+  var m = document.getElementById(id);
+  if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  var m = document.getElementById(id);
+  if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+}
+function closeModalOnOverlay(event, id) {
+  if (event.target === event.currentTarget) closeModal(id);
+}
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// Scroll animations
+(function() {
+  var els = document.querySelectorAll('.animate-on-scroll');
+  if (!els.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function(el) { obs.observe(el); });
+})();
+
+// Active TOC highlight
+(function() {
+  var links = document.querySelectorAll('nav.toc a');
+  var sections = [];
+  links.forEach(function(a) {
+    var id = a.getAttribute('href').slice(1);
+    var s = document.getElementById(id);
+    if (s) sections.push({ el: s, link: a });
+  });
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.scrollY + 120;
+    sections.forEach(function(item) {
+      if (item.el.offsetTop <= scrollPos && item.el.offsetTop + item.el.offsetHeight > scrollPos) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        item.link.classList.add('active');
+      }
+    });
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

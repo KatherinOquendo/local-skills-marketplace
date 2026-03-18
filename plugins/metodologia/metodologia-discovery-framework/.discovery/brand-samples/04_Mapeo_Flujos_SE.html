@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 Diseño Comercial — V&A Consulting × MetodologIA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E8ECF4;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--mia-dark-text);
+  background-color: var(--mia-offwhite);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--mia-navy);
+  line-height: 1.2;
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; line-height: 1.6; }
+a { color: var(--mia-blue); text-decoration: none; transition: all var(--transition-normal); }
+a:hover { color: var(--mia-blue-light); }
+strong { font-weight: 600; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  position: relative; overflow: hidden;
+  padding: 5rem 2rem 4rem; color: var(--mia-white);
+}
+.hero::before {
+  content: ''; position: absolute;
+  top: -50%; right: -20%; width: 80%; height: 200%;
+  background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue));
+}
+.hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; text-align: center; }
+.brand-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+.brand-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline { display: block; font-size: 0.7rem; color: var(--mia-text-muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle { font-size: 1.15rem; color: var(--mia-text); margin-bottom: 2.5rem; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+.hero-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.hero-kpi { text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 1.25rem 1rem; transition: all var(--transition-normal); }
+.hero-kpi:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.hero-kpi-value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--mia-gold); }
+.hero-kpi-value.blue { color: var(--mia-blue-light); }
+.hero-kpi-label { font-size: .72rem; color: var(--mia-text-muted); margin-top: .5rem; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+.hero-punchline { font-style: italic; font-size: 1.1rem; color: var(--mia-blue-light); margin-top: 2.5rem; opacity: 0.85; }
+
+/* STICKY TOC */
+nav.toc { background: var(--mia-white); position: sticky; top: 0; z-index: var(--z-sticky-nav); border-bottom: 1px solid #E2E8F0; box-shadow: var(--shadow-sm); }
+nav.toc .toc-inner { max-width: 1100px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 2rem; }
+nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+nav.toc a { display: block; padding: .9rem 1.1rem; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: #64748B; white-space: nowrap; text-decoration: none; border-bottom: 3px solid transparent; transition: all var(--transition-normal); }
+nav.toc a:hover, nav.toc a.active { color: var(--mia-blue); border-bottom-color: var(--mia-blue); text-decoration: none; }
+
+/* CONTAINER & SECTIONS */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+section { scroll-margin-top: 60px; padding: 3.5rem 0; border-bottom: 1px solid #E2E8F0; }
+section:last-of-type { border-bottom: none; }
+.section-header { display: flex; gap: 1.25rem; align-items: center; margin-bottom: 2rem; }
+.section-number { width: 52px; height: 52px; min-width: 52px; background: var(--mia-navy); color: var(--mia-gold); font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); }
+.section-header h2 { margin: 0; color: var(--mia-navy); }
+.section-header .section-subtitle { font-size: .9rem; color: #64748B; margin-top: .25rem; }
+
+/* CARDS */
+.card { background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-card); margin-bottom: 1.5rem; border: 1px solid #E2E8F0; transition: all var(--transition-normal); }
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card-accent { border-top: 4px solid var(--mia-blue); }
+.card-gold { border-top: 4px solid var(--mia-gold); }
+.card-clickable { cursor: pointer; }
+.card-clickable:hover { border-color: var(--mia-blue); box-shadow: var(--shadow-md), var(--shadow-glow-blue); }
+.card-dark { background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); color: var(--mia-white); border: none; }
+.card-dark h3, .card-dark h4 { color: var(--mia-gold); }
+.card-dark p, .card-dark li { color: var(--mia-text); }
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.card-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.card-icon { width: 48px; height: 48px; background: var(--mia-blue-dim); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--mia-blue); }
+.card-icon.gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.card-icon.critical { background: var(--mia-critical-dim); color: var(--mia-critical); }
+.card-icon.positive { background: var(--mia-positive-dim); color: var(--mia-positive); }
+.card-icon svg { width: 24px; height: 24px; }
+.card-click-hint { display: inline-block; margin-top: 1rem; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--mia-blue); opacity: 0.7; transition: opacity var(--transition-normal); }
+.card-clickable:hover .card-click-hint { opacity: 1; }
+
+/* DARK SECTIONS */
+.section-dark { background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); color: var(--mia-white); padding: 4rem 2rem; margin: 0 -2rem; border-bottom: none; }
+.section-dark h2, .section-dark h3 { color: var(--mia-white); }
+.section-dark h2 span { color: var(--mia-gold); }
+.section-dark p { color: var(--mia-text); }
+.section-dark .section-number { background: rgba(255,255,255,0.1); color: var(--mia-gold); }
+.section-dark .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--mia-white); }
+.section-dark .card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+.section-dark .card h3, .section-dark .card h4 { color: var(--mia-gold); }
+.section-dark .card p { color: var(--mia-text); }
+.section-dark .card-icon { background: rgba(255,255,255,0.06); color: var(--mia-blue-light); }
+.section-dark .card-icon.gold { color: var(--mia-gold); }
+.section-dark .card-click-hint { color: var(--mia-blue-light); }
+
+/* COMPARISON */
+.comparison-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+.comp-col { background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-card); border: 1px solid #E2E8F0; }
+.comp-col.before { border-top: 4px solid var(--mia-critical); }
+.comp-col.after { border-top: 4px solid var(--mia-positive); }
+
+/* TIMELINE */
+.timeline { position: relative; padding: 2rem 0; margin-left: 28px; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--mia-blue), var(--mia-gold)); border-radius: 3px; }
+.timeline-item { position: relative; margin-bottom: 2rem; padding-left: 40px; }
+.timeline-dot { position: absolute; left: -8px; top: 6px; width: 19px; height: 19px; background: var(--mia-blue); border: 4px solid var(--mia-offwhite); border-radius: 50%; z-index: 2; }
+.timeline-content { background: var(--mia-white); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-card); border: 1px solid #E2E8F0; cursor: pointer; transition: all var(--transition-normal); }
+.timeline-content:hover { border-color: var(--mia-blue); box-shadow: var(--shadow-md), var(--shadow-glow-blue); transform: translateX(4px); }
+.timeline-title { font-weight: 700; color: var(--mia-navy); font-size: 1.05rem; margin-bottom: .4rem; }
+.timeline-subtitle { font-size: .78rem; color: var(--mia-blue); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-bottom: .5rem; }
+.timeline-text { font-size: .92rem; color: #475569; line-height: 1.6; }
+
+/* BADGES */
+.badge { display: inline-block; padding: .25rem .75rem; border-radius: 20px; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); border: 1px solid rgba(19,125,197,0.3); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); border: 1px solid rgba(255,215,0,0.3); }
+.badge-green { background: var(--mia-positive-dim); color: #16a34a; border: 1px solid rgba(66,211,111,0.3); }
+.badge-red { background: var(--mia-critical-dim); color: var(--mia-critical); border: 1px solid rgba(239,68,68,0.3); }
+
+/* KPI */
+.kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 2rem 0; }
+.kpi-item { background: var(--mia-white); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; box-shadow: var(--shadow-card); border: 1px solid #E2E8F0; cursor: pointer; transition: all var(--transition-normal); }
+.kpi-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.kpi-value { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--mia-blue); line-height: 1; }
+.kpi-value.gold { color: var(--mia-gold-dark); }
+.kpi-value.green { color: #16a34a; }
+.kpi-value.red { color: var(--mia-critical); }
+.kpi-label { font-size: .78rem; color: #64748B; margin-top: .5rem; font-weight: 500; }
+
+/* CALLOUTS */
+.callout { padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin: 1.5rem 0; border-left: 4px solid; }
+.callout-blue { background: var(--mia-blue-dim); border-color: var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-color: var(--mia-gold); }
+.callout strong { display: block; margin-bottom: .35rem; }
+
+/* MODALS */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,18,42,.7); z-index: var(--z-modal); justify-content: center; align-items: center; backdrop-filter: blur(6px); padding: 20px; }
+.modal-overlay.active { display: flex; }
+.modal-box { background: var(--mia-white); border-radius: var(--radius-xl); max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: var(--shadow-lg); animation: modalSlideUp .3s ease; }
+@keyframes modalSlideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: #F1F5F9; border: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: #64748B; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); }
+.modal-close:hover { background: #E2E8F0; color: var(--mia-navy); }
+.modal-box h2 { margin-bottom: 0.5rem; }
+.modal-box h2 span { color: var(--mia-blue); }
+.modal-badge-row { margin-bottom: 1.5rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+.modal-section { margin-bottom: 1.5rem; padding: 1.25rem; border-radius: var(--radius-md); border-left: 4px solid; }
+.modal-section.friction { background: var(--mia-critical-dim); border-color: var(--mia-critical); }
+.modal-section.anticipation { background: var(--mia-warning-dim); border-color: var(--mia-warning); }
+.modal-section.resolution { background: var(--mia-blue-dim); border-color: var(--mia-blue); }
+.modal-section.success { background: var(--mia-positive-dim); border-color: var(--mia-positive); }
+.modal-section-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .5rem; }
+.modal-section.friction .modal-section-label { color: var(--mia-critical); }
+.modal-section.anticipation .modal-section-label { color: var(--mia-warning); }
+.modal-section.resolution .modal-section-label { color: var(--mia-blue); }
+.modal-section.success .modal-section-label { color: #16a34a; }
+.modal-section p { margin-bottom: .5rem; font-size: .92rem; }
+.modal-section p:last-child { margin-bottom: 0; }
+.modal-section ul { margin: .5rem 0 0 1.25rem; }
+.modal-section li { font-size: .9rem; margin-bottom: .3rem; }
+
+/* CTA */
+.cta-button { display: inline-block; background: var(--mia-blue); color: var(--mia-white); padding: 1rem 2.5rem; border-radius: 30px; font-weight: 600; text-decoration: none; transition: all var(--transition-normal); border: none; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(19,125,197,0.3); }
+.cta-button:hover { background: var(--mia-blue-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(19,125,197,0.4); }
+.cta-button.gold { background: var(--mia-gold); color: var(--mia-navy); box-shadow: 0 4px 15px rgba(255,215,0,0.3); }
+.cta-button.gold:hover { background: #ffe033; box-shadow: 0 6px 20px rgba(255,215,0,0.4); }
+
+/* PUNCHLINE */
+.punchline { font-style: italic; font-size: 1.05rem; color: var(--mia-blue); text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #E2E8F0; }
+.section-dark .punchline { color: var(--mia-blue-light); border-top-color: rgba(255,255,255,0.08); }
+
+/* FOOTER */
+footer { background: linear-gradient(135deg, var(--mia-navy) 0%, #060D1F 100%); color: var(--mia-white); padding: 3rem 2rem; text-align: center; position: relative; }
+footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue)); }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem; }
+.footer-brand-name { font-size: .85rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+footer p { color: var(--mia-text); margin: .5rem 0; font-size: .9rem; }
+.footer-code { margin-top: 1.5rem; font-size: .72rem; color: var(--mia-text-muted); letter-spacing: 1px; }
+
+/* SCROLL ANIMATIONS */
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+/* ====== DOC-04 SPECIFIC: VALUE LADDER ====== */
+.ladder-wrap { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+.ladder-step { display: grid; grid-template-columns: 80px 1fr; gap: 0; position: relative; }
+.ladder-bar { display: flex; flex-direction: column; align-items: center; padding: 1rem 0; }
+.ladder-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; color: white; z-index: 2; }
+.ladder-line { width: 3px; flex: 1; background: linear-gradient(180deg, var(--mia-blue), var(--mia-gold)); }
+.ladder-step:last-child .ladder-line { display: none; }
+.ladder-card { background: var(--mia-white); border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin: .5rem 0; box-shadow: var(--shadow-card); border: 1px solid #E2E8F0; cursor: pointer; transition: all var(--transition-normal); }
+.ladder-card:hover { border-color: var(--mia-blue); box-shadow: var(--shadow-md), var(--shadow-glow-blue); transform: translateX(4px); }
+.ladder-card h4 { margin-bottom: .25rem; }
+.ladder-price { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--mia-blue); }
+.ladder-alt { font-size: .82rem; color: #64748B; }
+.ladder-desc { font-size: .9rem; color: #475569; margin-top: .5rem; }
+
+/* PRICING TABLE */
+.pricing-table { width: 100%; border-collapse: collapse; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); margin: 2rem 0; }
+.pricing-table th { background: var(--mia-navy); color: var(--mia-gold); padding: 1rem; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; text-align: center; }
+.pricing-table th:first-child { text-align: left; }
+.pricing-table td { padding: .85rem 1rem; border-bottom: 1px solid #E2E8F0; text-align: center; font-size: .9rem; }
+.pricing-table td:first-child { text-align: left; font-weight: 600; }
+.pricing-table tbody tr:nth-child(even) { background: var(--mia-offwhite); }
+.pricing-table tbody tr:hover { background: var(--mia-gold-dim); }
+.pricing-table .highlight-row { background: var(--mia-blue-dim); }
+
+/* ROI CALCULATOR */
+.roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+.roi-card { background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem; text-align: center; box-shadow: var(--shadow-card); border: 1px solid #E2E8F0; }
+.roi-pct { font-family: var(--font-display); font-size: 3rem; font-weight: 800; line-height: 1; }
+.roi-pct.high { color: var(--mia-positive); }
+.roi-pct.mid { color: var(--mia-blue); }
+.roi-pct.low { color: var(--mia-warning); }
+.roi-type { font-size: .82rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #64748B; margin-top: .5rem; }
+.roi-desc { font-size: .88rem; color: #475569; margin-top: .75rem; }
+
+/* PERSONA PATHS */
+.persona-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0; }
+.persona-card { background: var(--mia-white); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-card); border: 1px solid #E2E8F0; cursor: pointer; transition: all var(--transition-normal); border-left: 4px solid var(--mia-blue); }
+.persona-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.persona-card.gold-border { border-left-color: var(--mia-gold); }
+.persona-name { font-weight: 700; color: var(--mia-navy); margin-bottom: .25rem; }
+.persona-path { font-size: .85rem; color: var(--mia-blue); font-weight: 600; }
+.persona-desc { font-size: .88rem; color: #475569; margin-top: .5rem; }
+
+/* RESELLER COMPARISON */
+.reseller-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+.reseller-col { border-radius: var(--radius-lg); padding: 2rem; }
+.reseller-col.before-cert { background: var(--mia-offwhite); border: 2px solid #E2E8F0; }
+.reseller-col.after-cert { background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); color: var(--mia-white); border: 2px solid var(--mia-gold); }
+.reseller-col.after-cert h4 { color: var(--mia-gold); }
+.reseller-col.after-cert p, .reseller-col.after-cert li { color: var(--mia-text); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .hero-kpi-value { font-size: 2rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  .section-header { flex-direction: column; gap: .75rem; }
+  .card-grid-2, .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; }
+  .comparison-wrap { grid-template-columns: 1fr; }
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  nav.toc .toc-inner { padding: 0 1rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  .section-dark { margin: 0 -1rem; padding: 3rem 1rem; }
+  .timeline { margin-left: 16px; }
+  .timeline-item { padding-left: 30px; }
+  .roi-grid { grid-template-columns: 1fr; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .reseller-compare { grid-template-columns: 1fr; }
+  .ladder-step { grid-template-columns: 60px 1fr; }
+}
+
+@media print {
+  nav.toc, footer, .modal-overlay { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { color: #000; background: #fff; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+
+    <h1>Diseño <span>Comercial</span></h1>
+    <p class="hero-subtitle">Modelo modular de valor para V&amp;A Consulting. Desde el diagnóstico gratuito hasta la suscripción anual, cada paso construye sobre el anterior. Tu inversión crece con tus resultados.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">5</div>
+        <div class="hero-kpi-label">Módulos de Valor</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">80%</div>
+        <div class="hero-kpi-label">Tareas Simples Intervenibles</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">20%</div>
+        <div class="hero-kpi-label">Comisión Máxima Reseller</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">64h</div>
+        <div class="hero-kpi-label">Horas/Mes Recuperables</div>
+      </div>
+    </div>
+
+    <p class="hero-punchline">Diseña tu ruta. Elige tu ritmo. Construye con la diseño correcto desde el día uno.</p>
+  </div>
+</header>
+
+<!-- ============================== STICKY TOC ============================== -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#escalera">Escalera de Valor</a>
+    <a href="#modulos">Módulos</a>
+    <a href="#roi-framework">ROI</a>
+    <a href="#casuisticas">Tu Ruta</a>
+    <a href="#reseller">Reseller</a>
+    <a href="#saas">Suscripción</a>
+    <a href="#caso-negocio">Caso de Negocio</a>
+    <a href="#siguiente-paso">Siguiente Paso</a>
+  </div>
+</nav>
+
+<div class="container">
+<!-- ============================== 01. ESCALERA DE VALOR ============================== -->
+<section id="escalera">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">01</div>
+    <div>
+      <h2>Escalera de Valor</h2>
+      <div class="section-subtitle">Cada peldaño construye sobre el anterior. Tu decides hasta dónde llegar.</div>
+    </div>
+  </div>
+
+  <div class="ladder-wrap animate-on-scroll">
+    <!-- Step 1: Diagnóstico -->
+    <div class="ladder-step">
+      <div class="ladder-bar">
+        <div class="ladder-dot" style="background:var(--mia-positive);">N0</div>
+        <div class="ladder-line"></div>
+      </div>
+      <div class="ladder-card" onclick="openModal('modal-diagnostico')">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+          <h4>Diagnóstico</h4>
+          <span class="badge badge-green">Gratuito</span>
+        </div>
+        <div class="ladder-price" style="color:var(--mia-positive);">Sin costo</div>
+        <p class="ladder-desc">Punto de entrada. Mapeamos tus procesos, cuantificamos oportunidades y diseñamos tu ruta personalizada. El espejo que te muestra dónde estás y hacia dónde puedes ir.</p>
+        <span class="card-click-hint">Qué incluye el diagnóstico &rarr;</span>
+      </div>
+    </div>
+
+    <!-- Step 2: Workshops -->
+    <div class="ladder-step">
+      <div class="ladder-bar">
+        <div class="ladder-dot" style="background:var(--mia-blue);">W</div>
+        <div class="ladder-line"></div>
+      </div>
+      <div class="ladder-card" onclick="openModal('modal-workshops')">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+          <h4>Workshop Introductorio</h4>
+          <span class="badge badge-blue">3 horas</span>
+        </div>
+        <div class="ladder-price">200k <span style="font-size:.8rem;font-weight:400;color:#64748B;">COP / persona</span></div>
+        <div class="ladder-alt">Alternativa: compromiso de ventas por 3M COP</div>
+        <p class="ladder-desc">Incluye Diagnostico. Sesion practica de ofimatica IA con aceleradores. Hasta 5 personas. Tocas las herramientas, ves el impacto real y sales con un protocolo funcional.</p>
+        <span class="card-click-hint">Detalle del workshop &rarr;</span>
+      </div>
+    </div>
+
+    <!-- Step 3: Bootcamps -->
+    <div class="ladder-step">
+      <div class="ladder-bar">
+        <div class="ladder-dot" style="background:var(--mia-blue);">B</div>
+        <div class="ladder-line"></div>
+      </div>
+      <div class="ladder-card" onclick="openModal('modal-bootcamps')">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+          <h4>Bootcamp de Ventas</h4>
+          <span class="badge badge-blue">2 dias</span>
+        </div>
+        <div class="ladder-price">800k <span style="font-size:.8rem;font-weight:400;color:#64748B;">COP / persona</span></div>
+        <div class="ladder-alt">Alternativa: compromiso de ventas por 12M COP</div>
+        <p class="ladder-desc">Incluye todo lo del Workshop. 2 dias de automatizacion comercial. Hasta 5 personas. Sales con flujos de ventas implementados y agentes configurados.</p>
+        <span class="card-click-hint">Qué logras en el bootcamp &rarr;</span>
+      </div>
+    </div>
+
+    <!-- Step 4: Programas -->
+    <div class="ladder-step">
+      <div class="ladder-bar">
+        <div class="ladder-dot" style="background:var(--mia-gold);color:var(--mia-navy);">P</div>
+        <div class="ladder-line"></div>
+      </div>
+      <div class="ladder-card" onclick="openModal('modal-programas')">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+          <h4>Programa (R)Evolución</h4>
+          <span class="badge badge-gold">16 semanas</span>
+        </div>
+        <div class="ladder-price" style="color:var(--mia-gold-dark);">500k <span style="font-size:.8rem;font-weight:400;color:#64748B;">COP / asistente</span></div>
+        <div class="ladder-alt">Alternativa: compromiso de ventas 6M COP</div>
+        <p class="ladder-desc">Incluye todo lo del Bootcamp de Ventas. 16 semanas de (R)Evolución completa con Dream Team IA. Soberania digital real y autonomia operativa.</p>
+        <span class="card-click-hint">Alcance completo del programa &rarr;</span>
+      </div>
+    </div>
+
+    <!-- Step 5: Roadmap a medida -->
+    <div class="ladder-step">
+      <div class="ladder-bar">
+        <div class="ladder-dot" style="background:linear-gradient(135deg,var(--mia-blue),var(--mia-gold));color:white;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        </div>
+      </div>
+      <div class="ladder-card" onclick="openModal('modal-roadmap')" style="border:2px solid var(--mia-gold);">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+          <h4>Roadmap a Medida</h4>
+          <span class="badge badge-gold">Personalizado</span>
+        </div>
+        <p class="ladder-desc">El diseño final se adapta a tus prioridades, madurez operativa, capacidad de inversión y objetivo de negocio. Combinamos módulos según tu apetito de (R)Evolución.</p>
+        <span class="card-click-hint">Cómo diseñamos tu roadmap &rarr;</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-gold animate-on-scroll">
+    <strong>Dos caminos de acceso a cada módulo</strong>
+    <p style="margin:0;">Inversión directa por persona o compromiso de ventas. En ambos casos, recibes exactamente el mismo contenido, herramientas y acompañamiento. El compromiso de ventas te permite acceder al programa financiándolo con los resultados que genera.</p>
+  </div>
+
+  <p class="punchline animate-on-scroll">No es un gasto. Es la inversión que se paga sola con los primeros resultados.</p>
+</section>
+
+<!-- ============================== 02. MÓDULOS EN DETALLE ============================== -->
+<section id="modulos" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">02</div>
+      <div>
+        <h2>Módulos <span>en Detalle</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Cada módulo tiene un propósito claro, un entregable tangible y un retorno medible.</div>
+      </div>
+    </div>
+
+    <div class="raci-wrap animate-on-scroll">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Inversión / persona</th>
+            <th>Alt. Compromiso Ventas</th>
+            <th>Duración</th>
+            <th>Capacidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Diagnóstico (N0)</td>
+            <td style="color:var(--mia-positive);font-weight:700;">Gratuito</td>
+            <td>-</td>
+            <td>2-3 semanas</td>
+            <td>Founders</td>
+          </tr>
+          <tr>
+            <td>Workshop Introductorio</td>
+            <td style="font-weight:700;">200k COP</td>
+            <td>3M COP</td>
+            <td>3 horas</td>
+            <td>Hasta 5</td>
+          </tr>
+          <tr>
+            <td>Bootcamp de Ventas</td>
+            <td style="font-weight:700;">800k COP</td>
+            <td>12M COP</td>
+            <td>Intensivo</td>
+            <td>Hasta 5</td>
+          </tr>
+          <tr class="highlight-row">
+            <td style="font-weight:700;">Programa (R)Evolución</td>
+            <td style="font-weight:700;color:var(--mia-gold-dark);">500k COP/asistente</td>
+            <td style="color:var(--mia-gold-dark);">6M COP</td>
+            <td>16 semanas</td>
+            <td>Por asistente</td>
+          </tr>
+          <tr>
+            <td>Roadmap a Medida</td>
+            <td colspan="2" style="text-align:center;font-style:italic;color:#64748B;">Según bundle elegido y apetito de inversión</td>
+            <td>Variable</td>
+            <td>Personalizado</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-grid-2 animate-on-scroll" style="margin-top:2rem;">
+      <div class="card card-clickable" onclick="openModal('modal-inversion-directa')">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Ruta: Inversión Directa</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Pagas por persona, accedes inmediatamente. Ideal si ya tienes claro el valor y quieres avanzar rápido sin compromisos adicionales.</p>
+        <span class="card-click-hint">Cómo funciona &rarr;</span>
+      </div>
+
+      <div class="card card-clickable" onclick="openModal('modal-compromiso-ventas')">
+        <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 17"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Ruta: Compromiso de Ventas</h4>
+        <p style="color:var(--mia-text);font-size:.9rem;">Accedes al programa comprometiéndote a generar ventas por un monto definido. El programa se financia con los resultados que produce.</p>
+        <span class="card-click-hint">Cómo funciona &rarr;</span>
+      </div>
+    </div>
+
+    <p class="punchline animate-on-scroll">Mismo contenido. Mismo acompañamiento. Dos formas de entrar. Tu decides cuál se ajusta mejor a tu momento.</p>
+  </div>
+</section>
+
+<!-- ============================== 03. FRAMEWORK ROI ============================== -->
+<section id="roi-framework">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">03</div>
+    <div>
+      <h2>Framework de Retorno</h2>
+      <div class="section-subtitle">Marco de estimación razonable para modelar el impacto de IA en tu operación.</div>
+    </div>
+  </div>
+
+  <div class="roi-grid animate-on-scroll">
+    <div class="roi-card" onclick="openModal('modal-roi-simple')">
+      <div class="roi-pct high">80%</div>
+      <div class="roi-type">Tareas Simples</div>
+      <p class="roi-desc">Tareas repetitivas, formularios, clasificación, transcripción, reportes estándar. La IA las automatiza casi por completo.</p>
+      <span class="card-click-hint">Ver ejemplos &rarr;</span>
+    </div>
+    <div class="roi-card" onclick="openModal('modal-roi-media')">
+      <div class="roi-pct mid">50%</div>
+      <div class="roi-type">Tareas Medias</div>
+      <p class="roi-desc">Análisis de datos, redacción de propuestas, seguimiento de pipeline, coordinación. La IA acelera y amplifica.</p>
+      <span class="card-click-hint">Ver ejemplos &rarr;</span>
+    </div>
+    <div class="roi-card" onclick="openModal('modal-roi-compleja')">
+      <div class="roi-pct low">20%</div>
+      <div class="roi-type">Tareas Complejas</div>
+      <p class="roi-desc">Negociación, estrategia, relaciones clave, decisiones de alto impacto. La IA amplifica con contexto e insights.</p>
+      <span class="card-click-hint">Ver ejemplos &rarr;</span>
+    </div>
+  </div>
+
+  <div class="callout callout-blue animate-on-scroll">
+    <strong>Qué significa "intervenir"</strong>
+    <p style="margin:0;">Intervenir no siempre es automatizar. Puede ser acelerar (reducir tiempo), amplificar (mejorar calidad) o automatizar (ejecutar sin intervención humana). El tipo de intervención depende de la naturaleza de cada tarea. El resultado: de 160h operativas mensuales, recuperas 64h/mes (40%) para reinvertir en crecimiento.</p>
+  </div>
+
+  <div class="kpi-strip animate-on-scroll">
+    <div class="kpi-item">
+      <div class="kpi-value gold">9:1</div>
+      <div class="kpi-label">Estándar operativo IA/Humano</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-value">64h</div>
+      <div class="kpi-label">Horas/mes recuperadas</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-value green">768h</div>
+      <div class="kpi-label">Horas/año reinvertidas</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-value gold">40%</div>
+      <div class="kpi-label">Ahorro tiempo operativo</div>
+    </div>
+  </div>
+
+  <p class="punchline animate-on-scroll">No es una promesa. Es un marco de estimación basado en implementaciones reales con organizaciones AI Native.</p>
+</section>
+
+<!-- ============================== 04. CASUÍSTICAS ============================== -->
+<section id="casuisticas" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">04</div>
+      <div>
+        <h2>Tu <span>Ruta Ideal</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Distintos perfiles, distintos caminos. Todos llegan al mismo destino: soberanía digital.</div>
+      </div>
+    </div>
+
+    <div class="persona-grid animate-on-scroll">
+      <div class="persona-card" onclick="openModal('modal-persona-explorador')">
+        <div class="persona-name">El Explorador</div>
+        <div class="persona-path">Diagnóstico gratuito</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Quiere entender antes de comprometerse. Necesita ver números, no promesas. El diagnóstico le da claridad sin riesgo.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+
+      <div class="persona-card" onclick="openModal('modal-persona-aprendiz')">
+        <div class="persona-name">El Aprendiz</div>
+        <div class="persona-path">Diagnóstico &rarr; Workshop</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Quiere aprender primero, tocar las herramientas y validar con su equipo antes de escalar la inversión.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+
+      <div class="persona-card gold-border" onclick="openModal('modal-persona-vendedor')">
+        <div class="persona-name">El Acelerador Comercial</div>
+        <div class="persona-path">Diagnostico &rarr; Workshop &rarr; Bootcamp de Ventas</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Quiere vender más rápido. La IA como motor de prospección, propuestas y pipeline. Resultados medibles en semanas.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+
+      <div class="persona-card" onclick="openModal('modal-persona-operativo')">
+        <div class="persona-name">El Artesano Digital</div>
+        <div class="persona-path">Diagnostico &rarr; Bootcamp de Ventas &rarr; Programa</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Quiere adoptar IA en toda su operación y ofimática. Transformar procesos completos. Construir soberanía real.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+
+      <div class="persona-card gold-border" onclick="openModal('modal-persona-reseller')">
+        <div class="persona-name">El Constructor de Red</div>
+        <div class="persona-path">Cualquier módulo &rarr; Certificación Reseller</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Quiere revender, construir una red comercial y generar ingresos recurrentes con el respaldo de MetodologIA.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+
+      <div class="persona-card" onclick="openModal('modal-persona-inversor')">
+        <div class="persona-name">El Visionario</div>
+        <div class="persona-path">Programa completo &rarr; Suscripción anual</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Sabe que la IA es el futuro. Entra por inversión directa, quiere el programa completo y tarifas preferenciales de continuidad.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+
+      <div class="persona-card" onclick="openModal('modal-persona-compromiso')">
+        <div class="persona-name">El Pragmático</div>
+        <div class="persona-path">Compromiso de ventas &rarr; Autofinanciado</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Prefiere entrar sin desembolso inicial. Accede por compromiso de ventas y deja que los resultados financien su (R)Evolución.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+
+      <div class="persona-card gold-border" onclick="openModal('modal-persona-continuidad')">
+        <div class="persona-name">El Socio Permanente</div>
+        <div class="persona-path">Programa &rarr; Suscripción &rarr; Tarifas especiales</div>
+        <p class="persona-desc" style="color:var(--mia-text);">Quiere continuidad, tarifas preferenciales y acceso permanente al ecosistema. La relación de largo plazo que multiplica.</p>
+        <span class="card-click-hint" style="color:var(--mia-blue-light);">Ver ruta recomendada &rarr;</span>
+      </div>
+    </div>
+
+    <p class="punchline animate-on-scroll">No hay una ruta equivocada. Hay la que se ajusta a tu momento, tu apetito y tu visión.</p>
+  </div>
+</section>
+<!-- ============================== 05. RESELLER ============================== -->
+<section id="reseller">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">05</div>
+    <div>
+      <h2>Programa Reseller</h2>
+      <div class="section-subtitle">Tu red comercial. Nuestra plataforma. Un negocio listo para escalar.</div>
+    </div>
+  </div>
+
+  <div class="reseller-compare animate-on-scroll">
+    <div class="reseller-col before-cert">
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h4>Antes de Certificarse</h4>
+      </div>
+      <p style="font-size:.92rem;margin-bottom:1rem;">Puedes referir oportunidades desde el primer día. Sin inversión, sin certificación previa.</p>
+      <ul style="font-size:.9rem;">
+        <li><strong>Comisión: 5%</strong> sobre cada venta referida</li>
+        <li>MetodologIA ejecuta todo: búsqueda del cliente, dossier, preparación de reuniones, demos, pruebas de concepto</li>
+        <li>Soporte comercial y consultivo completo</li>
+        <li>Tu solo conectas la oportunidad, nosotros cerramos y entregamos</li>
+      </ul>
+      <div class="callout callout-blue" style="margin-top:1.5rem;">
+        <p style="margin:0;font-size:.88rem;"><strong>Ejemplo:</strong> Refieres una empresa que contrata un Programa (500k COP x 6 asistentes = 3M COP). Tu comision: 150k COP. Sin haber hecho mas que una presentacion.</p>
+      </div>
+    </div>
+
+    <div class="reseller-col after-cert">
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;">
+        <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <h4>Después de Certificarse</h4>
+      </div>
+      <p style="font-size:.92rem;margin-bottom:1rem;">Inversión de entrada: 1 salario mínimo (SMLV). Se desbloquean beneficios inmediatos.</p>
+      <ul style="font-size:.9rem;">
+        <li><strong>Comisión: hasta 20%</strong> (escala progresiva por volumen y recurrencia)</li>
+        <li>Tarifas especiales desbloqueadas desde el día de certificación</li>
+        <li>Acceso a marca blanca y materiales comerciales</li>
+        <li>Formación comercial avanzada y acceso a comunidad de resellers</li>
+        <li>Prioridad en asignación de leads entrantes</li>
+      </ul>
+      <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,215,0,0.08);border-radius:var(--radius-md);border:1px solid rgba(255,215,0,0.2);">
+        <p style="margin:0;font-size:.88rem;color:var(--mia-text);"><strong style="color:var(--mia-gold);">Ejemplo:</strong> Misma venta de 7.2M COP. Con certificación al 15%, tu comision: 1.08M COP. 3x mas que sin certificacion.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-reseller-progresion')" style="max-width:680px;margin:2rem auto;">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div class="card-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 17"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <div>
+        <h4>Progresión de Comisiones</h4>
+        <p style="font-size:.88rem;color:#64748B;margin:0;">De 5% a 20%: la lógica de cuándo, cómo y por qué se amplía tu comisión.</p>
+      </div>
+    </div>
+    <span class="card-click-hint">Ver escala completa de comisiones &rarr;</span>
+  </div>
+
+  <p class="punchline animate-on-scroll">Para consultores, coaches y profesionales con red comercial. Tu vendes, nosotros entregamos. Ambos crecemos.</p>
+</section>
+
+<!-- ============================== 06. SUCCESS AS A SERVICE ============================== -->
+<section id="saas" class="section-dark">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">06</div>
+      <div>
+        <h2>Success as a <span>Service</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Suscripción anual con tarifa preferencial. Continuidad que multiplica.</div>
+      </div>
+    </div>
+
+    <div class="card animate-on-scroll" style="max-width:680px;margin:0 auto;border:2px solid rgba(255,215,0,0.3);background:rgba(255,255,255,0.03);">
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <h3 style="color:var(--mia-gold);margin-bottom:.5rem;">Suscripción Anual</h3>
+        <p style="color:var(--mia-text);font-size:.92rem;">Primer mes pagado por anticipado. Desde ese momento, todos los beneficios activos.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+        <div style="padding:1rem;background:rgba(255,255,255,0.04);border-radius:var(--radius-md);border:1px solid rgba(255,255,255,0.08);">
+          <h4 style="color:var(--mia-gold);font-size:.95rem;margin-bottom:.5rem;">Incluido</h4>
+          <ul style="font-size:.85rem;color:var(--mia-text);margin:0;padding-left:1rem;">
+            <li>9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica)</li>
+            <li>Campus online 24/7</li>
+            <li>Clínicas mensuales en vivo</li>
+            <li>Acceso a comunidad de egresados</li>
+            <li>Actualizaciones de agentes IA</li>
+          </ul>
+        </div>
+        <div style="padding:1rem;background:rgba(255,255,255,0.04);border-radius:var(--radius-md);border:1px solid rgba(255,255,255,0.08);">
+          <h4 style="color:var(--mia-gold);font-size:.95rem;margin-bottom:.5rem;">Beneficios</h4>
+          <ul style="font-size:.85rem;color:var(--mia-text);margin:0;padding-left:1rem;">
+            <li>Tarifa preferencial sostenida</li>
+            <li>Prioridad en soporte</li>
+            <li>Acceso anticipado a nuevas herramientas</li>
+            <li>Descuento en módulos adicionales</li>
+            <li>Referencia como caso de excelencia</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <p style="color:var(--mia-text);font-size:.85rem;margin-bottom:.5rem;">Condición de acceso</p>
+        <p style="color:var(--mia-gold);font-weight:700;font-size:1.1rem;margin:0;">Primer mes pagado por anticipado = todos los beneficios desde el día 1</p>
+      </div>
+    </div>
+
+    <div class="callout animate-on-scroll" style="background:rgba(255,215,0,0.06);border-color:var(--mia-gold);max-width:680px;margin:2rem auto;">
+      <strong style="color:var(--mia-gold);">Integración con el caso de negocio</strong>
+      <p style="margin:0;color:var(--mia-text);font-size:.9rem;">La suscripción anual no es un costo adicional separado del modelo. Es la capa de continuidad que sostiene los resultados logrados en Workshops, Bootcamps de Ventas o Programas de (R)Evolución. Las tarifas preferenciales aplican tanto para la suscripción como para servicios de reseller certificado.</p>
+    </div>
+
+    <p class="punchline animate-on-scroll">El valor no termina con el programa. La suscripción es donde los resultados se consolidan y multiplican.</p>
+  </div>
+</section>
+
+<!-- ============================== 07. CASO DE NEGOCIO ============================== -->
+<section id="caso-negocio">
+  <div class="section-header animate-on-scroll">
+    <div class="section-number">07</div>
+    <div>
+      <h2>Tu Caso de Negocio</h2>
+      <div class="section-subtitle">Números claros para una decisión informada.</div>
+    </div>
+  </div>
+
+  <div class="card card-accent animate-on-scroll">
+    <h3 style="margin-bottom:1rem;">Estimación de Impacto para V&amp;A Consulting</h3>
+    <p style="font-size:.92rem;color:#475569;">Basado en una operación de 160h/mes operativas con 2 founders.</p>
+
+    <div class="comparison-wrap" style="margin:1.5rem 0;">
+      <div class="comp-col before">
+        <h4 style="color:var(--mia-critical);margin-bottom:1rem;">Sin IA (operación manual)</h4>
+        <div class="comp-item"><div class="comp-time">160h/mes</div><div class="comp-desc">Dedicadas a tareas operativas repetitivas</div></div>
+        <div class="comp-item"><div class="comp-time">~80%</div><div class="comp-desc">Tareas simples hechas a mano</div></div>
+        <div class="comp-item"><div class="comp-time">2-4h</div><div class="comp-desc">Para escribir una sola propuesta</div></div>
+        <div class="comp-item"><div class="comp-time">Manual</div><div class="comp-desc">Prospección, seguimiento, reportes</div></div>
+      </div>
+      <div class="comp-col after">
+        <h4 style="color:var(--mia-positive);margin-bottom:1rem;">Con IA (AI Native desde día 1)</h4>
+        <div class="comp-item"><div class="comp-time">64h/mes</div><div class="comp-desc">Recuperadas para crecimiento estratégico</div></div>
+        <div class="comp-item"><div class="comp-time">9:1</div><div class="comp-desc">De cada 10 tareas operativas, 9 por IA</div></div>
+        <div class="comp-item"><div class="comp-time">5 min</div><div class="comp-desc">Propuesta generada y lista para editar</div></div>
+        <div class="comp-item"><div class="comp-time">Automático</div><div class="comp-desc">Prospección, pipeline y reportes con IA</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-grid-3 animate-on-scroll">
+    <div class="card" style="text-align:center;border-top:4px solid var(--mia-positive);">
+      <div style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--mia-positive);line-height:1;">768h</div>
+      <div style="font-size:.82rem;color:#64748B;margin-top:.5rem;font-weight:600;">HORAS/AÑO REINVERTIDAS</div>
+      <p style="font-size:.85rem;color:#475569;margin-top:.75rem;">64h/mes x 12 meses. Tiempo que antes se perdía en tareas repetitivas, ahora dedicado a cerrar deals, construir relaciones y escalar.</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:4px solid var(--mia-blue);">
+      <div style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--mia-blue);line-height:1;">3x</div>
+      <div style="font-size:.82rem;color:#64748B;margin-top:.5rem;font-weight:600;">VELOCIDAD COMERCIAL</div>
+      <p style="font-size:.85rem;color:#475569;margin-top:.75rem;">Ciclos de prospección a cierre 3 veces más rápidos. Más propuestas, mejor calificadas, en menos tiempo.</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:4px solid var(--mia-gold);">
+      <div style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:var(--mia-gold-dark);line-height:1;">40%</div>
+      <div style="font-size:.82rem;color:#64748B;margin-top:.5rem;font-weight:600;">AHORRO OPERATIVO</div>
+      <p style="font-size:.85rem;color:#475569;margin-top:.75rem;">De 160h operativas mensuales, 64h recuperadas. Desde el primer mes de implementación con las herramientas correctas.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-gold animate-on-scroll">
+    <strong>Nota sobre estimaciones</strong>
+    <p style="margin:0;">Estos números representan un marco de estimación razonable, no una promesa absoluta. El impacto real depende de la madurez operativa, el compromiso del equipo y la complejidad de los procesos. El diagnóstico gratuito (N0) te da los números específicos para tu caso.</p>
+  </div>
+
+  <p class="punchline animate-on-scroll">Los números hablan solos. El diagnóstico los pone sobre la mesa. La decisión es tuya.</p>
+</section>
+
+<!-- ============================== 08. SIGUIENTE PASO ============================== -->
+<section id="siguiente-paso" class="section-dark" style="margin-bottom:0;border-bottom:none;">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <div class="section-number">08</div>
+      <div>
+        <h2>Tu <span>Siguiente Paso</span></h2>
+        <div class="section-subtitle" style="color:var(--mia-text-muted);">Todo comienza con una conversación. Sin costo, sin compromiso, con claridad total.</div>
+      </div>
+    </div>
+
+    <div class="card animate-on-scroll" style="max-width:600px;margin:0 auto;text-align:center;border:2px solid rgba(255,215,0,0.3);background:rgba(255,255,255,0.03);">
+      <div class="card-icon gold" style="margin:0 auto 1rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <h3 style="color:var(--mia-gold);margin-bottom:.75rem;">Agenda tu Diagnóstico Gratuito</h3>
+      <p style="color:var(--mia-text);font-size:.92rem;margin-bottom:1.5rem;">En 2-3 semanas mapeamos tus procesos, cuantificamos oportunidades y diseñamos tu ruta personalizada. Sin costo. Sin letras pequeñas.</p>
+      <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank" rel="noopener" class="cta-button gold">Agendar Diagnóstico Gratuito</a>
+      <p style="color:var(--mia-text-muted);font-size:.78rem;margin-top:1.5rem;">Sesión de 60 minutos. Recibes reporte con ROI estimado y roadmap personalizado.</p>
+    </div>
+
+    <div class="card-grid-3 animate-on-scroll" style="margin-top:2.5rem;">
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Sin compromiso</h4>
+        <p style="color:var(--mia-text);font-size:.88rem;">El diagnóstico es gratuito. Si los números no te convencen, cada quien por su lado. Sin presión.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon gold" style="margin:0 auto 1rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Con claridad</h4>
+        <p style="color:var(--mia-text);font-size:.88rem;">Recibes un reporte concreto con horas recuperables, procesos automatizables y tu roadmap de 12 meses.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+        <h4 style="color:var(--mia-gold);">Tu decides</h4>
+        <p style="color:var(--mia-text);font-size:.88rem;">Después del diagnóstico, eliges tu ruta: workshop, bootcamp, programa o roadmap a medida. A tu ritmo.</p>
+      </div>
+    </div>
+
+    <p class="punchline animate-on-scroll">Cada semana sin construir AI Native, tu competencia te alcanza. El diagnóstico toma 60 minutos. La inacción cuesta mucho más.</p>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="32" height="32" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="10" fill="#0A122A"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <span class="footer-brand-name">Metodolog<span class="golden-accent">IA</span></span>
+    </div>
+    <p>Soberanía Estratégica apalancada en IA</p>
+    <p style="font-size:.8rem;">2026 &mdash; Success as a Service</p>
+    <div class="footer-code">MTIA-04-ARQ-COMERCIAL-VA-SE | CONFIDENCIAL</div>
+  </div>
+</footer>
+<!-- ======================================================================
+     MODALS (Standardized: Friction / Anticipation / Resolution / Success)
+     ====================================================================== -->
+
+<!-- DIAGNÓSTICO -->
+<div class="modal-overlay" id="modal-diagnostico">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-diagnostico')">X</button>
+    <h2>Diagnóstico <span>Nivel Cero (N0)</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Gratuito</span><span class="badge badge-gold">Punto de entrada</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Sin un diagnóstico previo, las organizaciones copian procesos tradicionales y heredan ineficiencias que nunca debieron existir. Se invierte sin saber dónde está el mayor impacto.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>Antes de proponer soluciones, mapeamos tus 3-5 procesos core. Clasificamos cada tarea en operativa-IA, parcialmente asistida o estratégica-humana. No asumimos: medimos.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Auditoría completa de procesos operativos</li>
+        <li>Mapeo automatizable vs. estratégico</li>
+        <li>Reporte con ROI estimado en horas recuperadas</li>
+        <li>Roadmap personalizado de 12 meses</li>
+        <li>Sesión de presentación ejecutiva (60 min)</li>
+      </ul>
+      <p><strong>Duración:</strong> 2-3 semanas | <strong>Costo:</strong> Gratuito</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Claridad total sobre cómo diseñar una organización AI Native. Best Practices mapeadas, números sobre la mesa, siguiente paso definido. Sin compromiso.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WORKSHOPS -->
+<div class="modal-overlay" id="modal-workshops">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-workshops')">X</button>
+    <h2>Workshops <span>Introductorios</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">3 horas</span><span class="badge badge-gold">200k COP/persona</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Muchos founders saben que necesitan IA pero no saben por dónde empezar. La teoría sobra; lo que falta es tocar las herramientas, ver el impacto real y salir con un plan.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El workshop está diseñado como experiencia práctica. No es una charla: es una sesión donde configuras herramientas reales con datos reales de tu operación.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>3 horas de sesión práctica con herramientas IA</li>
+        <li>Aceleradores incluidos: plantillas, prompts, flujos prediseñados</li>
+        <li>Hasta 5 personas por sesión</li>
+        <li>Plan de acción concreto al finalizar</li>
+        <li>Acceso: 200k COP/persona o compromiso de ventas por 3M COP</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu equipo sale con herramientas configuradas, primer flujo automatizado y claridad sobre el siguiente paso. En 3 horas, de la teoría a la práctica.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BOOTCAMPS -->
+<div class="modal-overlay" id="modal-bootcamps">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-bootcamps')">X</button>
+    <h2>Bootcamp de <span>Ventas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">2 dias</span><span class="badge badge-gold">800k COP/persona</span><span class="badge badge-blue">Incluye Workshop</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>Despues del Workshop, el equipo tiene entusiasmo pero necesita profundidad en automatizacion comercial. Sin implementacion guiada, el conocimiento se diluye.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>Incluye todo lo del Workshop Introductorio. El Bootcamp de Ventas cierra la brecha entre "saber" y "hacer". Cada sesion tiene un entregable tangible: un flujo de ventas implementado, un agente configurado, una metrica de impacto medida.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Flujos E2E implementados en tu operación real</li>
+        <li>Agentes IA configurados con tus datos y tu tono</li>
+        <li>Métricas de impacto antes/después documentadas</li>
+        <li>Hasta 5 personas por bootcamp</li>
+        <li>Acceso: 800k COP/persona o compromiso de ventas por 12M COP</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Amplificación real de resultados. Tu equipo opera con IA en procesos concretos, con evidencia medible de impacto. De la práctica a los resultados.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMAS -->
+<div class="modal-overlay" id="modal-programas">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-programas')">X</button>
+    <h2>Programa de <span>(R)Evolución</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">16 semanas</span><span class="badge badge-gold">500k COP/asistente (3M COP por 6 asistentes)</span><span class="badge badge-blue">Incluye Bootcamp de Ventas</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion detectada</div>
+      <p>La adopcion parcial de IA genera frustracion. Sin un programa integral, el equipo domina algunas herramientas pero no logra soberania real. Sigue dependiendo de consultores.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo anticipamos</div>
+      <p>Incluye todo lo del Bootcamp de Ventas. El programa esta diseñado para que tu equipo no nos necesite al final. 16 semanas de (R)Evolución profunda donde cada persona construye autonomia real con IA.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>16 semanas de contenido aplicado (3h/semana)</li>
+        <li>Fundamentos de IA, prompting avanzado, entrenamiento con datos propios</li>
+        <li>Clínicas en vivo semanales + campus online 24/7</li>
+        <li>Proyectos aplicados con validación en vivo</li>
+        <li>Dream Team de 6 agentes IA configurados</li>
+        <li>Acceso: 500k COP/asistente o compromiso de ventas 6M COP</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu equipo es autónomo en IA. Crea, entrena y controla sus propios agentes. Soberanía digital real: son dueños de su tecnología y sus procesos. Sin dependencias externas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ROADMAP A MEDIDA -->
+<div class="modal-overlay" id="modal-roadmap">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-roadmap')">X</button>
+    <h2>Roadmap <span>a Medida</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Personalizado</span><span class="badge badge-blue">Bundle flexible</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>No todas las organizaciones tienen el mismo punto de partida ni el mismo apetito de inversión. Un programa rígido deja fuera a quienes necesitan flexibilidad.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo anticipamos</div>
+      <p>El diagnóstico N0 mapea tu madurez real. Con esos datos, diseñamos un bundle que combina los módulos exactos que necesitas, en el orden que maximiza tu retorno.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo removemos la fricción</div>
+      <ul>
+        <li>Combinación personalizada de módulos según prioridades</li>
+        <li>Inversión escalonada según capacidad y apetito</li>
+        <li>Milestones medibles cada 2-4 semanas</li>
+        <li>Ajuste continuo basado en resultados reales</li>
+        <li>Posibilidad de escalar o reducir según evolución</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un plan que se adapta a ti, no al revés. Cada paso construye sobre el anterior, con flexibilidad para ajustar según cómo evoluciona tu operación y tus resultados.</p>
+    </div>
+  </div>
+</div>
+
+<!-- INVERSIÓN DIRECTA -->
+<div class="modal-overlay" id="modal-inversion-directa">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-inversion-directa')">X</button>
+    <h2>Ruta: <span>Inversión Directa</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Acceso inmediato</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Algunos founders prefieren invertir directamente y acceder sin intermediarios ni compromisos adicionales. Valoran la simplicidad y la velocidad.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo funciona</div>
+      <ul>
+        <li>Pagas el valor por persona del modulo elegido</li>
+        <li>Acceso inmediato al contenido, herramientas y acompañamiento</li>
+        <li>Sin compromiso de ventas ni metas adicionales</li>
+        <li>Ideal si ya validaste el valor y quieres avanzar rápido</li>
+        <li>Puedes escalar a otros módulos cuando quieras</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Simplicidad total. Inviertes, accedes, transformas. Sin letras pequeñas, sin metas de ventas. Tu inversión, tu ritmo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMPROMISO DE VENTAS -->
+<div class="modal-overlay" id="modal-compromiso-ventas">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-compromiso-ventas')">X</button>
+    <h2>Ruta: <span>Compromiso de Ventas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Autofinanciado</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>No todos los founders pueden o quieren hacer un desembolso inicial. Pero sí están dispuestos a comprometerse con resultados que financien la (R)Evolución.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo funciona</div>
+      <ul>
+        <li>Te comprometes a generar ventas por el monto definido para cada módulo</li>
+        <li>Workshop: 200k COP/persona | Bootcamp: 800k COP/persona | Asistentes: 500k COP/asistente</li>
+        <li>Accedes al mismo contenido, herramientas y acompañamiento</li>
+        <li>El programa se financia con los resultados que genera</li>
+        <li>MetodologIA te acompaña con herramientas comerciales para lograrlo</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu (R)Evolución se paga sola. El compromiso de ventas alinea incentivos: mientras más vendes con las herramientas IA, más rápido se financia tu programa.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ROI SIMPLE -->
+<div class="modal-overlay" id="modal-roi-simple">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-roi-simple')">X</button>
+    <h2>Tareas Simples: <span>80% Intervenibles</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Alto impacto</span><span class="badge badge-blue">Automatización</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Ejemplos concretos</div>
+      <ul>
+        <li>Transcripción de reuniones y extracción de compromisos</li>
+        <li>Clasificación de leads por probabilidad de cierre</li>
+        <li>Generación de reportes estándar (pipeline, actividad, KPIs)</li>
+        <li>Respuestas a consultas frecuentes de candidatos</li>
+        <li>Formateo y distribución de documentos</li>
+        <li>Actualización de registros en CRM y hojas de cálculo</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El 80% de estas tareas se ejecuta sin intervención humana. Estándar 9:1: de cada 10 tareas operativas, 9 las hace la IA. Tu equipo se libera para lo que realmente importa.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ROI MEDIA -->
+<div class="modal-overlay" id="modal-roi-media">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-roi-media')">X</button>
+    <h2>Tareas Medias: <span>50% Intervenibles</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Aceleración</span><span class="badge badge-blue">Amplificación</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Ejemplos concretos</div>
+      <ul>
+        <li>Redacción de propuestas comerciales (de 3h a 15 min con IA)</li>
+        <li>Análisis de mercado y benchmarking competitivo</li>
+        <li>Seguimiento de pipeline con alertas inteligentes</li>
+        <li>Coordinación de agendas y preparación de reuniones</li>
+        <li>Evaluación preliminar de candidatos (Peer Reviewer IA)</li>
+        <li>Diseño de presentaciones y materiales comerciales</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La IA no reemplaza tu criterio en estas tareas: lo amplifica. Reduce el tiempo de ejecución a la mitad y mejora la calidad del output. Tu experiencia + IA = resultados superiores.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ROI COMPLEJA -->
+<div class="modal-overlay" id="modal-roi-compleja">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-roi-compleja')">X</button>
+    <h2>Tareas Complejas: <span>20% Intervenibles</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Amplificación</span><span class="badge badge-blue">Contexto</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Ejemplos concretos</div>
+      <ul>
+        <li>Negociación de contratos (IA prepara briefing y escenarios)</li>
+        <li>Decisiones estratégicas de pricing (IA modela escenarios)</li>
+        <li>Construcción de relaciones clave (IA genera contexto previo)</li>
+        <li>Diseño de estrategia comercial (IA analiza datos históricos)</li>
+        <li>Mentoría y desarrollo de equipo (IA documenta y sugiere)</li>
+      </ul>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>En tareas complejas, la IA es tu copiloto invisible. Prepara contexto, modela escenarios y documenta insights. La decisión final es siempre tuya, pero llegas mejor preparado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RESELLER PROGRESIÓN -->
+<div class="modal-overlay" id="modal-reseller-progresion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-reseller-progresion')">X</button>
+    <h2>Progresión de <span>Comisiones Reseller</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">5% a 20%</span><span class="badge badge-blue">Escala progresiva</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fricción detectada</div>
+      <p>Sin un modelo claro de progresión, los resellers no saben cuándo ni cómo escalan sus beneficios. La incertidumbre frena la actividad comercial.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Escala de comisiones</div>
+      <ul>
+        <li><strong>Sin certificación (referido):</strong> 5% por venta cerrada. MetodologIA ejecuta todo.</li>
+        <li><strong>Certificado (nivel 1):</strong> 10%. Inversión: 1 SMLV. Tarifas especiales desbloqueadas.</li>
+        <li><strong>Certificado activo (nivel 2):</strong> 15%. 3+ ventas cerradas en trimestre. Materiales de marca blanca.</li>
+        <li><strong>Certificado consolidado (nivel 3):</strong> 20%. Volumen recurrente demostrado. Prioridad en leads entrantes.</li>
+      </ul>
+      <p>La ampliación de comisión ocurre cuando demuestras actividad comercial consistente. No es un objetivo inalcanzable: es una progresión natural para quien construye red.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un modelo donde tu comisión crece con tu compromiso. De 5% a 20%, cada nivel desbloquea más beneficios, mejores tarifas y mayor respaldo comercial.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: EXPLORADOR -->
+<div class="modal-overlay" id="modal-persona-explorador">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-explorador')">X</button>
+    <h2>Ruta del <span>Explorador</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Sin riesgo</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Paso 1:</strong> Diagnóstico gratuito (N0). Mapeo de procesos, ROI estimado, roadmap personalizado.</p>
+      <p><strong>Paso 2:</strong> Revisas los números. Si te convencen, eliges tu siguiente módulo. Si no, cada quien por su lado.</p>
+      <p><strong>Sin compromiso.</strong> Sin presión. Con claridad total.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Entiendes tu punto de partida con datos, no con intuición. La decisión de avanzar es tuya, informada y sin prisas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: APRENDIZ -->
+<div class="modal-overlay" id="modal-persona-aprendiz">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-aprendiz')">X</button>
+    <h2>Ruta del <span>Aprendiz</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Paso a paso</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Paso 1:</strong> Diagnóstico gratuito (N0).</p>
+      <p><strong>Paso 2:</strong> Workshop introductorio (200k COP). 3 horas practicas con aceleradores.</p>
+      <p><strong>Paso 3:</strong> Despues del workshop, decides si escalas a bootcamp o programa.</p>
+      <p>Inversion total inicial: 200k COP (o compromiso de ventas por 3M COP).</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Aprendes tocando las herramientas, no leyendo teoría. Validas con tu equipo antes de escalar. Cada paso es una decisión informada.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: VENDEDOR -->
+<div class="modal-overlay" id="modal-persona-vendedor">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-vendedor')">X</button>
+    <h2>Ruta del <span>Acelerador Comercial</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Resultados rápidos</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Paso 1:</strong> Diagnóstico gratuito (N0) con foco en proceso comercial.</p>
+      <p><strong>Paso 2:</strong> Workshop introductorio enfocado en herramientas de venta.</p>
+      <p><strong>Paso 3:</strong> Bootcamp de Ventas. Agentes de prospeccion y propuestas configurados.</p>
+      <p>El Bootcamp de Ventas por compromiso (12M COP) se financia con los resultados que genera.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>En semanas, tu pipeline se llena con IA. Propuestas en minutos, leads clasificados automáticamente, seguimiento sin esfuerzo. La inversión se paga con los primeros cierres.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: OPERATIVO -->
+<div class="modal-overlay" id="modal-persona-operativo">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-operativo')">X</button>
+    <h2>Ruta del <span>Artesano Digital</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">(R)Evolución completa</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Paso 1:</strong> Diagnóstico gratuito (N0).</p>
+      <p><strong>Paso 2:</strong> Bootcamp de Ventas: flujos operativos y ofimaticos con IA.</p>
+      <p><strong>Paso 3:</strong> Programa de (R)Evolución completo (16 semanas). Soberanía digital real.</p>
+      <p>Inversion: 3.2M COP total (Bootcamp de Ventas + Programa (R)Evolución) o compromiso de ventas combinado.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Tu operación entera funciona con IA. Cada proceso está diseñado con Best Practices. Tu equipo es autónomo y soberano. Sin dependencias externas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: RESELLER -->
+<div class="modal-overlay" id="modal-persona-reseller">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-reseller')">X</button>
+    <h2>Ruta del <span>Constructor de Red</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Negocio escalable</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Fase 1:</strong> Completa cualquier módulo (workshop, bootcamp o programa). Vive la experiencia.</p>
+      <p><strong>Fase 2:</strong> Empieza a referir sin certificación (5% comisión). MetodologIA ejecuta todo.</p>
+      <p><strong>Fase 3:</strong> Certifícate como reseller (1 SMLV). Desbloquea hasta 20% comisión y tarifas especiales.</p>
+      <p><strong>Fase 4:</strong> Construye tu red con marca blanca y materiales profesionales.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un negocio propio respaldado por MetodologIA. Tu vendes, nosotros entregamos. Comisiones que crecen con tu red. Tarifas especiales para tus clientes y para ti.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: INVERSOR -->
+<div class="modal-overlay" id="modal-persona-inversor">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-inversor')">X</button>
+    <h2>Ruta del <span>Visionario</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Máximo retorno</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Paso 1:</strong> Diagnóstico gratuito (N0) para dimensionar el impacto total.</p>
+      <p><strong>Paso 2:</strong> Programa de (R)Evolución completo (500k COP/asistente). 16 semanas.</p>
+      <p><strong>Paso 3:</strong> Suscripción anual Success as a Service con tarifa preferencial. Primer mes anticipado.</p>
+      <p><strong>Paso 4:</strong> Acceso permanente a actualizaciones, clínicas, comunidad y nuevas herramientas.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La ruta más directa al máximo impacto. Inversión clara, retorno medible, continuidad garantizada. La relación de largo plazo que multiplica resultados año tras año.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: COMPROMISO -->
+<div class="modal-overlay" id="modal-persona-compromiso">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-compromiso')">X</button>
+    <h2>Ruta del <span>Pragmático</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Autofinanciado</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Paso 1:</strong> Diagnóstico gratuito (N0).</p>
+      <p><strong>Paso 2:</strong> Workshop (200k COP/persona, 3h en 1-3 sesiones).</p>
+      <p><strong>Paso 3:</strong> Bootcamp de Ventas (800k COP/persona, 18h en 3 semanas).</p>
+      <p><strong>Paso 4:</strong> Asistentes IA (500k COP/asistente). Alternativa: compromiso de ventas 6M COP.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cero inversión inicial. El programa se paga con los resultados que genera. Las herramientas IA aceleran tu capacidad de venta, creando un ciclo virtuoso de crecimiento.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONA: CONTINUIDAD -->
+<div class="modal-overlay" id="modal-persona-continuidad">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-persona-continuidad')">X</button>
+    <h2>Ruta del <span>Socio Permanente</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Largo plazo</span></div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Tu camino recomendado</div>
+      <p><strong>Paso 1:</strong> Programa de (R)Evolución completo.</p>
+      <p><strong>Paso 2:</strong> Suscripción anual Success as a Service (primer mes anticipado).</p>
+      <p><strong>Paso 3:</strong> Tarifas preferenciales permanentes en todos los servicios.</p>
+      <p><strong>Paso 4:</strong> Posibilidad de certificarse como reseller con beneficios acumulados.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La relación de largo plazo donde todo mejora con el tiempo. Tarifas que bajan, beneficios que suben, acceso prioritario y reconocimiento como referente AI Native.</p>
+    </div>
+  </div>
+</div>
+<!-- ============================== JAVASCRIPT ============================== -->
+<script>
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+}
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// Scroll animations
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+  observer.observe(el);
+});
+
+// Active TOC link
+const tocLinks = document.querySelectorAll('nav.toc a');
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(function(section) {
+    const sectionTop = section.offsetTop - 120;
+    if (window.pageYOffset >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+  tocLinks.forEach(function(link) {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

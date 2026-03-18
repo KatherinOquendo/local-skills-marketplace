@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetodologIA × V&A Consulting | Doc 11: Hallazgos Tecnicos</title>
+  <style>
+    :root {
+      --mia-navy: #0A122A;
+      --mia-blue: #137DC5;
+      --mia-gold: #FFD700;
+      --mia-slate: #94A3B8;
+      --mia-light: #F8FAFC;
+      --mia-dark: #1E293B;
+      --mia-accent: #FF6B6B;
+      --mia-success: #10B981;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      color: var(--mia-navy);
+      background: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-dark) 100%);
+      color: white;
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-logo {
+      width: 42px;
+      height: 42px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .gold { color: var(--mia-gold); }
+
+    .hero-tagline {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+    }
+
+    .hero-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-kpi {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-kpi-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--mia-gold);
+      margin-bottom: 4px;
+    }
+
+    .hero-kpi-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* STICKY NAV */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      z-index: 100;
+      padding: 16px 24px;
+    }
+
+    .sticky-nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sticky-nav-item {
+      color: var(--mia-slate);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .sticky-nav-item:hover { color: var(--mia-blue); }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .section.dark {
+      background: var(--mia-navy);
+      color: white;
+    }
+
+    .section.light {
+      background: var(--mia-light);
+    }
+
+    .section-number {
+      position: absolute;
+      left: 24px;
+      top: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--mia-gold);
+      color: var(--mia-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .section.dark .section-number {
+      background: var(--mia-gold);
+      color: var(--mia-navy);
+    }
+
+    .section.light .section-number {
+      background: var(--mia-blue);
+      color: white;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      margin-left: 80px;
+      max-width: 800px;
+      line-height: 1.3;
+    }
+
+    .section.dark .section-title { color: white; }
+    .section.light .section-title { color: var(--mia-navy); }
+
+    .section-content {
+      margin-left: 80px;
+      max-width: 900px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 32px 0 16px;
+      opacity: 0.9;
+    }
+
+    .section p {
+      margin-bottom: 16px;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    /* CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #E2E8F0;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .section.dark .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 215, 0, 0.1);
+      color: white;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--mia-blue);
+    }
+
+    .section.dark .card-title { color: var(--mia-gold); }
+
+    .card-text {
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    .card-clickable {
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .card-clickable:hover {
+      border-color: var(--mia-blue);
+    }
+
+    /* MICRO-COMMIT */
+    .micro-commit {
+      display: flex;
+      gap: 12px;
+      background: rgba(255, 215, 0, 0.1);
+      border-left: 4px solid var(--mia-gold);
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .micro-commit-check {
+      flex-shrink: 0;
+    }
+
+    .micro-commit-check svg {
+      width: 20px;
+      height: 20px;
+      color: var(--mia-gold);
+    }
+
+    .micro-commit-text { flex: 1; }
+
+    /* MODALS */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: white;
+      border-radius: 12px;
+      max-width: 600px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--mia-navy);
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .modal-close:hover { opacity: 1; }
+
+    .modal-box h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .modal-box h2 span { color: var(--mia-gold); }
+
+    .modal-badge-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    .badge-blue {
+      background: rgba(19, 125, 197, 0.1);
+      color: var(--mia-blue);
+    }
+
+    .modal-section {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .modal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .modal-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      color: var(--mia-slate);
+    }
+
+    .modal-section.friction .modal-section-label { color: var(--mia-accent); }
+    .modal-section.anticipation .modal-section-label { color: var(--mia-blue); }
+    .modal-section.resolution .modal-section-label { color: var(--mia-slate); }
+    .modal-section.success .modal-section-label { color: var(--mia-success); }
+
+    .modal-section p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--mia-navy);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--mia-navy);
+      color: white;
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .footer-code {
+      font-family: 'Monaco', 'Courier New', monospace;
+      color: var(--mia-gold);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-cta {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-cta a {
+      color: var(--mia-gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .footer-cta a:hover { opacity: 0.8; }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 32px; }
+      .hero-kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .section-number { width: 40px; height: 40px; font-size: 18px; }
+      .section-title { font-size: 28px; margin-left: 60px; }
+      .section-content { margin-left: 60px; }
+      .sticky-nav-content { gap: 16px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-brand">
+      <svg class="hero-logo" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <span style="font-size: 24px; font-weight: 700;">Metodolog<span class="gold">IA</span></span>
+    </div>
+    <h1 class="hero-title">Hallazgos<br>Tecnicos</h1>
+    <p class="hero-tagline">Success as a Service</p>
+    <div class="hero-kpi-row">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">0</div>
+        <div class="hero-kpi-label">Deuda Tecnica Inicial</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">6</div>
+        <div class="hero-kpi-label">Agentes Inteligentes</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">100%</div>
+        <div class="hero-kpi-label">Google Workspace</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">99.9%</div>
+        <div class="hero-kpi-label">SLA Garantizado</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav">
+  <div class="sticky-nav-content">
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-resumen').scrollIntoView({behavior:'smooth'})">Resumen</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-plataforma').scrollIntoView({behavior:'smooth'})">Plataforma</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-agentes').scrollIntoView({behavior:'smooth'})">Agentes</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-datos').scrollIntoView({behavior:'smooth'})">Datos</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-integracion').scrollIntoView({behavior:'smooth'})">Integracion</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-seguridad').scrollIntoView({behavior:'smooth'})">Seguridad</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-calidad').scrollIntoView({behavior:'smooth'})">Calidad</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-deuda').scrollIntoView({behavior:'smooth'})">Deuda Tech</span>
+    <span class="sticky-nav-item" onclick="document.getElementById('sec-recomendaciones').scrollIntoView({behavior:'smooth'})">Recomendaciones</span>
+  </div>
+</div>
+
+<!-- SECTION 1: RESUMEN -->
+<section class="section dark" id="sec-resumen">
+  <div class="container">
+    <div class="section-number">1</div>
+    <h2 class="section-title">Resumen de<br>Hallazgos Tecnicos</h2>
+    <div class="section-content">
+      <p>V&A Consulting inicia su (R)Evolución AI-Native desde una posicion unica: <strong>cero deuda tecnica, fundacion 100% en Google Workspace, y diseño de asistentes con patrones modernos de versionamiento.</strong></p>
+      <p>Este documento analiza los hallazgos tecnicos clave de la metodologia MetodologIA × V&A Consulting, cubriendo Diseño, calidad de agentes, infraestructura y seguridad en una evaluacion comprehensiva preparada para los Gateways de evaluacion tecnica (G1, G2, G3).</p>
+
+      <div class="card-grid" style="margin-top: 32px;">
+        <div class="card card-clickable" onclick="openModal('modal-resumen-tech')">
+          <div class="card-title">Hallazgos Clave</div>
+          <div class="card-text">6 agentes, 100% Google, 9:1 automation ratio, zero tech debt starter pack</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-google-stack')">
+          <div class="card-title">Stack de Plataforma</div>
+          <div class="card-text">Por que 100% Google Workspace y no diseño híbrido</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-agent-anatomy')">
+          <div class="card-title">Anatomia de Agente</div>
+          <div class="card-text">Prompt engineering + sources + optional Opal flows</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-drive-structure')">
+          <div class="card-title">Gobernanza de Drive</div>
+          <div class="card-text">Estructura de carpetas, naming conventions, versionamiento</div>
+        </div>
+      </div>
+
+      <div class="micro-commit" style="margin-top: 40px;">
+        <div class="micro-commit-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-gold)" stroke-width="3" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="micro-commit-text"><strong>Meta Gateway:</strong> Technical findings validados en G1 (week 4) segun diseño descrito aqui; escalado a 6 agentes en G2 (week 10); optimizacion de metricas en G3 (week 16).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: PLATAFORMA -->
+<section class="section light" id="sec-plataforma">
+  <div class="container">
+    <div class="section-number">2</div>
+    <h2 class="section-title">Diseño de<br>Plataforma</h2>
+    <div class="section-content">
+      <p>Google Workspace constituye la fundacion unica de V&A Consulting. No es una herramienta dentro de un ecosistema — es el ecosistema completo: identity provider, collaboration layer, AI runtime (Gemini), e infraestructura de almacenamiento.</p>
+
+      <div class="section-subtitle">La Decision 100% Google Workspace</div>
+      <p>Una diseño híbrido (Google + Slack + Notion + Zapier) multiplicaria context-switching, requeriria capas de integracion custom, e introduciria puntos de fallo. La alternativa 100% Google garantiza:</p>
+
+      <div class="card-grid">
+        <div class="card card-clickable" onclick="openModal('modal-google-stack')">
+          <div class="card-title">Identity Unificada</div>
+          <div class="card-text">Un directorio, una fuente de verdad para usuarios, permisos, y audit logs</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-gemini')">
+          <div class="card-title">Gemini Runtime</div>
+          <div class="card-text">LLM nativo integrado en Google Workspace para prompt engineering</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-opal')">
+          <div class="card-title">Opal Automation</div>
+          <div class="card-text">Google Workspace Automation (N3) para event-driven workflows</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-sla')">
+          <div class="card-title">SLA Garantizado</div>
+          <div class="card-text">99.9% uptime, no servers, no DevOps, zero infrastructure overhead</div>
+        </div>
+      </div>
+
+      <div class="section-subtitle" style="margin-top: 40px;">Capas de Diseño</div>
+      <p><strong>Capa 1 — Identity & Governance:</strong> Google Cloud Identity, 2FA mandatory, device management policies, DLP rules at rest and in transit.</p>
+      <p><strong>Capa 2 — Data & Collaboration:</strong> Google Drive as governed repository, Docs/Sheets as real-time collaboration, Gmail for async communication.</p>
+      <p><strong>Capa 3 — AI Runtime:</strong> Gemini API for prompt execution, NotebookLM for grounding, Gemini Chat for iterative refinement.</p>
+      <p><strong>Capa 4 — Automation:</strong> Google Workspace Automation (Opal) for triggers (calendar, email), conditions (Drive events), actions (task updates, notifications).</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: AGENTES -->
+<section class="section dark" id="sec-agentes">
+  <div class="container">
+    <div class="section-number">3</div>
+    <h2 class="section-title">Diseño de<br>Agentes</h2>
+    <div class="section-content">
+      <p>Un agente en V&A = <strong>Prompt (Gema) + Knowledge Base (NotebookLM) + Optional Automation (Opal)</strong>. No es un chatbot. No es un copilot. Es un sistema con evaluacion, versionamiento, y ownership.</p>
+
+      <div class="section-subtitle">Los 6 Agentes Dream Team</div>
+      <p><strong>1. Asistente de Propuestas</strong> — Generador automatizado de propuestas comerciales con templates, pricing logic, y brand compliance. Fuente: proposal archive en Drive.</p>
+      <p><strong>2. Task Tracker</strong> — Gestor de tareas con deadlines, dependency mapping, y escalation automata. Integrado con Google Calendar y Email.</p>
+      <p><strong>3. Agente de Prospeccion</strong> — Lead qualifier que valida oportunidades contra criterios de ICP, enriquece data, y prepara pitch decks.</p>
+      <p><strong>4. Motor de Reportes</strong> — Report generator que compila data de multiples sheets, ejecuta calculos, y produce insights narrativos.</p>
+      <p><strong>5. Peer Reviewer IA</strong> — Evaluador de propuestas/deliverables con rubrics customizados y feedback estructurado. (Candidato a producto N4)</p>
+      <p><strong>6. Meeting Analyst</strong> — Transcriptor + summarizer de reuniones; extrae action items, decisiones, y contexto para follow-up.</p>
+
+      <div class="card-grid" style="margin-top: 24px;">
+        <div class="card card-clickable" onclick="openModal('modal-agent-anatomy')">
+          <div class="card-title">Anatomia del Agente</div>
+          <div class="card-text">Como se estructura: prompt, sources, execution, output, versioning</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-agent-quality')">
+          <div class="card-title">Patrones de Calidad</div>
+          <div class="card-text">Evaluation criteria, rubrics, versioning conventions, ownership model</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-n4-architecture')">
+          <div class="card-title">N4 Mini Apps</div>
+          <div class="card-text">Como evolucionan agentes a productos (Peer Reviewer IA, Task Tracker, Prospeccion)</div>
+        </div>
+      </div>
+
+      <div class="micro-commit">
+        <div class="micro-commit-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-gold)" stroke-width="3" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="micro-commit-text"><strong>Estandar 9:1:</strong> De cada 10 tareas operacionales, 9 ejecutadas por agentes, 1 por humanos. Metricas a validar en Gateway 1.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: DATOS -->
+<section class="section light" id="sec-datos">
+  <div class="container">
+    <div class="section-number">4</div>
+    <h2 class="section-title">Modelo de<br>Datos</h2>
+    <div class="section-content">
+      <p>Google Drive constituye la base de datos gobernada de V&A. No es una herramienta de almacenamiento — es un repositorio versionado, permisionado, y auditable de toda la verdad operacional.</p>
+
+      <div class="section-subtitle">Estructura de Drive</div>
+      <p><code>/V&A/</code> contiene tres ramas principales:</p>
+      <p><strong>/V&A/Programas/</strong> — Cursos y programas de capacitacion (Programa=Editor, Suscripcion=Lector+Comentador)</p>
+      <p><strong>/V&A/Dream-Team/</strong> — Cada agente tiene su propia carpeta: /Asistente-Propuestas/, /Task-Tracker/, /Agente-Prospeccion/, /Motor-Reportes/, /Peer-Reviewer/, /Meeting-Analyst/</p>
+      <p><strong>/V&A/Post-Graduacion/</strong> — Contenido avanzado (acceso restringido)</p>
+
+      <div class="card-grid" style="margin-top: 24px;">
+        <div class="card card-clickable" onclick="openModal('modal-drive-structure')">
+          <div class="card-title">Estructura de Carpetas</div>
+          <div class="card-text">Desglose completo de /V&A/, paths por agent, notacion de versionamiento</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-naming')">
+          <div class="card-title">Naming Conventions</div>
+          <div class="card-text">Como nombrar archivos, versiones, prompts, knowledge bases</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-permissions')">
+          <div class="card-title">Matriz de Permisos</div>
+          <div class="card-text">Permission model por role, por fase, por guardrail de datos sensibles</div>
+        </div>
+      </div>
+
+      <div class="section-subtitle" style="margin-top: 40px;">Versionamiento de Agentes</div>
+      <p>Cada agente mantiene un changelog versionado dentro de su carpeta:</p>
+      <p><code>/V&A/Dream-Team/[AgentName]/v1.0/</code>, <code>v1.1/</code>, <code>v2.0/</code> etc.</p>
+      <p>Cada version contiene: <strong>AGENT.md</strong> (metadatos), <strong>prompt.txt</strong> (Gema), <strong>sources.md</strong> (knowledge base references), <strong>evaluation.md</strong> (rubric y criterios).</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: INTEGRACION -->
+<section class="section dark" id="sec-integracion">
+  <div class="container">
+    <div class="section-number">5</div>
+    <h2 class="section-title">Capa de<br>Integracion</h2>
+    <div class="section-content">
+      <p>Google Opal (Google Workspace Automation) es la columna vertebral de la integracion entre agentes. Es <strong>event-driven, no basado en polling,</strong> y opera dentro de Google Workspace sin necesidad de servidores externos.</p>
+
+      <div class="section-subtitle">Diseño Event-Driven (N3)</div>
+      <p><strong>Triggers:</strong> Eventos en Google Workspace — nueva tarea en Task Tracker, cliente en Drive, email entrante, calendar event, sheet update.</p>
+      <p><strong>Conditions:</strong> Evaluaciones logicas — propuesta > $50k, lead tiers "A", deadline < 7 dias, status = "en-revision".</p>
+      <p><strong>Actions:</strong> Automaciones — notificar al agente, actualizar status, crear sub-tasks, grabar en log, trigger siguiente agente en pipeline.</p>
+
+      <div class="card-grid" style="margin-top: 24px;">
+        <div class="card card-clickable" onclick="openModal('modal-opal')">
+          <div class="card-title">Google Opal Details</div>
+          <div class="card-text">Configuracion de triggers, conditions, actions; workflow patterns; limites y throttling</div>
+        </div>
+      </div>
+
+      <div class="section-subtitle" style="margin-top: 40px;">Flujos de Integracion Principales</div>
+      <p><strong>Pipeline Propuestas:</strong> Prospecto → Asistente Propuestas (genera) → Peer Reviewer (evalua) → Task Tracker (asigna follow-up).</p>
+      <p><strong>Pipeline Reportes:</strong> Calendar trigger (fin de semana) → Motor Reportes (compila datos) → email blast a stakeholders.</p>
+      <p><strong>Pipeline Meeting:</strong> Google Meet/Audio finalize → Meeting Analyst (transcribe + summarize) → Task Tracker (crea action items).</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: SEGURIDAD -->
+<section class="section light" id="sec-seguridad">
+  <div class="container">
+    <div class="section-number">6</div>
+    <h2 class="section-title">Postura de<br>Seguridad</h2>
+    <div class="section-content">
+      <p>Google Workspace provee seguridad a nivel enterprise: two-factor authentication (2FA), device management, data loss prevention (DLP), encryption at rest y in transit, audit logging completo.</p>
+
+      <div class="section-subtitle">Capas de Seguridad</div>
+      <p><strong>Identity:</strong> Google Cloud Identity con 2FA obligatorio. Credenciales almacenadas en Google's secure vault. Revocation inmediata en offboarding.</p>
+      <p><strong>Access Control:</strong> Permission matrix por rol (Founder, Team Lead, Agent Owner, Learner, Subscriber). Granular a nivel de folder y documento.</p>
+      <p><strong>Data Loss Prevention (DLP):</strong> Reglas customizadas para prevenir exfiltration de PII, pricing, client data. Monitores de keywords sensibles.</p>
+      <p><strong>Encryption:</strong> TLS 1.2+ in transit. AES-256 at rest. Google manages key rotation. Zero-knowledge para data en shared spaces.</p>
+      <p><strong>Audit Logging:</strong> Google Workspace Admin Console registra: quien, que, cuando, desde donde, IP, device. Retencion minimo 100 dias.</p>
+
+      <div class="card-grid" style="margin-top: 24px;">
+        <div class="card card-clickable" onclick="openModal('modal-security')">
+          <div class="card-title">Modelo de Seguridad</div>
+          <div class="card-text">Detalle de identity, access control, DLP rules, encryption, audit logging</div>
+        </div>
+        <div class="card card-clickable" onclick="openModal('modal-permissions')">
+          <div class="card-title">Permission Matrix</div>
+          <div class="card-text">Roles y permisos por fase (Foundation, Build, Integrate, Optimize)</div>
+        </div>
+      </div>
+
+      <div class="section-subtitle" style="margin-top: 40px;">Garantias de Soberania de Datos</div>
+      <p>Todos los datos de V&A residen en Google Workspace con datacenters en la region configurada (default: Americas). Cumple con GDPR, CCPA, normas locales de privacidad. No hay third-party access sin consentimiento explicito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: CALIDAD -->
+<section class="section dark" id="sec-calidad">
+  <div class="container">
+    <div class="section-number">7</div>
+    <h2 class="section-title">Atributos de<br>Calidad</h2>
+    <div class="section-content">
+      <p>El Diseño MetodologIA × V&A Consulting optimiza para cuatro atributos de calidad: disponibilidad, latencia, escalabilidad, mantenibilidad.</p>
+
+      <div class="section-subtitle">Disponibilidad (Availability)</div>
+      <p>Google Workspace SLA: <strong>99.9% uptime</strong>. Implica: maximo 43 minutos downtime por mes. No hay backup/restore manual. Replicacion geografica automatica. V&A recibe creditospor outages >1 hora.</p>
+
+      <div class="section-subtitle">Latencia (Performance)</div>
+      <p>Gemini API: response time < 5 segundos for standard prompts. NotebookLM: indexing incremental en < 2 minutos. Google Drive: sync < 30 segundos. Opal automation execution: < 1 minuto post-trigger.</p>
+
+      <div class="section-subtitle">Escalabilidad (Scalability)</div>
+      <p>Google Workspace escala natively con numero de usuarios, documentos, API calls. No hay limites operacionales hasta ~10,000 usuarios activos simultaneos (overkill para V&A). Costo es linear con usage.</p>
+
+      <div class="section-subtitle">Mantenibilidad (Maintainability)</div>
+      <p>Los agentes son versionados como archivos de texto (prompts, rubrics, sources). No hay codigo compilado, no hay dependencias software externas. Un simple cambio a un prompt trigger nueva version — cero downtime deployment.</p>
+
+      <div class="card-grid" style="margin-top: 24px;">
+        <div class="card card-clickable" onclick="openModal('modal-sla')">
+          <div class="card-title">SLA & Availability</div>
+          <div class="card-text">Google's 99.9% guarantee, credit terms, incident response SLA</div>
+        </div>
+      </div>
+
+      <div class="micro-commit">
+        <div class="micro-commit-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-gold)" stroke-width="3" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="micro-commit-text"><strong>Quality Baseline:</strong> Sin necesidad de SREs, monitoring, o infrastructure tuning. Google absorbe toda la complejidad operacional.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: DEUDA TECNICA -->
+<section class="section light" id="sec-deuda">
+  <div class="container">
+    <div class="section-number">8</div>
+    <h2 class="section-title">Deuda Tecnica<br>y Riesgos</h2>
+    <div class="section-content">
+      <p>V&A comienza con <strong>cero deuda tecnica tradicional</strong> (no hay legacy code, no hay tech stack desfasado). Pero enfrenta riesgos especificos a (R)Evolución AI-Native: prompt debt y vendor lock-in.</p>
+
+      <div class="section-subtitle">Prompt Debt</div>
+      <p>A medida que agentes evolucionan, prompts acumulan logica, edge cases, workarounds. Sin governance estricta, prompts se vuelven oscuros, dificiles de debuggear, costosos de mantener.</p>
+      <p><strong>Mitigacion:</strong> Versioning enforced. Template prompts reutilizables. Rubrics explicitos. Code review de prompts (peer reviewer). Documentation clara de intencionalidad.</p>
+
+      <div class="section-subtitle">Vendor Lock-In (Google Workspace)</div>
+      <p>100% Google minimiza complexity pero creaa dependencia. Si V&A necesita migrar data o agentes a otra plataforma, requiere translation de prompts, re-indexing de sources, reconfiguracion de Opal flows.</p>
+      <p><strong>Mitigacion:</strong> Prompts almacenados en texto plain (exportables). Knowledge bases en formato standard (Markdown, CSV). Opal workflows documentados en diagramas. Export paths planificados desde inicio.</p>
+
+      <div class="section-subtitle">Escalabilidad de Agentes</div>
+      <p>Cada agente adicional aumenta complejidad del pipeline, numero de integraciones, superficie de testing. El sistema necesita coordinacion entre 6 agentes sin crear cascadas de fallo (si Asistente Propuestas falla, Task Tracker no deberia bloquearse).</p>
+      <p><strong>Mitigacion:</strong> Event decoupling. Fallback paths. Independent versioning por agente. Monitoring de agent health.</p>
+
+      <div class="card-grid" style="margin-top: 24px;">
+        <div class="card card-clickable" onclick="openModal('modal-prompt-debt')">
+          <div class="card-title">Prompt Debt</div>
+          <div class="card-text">Como evitar acumulacion de logica en prompts; governance patterns</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: RECOMENDACIONES -->
+<section class="section dark" id="sec-recomendaciones">
+  <div class="container">
+    <div class="section-number">9</div>
+    <h2 class="section-title">Recomendaciones<br>Priorizadas</h2>
+    <div class="section-content">
+      <p>Basado en hallazgos tecnicos, las siguientes acciones ordenadas por impacto y urgencia garantizan exito de MetodologIA × V&A en Gateways G1, G2, G3.</p>
+
+      <div class="section-subtitle">P0 (Antes de Gateway 1 - Week 4)</div>
+      <p><strong>1. Establecer Drive Governance</strong> — Crear estructura /V&A/ con folders, permisos, naming conventions. Validar acceso por rol. Baseline: 1-2 dias.</p>
+      <p><strong>2. Prompts Templates (v1.0)</strong> — Documentar 2 agentes iniciales (Asistente Propuestas + Task Tracker) con prompt.txt, sources.md, evaluation.md. Baseline: 3-4 dias.</p>
+      <p><strong>3. Google Workspace Config</strong> — 2FA enforcement, DLP rules para PII/pricing, audit logging enable. Baseline: 1 dia.</p>
+
+      <div class="section-subtitle" style="margin-top: 32px;">P1 (Durante Build Phase - Week 5-10)</div>
+      <p><strong>4. NotebookLM Integration</strong> — Indexar proposal archive, client data, training materials. Validar retrieval accuracy. Baseline: 2-3 dias.</p>
+      <p><strong>5. Opal Automation Setup</strong> — Configurar triggers para propuestas > $50k, meeting attendees, report schedules. Baseline: 3-4 dias.</p>
+      <p><strong>6. Agent Quality Framework</strong> — Establecer rubrics, evaluation criteria, versioning protocol. Baseline: 2 dias.</p>
+
+      <div class="section-subtitle" style="margin-top: 32px;">P2 (Integrate Phase - Week 11-14)</div>
+      <p><strong>7. Monitoring & Observability</strong> — Dashboard de agent health, error rates, latency. Setup alerts para failures. Baseline: 2-3 dias.</p>
+      <p><strong>8. N4 Product Definition</strong> — Documentar Diseño de Peer Reviewer IA o Task Tracker como producto; identificar go-to-market strategy. Baseline: 3 dias.</p>
+
+      <div class="section-subtitle" style="margin-top: 32px;">P3 (Optimize Phase - Week 15-16)</div>
+      <p><strong>9. Metrics & Reporting</strong> — Dashboard de 9:1 ratio, proposal acceptance rate, cost-per-task. Validar estandar en Gateway 3. Baseline: 1-2 dias.</p>
+      <p><strong>10. Risk Mitigation Plan</strong> — Documentar backup procedures para prompts, export workflows, disaster recovery. Baseline: 1 dia.</p>
+
+      <div class="card-grid" style="margin-top: 32px;">
+        <div class="card card-clickable" onclick="openModal('modal-recomendaciones')">
+          <div class="card-title">Plan de Accion Completo</div>
+          <div class="card-text">Detalle de cada recomendacion, DRI, dependencias, deliverables, succes criteria</div>
+        </div>
+      </div>
+
+      <div class="micro-commit" style="margin-top: 40px;">
+        <div class="micro-commit-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--mia-gold)" stroke-width="3" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="micro-commit-text"><strong>Next Step:</strong> Agendar sesion de kickoff tecnico. Asignar DRIs. Validar que directores entienden Diseño y pueden tomar decisiones rapidas en Gateway evaluations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-code">MTIA-11-TECH-VA-SE</div>
+    <p style="margin-bottom: 8px;">MetodologIA × V&A Consulting Discovery</p>
+    <p style="opacity: 0.7; font-size: 12px;">Document 11: Hallazgos Tecnicos | Technical Findings | Architecture & Quality</p>
+    <div class="footer-cta">
+      <p style="margin-bottom: 12px;">Listo para el siguiente paso?</p>
+      <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank">Agendar sesion de kickoff</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+
+<!-- Modal: Resumen Tech -->
+<div class="modal-overlay" id="modal-resumen-tech">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-resumen-tech')">&times;</button>
+    <h2>Hallazgos <span>Clave</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Executive Summary</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Current State (AS-IS)</div>
+      <p>V&A opera 100% manualmente: documentos Word, spreadsheets basicos, follow-ups por email. Cero automatizacion, cero CRM, cero data pipeline.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Technical Foundation</div>
+      <p>Iniciamos con diseño limpio: 100% Google Workspace, 6 agentes planificados, zero technical debt, cero legacy code. Gemini como LLM runtime.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Key Metrics (Target)</div>
+      <p>9:1 automation ratio (9 tasks by agents, 1 by humans). 99.9% availability (Google SLA). Zero DevOps overhead. Cost linear con usage.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>MetodologIA define una ruta clara de (R)Evolución: Foundation (2 agents, week 4) → Build (6 agents, week 10) → Integrate (N3 automations, week 14) → Optimize (metrics, week 16).</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Google Stack -->
+<div class="modal-overlay" id="modal-google-stack">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-google-stack')">&times;</button>
+    <h2>Por que 100%<br><span>Google Workspace</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Architecture Decision</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Hybrid Alternative (Rejected)</div>
+      <p>Combinar Google + Slack + Notion + Zapier introduce: 5+ identity providers, context-switching entre apps, custom integration layers, multiple failure points.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">100% Google Benefits</div>
+      <p>Single identity provider (Google Cloud Identity). Unified collaboration layer (Drive, Docs, Sheets). Native AI (Gemini API). Single audit log. Native automation (Opal). No middleware. No data silos.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cost & Operations</div>
+      <p>Workspace subscription + Gemini API usage = transparent, linear cost model. No servers, no DevOps team, no SRE overhead. Google handles 99.9% uptime.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A focuses on product (agentes, propuestas, reportes) sin gastar recursos en infrastructure, identity management, o integration plumbing.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Gemini -->
+<div class="modal-overlay" id="modal-gemini">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-gemini')">&times;</button>
+    <h2>Gemini como<br><span>Runtime de Agentes</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">AI Foundation</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Why Not Other LLMs?</div>
+      <p>OpenAI, Claude, Llama requieren: API keys externos, custom integrations, separate billing, context switching. Gemini esta nativo en Google Workspace.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Gemini Capabilities</div>
+      <p>N1 (Gemini chat): iterative refinement. N2 (NotebookLM grounding): indexed knowledge bases. N3 (Opal integration): event-driven execution. N4 (Mini apps): product extraction.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Execution Model</div>
+      <p>Cada agente = Gemini prompt + grounding sources + optional Opal trigger. Response time < 5 segundos. Costo transparente por token. Escalable a 6+ agentes sin complejidad adicional.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Agentes generan propuestas, reportes, análisis sin necesidad de custom code, webhooks, o external orchestration.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Agent Anatomy -->
+<div class="modal-overlay" id="modal-agent-anatomy">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-agent-anatomy')">&times;</button>
+    <h2>Anatomia de un<br><span>Agente</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Agent Structure</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Components</div>
+      <p><strong>1. Prompt (Gema):</strong> System message que define rol, tonalidad, restricciones del agente (ej: "Eres Asistente de Propuestas. Genera propuestas comerciales en Spanish. Incluye pricing segun cliente tier...").</p>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Components (cont'd)</div>
+      <p><strong>2. Knowledge Base (NotebookLM):</strong> Fuentes indexadas (proposal templates, client data, pricing rules, case studies). Gemini retrieves relevant context para cada ejecucion.</p>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Components (cont'd)</div>
+      <p><strong>3. Opal Automation (Optional):</strong> Triggers (email, calendar, Drive event) + conditions + actions. Automatiza cuando agente debe ejecutarse y que hacer con output.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Execution Flow</div>
+      <p>Trigger fires → Opal passes context to Gemini → Gemini retrieves knowledge base via NotebookLM → Prompt executes → Output returned to user/Drive/email → Logging & audit trail.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Agente es unidad atomica de automatizacion: completamente versionable, evalua, deployable, sin requerer codigo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Agent Quality -->
+<div class="modal-overlay" id="modal-agent-quality">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-agent-quality')">&times;</button>
+    <h2>Patrones de<br><span>Calidad de Agentes</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Quality Assurance</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Evaluation Criteria</div>
+      <p>Cada agente define rubric explicito: relevancia de output (¿responde lo que se pidio?), precisión (¿sin hallucinations?), completitud (¿todos los campos llenos?), tonalidad (¿matches brand voice?).</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Versioning Protocol</div>
+      <p>/V&A/Dream-Team/[AgentName]/v1.0/, v1.1/, v2.0/ etc. Cada version contiene: AGENT.md (metadata), prompt.txt, sources.md, evaluation.md, changelog.txt.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Ownership & Review</div>
+      <p>Cada agente tiene DRI (directly responsible individual). Cambios a prompt requeiren peer review (Peer Reviewer IA). Testing antes de marcar como "production" (v1.0+).</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Agentes evolucionan sin acumular prompt debt. Cada version es auditable, reversible, mejor que la anterior.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Drive Structure -->
+<div class="modal-overlay" id="modal-drive-structure">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-drive-structure')">&times;</button>
+    <h2>Gobernanza de<br><span>Google Drive</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Data Governance</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Root Structure</div>
+      <p>/V&A/ (root) contiene: /Programas/, /Dream-Team/, /Post-Graduacion/, /Admin/</p>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Dream-Team Folder</div>
+      <p>/V&A/Dream-Team/ contiene 6 sub-folders: /Asistente-Propuestas/, /Task-Tracker/, /Agente-Prospeccion/, /Motor-Reportes/, /Peer-Reviewer-IA/, /Meeting-Analyst/</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Per-Agent Structure</div>
+      <p>Cada agente folder: /sources/ (knowledge base docs), /v1.0/ (production), /v1.1/ (staging), /archive/ (old versions). Plus: prompt.txt, evaluation.md, changelog.txt.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Permission Model</div>
+      <p>Programa = Editor (full access). Suscripcion = Lector+Comentador (read-only + comments). Post-Graduacion = No access. Admin roles have override.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Drive estructura garantiza: single source of truth, clear ownership, versionado, permissions enforcement, audit trail completo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Naming Conventions -->
+<div class="modal-overlay" id="modal-naming">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-naming')">&times;</button>
+    <h2>Naming Conventions<br>y <span>Versionamiento</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Standards</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">File Naming</div>
+      <p>Formato: [AgentName]_[component]_[version].[ext]. Ejemplo: AsistentePropuestas_prompt_v1.0.txt, TaskTracker_sources_v2.1.md, AgenteProspeccion_evaluation_v1.0.md</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Versioning Scheme</div>
+      <p>MAJOR.MINOR format. v1.0 = production release. v1.1 = minor improvement (rubric tweak, prompt clarification). v2.0 = major change (new capability, new sources).</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Changelog Format</div>
+      <p>Cada version tiene changelog entry: date, version, changes, reason, DRI, testing results. Facilita rollback si v1.1 introduce degradation.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Naming conventions y versionamiento enfuerzan clarity, traceability, y reversibility across agent ecosystem.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Opal -->
+<div class="modal-overlay" id="modal-opal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-opal')">&times;</button>
+    <h2>Google Opal:<br><span>Automation Engine</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Integration Platform</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">What is Opal?</div>
+      <p>Google Workspace Automation (N3). No-code automation builder dentro de Google Workspace. Define triggers (events), conditions (logic), actions (automations).</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Trigger Types</div>
+      <p>Calendar event created/updated. Email received (con filters: from X, subject contains Y). Drive file created/modified. Sheets cell updated. Chat message received. Manual trigger (user button).</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Condition & Action Examples</div>
+      <p>IF proposal amount > 50k THEN notify manager. IF meeting ended THEN trigger Meeting Analyst. IF new prospect in Drive THEN run Agente Prospeccion. IF report ready THEN email stakeholders.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Execution Guarantees</div>
+      <p>Event-driven, not polling. Execution < 1 minuto post-trigger. Retry logic built-in (3 attempts default). Execution logs in Opal dashboard. Throttling limits: 1000 automations/minute per org.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Opal orquesta todo el flujo entre agentes sin codigo custom, sin webhooks, sin external orchestration platform.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Security -->
+<div class="modal-overlay" id="modal-security">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-security')">&times;</button>
+    <h2>Modelo de<br><span>Seguridad</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Security Posture</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Identity & Authentication</div>
+      <p>Google Cloud Identity (mandatory for Workspace org). 2FA enforcement (phishing-resistant protocols preferred: security keys or Windows Hello). Password policy: 12+ chars, rotation every 90 days.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Access Control</div>
+      <p>Permission matrix: Editor (read-write-share), Commenter (read-comment), Viewer (read-only). Granular at document level. Device-based access: managed devices only (MDM enforced).</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Data Loss Prevention (DLP)</div>
+      <p>Custom rules monitor: credit card numbers, social security numbers, client pricing, secrets. Actions: log, warn, block on upload. Scans both stored and in-transit data.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Encryption & Audit</div>
+      <p>TLS 1.2+ in transit. AES-256 at rest (Google managed keys). Audit logs: 100+ days retention. Quarterly security assessments. Vulnerability disclosure program.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A opera con enterprise-grade security sin complejidad operacional. Google handles compliance, patching, incident response.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Permissions -->
+<div class="modal-overlay" id="modal-permissions">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-permissions')">&times;</button>
+    <h2>Matriz de<br><span>Permisos por Fase</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Access Control</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Foundation Phase (Week 1-4)</div>
+      <p>V&A Founders: Editor on all /V&A/. Team Lead (if hired): Editor on /Dream-Team/ + assigned agents. Learners: Viewer on /Programas/ only. Subscribers: Viewer+Commenter on /Programas/.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Build Phase (Week 5-10)</div>
+      <p>Same as Foundation, plus: Agent Owners (DRIs) get Editor on their assigned agent folders. External reviewers (for Peer Reviewer IA pilot) get Commenter on /Peer-Reviewer-IA/.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Integrate Phase (Week 11-14)</div>
+      <p>No permission changes. Scale learners/subscribers as needed. Post-Graduacion cohort gets Viewer+Commenter on /Post-Graduacion/ only. Embargo on viewing /Programas/ pricing data.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Permission matrix evolves with business phases. Clear roles, no surprises, enforcement via Google's native controls.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: SLA -->
+<div class="modal-overlay" id="modal-sla">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-sla')">&times;</button>
+    <h2>Google SLA &<br><span>Availability Guarantees</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Reliability</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">The 99.9% Guarantee</div>
+      <p>Google Workspace SLA: 99.9% uptime monthly. Translates to: max 43 minutes downtime per month. Measured end-to-end (login, email send, drive sync). Available globally.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Incident Response</div>
+      <p>Google's team monitors 24/7. If outage > 1 minute, Google publishes status page. If > 1 hour, customer gets SLA credit (10% month fees for each hour over). Root cause analysis post-incident.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">No Maintenance Windows</div>
+      <p>Google updates infrastructure transparently without downtime. Backup & recovery automatic. Data replication across multiple geographic regions (transparent to customer).</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A doesn't need backup team, disaster recovery plan, or redundancy architecture. Google absorbs all availability risk.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Prompt Debt -->
+<div class="modal-overlay" id="modal-prompt-debt">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-prompt-debt')">&times;</button>
+    <h2>Prompt Debt<br>as <span>Technical Debt</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Risk Management</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">What is Prompt Debt?</div>
+      <p>Over time, prompts accumulate: edge cases ("if client is named Acme, use X template"), workarounds ("when Gemini hallucinates, try rephrasing"), hacks ("prepend fake data to ground context"). Prompt becomes unmaintainable.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">How to Avoid It</div>
+      <p>1. Template prompts reutilizables (copy from library, no mutations). 2. Explicit rubrics (define success criteria upfront). 3. Versioning enforced (v1.1 is iteration of v1.0, not patch). 4. Code review de prompts (Peer Reviewer validates). 5. Testing before release.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Mitigation Strategy</div>
+      <p>Monthly prompt audit: revisar prompts viejos, identificar cruft, consolidar workarounds en nueva version. Limit agent to 1-2 major prompts max. If > 2, split into sub-agents.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Prompts permanecen legibles, debuggeables, efficientes. Agentes mantienen calidad a largo plazo sin technical debt spiral.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: N4 Architecture -->
+<div class="modal-overlay" id="modal-n4-architecture">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-n4-architecture')">&times;</button>
+    <h2>N4 Mini Apps:<br>Evolucion de <span>Agentes a Productos</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Product Roadmap</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">N4 Definition</div>
+      <p>Agents que evolucionan a productos vendibles a clientes externos. Candidates: Peer Reviewer IA (evaluador de propuestas), Task Tracker (gestor de proyectos), Agente Prospeccion (lead qualification SaaS).</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Architecture Components</div>
+      <p>Mismo core: prompt + sources + Opal. Plus: user interface (Google Apps Script o mini dashboard), API (Google Apps Script endpoints), billing (Workspace subscription tier), documentation (help center).</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Go-to-Market</div>
+      <p>Peer Reviewer IA: v1 for internal V&A use (validate proposals). v2 beta: offer to pilot clients. v3 GA: product launch, 200k COP/persona/month SaaS. Other agents follow same path.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A transforma agentes internos en nueva linea de negocio. Cero development overhead (mismo stack de Workspace).</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Recomendaciones -->
+<div class="modal-overlay" id="modal-recomendaciones">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-recomendaciones')">&times;</button>
+    <h2>Plan de Accion<br><span>Completo</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Implementation Roadmap</span>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">P0: Week 1-4 (Gateway 1)</div>
+      <p><strong>1. Drive Governance</strong> (DRI: Founder) — Crear /V&A/ structure, set permissions, enable 2FA. 1-2 dias. Success: folder audit successful, permisos correctos, changelog basico.</p>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">P0 (cont'd)</div>
+      <p><strong>2. Agent v1.0 (Propuestas + Tasks)</strong> (DRI: Founder) — Write prompts, index knowledge bases, define rubrics. 3-4 dias. Success: 2 agentes documented, tested con 5+ examples cada uno, v1.0 tagged en Drive.</p>
+    </div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">P0 (cont'd)</div>
+      <p><strong>3. Workspace Security</strong> (DRI: Founder) — 2FA enforcement, DLP rules, audit logging enable. 1 dia. Success: security dashboard shows full compliance.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">P1: Week 5-10 (Gateway 2)</div>
+      <p><strong>4. NotebookLM Integration</strong> (DRI: Founder) — Index proposal archive + client database. Test retrieval. 2-3 dias. Success: retrieval accuracy > 90%.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">P1 (cont'd)</div>
+      <p><strong>5. Opal Automations</strong> (DRI: Founder) — Configure 3-5 workflows (proposal trigger, meeting schedule, report). 3-4 dias. Success: workflows execute without manual intervention.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">P1 (cont'd)</div>
+      <p><strong>6. Agent Quality Framework</strong> (DRI: Founder) — Rubric templates, evaluation protocol, versioning SOP. 2 dias. Success: Peer Reviewer IA can evaluate other agents.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">P2: Week 11-14 (Integrate)</div>
+      <p><strong>7. Monitoring Dashboard</strong> (DRI: Team Lead if hired) — Agent health, error rates, latency. 2-3 dias. Success: dashboard updated daily.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">P2 (cont'd)</div>
+      <p><strong>8. N4 Product Charter</strong> (DRI: Founder) — Define Peer Reviewer IA or Task Tracker as product. Market fit, pricing, go-to-market. 3 dias. Success: product charter approved.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">P3: Week 15-16 (Optimize)</div>
+      <p><strong>9. Metrics & Reporting</strong> (DRI: Founder) — 9:1 ratio, proposal acceptance, cost-per-task. 1-2 dias. Success: metrics dashboard operational, baseline established.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">P3 (cont'd)</div>
+      <p><strong>10. Risk Mitigation Plan</strong> (DRI: Founder) — Backup prompts, export workflows, disaster recovery. 1 dia. Success: documented recovery procedures, tested at least once.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FUNCTIONS -->
+<script>
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (m) {
+    m.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (m) {
+    m.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => {
+    if (e.target === o) closeModal(o.id);
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+  }
+});
+</script>
+
+</body>
+</html>

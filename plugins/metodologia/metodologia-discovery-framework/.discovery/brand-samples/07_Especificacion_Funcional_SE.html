@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 Especificacion Funcional — V&A Consulting × MetodologIA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E2E8F0;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--mia-dark-text); background: var(--mia-offwhite); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.3px; color: var(--mia-navy); line-height: 1.2; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; line-height: 1.6; }
+a { color: var(--mia-blue); text-decoration: none; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); position: relative; overflow: hidden; padding: 5rem 2rem 4rem; color: var(--mia-white); }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue)); }
+.hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; text-align: center; }
+.brand-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+.brand-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline { display: block; font-size: 0.7rem; color: var(--mia-text-muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle { font-size: 1.15rem; color: var(--mia-text); margin-bottom: 2.5rem; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+.hero-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.hero-kpi { text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 1.25rem 1rem; transition: all var(--transition-normal); }
+.hero-kpi:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.hero-kpi-value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--mia-gold); }
+.hero-kpi-value.blue { color: var(--mia-blue-light); }
+.hero-kpi-label { font-size: .72rem; color: var(--mia-text-muted); margin-top: .5rem; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+.hero-punchline { font-style: italic; font-size: 1.1rem; color: var(--mia-blue-light); margin-top: 2.5rem; opacity: 0.85; }
+
+/* STICKY TOC */
+nav.toc { background: var(--mia-white); position: sticky; top: 0; z-index: var(--z-sticky-nav); border-bottom: 1px solid #E2E8F0; box-shadow: var(--shadow-sm); }
+.toc-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: .25rem; padding: .6rem 1rem; overflow-x: auto; justify-content: center; }
+.toc-link { text-decoration: none; color: var(--mia-dark-text); font-size: .78rem; font-weight: 500; padding: .4rem .8rem; border-radius: var(--radius-sm); transition: var(--transition-fast); white-space: nowrap; }
+.toc-link:hover, .toc-link.active { background: var(--mia-blue); color: white; }
+
+/* LAYOUT */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+section { scroll-margin-top: 60px; padding: 3.5rem 0; border-bottom: 1px solid #E2E8F0; }
+section.dark { background: var(--mia-navy); color: white; border-bottom-color: var(--mia-navy-mid); }
+section.dark h2, section.dark h3, section.dark h4 { color: white; }
+section.dark p, section.dark li { color: var(--mia-text); }
+section.dark .card { background: var(--mia-navy-light); }
+section.dark .punchline { color: var(--mia-gold); border-top-color: var(--mia-gold); }
+section.dark .section-subtitle { color: var(--mia-text-muted); }
+
+.section-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; }
+.section-number { width: 52px; height: 52px; min-width: 52px; border-radius: 50%; background: var(--mia-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; }
+section.dark .section-number { background: var(--mia-gold); color: var(--mia-navy); }
+.section-subtitle { color: #64748B; font-size: 0.95rem; margin-top: 0.3rem; }
+
+/* CARDS */
+.card { background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-card); margin-bottom: 1.5rem; }
+.card-clickable { cursor: pointer; transition: all var(--transition-normal); }
+.card-clickable:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.card-gold { border-left: 4px solid var(--mia-gold); }
+.card-accent { border-left: 4px solid var(--mia-blue); }
+.card-click-hint { display: block; margin-top: 1rem; color: var(--mia-blue); font-size: .85rem; font-weight: 500; }
+section.dark .card-click-hint { color: var(--mia-blue-light); }
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+/* BADGES */
+.badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.badge-green { background: var(--mia-positive-dim); color: #16A34A; }
+.badge-red { background: var(--mia-critical-dim); color: var(--mia-critical); }
+.badge-warning { background: var(--mia-warning-dim); color: var(--mia-warning); }
+
+/* CALLOUT */
+.callout { border-radius: var(--radius-md); padding: 1.5rem; margin: 1.5rem 0; font-size: 0.95rem; }
+.callout-blue { background: var(--mia-blue-dim); border-left: 4px solid var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-left: 4px solid var(--mia-gold); }
+.callout-green { background: var(--mia-positive-dim); border-left: 4px solid var(--mia-positive); }
+.callout-red { background: var(--mia-critical-dim); border-left: 4px solid var(--mia-critical); }
+
+/* PUNCHLINE */
+.punchline { text-align: center; font-size: 1.2rem; font-weight: 700; padding: 2rem 0; color: var(--mia-navy); font-style: italic; border-top: 2px solid var(--mia-gold); margin-top: 2rem; }
+
+/* SPEC TABLE */
+.spec-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: var(--mia-white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+.spec-table th { background: var(--mia-navy); color: white; padding: 1rem; font-size: 0.8rem; text-align: center; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.spec-table th:first-child { text-align: left; }
+.spec-table td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--mia-light); font-size: 0.9rem; text-align: center; }
+.spec-table td:first-child { text-align: left; font-weight: 600; }
+.spec-table tr:last-child td { border-bottom: none; }
+.spec-table .high { color: var(--mia-critical); font-weight: 700; }
+.spec-table .medium { color: var(--mia-warning); font-weight: 700; }
+.spec-table .low { color: var(--mia-positive); font-weight: 700; }
+
+/* USE CASE CARD */
+.uc-card { border-radius: var(--radius-lg); padding: 1.5rem 2rem; box-shadow: var(--shadow-card); margin-bottom: 1.5rem; background: var(--mia-white); position: relative; border-left: 4px solid var(--mia-blue); }
+.uc-card.gold-border { border-left-color: var(--mia-gold); }
+.uc-card .uc-id { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--mia-blue); margin-bottom: .25rem; }
+.uc-card.gold-border .uc-id { color: var(--mia-gold-dark); }
+.uc-card h4 { margin-bottom: .5rem; }
+.uc-meta { display: flex; gap: .5rem; flex-wrap: wrap; margin: .75rem 0; }
+
+/* MODALS */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,18,42,0.85); z-index: var(--z-modal); align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.modal-overlay.active { display: flex; }
+.modal-box { background: white; border-radius: var(--radius-lg); max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: var(--shadow-lg); }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748B; }
+.modal-box h2 { margin-bottom: 0.5rem; }
+.modal-box h2 span { color: var(--mia-gold); }
+.modal-badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.modal-section { padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1rem; }
+.modal-section-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .75rem; }
+.modal-section.friction { background: var(--mia-critical-dim); }
+.modal-section.friction .modal-section-label { color: var(--mia-critical); }
+.modal-section.anticipation { background: var(--mia-warning-dim); }
+.modal-section.anticipation .modal-section-label { color: var(--mia-warning); }
+.modal-section.resolution { background: var(--mia-blue-dim); }
+.modal-section.resolution .modal-section-label { color: var(--mia-blue); }
+.modal-section.success { background: var(--mia-positive-dim); }
+.modal-section.success .modal-section-label { color: var(--mia-positive); }
+
+/* CTA */
+.cta-button { display: inline-block; padding: 1rem 2.5rem; background: var(--mia-blue); color: white; text-decoration: none; border-radius: var(--radius-xl); font-weight: 700; font-size: 1rem; transition: var(--transition-normal); }
+.cta-button:hover { background: var(--mia-blue-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.cta-button.gold { background: var(--mia-gold); color: var(--mia-navy); }
+.cta-button.gold:hover { background: #FFE44D; }
+
+/* FOOTER */
+footer { background: var(--mia-navy); color: var(--mia-text-muted); padding: 2rem; text-align: center; font-size: .8rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand-name { font-size: .85rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.footer-code { font-family: monospace; color: var(--mia-gold); margin-top: .5rem; }
+
+/* ANIMATE */
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .hero-kpi-value { font-size: 2rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  .section-header { flex-direction: column; gap: .75rem; }
+  .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
+  .spec-table { font-size: .75rem; }
+  .spec-table th, .spec-table td { padding: .5rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+}
+@media print {
+  nav.toc, footer, .modal-overlay { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+
+    <h1>Especificacion <span>Funcional</span></h1>
+    <p class="hero-subtitle">Modulos, casos de uso, reglas de negocio y criterios de aceptacion para la (R)Evolución AI Native de V&A Consulting.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">5</div>
+        <div class="hero-kpi-label">Modulos Funcionales</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">18</div>
+        <div class="hero-kpi-label">Casos de Uso</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">6</div>
+        <div class="hero-kpi-label">Agentes del Dream Team</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">12</div>
+        <div class="hero-kpi-label">Reglas de Negocio</div>
+      </div>
+    </div>
+
+    <p class="hero-punchline">La especificacion no es burocracia. Es el plano que separa una (R)Evolución exitosa de una que se pierde en la improvisacion.</p>
+  </div>
+</header>
+
+<!-- ============================== STICKY TOC ============================== -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#alcance" class="toc-link">Alcance</a>
+    <a href="#modulos" class="toc-link">Modulos</a>
+    <a href="#ecosistema" class="toc-link">Ecosistema</a>
+    <a href="#dreamteam" class="toc-link">Dream Team</a>
+    <a href="#casos" class="toc-link">Casos de Uso</a>
+    <a href="#reglas" class="toc-link">Reglas</a>
+    <a href="#repos" class="toc-link">Gobernanza</a>
+    <a href="#matriz" class="toc-link">Complejidad</a>
+    <a href="#aceptacion" class="toc-link">Aceptacion</a>
+    <a href="#siguiente" class="toc-link">Siguiente Paso</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ============================== SECTION 1: ALCANCE ============================== -->
+<section id="alcance" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div>
+      <h2>Alcance Funcional</h2>
+      <p class="section-subtitle">Que cubre esta especificacion, que queda fuera, y como se conecta con el Roadmap (Doc 06).</p>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Escenario B — (R)Evolución Completa:</strong> Esta especificacion detalla los requerimientos funcionales del Programa (R)Evolución de 16 semanas + Suscripcion Anual de 12 meses, con despliegue del Dream Team de 6 agentes IA y 9h/semana de acompañamiento.
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-dentro')">
+      <h4>Dentro del Alcance</h4>
+      <ul>
+        <li>5 modulos funcionales del Programa (R)Evolución</li>
+        <li>18 casos de uso detallados con criterios de aceptacion</li>
+        <li>Configuracion y despliegue de 6 agentes IA</li>
+        <li>Flujos de trabajo para los procesos criticos de V&A</li>
+        <li>Gobernanza, metricas y dashboard de adopcion</li>
+      </ul>
+      <span class="card-click-hint">Ver detalle completo</span>
+    </div>
+    <div class="card card-gold card-clickable" onclick="openModal('modal-fuera')">
+      <h4>Fuera del Alcance</h4>
+      <ul>
+        <li>Desarrollo de software a medida</li>
+        <li>Migracion de datos historicos</li>
+        <li>Integraciones con sistemas de terceros no-Google</li>
+        <li>Certificacion Reseller (Escenario C, post-Gate 2)</li>
+        <li>Soporte tecnico de infraestructura no-MetodologIA</li>
+      </ul>
+      <span class="card-click-hint">Ver exclusiones detalladas</span>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <h4>Trazabilidad con Documentos Anteriores</h4>
+    <p>Cada modulo y caso de uso se conecta con hallazgos especificos de los documentos previos.</p>
+    <div class="card-grid-3" style="margin-top:1rem;">
+      <div>
+        <span class="badge badge-blue">Doc 03 AS-IS</span>
+        <p style="font-size:.9rem; margin-top:.5rem;">Define el punto de partida: 160h/mes, N0, cero automatizacion.</p>
+      </div>
+      <div>
+        <span class="badge badge-gold">Doc 05 Escenarios</span>
+        <p style="font-size:.9rem; margin-top:.5rem;">Escenario B seleccionado (87/100). Define la ruta de (R)Evolución.</p>
+      </div>
+      <div>
+        <span class="badge badge-green">Doc 06 Roadmap</span>
+        <p style="font-size:.9rem; margin-top:.5rem;">5 fases, 3 gates. Los modulos funcionales se mapean a las fases del roadmap.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="punchline">Especificar no es limitar. Es asegurar que cada hora invertida genera exactamente el resultado prometido.</p>
+</section>
+
+<!-- ============================== SECTION 2: MODULOS ============================== -->
+<section id="modulos" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div>
+      <h2>Los 5 Modulos Funcionales</h2>
+      <p class="section-subtitle">Cada modulo agrupa capacidades relacionadas. El despliegue sigue la escalera de valor: cada modulo incluye todo lo del anterior y añade capacidades.</p>
+    </div>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-mod-m1')">
+    <span class="badge badge-green">M1 — Fase 0</span>
+    <h4 style="margin-top:.5rem;">Diagnostico y Activacion</h4>
+    <p>Evaluacion de madurez digital, mapeo de procesos criticos, identificacion de primeras victorias rapidas y propuesta personalizada. Gratuito. 2-3 semanas.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">3 casos de uso</span>
+      <span class="badge badge-gold">Gratuito</span>
+      <span class="badge badge-green">Prerequisito de todo lo demas</span>
+    </div>
+    <span class="card-click-hint">Ver casos de uso del modulo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-mod-m2')">
+    <span class="badge badge-blue">M2 — Fase 1</span>
+    <h4 style="margin-top:.5rem;">Fundaciones Digitales</h4>
+    <p>Configuracion del entorno Google Workspace + Gemini, despliegue de los 2 primeros agentes IA (Asistente de Propuestas, Task Tracker), entrenamiento base de los fundadores en ofimatica IA, y establecimiento de la gobernanza. Incluye todo lo del Diagnostico.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">4 casos de uso</span>
+      <span class="badge badge-gold">Semanas 1-4</span>
+      <span class="badge badge-green">2 agentes IA</span>
+    </div>
+    <span class="card-click-hint">Ver casos de uso del modulo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-mod-m3')">
+    <span class="badge badge-gold">M3 — Fase 2</span>
+    <h4 style="margin-top:.5rem;">Expansion y Automatizacion Comercial</h4>
+    <p>Despliegue de los 4 agentes restantes del Dream Team: Agente de Prospeccion, Motor de Reportes, Peer Reviewer IA, Meeting Analyst. Personalizacion de flujos de automatizacion comercial para cada proceso critico. Incluye todo lo de Fundaciones.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">5 casos de uso</span>
+      <span class="badge badge-gold">Semanas 5-10</span>
+      <span class="badge badge-green">4 agentes adicionales</span>
+    </div>
+    <span class="card-click-hint">Ver casos de uso del modulo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-mod-m4')">
+    <span class="badge badge-green">M4 — Fase 3</span>
+    <h4 style="margin-top:.5rem;">Consolidacion y Transferencia</h4>
+    <p>Optimizacion de agentes basada en datos reales, documentacion completa de flujos, transferencia de conocimiento hacia V&A, y transicion formal del Programa a Suscripcion Anual. Incluye todo lo de Expansion.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">3 casos de uso</span>
+      <span class="badge badge-gold">Semanas 11-16</span>
+      <span class="badge badge-green">Inicio Suscripcion</span>
+    </div>
+    <span class="card-click-hint">Ver casos de uso del modulo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-mod-m5')">
+    <span class="badge badge-gold">M5 — Fase 4</span>
+    <h4 style="margin-top:.5rem;">Autonomia y Evolucion Continua</h4>
+    <p>Acompañamiento sostenido de 9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica). Optimizacion continua, nuevos flujos segun necesidad, y evaluacion trimestral de progresion a Escenario C. Incluye todo lo de Consolidacion.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">3 casos de uso</span>
+      <span class="badge badge-gold">Meses 5-12</span>
+      <span class="badge badge-green">Suscripcion Anual</span>
+    </div>
+    <span class="card-click-hint">Ver casos de uso del modulo</span>
+  </div>
+
+  <p class="punchline">5 modulos, 18 casos de uso, 16 semanas de programa + 12 meses de acompañamiento. Cada modulo construye sobre el anterior.</p>
+</section>
+
+<!-- ============================== SECTION 2B: ECOSISTEMA TECNOLOGICO ============================== -->
+<section id="ecosistema" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <div>
+      <h2>Ecosistema Tecnologico</h2>
+      <p class="section-subtitle">Cada rol digital nace como una Gema de Gemini y puede evolucionar hasta convertirse en una mini app o agente autonomo. La ruta de maduracion es progresiva: nadie salta pasos.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Principio fundamental:</strong> Todos los roles digitales del Dream Team nacen como Gemas de Gemini (asistentes conversacionales). Este es el punto de entrada mas accesible para un equipo no tecnico. Desde ahi, cada rol puede evolucionar segun la necesidad y la madurez operativa de V&A.
+  </div>
+
+  <div class="card card-gold card-clickable" onclick="openModal('modal-eco-ruta')">
+    <h4>Ruta de Evolucion Tecnologica</h4>
+    <p>Cada rol digital del Dream Team recorre un camino de maduracion de 4 niveles. No todos los roles necesitan llegar al nivel maximo: la evolucion se decide por consenso tecnico basado en datos de adopcion y necesidad real.</p>
+
+    <div style="display:flex; gap:.75rem; flex-wrap:wrap; margin:1.5rem 0; align-items:center;">
+      <div style="background:var(--mia-blue-dim); border:2px solid var(--mia-blue); border-radius:var(--radius-md); padding:1rem; text-align:center; flex:1; min-width:140px;">
+        <div style="font-size:1.5rem; font-weight:800; color:var(--mia-blue);">N1</div>
+        <div style="font-size:.8rem; font-weight:700; margin-top:.25rem;">Gema de Gemini</div>
+        <div style="font-size:.72rem; color:#64748B; margin-top:.25rem;">Asistente conversacional. Prompt + contexto. Accesible via chat.</div>
+      </div>
+      <div style="color:var(--mia-blue); font-size:1.5rem; font-weight:800;">&#8594;</div>
+      <div style="background:var(--mia-gold-dim); border:2px solid var(--mia-gold); border-radius:var(--radius-md); padding:1rem; text-align:center; flex:1; min-width:140px;">
+        <div style="font-size:1.5rem; font-weight:800; color:var(--mia-gold-dark);">N2</div>
+        <div style="font-size:.8rem; font-weight:700; margin-top:.25rem;">Gema + NotebookLM</div>
+        <div style="font-size:.72rem; color:#64748B; margin-top:.25rem;">Fuentes de datos ampliadas. Repos gobernados como base de verdad.</div>
+      </div>
+      <div style="color:var(--mia-gold); font-size:1.5rem; font-weight:800;">&#8594;</div>
+      <div style="background:var(--mia-positive-dim); border:2px solid var(--mia-positive); border-radius:var(--radius-md); padding:1rem; text-align:center; flex:1; min-width:140px;">
+        <div style="font-size:1.5rem; font-weight:800; color:#16A34A;">N3</div>
+        <div style="font-size:.8rem; font-weight:700; margin-top:.25rem;">Flujos con Google Opal</div>
+        <div style="font-size:.72rem; color:#64748B; margin-top:.25rem;">Automatizacion de pasos. Triggers, condiciones, acciones sin codigo.</div>
+      </div>
+      <div style="color:var(--mia-positive); font-size:1.5rem; font-weight:800;">&#8594;</div>
+      <div style="background:rgba(139,92,246,0.10); border:2px solid #8B5CF6; border-radius:var(--radius-md); padding:1rem; text-align:center; flex:1; min-width:140px;">
+        <div style="font-size:1.5rem; font-weight:800; color:#8B5CF6;">N4</div>
+        <div style="font-size:.8rem; font-weight:700; margin-top:.25rem;">Mini App / AntiGravity</div>
+        <div style="font-size:.72rem; color:#64748B; margin-top:.25rem;">Agente autonomo o app estructurada. Interfaz propia. Logica a medida.</div>
+      </div>
+    </div>
+    <span class="card-click-hint">Ver detalle de cada nivel de evolucion</span>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-eco-nacimiento')">
+      <h4>Nacimiento: La Gema de Gemini</h4>
+      <p>Todo rol digital nace como una Gema de Gemini: un asistente conversacional con instrucciones (prompt), personalidad y contexto especifico del proceso que atiende. El fundador interactua por chat, como hablar con un colega especialista. No requiere habilidades tecnicas.</p>
+      <ul>
+        <li>Prompt personalizado por MetodologIA</li>
+        <li>Contexto del proceso cargado desde Google Drive</li>
+        <li>Accesible desde Gemini en cualquier dispositivo</li>
+        <li>Iteracion rapida: ajustar el prompt es inmediato</li>
+      </ul>
+      <span class="card-click-hint">Ver anatomia de una Gema</span>
+    </div>
+    <div class="card card-gold card-clickable" onclick="openModal('modal-eco-fuentes')">
+      <h4>Potenciacion: NotebookLM como Fuente de Verdad</h4>
+      <p>Cuando la Gema necesita datos mas profundos, se conecta con NotebookLM: repositorios de documentos, plantillas, historiales y bases de conocimiento gobernadas en Google Drive. NotebookLM amplifica la capacidad de respuesta con datos reales y contextualizados.</p>
+      <ul>
+        <li>Repos de Google Drive como fuente de datos segura</li>
+        <li>Estructura de carpetas gobernada por MetodologIA</li>
+        <li>Documentos vivos: se actualizan, el agente aprende</li>
+        <li>Propiedad de V&A, acceso controlado por permisos</li>
+      </ul>
+      <span class="card-click-hint">Ver diseño de repositorios</span>
+    </div>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-eco-opal')">
+      <h4>Automatizacion: Google Opal</h4>
+      <p>Cuando un proceso tiene pasos repetitivos claros, la Gema evoluciona a un flujo automatizado con Google Opal: triggers (algo dispara la accion), condiciones (se evaluan reglas), acciones (se ejecuta sin intervencion humana). Sin codigo, dentro del ecosistema Google.</p>
+      <ul>
+        <li>Automatizacion nativa de Google (sin herramientas externas)</li>
+        <li>Triggers por email, calendario, formularios, sheets</li>
+        <li>El fundador configura con asistencia de MetodologIA</li>
+        <li>Monitoreo y ajuste incluidos en las 9h/semana</li>
+      </ul>
+      <span class="card-click-hint">Ver patrones de automatizacion</span>
+    </div>
+    <div class="card card-gold card-clickable" onclick="openModal('modal-eco-antigravity')">
+      <h4>Evolucion Avanzada: AntiGravity y Mini Apps</h4>
+      <p>El nivel maximo: cuando un rol digital necesita interfaz propia, logica compleja o integraciones avanzadas, evoluciona a una mini app con AntiGravity o desarrollo a medida. Es el camino para convertir un agente interno en un producto o servicio comercializable.</p>
+      <ul>
+        <li>Interfaz web o movil con marca V&A</li>
+        <li>Logica de negocio estructurada y testeable</li>
+        <li>Posibilidad de ofrecer como servicio a clientes</li>
+        <li>Requiere decision en Gate 2 o Gate 3</li>
+      </ul>
+      <span class="card-click-hint">Ver criterios de evolucion</span>
+    </div>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Principio de consenso tecnico:</strong> La decision de evolucionar un rol digital de N1 a N2, N3 o N4 no la toma MetodologIA unilateralmente. Se decide por consenso entre V&A y MetodologIA basado en datos de adopcion, necesidad real y costo-beneficio. No todos los roles necesitan llegar a N4. Muchos operan perfectamente como Gemas (N1) o Gemas + NotebookLM (N2) de forma indefinida.
+  </div>
+
+  <p class="punchline">Cada rol nace como una conversacion y puede evolucionar hasta ser un producto. La ruta se decide con datos, no con ambicion prematura.</p>
+</section>
+
+<!-- ============================== SECTION 3: DREAM TEAM — 6 ROLES DIGITALES ============================== -->
+<section id="dreamteam" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <div>
+      <h2>Dream Team: 6 Roles Digitales</h2>
+      <p class="section-subtitle">Cada rol digital nace como una Gema de Gemini con repos gobernados en Drive + NotebookLM. Puede evolucionar a flujos automatizados (Opal) o mini apps (AntiGravity). El nivel de evolucion se decide por consenso tecnico.</p>
+    </div>
+  </div>
+
+  <!-- AGENTE 1: Asistente de Propuestas -->
+  <div class="card card-clickable" onclick="openModal('modal-dt-propuestas')" style="border-top:4px solid var(--mia-blue);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <span class="badge badge-blue">Fase 1 — Semanas 2-3</span>
+        <h4 style="margin-top:.5rem;">Asistente de Propuestas</h4>
+      </div>
+      <div style="display:flex;gap:.35rem;">
+        <span class="badge badge-blue" title="Nivel actual">N1 Gema</span>
+        <span class="badge badge-gold" title="Nivel objetivo">N2 +NLM</span>
+        <span class="badge badge-green" title="Evolucion posible">N3 Opal</span>
+      </div>
+    </div>
+    <p>Genera borradores de propuestas comerciales a partir de briefings, datos del cliente y plantillas de V&A. Reduce el tiempo de elaboracion de 4h a 30min por propuesta.</p>
+    <p style="font-size:.9rem;"><strong>Nace como:</strong> Gema de Gemini con prompt especializado + plantillas en Drive. <strong>Se potencia con:</strong> NotebookLM cargado con propuestas anteriores exitosas, tarifas actualizadas, y repositorio de casos de exito. <strong>Puede evolucionar a:</strong> Flujo Opal que auto-genera el primer borrador al detectar un nuevo prospecto en el CRM de Sheets.</p>
+    <div style="margin-top:1rem;padding:1rem;background:rgba(19,125,197,0.06);border-radius:var(--radius-md);">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mia-blue);margin-bottom:.5rem;">Repo de Google Drive</div>
+      <p style="font-size:.85rem;margin:0;">/V&A/Dream-Team/Propuestas/ — Plantillas, propuestas enviadas, tarifario vigente, casos de exito, feedback de clientes. Gobernado: solo MetodologIA edita plantillas base, V&A edita contenido.</p>
+    </div>
+    <span class="card-click-hint">Ver Product Vision Board completo</span>
+  </div>
+
+  <!-- AGENTE 2: Task Tracker -->
+  <div class="card card-clickable" onclick="openModal('modal-dt-tracker')" style="border-top:4px solid var(--mia-blue);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <span class="badge badge-blue">Fase 1 — Semanas 2-4</span>
+        <h4 style="margin-top:.5rem;">Task Tracker</h4>
+      </div>
+      <div style="display:flex;gap:.35rem;">
+        <span class="badge badge-blue">N1 Gema</span>
+        <span class="badge badge-gold">N2 +NLM</span>
+        <span class="badge badge-green">N3 Opal</span>
+        <span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N4 App</span>
+      </div>
+    </div>
+    <p>Gestiona tareas, seguimientos y recordatorios de forma automatizada. Centraliza el estado de cada cliente y proyecto sin entrada manual.</p>
+    <p style="font-size:.9rem;"><strong>Nace como:</strong> Gema de Gemini que consulta un Google Sheet maestro de tareas y responde sobre estados, pendientes y vencimientos. <strong>Se potencia con:</strong> NotebookLM con historial de proyectos, SLAs por cliente, y patrones de seguimiento. <strong>Puede evolucionar a:</strong> Flujo Opal que envia recordatorios automaticos, o mini app AntiGravity con vista de pipeline por cliente.</p>
+    <div style="margin-top:1rem;padding:1rem;background:rgba(19,125,197,0.06);border-radius:var(--radius-md);">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mia-blue);margin-bottom:.5rem;">Repo de Google Drive</div>
+      <p style="font-size:.85rem;margin:0;">/V&A/Dream-Team/Task-Tracker/ — Sheet maestro de tareas, plantillas de seguimiento, SLAs por cliente, historiales de proyecto. Gobernado: V&A alimenta, Gema consulta, Opal automatiza.</p>
+    </div>
+    <span class="card-click-hint">Ver Product Vision Board completo</span>
+  </div>
+
+  <!-- AGENTE 3: Agente de Prospeccion -->
+  <div class="card card-clickable" onclick="openModal('modal-dt-prospeccion')" style="border-top:4px solid var(--mia-gold);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <span class="badge badge-gold">Fase 2 — Semanas 5-6</span>
+        <h4 style="margin-top:.5rem;">Agente de Prospeccion</h4>
+      </div>
+      <div style="display:flex;gap:.35rem;">
+        <span class="badge badge-blue">N1 Gema</span>
+        <span class="badge badge-gold">N2 +NLM</span>
+        <span class="badge badge-green">N3 Opal</span>
+        <span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N4 App</span>
+      </div>
+    </div>
+    <p>Identifica oportunidades, califica prospectos y genera secuencias de contacto automatizadas. Alimenta el funnel comercial de V&A de forma continua.</p>
+    <p style="font-size:.9rem;"><strong>Nace como:</strong> Gema de Gemini con criterios de calificacion de leads y acceso al Sheet de prospectos. <strong>Se potencia con:</strong> NotebookLM cargado con perfil de cliente ideal, historiales de conversion, y secuencias de contacto exitosas. <strong>Puede evolucionar a:</strong> Flujo Opal que auto-califica leads nuevos y genera el primer email de contacto, o mini app AntiGravity con scoring visual por lead.</p>
+    <div style="margin-top:1rem;padding:1rem;background:rgba(255,215,0,0.06);border-radius:var(--radius-md);">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mia-gold-dark);margin-bottom:.5rem;">Repo de Google Drive</div>
+      <p style="font-size:.85rem;margin:0;">/V&A/Dream-Team/Prospeccion/ — Sheet de prospectos, perfil de cliente ideal, secuencias de email, historiales de conversion, criterios de scoring. Gobernado: MetodologIA configura criterios, V&A alimenta datos.</p>
+    </div>
+    <span class="card-click-hint">Ver Product Vision Board completo</span>
+  </div>
+
+  <!-- AGENTE 4: Motor de Reportes -->
+  <div class="card card-clickable" onclick="openModal('modal-dt-reportes')" style="border-top:4px solid var(--mia-gold);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <span class="badge badge-gold">Fase 2 — Semanas 6-7</span>
+        <h4 style="margin-top:.5rem;">Motor de Reportes</h4>
+      </div>
+      <div style="display:flex;gap:.35rem;">
+        <span class="badge badge-blue">N1 Gema</span>
+        <span class="badge badge-gold">N2 +NLM</span>
+        <span class="badge badge-green">N3 Opal</span>
+      </div>
+    </div>
+    <p>Genera informes de progreso, dashboards y reportes para clientes de V&A. Convierte datos dispersos en narrativas accionables.</p>
+    <p style="font-size:.9rem;"><strong>Nace como:</strong> Gema de Gemini que lee Sheets de metricas y genera narrativas de progreso en lenguaje ejecutivo. <strong>Se potencia con:</strong> NotebookLM con plantillas de reporte por tipo de cliente, benchmarks del sector y glosario de KPIs. <strong>Puede evolucionar a:</strong> Flujo Opal que genera y envia reportes automaticos cada viernes al cierre de semana.</p>
+    <div style="margin-top:1rem;padding:1rem;background:rgba(255,215,0,0.06);border-radius:var(--radius-md);">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mia-gold-dark);margin-bottom:.5rem;">Repo de Google Drive</div>
+      <p style="font-size:.85rem;margin:0;">/V&A/Dream-Team/Reportes/ — Plantillas de reporte, Sheets de metricas, benchmarks sectoriales, glosario de KPIs, historiales de entrega. Gobernado: MetodologIA diseña plantillas, V&A alimenta datos.</p>
+    </div>
+    <span class="card-click-hint">Ver Product Vision Board completo</span>
+  </div>
+
+  <!-- AGENTE 5: Peer Reviewer IA -->
+  <div class="card card-clickable" onclick="openModal('modal-dt-reviewer')" style="border-top:4px solid var(--mia-gold);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <span class="badge badge-gold">Fase 2 — Semanas 7-8</span>
+        <h4 style="margin-top:.5rem;">Peer Reviewer IA</h4>
+      </div>
+      <div style="display:flex;gap:.35rem;">
+        <span class="badge badge-blue">N1 Gema</span>
+        <span class="badge badge-gold">N2 +NLM</span>
+        <span class="badge badge-green">N3 Opal</span>
+        <span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N4 App</span>
+      </div>
+    </div>
+    <p>Corazon de la operacion HR de V&A. Carga job descriptions, califica hojas de vida, evalua pruebas tecnicas. El rol digital con mayor potencial de convertirse en producto comercializable.</p>
+    <p style="font-size:.9rem;"><strong>Nace como:</strong> Gema de Gemini con rubricas de evaluacion HR y criterios de calificacion por cargo. <strong>Se potencia con:</strong> NotebookLM cargado con job descriptions tipo, hojas de vida evaluadas (anonimizadas), patrones de candidato exitoso y rubricas ponderadas. <strong>Puede evolucionar a:</strong> Mini app AntiGravity con interfaz para que clientes de V&A carguen candidatos y reciban evaluaciones — el producto estrella.</p>
+    <div style="margin-top:1rem;padding:1rem;background:rgba(255,215,0,0.06);border-radius:var(--radius-md);">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mia-gold-dark);margin-bottom:.5rem;">Repo de Google Drive</div>
+      <p style="font-size:.85rem;margin:0;">/V&A/Dream-Team/Peer-Reviewer/ — Job descriptions, rubricas de evaluacion, hojas de vida evaluadas (anonimizadas), patrones de candidato exitoso, resultados de pruebas tecnicas. Gobernado: acceso restringido, datos anonimizados obligatorios.</p>
+    </div>
+    <span class="card-click-hint">Ver Product Vision Board completo</span>
+  </div>
+
+  <!-- AGENTE 6: Meeting Analyst -->
+  <div class="card card-clickable" onclick="openModal('modal-dt-meeting')" style="border-top:4px solid var(--mia-gold);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <span class="badge badge-gold">Fase 2 — Semanas 8-9</span>
+        <h4 style="margin-top:.5rem;">Meeting Analyst</h4>
+      </div>
+      <div style="display:flex;gap:.35rem;">
+        <span class="badge badge-blue">N1 Gema</span>
+        <span class="badge badge-gold">N2 +NLM</span>
+        <span class="badge badge-green">N3 Opal</span>
+      </div>
+    </div>
+    <p>Analiza reuniones: transcribe, detecta compromisos, genera minutas y sugiere siguientes pasos. Cada reunion genera inteligencia accionable.</p>
+    <p style="font-size:.9rem;"><strong>Nace como:</strong> Gema de Gemini que recibe transcripciones de Google Meet y extrae compromisos, decisiones y action items. <strong>Se potencia con:</strong> NotebookLM con plantillas de minuta, historiales de reuniones por cliente y patrones de seguimiento efectivo. <strong>Puede evolucionar a:</strong> Flujo Opal que post-reunion auto-genera la minuta, la envia por email y crea tareas en el Task Tracker.</p>
+    <div style="margin-top:1rem;padding:1rem;background:rgba(255,215,0,0.06);border-radius:var(--radius-md);">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mia-gold-dark);margin-bottom:.5rem;">Repo de Google Drive</div>
+      <p style="font-size:.85rem;margin:0;">/V&A/Dream-Team/Meeting-Analyst/ — Transcripciones, minutas generadas, plantillas de acta, historiales por cliente, action items acumulados. Gobernado: auto-generado por el flujo, revisado semanalmente.</p>
+    </div>
+    <span class="card-click-hint">Ver Product Vision Board completo</span>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Resumen de evolucion por rol:</strong> Todos nacen como Gemas (N1). Todos se potencian con NotebookLM (N2) durante el Programa. En Fase 3-4 se evalua cuales avanzan a flujos Opal (N3). Solo los que demuestren valor comercializable (Peer Reviewer, Task Tracker, Prospeccion) son candidatos a mini app AntiGravity (N4), y esa decision se toma en Gate 2 o Gate 3.
+  </div>
+
+  <p class="punchline">6 roles digitales. Todos nacen como una conversacion. Los mejores evolucionan hasta convertirse en productos.</p>
+</section>
+
+<!-- ============================== SECTION 4: CASOS DE USO ============================== -->
+<section id="casos" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">4</div>
+    <div>
+      <h2>Casos de Uso Detallados</h2>
+      <p class="section-subtitle">Cada caso de uso tiene actor, precondicion, flujo principal, y criterio de aceptacion. Agrupados por modulo.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:1rem;">M1 — Diagnostico y Activacion</h3>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-01')">
+    <div class="uc-id">UC-01</div>
+    <h4>Mapeo de Procesos Actuales</h4>
+    <p>Los fundadores describen sus procesos criticos. MetodologIA los documenta, identifica cuellos de botella y estima horas manuales por proceso.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: Fundadores + MetodologIA</span>
+      <span class="badge badge-gold">Duracion: 3h</span>
+      <span class="badge badge-green">Complejidad: Baja</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-02')">
+    <div class="uc-id">UC-02</div>
+    <h4>Evaluacion de Madurez Digital</h4>
+    <p>Se aplica el framework de madurez MetodologIA (N0-N7) para posicionar a V&A y definir la linea base del progreso.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA</span>
+      <span class="badge badge-gold">Entregable: Scorecard N0-N7</span>
+      <span class="badge badge-green">Complejidad: Baja</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-03')">
+    <div class="uc-id">UC-03</div>
+    <h4>Propuesta Personalizada y ROI Estimado</h4>
+    <p>Se genera una propuesta comercial con roadmap personalizado, ROI estimado (framework 80/50/20) y recomendacion de escenario.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA</span>
+      <span class="badge badge-gold">Entregable: Propuesta formal</span>
+      <span class="badge badge-green">Complejidad: Baja</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <h3 style="margin: 2rem 0 1rem;">M2 — Fundaciones Digitales</h3>
+
+  <div class="uc-card gold-border card-clickable" onclick="openModal('modal-uc-04')">
+    <div class="uc-id">UC-04</div>
+    <h4>Configuracion del Entorno Google Workspace + Gemini</h4>
+    <p>Activacion de Gemini avanzado, configuracion de Drive compartido con estructura estandar, creacion de plantillas de trabajo y habilitacion de NotebookLM.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA</span>
+      <span class="badge badge-gold">Semana 1</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card gold-border card-clickable" onclick="openModal('modal-uc-05')">
+    <div class="uc-id">UC-05</div>
+    <h4>Despliegue del Asistente de Propuestas</h4>
+    <p>Primer agente IA del Dream Team. Nace como Gema de Gemini (N1), se potencia con NotebookLM (N2) y puede evolucionar a flujo Opal (N3). Genera borradores de propuestas comerciales a partir de briefings, datos del cliente y plantillas de V&A. Reduce tiempo de elaboracion de 4h a 30min.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 2-3</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+      <span class="badge badge-blue">N1→N2→N3</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card gold-border card-clickable" onclick="openModal('modal-uc-06')">
+    <div class="uc-id">UC-06</div>
+    <h4>Despliegue del Task Tracker</h4>
+    <p>Segundo agente IA. Nace como Gema (N1), se potencia con NotebookLM (N2), puede automatizarse con Opal (N3) y es candidato a mini app AntiGravity (N4) con vista de pipeline visual. Gestiona tareas, seguimientos y recordatorios. Centraliza el estado de cada cliente y proyecto sin entrada manual.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 2-4</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+      <span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N1→N4</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card gold-border card-clickable" onclick="openModal('modal-uc-07')">
+    <div class="uc-id">UC-07</div>
+    <h4>Entrenamiento de Ofimatica IA</h4>
+    <p>Fundadores aprenden a usar Gemini, NotebookLM y Gemas vitaminadas como aceleradores de productividad diaria. Base practica para interactuar con todos los agentes posteriores.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: Fundadores</span>
+      <span class="badge badge-gold">Semanas 1-4</span>
+      <span class="badge badge-green">Complejidad: Baja</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <h3 style="margin: 2rem 0 1rem;">M3 — Expansion y Automatizacion Comercial</h3>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-08')">
+    <div class="uc-id">UC-08</div>
+    <h4>Despliegue del Agente de Prospeccion</h4>
+    <p>Tercer agente. Nace como Gema (N1) con criterios de calificacion, se potencia con NotebookLM (N2) de historiales de conversion, puede automatizarse con Opal (N3) y es candidato a mini app AntiGravity (N4) con scoring visual. Identifica oportunidades, califica prospectos y genera secuencias de contacto automatizadas.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 5-6</span>
+      <span class="badge badge-red">Complejidad: Alta</span>
+      <span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N1→N4</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-09')">
+    <div class="uc-id">UC-09</div>
+    <h4>Despliegue del Motor de Reportes</h4>
+    <p>Cuarto agente. Nace como Gema (N1) que lee Sheets de metricas, se potencia con NotebookLM (N2) de plantillas y benchmarks, y puede evolucionar a flujo Opal (N3) que genera reportes automaticos cada viernes. Convierte datos dispersos en narrativas accionables.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 6-7</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+      <span class="badge badge-blue">N1→N2→N3</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-10')">
+    <div class="uc-id">UC-10</div>
+    <h4>Despliegue del Peer Reviewer IA</h4>
+    <p>Quinto agente y corazon de la operacion HR de V&A. Nace como Gema (N1) con rubricas de evaluacion, se potencia con NotebookLM (N2) de historiales anonimizados, puede automatizarse con Opal (N3), y es el principal candidato a mini app AntiGravity (N4) — el producto estrella comercializable.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 7-8</span>
+      <span class="badge badge-red">Complejidad: Alta</span>
+      <span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N1→N4</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-11')">
+    <div class="uc-id">UC-11</div>
+    <h4>Despliegue del Meeting Analyst</h4>
+    <p>Sexto agente. Nace como Gema (N1) que recibe transcripciones de Google Meet, se potencia con NotebookLM (N2) de historiales por cliente, y puede evolucionar a flujo Opal (N3) que post-reunion auto-genera minuta, la envia por email y crea tareas en el Task Tracker.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 8-9</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+      <span class="badge badge-blue">N1→N2→N3</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-12')">
+    <div class="uc-id">UC-12</div>
+    <h4>Personalizacion de Flujos Comerciales</h4>
+    <p>Cada proceso critico de V&A recibe un flujo de trabajo personalizado que orquesta multiples agentes del Dream Team. Integra Gemas (N1-N2) con flujos Opal (N3) para crear cadenas automatizadas end-to-end: del prospecto al cierre, automatizado, medido, optimizable.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 9-10</span>
+      <span class="badge badge-red">Complejidad: Alta</span>
+      <span class="badge badge-green">N3 Orquestacion</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <h3 style="margin: 2rem 0 1rem;">M4 — Consolidacion y Transferencia</h3>
+
+  <div class="uc-card gold-border card-clickable" onclick="openModal('modal-uc-13')">
+    <div class="uc-id">UC-13</div>
+    <h4>Optimizacion de Agentes por Datos Reales</h4>
+    <p>Con 10 semanas de datos de uso, se refinan prompts, ajustan umbrales y mejoran la precision de cada agente basandose en metricas reales de adopcion y efectividad.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA</span>
+      <span class="badge badge-gold">Semanas 11-13</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card gold-border card-clickable" onclick="openModal('modal-uc-14')">
+    <div class="uc-id">UC-14</div>
+    <h4>Documentacion y Base de Conocimiento</h4>
+    <p>Se documenta cada flujo, cada agente, cada regla de negocio en la base de conocimiento de V&A. Garantiza que la (R)Evolución no dependa de la memoria de nadie.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semanas 13-15</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card gold-border card-clickable" onclick="openModal('modal-uc-15')">
+    <div class="uc-id">UC-15</div>
+    <h4>Transicion Programa a Suscripcion</h4>
+    <p>Evaluacion formal de cierre del programa de 16 semanas. Medicion contra criterios de Gate 2. Activacion de la Suscripcion Anual con 9h/semana de acompañamiento.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Semana 16</span>
+      <span class="badge badge-green">Complejidad: Baja</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <h3 style="margin: 2rem 0 1rem;">M5 — Autonomia y Evolucion Continua</h3>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-16')">
+    <div class="uc-id">UC-16</div>
+    <h4>Acompañamiento Semanal Estructurado</h4>
+    <p>9h/semana dedicadas: 3h conjuntas + 3h independientes + 2h sync + 1h clínica. Resolucion de incidencias, nuevos patrones de uso, optimizacion continua de agentes.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA + Fundadores</span>
+      <span class="badge badge-gold">Meses 5-12</span>
+      <span class="badge badge-green">Complejidad: Baja</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-17')">
+    <div class="uc-id">UC-17</div>
+    <h4>Dashboard de Soberania Digital</h4>
+    <p>Panel en tiempo real que mide: adopcion por agente, horas recuperadas, nivel de madurez (N0-N7), cumplimiento del Estandar 9:1 por proceso.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: MetodologIA</span>
+      <span class="badge badge-gold">Desde Semana 4</span>
+      <span class="badge badge-warning">Complejidad: Media</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <div class="uc-card card-clickable" onclick="openModal('modal-uc-18')">
+    <div class="uc-id">UC-18</div>
+    <h4>Evaluacion Trimestral y Decision de Gate</h4>
+    <p>Cada 3 meses, revision formal de progreso contra los KPIs definidos. Decision de continuar, ajustar, escalar a Escenario C o graduar a autonomia.</p>
+    <div class="uc-meta">
+      <span class="badge badge-blue">Actor: Fundadores + MetodologIA</span>
+      <span class="badge badge-gold">Meses 6, 9, 12</span>
+      <span class="badge badge-green">Complejidad: Baja</span>
+    </div>
+    <span class="card-click-hint">Ver flujo completo y criterios</span>
+  </div>
+
+  <p class="punchline">18 casos de uso. Cada uno con actor, flujo, entregable y criterio de aceptacion. Cero ambiguedad.</p>
+</section>
+
+<!-- ============================== SECTION 5: REGLAS DE NEGOCIO ============================== -->
+<section id="reglas" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">5</div>
+    <div>
+      <h2>Reglas de Negocio</h2>
+      <p class="section-subtitle">Las restricciones y condiciones que gobiernan la (R)Evolución. Cada regla tiene un fundamento y una consecuencia si se viola.</p>
+    </div>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-rn-escalera')">
+    <span class="badge badge-gold">RN-01</span>
+    <h4 style="margin-top:.5rem;">Escalera de Valor Aditiva</h4>
+    <p>Cada modulo incluye todo lo del anterior. Workshop Introductorio incluye Diagnostico + ofimatica IA. Bootcamp de Ventas incluye todo lo del Workshop + automatizacion comercial. Programa (R)Evolución incluye todo lo del Bootcamp de Ventas + 16 semanas completas + Dream Team IA. Suscripcion incluye todo lo del Programa + 12 meses de acompañamiento.</p>
+    <span class="card-click-hint">Ver consecuencias y excepciones</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-rn-91')">
+    <span class="badge badge-gold">RN-02</span>
+    <h4 style="margin-top:.5rem;">Estandar 9:1</h4>
+    <p>De cada 10 tareas operativas, 9 las ejecuta IA y 1 el humano. Es el objetivo de madurez, no el punto de partida. Se mide por proceso, no globalmente. Un proceso que no alcanza 9:1 en 6 meses requiere intervencion correctiva.</p>
+    <span class="card-click-hint">Ver metricas y umbrales</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-rn-horas')">
+    <span class="badge badge-blue">RN-03</span>
+    <h4 style="margin-top:.5rem;">Compromiso de Tiempo: 9h/semana</h4>
+    <p>Cada fundador dedica 9h/semana al proceso de (R)Evolución: 3h conjuntas + 3h independientes + 2h sync + 1h clínica. Si la dedicacion cae por debajo de 6h/semana durante 2 semanas consecutivas, se activa protocolo de recuperacion.</p>
+    <span class="card-click-hint">Ver protocolo de recuperacion</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-rn-805020')">
+    <span class="badge badge-blue">RN-04</span>
+    <h4 style="margin-top:.5rem;">Framework de Intervencion 80/50/20</h4>
+    <p>IA puede intervenir hasta el 80% de tareas simples, 50% de medias, 20% de complejas. "Intervenir" significa automatizar, acelerar o amplificar. De 160h/mes operativas, se esperan 64h/mes recuperadas (40%).</p>
+    <span class="card-click-hint">Ver clasificacion de tareas</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-rn-precios')">
+    <span class="badge badge-gold">RN-05</span>
+    <h4 style="margin-top:.5rem;">Modelo de Precios por Persona</h4>
+    <p>Workshop Introductorio: 200k COP/persona. Bootcamp de Ventas: 800k COP/persona. Programa (R)Evolución: 500k COP/asistente (3M COP por 6 asistentes). Alternativa: compromiso de ventas (3M, 12M, 6M COP respectivamente).</p>
+    <span class="card-click-hint">Ver alternativas de acceso</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-rn-gates')">
+    <span class="badge badge-blue">RN-06</span>
+    <h4 style="margin-top:.5rem;">Gates de Decision Obligatorios</h4>
+    <p>3 gates formales: G1-Activacion, G2-Madurez (mes 6), G3-Graduacion (mes 12). Ninguna fase siguiente inicia sin que los criterios del gate anterior se cumplan o se documente una excepcion aceptada por ambas partes.</p>
+    <span class="card-click-hint">Ver criterios por gate</span>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-clickable" onclick="openModal('modal-rn-agente')">
+      <span class="badge badge-gold">RN-07</span>
+      <h4 style="margin-top:.5rem;">Nomenclatura de Agentes</h4>
+      <p>La palabra "asistente" se reserva exclusivamente para los agentes IA del Dream Team. Para personas se usa "consultor", "fundador" o "participante".</p>
+      <span class="card-click-hint">Ver glosario de terminos</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-rn-adopcion')">
+      <span class="badge badge-blue">RN-08</span>
+      <h4 style="margin-top:.5rem;">Umbral de Adopcion Minima</h4>
+      <p>Un agente con uso inferior al 40% durante 3 semanas consecutivas se considera "inactivo" y requiere diagnostico: reconfiguracion, reentrenamiento o reemplazo.</p>
+      <span class="card-click-hint">Ver protocolo de diagnostico</span>
+    </div>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-clickable" onclick="openModal('modal-rn-despliegue')">
+      <span class="badge badge-gold">RN-09</span>
+      <h4 style="margin-top:.5rem;">Despliegue Gradual Obligatorio</h4>
+      <p>Maximo 2 agentes nuevos por semana. V&A debe alcanzar 50% de uso en los agentes actuales antes de activar nuevos. Previene sobrecarga de cambio.</p>
+      <span class="card-click-hint">Ver criterios de activacion</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-rn-datos')">
+      <span class="badge badge-blue">RN-10</span>
+      <h4 style="margin-top:.5rem;">Propiedad de Datos y Contenido</h4>
+      <p>Todos los datos, prompts personalizados, flujos y base de conocimiento generada pertenecen a V&A. MetodologIA retiene la propiedad de la metodologia y los frameworks.</p>
+      <span class="card-click-hint">Ver clausulas de propiedad</span>
+    </div>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-clickable" onclick="openModal('modal-rn-escala')">
+      <span class="badge badge-gold">RN-11</span>
+      <h4 style="margin-top:.5rem;">Criterio de Escalabilidad</h4>
+      <p>La transicion al Escenario C (Reseller) solo se habilita si V&A cumple: Estandar 9:1 en 3+ procesos, adopcion global superior al 70%, y 6 meses de operacion estable.</p>
+      <span class="card-click-hint">Ver prerequisitos completos</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-rn-cancelacion')">
+      <span class="badge badge-blue">RN-12</span>
+      <h4 style="margin-top:.5rem;">Clausula de Salida Limpia</h4>
+      <p>En cualquier gate, V&A puede decidir no continuar. Se entrega toda la documentacion, flujos y configuraciones generadas hasta ese momento. Sin penalidades. Sin retencion de datos.</p>
+      <span class="card-click-hint">Ver condiciones de salida</span>
+    </div>
+  </div>
+
+  <p class="punchline">12 reglas. Cada una protege a ambas partes. Reglas claras permiten relaciones largas.</p>
+</section>
+
+<!-- ============================== SECTION 6: GOBERNANZA DE REPOSITORIOS ============================== -->
+<section id="repos" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">6</div>
+    <div>
+      <h2>Gobernanza de Repositorios</h2>
+      <p class="section-subtitle">Google Drive como fuente de verdad. Estructura gobernada, permisos controlados, datos seguros. Cada rol digital tiene su repo dedicado.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Principio de soberania de datos:</strong> Todos los repositorios pertenecen a V&A y viven en su Google Drive. MetodologIA tiene acceso de configuracion durante el Programa y acceso de lectura durante la Suscripcion. Al graduarse (Gate 3), V&A tiene control total. Los datos nunca salen del ecosistema Google de V&A.
+  </div>
+
+  <div class="card card-gold card-clickable" onclick="openModal('modal-repo-estructura')">
+    <h4>Estructura de Carpetas del Dream Team</h4>
+    <div style="font-family:monospace; font-size:.85rem; background:var(--mia-navy); color:var(--mia-text); padding:1.5rem; border-radius:var(--radius-md); margin:1rem 0; line-height:2;">
+      /V&A/Dream-Team/<br>
+      &nbsp;&nbsp;&boxvr;&boxh; Propuestas/ &nbsp;&nbsp;&nbsp;<span style="color:var(--mia-gold);">&#8592; Asistente de Propuestas (N1-N3)</span><br>
+      &nbsp;&nbsp;&boxvr;&boxh; Task-Tracker/ &nbsp;<span style="color:var(--mia-gold);">&#8592; Task Tracker (N1-N4)</span><br>
+      &nbsp;&nbsp;&boxvr;&boxh; Prospeccion/ &nbsp;&nbsp;<span style="color:var(--mia-gold);">&#8592; Agente de Prospeccion (N1-N4)</span><br>
+      &nbsp;&nbsp;&boxvr;&boxh; Reportes/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--mia-gold);">&#8592; Motor de Reportes (N1-N3)</span><br>
+      &nbsp;&nbsp;&boxvr;&boxh; Peer-Reviewer/ <span style="color:var(--mia-gold);">&#8592; Peer Reviewer IA (N1-N4)</span><br>
+      &nbsp;&nbsp;&boxvr;&boxh; Meeting-Analyst/<span style="color:var(--mia-gold);">&#8592; Meeting Analyst (N1-N3)</span><br>
+      &nbsp;&nbsp;&boxvr;&boxh; _Gobernanza/ &nbsp;&nbsp;<span style="color:var(--mia-blue-light);">&#8592; Politicas, permisos, changelog</span><br>
+      &nbsp;&nbsp;&boxur;&boxh; _Metricas/ &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--mia-blue-light);">&#8592; Dashboards de adopcion y uso</span>
+    </div>
+    <span class="card-click-hint">Ver detalle de contenido por carpeta</span>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-repo-permisos')">
+      <h4>Permisos y Seguridad</h4>
+      <ul>
+        <li><strong>Fundadores V&A:</strong> Propietarios. Acceso completo a todo.</li>
+        <li><strong>MetodologIA (Programa):</strong> Editor en repos de agentes. Configura plantillas y prompts.</li>
+        <li><strong>MetodologIA (Suscripcion):</strong> Lector + comentador. Sugiere cambios, V&A aprueba.</li>
+        <li><strong>Post-Graduacion:</strong> MetodologIA pierde acceso. V&A es autonomo.</li>
+      </ul>
+      <span class="card-click-hint">Ver matriz de permisos completa</span>
+    </div>
+    <div class="card card-gold card-clickable" onclick="openModal('modal-repo-notebooks')">
+      <h4>NotebookLM como Capa de Inteligencia</h4>
+      <ul>
+        <li>Cada repo alimenta un NotebookLM dedicado al rol digital</li>
+        <li>NotebookLM permite consultas de lenguaje natural sobre los datos</li>
+        <li>Se actualiza automaticamente cuando se añaden docs al repo</li>
+        <li>Las Gemas consultan NotebookLM para respuestas contextualizadas</li>
+      </ul>
+      <span class="card-click-hint">Ver diseño Gema + NLM</span>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <h4>Orientacion de Usabilidad: Equipo No Tecnico</h4>
+    <p>V&A no es un equipo de ingenieros. Toda la interaccion con los roles digitales esta diseñada para personas que saben usar Google Workspace pero no escriben codigo.</p>
+    <ul>
+      <li><strong>Gemas (N1-N2):</strong> Interaccion por chat natural en Gemini. Preguntar como hablar con un colega.</li>
+      <li><strong>Flujos Opal (N3):</strong> Configuracion guiada con MetodologIA. Monitores visuales. Sin lineas de codigo.</li>
+      <li><strong>Mini Apps (N4):</strong> Interfaz web simple. Formularios, botones, resultados. Diseñadas para el usuario final.</li>
+      <li><strong>Capacitacion:</strong> Incluida en las 9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica).</li>
+    </ul>
+  </div>
+
+  <p class="punchline">Google Drive gobernado + NotebookLM + Gemas vitaminadas = la fuente de verdad de V&A. Segura, accesible y propiedad del cliente.</p>
+</section>
+
+<!-- ============================== SECTION 7: MATRIZ DE COMPLEJIDAD ============================== -->
+<section id="matriz" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">7</div>
+    <div>
+      <h2>Matriz de Complejidad y Riesgo</h2>
+      <p class="section-subtitle">Cada caso de uso clasificado por complejidad tecnica, riesgo de adopcion y prioridad de implementacion.</p>
+    </div>
+  </div>
+
+  <table class="spec-table">
+    <thead>
+      <tr>
+        <th>Caso de Uso</th>
+        <th>Modulo</th>
+        <th>Complejidad</th>
+        <th>Riesgo</th>
+        <th>Prioridad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>UC-01 Mapeo de Procesos</td>
+        <td>M1</td>
+        <td class="low">Baja</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-02 Evaluacion Madurez</td>
+        <td>M1</td>
+        <td class="low">Baja</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-03 Propuesta + ROI</td>
+        <td>M1</td>
+        <td class="low">Baja</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-04 Config. Workspace</td>
+        <td>M2</td>
+        <td class="medium">Media</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-05 Asistente Propuestas</td>
+        <td>M2</td>
+        <td class="medium">Media</td>
+        <td class="medium">Medio</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-06 Task Tracker</td>
+        <td>M2</td>
+        <td class="medium">Media</td>
+        <td class="medium">Medio</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-07 Ofimatica IA</td>
+        <td>M2</td>
+        <td class="low">Baja</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+      <tr>
+        <td>UC-08 Agente Prospeccion</td>
+        <td>M3</td>
+        <td class="high">Alta</td>
+        <td class="high">Alto</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+      <tr>
+        <td>UC-09 Motor Reportes</td>
+        <td>M3</td>
+        <td class="medium">Media</td>
+        <td class="medium">Medio</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+      <tr>
+        <td>UC-10 Peer Reviewer IA</td>
+        <td>M3</td>
+        <td class="high">Alta</td>
+        <td class="high">Alto</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-11 Meeting Analyst</td>
+        <td>M3</td>
+        <td class="medium">Media</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+      <tr>
+        <td>UC-12 Flujos Comerciales</td>
+        <td>M3</td>
+        <td class="high">Alta</td>
+        <td class="high">Alto</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-13 Optimizacion Agentes</td>
+        <td>M4</td>
+        <td class="medium">Media</td>
+        <td class="medium">Medio</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+      <tr>
+        <td>UC-14 Documentacion</td>
+        <td>M4</td>
+        <td class="medium">Media</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+      <tr>
+        <td>UC-15 Transicion a Suscripcion</td>
+        <td>M4</td>
+        <td class="low">Baja</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-16 Acompañamiento Semanal</td>
+        <td>M5</td>
+        <td class="low">Baja</td>
+        <td class="medium">Medio</td>
+        <td><span class="badge badge-red">Critica</span></td>
+      </tr>
+      <tr>
+        <td>UC-17 Dashboard Soberania</td>
+        <td>M5</td>
+        <td class="medium">Media</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+      <tr>
+        <td>UC-18 Evaluacion Trimestral</td>
+        <td>M5</td>
+        <td class="low">Baja</td>
+        <td class="low">Bajo</td>
+        <td><span class="badge badge-warning">Alta</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card-grid-3">
+    <div class="card card-clickable" onclick="openModal('modal-comp-alta')">
+      <h4 style="color:var(--mia-critical);">Alta Complejidad (3)</h4>
+      <p>UC-08 (Prospeccion), UC-10 (Peer Reviewer), UC-12 (Flujos Comerciales). Requieren prompts avanzados, multiples fuentes de datos y personalizacion profunda.</p>
+      <span class="card-click-hint">Ver estrategia de mitigacion</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-comp-media')">
+      <h4 style="color:var(--mia-warning);">Media Complejidad (8)</h4>
+      <p>La mayoria de despliegues de agentes y configuraciones. Patron conocido con ajustes al contexto de V&A.</p>
+      <span class="card-click-hint">Ver patrones de implementacion</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-comp-baja')">
+      <h4 style="color:var(--mia-positive);">Baja Complejidad (7)</h4>
+      <p>Diagnostico, entrenamiento basico, evaluaciones y procesos de gobernanza. Ejecutables con frameworks estandar.</p>
+      <span class="card-click-hint">Ver frameworks aplicables</span>
+    </div>
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Zona de riesgo critico:</strong> Los 3 casos de alta complejidad (UC-08, UC-10, UC-12) concentran el mayor riesgo de la (R)Evolución. Si alguno falla, impacta directamente la promesa del Estandar 9:1. Estrategia de mitigacion: despliegue secuencial, validacion semanal, y criterio kill/pivot en semana 8 si la adopcion no supera el 40%.
+  </div>
+
+  <p class="punchline">3 casos de alta complejidad. 8 de media. 7 de baja. La estrategia gradual asegura que la dificultad nunca sobrepasa la capacidad.</p>
+</section>
+
+<!-- ============================== SECTION 8: CRITERIOS DE ACEPTACION ============================== -->
+<section id="aceptacion" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">8</div>
+    <div>
+      <h2>Criterios de Aceptacion Globales</h2>
+      <p class="section-subtitle">Las condiciones que determinan si cada modulo se considera completado exitosamente.</p>
+    </div>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-ca-m1')">
+    <span class="badge badge-green">M1 Diagnostico</span>
+    <h4 style="margin-top:.5rem;">Aceptacion: Diagnostico y Activacion</h4>
+    <ul>
+      <li>Mapa de procesos documentado con horas estimadas por proceso</li>
+      <li>Nivel de madurez N0-N7 evaluado y documentado</li>
+      <li>Propuesta formal entregada con ROI estimado (framework 80/50/20)</li>
+      <li>Decision de V&A: activar o no el Programa (Gate 1)</li>
+    </ul>
+    <span class="card-click-hint">Ver checklist completo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-ca-m2')">
+    <span class="badge badge-blue">M2 Fundaciones</span>
+    <h4 style="margin-top:.5rem;">Aceptacion: Fundaciones Digitales</h4>
+    <ul>
+      <li>Entorno Google Workspace configurado con Gemini activo</li>
+      <li>2 agentes IA (Asistente de Propuestas + Task Tracker) operativos con uso superior al 50%</li>
+      <li>Fundadores completan entrenamiento de ofimatica IA (evaluacion practica aprobada)</li>
+      <li>Dashboard de metricas de adopcion funcional y actualizado</li>
+    </ul>
+    <span class="card-click-hint">Ver checklist completo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-ca-m3')">
+    <span class="badge badge-gold">M3 Expansion</span>
+    <h4 style="margin-top:.5rem;">Aceptacion: Expansion y Automatizacion Comercial</h4>
+    <ul>
+      <li>6 agentes del Dream Team desplegados y operativos</li>
+      <li>4+ agentes con uso activo superior al 60%</li>
+      <li>Flujos personalizados configurados para los 5 procesos criticos</li>
+      <li>Base de conocimiento inicial poblada con contenido relevante</li>
+    </ul>
+    <span class="card-click-hint">Ver checklist completo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-ca-m4')">
+    <span class="badge badge-green">M4 Consolidacion</span>
+    <h4 style="margin-top:.5rem;">Aceptacion: Consolidacion y Transferencia</h4>
+    <ul>
+      <li>Agentes optimizados con mejora documentada respecto a Fase 2</li>
+      <li>Documentacion completa de flujos, gobernanza y procedimientos</li>
+      <li>Estandar 9:1 alcanzado en al menos 2 procesos criticos (Gate 2)</li>
+      <li>Suscripcion Anual activada formalmente</li>
+    </ul>
+    <span class="card-click-hint">Ver checklist completo</span>
+  </div>
+
+  <div class="card card-clickable" onclick="openModal('modal-ca-m5')">
+    <span class="badge badge-gold">M5 Autonomia</span>
+    <h4 style="margin-top:.5rem;">Aceptacion: Autonomia y Evolucion Continua</h4>
+    <ul>
+      <li>9h/semana de acompañamiento ejecutadas consistentemente</li>
+      <li>Estandar 9:1 en 3+ procesos criticos al mes 6</li>
+      <li>64h/mes efectivamente recuperadas (medicion acumulada)</li>
+      <li>Autonomia operativa: V&A puede operar sin soporte MetodologIA al mes 12 (Gate 3)</li>
+    </ul>
+    <span class="card-click-hint">Ver checklist completo</span>
+  </div>
+
+  <p class="punchline">La aceptacion no es un formulario. Es evidencia medible de que cada modulo cumplio su promesa.</p>
+</section>
+
+<!-- ============================== SECTION 9: SIGUIENTE PASO ============================== -->
+<section id="siguiente" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">9</div>
+    <div>
+      <h2>Siguiente Paso</h2>
+      <p class="section-subtitle">De la especificacion a la accion.</p>
+    </div>
+  </div>
+
+  <div class="card card-gold">
+    <h4>La especificacion esta lista. El roadmap esta trazado. El escenario esta elegido.</h4>
+    <p>Este documento (07) completa el ciclo de planificacion que inicio con el Plan de Soberania Digital (00) y se concreta en el Roadmap (06). Cada caso de uso, cada regla de negocio y cada criterio de aceptacion existe para que ambas partes sepan exactamente que esperar.</p>
+    <p>El proximo paso es simple: agendar el Diagnostico gratuito (UC-01, UC-02, UC-03) para iniciar la Fase 0 y activar el Gate 1.</p>
+  </div>
+
+  <div style="text-align: center; padding: 2rem 0;">
+    <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" class="cta-button gold" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Agendar Diagnostico Gratuito
+    </a>
+    <p style="margin-top:1rem; font-size:.9rem; color:#64748B;">3 horas que definen tu punto de partida. Sin compromiso. Sin costo.</p>
+  </div>
+
+  <p class="punchline">El mejor momento para empezar fue ayer. El segundo mejor es ahora.</p>
+</section>
+
+</div>
+
+<!-- ============================== MODALS ============================== -->
+
+<!-- Modal: Ruta de Evolucion -->
+<div class="modal-overlay" id="modal-eco-ruta">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-eco-ruta')">&times;</button>
+    <h2>Ruta de <span>Evolucion</span> Tecnologica</h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">N1 Gema</span><span class="badge badge-gold">N2 +NLM</span><span class="badge badge-green">N3 Opal</span><span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N4 App</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">N1 — Gema de Gemini</div>
+      <p>El punto de entrada. Un asistente conversacional con prompt especializado y contexto del proceso. Se accede via chat en Gemini. No requiere habilidades tecnicas. Iteracion rapida: ajustar comportamiento es editar el prompt. Todos los roles del Dream Team empiezan aqui.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">N2 — Gema + NotebookLM</div>
+      <p>La Gema se potencia con fuentes de datos ampliadas. NotebookLM carga documentos del repo de Google Drive (plantillas, historiales, rubricas) y permite consultas de lenguaje natural. El rol digital ya no solo responde por su prompt: responde con datos reales y contextualizados de V&A.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">N3 — Flujos Automatizados con Google Opal</div>
+      <p>Los pasos repetitivos se automatizan. Triggers (algo dispara la accion), condiciones (se evaluan reglas) y acciones (se ejecuta sin intervencion). Nativo de Google, sin codigo, configurado con guia de MetodologIA. El fundador supervisa, no ejecuta.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">N4 — Mini App / AntiGravity</div>
+      <p>El nivel maximo. Una interfaz propia (web o movil) con logica estructurada. Candidatos: Peer Reviewer IA (producto comercializable), Task Tracker (pipeline visual), Agente de Prospeccion (scoring de leads). La decision de construir una mini app se toma en Gate 2 o Gate 3 basada en datos de adopcion y potencial comercial.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Nacimiento Gema -->
+<div class="modal-overlay" id="modal-eco-nacimiento">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-eco-nacimiento')">&times;</button>
+    <h2>Anatomia de una <span>Gema</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">N1</span><span class="badge badge-gold">Punto de entrada</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Componentes</div>
+      <p>Una Gema de Gemini tiene 3 elementos: (1) Prompt de sistema — las instrucciones que definen su personalidad, alcance y forma de responder. (2) Contexto — archivos de Drive, datos de Sheets, o contenido de NotebookLM que alimentan sus respuestas. (3) Interaccion — el chat donde V&A conversa con la Gema como con un colega especialista.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Por que empezar con Gemas</div>
+      <p>Barrera de entrada cero: V&A ya usa Gemini. Iteracion inmediata: cambiar el prompt ajusta el comportamiento en segundos. Riesgo minimo: si no funciona, se ajusta sin perder datos. Adopcion natural: interactuar por chat es intuitivo para cualquier profesional.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Una Gema bien configurada resuelve el 70% de las necesidades de un proceso. Los niveles N2-N4 son optimizaciones, no requisitos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: NotebookLM Fuentes -->
+<div class="modal-overlay" id="modal-eco-fuentes">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-eco-fuentes')">&times;</button>
+    <h2>NotebookLM: <span>Fuente de Verdad</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">N2</span><span class="badge badge-blue">Datos ampliados</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Diseño</div>
+      <p>Cada rol digital tiene un NotebookLM dedicado que carga documentos de su repo de Google Drive. El NotebookLM indexa el contenido y permite consultas en lenguaje natural. Las Gemas consultan NotebookLM para obtener respuestas fundamentadas en datos reales de V&A, no en conocimiento generico.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Repos como fuente de datos segura</div>
+      <p>Los repositorios de Google Drive son la unica fuente de datos para los roles digitales. Estructura de carpetas estandarizada por MetodologIA. Permisos controlados por los fundadores. Los datos nunca salen del ecosistema Google de V&A. Cada documento nuevo en el repo actualiza automaticamente el conocimiento del rol digital.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La Gema deja de ser un chatbot generico y se convierte en un especialista que conoce la operacion real de V&A. Respuestas contextualizadas, precisas y basadas en evidencia.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Google Opal -->
+<div class="modal-overlay" id="modal-eco-opal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-eco-opal')">&times;</button>
+    <h2>Google Opal: <span>Automatizacion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">N3</span><span class="badge badge-blue">Sin codigo</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Cuando evolucionar a Opal</div>
+      <p>Un rol digital pasa a N3 cuando su proceso tiene pasos repetitivos claros: se dispara por un evento (nuevo lead, nueva reunion, fin de semana), se evaluan condiciones (califica/no califica, urgente/normal), y se ejecuta una accion (enviar email, generar reporte, crear tarea). Si el proceso es variable e impredecible, la Gema (N1-N2) es mejor opcion.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Ventajas de Opal</div>
+      <p>Nativo de Google: no hay herramientas externas que mantener. Sin codigo: los fundadores pueden configurar con asistencia. Monitoreable: cada flujo tiene logs y alertas. Ajustable: cambiar una condicion es editar una regla, no reescribir codigo. Incluido en el ecosistema Google Workspace existente.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El rol digital pasa de "responde cuando le preguntas" a "actua cuando detecta que debe hacerlo". La automatizacion libera las manos del fundador sin quitarle el control.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: AntiGravity -->
+<div class="modal-overlay" id="modal-eco-antigravity">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-eco-antigravity')">&times;</button>
+    <h2>AntiGravity: <span>Mini Apps</span></h2>
+    <div class="modal-badge-row"><span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N4</span><span class="badge badge-gold">Avanzado</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Cuando evolucionar a N4</div>
+      <p>Solo cuando un rol digital demuestra valor comercializable o necesita una interfaz estructurada que el chat no puede ofrecer. Ejemplo: el Peer Reviewer IA puede convertirse en un producto que los clientes de V&A usen directamente para evaluar candidatos — eso requiere interfaz web, formularios y logica de negocio.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que incluye N4</div>
+      <p>Interfaz web o movil con marca V&A. Formularios de entrada y resultados estructurados. Logica de negocio codificada y testeable. Posibilidad de acceso para clientes finales de V&A. Desarrollado con AntiGravity o a medida segun complejidad.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Decision en Gate</div>
+      <p>La evolucion a N4 se propone en Gate 2 (mes 6) o Gate 3 (mes 12). Requiere datos de adopcion positivos, caso de negocio documentado y presupuesto aprobado. No es una promesa del Programa: es una posibilidad que se gana con resultados.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un rol digital que empezo como una conversacion con Gemini se convierte en un producto digital propio de V&A. La soberania digital hecha realidad.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Asistente de Propuestas PVB -->
+<div class="modal-overlay" id="modal-dt-propuestas">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dt-propuestas')">&times;</button>
+    <h2>Asistente de <span>Propuestas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Fase 1</span><span class="badge badge-gold">N1→N2→N3</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Product Vision Board</div>
+      <p><strong>Vision:</strong> Que ningun fundador de V&A dedique mas de 30 minutos a un primer borrador de propuesta comercial. <strong>Grupo objetivo:</strong> Fundadores de V&A que elaboran propuestas para clientes. <strong>Necesidades:</strong> Reducir tiempo de redaccion, mantener consistencia de marca, personalizar por tipo de cliente. <strong>Producto:</strong> Gema de Gemini con prompt especializado + NotebookLM con propuestas exitosas + repo gobernado en Drive.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Ruta de evolucion</div>
+      <p><strong>N1 (Semana 2):</strong> Gema con prompt + 3 plantillas base. El fundador describe el cliente y la Gema genera el borrador. <strong>N2 (Semana 4):</strong> NotebookLM cargado con 10+ propuestas exitosas, tarifario actualizado y casos de exito. La Gema genera borradores mas precisos porque conoce el historial. <strong>N3 (Fase 3-4):</strong> Flujo Opal que al detectar un nuevo prospecto en el Sheet genera automaticamente un primer borrador y lo deja en la carpeta del prospecto.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Repo gobernado</div>
+      <p>/V&A/Dream-Team/Propuestas/ contiene: plantillas base (editables solo por MetodologIA), propuestas enviadas (alimentadas por V&A), tarifario vigente, casos de exito, feedback de clientes. Los datos son propiedad de V&A. El NotebookLM se actualiza al añadir documentos.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>De 4 horas a 30 minutos por propuesta. Con el tono de V&A. Con datos reales de clientes similares. Sin empezar desde cero nunca mas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Peer Reviewer PVB -->
+<div class="modal-overlay" id="modal-dt-reviewer">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dt-reviewer')">&times;</button>
+    <h2>Peer Reviewer <span>IA</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Fase 2</span><span class="badge badge-red">Alta complejidad</span><span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">Candidato N4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Product Vision Board</div>
+      <p><strong>Vision:</strong> Que V&A tenga un evaluador de talento disponible 24/7 con la precision de sus mejores consultores. <strong>Grupo objetivo:</strong> Fundadores de V&A + potencialmente clientes de V&A (post-N4). <strong>Necesidades:</strong> Evaluar candidatos con consistencia, reducir tiempo de screening, documentar decisiones. <strong>Producto:</strong> Gema especializada en evaluacion HR con rubricas ponderadas, evolucionable a mini app comercializable.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Ruta de evolucion</div>
+      <p><strong>N1 (Semana 7):</strong> Gema con prompt de evaluacion + rubricas por cargo. El fundador sube un CV y la Gema devuelve evaluacion estructurada. <strong>N2 (Semana 9):</strong> NotebookLM con historiales de evaluacion (anonimizados), patrones de candidato exitoso, y job descriptions tipo. Precision superior al 80%. <strong>N3 (Fase 3):</strong> Flujo Opal que al recibir un CV por email lo evalua y genera reporte automatico. <strong>N4 (Gate 2-3):</strong> Mini app AntiGravity donde los clientes de V&A cargan candidatos y reciben evaluaciones — el producto estrella de V&A.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Repo gobernado (acceso restringido)</div>
+      <p>/V&A/Dream-Team/Peer-Reviewer/ contiene: job descriptions tipo, rubricas de evaluacion ponderadas, CVs evaluados (anonimizados obligatoriamente), patrones de candidato exitoso, resultados de pruebas tecnicas. Acceso mas restringido que otros repos por sensibilidad de datos de candidatos.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El Peer Reviewer es la demostracion viva de la soberania digital de V&A. Nace como una conversacion en Gemini. Puede terminar como un producto que los clientes de V&A pagan por usar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Task Tracker PVB -->
+<div class="modal-overlay" id="modal-dt-tracker">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dt-tracker')">&times;</button>
+    <h2>Task <span>Tracker</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Fase 1</span><span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">Candidato N4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Product Vision Board</div>
+      <p><strong>Vision:</strong> Que ningun seguimiento se pierda y ningun deadline pase desapercibido. <strong>Grupo objetivo:</strong> Fundadores de V&A. <strong>Necesidades:</strong> Visibilidad de estado por cliente, recordatorios automaticos, reducir carga de seguimiento manual. <strong>Producto:</strong> Gema que consulta Sheet maestro, evolucionable a pipeline visual.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Ruta de evolucion</div>
+      <p><strong>N1 (Semana 2):</strong> Gema que consulta un Sheet de tareas y responde sobre pendientes, vencimientos y estados. <strong>N2 (Semana 4):</strong> NotebookLM con historiales de proyecto y SLAs. <strong>N3 (Fase 3):</strong> Flujo Opal con recordatorios automaticos y alertas de vencimiento. <strong>N4 (Gate 3):</strong> Mini app con vista de pipeline visual por cliente y dashboard de productividad.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La operacion de V&A organizada sin que ningun fundador toque un formulario. Las tareas se crean, se siguen y se cierran con minima friccion.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Agente Prospeccion PVB -->
+<div class="modal-overlay" id="modal-dt-prospeccion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dt-prospeccion')">&times;</button>
+    <h2>Agente de <span>Prospeccion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Fase 2</span><span class="badge badge-red">Alta complejidad</span><span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">Candidato N4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Product Vision Board</div>
+      <p><strong>Vision:</strong> Que el funnel de V&A se alimente solo con leads calificados sin que los fundadores prospecten manualmente. <strong>Grupo objetivo:</strong> Fundadores de V&A (gestion comercial). <strong>Necesidades:</strong> Identificar oportunidades, calificar sin sesgo, generar secuencias de contacto. <strong>Producto:</strong> Gema con criterios de calificacion + repo de historiales de conversion.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Ruta de evolucion</div>
+      <p><strong>N1 (Semana 5):</strong> Gema con perfil de cliente ideal y criterios de scoring. <strong>N2 (Semana 6):</strong> NotebookLM con historiales de conversion y secuencias exitosas. <strong>N3 (Fase 3-4):</strong> Flujo Opal que auto-califica leads y genera primer email de contacto. <strong>N4 (Gate 3):</strong> Mini app con scoring visual y dashboard de pipeline.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A pasa de "buscar clientes" a "recibir leads calificados". El fundador decide a quien llamar, no a quien buscar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Motor Reportes PVB -->
+<div class="modal-overlay" id="modal-dt-reportes">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dt-reportes')">&times;</button>
+    <h2>Motor de <span>Reportes</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Fase 2</span><span class="badge badge-green">N1→N2→N3</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Product Vision Board</div>
+      <p><strong>Vision:</strong> Que cada dato de V&A cuente una historia accionable sin que nadie abra una hoja de calculo. <strong>Grupo objetivo:</strong> Fundadores + clientes de V&A. <strong>Necesidades:</strong> Reportes consistentes, narrativas ejecutivas, visualizacion de progreso. <strong>Producto:</strong> Gema que lee Sheets de metricas y genera narrativas de progreso.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Ruta de evolucion</div>
+      <p><strong>N1 (Semana 6):</strong> Gema con acceso a Sheets de metricas. <strong>N2 (Semana 7):</strong> NotebookLM con plantillas de reporte, benchmarks y glosario de KPIs. <strong>N3 (Fase 4):</strong> Flujo Opal que genera y envia reportes automaticos cada viernes.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Lunes sin Excel. Viernes con reporte enviado. Los datos hablan solos y V&A dedica su energia a interpretar, no a compilar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Meeting Analyst PVB -->
+<div class="modal-overlay" id="modal-dt-meeting">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dt-meeting')">&times;</button>
+    <h2>Meeting <span>Analyst</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Fase 2</span><span class="badge badge-green">N1→N2→N3</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Product Vision Board</div>
+      <p><strong>Vision:</strong> Que cada reunion genere inteligencia accionable sin que nadie tome notas manuales. <strong>Grupo objetivo:</strong> Fundadores de V&A. <strong>Necesidades:</strong> Transcripcion, extraccion de compromisos, minutas automaticas, seguimiento. <strong>Producto:</strong> Gema que procesa transcripciones de Google Meet y genera action items.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Ruta de evolucion</div>
+      <p><strong>N1 (Semana 8):</strong> Gema que recibe transcripciones y extrae compromisos. <strong>N2 (Semana 9):</strong> NotebookLM con historiales de reuniones por cliente. <strong>N3 (Fase 4):</strong> Flujo Opal que post-reunion auto-genera minuta, la envia por email y crea tareas en el Task Tracker.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Las reuniones dejan de ser "tiempo invertido" y se convierten en "inteligencia capturada". Cada compromiso queda rastreado, cada decision documentada.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Estructura de Repos -->
+<div class="modal-overlay" id="modal-repo-estructura">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-repo-estructura')">&times;</button>
+    <h2>Estructura de <span>Repositorios</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Google Drive</span><span class="badge badge-blue">Gobernado</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Principios de gobernanza</div>
+      <p>Un repo por rol digital. Estructura estandarizada por MetodologIA. Propiedad de V&A. Cada repo alimenta un NotebookLM dedicado. La carpeta _Gobernanza contiene las politicas de acceso, el changelog de cambios y el inventario de documentos.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Contenido por repo</div>
+      <p>Cada carpeta contiene: (1) Plantillas base — diseñadas por MetodologIA, editables solo con permiso. (2) Datos operativos — alimentados por V&A en la operacion diaria. (3) Historiales — acumulados automaticamente por los flujos. (4) Configuracion — prompts de la Gema, reglas de Opal, parametros de NLM.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cada rol digital tiene su "oficina" en Drive. Organizada, gobernada y lista para evolucionar. La fuente de verdad de V&A, segura y bajo su control.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Permisos -->
+<div class="modal-overlay" id="modal-repo-permisos">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-repo-permisos')">&times;</button>
+    <h2>Permisos y <span>Seguridad</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Google Drive</span><span class="badge badge-green">Control de acceso</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Matriz de permisos</div>
+      <p><strong>Programa (Fases 0-3):</strong> V&A = Propietario. MetodologIA = Editor (configura plantillas, prompts, flujos). <strong>Suscripcion (Fase 4):</strong> V&A = Propietario. MetodologIA = Lector + Comentador (sugiere, no edita). <strong>Post-Graduacion (Gate 3+):</strong> V&A = Propietario exclusivo. MetodologIA pierde acceso. Backup completo entregado.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Datos sensibles</div>
+      <p>El repo de Peer Reviewer tiene acceso mas restringido: datos de candidatos anonimizados obligatoriamente. Ningun documento con PII (informacion personal identificable) se comparte fuera del repo. MetodologIA no retiene copias de datos de candidatos.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los datos de V&A son de V&A. Siempre. Los permisos decrecen con el tiempo: mas autonomia, menos dependencia.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: NotebookLM Diseño -->
+<div class="modal-overlay" id="modal-repo-notebooks">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-repo-notebooks')">&times;</button>
+    <h2>NotebookLM: Capa de <span>Inteligencia</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">N2</span><span class="badge badge-blue">Cada rol tiene su NLM</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Diseño Gema + NotebookLM</div>
+      <p>Cada rol digital del Dream Team tiene un NotebookLM dedicado. El NLM carga documentos del repo de Drive del rol. Cuando la Gema necesita informacion contextualizada, consulta el NLM. El resultado: respuestas basadas en datos reales de V&A, no en conocimiento generico de internet.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Actualizacion automatica</div>
+      <p>Al añadir un documento al repo de Drive, el NLM lo indexa automaticamente. Esto significa que cada propuesta enviada, cada candidato evaluado, cada reporte generado enriquece al rol digital. El agente aprende de la operacion real de V&A sin intervencion manual.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los roles digitales de V&A son tan buenos como la calidad de sus repositorios. Drive gobernado + NLM = inteligencia que crece con cada dia de operacion.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dentro del Alcance -->
+<div class="modal-overlay" id="modal-dentro">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dentro')">&times;</button>
+    <h2>Dentro del <span>Alcance</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Escenario B</span><span class="badge badge-gold">16 semanas + 12 meses</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Contexto</div>
+      <p>V&A arranca desde N0: cero automatizacion, cero agentes, 160h/mes manuales. La especificacion cubre todo lo necesario para llegar al Estandar 9:1.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que se incluye</div>
+      <p>5 modulos funcionales (Diagnostico, Fundaciones, Expansion, Consolidacion, Autonomia). 18 casos de uso con criterios medibles. 6 agentes IA del Dream Team. Flujos personalizados para 5 procesos criticos. Dashboard de soberania digital. Gobernanza y evaluaciones trimestrales. 9h/semana de acompañamiento en Suscripcion.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Limites claros</div>
+      <p>Se especifica lo que se entrega en cada fase, con que criterio se mide y cuando se considera exitoso. Si algo no esta en esta especificacion, no esta en el alcance del Escenario B.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Claridad total. Ambas partes saben que esperar, cuando y como se mide. Sin surpresas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Fuera del Alcance -->
+<div class="modal-overlay" id="modal-fuera">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-fuera')">&times;</button>
+    <h2>Fuera del <span>Alcance</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-red">Exclusiones</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que no se incluye</div>
+      <p>Desarrollo de software a medida (apps, plataformas, APIs). Migracion de datos historicos de sistemas anteriores. Integraciones con herramientas fuera del ecosistema Google. Certificacion Reseller (requiere Gate 2 aprobado). Soporte de infraestructura de terceros (Hostinger, dominios, etc.).</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como se manejan las excepciones</div>
+      <p>Si durante la ejecucion surge una necesidad fuera de alcance, se documenta como "hallazgo" y se evalua en el gate mas cercano. No se añade al alcance sin acuerdo formal de ambas partes.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Saber que queda fuera es tan valioso como saber que esta dentro. Expectativas alineadas desde el dia uno.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: M1 Diagnostico -->
+<div class="modal-overlay" id="modal-mod-m1">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-m1')">&times;</button>
+    <h2>M1: Diagnostico y <span>Activacion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Fase 0</span><span class="badge badge-gold">Gratuito</span><span class="badge badge-blue">3 casos de uso</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El problema</div>
+      <p>V&A no sabe con precision cuantas horas gasta, en que procesos ni que tan lejos esta de la automatizacion. Sin un diagnostico, cualquier plan es especulacion.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que resuelve este modulo</div>
+      <p>UC-01: Mapeo de procesos con horas reales. UC-02: Posicionamiento en la escala N0-N7. UC-03: Propuesta con ROI estimado y roadmap personalizado. Resultado: claridad total sobre donde esta V&A y que se puede lograr.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Entregables</div>
+      <p>Informe de diagnostico con mapa de procesos, scorecard de madurez digital, y propuesta formal con timeline y ROI estimado (framework 80/50/20).</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A tiene la informacion necesaria para tomar una decision informada. Sin compromiso, sin presion, con datos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: M2 Fundaciones -->
+<div class="modal-overlay" id="modal-mod-m2">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-m2')">&times;</button>
+    <h2>M2: Fundaciones <span>Digitales</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Fase 1</span><span class="badge badge-gold">Semanas 1-4</span><span class="badge badge-green">2 agentes IA</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El reto</div>
+      <p>Pasar de cero infraestructura digital a un entorno funcional con agentes IA operativos. La curva de aprendizaje es real: los primeros 30 dias definen el ritmo de toda la (R)Evolución.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que resuelve</div>
+      <p>UC-04: Entorno Workspace listo. UC-05: Asistente de Propuestas reduciendo 4h a 30min. UC-06: Task Tracker automatizando seguimientos. UC-07: Ofimatica IA como base de productividad. Incluye todo lo del Diagnostico.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterio de salida</div>
+      <p>Ambos agentes con uso activo superior al 50%. Fundadores completaron entrenamiento de ofimatica IA. Dashboard de adopcion funcional.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Las primeras victorias son tangibles: propuestas en 30 minutos, tareas organizadas automaticamente, productividad multiplicada desde el dia 15.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: M3 Expansion -->
+<div class="modal-overlay" id="modal-mod-m3">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-m3')">&times;</button>
+    <h2>M3: Expansion y <span>Automatizacion Comercial</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Fase 2</span><span class="badge badge-gold">Semanas 5-10</span><span class="badge badge-green">4 agentes adicionales</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El reto</div>
+      <p>Escalar de 2 a 6 agentes sin saturar a los fundadores. Personalizar flujos para cada proceso critico de V&A. El Peer Reviewer IA es el corazon de la operacion HR y requiere configuracion profunda.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que resuelve</div>
+      <p>UC-08: Prospeccion automatizada. UC-09: Reportes sin tocar Excel. UC-10: Peer Reviewer para HR. UC-11: Reuniones que generan accion. UC-12: Flujos comerciales end-to-end. Incluye todo lo de Fundaciones.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterio de salida</div>
+      <p>6 agentes operativos. 4+ con uso superior al 60%. Flujos personalizados para 5 procesos criticos. Base de conocimiento inicial poblada.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A tiene un Dream Team completo de 6 especialistas IA. Cada proceso critico tiene su flujo automatizado. El Estandar 9:1 empieza a ser tangible.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: M4 Consolidacion -->
+<div class="modal-overlay" id="modal-mod-m4">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-m4')">&times;</button>
+    <h2>M4: Consolidacion y <span>Transferencia</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Fase 3</span><span class="badge badge-gold">Semanas 11-16</span><span class="badge badge-blue">Gate 2</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El reto</div>
+      <p>Pasar de "funciona con soporte" a "funciona porque V&A lo domina". La transferencia de conocimiento es el paso que separa una implementacion exitosa de una dependencia permanente.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que resuelve</div>
+      <p>UC-13: Agentes optimizados con datos reales de 10 semanas. UC-14: Documentacion completa y base de conocimiento. UC-15: Transicion formal a Suscripcion Anual. Incluye todo lo de Expansion.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterio de salida (Gate 2)</div>
+      <p>Estandar 9:1 en al menos 2 procesos. Documentacion completa. Adopcion global superior al 70%. Suscripcion activada.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A no solo usa los agentes: los entiende, los ajusta y los gobierna. La (R)Evolución deja de ser del proveedor para ser del cliente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: M5 Autonomia -->
+<div class="modal-overlay" id="modal-mod-m5">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mod-m5')">&times;</button>
+    <h2>M5: Autonomia y <span>Evolucion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Fase 4</span><span class="badge badge-gold">Meses 5-12</span><span class="badge badge-green">9h/semana</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">El reto</div>
+      <p>Sostener el cambio a largo plazo. La mayoria de las (R)Evoluciónes fallan despues de la implementacion, no durante. El acompañamiento de 9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica) es la red de seguridad.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que resuelve</div>
+      <p>UC-16: Acompañamiento semanal estructurado. UC-17: Dashboard de soberania digital en tiempo real. UC-18: Evaluacion trimestral con decision de gate. Incluye todo lo de Consolidacion.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterio de salida (Gate 3)</div>
+      <p>Autonomia operativa confirmada al mes 12. Estandar 9:1 en 3+ procesos. 64h/mes recuperadas. Decision formal: graduar, renovar o escalar a Escenario C.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A es una organizacion AI Native. No porque use herramientas de IA, sino porque piensa, opera y crece con IA integrada en cada proceso.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-01 -->
+<div class="modal-overlay" id="modal-uc-01">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-01')">&times;</button>
+    <h2>UC-01: Mapeo de <span>Procesos</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">M1 Diagnostico</span><span class="badge badge-gold">Duracion: 3h</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Los fundadores de V&A han aceptado participar en la sesion de diagnostico gratuito. Tienen disponibilidad de 3 horas y acceso a informacion sobre sus procesos actuales.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. MetodologIA conduce entrevista estructurada. 2. Los fundadores describen cada proceso critico: prospeccion, propuestas, evaluacion HR, seguimiento, reportes. 3. Se estiman horas manuales por proceso. 4. Se identifican cuellos de botella y dependencias. 5. Se priorizan "victorias rapidas" (quick wins automatizables en semana 1).</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Mapa de al menos 5 procesos criticos documentados. Horas estimadas por proceso con precision de +/- 20%. Al menos 3 victorias rapidas identificadas y priorizadas.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A ve su operacion reflejada en datos. Las 160h/mes dejan de ser un numero abstracto para convertirse en un mapa accionable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-05 Asistente Propuestas -->
+<div class="modal-overlay" id="modal-uc-05">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-05')">&times;</button>
+    <h2>UC-05: Asistente de <span>Propuestas</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">M2 Fundaciones</span><span class="badge badge-gold">Semanas 2-3</span><span class="badge badge-warning">Complejidad Media</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Entorno Workspace configurado (UC-04). Los fundadores tienen al menos 3 propuestas anteriores como referencia. Plantillas de V&A disponibles en Drive.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. MetodologIA configura el agente con las plantillas y el tono de V&A. 2. Fundadores entrenan al agente con 3-5 propuestas anteriores. 3. Se prueban 3 borradores contra propuestas reales. 4. Se ajustan prompts segun feedback. 5. Se mide tiempo de generacion vs tiempo manual previo.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Borrador de propuesta generado en menos de 30 minutos (vs 4h manual). Calidad del borrador evaluada como "utilizable con edicion menor" por los fundadores. Uso activo del agente en al menos 2 propuestas reales durante la semana 3.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cada propuesta que antes tomaba medio dia ahora toma media hora. Los fundadores dedican su energia a personalizar y cerrar, no a redactar desde cero.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-10 Peer Reviewer -->
+<div class="modal-overlay" id="modal-uc-10">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-10')">&times;</button>
+    <h2>UC-10: Peer Reviewer <span>IA</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M3 Expansion</span><span class="badge badge-gold">Semanas 7-8</span><span class="badge badge-red">Complejidad Alta</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Al menos 4 agentes previos desplegados y operativos. V&A tiene documentados sus criterios de evaluacion HR. Job descriptions y rubrica de calificacion disponibles.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. MetodologIA configura el agente con job descriptions tipo de V&A. 2. Se entrenan los criterios de evaluacion tecnica y cultural. 3. Se prueban con 5 hojas de vida reales (anonimizadas). 4. Fundadores comparan evaluacion IA vs evaluacion manual. 5. Ajustes de prompts y umbrales. 6. Prueba en produccion con siguiente ronda real de candidatos.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Concordancia superior al 80% entre evaluacion IA y evaluacion de los fundadores. Tiempo de evaluacion por candidato reducido en al menos 60%. Fundadores confian en el agente para preseleccion (validado en al menos 1 proceso real).</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El Peer Reviewer es el producto estrella de V&A. No solo evalua candidatos internos: es la demostracion viva de lo que V&A puede construir para sus propios clientes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-01 Escalera Aditiva -->
+<div class="modal-overlay" id="modal-rn-escalera">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-escalera')">&times;</button>
+    <h2>RN-01: Escalera de Valor <span>Aditiva</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Regla de Negocio</span><span class="badge badge-blue">Critica</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Fundamento</div>
+      <p>La escalera aditiva asegura que ningun modulo se vende "incompleto". Cada nivel construye sobre el anterior, eliminando la necesidad de "complementos" o "extras". El cliente siempre sabe exactamente que tiene.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">La escalera canonica</div>
+      <p>Diagnostico: Gratuito. Workshop Introductorio: 200k COP/persona — incluye Diagnostico + ofimatica IA. Bootcamp de Ventas: 800k COP/persona — incluye todo lo del Workshop + automatizacion comercial. Programa (R)Evolución: 500k COP/asistente (3M COP por 6 asistentes) — incluye todo lo del Bootcamp de Ventas + 16 semanas + Dream Team IA. Suscripcion Anual: Primer mes prepagado — incluye todo lo del Programa + 12 meses acompañamiento.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Consecuencia si se viola</div>
+      <p>Si un modulo se ofrece sin incluir los anteriores, el cliente experimenta gaps de conocimiento que sabotean la adopcion. Ejemplo: un Bootcamp de Ventas sin el Workshop previo genera frustacion por falta de base en ofimatica IA.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cada nivel es autosuficiente. Cada paso construye sobre fundaciones solidas. No hay atajos porque no hacen falta.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-03 Horas -->
+<div class="modal-overlay" id="modal-rn-horas">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-horas')">&times;</button>
+    <h2>RN-03: Compromiso <span>9h/semana</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Regla de Negocio</span><span class="badge badge-gold">9h/semana por fundador</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Desglose</div>
+      <p>9h/semana por fundador: 3h sesiones conjuntas (MetodologIA + cliente) + 3h trabajo independiente (practica con agentes, experimentacion con flujos, estudio de patrones) + 2h sincronización (sesiones con MetodologIA, revisiones de progreso, resolucion de bloqueos) + 1h clínica semanal (meses 1), quincenal (meses 2-3), luego mensual.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Protocolo de recuperacion</div>
+      <p>Si la dedicacion cae por debajo de 6h/semana durante 2 semanas consecutivas: Semana 1 de baja adopcion: notificacion y diagnostico de causa. Semana 2 de baja adopcion: sesion de realineamiento con plan de recuperacion. Semana 3+ de baja adopcion: evaluacion en gate mas cercano sobre viabilidad de continuar al ritmo actual.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Ideal vs minimo</div>
+      <p>9h/semana es el compromiso base. 18h/semana ideal en las primeras 4 semanas (Fase 1 de Fundaciones). El retorno es proporcional a la dedicacion: mas horas = adopcion mas rapida = resultados mas tempranos.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Las 9h/semana no son un costo. Son la inversion mas rentable de la (R)Evolución. Cada hora de practica acerca a V&A al Estandar 9:1.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Complejidad Alta -->
+<div class="modal-overlay" id="modal-comp-alta">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-comp-alta')">&times;</button>
+    <h2>Alta Complejidad: <span>Estrategia de Mitigacion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-red">3 casos criticos</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Los 3 casos de riesgo</div>
+      <p>UC-08 Agente de Prospeccion: requiere fuentes de datos externas, criterios de calificacion complejos y secuencias de contacto multi-canal. UC-10 Peer Reviewer IA: el corazon HR de V&A, necesita precision superior al 80% en evaluacion de candidatos. UC-12 Flujos Comerciales: orquesta multiples agentes en cadena, cualquier fallo se propaga.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Mitigacion</div>
+      <p>Despliegue secuencial (nunca 2 casos de alta complejidad en la misma semana). Validacion semanal de precision con datos reales. Criterio kill/pivot en semana 8: si la adopcion no supera el 40%, se reconfigura antes de continuar. Buffer de 2 semanas en Fase 2 para absober retrasos.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Fallback</div>
+      <p>Si alguno de los 3 no alcanza el umbral de adopcion al final de Fase 2, se documenta como pendiente y se aborda en Fase 3 (Consolidacion) con datos adicionales y ajustes.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los casos dificiles no se evitan: se planifican. Cada uno tiene un plan B documentado antes de empezar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-02 Evaluacion Madurez -->
+<div class="modal-overlay" id="modal-uc-02">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-02')">&times;</button>
+    <h2>UC-02: Evaluacion de <span>Madurez</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">M1 Diagnostico</span><span class="badge badge-gold">Framework N0-N7</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Mapa de procesos completado (UC-01). MetodologIA tiene visibilidad de la operacion actual de V&A.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Se aplica el framework de madurez MetodologIA (N0 a N7). 2. Se evalua cada proceso contra los criterios del nivel. 3. Se genera el scorecard con posicion actual y distancia al objetivo. 4. Se identifican los gaps criticos entre el nivel actual y el nivel objetivo.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Scorecard completo con nivel asignado a cada proceso. Gaps documentados con prioridad. Nivel global de V&A determinado (punto de partida: N0).</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A sabe exactamente donde esta. No donde cree que esta, sino donde los datos dicen que esta.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-03 Propuesta ROI -->
+<div class="modal-overlay" id="modal-uc-03">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-03')">&times;</button>
+    <h2>UC-03: Propuesta y <span>ROI</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">M1 Diagnostico</span><span class="badge badge-gold">Framework 80/50/20</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Mapa de procesos (UC-01) y evaluacion de madurez (UC-02) completados.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Se aplica el framework 80/50/20 a las horas mapeadas. 2. Se calcula ROI estimado: de 160h/mes, 64h/mes recuperables (40%). 3. Se genera propuesta con roadmap personalizado, escenario recomendado y timeline. 4. Se presenta a fundadores para decision de Gate 1.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Propuesta formal con ROI cuantificado. Roadmap con fases y tiempos. Recomendacion de escenario argumentada. Decision de V&A registrada.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La decision de V&A se basa en datos, no en promesas. Si deciden avanzar, saben exactamente que van a recibir y cuando.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-04 Config Workspace -->
+<div class="modal-overlay" id="modal-uc-04">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-04')">&times;</button>
+    <h2>UC-04: Configuracion <span>Workspace</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">M2 Fundaciones</span><span class="badge badge-gold">Semana 1</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Gate 1 aprobado. V&A tiene Google Workspace activo. Acceso de administrador disponible para MetodologIA.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Activacion de Gemini avanzado en el Workspace de V&A. 2. Creacion de la estructura de carpetas /V&A/Dream-Team/ en Drive. 3. Configuracion de plantillas base por cada rol digital. 4. Habilitacion de NotebookLM y vinculacion con repos de Drive. 5. Configuracion de permisos segun modelo de gobernanza.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Gemini activo y funcional. Estructura de Drive creada con 8 carpetas. Permisos configurados. NotebookLM habilitado y vinculado. Fundadores pueden acceder a todo desde cualquier dispositivo.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La infraestructura digital de V&A esta lista para recibir al Dream Team. Todo dentro de Google, todo gobernado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-06 Task Tracker -->
+<div class="modal-overlay" id="modal-uc-06">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-06')">&times;</button>
+    <h2>UC-06: Despliegue <span>Task Tracker</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">M2 Fundaciones</span><span class="badge badge-gold">Semanas 2-4</span><span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">Candidato N4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Workspace configurado (UC-04). Sheet maestro de tareas creado. Fundadores entienden la dinamica de Gemas (UC-07 en curso).</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Creacion del Sheet maestro con estructura: cliente, tarea, responsable, deadline, estado. 2. Configuracion de la Gema (N1) con prompt de consulta de tareas. 3. Carga de historiales en NotebookLM (N2). 4. Prueba con 10 tareas reales. 5. Ajuste de umbrales y alertas.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Task Tracker responde correctamente sobre estado de tareas. Fundadores usan el agente al menos 3 veces/semana. Cero seguimientos perdidos desde la activacion.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Ningun deadline pasa desapercibido. Ningun cliente queda sin seguimiento. La operacion se organiza sola.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-07 Ofimatica -->
+<div class="modal-overlay" id="modal-uc-07">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-07')">&times;</button>
+    <h2>UC-07: Entrenamiento <span>Ofimatica IA</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">M2 Fundaciones</span><span class="badge badge-gold">Semanas 1-4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Gemini activo en el Workspace de V&A. Fundadores con disponibilidad de 9h/semana.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Sesiones practicas de uso de Gemini en Docs, Sheets, Slides. 2. Entrenamiento en creacion y uso de Gemas personalizadas. 3. Introduccion a NotebookLM como fuente de datos. 4. Ejercicios con casos reales del dia a dia de V&A. 5. Evaluacion practica: cada fundador crea una Gema funcional.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Cada fundador usa Gemini diariamente para al menos 2 tareas. Evaluacion practica aprobada. Fundadores pueden crear y ajustar Gemas sin asistencia de MetodologIA.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los fundadores dejan de ver la IA como herramienta y empiezan a verla como colega. La base esta lista para los 6 agentes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-08 Prospeccion -->
+<div class="modal-overlay" id="modal-uc-08">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-08')">&times;</button>
+    <h2>UC-08: Agente de <span>Prospeccion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M3 Expansion</span><span class="badge badge-red">Alta complejidad</span><span style="background:rgba(139,92,246,0.10);color:#8B5CF6;" class="badge">N1→N4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Agentes 1-2 operativos con uso superior al 50%. Perfil de cliente ideal documentado. Sheet de prospectos activo.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Definicion de criterios de calificacion (scoring) con V&A. 2. Carga de historiales de conversion en NotebookLM. 3. Configuracion de Gema (N1) con prompt de calificacion. 4. Potenciacion con NLM (N2): secuencias exitosas, patrones de conversion. 5. Prueba con 20 leads reales. 6. Ajuste de scoring y secuencias.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Scoring de leads con precision superior al 70%. Secuencias de contacto generadas en menos de 5 minutos. Al menos 2 leads convertidos usando el agente en las primeras 3 semanas.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El funnel de V&A se alimenta solo. Los fundadores deciden a quien llamar, no a quien buscar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-09 Motor Reportes -->
+<div class="modal-overlay" id="modal-uc-09">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-09')">&times;</button>
+    <h2>UC-09: Motor de <span>Reportes</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M3 Expansion</span><span class="badge badge-blue">N1→N2→N3</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Sheets de metricas poblados con al menos 4 semanas de datos. Plantillas de reporte definidas por tipo de cliente.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Configuracion de Gema (N1) con acceso a Sheets de metricas. 2. Definicion de narrativa de reporte por tipo de cliente. 3. Potenciacion con NLM (N2): benchmarks, KPIs, plantillas. 4. Generacion de 3 reportes de prueba. 5. Validacion por fundadores contra criterios de calidad.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Reporte generado en menos de 10 minutos (vs 2h manual). Calidad evaluada como "enviable con edicion menor". 80% de los datos correctamente interpretados.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los viernes se cierran con reportes enviados. Los lunes empiezan con datos claros. Sin Excel, sin compilacion manual.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-11 Meeting Analyst -->
+<div class="modal-overlay" id="modal-uc-11">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-11')">&times;</button>
+    <h2>UC-11: Meeting <span>Analyst</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M3 Expansion</span><span class="badge badge-blue">N1→N2→N3</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Google Meet con transcripcion activa. Task Tracker operativo para recibir action items.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Configuracion de Gema (N1) con prompt de analisis de reuniones. 2. Prueba con 3 transcripciones reales. 3. Potenciacion con NLM (N2): historiales por cliente, patrones de seguimiento. 4. Validacion de extraccion de compromisos contra minuta manual. 5. Integracion con Task Tracker para creacion automatica de tareas.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>90% de compromisos correctamente extraidos. Minuta generada en menos de 5 minutos post-reunion. Action items creados automaticamente en Task Tracker.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Las reuniones generan inteligencia, no solo tiempo invertido. Cada compromiso rastreado, cada decision documentada.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-12 Flujos Comerciales -->
+<div class="modal-overlay" id="modal-uc-12">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-12')">&times;</button>
+    <h2>UC-12: Flujos <span>Comerciales</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M3 Expansion</span><span class="badge badge-red">Alta complejidad</span><span class="badge badge-green">N3 Orquestacion</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>6 agentes del Dream Team operativos. Al menos 4 con uso activo superior al 50%. Procesos criticos mapeados desde UC-01.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Identificacion de los 5 flujos comerciales end-to-end de V&A. 2. Diseño de la orquestacion: que agentes participan en cada flujo y en que orden. 3. Configuracion de triggers y condiciones con Opal (N3). 4. Prueba de cada flujo con caso real. 5. Ajuste de reglas y umbrales por flujo.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>5 flujos comerciales configurados y probados. Cada flujo ejecuta al menos 3 pasos sin intervencion manual. Tiempo total del flujo reducido en al menos 50% vs ejecucion manual.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Del prospecto al cierre: automatizado, medido, optimizable. Los agentes ya no trabajan solos, trabajan en equipo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-13 Optimizacion -->
+<div class="modal-overlay" id="modal-uc-13">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-13')">&times;</button>
+    <h2>UC-13: Optimizacion por <span>Datos Reales</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">M4 Consolidacion</span><span class="badge badge-gold">Semanas 11-13</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>10 semanas de datos de uso acumulados. Metricas de adopcion por agente disponibles. Feedback de fundadores recopilado.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Analisis de metricas de uso por agente: frecuencia, precision, satisfaccion. 2. Identificacion de prompts con bajo rendimiento. 3. Refinamiento de prompts y umbrales. 4. A/B testing de configuraciones mejoradas. 5. Medicion de mejora vs linea base.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Mejora documentada en al menos 4 de 6 agentes. Precision promedio superior al 80%. Satisfaccion de fundadores superior al 7/10 por agente.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los agentes mejoran porque los datos les enseñan. No es intuicion, es evidencia.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-14 Documentacion -->
+<div class="modal-overlay" id="modal-uc-14">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-14')">&times;</button>
+    <h2>UC-14: Documentacion y <span>Base de Conocimiento</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">M4 Consolidacion</span><span class="badge badge-gold">Semanas 13-15</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Agentes optimizados (UC-13). Flujos comerciales estables (UC-12). Estructura de repos gobernada.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Documentacion de cada agente: prompt, configuracion, mejores practicas. 2. Documentacion de cada flujo: triggers, condiciones, acciones. 3. Guia de troubleshooting para problemas comunes. 4. Inventario de repos y contenido por carpeta. 5. Transferencia de conocimiento a fundadores.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>6 fichas de agente documentadas. 5 flujos documentados con diagramas. Guia de troubleshooting con 10+ escenarios. Fundadores capaces de ajustar prompts sin asistencia.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La (R)Evolución no depende de la memoria de nadie. Todo queda escrito, accesible y actualizable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-15 Transicion -->
+<div class="modal-overlay" id="modal-uc-15">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-15')">&times;</button>
+    <h2>UC-15: Transicion a <span>Suscripcion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">M4 Consolidacion</span><span class="badge badge-gold">Semana 16</span><span class="badge badge-blue">Gate 2</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>16 semanas de programa completadas. Agentes optimizados y documentados. Metricas de Gate 2 evaluadas.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Evaluacion formal contra criterios de Gate 2. 2. Presentacion de resultados a fundadores. 3. Decision conjunta: activar Suscripcion, ajustar o pausar. 4. Cambio de permisos: MetodologIA pasa de Editor a Lector + Comentador. 5. Activacion formal de la Suscripcion Anual con 9h/semana.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Estandar 9:1 en al menos 2 procesos. Adopcion global superior al 70%. Documentacion completa y entregada. Suscripcion formalmente activada.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A pasa de estudiante a operador autonomo con red de seguridad. El programa termina, la (R)Evolución continua.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-16 Acompañamiento -->
+<div class="modal-overlay" id="modal-uc-16">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-16')">&times;</button>
+    <h2>UC-16: Acompañamiento <span>Semanal</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M5 Autonomia</span><span class="badge badge-gold">9h/semana</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Suscripcion Anual activa. V&A operando con 6 agentes y flujos establecidos.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. 3h conjuntas + 3h independientes (nuevos patrones, experimentacion con Gemas, practica avanzada). 2. 2h sync (revision de metricas, resolucion de bloqueos, ajustes de agentes). 3. 1h clínica (nuevos flujos segun necesidad emergente). 4. Evaluacion de candidatos a evolucion N3/N4.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>9h/semana ejecutadas consistentemente (tolerancia: 7h minimo). Incidencias resueltas en menos de 48h. Al menos 1 mejora mensual documentada por agente.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La (R)Evolución no se estanca. Cada semana V&A es un poco mas soberano digitalmente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-17 Dashboard -->
+<div class="modal-overlay" id="modal-uc-17">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-17')">&times;</button>
+    <h2>UC-17: Dashboard de <span>Soberania</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M5 Autonomia</span><span class="badge badge-blue">Desde Semana 4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>Al menos 2 agentes operativos generando datos de uso. Sheet de metricas configurado.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Configuracion de dashboard en Google Sheets/Looker Studio. 2. Metricas clave: adopcion por agente, horas recuperadas, nivel N0-N7, progreso Estandar 9:1. 3. Actualizacion automatica semanal. 4. Alertas cuando algun agente cae por debajo del umbral de adopcion.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Dashboard accesible desde cualquier dispositivo. Datos actualizados semanalmente sin intervencion manual. 4 metricas clave visibles de un vistazo. Historico de evolucion por mes.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A ve su progreso en tiempo real. Los datos cuentan la historia de la (R)Evolución.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: UC-18 Evaluacion Trimestral -->
+<div class="modal-overlay" id="modal-uc-18">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-uc-18')">&times;</button>
+    <h2>UC-18: Evaluacion <span>Trimestral</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">M5 Autonomia</span><span class="badge badge-blue">Meses 6, 9, 12</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Precondicion</div>
+      <p>3 meses de datos acumulados desde la ultima evaluacion. Dashboard de soberania actualizado.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Flujo principal</div>
+      <p>1. Recopilacion de metricas del trimestre. 2. Comparacion contra KPIs del gate correspondiente. 3. Identificacion de logros, gaps y riesgos. 4. Presentacion a fundadores. 5. Decision formal: continuar, ajustar, escalar a Escenario C o graduar.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de aceptacion</div>
+      <p>Informe trimestral entregado. Decision documentada y firmada. Plan de accion para el siguiente trimestre definido.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cada 3 meses, V&A decide conscientemente su siguiente paso. Sin inercia, sin piloto automatico.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-02 Estandar 9:1 -->
+<div class="modal-overlay" id="modal-rn-91">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-91')">&times;</button>
+    <h2>RN-02: Estandar <span>9:1</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Regla de Negocio</span><span class="badge badge-blue">Objetivo de madurez</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Definicion</div>
+      <p>De cada 10 tareas operativas en un proceso, 9 las ejecuta IA y 1 el humano. Se mide por proceso individual, no globalmente. Es el objetivo, no el punto de partida.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Metricas y umbrales</div>
+      <p>Se mide mensualmente por proceso. Mes 4: al menos 1 proceso en 9:1. Mes 6: al menos 2 procesos. Mes 9: al menos 3 procesos. Mes 12: al menos 3 procesos sostenidos. Un proceso que no alcanza 9:1 en 6 meses requiere intervencion correctiva.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El Estandar 9:1 no es un eslogan. Es una metrica medible que demuestra que la IA esta haciendo su trabajo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-04 Framework 80/50/20 -->
+<div class="modal-overlay" id="modal-rn-805020">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-805020')">&times;</button>
+    <h2>RN-04: Framework <span>80/50/20</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Regla de Negocio</span><span class="badge badge-gold">ROI</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Clasificacion de tareas</div>
+      <p><strong>Simples (80% intervenibles):</strong> Seguimientos, recordatorios, compilacion de datos, reportes rutinarios. <strong>Medias (50% intervenibles):</strong> Propuestas, evaluaciones iniciales, análisis de datos. <strong>Complejas (20% intervenibles):</strong> Negociaciones, decisiones estratégicas, relaciones con clientes clave.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Calculo de ROI</div>
+      <p>De 160h/mes operativas: simples (80h) × 80% = 64h. Medias (56h) × 50% = 28h. Complejas (24h) × 20% = 4.8h. Total recuperable: ~97h teoricas. Objetivo conservador: 64h/mes (40%). Esto equivale a 768h/año.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El ROI no es una promesa: es una formula verificable. Cada hora recuperada se mide contra la linea base del diagnostico.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-05 Precios -->
+<div class="modal-overlay" id="modal-rn-precios">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-precios')">&times;</button>
+    <h2>RN-05: Modelo de <span>Precios</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Regla de Negocio</span><span class="badge badge-blue">Por persona</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Escalera de precios</div>
+      <p>Diagnostico: Gratuito. Workshop Introductorio: 200k COP/persona. Bootcamp de Ventas: 800k COP/persona. Programa (R)Evolución: 500k COP/asistente (3M COP por 6 asistentes).</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Alternativas de acceso</div>
+      <p>Compromiso de ventas como alternativa al pago directo: Workshop → 3M COP en ventas. Bootcamp → 12M COP en ventas. Programa → 6M COP en ventas. La Suscripcion Anual tiene primer mes prepagado.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Dos caminos para acceder: pagar o vender. Ambos validos, ambos transparentes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-06 Gates -->
+<div class="modal-overlay" id="modal-rn-gates">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-gates')">&times;</button>
+    <h2>RN-06: Gates de <span>Decision</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Regla de Negocio</span><span class="badge badge-gold">3 gates</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">G1 — Activacion (Semana 0)</div>
+      <p>Decision: iniciar el Programa. Criterios: diagnostico completado, ROI estimado aceptable, compromiso de 9h/semana confirmado.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">G2 — Madurez (Mes 6)</div>
+      <p>Decision: continuar Suscripcion o ajustar. Criterios: Estandar 9:1 en 2+ procesos, adopcion superior al 70%, documentacion completa. Evalua candidatos a N4.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">G3 — Graduacion (Mes 12)</div>
+      <p>Decision: graduar, renovar o escalar a Escenario C. Criterios: autonomia operativa, 64h/mes recuperadas, 3+ procesos en 9:1.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cada gate es un momento de verdad. Decisiones basadas en datos, no en inercia contractual.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-07 Nomenclatura -->
+<div class="modal-overlay" id="modal-rn-agente">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-agente')">&times;</button>
+    <h2>RN-07: <span>Nomenclatura</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Regla de Negocio</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Glosario oficial</div>
+      <p><strong>"Asistente"</strong> = exclusivamente agentes IA del Dream Team. <strong>"Fundador"</strong> = los socios de V&A. <strong>"Consultor"</strong> = profesional de MetodologIA. <strong>"Participante"</strong> = persona en un Workshop o Bootcamp. <strong>"Rol digital"</strong> = cualquier agente IA del ecosistema.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un vocabulario comun elimina ambiguedades. Cuando alguien dice "asistente", todos saben que habla de IA.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-08 Adopcion -->
+<div class="modal-overlay" id="modal-rn-adopcion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-adopcion')">&times;</button>
+    <h2>RN-08: Umbral de <span>Adopcion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Regla de Negocio</span><span class="badge badge-gold">40% minimo</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Protocolo de diagnostico</div>
+      <p>Si un agente tiene uso inferior al 40% durante 3 semanas: Semana 1: alerta y analisis de causa raiz. Semana 2: intervencion (reconfiguracion de prompt, reentrenamiento de fundadores). Semana 3: decision — reconfigurar, reemplazar o deprecar el agente.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Un agente que nadie usa no es un agente: es un costo. Mejor identificarlo rapido y actuar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-09 Despliegue Gradual -->
+<div class="modal-overlay" id="modal-rn-despliegue">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-despliegue')">&times;</button>
+    <h2>RN-09: Despliegue <span>Gradual</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Regla de Negocio</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Criterios de activacion</div>
+      <p>Maximo 2 agentes nuevos por semana. Condicion para activar un nuevo agente: los agentes actuales deben tener uso activo superior al 50%. Excepcion: Fase 1 permite activar Asistente de Propuestas y Task Tracker en paralelo porque son independientes.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Cambio gradual, no avalancha. Cada agente tiene su espacio para ser adoptado antes de que llegue el siguiente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-10 Propiedad Datos -->
+<div class="modal-overlay" id="modal-rn-datos">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-datos')">&times;</button>
+    <h2>RN-10: Propiedad de <span>Datos</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Regla de Negocio</span><span class="badge badge-gold">Soberania</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Clausulas de propiedad</div>
+      <p><strong>V&A es propietario de:</strong> todos los datos operativos, prompts personalizados, flujos configurados, base de conocimiento, historiales de uso, reportes generados. <strong>MetodologIA retiene:</strong> la metodologia, los frameworks de evaluacion (N0-N7, 80/50/20, 9:1), y las mejores practicas genericas.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Los datos de V&A son de V&A. Hoy, mañana y siempre. Sin excepciones, sin letra pequeña.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-11 Escalabilidad -->
+<div class="modal-overlay" id="modal-rn-escala">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-escala')">&times;</button>
+    <h2>RN-11: Criterio de <span>Escalabilidad</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Regla de Negocio</span><span class="badge badge-blue">Escenario C</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Prerequisitos para Escenario C (Reseller)</div>
+      <p>Estandar 9:1 alcanzado en 3+ procesos criticos. Adopcion global superior al 70%. 6 meses de operacion estable sin incidencias mayores. Al menos 1 agente con potencial comercializable validado (candidato N4). Decision formal en Gate 2 o Gate 3.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El Escenario C no se regala: se gana. V&A lo alcanza cuando los datos demuestran que esta listo para enseñar a otros.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: RN-12 Salida Limpia -->
+<div class="modal-overlay" id="modal-rn-cancelacion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-rn-cancelacion')">&times;</button>
+    <h2>RN-12: Clausula de <span>Salida Limpia</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Regla de Negocio</span><span class="badge badge-green">Sin penalidades</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Condiciones de salida</div>
+      <p>En cualquier gate (G1, G2, G3), V&A puede decidir no continuar. Se entrega: toda la documentacion generada, configuraciones de agentes, flujos, base de conocimiento, repos de Drive con su contenido. Sin penalidades. Sin retencion de datos. Sin periodos de aviso.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La confianza se construye cuando ambas partes saben que pueden irse. V&A se queda porque quiere, no porque debe.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Complejidad Media -->
+<div class="modal-overlay" id="modal-comp-media">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-comp-media')">&times;</button>
+    <h2>Media Complejidad: <span>8 Casos</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-warning">Patron conocido</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Casos de complejidad media</div>
+      <p>UC-04 (Workspace), UC-05 (Propuestas), UC-06 (Task Tracker), UC-09 (Reportes), UC-11 (Meeting Analyst), UC-13 (Optimizacion), UC-14 (Documentacion), UC-17 (Dashboard). Patron comun: configuracion de Gema + NotebookLM con ajuste al contexto de V&A.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Patrones de implementacion</div>
+      <p>Cada caso sigue el ciclo: configurar Gema (N1) → probar con datos reales → potenciar con NLM (N2) → ajustar por feedback → medir adopcion. Tiempo promedio de despliegue: 1-2 semanas por agente. La repeticion del patron reduce el riesgo en cada iteracion.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>8 casos con patron conocido. Cada despliegue ensena algo que hace el siguiente mas rapido.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Complejidad Baja -->
+<div class="modal-overlay" id="modal-comp-baja">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-comp-baja')">&times;</button>
+    <h2>Baja Complejidad: <span>7 Casos</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Frameworks estandar</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Casos de baja complejidad</div>
+      <p>UC-01 (Mapeo), UC-02 (Madurez), UC-03 (Propuesta ROI), UC-07 (Ofimatica), UC-15 (Transicion), UC-16 (Acompañamiento), UC-18 (Evaluacion Trimestral). Ejecutables con frameworks estandar de MetodologIA sin personalizacion profunda.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>7 casos que funcionan con frameworks probados. Las victorias rapidas que dan confianza para los retos mayores.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: CA-M1 -->
+<div class="modal-overlay" id="modal-ca-m1">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ca-m1')">&times;</button>
+    <h2>Checklist M1: <span>Diagnostico</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Aceptacion</span><span class="badge badge-gold">Gate 1</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Checklist completo</div>
+      <p>1. Mapa de al menos 5 procesos criticos con horas estimadas. 2. Scorecard N0-N7 completado por proceso. 3. Quick wins identificados (minimo 3). 4. Propuesta formal entregada con ROI (framework 80/50/20). 5. Decision de Gate 1 registrada formalmente. 6. Compromiso de 9h/semana confirmado por fundadores.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Gate 1 superado con datos. V&A sabe donde esta, donde quiere ir y cuanto cuesta llegar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: CA-M2 -->
+<div class="modal-overlay" id="modal-ca-m2">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ca-m2')">&times;</button>
+    <h2>Checklist M2: <span>Fundaciones</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Aceptacion</span><span class="badge badge-gold">Semana 4</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Checklist completo</div>
+      <p>1. Workspace + Gemini configurado y funcional. 2. Estructura de Drive creada con repos por agente. 3. Asistente de Propuestas operativo con uso superior al 50%. 4. Task Tracker operativo con uso superior al 50%. 5. Evaluacion practica de ofimatica IA aprobada por fundadores. 6. Dashboard de adopcion funcional y actualizado. 7. NotebookLM vinculado a repos de ambos agentes.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Las fundaciones estan solidas. V&A ya trabaja con IA todos los dias.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: CA-M3 -->
+<div class="modal-overlay" id="modal-ca-m3">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ca-m3')">&times;</button>
+    <h2>Checklist M3: <span>Expansion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Aceptacion</span><span class="badge badge-gold">Semana 10</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Checklist completo</div>
+      <p>1. 6 agentes del Dream Team desplegados. 2. 4+ agentes con uso activo superior al 60%. 3. Peer Reviewer IA con precision superior al 80%. 4. 5 flujos comerciales personalizados y probados. 5. Base de conocimiento poblada con contenido de cada repo. 6. Kill/pivot evaluado para casos de alta complejidad.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El Dream Team esta completo. 6 especialistas IA operando en los procesos criticos de V&A.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: CA-M4 -->
+<div class="modal-overlay" id="modal-ca-m4">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ca-m4')">&times;</button>
+    <h2>Checklist M4: <span>Consolidacion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Aceptacion</span><span class="badge badge-blue">Gate 2</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Checklist completo</div>
+      <p>1. Mejora documentada en 4+ agentes vs Fase 2. 2. Documentacion completa de 6 agentes y 5 flujos. 3. Estandar 9:1 en al menos 2 procesos criticos. 4. Adopcion global superior al 70%. 5. Fundadores capaces de ajustar prompts sin asistencia. 6. Permisos cambiados a Lector + Comentador. 7. Suscripcion Anual formalmente activada.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Gate 2 superado. V&A ya no necesita que le enseñen: necesita compañia para seguir creciendo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: CA-M5 -->
+<div class="modal-overlay" id="modal-ca-m5">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ca-m5')">&times;</button>
+    <h2>Checklist M5: <span>Autonomia</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Aceptacion</span><span class="badge badge-blue">Gate 3</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Checklist completo</div>
+      <p>1. 9h/semana ejecutadas consistentemente durante 8+ meses. 2. Estandar 9:1 en 3+ procesos criticos. 3. 64h/mes efectivamente recuperadas (medicion acumulada). 4. Autonomia operativa confirmada: V&A opera sin soporte diario. 5. Decision de Gate 3: graduar, renovar o escalar a Escenario C. 6. Si graduacion: backup completo entregado, MetodologIA pierde acceso.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A es una organizacion AI Native. No por las herramientas que usa, sino por como piensa, opera y crece.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="footer-inner">
+    <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 1rem;">
+      <defs><linearGradient id="footerLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
+      <rect width="40" height="40" rx="10" fill="url(#footerLogo)"/>
+      <path d="M11 12h4v16h-4V12zm7 0h4v10h-4V12zm0 13h4v3h-4v-3zm7-13h4v7h-4V12zm0 10h4v6h-4v-6z" fill="white"/>
+      <circle cx="20" cy="8" r="2.5" fill="#FFD700"/>
+      <path d="M52 28V14h4.2l3.5 9.1L63.3 14h4.1v14h-3V18.5L61 27h-2.2l-3.5-8.5V28H52zm22.5 0V14h3.2v14h-3.2zm8.5 0V14h3.2l5.8 9.3V14h3v14h-3.1L86.1 19V28H83z" fill="white" opacity="0.7"/>
+    </svg>
+    <p class="footer-brand-name">Metodolog<span style="color:var(--mia-gold)">IA</span></p>
+    <p style="margin-top:.5rem;">Success as a Service</p>
+    <p class="footer-code">MTIA-07-SPEC-VA-SE</p>
+    <p style="margin-top:.75rem; font-size:.7rem;">Documento confidencial preparado para V&A Consulting. Prohibida su reproduccion sin autorizacion.</p>
+  </div>
+</footer>
+
+<!-- ============================== JAVASCRIPT ============================== -->
+<script>
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+}
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  tocLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

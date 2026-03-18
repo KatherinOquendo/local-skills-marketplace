@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handover Operacional - V&A Consulting × MetodologIA</title>
+  <style>
+    :root {
+      --mia-navy: #0A122A;
+      --mia-navy-light: #111D3A;
+      --mia-navy-mid: #1e293b;
+      --mia-blue: #137DC5;
+      --mia-blue-light: #38BDF8;
+      --mia-blue-dim: rgba(19,125,197,0.12);
+      --mia-gold: #FFD700;
+      --mia-gold-dim: rgba(255,215,0,0.12);
+      --mia-gold-dark: #B8860B;
+      --mia-white: #FFFFFF;
+      --mia-offwhite: #F8F9FC;
+      --mia-light: #E2E8F0;
+      --mia-text: #C8D1E0;
+      --mia-text-muted: #8892A8;
+      --mia-dark-text: #1F2833;
+      --mia-positive: #42D36F;
+      --mia-positive-dim: rgba(66,211,111,0.10);
+      --mia-warning: #F59E0B;
+      --mia-warning-dim: rgba(245,158,11,0.10);
+      --mia-critical: #EF4444;
+      --mia-critical-dim: rgba(239,68,68,0.10);
+      --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: linear-gradient(180deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+      color: var(--mia-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation & TOC */
+    .toc-sticky {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      max-height: 100vh;
+      background: rgba(26, 35, 59, 0.95);
+      backdrop-filter: blur(10px);
+      border-left: 2px solid var(--mia-blue-dim);
+      padding: 24px 20px;
+      overflow-y: auto;
+      z-index: 99;
+      display: none;
+    }
+
+    .toc-sticky.active {
+      display: block;
+    }
+
+    .toc-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--mia-gold);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .toc-sticky ul {
+      list-style: none;
+    }
+
+    .toc-sticky li {
+      margin: 10px 0;
+    }
+
+    .toc-sticky a {
+      color: var(--mia-text-muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: block;
+      padding: 6px 12px;
+      border-left: 2px solid transparent;
+    }
+
+    .toc-sticky a:hover,
+    .toc-sticky a.active {
+      color: var(--mia-gold);
+      border-left-color: var(--mia-gold);
+      padding-left: 16px;
+    }
+
+    /* Hero Header */
+    .hero {
+      background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-light) 50%, var(--mia-navy-mid) 100%);
+      border-bottom: 2px solid var(--mia-blue-dim);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--mia-blue-dim) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(20px); }
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .brand-logo svg {
+      width: 42px;
+      height: 42px;
+      filter: drop-shadow(0 4px 12px rgba(255, 215, 0, 0.2));
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--mia-white);
+      letter-spacing: -0.5px;
+    }
+
+    .golden-accent {
+      color: var(--mia-gold);
+    }
+
+    .brand-tagline {
+      display: block;
+      font-size: 12px;
+      color: var(--mia-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--mia-white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--mia-gold);
+      display: inline;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--mia-text);
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .kpi-box {
+      background: var(--mia-blue-dim);
+      border: 1px solid rgba(19, 125, 197, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      color: var(--mia-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--mia-gold);
+    }
+
+    .hero-punchline {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--mia-white);
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      margin-right: 320px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+      position: relative;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .section-number {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      background: var(--mia-gold-dim);
+      border: 2px solid var(--mia-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--mia-gold);
+    }
+
+    .section-title-group h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--mia-white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .section-title-group p {
+      color: var(--mia-text-muted);
+      font-size: 14px;
+    }
+
+    .dark-section {
+      background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+      border: 1px solid var(--mia-blue-dim);
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 20px;
+    }
+
+    .light-section {
+      background: var(--mia-offwhite);
+      color: var(--mia-dark-text);
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 20px;
+    }
+
+    .light-section h3 {
+      color: var(--mia-navy);
+    }
+
+    .light-section p {
+      color: var(--mia-dark-text);
+    }
+
+    /* Content styling */
+    h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--mia-white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    strong {
+      color: var(--mia-gold);
+      font-weight: 600;
+    }
+
+    .light-section strong {
+      color: var(--mia-navy);
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: rgba(19, 125, 197, 0.08);
+      border: 1px solid var(--mia-blue-dim);
+      border-radius: 12px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      background: rgba(19, 125, 197, 0.15);
+      border-color: var(--mia-blue-light);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--mia-gold-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .card-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--mia-gold);
+    }
+
+    .card h4 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--mia-white);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--mia-text-muted);
+      margin: 0;
+    }
+
+    .card-clickable::after {
+      content: '→';
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      font-size: 18px;
+      color: var(--mia-gold);
+      transition: transform 0.3s ease;
+    }
+
+    .card-clickable:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* Callout boxes */
+    .callout {
+      background: var(--mia-gold-dim);
+      border-left: 4px solid var(--mia-gold);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .light-section .callout {
+      background: rgba(255, 215, 0, 0.08);
+      color: var(--mia-dark-text);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: var(--mia-gold);
+      margin-bottom: 8px;
+      font-family: var(--font-display);
+    }
+
+    .light-section .callout-title {
+      color: var(--mia-gold-dark);
+    }
+
+    /* Lists */
+    ul, ol {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .light-section li {
+      color: var(--mia-dark-text);
+    }
+
+    /* Modals */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+      border: 1px solid var(--mia-blue-dim);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 600px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--mia-text-muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--mia-gold);
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      margin-bottom: 24px;
+      padding-right: 24px;
+    }
+
+    .modal-header h3 {
+      margin-bottom: 8px;
+    }
+
+    .modal-body {
+      color: var(--mia-text);
+    }
+
+    .modal-body p {
+      margin-bottom: 14px;
+    }
+
+    .modal-body li {
+      margin-bottom: 10px;
+    }
+
+    /* WOW Modal (Friction-Anticipation-Resolution-Success) */
+    .wow-modal {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .wow-stage {
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .wow-friction {
+      background: var(--mia-critical-dim);
+      border: 1px solid var(--mia-critical);
+    }
+
+    .wow-anticipation {
+      background: var(--mia-warning-dim);
+      border: 1px solid var(--mia-warning);
+    }
+
+    .wow-resolution {
+      background: var(--mia-blue-dim);
+      border: 1px solid var(--mia-blue);
+    }
+
+    .wow-success {
+      background: var(--mia-positive-dim);
+      border: 1px solid var(--mia-positive);
+    }
+
+    .wow-stage-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .wow-friction .wow-stage-label {
+      color: var(--mia-critical);
+    }
+
+    .wow-anticipation .wow-stage-label {
+      color: var(--mia-warning);
+    }
+
+    .wow-resolution .wow-stage-label {
+      color: var(--mia-blue-light);
+    }
+
+    .wow-success .wow-stage-label {
+      color: var(--mia-positive);
+    }
+
+    .wow-stage-value {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mia-white);
+    }
+
+    .success-badge {
+      display: inline-block;
+      background: var(--mia-positive);
+      color: var(--mia-white);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    /* Micro-commitment boxes */
+    .micro-commitment {
+      background: var(--mia-gold-dim);
+      border: 2px solid var(--mia-gold);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .micro-commitment-check {
+      width: 24px;
+      height: 24px;
+      background: var(--mia-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mia-navy);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .micro-commitment p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mia-gold);
+    }
+
+    /* Animate on scroll */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--mia-navy-light);
+      border-top: 2px solid var(--mia-blue-dim);
+      padding: 40px;
+      text-align: center;
+      margin-right: 280px;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--mia-white);
+    }
+
+    .footer-brand span {
+      color: var(--mia-gold);
+    }
+
+    .footer-code {
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--mia-text-muted);
+      letter-spacing: 2px;
+      margin-top: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      main {
+        margin-right: 0;
+      }
+
+      footer {
+        margin-right: 0;
+      }
+
+      .toc-sticky {
+        display: none !important;
+      }
+
+      .hero-inner {
+        padding: 40px 20px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 40px 20px;
+      }
+
+      footer {
+        padding: 30px 20px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero-inner {
+        padding: 40px 20px;
+      }
+
+      .section-number {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .section-title-group h2 {
+        font-size: 28px;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky TOC Navigation -->
+  <nav class="toc-sticky active">
+    <div class="toc-title">Contenidos</div>
+    <ul>
+      <li><a href="#section-1" class="toc-link">1. Resumen Ejecutivo</a></li>
+      <li><a href="#section-2" class="toc-link">2. Paquete Comercial</a></li>
+      <li><a href="#section-3" class="toc-link">3. Checklist Operativo</a></li>
+      <li><a href="#section-4" class="toc-link">4. Plan 90 Días</a></li>
+      <li><a href="#section-5" class="toc-link">5. Gobernanza</a></li>
+      <li><a href="#section-6" class="toc-link">6. Riesgos</a></li>
+      <li><a href="#section-7" class="toc-link">7. Métricas</a></li>
+      <li><a href="#section-8" class="toc-link">8. Próximos Pasos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand-logo">
+        <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+          <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+          <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+          <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+        </svg>
+        <div>
+          <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+          <span class="brand-tagline">Success as a Service</span>
+        </div>
+      </div>
+
+      <h1>Handover Operacional<br><span>V&A Consulting</span></h1>
+      <p class="hero-subtitle">Documentación de transición para el inicio de tu (R)Evolución AI Native. Todos los elementos están listos para despegar en Semana 1.</p>
+
+      <div class="hero-kpis">
+        <div class="kpi-box">
+          <div class="kpi-label">Duración Programa</div>
+          <div class="kpi-value">16 semanas</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Dream Team</div>
+          <div class="kpi-value">6 agentes</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Inversión Base</div>
+          <div class="kpi-value">3M COP</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Recuperación</div>
+          <div class="kpi-value">128h/mes</div>
+        </div>
+      </div>
+
+      <p class="hero-punchline">La (R)Evolución comienza con <strong>sistemas bien construidos,<br>gobernanza clara, y un equipo alineado.</strong> Este documento<br>es tu brújula para los próximos 90 días.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Section 1: Resumen Ejecutivo de Transición -->
+    <section class="section dark-section animate-on-scroll" id="section-1">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <div class="section-title-group">
+          <h2>Resumen Ejecutivo<br>de Transición</h2>
+          <p>Estado actual y punto de partida</p>
+        </div>
+      </div>
+
+      <h3>Dónde Estamos Hoy</h3>
+      <p>V&A Consulting ha completado exitosamente la fase de descubrimiento. Has validado que la (R)Evolución AI Native es viable, urgente y altamente rentable. <strong>Ahora comienza la construcción real.</strong></p>
+
+      <p>El programa de 16 semanas que inicia esta semana está diseñado para convertir tus 320h mensuales de operación en un motor de propuestas, reportes y prospeccion impulsado por 6 agentes AI coordinados.</p>
+
+      <div class="card-grid">
+        <div class="card card-clickable" onclick="openModal('modal-resumen')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M2 12h20"/></svg>
+          </div>
+          <h4>Estado Actual</h4>
+          <p>Validación completada, inversión aprobada</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-comercial')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h4>Estructura Comercial</h4>
+          <p>Programa + Suscripción con gates claros</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-diagnostico')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 11l3 3L22 4"/></svg>
+          </div>
+          <h4>Diagnóstico Aprobado</h4>
+          <p>Roadmap de (R)Evolución validado</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-gobernanza')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          </div>
+          <h4>Gobernanza Definida</h4>
+          <p>Permisos, ownership, responsabilidades</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">Critical: Primera Semana</div>
+        <p>Haremos 5 accionables clave en días 1-7: acceso Google Workspace, estructura de Drive, primeros 2 agentes, invitación a Sprint 0, y sync de alineación.</p>
+      </div>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Entiendes el roadmap de 16 semanas y los 4 gates de validación</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Paquete de Activación Comercial -->
+    <section class="section light-section animate-on-scroll" id="section-2">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <div class="section-title-group">
+          <h2>Paquete de Activación<br>Comercial</h2>
+          <p>Inversión, estructura y timeline de pagos</p>
+        </div>
+      </div>
+
+      <h3>Estructura de Inversión: 3M COP</h3>
+      <p>Tu programa de (R)Evolución consta de dos pilares comerciales que trabajan en tándem durante 16 semanas, más una suscripción anual opcional para continuar la mejora.</p>
+
+      <div class="card-grid">
+        <div class="card card-clickable" onclick="openModal('modal-programa')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M2 12h20M7 7h10a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2z"/></svg>
+          </div>
+          <h4>Programa</h4>
+          <p><strong>500k COP/asistente (3M COP por 6 asistentes)</strong><br>16 semanas + gates</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-suscripcion')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          </div>
+          <h4>Suscripción Anual</h4>
+          <p><strong>~9h/semana</strong><br>Post-Programa (opcional)</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 32px;">Desglose de Valor</h3>
+      <ul>
+        <li style="cursor:pointer;color:var(--mia-blue);" onclick="openModal('modal-agentes-fase1')"><strong>Fase 1 (Semanas 1-4):</strong> Workspace + 2 primeros agentes + Foundation Gate. Base de todo. <span style="font-size:.8rem;">(ver detalle)</span></li>
+        <li><strong>Fase 2 (Semanas 5-10):</strong> 4 agentes adicionales + NotebookLM (N2). G2 valida alcance.</li>
+        <li><strong>Fase 3 (Semanas 11-14):</strong> Google Opal (N3) + automatizaciones. Integraciones profundas.</li>
+        <li><strong>Fase 4 (Semanas 15-16):</strong> Métricas finales, documentación, Gate 3 de aprobación.</li>
+        <li><strong>Suscripción:</strong> 3h conjuntas + 3h independientes + 2h sync + 1h clínica semanal. Exploración de Mini App (N4).</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-title">Punto de Pivote: Semana 8</div>
+        <p>Si después de Fase 1 + primeros sprints de Fase 2 detectamos que la alineación no es suficiente, tenemos opción de kill/pivot antes de gate G2.</p>
+      </div>
+
+      <h3>Timeline de Pagos (Propuesto)</h3>
+      <ul>
+        <li>50% al inicio (Día 1 de Semana 1)</li>
+        <li>50% al completar Gate 2 (Semana 10)</li>
+        <li>Suscripción: Mensual, activa post-Gate 3</li>
+      </ul>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Confirmas inversión de 3M COP y estructura de pagos</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Checklist de Preparación Operativa -->
+    <section class="section dark-section animate-on-scroll" id="section-3">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <div class="section-title-group">
+          <h2>Checklist de Preparación<br>Operativa</h2>
+          <p>Todo lo que debe estar listo antes del Día 1</p>
+        </div>
+      </div>
+
+      <h3>Google Workspace & Drive</h3>
+      <div class="card-grid">
+        <div class="card card-clickable" onclick="openModal('modal-workspace')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4>Workspace Setup</h4>
+          <p>Usuarios, permisos, estructura</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-drive')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h4>Drive & Gobernanza</h4>
+          <p>Carpeta V&A, estructura Dream Team</p>
+        </div>
+      </div>
+
+      <h3>Pre-requisitos Técnicos</h3>
+      <ul>
+        <li>✓ Acceso a Google Workspace (Gema Gemini en todas las cuentas)</li>
+        <li>✓ Carpeta raíz: /V&A/ en Drive compartida con MetodologIA como Editor</li>
+        <li>✓ Subcarpetas: /V&A/Dream-Team/{AgentName}/ para cada agente</li>
+        <li>✓ Permissions file actualizado con matriz de accesos</li>
+        <li>✓ Google Calendar: Team sincronizado y enlace de booking</li>
+        <li>✓ Email: V&A recibe confirmaciones de acceso a todo</li>
+      </ul>
+
+      <h3>Humanos: Alineación Crítica</h3>
+      <ul>
+        <li><strong>Owner Ejecutivo:</strong> Persona responsable de decisiones durante 16 semanas</li>
+        <li><strong>Owner Operativo:</strong> Quien lidera implementacion diaria y sprints</li>
+        <li><strong>Sync Semanal:</strong> 60 min los [DIA], horario fijo en Google Calendar</li>
+        <li><strong>Weekly Brief:</strong> Documento actualizado viernes con progreso + blockers</li>
+        <li><strong>Canal de Coordinacion:</strong> Canal #dream-team-va para coordinacion real-time</li>
+      </ul>
+
+      <div class="wow-modal">
+        <div class="wow-stage wow-friction">
+          <div class="wow-stage-label">Fricción</div>
+          <div class="wow-stage-value">Sin acceso</div>
+        </div>
+        <div class="wow-stage wow-anticipation">
+          <div class="wow-stage-label">Anticipación</div>
+          <div class="wow-stage-value">Setup día 1</div>
+        </div>
+        <div class="wow-stage wow-resolution">
+          <div class="wow-stage-label">Resolución</div>
+          <div class="wow-stage-value">Permisos OK</div>
+        </div>
+        <div class="wow-stage wow-success">
+          <div class="wow-stage-label">Éxito</div>
+          <div class="wow-stage-value">Ready to build</div>
+          <div class="success-badge">Success delivered</div>
+        </div>
+      </div>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Google Workspace, Drive, y permisos confirmados para Día 1</p>
+      </div>
+    </section>
+
+    <!-- Section 4: Plan de Primeros 90 Días -->
+    <section class="section light-section animate-on-scroll" id="section-4">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <div class="section-title-group">
+          <h2>Plan de Primeros<br>90 Días</h2>
+          <p>Sprint 0 + Fases 1-2 del roadmap</p>
+        </div>
+      </div>
+
+      <h3>Sprint 0: Semanas Iniciales (Días 1-14)</h3>
+      <p>Antes de que comience Fase 1, hacemos Sprint 0: un "sprint de alineación y setup" donde todo está coordinado para el lanzamiento limpio.</p>
+
+      <div class="card card-clickable" style="margin-top: 20px;" onclick="openModal('modal-sprint0')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4>Detalle Sprint 0</h4>
+        <p>Día 1-14: Setup, primer agente, alineación</p>
+      </div>
+
+      <h3 style="margin-top: 32px;">Fase 1: Foundation (Semanas 1-4)</h3>
+      <ul>
+        <li><strong>Semana 1:</strong> Google Workspace live, carpeta Drive estructura, primer meet de team.</li>
+        <li><strong>Semana 2:</strong> Asistente de Propuestas (Agent 1) versión inicial + primeros workflows.</li>
+        <li><strong>Semana 3:</strong> Task Tracker (Agent 2) operativo. Dos agentes coordinados.</li>
+        <li><strong>Semana 4 (Gate 1):</strong> Validar: Workspace OK, 2 agentes en producción, adoption &gt;60%.</li>
+      </ul>
+
+      <p><strong>KPI Gate 1:</strong> Workspace estable, Asistente de Propuestas genera ≥2 propuestas/semana, Task Tracker sincronizado con flujo real.</p>
+
+      <h3>Fase 2: Build (Semanas 5-10)</h3>
+      <ul>
+        <li><strong>Semana 5-6:</strong> Agente de Prospeccion (Agent 3) + Motor de Reportes (Agent 4).</li>
+        <li><strong>Semana 7-8:</strong> Peer Reviewer IA (Agent 5) + Meeting Analyst (Agent 6). Full Dream Team presente.</li>
+        <li><strong>Semana 9:</strong> NotebookLM (N2) integrado. Análisis de datos mejorado.</li>
+        <li><strong>Semana 10 (Gate 2):</strong> Validar: 6 agentes operativos, N2 activo, adoption &gt;80%, pipeline de propuestas x3 vs baseline.</li>
+      </ul>
+
+      <p><strong>KPI Gate 2:</strong> Dream Team completo, métricas de adoption sólidas, evidencia de valor generado (propuestas, reportes, prospeccion).</p>
+
+      <div class="callout">
+        <div class="callout-title">Punto Crítico: Semana 8</div>
+        <p>Tras Fase 1 + primeros sprints de Fase 2, evaluamos si momentum es suficiente para continuar. Si hay señales de bajo engagement, podemos pivotear o ajustar alcance antes de G2.</p>
+      </div>
+
+      <h3>Fases 3-4 (Semanas 11-16): Integrate & Optimize</h3>
+      <ul>
+        <li><strong>Fase 3 (11-14):</strong> Google Opal (N3) automatizaciones. Cadenas de agentes optimizadas.</li>
+        <li><strong>Fase 4 (15-16):</strong> Métricas finales, documentación, Gate 3 de aprobación.</li>
+      </ul>
+
+      <h3>Métrica de Éxito a 90 Días</h3>
+      <p><strong>Recuperación ≥128h/mes de tiempo operativo</strong> (40% de 320h). Equivalente a <strong>1.6 horas de un fundador cada día laboral</strong> dedicadas a trabajo de alto valor.</p>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Entiendes las 4 fases, los gates, y el target de 128h/mes</p>
+      </div>
+    </section>
+
+    <!-- Section 5: Protocolo de Transferencia de Gobernanza -->
+    <section class="section dark-section animate-on-scroll" id="section-5">
+      <div class="section-header">
+        <div class="section-number">5</div>
+        <div class="section-title-group">
+          <h2>Protocolo de Transferencia<br>de Gobernanza</h2>
+          <p>Cómo evolucionan los permisos durante 16 semanas</p>
+        </div>
+      </div>
+
+      <h3>Modelo de Permisos: 3 Fases</h3>
+      <p>Los permisos de MetodologIA cambian en función de la fase del programa. Esto asegura que tenemos visibilidad total en construcción, pero respetamos soberanía post-graduación.</p>
+
+      <ul>
+        <li><strong>Programa (Semanas 1-16):</strong> MetodologIA = Editor en /V&A/Dream-Team/. Necesitamos escribir, crear agentes, iterar rápido.</li>
+        <li><strong>Suscripción (Post-Programa, Semana 17+):</strong> MetodologIA = Lector + Comentador. Observamos, opinamos, no creamos sin autorización.</li>
+        <li><strong>Post-Graduación (Después de suscripción):</strong> MetodologIA pierde acceso completamente. Soberanía total de V&A.</li>
+      </ul>
+
+      <div class="card-grid">
+        <div class="card card-clickable" onclick="openModal('modal-gobernanza-detail')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h4>Timeline Detallado</h4>
+          <p>Cambios de permisos semana a semana</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-riesgos-gov')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v2h2v-2zm0-6h-2v4h2V11z"/></svg>
+          </div>
+          <h4>Riesgos de Gobernanza</h4>
+          <p>Qué pasa si permisos se rompen</p>
+        </div>
+      </div>
+
+      <h3>Auditoría de Acceso Mensual</h3>
+      <p>Cada fin de mes validamos:</p>
+      <ul>
+        <li>✓ Usuarios con acceso a /V&A/ (lista actual vs. esperada)</li>
+        <li>✓ Permisos correctos para cada usuario (Editor vs. Comentador vs. Lector)</li>
+        <li>✓ Archivos compartidos sin autorización</li>
+        <li>✓ Cambios en estructura de carpetas autorizados</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-title">Ownership Claro</div>
+        <p>Owner Ejecutivo de V&A mantiene acceso Propietario (Owner) en toda la estructura. MetodologIA nunca es Owner, solo Editor/Comentador/Lector según fase.</p>
+      </div>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Confirmas el modelo de 3 fases de permisos y auditoría mensual</p>
+      </div>
+    </section>
+
+    <!-- Section 6: Riesgos Heredados y Mitigaciones -->
+    <section class="section light-section animate-on-scroll" id="section-6">
+      <div class="section-header">
+        <div class="section-number">6</div>
+        <div class="section-title-group">
+          <h2>Riesgos Heredados<br>y Mitigaciones</h2>
+          <p>Los 5 mayores riesgos y cómo los manejamos</p>
+        </div>
+      </div>
+
+      <div class="card card-clickable" style="margin-bottom: 24px;" onclick="openModal('modal-riesgos')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>
+        </div>
+        <h4>Top 3 Riesgos Críticos</h4>
+        <p>Adopción baja, desalineación team, fatiga técnica</p>
+      </div>
+
+      <h3>Riesgo 1: Baja Adopción de Agentes</h3>
+      <p><strong>Síntoma:</strong> Usuarios siguen workflows manuales en lugar de usar agentes. Propuestas se generan en Word, no en Asistente.</p>
+      <p><strong>Mitigación:</strong></p>
+      <ul>
+        <li>Training semanal en Suscripción (3h conjuntas + 3h independientes). Hands-on con cada agente.</li>
+        <li>Quick wins en Fase 1: Asistente genera primera propuesta real en Semana 2.</li>
+        <li>Gate 1 valida adoption &gt;60%. Si no lo alcanzamos, replaneamos.</li>
+        <li>Owner Operativo reporta blockers en weekly brief.</li>
+      </ul>
+
+      <h3>Riesgo 2: Desalineación Comercial-Técnica</h3>
+      <p><strong>Síntoma:</strong> MetodologIA y V&A entienden diferente qué "éxito" significa. Gates se disputan.</p>
+      <p><strong>Mitigación:</strong></p>
+      <ul>
+        <li>KPI claros por gate (adoption %, propuestas/semana, h recuperadas).</li>
+        <li>Sync semanal de 60 min. Alineación obsesiva en los primeros 30 días.</li>
+        <li>Weekly brief documental. Evidencia de avance, no narrativas.</li>
+        <li>Opcionalidad en Semana 8: si el momentum no es suficiente, podemos pivotear.</li>
+      </ul>
+
+      <h3>Riesgo 3: Fatiga Técnica (Change Fatigue)</h3>
+      <p><strong>Síntoma:</strong> 6 agentes nuevos, N2, N3, N4... demasiado rápido. Team se quema.</p>
+      <p><strong>Mitigación:</strong></p>
+      <ul>
+        <li>Fase 1 es lenta, intencional. Solo 2 agentes en 4 semanas.</li>
+        <li>Fase 2 acelera pero con NotebookLM (N2) como soporte, no como complicación.</li>
+        <li>Pausa de consolidación entre Fase 2 y Fase 3 (Semana 11).</li>
+        <li>Suscripción mantiene ritmo. No más "cambios disruptivos" post-Programa.</li>
+      </ul>
+
+      <h3>Riesgo 4: Datos Sensibles en Drive Abierto</h3>
+      <p><strong>Síntoma:</strong> Propuestas, prospeccion data, o reportes de clientes quedan compartidos por error.</p>
+      <p><strong>Mitigación:</strong></p>
+      <ul>
+        <li>Permissions file audita acceso mensualmente.</li>
+        <li>Estructura de carpetas estricta. Agentes viven en /V&A/Dream-Team/{AgentName}/, no en raíz.</li>
+        <li>Sensibilidad en training sobre quién ve qué.</li>
+        <li>MetodologIA nunca toca propuestas finales de clientes, solo plantillas.</li>
+      </ul>
+
+      <h3>Riesgo 5: Break-Even No Se Alcanza</h3>
+      <p><strong>Síntoma:</strong> Agentes son cool pero no recuperan tiempo real. 128h/mes no materializa.</p>
+      <p><strong>Mitigación:</strong></p>
+      <ul>
+        <li>Métrica clara: h/mes recuperadas vs. baseline. Se mide en Semana 12 y Semana 16.</li>
+        <li>Worst case: 4 meses para break-even (post-programa). Si a Mes 4 no lo ves, plan B entra.</li>
+        <li>Base case: &lt;1 mes. Asistente de Propuestas solo genera ROI positivo en Semana 2.</li>
+        <li>Suscripción ajusta scope si métricas lo requieren.</li>
+      </ul>
+
+      <div class="callout">
+        <div class="callout-title">Escalation Protocol</div>
+        <p>Si un riesgo materializa (adoption &lt;50% en G1, desalineación en S4, etc.), escalamos inmediatamente. Owner Ejecutivo + Owner MetodologIA decidimos pivote en &lt;48h.</p>
+      </div>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Conoces los 5 riesgos principales y cómo los mitigamos</p>
+      </div>
+    </section>
+
+    <!-- Section 7: Métricas de Seguimiento -->
+    <section class="section dark-section animate-on-scroll" id="section-7">
+      <div class="section-header">
+        <div class="section-number">7</div>
+        <div class="section-title-group">
+          <h2>Métricas de Seguimiento<br>Primeros 90 Días</h2>
+          <p>Cómo medimos progreso cada semana</p>
+        </div>
+      </div>
+
+      <h3>Dashboard de Adopción (Semanal)</h3>
+      <div class="card-grid">
+        <div class="card card-clickable" onclick="openModal('modal-metricas')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h4>Dashboard Métricas</h4>
+          <p>Adoption, productivity, satisfaction</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-adopcion')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Thresholds de Adopción</h4>
+          <p>Cuándo escalamos o ajustamos</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-escalacion')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8 10 1 17"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h4>Escalation Triggers</h4>
+          <p>Cuándo activamos plan B</p>
+        </div>
+
+        <div class="card card-clickable" onclick="openModal('modal-soberania')">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>Sovereignty Guarantee</h4>
+          <p>Tus datos, tu propiedad intelectual</p>
+        </div>
+      </div>
+
+      <h3>Métricas Principales</h3>
+      <ul>
+        <li><strong>Adoption Rate (%):</strong> % de eventos que usan agente vs. manual. Target: &gt;60% en G1, &gt;80% en G2, &gt;90% en G3.</li>
+        <li><strong>Propuestas Generadas (qty/semana):</strong> Salida del Asistente. Target: ≥2/semana en S2, ≥5/semana en S10.</li>
+        <li><strong>Horas Recuperadas (h/mes):</strong> Diferencia entre flujo manual vs. con agentes. Target: &gt;128h en S12.</li>
+        <li><strong>NPS (Net Promoter Score):</strong> ¿Recomendarías los agentes a otro equipo? Target: &gt;70 en S12.</li>
+        <li><strong>Blockers Abiertos:</strong> Issues técnicas sin resolver. Target: &lt;3 en cualquier momento.</li>
+        <li><strong>Training Attendance:</strong> % del team en sesiones semanales. Target: 100% en Fase 1, &gt;80% en Fase 2.</li>
+      </ul>
+
+      <h3>Gates de Validación</h3>
+      <div class="callout">
+        <div class="callout-title">Gate 1 (Semana 4)</div>
+        <p><strong>Criterios:</strong> Workspace operativo, 2 agentes en producción, adoption ≥60%, propuestas generadas ≥1/semana, team feedback positivo (NPS &gt;50).</p>
+        <p><strong>Outcome:</strong> Go/No-Go para Fase 2. Si no cumple, extendemos Fase 1 1-2 semanas.</p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">Gate 2 (Semana 10)</div>
+        <p><strong>Criterios:</strong> 6 agentes operativos, adoption ≥80%, propuestas ≥3/semana, reportes &gt;50% automation, N2 integrado, NPS &gt;70.</p>
+        <p><strong>Outcome:</strong> Go/No-Go para Fase 3. Si no cumple, pivotamos alcance o extendemos Fase 2.</p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">Gate 3 (Semana 16)</div>
+        <p><strong>Criterios:</strong> Horas recuperadas ≥128/mes, adoption &gt;90%, NPS &gt;80, documentación completa, team autónomo sin soporte diario.</p>
+        <p><strong>Outcome:</strong> Aprobación de programa. Transición a Suscripción (opcional).</p>
+      </div>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Entiendes cómo medimos adopción y qué significa cada gate</p>
+      </div>
+    </section>
+
+    <!-- Section 8: Próximos Pasos y CTA -->
+    <section class="section light-section animate-on-scroll" id="section-8">
+      <div class="section-header">
+        <div class="section-number">8</div>
+        <div class="section-title-group">
+          <h2>Próximos Pasos<br>y CTA</h2>
+          <p>Qué hacer esta semana para estar 100% listos</p>
+        </div>
+      </div>
+
+      <h3>Checklist Inmediato (Próximos 7 Días)</h3>
+      <ul>
+        <li>☐ <strong>Lunes:</strong> Owner Ejecutivo confirma fecha de inicio Semana 1 + Owner Operativo asignado.</li>
+        <li>☐ <strong>Martes:</strong> Google Workspace access confirmado para ambos. Test Gema Gemini.</li>
+        <li>☐ <strong>Miércoles:</strong> Carpeta /V&A/ creada en Drive. MetodologIA añadido como Editor.</li>
+        <li>☐ <strong>Jueves:</strong> Subcarpetas /V&A/Dream-Team/ estructura creada.</li>
+        <li>☐ <strong>Viernes:</strong> Sync de alineación 60 min. Sprint 0 agenda confirmada.</li>
+      </ul>
+
+      <h3>Sprint 0: Días 1-14 (Semana 1)</h3>
+      <p>Una vez listo el setup, iniciamos Sprint 0 con estos accionables:</p>
+      <ul>
+        <li><strong>Día 1-2:</strong> Kickoff team + setup final de Drive + primeros docs template.</li>
+        <li><strong>Día 3-5:</strong> Asistente de Propuestas (Agent 1) diseño definida. Primeros prompts.</li>
+        <li><strong>Día 6-10:</strong> Asistente en versión alfa. V&A testa flujo con propuesta de prueba.</li>
+        <li><strong>Día 11-14:</strong> Ajustes basados en feedback. Agent 1 listo para Fase 1 Semana 1.</li>
+      </ul>
+
+      <h3>Booking para Sync Inaugural</h3>
+      <p><strong>Enlace Google Calendar:</strong> <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" style="color: var(--mia-blue-light); text-decoration: underline;">Reserva 60 min para Sprint 0 Kickoff</a></p>
+      <p>Fechas disponibles: Próxima semana, lunches/viernes 4pm-5pm CET.</p>
+
+      <div class="callout">
+        <div class="callout-title">Punto de No Retorno</div>
+        <p>Una vez confirmamos fecha de inicio en Día 1, ambos estamos en el programa. Semana 1 es crítica. Necesitamos 100% alignment en team, estructura, y expectativas.</p>
+      </div>
+
+      <h3>Acción Final: Firma de Handover</h3>
+      <p>Por favor confirma (en respuesta a este documento):</p>
+      <ul>
+        <li>✓ Owner Ejecutivo: [Nombre] ✓ Owner Operativo: [Nombre]</li>
+        <li>✓ Día/Hora confirmada para Sync Inaugural (próxima semana)</li>
+        <li>✓ Google Workspace acceso testado</li>
+        <li>✓ Entiendes roadmap 16 semanas, gates, y métricas de éxito</li>
+        <li>✓ Acuerdas con timeline de pagos (50% upfront, 50% en G2)</li>
+      </ul>
+
+      <p><strong>Una vez confirmado, enviamos Google Drive access y iniciamos Día 1 de Semana 1 de Fase 1.</strong></p>
+
+      <div class="micro-commitment">
+        <div class="micro-commitment-check">✓</div>
+        <p>Confirmas todos los próximos pasos y estás listo para comenzar</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODALS -->
+
+  <!-- Modal: Resumen Ejecutivo -->
+  <div id="modal-resumen" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-resumen')">×</button>
+      <div class="modal-header">
+        <h3>Estado Actual: Validación Completada</h3>
+        <p>Todos los elementos están aprobados para iniciar</p>
+      </div>
+      <div class="modal-body">
+        <h4>Hito Anterior (Descubrimiento):</h4>
+        <ul>
+          <li>Diagnóstico operativo de V&A completado</li>
+          <li>ROI validado: 40% recuperación de tiempo = 128h/mes</li>
+          <li>Dream Team de 6 agentes diseñado</li>
+          <li>Diseño de Workspace definida</li>
+          <li>Inversión aprobada: 3M COP (6 asistentes a 500k cada uno)</li>
+        </ul>
+        <h4>Este Handover:</h4>
+        <p>Define el paso de "validado" a "ejecutando". No hay más preguntas. Ahora es construcción pura.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Comercial -->
+  <div id="modal-comercial" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-comercial')">×</button>
+      <div class="modal-header">
+        <h3>Estructura Comercial Completa</h3>
+        <p>Desglose de inversión y valor generado</p>
+      </div>
+      <div class="modal-body">
+        <h4>Programa: 500k COP/asistente (3M COP por 6 asistentes)</h4>
+        <ul>
+          <li>Duración: 16 semanas</li>
+          <li>Entrega: 6 agentes operativos + training + documentación</li>
+          <li>Gobernanza: MetodologIA = Editor en periodo de construcción</li>
+          <li>Gates: 3 validaciones de progreso (semanas 4, 10, 16)</li>
+        </ul>
+        <h4>Suscripción Anual (Post-Programa):</h4>
+        <ul>
+          <li>9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica)</li>
+          <li>MetodologIA = Lector + Comentador (no modifica)</li>
+          <li>Exploración N4 (Mini App/AntiGravity)</li>
+          <li>Mejora continua de agentes</li>
+        </ul>
+        <h4>Break-Even:</h4>
+        <p><strong>Base case: &lt;1 mes</strong> (Asistente de Propuestas genera ROI en Semana 2)</p>
+        <p><strong>Worst case: &lt;4 meses</strong> (todas las fases completas)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Diagnóstico -->
+  <div id="modal-diagnostico" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-diagnostico')">×</button>
+      <div class="modal-header">
+        <h3>Diagnóstico Aprobado</h3>
+        <p>Hallazgos clave que impulsan el programa</p>
+      </div>
+      <div class="modal-body">
+        <h4>Operación V&A Actual:</h4>
+        <ul>
+          <li>2 fundadores, 320h/mes total operativo</li>
+          <li>Propuestas: proceso manual, ~10h/propuesta</li>
+          <li>Reportes: compilación manual de clientes</li>
+          <li>Prospeccion: outreach sin tracking</li>
+          <li>Pérdida de capacidad: ~40% tiempo en tareas repetitivas</li>
+        </ul>
+        <h4>Oportunidades Identificadas:</h4>
+        <ul>
+          <li>Asistente de Propuestas: -8h por propuesta = 2 propuestas/semana x 4 semanas = 64h/mes</li>
+          <li>Motor de Reportes: -5h/reporte = 3 reportes/semana = 60h/mes</li>
+          <li>Agente de Prospeccion: -3h/batch = 4h/mes</li>
+          <li>Total potencial: 128h/mes de recuperación</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Workspace -->
+  <div id="modal-workspace" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-workspace')">×</button>
+      <div class="modal-header">
+        <h3>Google Workspace Setup</h3>
+        <p>Cómo preparar tu infraestructura técnica</p>
+      </div>
+      <div class="modal-body">
+        <h4>Usuarios Requeridos:</h4>
+        <ul>
+          <li><strong>Owner Ejecutivo:</strong> Acceso completo, propietario de /V&A/</li>
+          <li><strong>Owner Operativo:</strong> Editor en /V&A/Dream-Team/ + Comentador en reportes</li>
+          <li><strong>MetodologIA:</strong> Editor en /V&A/Dream-Team/ (durante Programa), Comentador (Suscripción)</li>
+          <li><strong>Otros fundadores/staff:</strong> Lector en propuestas, Editor en sus agentes específicos</li>
+        </ul>
+        <h4>Workspace Modules:</h4>
+        <ul>
+          <li>✓ Gmail (ambos fundadores)</li>
+          <li>✓ Google Drive (acceso a /V&A/)</li>
+          <li>✓ Docs/Sheets/Slides (templates + agente outputs)</li>
+          <li>✓ Google Calendar (sync + booking)</li>
+          <li>✓ Gema Gemini (enabled en todas las cuentas)</li>
+          <li>✓ NotebookLM (N2) acceso en Semana 9</li>
+          <li>✓ Google Opal (N3) acceso en Semana 11</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Drive -->
+  <div id="modal-drive" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-drive')">×</button>
+      <div class="modal-header">
+        <h3>Drive & Gobernanza</h3>
+        <p>Estructura de carpetas y permisos</p>
+      </div>
+      <div class="modal-body">
+        <h4>Estructura de Carpetas:</h4>
+        <pre style="background: rgba(19,125,197,0.1); padding: 12px; border-radius: 8px; overflow-x: auto;">
+/V&A/
+├── Dream-Team/
+│   ├── Asistente_de_Propuestas/
+│   ├── Task_Tracker/
+│   ├── Agente_de_Prospeccion/
+│   ├── Motor_de_Reportes/
+│   ├── Peer_Reviewer_IA/
+│   └── Meeting_Analyst/
+├── Configuracion/
+│   ├── Permissions_Matrix.sheets
+│   ├── Weekly_Brief_Template.docs
+│   └── KPI_Dashboard.sheets
+└── Historico/
+    └── [Propuestas, reportes, datos archivados]
+        </pre>
+        <h4>Permisos Iniciales (Programa):</h4>
+        <ul>
+          <li>Owner Ejecutivo: Propietario de /V&A/</li>
+          <li>MetodologIA: Editor en /V&A/Dream-Team/</li>
+          <li>Owner Operativo: Editor en /V&A/</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Agentes Fase 1 -->
+  <div id="modal-agentes-fase1" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-agentes-fase1')">×</button>
+      <div class="modal-header">
+        <h3>Phase 1 Agents: Asistente + Task Tracker</h3>
+        <p>Los 2 primeros agentes que lanzan en Semanas 1-4</p>
+      </div>
+      <div class="modal-body">
+        <h4>Agent 1: Asistente de Propuestas</h4>
+        <ul>
+          <li><strong>Qué hace:</strong> Genera propuestas estructuradas basadas en inputs (proyecto, budget, timeline)</li>
+          <li><strong>Input:</strong> Brief en email o form</li>
+          <li><strong>Output:</strong> Documento estructurado en Drive, listo para revisión</li>
+          <li><strong>Tiempo ahorrado:</strong> 8h por propuesta → 64h/mes</li>
+          <li><strong>Target Fase 1:</strong> ≥2 propuestas/semana generadas y aprobadas</li>
+        </ul>
+        <h4>Agent 2: Task Tracker</h4>
+        <ul>
+          <li><strong>Qué hace:</strong> Sincroniza tareas de múltiples fuentes (email, calendar, manual inputs)</li>
+          <li><strong>Input:</strong> Eventos de calendario, emails con accionables</li>
+          <li><strong>Output:</strong> Dashboard semanal de tasks organizadas por prioridad</li>
+          <li><strong>Tiempo ahorrado:</strong> 3h/semana en administración</li>
+          <li><strong>Target Fase 1:</strong> 100% de tasks capturadas, 0 perdidas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Sprint 0 -->
+  <div id="modal-sprint0" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-sprint0')">×</button>
+      <div class="modal-header">
+        <h3>Sprint 0: Días 1-14</h3>
+        <p>El "sprint de alineación" previo a Fase 1</p>
+      </div>
+      <div class="modal-body">
+        <h4>Estructura de Sprint 0:</h4>
+        <ul>
+          <li><strong>Día 1-2 (Lunes-Martes):</strong> Kickoff team, Google Workspace live, carpeta Drive creada, primeros docs templates listos</li>
+          <li><strong>Día 3-5 (Miércoles-Viernes):</strong> Diseño del Asistente de Propuestas definida, primeros prompts diseñados, test setup</li>
+          <li><strong>Día 6-10 (L-V):</strong> Asistente en versión alfa funcional. V&A genera primera propuesta de prueba con el agente.</li>
+          <li><strong>Día 11-14 (L-Th):</strong> Refinamiento basado en feedback. Asistente listo 100% para Fase 1 Semana 1.</li>
+        </ul>
+        <h4>Outputs Esperados al Final de Sprint 0:</h4>
+        <ul>
+          <li>✓ Workspace operativo, ambos fundadores con acceso confirmado</li>
+          <li>✓ Asistente de Propuestas en producción (versión 1.0)</li>
+          <li>✓ Primeras 2 propuestas generadas con agente</li>
+          <li>✓ Team alineado en expectativas y ritmo</li>
+          <li>✓ Documentación de setup para Fase 1</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Gobernanza Detail -->
+  <div id="modal-gobernanza" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-gobernanza')">×</button>
+      <div class="modal-header">
+        <h3>Modelo de Gobernanza Completo</h3>
+        <p>Cómo evolucionan los permisos de MetodologIA</p>
+      </div>
+      <div class="modal-body">
+        <h4>Fase 1: Programa (Semanas 1-16)</h4>
+        <ul>
+          <li><strong>MetodologIA Permisos:</strong> Editor en /V&A/Dream-Team/</li>
+          <li><strong>Rationale:</strong> Necesitamos escribir, crear agentes, iterar rápido</li>
+          <li><strong>Auditoría:</strong> Mensual, Owner Ejecutivo revisa cambios</li>
+          <li><strong>Scope:</strong> Diseño de agentes, prompts, documentación técnica</li>
+          <li><strong>Restricción:</strong> Nunca tocamos propuestas finales de clientes, solo plantillas</li>
+        </ul>
+        <h4>Fase 2: Suscripción (Post-Programa, Semana 17+)</h4>
+        <ul>
+          <li><strong>MetodologIA Permisos:</strong> Lector + Comentador en /V&A/Dream-Team/</li>
+          <li><strong>Rationale:</strong> Observamos, opinamos, pero V&A tiene control total</li>
+          <li><strong>Actividades:</strong> Training semanal, revisión de agentes, sugerencias de mejora</li>
+          <li><strong>Sin cambios sin autorización:</strong> MetodologIA no crea nada sin aprobación de Owner</li>
+          <li><strong>Duración típica:</strong> 12 meses (renovable)</li>
+        </ul>
+        <h4>Fase 3: Post-Graduación (Después de Suscripción)</h4>
+        <ul>
+          <li><strong>MetodologIA Permisos:</strong> NINGUNO. Acceso revocado completamente</li>
+          <li><strong>Soberanía Total:</strong> V&A tiene propiedad completa de agentes, docs, datos</li>
+          <li><strong>Opción de Reenganche:</strong> Puedes pedir a MetodologIA soporte ad-hoc, pero fuera del marco de Suscripción</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Gobernanza Detail 2 -->
+  <div id="modal-gobernanza-detail" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-gobernanza-detail')">×</button>
+      <div class="modal-header">
+        <h3>Timeline Detallado de Cambios de Permisos</h3>
+        <p>Semana a semana, qué cambia</p>
+      </div>
+      <div class="modal-body">
+        <h4>Semanas 1-4 (Fase 1):</h4>
+        <p>MetodologIA = Editor en /V&A/Dream-Team/. Asistente + Task Tracker creados y probados.</p>
+
+        <h4>Semanas 5-10 (Fase 2):</h4>
+        <p>MetodologIA = Editor en /V&A/Dream-Team/. 4 agentes adicionales creados. N2 integrado.</p>
+
+        <h4>Semana 11 (Antes de Fase 3):</h4>
+        <p>Auditoría de gobernanza. Preparar transición a Suscripción (si aplica).</p>
+
+        <h4>Semanas 11-16 (Fases 3-4):</h4>
+        <p>MetodologIA = Editor (si Suscripción aprobada), o Comentador (si no hay Suscripción aún). N3 integrado.</p>
+
+        <h4>Post-Semana 16 (Transición a Suscripción):</h4>
+        <p>Si V&A aprueba Suscripción: MetodologIA = Lector + Comentador. Documentación final entregada.</p>
+
+        <h4>Post-Suscripción:</h4>
+        <p>MetodologIA = NINGUNO. Acceso completamente revocado. Propiedad intelectual es 100% de V&A.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Riesgos -->
+  <div id="modal-riesgos" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-riesgos')">×</button>
+      <div class="modal-header">
+        <h3>Top 3 Riesgos Críticos</h3>
+        <p>Y cómo los prevenimos</p>
+      </div>
+      <div class="modal-body">
+        <h4>Riesgo 1: Baja Adopción (&lt;60% en G1)</h4>
+        <p><strong>Síntoma:</strong> Usuarios siguen flujos manuales, agentes generan propuestas pero nadie las usa.</p>
+        <p><strong>Causa Raíz:</strong> Training insuficiente, resistencia al cambio, desconexión entre agente output y flujo real.</p>
+        <p><strong>Prevención:</strong> Training semanal en Suscripción, quick wins en Semana 2, Owner Operativo mantiene presión en adoption.</p>
+        <p><strong>Escalation:</strong> Si adoption &lt;50% en G1, extendemos Fase 1 1-2 semanas.</p>
+
+        <h4>Riesgo 2: Desalineación en Gates</h4>
+        <p><strong>Síntoma:</strong> Desacuerdo sobre si se cumple G1, G2, o G3.</p>
+        <p><strong>Causa Raíz:</strong> KPI ambiguos, métricas no medidas en tiempo real.</p>
+        <p><strong>Prevención:</strong> Weekly brief documental con evidencia. Dashboard actualizado. Sync semanal de alineación.</p>
+        <p><strong>Escalation:</strong> Si desacuerdo persiste en S2, activamos mediación neutral.</p>
+
+        <h4>Riesgo 3: Fatiga Técnica (6 agentes en 16 semanas)</h4>
+        <p><strong>Síntoma:</strong> Team exhausto, calidad de agentes baja, rotación de staff.</p>
+        <p><strong>Causa Raíz:</strong> Ritmo demasiado acelerado, sobrecarga cognitive.</p>
+        <p><strong>Prevención:</strong> Fase 1 lenta (2 agentes en 4 semanas). Fases 3-4 de consolidación. Suscripción mantiene ritmo sostenible.</p>
+        <p><strong>Escalation:</strong> Si staff reporta fatiga, ajustamos alcance inmediatamente (Semana 8 pivot).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Riesgos Gobernanza -->
+  <div id="modal-riesgos-gov" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-riesgos-gov')">×</button>
+      <div class="modal-header">
+        <h3>Riesgos de Gobernanza</h3>
+        <p>Qué pasa si permisos se rompen</p>
+      </div>
+      <div class="modal-body">
+        <h4>Riesgo: Datos Sensibles Compartidos Accidentalmente</h4>
+        <p><strong>Síntoma:</strong> Propuesta de cliente aparece en carpeta pública, o MetodologIA ve datos que no debería.</p>
+        <p><strong>Prevención:</strong> Auditoría mensual de permisos. Estructura estricta: agentes viven en /V&A/Dream-Team/, propuestas finales en carpeta separada.</p>
+        <p><strong>Mitigación:</strong> Si ocurre, revocamos acceso inmediatamente. Auditoría de qué se vio/usó.</p>
+
+        <h4>Riesgo: Transición de Permisos Fallida (Programa → Suscripción)</h4>
+        <p><strong>Síntoma:</strong> En Semana 17, MetodologIA sigue siendo Editor cuando debería ser Lector.</p>
+        <p><strong>Prevención:</strong> Plannear cambio de permisos 1 semana antes de Semana 17. Documentar explícitamente.</p>
+        <p><strong>Mitigación:</strong> Si detectado tarde, rollback inmediato + auditoría de cambios recientes.</p>
+
+        <h4>Riesgo: Owner Ejecutivo Pierde Acceso</h4>
+        <p><strong>Síntoma:</strong> Owner no puede acceder a /V&A/ o Drive por error de permiso.</p>
+        <p><strong>Prevención:</strong> Owner Ejecutivo es SIEMPRE Propietario de /V&A/. Confirmado cada mes en auditoría.</p>
+        <p><strong>Mitigación:</strong> Si ocurre, restauramos acceso en &lt;1h. No es tolerable.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Métricas -->
+  <div id="modal-metricas" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-metricas')">×</button>
+      <div class="modal-header">
+        <h3>Dashboard de Métricas</h3>
+        <p>Cómo rastreamos adopción y productividad</p>
+      </div>
+      <div class="modal-body">
+        <h4>Métricas Semanales (Tracked en Spreadsheet):</h4>
+        <ul>
+          <li><strong>Adoption Rate (%):</strong> (Eventos con agente / Eventos totales) × 100</li>
+          <li><strong>Propuestas Generadas:</strong> Count semanal de salidas del Asistente</li>
+          <li><strong>Reportes Automatizados:</strong> Count semanal de salidas del Motor</li>
+          <li><strong>Leads Prospectados:</strong> Count semanal de outreach via Agente de Prospeccion</li>
+          <li><strong>Training Attendance:</strong> % del team en sesiones semanales</li>
+          <li><strong>Blockers Abiertos:</strong> Count de issues sin resolver</li>
+        </ul>
+        <h4>Métricas Mensuales (Calculated):</h4>
+        <ul>
+          <li><strong>Horas Recuperadas:</strong> (Flujo manual h - Flujo con agentes h) per user</li>
+          <li><strong>NPS (Net Promoter Score):</strong> Encuesta de satisfacción: "¿Recomendarías los agentes?"</li>
+          <li><strong>Error Rate:</strong> % de salidas de agente que requieren revisión/ajuste</li>
+          <li><strong>Cost per Propuesta:</strong> (Inversión / Propuestas Generadas)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Adopción -->
+  <div id="modal-adopcion" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-adopcion')">×</button>
+      <div class="modal-header">
+        <h3>Thresholds de Adopción</h3>
+        <p>Cuándo escalamos, ajustamos, o pivoteamos</p>
+      </div>
+      <div class="modal-body">
+        <h4>Green Zone (Healthy):</h4>
+        <ul>
+          <li>Adoption ≥ 60% (Fase 1), ≥80% (Fase 2), ≥90% (Fase 3)</li>
+          <li>NPS ≥ 70</li>
+          <li>Propuestas/semana en target</li>
+          <li><strong>Action:</strong> Continue como está. Celebrar progreso.</li>
+        </ul>
+        <h4>Yellow Zone (Caution):</h4>
+        <ul>
+          <li>Adoption 40-60% (Fase 1), 60-80% (Fase 2), 80-90% (Fase 3)</li>
+          <li>NPS 50-70</li>
+          <li>Propuestas 50% de target</li>
+          <li><strong>Action:</strong> Training intensivo. Identificar barriers. Plan de mejora en 48h.</li>
+        </ul>
+        <h4>Red Zone (Critical):</h4>
+        <ul>
+          <li>Adoption &lt; 40%</li>
+          <li>NPS &lt; 50</li>
+          <li>Propuestas &lt; 1/semana</li>
+          <li><strong>Action:</strong> Escalation inmediato. Owner Ejecutivo + MetodologIA decisión en &lt;48h. Kill/pivot opción activada.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Escalación -->
+  <div id="modal-escalacion" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-escalacion')">×</button>
+      <div class="modal-header">
+        <h3>Escalation Protocol</h3>
+        <p>Qué hacer si algo se rompe o se desvía</p>
+      </div>
+      <div class="modal-body">
+        <h4>Trigger Level 1 (Notify):</h4>
+        <ul>
+          <li>Adoption cae &gt;10% semana a semana (sin explicación)</li>
+          <li>Blocker técnico abierto &gt;2 semanas</li>
+          <li>Training attendance &lt;70%</li>
+          <li><strong>Action:</strong> Owner Operativo informa en weekly brief. Plan de corrección en 48h.</li>
+        </ul>
+        <h4>Trigger Level 2 (Escalate):</h4>
+        <ul>
+          <li>Adoption &lt; 50% en Semana 4 (pre-G1)</li>
+          <li>Blocker técnico crítico impide progreso</li>
+          <li>Desacuerdo en interpretación de KPI</li>
+          <li><strong>Action:</strong> Owner Ejecutivo + Owner MetodologIA sync emergente. Decisión en &lt;48h.</li>
+        </ul>
+        <h4>Trigger Level 3 (Nuclear):</h4>
+        <ul>
+          <li>Adoption &lt;30% en cualquier momento</li>
+          <li>Datos sensibles expuestos</li>
+          <li>Staff rotation (key person leaves)</li>
+          <li><strong>Action:</strong> Kill/pivot opción evaluada. Reestructura de programa o cancelación.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Soberanía -->
+  <div id="modal-soberania" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-soberania')">×</button>
+      <div class="modal-header">
+        <h3>Sovereignty Guarantee</h3>
+        <p>Tus datos, tu propiedad intelectual, tu control</p>
+      </div>
+      <div class="modal-body">
+        <h4>Qué es Tuyo (100%):</h4>
+        <ul>
+          <li>Todas las propuestas generadas (plantillas + instancias)</li>
+          <li>Reportes de clientes y datos de prospeccion</li>
+          <li>Configuración específica de agentes (prompts, workflows)</li>
+          <li>Comunicaciones internas (emails, docs, feedback)</li>
+          <li>Métricas y KPIs operativos de V&A</li>
+          <li>Documentación post-programa</li>
+        </ul>
+        <h4>Qué es Compartido (Durante Programa):</h4>
+        <ul>
+          <li>Acceso de MetodologIA a /V&A/Dream-Team/ (solo construcción de agentes, no datos)</li>
+          <li>Feedback en weekly briefings</li>
+          <li>Observación de métricas (para validar gates)</li>
+        </ul>
+        <h4>Qué Vuelve a V&A (Post-Programa):</h4>
+        <ul>
+          <li>Documentación completa de cada agente (prompts, diseño, optimizaciones)</li>
+          <li>Playbooks de uso y mejora continua</li>
+          <li>Access completo a todos los datos en Drive</li>
+          <li>Propiedad intelectual no transferida, retiene la licencia de uso perpetuo</li>
+        </ul>
+        <h4>Garantía de No-Lock-In:</h4>
+        <p>Si cambias de partner, toda tu IP (agentes, datos, docs) te pertenece. MetodologIA no tiene claim legal sobre nada creado durante el Programa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Programa -->
+  <div id="modal-programa" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-programa')">×</button>
+      <div class="modal-header">
+        <h3>Programa: 500k COP/asistente (3M COP por 6 asistentes)</h3>
+        <p>Desglose detallado de lo que incluye</p>
+      </div>
+      <div class="modal-body">
+        <h4>Duración & Estructura:</h4>
+        <ul>
+          <li><strong>16 semanas</strong> de ejecución</li>
+          <li><strong>4 fases:</strong> Foundation, Build, Integrate, Optimize</li>
+          <li><strong>3 gates</strong> de validación (semanas 4, 10, 16)</li>
+          <li><strong>1 sprint 0</strong> (días 1-14 de alineación)</li>
+        </ul>
+        <h4>Qué Está Incluido:</h4>
+        <ul>
+          <li>✓ 6 agentes diseñados, construidos, testados, documentados</li>
+          <li>✓ Integración Google Workspace (Gema → NotebookLM → Opal)</li>
+          <li>✓ Sync semanal de 60 min (alineación + feedback)</li>
+          <li>✓ Documentación técnica completa</li>
+          <li>✓ Training inicial (asincrónico + sesiones)</li>
+          <li>✓ Gobernanza de Drive y permisos</li>
+        </ul>
+        <h4>Qué NO Está Incluido:</h4>
+        <ul>
+          <li>✗ Training post-programa (eso es Suscripción)</li>
+          <li>✗ Nuevos agentes post-Fase 4 (eso es Suscripción + N4)</li>
+          <li>✗ Soporte 24/7 (soporte está en Suscripción)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Suscripción -->
+  <div id="modal-suscripcion" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal-suscripcion')">×</button>
+      <div class="modal-header">
+        <h3>Suscripción Anual</h3>
+        <p>Post-Programa: continuidad + optimización</p>
+      </div>
+      <div class="modal-body">
+        <h4>¿Cuándo Comienza?</h4>
+        <p>Semana 17, post-Gate 3 aprobado (si V&A decide continuar).</p>
+
+        <h4>Compromiso de Tiempo:</h4>
+        <ul>
+          <li><strong>3h conjuntas:</strong> MetodologIA + cliente</li>
+          <li><strong>3h independientes:</strong> Training + mejora continua de agentes</li>
+          <li><strong>2h sync:</strong> Semanal + ad-hoc support</li>
+          <li><strong>1h clínica:</strong> Semanal (mes 1), quincenal (meses 2-3), luego mensual</li>
+          <li><strong>Total: 9h/semana</strong> (vs. 320h operativos de V&A = 2.8% overhead)</li>
+        </ul>
+        <h4>Qué Incluye:</h4>
+        <ul>
+          <li>✓ Training semanal en agentes + best practices</li>
+          <li>✓ Optimización continua (pequeños ajustes, no rediseño)</li>
+          <li>✓ Soporte técnico (bugs, troubleshooting)</li>
+          <li>✓ Exploración N4 (Mini App/AntiGravity)</li>
+          <li>✓ Acceso a documentación actualizada</li>
+          <li>✓ Acceso de MetodologIA como Lector + Comentador (sin write permissions)</li>
+        </ul>
+        <h4>Precio (Estimado):</h4>
+        <p>TBD (negociar basado en éxito del Programa y alcance de mejora)</p>
+        <p>Típicamente: 20-30% del costo del Programa/año</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <svg width="32" height="32" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="footerLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+          <rect width="36" height="36" rx="10" fill="url(#footerLogo)"/>
+          <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+          <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+        </svg>
+        <div>
+          <div class="footer-brand">Metodolog<span>IA</span></div>
+          <div style="font-size: 11px; color: var(--mia-text-muted); margin-top: 2px;">Success as a Service</div>
+        </div>
+      </div>
+      <div class="footer-code">MTIA-09-HANDOVER-VA-SE</div>
+    </div>
+  </footer>
+
+  <script>
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // TOC active link
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('.section');
+      const scrollY = window.pageYOffset;
+
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollY >= sectionTop && scrollY < sectionBottom) {
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          const activeLink = document.querySelector(`.toc-link[href="#section-${index + 1}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

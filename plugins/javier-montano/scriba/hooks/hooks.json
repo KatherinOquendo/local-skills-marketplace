@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Asistente Scriba v1.0 activo — Editorial agentico K-12 (SOAP). 11 agentes en 3 tiers, 18 skills, 13 comandos, 5 quality gates. Pipeline: Ingesta > Generacion > Validacion > Diseno > Vigilancia. Usa /scriba:menu para ver comandos, /scriba:init para inicializar proyecto. Evidence tags obligatorios: [METODOLOGIA] [NEUROCIENCIA] [PEDAGOGIA] [INFERENCIA] [SUPUESTO]."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 Evaluacion de Escenarios — V&A Consulting × MetodologIA</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E8ECF4;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--mia-dark-text); background: var(--mia-offwhite); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.3px; color: var(--mia-navy); line-height: 1.2; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; line-height: 1.6; }
+a { color: var(--mia-blue); text-decoration: none; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); position: relative; overflow: hidden; padding: 5rem 2rem 4rem; color: var(--mia-white); }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue)); }
+.hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; text-align: center; }
+.brand-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+.brand-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline { display: block; font-size: 0.7rem; color: var(--mia-text-muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle { font-size: 1.15rem; color: var(--mia-text); margin-bottom: 2.5rem; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+.hero-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.hero-kpi { text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 1.25rem 1rem; transition: all var(--transition-normal); }
+.hero-kpi:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.hero-kpi-value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--mia-gold); }
+.hero-kpi-value.blue { color: var(--mia-blue-light); }
+.hero-kpi-label { font-size: .72rem; color: var(--mia-text-muted); margin-top: .5rem; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+.hero-punchline { font-style: italic; font-size: 1.1rem; color: var(--mia-blue-light); margin-top: 2.5rem; opacity: 0.85; }
+
+/* STICKY TOC */
+nav.toc { background: var(--mia-white); position: sticky; top: 0; z-index: var(--z-sticky-nav); border-bottom: 1px solid #E2E8F0; box-shadow: var(--shadow-sm); }
+.toc-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: .25rem; padding: .6rem 1rem; overflow-x: auto; justify-content: center; }
+.toc-link { text-decoration: none; color: var(--mia-dark-text); font-size: .78rem; font-weight: 500; padding: .4rem .8rem; border-radius: var(--radius-sm); transition: var(--transition-fast); white-space: nowrap; }
+.toc-link:hover, .toc-link.active { background: var(--mia-blue); color: white; }
+
+/* LAYOUT */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+section { scroll-margin-top: 60px; padding: 3.5rem 0; border-bottom: 1px solid #E2E8F0; }
+section.dark { background: var(--mia-navy); color: white; border-bottom-color: var(--mia-navy-mid); }
+section.dark h2, section.dark h3, section.dark h4 { color: white; }
+section.dark p, section.dark li { color: var(--mia-text); }
+section.dark .card { background: var(--mia-navy-light); }
+section.dark .punchline { color: var(--mia-gold); border-top-color: var(--mia-gold); }
+section.dark .section-subtitle { color: var(--mia-text-muted); }
+
+.section-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; }
+.section-number { width: 52px; height: 52px; min-width: 52px; border-radius: 50%; background: var(--mia-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; }
+section.dark .section-number { background: var(--mia-gold); color: var(--mia-navy); }
+.section-subtitle { color: #64748B; font-size: 0.95rem; margin-top: 0.3rem; }
+
+/* CARDS */
+.card { background: var(--mia-white); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-card); margin-bottom: 1.5rem; }
+.card-clickable { cursor: pointer; transition: all var(--transition-normal); }
+.card-clickable:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.card-gold { border-left: 4px solid var(--mia-gold); }
+.card-accent { border-left: 4px solid var(--mia-blue); }
+.card-click-hint { display: block; margin-top: 1rem; color: var(--mia-blue); font-size: .85rem; font-weight: 500; }
+section.dark .card-click-hint { color: var(--mia-blue-light); }
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+/* BADGES */
+.badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.badge-green { background: var(--mia-positive-dim); color: #16A34A; }
+
+/* CALLOUT */
+.callout { border-radius: var(--radius-md); padding: 1.5rem; margin: 1.5rem 0; font-size: 0.95rem; }
+.callout-blue { background: var(--mia-blue-dim); border-left: 4px solid var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-left: 4px solid var(--mia-gold); }
+.callout-green { background: var(--mia-positive-dim); border-left: 4px solid var(--mia-positive); }
+
+/* PUNCHLINE */
+.punchline { text-align: center; font-size: 1.2rem; font-weight: 700; padding: 2rem 0; color: var(--mia-navy); font-style: italic; border-top: 2px solid var(--mia-gold); margin-top: 2rem; }
+
+/* SCORING TABLE */
+.scoring-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: var(--mia-white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+.scoring-table th { background: var(--mia-navy); color: white; padding: 1rem; font-size: 0.8rem; text-align: center; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.scoring-table th:first-child { text-align: left; }
+.scoring-table td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--mia-light); font-size: 0.9rem; text-align: center; }
+.scoring-table td:first-child { text-align: left; font-weight: 600; }
+.scoring-table tr:last-child td { border-bottom: none; }
+.scoring-table .score-high { color: var(--mia-positive); font-weight: 700; }
+.scoring-table .score-mid { color: var(--mia-warning); font-weight: 700; }
+.scoring-table .score-low { color: var(--mia-critical); font-weight: 700; }
+.scoring-table .total-row { background: var(--mia-gold-dim); font-weight: 700; }
+.scoring-table .total-row td { font-size: 1rem; }
+.scoring-table .winner { background: rgba(66,211,111,0.08); }
+
+/* SCENARIO CARDS */
+.scenario-card { border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-card); margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+.scenario-card.conservative { background: var(--mia-white); border-top: 4px solid var(--mia-blue); }
+.scenario-card.balanced { background: var(--mia-white); border-top: 4px solid var(--mia-gold); }
+.scenario-card.aggressive { background: var(--mia-white); border-top: 4px solid var(--mia-positive); }
+section.dark .scenario-card { background: var(--mia-navy-light); }
+.scenario-card .scenario-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .75rem; }
+.scenario-card.conservative .scenario-label { color: var(--mia-blue); }
+.scenario-card.balanced .scenario-label { color: var(--mia-gold-dark); }
+.scenario-card.aggressive .scenario-label { color: var(--mia-positive); }
+.scenario-card h3 { margin-bottom: 0.75rem; }
+.scenario-card .scenario-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+
+/* RADAR CHART (CSS only) */
+.radar-wrap { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin: 2rem 0; }
+.radar-scenario { text-align: center; }
+.radar-bars { display: flex; gap: 4px; align-items: flex-end; justify-content: center; height: 120px; margin-bottom: .75rem; }
+.radar-bar { width: 28px; border-radius: 4px 4px 0 0; transition: height 0.6s ease; position: relative; }
+.radar-bar .bar-label { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: .55rem; color: #64748B; white-space: nowrap; }
+.radar-bar .bar-value { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: .65rem; font-weight: 700; }
+
+/* MODALS */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,18,42,0.85); z-index: var(--z-modal); align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.modal-overlay.active { display: flex; }
+.modal-box { background: white; border-radius: var(--radius-lg); max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: var(--shadow-lg); }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748B; }
+.modal-box h2 { margin-bottom: 0.5rem; }
+.modal-box h2 span { color: var(--mia-gold); }
+.modal-badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.modal-section { padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1rem; }
+.modal-section-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .75rem; }
+.modal-section.friction { background: var(--mia-critical-dim); }
+.modal-section.friction .modal-section-label { color: var(--mia-critical); }
+.modal-section.anticipation { background: var(--mia-warning-dim); }
+.modal-section.anticipation .modal-section-label { color: var(--mia-warning); }
+.modal-section.resolution { background: var(--mia-blue-dim); }
+.modal-section.resolution .modal-section-label { color: var(--mia-blue); }
+.modal-section.success { background: var(--mia-positive-dim); }
+.modal-section.success .modal-section-label { color: var(--mia-positive); }
+
+/* CTA */
+.cta-button { display: inline-block; padding: 1rem 2.5rem; background: var(--mia-blue); color: white; text-decoration: none; border-radius: var(--radius-xl); font-weight: 700; font-size: 1rem; transition: var(--transition-normal); }
+.cta-button:hover { background: var(--mia-blue-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.cta-button.gold { background: var(--mia-gold); color: var(--mia-navy); }
+.cta-button.gold:hover { background: #FFE44D; }
+
+/* FOOTER */
+footer { background: var(--mia-navy); color: var(--mia-text-muted); padding: 2rem; text-align: center; font-size: .8rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand-name { font-size: .85rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.footer-code { font-family: monospace; color: var(--mia-gold); margin-top: .5rem; }
+
+/* ANIMATE */
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .hero-kpi-value { font-size: 2rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  .section-header { flex-direction: column; gap: .75rem; }
+  .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
+  .scoring-table { font-size: .75rem; }
+  .scoring-table th, .scoring-table td { padding: .5rem; }
+  .radar-wrap { gap: 1.5rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+}
+@media print {
+  nav.toc, footer, .modal-overlay { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+
+    <h1>Evaluacion de <span>Escenarios</span></h1>
+    <p class="hero-subtitle">Tres caminos posibles para V&A Consulting. Cada uno evaluado en 6 dimensiones con scoring ponderado. Tu decides cual construir.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">3</div>
+        <div class="hero-kpi-label">Escenarios Evaluados</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">6</div>
+        <div class="hero-kpi-label">Dimensiones de Scoring</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">B</div>
+        <div class="hero-kpi-label">Escenario Recomendado</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">87</div>
+        <div class="hero-kpi-label">Score Maximo (de 100)</div>
+      </div>
+    </div>
+
+    <p class="hero-punchline">No existe el escenario perfecto. Existe el que mejor se alinea con tu momento, tu apetito y tu vision.</p>
+  </div>
+</header>
+
+<!-- ============================== STICKY TOC ============================== -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#contexto" class="toc-link">Contexto</a>
+    <a href="#escenarios" class="toc-link">Escenarios</a>
+    <a href="#scoring" class="toc-link">Scoring</a>
+    <a href="#comparativa" class="toc-link">Comparativa</a>
+    <a href="#riesgos" class="toc-link">Riesgos</a>
+    <a href="#recomendacion" class="toc-link">Recomendacion</a>
+    <a href="#siguiente" class="toc-link">Siguiente Paso</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ============================== SECTION 1: CONTEXTO ============================== -->
+<section id="contexto" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div>
+      <h2>Contexto Decisional</h2>
+      <p class="section-subtitle">Por que tres escenarios, que evaluamos y como se conecta con el diagnostico previo.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Punto de partida:</strong> V&A Consulting opera hoy en Nivel Cero (N0) de madurez digital. 160 horas mensuales de trabajo operativo, cero automatizacion, cero agentes IA. La pregunta no es si transformar, sino con que profundidad y a que velocidad.
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card card-accent card-clickable" onclick="openModal('modal-dim-contexto-actual')">
+      <h4>Estado Actual</h4>
+      <p>100% de tareas operativas ejecutadas manualmente. Sin infraestructura digital propia. Dependencia total del conocimiento tacito de los fundadores.</p>
+      <ul>
+        <li>160h/mes operativas manuales</li>
+        <li>0 agentes IA desplegados</li>
+        <li>0 procesos documentados digitalmente</li>
+      </ul>
+      <span class="card-click-hint">Ver detalle del diagnostico</span>
+    </div>
+    <div class="card card-gold card-clickable" onclick="openModal('modal-dim-oportunidad')">
+      <h4>Oportunidad Identificada</h4>
+      <p>El framework MetodologIA permite intervenir el 80% de las tareas simples, el 50% de las medias y el 20% de las complejas. La escalera de valor ofrece multiples puntos de entrada.</p>
+      <ul>
+        <li>64h/mes recuperables (40% del total)</li>
+        <li>768h/año devueltas a trabajo estrategico</li>
+        <li>Estandar 9:1 alcanzable en 12 meses</li>
+      </ul>
+      <span class="card-click-hint">Ver framework de intervencion</span>
+    </div>
+  </div>
+
+  <h3>Las 6 Dimensiones de Evaluacion</h3>
+  <p>Cada escenario se evalua contra 6 dimensiones ponderadas. La ponderacion refleja las prioridades estrategicas de V&A: impacto operativo y alineacion estrategica pesan mas que velocidad pura.</p>
+
+  <div class="card-grid-3">
+    <div class="card card-clickable" onclick="openModal('modal-dim-impacto')">
+      <span class="badge badge-blue">Peso: 20%</span>
+      <h4>Impacto Operativo</h4>
+      <p>Reduccion real de carga manual. Horas liberadas, procesos automatizados, productividad ganada.</p>
+      <span class="card-click-hint">Ver criterios</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-dim-roi')">
+      <span class="badge badge-gold">Peso: 20%</span>
+      <h4>Retorno de Inversion</h4>
+      <p>Relacion entre inversion requerida y valor generado. Incluye ahorro directo y capacidad nueva desbloqueada.</p>
+      <span class="card-click-hint">Ver criterios</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-dim-riesgo')">
+      <span class="badge badge-blue">Peso: 15%</span>
+      <h4>Nivel de Riesgo</h4>
+      <p>Probabilidad de fallo, complejidad de ejecucion, dependencias externas y puntos de no retorno.</p>
+      <span class="card-click-hint">Ver criterios</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-dim-velocidad')">
+      <span class="badge badge-gold">Peso: 15%</span>
+      <h4>Velocidad de Resultado</h4>
+      <p>Tiempo hasta el primer resultado tangible. Velocidad de despliegue y primeras victorias visibles.</p>
+      <span class="card-click-hint">Ver criterios</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-dim-escala')">
+      <span class="badge badge-blue">Peso: 15%</span>
+      <h4>Escalabilidad</h4>
+      <p>Capacidad de crecer sin reinventar. Que tan lejos puede llegar este escenario antes de tocar techo.</p>
+      <span class="card-click-hint">Ver criterios</span>
+    </div>
+    <div class="card card-clickable" onclick="openModal('modal-dim-alineacion')">
+      <span class="badge badge-gold">Peso: 15%</span>
+      <h4>Alineacion Estrategica</h4>
+      <p>Coherencia con la vision de V&A. Grado en que el escenario construye hacia la soberania digital completa.</p>
+      <span class="card-click-hint">Ver criterios</span>
+    </div>
+  </div>
+
+  <p class="punchline">Evaluar no es elegir lo perfecto. Es elegir lo inteligente para tu momento.</p>
+</section>
+
+<!-- ============================== SECTION 2: LOS TRES ESCENARIOS ============================== -->
+<section id="escenarios" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div>
+      <h2>Los Tres Escenarios</h2>
+      <p class="section-subtitle">Conservador, Equilibrado y Agresivo. Tres niveles de profundidad, tres perfiles de riesgo, tres velocidades de evolución.</p>
+    </div>
+  </div>
+
+  <!-- ESCENARIO A -->
+  <div class="scenario-card conservative card-clickable" onclick="openModal('modal-escenario-a')">
+    <div class="scenario-label">Escenario A — Conservador</div>
+    <h3>Validacion Rapida</h3>
+    <p>Workshop Introductorio + Bootcamp de Ventas. Inversion minima, tiempo acotado, validacion del modelo antes de comprometerse con una (R)Evolución completa. Ideal si necesitas ver resultados antes de escalar.</p>
+    <div class="scenario-meta">
+      <span class="badge badge-blue">Workshop Introductorio: 200k COP/persona</span>
+      <span class="badge badge-blue">Bootcamp de Ventas: 800k COP/persona</span>
+      <span class="badge badge-gold">Duracion: 2-4 semanas</span>
+    </div>
+    <div class="card-grid-2" style="margin-top:1rem;">
+      <div>
+        <h4>Que incluye</h4>
+        <ul>
+          <li>Diagnostico gratuito (3h de evaluacion)</li>
+          <li>Workshop Introductorio de 3 horas — ofimatica IA (hasta 5 personas)</li>
+          <li>Bootcamp de Ventas de 2 dias — automatizacion comercial (hasta 5 personas)</li>
+          <li>Configuracion de 2 agentes IA basicos</li>
+          <li>Guia de implementacion post-bootcamp</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Que no incluye</h4>
+        <ul>
+          <li>Agentes IA avanzados (Peer Reviewer, Motor de Reportes)</li>
+          <li>Suscripcion anual de acompañamiento</li>
+          <li>Certificacion Reseller</li>
+          <li>Personalizacion profunda de flujos</li>
+          <li>Soporte continuo post-bootcamp</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1rem;"><strong>Resultado esperado:</strong> V&A conoce el modelo, valida su aplicabilidad, y tiene herramientas basicas para decidir si profundizar. Reduccion estimada: 15-20% de carga operativa.</p>
+    <span class="card-click-hint">Ver analisis completo del escenario</span>
+  </div>
+
+  <!-- ESCENARIO B -->
+  <div class="scenario-card balanced card-clickable" onclick="openModal('modal-escenario-b')">
+    <div class="scenario-label">Escenario B — Equilibrado (Recomendado)</div>
+    <h3>(R)Evolución Completa</h3>
+    <p>Programa (R)Evolución de 16 semanas (incluye todo lo del Bootcamp de Ventas) + Suscripcion Anual. Despliegue completo del Dream Team de 6 agentes, personalizacion de flujos, y acompañamiento continuo durante 12 meses. La ruta mas solida hacia la soberania digital.</p>
+    <div class="scenario-meta">
+      <span class="badge badge-gold">Programa (R)Evolución: 500k COP/asistente (3M COP por 6 asistentes)</span>
+      <span class="badge badge-gold">Suscripcion: Primer mes prepagado</span>
+      <span class="badge badge-green">Recomendado</span>
+    </div>
+    <div class="card-grid-2" style="margin-top:1rem;">
+      <div>
+        <h4>Que incluye</h4>
+        <ul>
+          <li>Todo lo del Escenario A, mas:</li>
+          <li>Programa (R)Evolución completo — 16 semanas (hasta 5 personas)</li>
+          <li>6 agentes IA del Dream Team configurados</li>
+          <li>Suscripcion anual: 9h/semana de acompañamiento</li>
+          <li>Dashboard de soberania digital en tiempo real</li>
+          <li>Flujos personalizados para cada proceso critico</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Que desbloquea</h4>
+        <ul>
+          <li>Estandar 9:1 operativo en 12 meses</li>
+          <li>64h/mes recuperadas (768h/año)</li>
+          <li>Capacidad para escalar a 6+ clientes simultaneos</li>
+          <li>Base de conocimiento viva y gobernada</li>
+          <li>Autonomia progresiva sin dependencia del proveedor</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1rem;"><strong>Resultado esperado:</strong> V&A opera como una consultora IA-nativa en 12 meses. Capacidad multiplicada, carga reducida 40%, modelo de negocio escalable.</p>
+    <span class="card-click-hint">Ver analisis completo del escenario</span>
+  </div>
+
+  <!-- ESCENARIO C -->
+  <div class="scenario-card aggressive card-clickable" onclick="openModal('modal-escenario-c')">
+    <div class="scenario-label">Escenario C — Agresivo</div>
+    <h3>Hub de Distribucion</h3>
+    <p>Todo lo del Escenario B + Certificacion Reseller. V&A no solo se transforma: se convierte en canal de distribucion de MetodologIA, generando ingresos adicionales por cada cliente que certifique.</p>
+    <div class="scenario-meta">
+      <span class="badge badge-green">Programa + Suscripcion + Reseller</span>
+      <span class="badge badge-green">Comision hasta 20%</span>
+      <span class="badge badge-gold">Duracion: 12-18 meses</span>
+    </div>
+    <div class="card-grid-2" style="margin-top:1rem;">
+      <div>
+        <h4>Que incluye (adicional al B)</h4>
+        <ul>
+          <li>Certificacion Reseller (entrada: 1 SMLV)</li>
+          <li>Acceso a tarifas especiales para clientes referidos</li>
+          <li>Material de venta y habilitacion comercial</li>
+          <li>Comisiones progresivas: 5% → 10% → 15% → 20%</li>
+          <li>Co-branding con MetodologIA</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Riesgos adicionales</h4>
+        <ul>
+          <li>Requiere capacidad comercial propia</li>
+          <li>Divide el foco entre (R)Evolución interna y venta</li>
+          <li>Curva de aprendizaje en ventas de IA</li>
+          <li>Dependencia bidireccional con MetodologIA</li>
+          <li>Necesita madurez interna antes de revender</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:1rem;"><strong>Resultado esperado:</strong> V&A como hub regional de (R)Evolución IA. Doble flujo de ingresos (consultoria propia + comisiones). Maximo potencial, maximo compromiso.</p>
+    <span class="card-click-hint">Ver analisis completo del escenario</span>
+  </div>
+
+  <p class="punchline">Cada escenario construye sobre el anterior. Empezar conservador no cierra la puerta a escalar despues.</p>
+</section>
+
+<!-- ============================== SECTION 3: SCORING 6D ============================== -->
+<section id="scoring" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <div>
+      <h2>Scoring Multidimensional</h2>
+      <p class="section-subtitle">Cada escenario puntuado del 1 al 10 en 6 dimensiones, con ponderacion alineada a las prioridades estrategicas de V&A.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Metodologia:</strong> Scoring de 1 a 10 por dimension. Peso relativo segun prioridades de V&A. Total ponderado sobre 100. Diferencias menores a 5 puntos se consideran estadisticamente equivalentes.
+  </div>
+
+  <table class="scoring-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Peso</th>
+        <th>A: Conservador</th>
+        <th>B: Equilibrado</th>
+        <th>C: Agresivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Impacto Operativo</td>
+        <td>20%</td>
+        <td class="score-low">4</td>
+        <td class="score-high">9</td>
+        <td class="score-high">9</td>
+      </tr>
+      <tr>
+        <td>Retorno de Inversion</td>
+        <td>20%</td>
+        <td class="score-mid">6</td>
+        <td class="score-high">8</td>
+        <td class="score-high">9</td>
+      </tr>
+      <tr>
+        <td>Nivel de Riesgo (10=bajo)</td>
+        <td>15%</td>
+        <td class="score-high">9</td>
+        <td class="score-mid">7</td>
+        <td class="score-low">4</td>
+      </tr>
+      <tr>
+        <td>Velocidad de Resultado</td>
+        <td>15%</td>
+        <td class="score-high">9</td>
+        <td class="score-mid">6</td>
+        <td class="score-low">4</td>
+      </tr>
+      <tr>
+        <td>Escalabilidad</td>
+        <td>15%</td>
+        <td class="score-low">3</td>
+        <td class="score-high">8</td>
+        <td class="score-high">10</td>
+      </tr>
+      <tr>
+        <td>Alineacion Estrategica</td>
+        <td>15%</td>
+        <td class="score-low">4</td>
+        <td class="score-high">9</td>
+        <td class="score-high">8</td>
+      </tr>
+      <tr class="total-row">
+        <td>Total Ponderado</td>
+        <td>100%</td>
+        <td>57</td>
+        <td class="score-high">87</td>
+        <td>75</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card card-gold">
+    <h4>Lectura del Scoring</h4>
+    <p><strong>Escenario A (57/100):</strong> Excelente como punto de entrada pero limitado en impacto y escalabilidad. El riesgo bajo y la velocidad alta lo hacen atractivo para validar, no para transformar.</p>
+    <p><strong>Escenario B (87/100):</strong> El mejor balance entre impacto, riesgo y alineacion estrategica. Invierte mas pero construye fundaciones solidas. Es el unico que alcanza el Estandar 9:1 completo.</p>
+    <p><strong>Escenario C (75/100):</strong> Maximo potencial de escalabilidad y ROI a largo plazo, pero con riesgo significativamente mayor. Divide atencion entre (R)Evolución interna y expansion comercial.</p>
+  </div>
+
+  <p class="punchline">El numero no decide. Tu lo decides. El numero ilumina lo que el instinto sospechaba.</p>
+</section>
+
+<!-- ============================== SECTION 4: COMPARATIVA VISUAL ============================== -->
+<section id="comparativa" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">4</div>
+    <div>
+      <h2>Comparativa Visual</h2>
+      <p class="section-subtitle">Los mismos datos del scoring, en formato visual para identificar patrones a primera vista.</p>
+    </div>
+  </div>
+
+  <div class="radar-wrap">
+    <!-- Escenario A -->
+    <div class="radar-scenario">
+      <div class="radar-bars">
+        <div class="radar-bar" style="height:48px; background:var(--mia-blue);">
+          <span class="bar-value" style="color:var(--mia-blue-light);">4</span>
+          <span class="bar-label">IMP</span>
+        </div>
+        <div class="radar-bar" style="height:72px; background:var(--mia-blue);">
+          <span class="bar-value" style="color:var(--mia-blue-light);">6</span>
+          <span class="bar-label">ROI</span>
+        </div>
+        <div class="radar-bar" style="height:108px; background:var(--mia-positive);">
+          <span class="bar-value" style="color:var(--mia-positive);">9</span>
+          <span class="bar-label">RIE</span>
+        </div>
+        <div class="radar-bar" style="height:108px; background:var(--mia-positive);">
+          <span class="bar-value" style="color:var(--mia-positive);">9</span>
+          <span class="bar-label">VEL</span>
+        </div>
+        <div class="radar-bar" style="height:36px; background:var(--mia-critical);">
+          <span class="bar-value" style="color:var(--mia-critical);">3</span>
+          <span class="bar-label">ESC</span>
+        </div>
+        <div class="radar-bar" style="height:48px; background:var(--mia-blue);">
+          <span class="bar-value" style="color:var(--mia-blue-light);">4</span>
+          <span class="bar-label">ALI</span>
+        </div>
+      </div>
+      <span class="badge badge-blue">A: Conservador — 57</span>
+    </div>
+
+    <!-- Escenario B -->
+    <div class="radar-scenario">
+      <div class="radar-bars">
+        <div class="radar-bar" style="height:108px; background:var(--mia-gold);">
+          <span class="bar-value" style="color:var(--mia-gold);">9</span>
+          <span class="bar-label">IMP</span>
+        </div>
+        <div class="radar-bar" style="height:96px; background:var(--mia-gold);">
+          <span class="bar-value" style="color:var(--mia-gold);">8</span>
+          <span class="bar-label">ROI</span>
+        </div>
+        <div class="radar-bar" style="height:84px; background:var(--mia-warning);">
+          <span class="bar-value" style="color:var(--mia-warning);">7</span>
+          <span class="bar-label">RIE</span>
+        </div>
+        <div class="radar-bar" style="height:72px; background:var(--mia-warning);">
+          <span class="bar-value" style="color:var(--mia-warning);">6</span>
+          <span class="bar-label">VEL</span>
+        </div>
+        <div class="radar-bar" style="height:96px; background:var(--mia-gold);">
+          <span class="bar-value" style="color:var(--mia-gold);">8</span>
+          <span class="bar-label">ESC</span>
+        </div>
+        <div class="radar-bar" style="height:108px; background:var(--mia-gold);">
+          <span class="bar-value" style="color:var(--mia-gold);">9</span>
+          <span class="bar-label">ALI</span>
+        </div>
+      </div>
+      <span class="badge badge-gold">B: Equilibrado — 87</span>
+    </div>
+
+    <!-- Escenario C -->
+    <div class="radar-scenario">
+      <div class="radar-bars">
+        <div class="radar-bar" style="height:108px; background:var(--mia-positive);">
+          <span class="bar-value" style="color:var(--mia-positive);">9</span>
+          <span class="bar-label">IMP</span>
+        </div>
+        <div class="radar-bar" style="height:108px; background:var(--mia-positive);">
+          <span class="bar-value" style="color:var(--mia-positive);">9</span>
+          <span class="bar-label">ROI</span>
+        </div>
+        <div class="radar-bar" style="height:48px; background:var(--mia-critical);">
+          <span class="bar-value" style="color:var(--mia-critical);">4</span>
+          <span class="bar-label">RIE</span>
+        </div>
+        <div class="radar-bar" style="height:48px; background:var(--mia-critical);">
+          <span class="bar-value" style="color:var(--mia-critical);">4</span>
+          <span class="bar-label">VEL</span>
+        </div>
+        <div class="radar-bar" style="height:120px; background:var(--mia-positive);">
+          <span class="bar-value" style="color:var(--mia-positive);">10</span>
+          <span class="bar-label">ESC</span>
+        </div>
+        <div class="radar-bar" style="height:96px; background:var(--mia-positive);">
+          <span class="bar-value" style="color:var(--mia-positive);">8</span>
+          <span class="bar-label">ALI</span>
+        </div>
+      </div>
+      <span class="badge badge-green">C: Agresivo — 75</span>
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--mia-navy-light);">
+    <h4>Patrones Visuales</h4>
+    <p><strong>Escenario A</strong> tiene un perfil en "V invertida": picos en riesgo bajo y velocidad, pero caidas pronunciadas en escalabilidad e impacto. Funciona como prueba piloto, no como estrategia.</p>
+    <p><strong>Escenario B</strong> muestra el perfil mas homogeneo: ninguna dimension baja de 6. Es la unica opcion sin debilidades criticas. Su punto mas bajo (velocidad: 6) sigue siendo aceptable.</p>
+    <p><strong>Escenario C</strong> es un perfil "bipolar": extremos altos en escalabilidad y ROI, pero riesgo y velocidad en zona critica. Alto potencial, alta varianza de resultado.</p>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Clave de abreviaturas:</strong> IMP = Impacto Operativo, ROI = Retorno de Inversion, RIE = Nivel de Riesgo (10 = bajo riesgo), VEL = Velocidad de Resultado, ESC = Escalabilidad, ALI = Alineacion Estrategica.
+  </div>
+
+  <p class="punchline">Los graficos no mienten: el equilibrio no es mediocridad. Es madurez estrategica.</p>
+</section>
+
+<!-- ============================== SECTION 5: RIESGOS POR ESCENARIO ============================== -->
+<section id="riesgos" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">5</div>
+    <div>
+      <h2>Riesgos por Escenario</h2>
+      <p class="section-subtitle">Cada camino tiene sus trampas. Mejor conocerlas antes de dar el primer paso.</p>
+    </div>
+  </div>
+
+  <div class="card-grid-3">
+    <!-- Riesgos A -->
+    <div class="card card-clickable" style="border-top:4px solid var(--mia-blue);" onclick="openModal('modal-riesgo-a')">
+      <span class="badge badge-blue">Escenario A</span>
+      <h4>Riesgos del Conservador</h4>
+      <ul>
+        <li><strong>Falsa sensacion de avance:</strong> El Workshop Introductorio genera entusiasmo pero sin continuidad hacia el Programa, el impacto se diluye en semanas.</li>
+        <li><strong>Techo bajo:</strong> Con 2 agentes basicos, la automatizacion cubre menos del 20% de la carga operativa.</li>
+        <li><strong>Costo de oportunidad:</strong> Mientras V&A valida, competidores con mas apetito avanzan mas rapido.</li>
+      </ul>
+      <div class="callout callout-blue" style="margin-top:1rem;">
+        <strong>Mitigacion:</strong> Usar el escenario A como fase de descubrimiento, no como destino final. Planificar desde el inicio la transicion a B.
+      </div>
+      <span class="card-click-hint">Ver analisis de riesgos completo</span>
+    </div>
+
+    <!-- Riesgos B -->
+    <div class="card card-clickable" style="border-top:4px solid var(--mia-gold);" onclick="openModal('modal-riesgo-b')">
+      <span class="badge badge-gold">Escenario B</span>
+      <h4>Riesgos del Equilibrado</h4>
+      <ul>
+        <li><strong>Compromiso de 12 meses:</strong> La suscripcion anual requiere consistencia. Un mes de baja adopcion genera desperdicio.</li>
+        <li><strong>Curva de aprendizaje:</strong> 6 agentes IA simultaneos demandan tiempo de entrenamiento y adaptacion cultural.</li>
+        <li><strong>Dependencia temporal:</strong> Durante los primeros 3 meses, MetodologIA es el motor. La autonomia llega gradualmente.</li>
+      </ul>
+      <div class="callout callout-gold" style="margin-top:1rem;">
+        <strong>Mitigacion:</strong> Despliegue gradual (2 agentes en mes 1, 4 en mes 2, 6 en mes 3). Metricas de adopcion semanales. Gobernanza desde el dia 1.
+      </div>
+      <span class="card-click-hint">Ver analisis de riesgos completo</span>
+    </div>
+
+    <!-- Riesgos C -->
+    <div class="card card-clickable" style="border-top:4px solid var(--mia-positive);" onclick="openModal('modal-riesgo-c')">
+      <span class="badge badge-green">Escenario C</span>
+      <h4>Riesgos del Agresivo</h4>
+      <ul>
+        <li><strong>Foco dividido:</strong> Intentar transformarse y vender simultaneamente diluye ambas capacidades.</li>
+        <li><strong>Madurez prematura:</strong> Revender antes de dominar internamente daña la credibilidad con clientes.</li>
+        <li><strong>Presion financiera:</strong> La certificacion Reseller (1 SMLV) mas el programa completo requiere capital inicial significativo.</li>
+      </ul>
+      <div class="callout callout-green" style="margin-top:1rem;">
+        <strong>Mitigacion:</strong> No activar el canal Reseller hasta completar mes 6 de suscripcion con adopcion superior al 70%. La certificacion puede esperar.
+      </div>
+      <span class="card-click-hint">Ver analisis de riesgos completo</span>
+    </div>
+  </div>
+
+  <div class="card card-accent">
+    <h4>Matriz de Riesgo Consolidada</h4>
+    <table class="scoring-table">
+      <thead>
+        <tr>
+          <th>Factor de Riesgo</th>
+          <th>A</th>
+          <th>B</th>
+          <th>C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Inversion inicial</td>
+          <td class="score-high">Baja</td>
+          <td class="score-mid">Media</td>
+          <td class="score-low">Alta</td>
+        </tr>
+        <tr>
+          <td>Complejidad de ejecucion</td>
+          <td class="score-high">Baja</td>
+          <td class="score-mid">Media</td>
+          <td class="score-low">Alta</td>
+        </tr>
+        <tr>
+          <td>Dependencia del proveedor</td>
+          <td class="score-high">Minima</td>
+          <td class="score-mid">Temporal</td>
+          <td class="score-low">Bidireccional</td>
+        </tr>
+        <tr>
+          <td>Impacto de fracaso</td>
+          <td class="score-high">Bajo</td>
+          <td class="score-mid">Medio</td>
+          <td class="score-low">Alto</td>
+        </tr>
+        <tr>
+          <td>Probabilidad de exito</td>
+          <td class="score-high">90%</td>
+          <td class="score-high">80%</td>
+          <td class="score-mid">55%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="punchline">El riesgo no se elimina. Se elige con los ojos abiertos.</p>
+</section>
+
+<!-- ============================== SECTION 6: RECOMENDACION ============================== -->
+<section id="recomendacion" class="dark animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">6</div>
+    <div>
+      <h2>Recomendacion</h2>
+      <p class="section-subtitle">Con base en el scoring, los riesgos y la alineacion estrategica: cual es el camino mas inteligente para V&A.</p>
+    </div>
+  </div>
+
+  <div class="scenario-card balanced" style="border:2px solid var(--mia-gold);">
+    <div class="scenario-label">Escenario Recomendado</div>
+    <h3>B: (R)Evolución Completa</h3>
+    <p style="font-size:1.1rem;">Programa (R)Evolución de 16 semanas + Suscripcion Anual. Con un score de <strong>87/100</strong>, es el unico escenario que combina alto impacto operativo, riesgo controlado y alineacion estrategica total con la vision de V&A.</p>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card" style="background:var(--mia-navy-light);">
+      <h4>Por que B y no A</h4>
+      <p>El Escenario A es tentador por su bajo riesgo y velocidad, pero su techo es demasiado bajo. Con solo 2 agentes basicos y sin suscripcion, V&A se queda en N0 con un barniz de modernidad. El 57/100 refleja una realidad: validar sin transformar no acerca a la soberania digital.</p>
+      <p><strong>A es un buen primer paso. Pero no es una estrategia.</strong></p>
+    </div>
+    <div class="card" style="background:var(--mia-navy-light);">
+      <h4>Por que B y no C</h4>
+      <p>El Escenario C tiene el maximo potencial de escalabilidad (10/10) y ROI a largo plazo, pero su probabilidad de exito (55%) y el riesgo de foco dividido lo convierten en una apuesta prematura. V&A necesita primero dominar sus propias operaciones antes de vender (R)Evolución a otros.</p>
+      <p><strong>C es el futuro. Pero el futuro se construye desde B.</strong></p>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <strong>Ruta evolutiva recomendada:</strong> Comenzar con B (Programa (R)Evolución + Suscripcion). Al completar mes 6 con adopcion superior al 70%, evaluar la activacion de la Certificacion Reseller (Escenario C) como expansion natural. Esta ruta secuencial maximiza el score final sin asumir el riesgo del C prematuro.
+  </div>
+
+  <div class="card" style="background:var(--mia-navy-light);">
+    <h4>Hitos de Decision para la Ruta B → C</h4>
+    <ul>
+      <li><strong>Mes 3:</strong> Evaluacion de adopcion. Si los 6 agentes tienen uso activo superior al 60%, confirmar permanencia en B.</li>
+      <li><strong>Mes 6:</strong> Gate de madurez. Si el Estandar 9:1 se cumple en al menos 3 procesos criticos, abrir evaluacion de C.</li>
+      <li><strong>Mes 9:</strong> Piloto Reseller. Si la madurez interna es solida, activar certificacion con 1 cliente referido de prueba.</li>
+      <li><strong>Mes 12:</strong> Decision formal. Continuar en B puro o escalar a C segun resultados del piloto.</li>
+    </ul>
+  </div>
+
+  <p class="punchline">La recomendacion es B. La ambicion es C. La inteligencia es saber cuando pasar de uno a otro.</p>
+</section>
+
+<!-- ============================== SECTION 7: SIGUIENTE PASO ============================== -->
+<section id="siguiente" class="animate-on-scroll">
+  <div class="section-header">
+    <div class="section-number">7</div>
+    <div>
+      <h2>Siguiente Paso</h2>
+      <p class="section-subtitle">De la evaluacion a la accion. El siguiente documento define el roadmap de ejecucion.</p>
+    </div>
+  </div>
+
+  <div class="card card-gold" style="text-align:center; padding:3rem 2rem;">
+    <h3>Agenda tu Sesion de Definicion de Ruta</h3>
+    <p style="max-width:600px; margin:1rem auto;">Ya conoces los tres escenarios, sus scores, sus riesgos y nuestra recomendacion. El siguiente paso es una sesion de 45 minutos para definir tu ruta personalizada y activar el Escenario B.</p>
+    <p style="margin-bottom:2rem;">
+      <span class="badge badge-gold">45 minutos</span>
+      <span class="badge badge-blue">Sin costo</span>
+      <span class="badge badge-green">Decision informada</span>
+    </p>
+    <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" target="_blank" class="cta-button gold">Agendar Sesion de Definicion</a>
+  </div>
+
+  <div class="callout callout-blue" style="margin-top:2rem;">
+    <strong>Proximo entregable:</strong> Doc 06 — Roadmap de Solucion. Define fases, sprints, equipo, presupuesto, gates de decision y criterios de exito para el Escenario B, con puntos de evaluacion para la transicion hacia C.
+  </div>
+</section>
+
+</div><!-- /.container -->
+
+<!-- ============================== MODALS ============================== -->
+
+<!-- Modal: Contexto Actual -->
+<div class="modal-overlay" id="modal-dim-contexto-actual">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-contexto-actual')">&times;</button>
+    <h2>Estado <span>Actual</span> de V&A</h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Diagnostico</span><span class="badge badge-gold">N0</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion</div>
+      <p>V&A opera con procesos 100% manuales. Cada propuesta, cada seguimiento de cliente, cada reporte se construye desde cero. No hay herramientas digitales propias, solo Google Workspace basico sin automatizaciones.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Anticipacion</div>
+      <p>Con 160 horas mensuales de trabajo operativo, el cuello de botella no es la competencia de V&A sino el tiempo disponible. Cada hora liberada es una hora que puede dedicarse a generar ingresos, no a tareas administrativas.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Resolucion</div>
+      <p>El diagnostico realizado (Doc 03) confirma que el 80% de las tareas simples y el 50% de las medias pueden ser intervenidas con agentes IA. El framework de 6 agentes del Dream Team cubre los procesos criticos identificados.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>La oportunidad es real: 64 horas mensuales recuperables, 768 horas al año. De N0 a Estandar 9:1 con la diseño correcto.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Oportunidad -->
+<div class="modal-overlay" id="modal-dim-oportunidad">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-oportunidad')">&times;</button>
+    <h2>Oportunidad <span>Identificada</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Framework ROI</span><span class="badge badge-blue">80/50/20</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion</div>
+      <p>Sin intervencion, V&A permanece en N0 indefinidamente. El costo de la inaccion es 768 horas al año de trabajo manual que podria ser estrategico.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Anticipacion</div>
+      <p>El framework 80/50/20 significa: 80% de tareas simples automatizables, 50% de medias acelerables, 20% de complejas amplificables. No es teoria: es el modelo validado por MetodologIA en multiples implementaciones.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Resolucion</div>
+      <p>La escalera de valor es aditiva — cada nivel incluye todo lo del anterior: Diagnostico gratuito para validar, Workshop Introductorio (200k COP/persona) para ofimatica IA, Bootcamp de Ventas (800k COP/persona) para automatizacion comercial, Programa (R)Evolución (500k COP/asistente) para la operacion completa.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A tiene un camino claro de N0 al Estandar 9:1. Cada nivel de inversion desbloquea un porcentaje mayor de la oportunidad total.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dimension Impacto -->
+<div class="modal-overlay" id="modal-dim-impacto">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-impacto')">&times;</button>
+    <h2>Impacto <span>Operativo</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Peso: 20%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que mide</div>
+      <p>Reduccion real en horas de trabajo manual. Procesos automatizados o acelerados. Productividad medible en tareas por hora.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de scoring</div>
+      <p><strong>1-3:</strong> Menos del 15% de reduccion de carga. Solo herramientas basicas sin automatizacion real.</p>
+      <p><strong>4-6:</strong> 15-30% de reduccion. Algunos procesos automatizados, pero la mayoria sigue siendo manual.</p>
+      <p><strong>7-9:</strong> 30-45% de reduccion. Multiples procesos automatizados con agentes IA activos. Estandar 9:1 en progreso.</p>
+      <p><strong>10:</strong> Mas del 45% de reduccion. Estandar 9:1 alcanzado en todos los procesos criticos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dimension ROI -->
+<div class="modal-overlay" id="modal-dim-roi">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-roi')">&times;</button>
+    <h2>Retorno de <span>Inversion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Peso: 20%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que mide</div>
+      <p>Relacion entre la inversion total (dinero + tiempo + esfuerzo) y el valor generado (horas ahorradas + capacidad nueva + ingresos potenciales).</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de scoring</div>
+      <p><strong>1-3:</strong> ROI negativo o break-even despues de 18+ meses.</p>
+      <p><strong>4-6:</strong> Break-even en 6-12 meses. Valor moderado post-break-even.</p>
+      <p><strong>7-9:</strong> Break-even en 3-6 meses. Valor significativo sostenido post-break-even.</p>
+      <p><strong>10:</strong> Break-even en menos de 3 meses. Multiplicador de ingresos demostrable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dimension Riesgo -->
+<div class="modal-overlay" id="modal-dim-riesgo">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-riesgo')">&times;</button>
+    <h2>Nivel de <span>Riesgo</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Peso: 15%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que mide</div>
+      <p>Probabilidad de fallo, complejidad de ejecucion y reversibilidad. Un score alto (10) significa riesgo bajo. Invertimos la escala para que "mas alto = mejor" en todas las dimensiones.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de scoring</div>
+      <p><strong>1-3 (riesgo alto):</strong> Multiples puntos de fallo, dependencias complejas, baja reversibilidad.</p>
+      <p><strong>4-6 (riesgo medio):</strong> Algunos puntos de fallo controlables, dependencias identificadas, reversibilidad parcial.</p>
+      <p><strong>7-9 (riesgo bajo):</strong> Pocos puntos de fallo, dependencias minimas, alta reversibilidad.</p>
+      <p><strong>10 (riesgo minimo):</strong> Sin puntos criticos de fallo. Totalmente reversible.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dimension Velocidad -->
+<div class="modal-overlay" id="modal-dim-velocidad">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-velocidad')">&times;</button>
+    <h2>Velocidad de <span>Resultado</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Peso: 15%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que mide</div>
+      <p>Tiempo hasta el primer resultado tangible y medible. No cuenta la preparacion ni la configuracion: cuenta el momento en que V&A siente el impacto.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de scoring</div>
+      <p><strong>1-3:</strong> Primer resultado despues de 6+ meses.</p>
+      <p><strong>4-6:</strong> Primer resultado en 2-4 meses.</p>
+      <p><strong>7-9:</strong> Primer resultado en 1-4 semanas.</p>
+      <p><strong>10:</strong> Resultado inmediato (misma semana de implementacion).</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dimension Escalabilidad -->
+<div class="modal-overlay" id="modal-dim-escala">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-escala')">&times;</button>
+    <h2><span>Escalabilidad</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Peso: 15%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que mide</div>
+      <p>Capacidad de crecer sin reinventar la infraestructura. Que tan lejos puede llegar V&A con este escenario antes de necesitar un cambio diseñadornico.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de scoring</div>
+      <p><strong>1-3:</strong> Techo en 2-3 clientes. Requiere reconstruccion para crecer.</p>
+      <p><strong>4-6:</strong> Soporta hasta 5 clientes. Crecimiento posible con ajustes menores.</p>
+      <p><strong>7-9:</strong> Soporta 6-15 clientes. Diseño preparada para escalar.</p>
+      <p><strong>10:</strong> Sin techo visible. Modelo de negocio escala linealmente o exponencialmente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Dimension Alineacion -->
+<div class="modal-overlay" id="modal-dim-alineacion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-dim-alineacion')">&times;</button>
+    <h2>Alineacion <span>Estrategica</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Peso: 15%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que mide</div>
+      <p>Coherencia con la vision de largo plazo de V&A. El grado en que este escenario construye hacia la soberania digital completa, no solo resuelve un problema inmediato.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Criterios de scoring</div>
+      <p><strong>1-3:</strong> Resuelve un problema puntual sin construir hacia el futuro.</p>
+      <p><strong>4-6:</strong> Construye parcialmente. Algunos elementos reutilizables.</p>
+      <p><strong>7-9:</strong> Alta coherencia con la vision. Cada componente contribuye al objetivo final.</p>
+      <p><strong>10:</strong> Alineacion total. El escenario ES la estrategia de largo plazo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Escenario A Completo -->
+<div class="modal-overlay" id="modal-escenario-a">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-escenario-a')">&times;</button>
+    <h2>Escenario A: <span>Validacion Rapida</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Conservador</span><span class="badge badge-blue">Score: 57/100</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion</div>
+      <p>V&A no tiene experiencia previa con agentes IA ni automatizacion de procesos. Invertir en un programa completo sin validar el modelo primero puede sentirse arriesgado. El escepticismo natural demanda pruebas antes que promesas.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Anticipacion</div>
+      <p>El Workshop Introductorio (200k COP/persona, 3h) introduce ofimatica IA y los conceptos base. El Bootcamp de Ventas (800k COP/persona, 2 dias) — que incluye todo lo del Workshop — permite configurar 2 agentes basicos: Asistente de Propuestas y Task Tracker. Resultado: primeras automatizaciones en 2-4 semanas.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Resolucion</div>
+      <p>Con 2 agentes funcionando, V&A experimenta de primera mano como la IA puede ejecutar tareas operativas. Si el impacto es positivo, la decision de escalar a B se toma con evidencia, no con fe. Inversion total: 1M COP para hasta 5 personas.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A valida el modelo con inversion minima. La decision de escalar se basa en resultados, no en expectativas. Riesgo controlado, aprendizaje maximizado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Escenario B Completo -->
+<div class="modal-overlay" id="modal-escenario-b">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-escenario-b')">&times;</button>
+    <h2>Escenario B: <span>(R)Evolución Completa</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Equilibrado</span><span class="badge badge-gold">Score: 87/100</span><span class="badge badge-green">Recomendado</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion</div>
+      <p>La (R)Evolución completa requiere compromiso de 12 meses, inversion significativa (Programa (R)Evolución 500k COP/asistente para 6 asistentes = 3M COP — incluye todo lo del Bootcamp de Ventas — mas Suscripcion con primer mes prepagado) y cambio cultural. Los fundadores deben estar dispuestos a soltar procesos que hoy controlan manualmente.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Anticipacion</div>
+      <p>En 16 semanas de Programa (R)Evolución, V&A pasa de N0 a tener 6 agentes IA configurados y operativos. La Suscripcion Anual (9h/semana) garantiza acompañamiento continuo para optimizar, resolver incidencias y escalar. Despliegue gradual: 2 agentes en mes 1, 4 en mes 2, 6 en mes 3.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Resolucion</div>
+      <p>Al mes 6, el Estandar 9:1 se alcanza en al menos 3 procesos criticos. Al mes 12, V&A opera como consultora IA-nativa: 64h/mes liberadas, capacidad para manejar 6+ clientes simultaneos, base de conocimiento gobernada, y la opcion de evolucionar a Escenario C.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Soberania digital completa. V&A no depende de MetodologIA para operar: tiene sus propios agentes, sus flujos, su gobernanza. MetodologIA fue el diseñador; V&A es el dueño.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Escenario C Completo -->
+<div class="modal-overlay" id="modal-escenario-c">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-escenario-c')">&times;</button>
+    <h2>Escenario C: <span>Hub de Distribucion</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Agresivo</span><span class="badge badge-green">Score: 75/100</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion</div>
+      <p>V&A intenta dos (R)Evoluciónes simultaneas: interna (operar con IA) y externa (vender IA a otros). El foco dividido es el riesgo principal. Ademas, revender un servicio que aun no dominas internamente daña la credibilidad.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Anticipacion</div>
+      <p>Si se ejecuta con disciplina (primero B, despues C), el potencial es enorme. Comisiones progresivas del 5% al 20% sobre cada cliente referido. Acceso a tarifas especiales. Co-branding con MetodologIA. Un canal de ingresos adicional que escala con cada venta.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Resolucion</div>
+      <p>La ruta recomendada: activar Reseller solo despues de completar mes 6 de Suscripcion con adopcion superior al 70%. Certificacion por 1 SMLV. Piloto con 1 cliente referido. Si funciona, escalar. Si no, mantener B sin perdida.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>V&A como hub regional de (R)Evolución IA. Doble flujo de ingresos, red de clientes creciente, posicionamiento como referente en el mercado. El maximo potencial del ecosistema MetodologIA.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Riesgos A -->
+<div class="modal-overlay" id="modal-riesgo-a">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-a')">&times;</button>
+    <h2>Riesgos: <span>Escenario A</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-blue">Conservador</span><span class="badge badge-blue">Prob. Exito: 90%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Riesgo principal</div>
+      <p><strong>Estancamiento en N0:</strong> El workshop y bootcamp generan entusiasmo pero sin la estructura del programa completo, la implementacion se abandona en 4-6 semanas. V&A vuelve a procesos manuales con la sensacion de que "la IA no funciono".</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Riesgos secundarios</div>
+      <p><strong>Techo operativo:</strong> 2 agentes basicos cubren maximo el 20% de la carga. No es suficiente para cambiar la dinamica operativa. <strong>Costo de oportunidad:</strong> 2-4 semanas invertidas sin llegar al Estandar 9:1.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Mitigacion</div>
+      <p>Usar A como fase de descubrimiento con compromiso explicito de evaluacion al final. Definir criterios de exito claros: si los 2 agentes generan mas de X horas de ahorro, activar B. Si no, documentar aprendizajes y replantear.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>El riesgo mas grande de A no es fallar: es tener exito parcial y creer que es suficiente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Riesgos B -->
+<div class="modal-overlay" id="modal-riesgo-b">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-b')">&times;</button>
+    <h2>Riesgos: <span>Escenario B</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-gold">Equilibrado</span><span class="badge badge-gold">Prob. Exito: 80%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Riesgo principal</div>
+      <p><strong>Baja adopcion post-despliegue:</strong> Los 6 agentes se configuran pero los fundadores no los usan consistentemente. La suscripcion anual se convierte en un costo fijo sin retorno si la adopcion no supera el 50%.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Riesgos secundarios</div>
+      <p><strong>Curva de aprendizaje:</strong> Pasar de cero automatizacion a 6 agentes puede ser abrumador. <strong>Dependencia temporal:</strong> Los primeros 3 meses dependen del soporte MetodologIA. <strong>Cambio cultural:</strong> Soltar control manual requiere confianza en los agentes.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Mitigacion</div>
+      <p>Despliegue gradual (2→4→6 agentes). Metricas de adopcion semanales con umbrales minimos. Sesiones de gobernanza mensuales. Si la adopcion baja del 50% en cualquier mes, diagnosticar y ajustar antes de continuar.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>Con mitigaciones activas, el 80% de probabilidad de exito es conservador. El factor critico es la disciplina de adopcion, no la tecnologia.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Riesgos C -->
+<div class="modal-overlay" id="modal-riesgo-c">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesgo-c')">&times;</button>
+    <h2>Riesgos: <span>Escenario C</span></h2>
+    <div class="modal-badge-row"><span class="badge badge-green">Agresivo</span><span class="badge badge-green">Prob. Exito: 55%</span></div>
+    <div class="modal-section friction">
+      <div class="modal-section-label">Riesgo principal</div>
+      <p><strong>Foco dividido fatal:</strong> V&A intenta dominar la IA internamente mientras la vende externamente. Sin madurez interna, las ventas generan clientes insatisfechos, daño reputacional y desgaste del equipo fundador.</p>
+    </div>
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Riesgos secundarios</div>
+      <p><strong>Presion financiera:</strong> Programa + Suscripcion + Certificacion = inversion alta simultanea. <strong>Expectativa prematura:</strong> Las comisiones del 5-20% requieren volumen de ventas que no existe en el dia 1. <strong>Dependencia bidireccional:</strong> V&A depende de MetodologIA y MetodologIA depende de V&A como canal.</p>
+    </div>
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Mitigacion</div>
+      <p>No activar C antes de completar 6 meses de B con adopcion superior al 70%. Piloto Reseller con 1 solo cliente referido. Criterio kill/pivot: si el piloto no genera ingreso neto positivo en 90 dias, posponer expanson y mantener B.</p>
+    </div>
+    <div class="modal-section success">
+      <div class="modal-section-label">Success delivered</div>
+      <p>C es viable pero no como punto de partida. La ruta B→C es la unica forma de alcanzar el maximo potencial con riesgo gestionable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="footer-inner">
+    <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 1rem;">
+      <defs><linearGradient id="footerLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
+      <rect width="40" height="40" rx="10" fill="url(#footerLogo)"/>
+      <path d="M11 12h4v16h-4V12zm7 0h4v10h-4V12zm0 13h4v3h-4v-3zm7-13h4v7h-4V12zm0 10h4v6h-4v-6z" fill="white"/>
+      <circle cx="20" cy="8" r="2.5" fill="#FFD700"/>
+      <path d="M52 28V14h4.2l3.5 9.1L63.3 14h4.1v14h-3V18.5L61 27h-2.2l-3.5-8.5V28H52zm22.5 0V14h3.2v14h-3.2zm8.5 0V14h3.2l5.8 9.3V14h3v14h-3.1L86.1 19V28H83z" fill="white" opacity="0.7"/>
+    </svg>
+    <p class="footer-brand-name">Metodolog<span style="color:var(--mia-gold)">IA</span></p>
+    <p style="margin-top:.5rem;">Success as a Service</p>
+    <p class="footer-code">MTIA-05-ESCENARIOS-VA-SE</p>
+    <p style="margin-top:.75rem; font-size:.7rem;">Documento confidencial preparado para V&A Consulting. Prohibida su reproduccion sin autorizacion.</p>
+  </div>
+</footer>
+
+<!-- ============================== JAVASCRIPT ============================== -->
+<script>
+// Modal open/close
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+}
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+});
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// Active TOC tracking
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  tocLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

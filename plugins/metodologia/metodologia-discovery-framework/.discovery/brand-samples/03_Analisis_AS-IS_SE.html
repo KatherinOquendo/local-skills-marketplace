@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AS-IS Analysis | V&A Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E8ECF4;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --mia-info: #3B82F6;
+  --mia-info-dim: rgba(59,130,246,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-glow-blue: 0 0 30px rgba(19,125,197,0.15);
+  --shadow-glow-gold: 0 0 30px rgba(255,215,0,0.10);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --z-sticky-nav: 100;
+  --z-modal: 1000;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--mia-dark-text);
+  background-color: var(--mia-offwhite);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--mia-navy);
+  line-height: 1.2;
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+li { margin-bottom: 0.4rem; line-height: 1.6; }
+a { color: var(--mia-blue); text-decoration: none; transition: all var(--transition-normal); }
+a:hover { color: var(--mia-blue-light); }
+strong { font-weight: 600; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 2rem 4rem;
+  color: var(--mia-white);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 80%; height: 200%;
+  background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue));
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; margin: 0 auto;
+  text-align: center;
+}
+.brand-logo {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 2rem;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--mia-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--mia-text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--mia-text);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto; margin-right: auto;
+}
+.hero-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.hero-kpi {
+  text-align: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  transition: all var(--transition-normal);
+}
+.hero-kpi:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+.hero-kpi-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 700; line-height: 1;
+  color: var(--mia-gold);
+}
+.hero-kpi-value.blue { color: var(--mia-blue-light); }
+.hero-kpi-label {
+  font-size: .72rem; color: var(--mia-text-muted);
+  margin-top: .5rem; font-weight: 500; letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.hero-punchline {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--mia-blue-light);
+  margin-top: 2.5rem;
+  opacity: 0.85;
+}
+
+/* Sticky TOC */
+nav.toc {
+  background: var(--mia-white);
+  position: sticky; top: 0;
+  z-index: var(--z-sticky-nav);
+  border-bottom: 1px solid #E2E8F0;
+  box-shadow: var(--shadow-sm);
+}
+nav.toc .toc-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 2rem;
+}
+nav.toc .toc-inner::-webkit-scrollbar { display: none; }
+nav.toc a {
+  display: block; padding: .9rem 1.1rem;
+  font-size: .68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: #64748B; white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-normal);
+}
+nav.toc a:hover, nav.toc a.active {
+  color: var(--mia-blue);
+  border-bottom-color: var(--mia-blue);
+  text-decoration: none;
+}
+
+/* Container */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* Sections */
+section {
+  scroll-margin-top: 60px;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid #E2E8F0;
+}
+section:last-of-type { border-bottom: none; }
+.section-header {
+  display: flex; gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.section-number {
+  width: 52px; height: 52px; min-width: 52px;
+  background: var(--mia-navy);
+  color: var(--mia-gold);
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+}
+.section-header h2 { margin: 0; color: var(--mia-navy); }
+.section-header .section-subtitle {
+  font-size: .9rem; color: #64748B; margin-top: .25rem;
+}
+
+/* Cards */
+.card {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1.5rem;
+  border: 1px solid #E2E8F0;
+  transition: all var(--transition-normal);
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card-accent { border-top: 4px solid var(--mia-blue); }
+.card-gold { border-top: 4px solid var(--mia-gold); }
+.card-clickable { cursor: pointer; }
+.card-clickable:hover { border-color: var(--mia-blue); box-shadow: var(--shadow-md), var(--shadow-glow-blue); }
+.card-dark {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  color: var(--mia-white);
+  border: none;
+}
+.card-dark h3, .card-dark h4 { color: var(--mia-gold); }
+.card-dark p, .card-dark li { color: var(--mia-text); }
+
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.card-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+.card-icon {
+  width: 48px; height: 48px;
+  background: var(--mia-blue-dim);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--mia-blue);
+}
+.card-icon.gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.card-icon.critical { background: var(--mia-critical-dim); color: var(--mia-critical); }
+.card-icon.positive { background: var(--mia-positive-dim); color: var(--mia-positive); }
+.card-icon svg { width: 24px; height: 24px; }
+
+.card-click-hint {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mia-blue);
+  opacity: 0.7;
+  transition: opacity var(--transition-normal);
+}
+.card-clickable:hover .card-click-hint { opacity: 1; }
+
+/* Dark sections */
+.section-dark {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%);
+  color: var(--mia-white);
+  padding: 4rem 2rem;
+  margin: 0 -2rem;
+  border-bottom: none;
+}
+.section-dark h2, .section-dark h3 { color: var(--mia-white); }
+.section-dark h2 span { color: var(--mia-gold); }
+.section-dark p { color: var(--mia-text); }
+.section-dark .section-number { background: rgba(255,255,255,0.1); color: var(--mia-gold); }
+.section-dark .card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--mia-white);
+}
+.section-dark .card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+.section-dark .card h3, .section-dark .card h4 { color: var(--mia-gold); }
+.section-dark .card p { color: var(--mia-text); }
+.section-dark .card-icon { background: rgba(255,255,255,0.06); color: var(--mia-blue-light); }
+.section-dark .card-icon.gold { color: var(--mia-gold); }
+.section-dark .card-click-hint { color: var(--mia-blue-light); }
+
+/* Comparison table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.data-table th {
+  background: var(--mia-navy);
+  color: var(--mia-gold);
+  padding: 1.25rem;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  text-align: left;
+}
+.data-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: .95rem;
+}
+.data-table tbody tr:nth-child(even) { background: var(--mia-offwhite); }
+.data-table tbody tr:hover { background: var(--mia-blue-dim); }
+.data-table .col-task { font-weight: 600; color: var(--mia-navy); width: 25%; }
+.data-table .col-hoy { color: #EF4444; }
+.data-table .col-manana { color: #42D36F; font-weight: 500; }
+
+/* Maturity bars */
+.maturity-section {
+  margin: 2rem 0;
+}
+.maturity-bar {
+  display: grid;
+  grid-template-columns: 200px 1fr 80px;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  background: var(--mia-white);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+}
+.maturity-bar.dark {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.maturity-bar.dark .maturity-name { color: var(--mia-white); }
+.maturity-bar.dark .maturity-level { color: var(--mia-gold); }
+.maturity-name {
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--mia-navy);
+}
+.progress-track {
+  height: 28px;
+  background: #E2E8F0;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-track.dark { background: rgba(255,255,255,0.1); }
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-blue-light));
+  border-radius: 14px;
+  transition: width 0.8s ease;
+  position: relative;
+}
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+}
+.maturity-level {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--mia-blue);
+  text-align: right;
+}
+
+/* Protocol cards */
+.protocol-card {
+  background: var(--mia-white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+.protocol-card:hover {
+  box-shadow: var(--shadow-md), var(--shadow-glow-blue);
+  transform: translateY(-3px);
+}
+.protocol-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.protocol-number {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: var(--mia-blue-dim);
+  color: var(--mia-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.protocol-title {
+  margin: 0;
+  color: var(--mia-navy);
+  font-size: 1.1rem;
+}
+.protocol-desc {
+  color: #64748B;
+  font-size: .92rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.protocol-before-after {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #E2E8F0;
+  font-size: .85rem;
+}
+.before-label {
+  color: var(--mia-critical);
+  font-weight: 600;
+}
+.after-label {
+  color: var(--mia-positive);
+  font-weight: 600;
+}
+
+/* Modals */
+.modal-overlay {
+  display: none; position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10,18,42,.7);
+  z-index: var(--z-modal);
+  justify-content: center; align-items: center;
+  backdrop-filter: blur(6px);
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--mia-white);
+  border-radius: var(--radius-xl);
+  max-width: 680px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  animation: modalSlideUp .3s ease;
+}
+@keyframes modalSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: #F1F5F9; border: none;
+  width: 2.2rem; height: 2.2rem;
+  border-radius: 50%; cursor: pointer;
+  font-size: 1.1rem; color: #64748B;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition-fast);
+}
+.modal-close:hover { background: #E2E8F0; color: var(--mia-navy); }
+.modal-box h2 { margin-bottom: 0.5rem; }
+.modal-box h2 span { color: var(--mia-blue); }
+.modal-badge-row { margin-bottom: 1.5rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.modal-section {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+}
+.modal-section.friction {
+  background: var(--mia-critical-dim);
+  border-color: var(--mia-critical);
+}
+.modal-section.anticipation {
+  background: var(--mia-warning-dim);
+  border-color: var(--mia-warning);
+}
+.modal-section.resolution {
+  background: var(--mia-blue-dim);
+  border-color: var(--mia-blue);
+}
+.modal-section.success {
+  background: var(--mia-positive-dim);
+  border-color: var(--mia-positive);
+}
+.modal-section-label {
+  font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: .5rem;
+}
+.modal-section.friction .modal-section-label { color: var(--mia-critical); }
+.modal-section.anticipation .modal-section-label { color: var(--mia-warning); }
+.modal-section.resolution .modal-section-label { color: var(--mia-blue); }
+.modal-section.success .modal-section-label { color: #16a34a; }
+.modal-section p { margin-bottom: .5rem; font-size: .92rem; }
+.modal-section p:last-child { margin-bottom: 0; }
+.modal-section ul { margin: .5rem 0 0 1.25rem; }
+.modal-section li { font-size: .9rem; margin-bottom: .3rem; }
+
+/* CTA */
+.cta-button {
+  display: inline-block;
+  background: var(--mia-blue);
+  color: var(--mia-white);
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  border: none; cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(19,125,197,0.3);
+}
+.cta-button:hover {
+  background: var(--mia-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(19,125,197,0.4);
+}
+
+/* Punchline */
+.punchline {
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--mia-blue);
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E2E8F0;
+}
+.section-dark .punchline { color: var(--mia-blue-light); border-top-color: rgba(255,255,255,0.08); }
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, var(--mia-navy) 0%, #060D1F 100%);
+  color: var(--mia-white);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue));
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-bottom: 1rem;
+}
+.footer-brand-name {
+  font-size: .85rem; font-weight: 700;
+  color: var(--mia-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+footer p { color: var(--mia-text); margin: .5rem 0; font-size: .9rem; }
+
+/* Scroll animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Badge */
+.badge {
+  display: inline-block; padding: .25rem .75rem; border-radius: 20px;
+  font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px;
+}
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); border: 1px solid rgba(19,125,197,0.3); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); border: 1px solid rgba(255,215,0,0.3); }
+.badge-green { background: var(--mia-positive-dim); color: #16a34a; border: 1px solid rgba(66,211,111,0.3); }
+.badge-red { background: var(--mia-critical-dim); color: var(--mia-critical); border: 1px solid rgba(239,68,68,0.3); }
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+  margin-left: 28px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--mia-blue), var(--mia-gold));
+  border-radius: 3px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 40px;
+}
+.timeline-dot {
+  position: absolute;
+  left: -8px; top: 6px;
+  width: 19px; height: 19px;
+  background: var(--mia-blue);
+  border: 4px solid var(--mia-offwhite);
+  border-radius: 50%;
+  z-index: 2;
+}
+.timeline-content {
+  background: var(--mia-white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  transition: all var(--transition-normal);
+}
+.timeline-content:hover {
+  border-color: var(--mia-blue);
+  box-shadow: var(--shadow-md), var(--shadow-glow-blue);
+  transform: translateX(4px);
+}
+.timeline-title {
+  font-weight: 700;
+  color: var(--mia-navy);
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+}
+.timeline-subtitle {
+  font-size: .78rem;
+  color: var(--mia-blue);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: .5rem;
+}
+.timeline-text {
+  font-size: .92rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .hero-kpi-value { font-size: 2rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  .section-header { flex-direction: column; gap: .75rem; }
+  .card-grid-2, .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; }
+  .maturity-bar { grid-template-columns: 1fr; gap: .5rem; }
+  nav.toc .toc-inner { padding: 0 1rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  .section-dark { margin: 0 -1rem; padding: 3rem 1rem; }
+  .timeline { margin-left: 16px; }
+  .timeline-item { padding-left: 30px; }
+}
+
+@media print {
+  nav.toc, footer, .modal-overlay { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { color: #000; background: #fff; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ============================== HERO ============================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+
+    <h1>Analisis <span>AS-IS</span></h1>
+    <p class="hero-subtitle">Estado actual de operaciones, brechas criticas y oportunidades de (R)Evolución. De donde partimos, hacia donde vamos, y que necesitamos construir.</p>
+
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">100%</div>
+        <div class="hero-kpi-label">Tareas Manuales Hoy</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">64h/mes</div>
+        <div class="hero-kpi-label">Recuperables con IA</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value">N0</div>
+        <div class="hero-kpi-label">Madurez Digital Actual</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-value blue">9:1</div>
+        <div class="hero-kpi-label">Estandar Objetivo</div>
+      </div>
+    </div>
+
+    <p class="hero-punchline">No digitalizamos lo viejo. Diseñamos lo nuevo con la diseño correcto desde el dia uno.</p>
+  </div>
+</header>
+
+<!-- STICKY TOC -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#resumen" class="toc-link active">Resumen</a>
+    <a href="#contexto" class="toc-link">Contexto</a>
+    <a href="#numeros" class="toc-link">Numeros</a>
+    <a href="#brechas" class="toc-link">Brechas</a>
+    <a href="#protocolos" class="toc-link">Protocolos</a>
+    <a href="#escenarios" class="toc-link">Escenarios</a>
+    <a href="#madurez" class="toc-link">Madurez</a>
+    <a href="#modelo" class="toc-link">Modelo</a>
+  </div>
+</nav>
+
+<!-- RESUMEN EJECUTIVO -->
+<section id="resumen">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div>
+        <h2>Resumen Ejecutivo</h2>
+        <p class="section-subtitle">Posicion hoy, oportunidad inmediata, proximos pasos</p>
+      </div>
+    </div>
+
+    <div class="card-grid-3">
+      <div class="card card-accent card-clickable animate-on-scroll" onclick="openModal('modal-posicion-hoy')">
+        <h3>Posicion Hoy</h3>
+        <p>V&A Consulting es una consultoria HR validada con 6 clientes en 6 meses, metodologia probada y product-market fit demostrado. Sin embargo, todas las operaciones son 100% manuales: propuestas en Word, FAQs por email, documentos desde cero cada semana.</p>
+        <p class="card-click-hint">El cuello de botella es tiempo humano, no demanda →</p>
+        <span class="card-click-hint">Ver detalle &rarr;</span>
+      </div>
+      <div class="card card-gold card-clickable animate-on-scroll" onclick="openModal('modal-oportunidad')">
+        <h3>Oportunidad</h3>
+        <p>De 160 horas operativas mensuales, el 40% (64h) se va en tareas que nunca deberian hacerse a mano. Con Gemini + Gemas vitaminadas, pueden sistematizarlas en 12 meses. Resultado: escalar a 20+ clientes sin agregar headcount.</p>
+        <p class="card-click-hint">Costo de inaccion: capacidad desperdiciada mes a mes →</p>
+        <span class="card-click-hint">Ver detalle &rarr;</span>
+      </div>
+      <div class="card card-accent card-clickable animate-on-scroll" onclick="openModal('modal-proximos-pasos')">
+        <h3>Proximos Pasos</h3>
+        <p>Suscripcion de 12 meses con 9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica) para diseñar y entrenar 5 protocolos clave: Ventas, Propuestas, Entrega, FAQs, Documentos. Objetivo: pasar de "consultoría manual" a "consultoría nativa en IA".</p>
+        <p class="card-click-hint">Ver modelo de suscripcion →</p>
+        <span class="card-click-hint">Ver detalle &rarr;</span>
+      </div>
+    </div>
+
+    <div class="punchline">De consultores que ejecutan, a artesanos que entrenan maquinas.</div>
+  </div>
+</section>
+
+<!-- CONTEXTO V&A -->
+<section id="contexto">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div>
+        <h2>Contexto: V&A Consulting</h2>
+        <p class="section-subtitle">Fortalezas, trayectoria, oportunidad producto-mercado</p>
+      </div>
+    </div>
+
+    <div class="card-grid-3">
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-fortaleza-metodologia')">
+        <div class="card-icon gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+            <path d="M10 17l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+          </svg>
+        </div>
+        <h3>Metodologia Validada</h3>
+        <p>En 6 meses, V&A ha desarrollado un sistema probado de diagnóstico y (R)Evolución HR. 6 clientes adquiridos orgánicamente con alta satisfacción. El marco metodologico es el activo mas valioso.</p>
+        <span class="card-click-hint">Cómo protegemos la metodología →</span>
+      </div>
+
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-fortaleza-expertise')">
+        <div class="card-icon gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+          </svg>
+        </div>
+        <h3>Expertise HR Profunda</h3>
+        <p>Verónica y Ángela Sánchez traen años de experiencia en (R)Evolución organizacional, cultura y talent. No es "consultoria genérica": es especialización en personas, procesos y sistemas que funcionan.</p>
+        <span class="card-click-hint">Cómo la IA amplifica la expertise →</span>
+      </div>
+
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-fortaleza-pmf')">
+        <div class="card-icon gold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Product-Market Fit Probado</h3>
+        <p>6 clientes en 6 meses, sin presupuesto de marketing. Demanda organica, referencias internas, retencion alta. El mercado valida el valor propuesto. Ahora el reto es escala sin comprometer calidad.</p>
+        <span class="card-click-hint">Cómo escalar con IA sin perder calidad →</span>
+      </div>
+    </div>
+
+    <div class="punchline">Tienen la brujula (metodologia), el talento (expertise) y la traccion (PMF). Necesitan alas (IA).</div>
+  </div>
+</section>
+
+<!-- LA REALIDAD EN NUMEROS -->
+<section id="numeros">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div>
+        <h2>La Realidad en Numeros</h2>
+        <p class="section-subtitle">Donde desaparece el tiempo, donde esta el trabajo manual</p>
+      </div>
+    </div>
+
+    <div class="card-grid-3">
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-kpi-horas')">
+        <h3 style="color: var(--mia-critical);">64h/Mes</h3>
+        <p>De 160 horas operativas mensuales, el 40% se destina a tareas repetitivas que drenan capacidad: propuestas, FAQs, documentos, seguimiento. Son 64 horas/mes (768h/año) que podrian reinvertirse en crecimiento.</p>
+        <span class="card-click-hint">Ver desglose detallado →</span>
+        <span class="card-click-hint">Ver detalle &rarr;</span>
+      </div>
+
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-kpi-clientes')">
+        <h3 style="color: var(--mia-blue);">6 Clientes / 6 Meses</h3>
+        <p>Crecimiento organico validado. Sin embargo, la capacidad es limitada: 3-5 propuestas por mes (6h cada una), 50 preguntas FAQ respondidas manualmente por email, documentos desde cero cada semana. El cuello de botella es V&A, no el mercado.</p>
+        <span class="card-click-hint">Ver calculo de capacidad máxima →</span>
+        <span class="card-click-hint">Ver detalle &rarr;</span>
+      </div>
+
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-kpi-estandar')">
+        <h3 style="color: var(--mia-gold);">9:1 Estándar de IA</h3>
+        <p>Por cada 10 tareas operacionales, 9 pueden ser ejecutadas por IA, 1 por humano. En V&A, hoy es 0:10. Target: llegar a 9:1 en protocolos clave (propuestas, FAQs, documentos). Con 40% de ahorro sobre 160h/mes, V&A recupera 64h/mes desde el primer año.</p>
+        <span class="card-click-hint">Entender el estándar 9:1 →</span>
+        <span class="card-click-hint">Ver detalle &rarr;</span>
+      </div>
+    </div>
+
+    <div class="punchline">Escala = velocidad de operaciones, no numero de personas. Hoy estan en 0x velocity.</div>
+  </div>
+</section>
+
+<!-- BRECHAS CRITICAS -->
+<section id="brechas" class="section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div>
+        <h2>Brechas Criticas Detectadas</h2>
+        <p class="section-subtitle">Lo que falta para escala inteligente</p>
+      </div>
+    </div>
+
+    <div class="card-grid-3">
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-brecha-crm')">
+        <div class="card-icon critical">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M16 11h6M19 8v6"/>
+          </svg>
+        </div>
+        <h3>Sin CRM</h3>
+        <p>No existe sistema de seguimiento de clientes, contactos o propuestas. Todo en email y archivos dispersos. Consecuencia: pérdida de contexto, duplicación de esfuerzos, imposible auditar proceso de ventas.</p>
+        <span class="card-click-hint">Cómo agregamos CRM en Sheets →</span>
+      </div>
+
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-brecha-procesos')">
+        <div class="card-icon critical">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            <path d="M16 16h-12v-2m3-3h6"/>
+          </svg>
+        </div>
+        <h3>Procesos Manuales</h3>
+        <p>Propuestas: Word, copy-paste, cambios manuales. FAQs: email responses sin plantillas. Documentos: desde cero cada vez. Sin protocolos, sin templates, sin checklist. Variabilidad alta, aprendizaje nulo.</p>
+        <span class="card-click-hint">Cómo sistematizamos procesos →</span>
+      </div>
+
+      <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-brecha-capacidad')">
+        <div class="card-icon critical">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="8 7 12 3 16 7"/>
+            <polyline points="8 7 4 11"/>
+            <rect x="3" y="11" width="18" height="10" rx="2"/>
+            <rect x="9" y="11" width="6" height="5"/>
+          </svg>
+        </div>
+        <h3>Capacidad Estancada</h3>
+        <p>V&A esta limitada por horas disponibles (2 personas), no por demanda. En 6 meses han escrito ~200 propuestas, respondido ~300 FAQs, generado ~100 documentos. Maxima viable: 1000 tareas/año. Necesitan 9x mas velocidad sin agregar headcount.</p>
+        <span class="card-click-hint">Modelo de escala con IA →</span>
+      </div>
+    </div>
+
+    <div class="punchline">Tres brechas que una suscripcion de 12 meses puede cerrar en paralelo.</div>
+  </div>
+</section>
+
+<!-- 5 PROTOCOLOS -->
+<section id="protocolos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div>
+        <h2>5 Protocolos a Sistematizar</h2>
+        <p class="section-subtitle">Donde inicia la (R)Evolución: de manual a inteligente</p>
+      </div>
+    </div>
+
+    <div class="protocol-card animate-on-scroll" onclick="openModal('modal-protocolo-ventas')">
+      <div class="protocol-header">
+        <div class="protocol-number">1</div>
+        <h3 class="protocol-title">Protocolo de Ventas</h3>
+      </div>
+      <p class="protocol-desc">Prospección, calificación de leads, seguimiento, cierre. Hoy: networking manual, excels dispersos, seguimiento ad-hoc.</p>
+      <div class="protocol-before-after">
+        <div><span class="before-label">Hoy:</span> Networking manual, sin CRM</div>
+        <div><span class="after-label">Mañana:</span> Gemini + CRM en Sheets</div>
+      </div>
+      <span class="card-click-hint">Ver (R)Evolución completa →</span>
+    </div>
+
+    <div class="protocol-card animate-on-scroll" onclick="openModal('modal-protocolo-propuestas')">
+      <div class="protocol-header">
+        <div class="protocol-number">2</div>
+        <h3 class="protocol-title">Protocolo de Propuestas</h3>
+      </div>
+      <p class="protocol-desc">Generacion de propuestas customizadas. Hoy: 6 horas por propuesta en Word, cambios manuales, inconsistencia.</p>
+      <div class="protocol-before-after">
+        <div><span class="before-label">Hoy:</span> 6h manual por propuesta</div>
+        <div><span class="after-label">Mañana:</span> Gema Propuestas 15 min</div>
+      </div>
+      <span class="card-click-hint">Ver automatizacion →</span>
+    </div>
+
+    <div class="protocol-card animate-on-scroll" onclick="openModal('modal-protocolo-entrega')">
+      <div class="protocol-header">
+        <div class="protocol-number">3</div>
+        <h3 class="protocol-title">Protocolo de Entrega</h3>
+      </div>
+      <p class="protocol-desc">Ejecucion de servicios, onboarding, seguimiento. Hoy: conversaciones 1-on-1 sin estructura, sin playbooks.</p>
+      <div class="protocol-before-after">
+        <div><span class="before-label">Hoy:</span> 1-on-1 ad-hoc sin playbooks</div>
+        <div><span class="after-label">Mañana:</span> Playbooks + Gemas por tipo</div>
+      </div>
+      <span class="card-click-hint">Ver sistematizacion →</span>
+    </div>
+
+    <div class="protocol-card animate-on-scroll" onclick="openModal('modal-protocolo-faqs')">
+      <div class="protocol-header">
+        <div class="protocol-number">4</div>
+        <h3 class="protocol-title">Protocolo de FAQs/Support</h3>
+      </div>
+      <p class="protocol-desc">Respuestas a preguntas repetitivas de clientes. Hoy: horas semanales respondiendo emails manualmente.</p>
+      <div class="protocol-before-after">
+        <div><span class="before-label">Hoy:</span> Email manual, horas/semana</div>
+        <div><span class="after-label">Mañana:</span> Gema FAQs 24/7</div>
+      </div>
+      <span class="card-click-hint">Ver integracion →</span>
+    </div>
+
+    <div class="protocol-card animate-on-scroll" onclick="openModal('modal-protocolo-docs')">
+      <div class="protocol-header">
+        <div class="protocol-number">5</div>
+        <h3 class="protocol-title">Protocolo de Documentos</h3>
+      </div>
+      <p class="protocol-desc">Generacion de guides, reportes, playbooks. Hoy: horas significativas escribiendo desde cero cada documento.</p>
+      <div class="protocol-before-after">
+        <div><span class="before-label">Hoy:</span> Desde cero, horas/semana</div>
+        <div><span class="after-label">Mañana:</span> Gema Docs + templates</div>
+      </div>
+      <span class="card-click-hint">Ver aceleracion →</span>
+    </div>
+
+    <div class="punchline">Cinco protocolos = 40% del tiempo operativo liberado. Uno por mes, listo y funcional.</div>
+  </div>
+</section>
+
+<!-- ESCENARIOS DE IMPACTO -->
+<section id="escenarios">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div>
+        <h2>Escenarios de Impacto</h2>
+        <p class="section-subtitle">Before/After con Gemini + Gemas vitaminadas</p>
+      </div>
+    </div>
+
+    <table class="data-table animate-on-scroll">
+      <thead>
+        <tr>
+          <th>Tarea</th>
+          <th>Hoy sin IA</th>
+          <th>Con Gemini + Gemas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-task">Propuesta comercial</td>
+          <td class="col-hoy">6 horas (Word + cambios manuales)</td>
+          <td class="col-manana">15 minutos (Gema Propuestas)</td>
+        </tr>
+        <tr>
+          <td class="col-task">Respuesta a FAQ cliente</td>
+          <td class="col-hoy">30 min por email</td>
+          <td class="col-manana">Respuesta instant 24/7</td>
+        </tr>
+        <tr>
+          <td class="col-task">Documento de diagnóstico</td>
+          <td class="col-hoy">20 horas (investigacion + redaccion)</td>
+          <td class="col-manana">2 horas (Gema Docs + review)</td>
+        </tr>
+        <tr>
+          <td class="col-task">Calificación de lead</td>
+          <td class="col-hoy">Manual, sin criterios</td>
+          <td class="col-manana">Gemini + CRM auto-scoring</td>
+        </tr>
+        <tr>
+          <td class="col-task">Playbook de capacitacion</td>
+          <td class="col-hoy">No existe (ad-hoc)</td>
+          <td class="col-manana">Gema genera en 1 hora</td>
+        </tr>
+        <tr>
+          <td class="col-task">Seguimiento de cliente</td>
+          <td class="col-hoy">Excel disperso, sin alertas</td>
+          <td class="col-manana">CRM en Sheets + Gemini alerts</td>
+        </tr>
+        <tr>
+          <td class="col-task">Análisis de datos HR</td>
+          <td class="col-hoy">Manual, 5h por reporte</td>
+          <td class="col-manana">Gemini + Charts 30 min</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-blue" style="margin-top: 2rem;">
+      <strong>Impacto total estimado:</strong> De 160 horas operativas mensuales, 64 se recuperan con IA (40% de ahorro). Son 768 horas/año liberadas para actividades de mayor valor: client relationships, estrategia, desarrollo de producto. Equivalente a 19 semanas de jornada completa disponibles para crecer.
+    </div>
+
+    <div class="punchline">No es "automatizar para reducir gente". Es "automatizar para escalar sin limites de capacidad".</div>
+  </div>
+</section>
+
+<!-- MADUREZ DIGITAL -->
+<section id="madurez" class="section-dark">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div>
+        <h2 style="cursor:pointer;" onclick="openModal('modal-madurez')">Madurez Digital Hoy vs Objetivo</h2>
+        <p class="section-subtitle">Camino de Nivel Cero (N0) a Nivel Uno (N1) en cada dimensión <span class="card-click-hint" style="color:var(--mia-blue-light);" onclick="openModal('modal-madurez')">Cómo medimos tu madurez digital &rarr;</span></p>
+      </div>
+    </div>
+
+    <div class="maturity-section">
+      <div class="maturity-bar dark">
+        <div class="maturity-name">Infraestructura</div>
+        <div class="progress-track dark">
+          <div class="progress-fill" style="width: 10%;"></div>
+        </div>
+        <div class="maturity-level">N0 → N1</div>
+      </div>
+      <p style="color: var(--mia-text); margin: 1rem 0 0 0; font-size: 0.9rem;">Hoy: email + Google Drive. Target: Google Workspace integrado + sheets como base de datos.</p>
+    </div>
+
+    <div class="maturity-section">
+      <div class="maturity-bar dark">
+        <div class="maturity-name">CRM / Datos de Clientes</div>
+        <div class="progress-track dark">
+          <div class="progress-fill" style="width: 5%;"></div>
+        </div>
+        <div class="maturity-level">N0 → N1</div>
+      </div>
+      <p style="color: var(--mia-text); margin: 1rem 0 0 0; font-size: 0.9rem;">Hoy: cero visibilidad. Target: CRM en Sheets, pipeline visible, historial de cliente accesible.</p>
+    </div>
+
+    <div class="maturity-section">
+      <div class="maturity-bar dark">
+        <div class="maturity-name">Documentacion / Templates</div>
+        <div class="progress-track dark">
+          <div class="progress-fill" style="width: 30%;"></div>
+        </div>
+        <div class="maturity-level">N1 → N1+</div>
+      </div>
+      <p style="color: var(--mia-text); margin: 1rem 0 0 0; font-size: 0.9rem;">Hoy: algunas guias internas, nada sistematizado. Target: biblioteca de templates, documentos generables por IA.</p>
+    </div>
+
+    <div class="maturity-section">
+      <div class="maturity-bar dark">
+        <div class="maturity-name">Automatizacion</div>
+        <div class="progress-track dark">
+          <div class="progress-fill" style="width: 8%;"></div>
+        </div>
+        <div class="maturity-level">N0 → N1</div>
+      </div>
+      <p style="color: var(--mia-text); margin: 1rem 0 0 0; font-size: 0.9rem;">Hoy: zero. Target: flujos en AntiGravity, google native tools, triggers entre apps.</p>
+    </div>
+
+    <div class="maturity-section">
+      <div class="maturity-bar dark">
+        <div class="maturity-name">GenAI / LLMs</div>
+        <div class="progress-track dark">
+          <div class="progress-fill" style="width: 15%;"></div>
+        </div>
+        <div class="maturity-level">N0 → N1</div>
+      </div>
+      <p style="color: var(--mia-text); margin: 1rem 0 0 0; font-size: 0.9rem;">Hoy: experimentacion puntual. Target: 5 Gemas vitaminadas funcionando en produccion, integradas en procesos.</p>
+    </div>
+
+    <div class="maturity-section">
+      <div class="maturity-bar dark">
+        <div class="maturity-name">Analytics / Insights</div>
+        <div class="progress-track dark">
+          <div class="progress-fill" style="width: 5%;"></div>
+        </div>
+        <div class="maturity-level">N0 → N1</div>
+      </div>
+      <p style="color: var(--mia-text); margin: 1rem 0 0 0; font-size: 0.9rem;">Hoy: reportes manuales. Target: dashboards en Sheets, analisis automatizados, KPIs visibles.</p>
+    </div>
+
+    <div class="punchline">Maturity = velocidad de operaciones. Subir de N0 a N1 significa multiplicar x10 sin agregar gente.</div>
+  </div>
+</section>
+
+<!-- MODELO DE SUSCRIPCION -->
+<section id="modelo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <div>
+        <h2>Modelo de Suscripcion Anual</h2>
+        <p class="section-subtitle">El nivel mas alto de la escalera de valor: acompañamiento continuo durante 12 meses <span class="card-click-hint" onclick="openModal('modal-modelo-suscripcion')">Estructura semana a semana &rarr;</span></p>
+      </div>
+    </div>
+
+    <div class="callout callout-blue" style="margin-bottom: 2rem;">
+      <strong>Contexto dentro de la Escalera de Valor:</strong> Este modelo de suscripcion anual representa el compromiso mas completo. Los modulos anteriores (Diagnostico gratuito, Workshop Introductorio 200k COP, Bootcamp de Ventas 800k COP, Programa (R)Evolución 500k COP/asistente) funcionan como puntos de entrada progresivos. Cada uno incluye todo lo del anterior y añade capacidades. La suscripcion anual integra todos los beneficios desde el primer mes. Ver detalles completos en el documento 04 — Diseño Comercial.
+    </div>
+
+    <div class="card card-gold" style="margin-bottom: 2rem;">
+      <h3>Estructura de Compromiso</h3>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
+        <div>
+          <h4 style="color: var(--mia-blue);">Duracion</h4>
+          <p style="font-size: 1.3rem; font-weight: 700; color: var(--mia-navy);">12 meses</p>
+          <p style="color: #64748B; font-size: 0.9rem;">Primer mes prepagado. Todos los beneficios desde el dia 1.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--mia-blue);">Carga Semanal</h4>
+          <p style="font-size: 1.3rem; font-weight: 700; color: var(--mia-navy);">6 horas</p>
+          <p style="color: #64748B; font-size: 0.9rem;">3h conjuntas, 3h independientes, 2h sync, 1h clínica</p>
+        </div>
+        <div>
+          <h4 style="color: var(--mia-blue);">Entregable Principal</h4>
+          <p style="font-size: 1.3rem; font-weight: 700; color: var(--mia-navy);">5 Protocolos</p>
+          <p style="color: #64748B; font-size: 0.9rem;">Cada uno entregado, testeado, automatizado.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 2rem; margin-bottom: 1.5rem;">Timeline de Entrega</h3>
+    <div class="timeline animate-on-scroll">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">Mes 1-2: Diagnosis & Stack</div>
+          <div class="timeline-subtitle">Fundación</div>
+          <p class="timeline-text">Auditoria de procesos actuales. Configuracion de Google Workspace + Sheets + Gemini. Identificacion de victorias rapidas. Entrenamiento basico en NotebookLM.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">Mes 3-5: Protocolos 1-2</div>
+          <div class="timeline-subtitle">Ventas + Propuestas</div>
+          <p class="timeline-text">Protocolo de Ventas: CRM en Sheets + Gemini scoring. Protocolo de Propuestas: Gema customizada, templates, flujo de aprobacion.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">Mes 6-8: Protocolos 3-4</div>
+          <div class="timeline-subtitle">Entrega + FAQs</div>
+          <p class="timeline-text">Protocolo de Entrega: playbooks, onboarding flows, Gema por tipo de proyecto. Protocolo FAQs: Gema integrada en email, respuestas 24/7.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">Mes 9-11: Protocolo 5 + Escalamiento</div>
+          <div class="timeline-subtitle">Documentos + Optimizacion</div>
+          <p class="timeline-text">Protocolo de Documentos: Gema genera guias, reportes, playbooks. Optimizacion de todos los flujos, integraciones entre protocolos.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">Mes 12: Graduacion</div>
+          <div class="timeline-subtitle">Para dejar de necesitar consultores</div>
+          <p class="timeline-text">Transferencia de conocimiento, documentacion completa, traspaso de gobernanza. V&A opera autonomamente con Gemas vitaminadas. Soporte puntual posterior al lanzamiento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-accent" style="margin-top: 2rem;">
+      <h3>Asignación de Horas por Semana</h3>
+      <p style="margin-bottom: 1.5rem;">9 horas/semana (~36h/mes) distribuidas asi:</p>
+      <ul style="list-style: none; margin: 0;">
+        <li style="margin-bottom: 0.8rem;"><strong>3h Sesiones Conjuntas (MetodologIA + Cliente):</strong> Modulos de formacion, configuracion de Gemas, testing, documentacion.</li>
+        <li style="margin-bottom: 0.8rem;"><strong>3h Trabajo Independiente:</strong> Practica con herramientas IA, iteracion basada en feedback, experimentacion.</li>
+        <li style="margin-bottom: 0.8rem;"><strong>2h Sincronizacion:</strong> Sesiones en vivo — revision de avances, resolucion de blockers, ajustes de gobernanza.</li>
+        <li style="margin-bottom: 0;"><strong>1h Clínica Semanal:</strong> Sesion semanal en mes 1, quincenal meses 2-3, luego mensual.</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-blue" style="margin-top: 2rem;">
+      <strong>Objetivo único:</strong> Al finalizar mes 12, V&A Consulting será capaz de agregar 2-3 clientes nuevos por mes sin agregar consultores. Operaciones totalmente sistematizadas, IA nativa, 768 horas/año liberadas (64h/mes × 12) convertidas en crecimiento.
+    </div>
+
+    <div class="punchline">12 meses de inversion para 10+ años de autonomia escalada.</div>
+  </div>
+</section>
+
+<!-- COSTO DE INACCION (MODAL TRIGGER) -->
+<section>
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Costo de Inaccion</h2>
+    <div class="card card-clickable animate-on-scroll" onclick="openModal('modal-costo-inaccion')" style="text-align: center; padding: 3rem;">
+      <h3 style="color: var(--mia-critical);">Si no transforman en los proximos 12 meses...</h3>
+      <p style="font-size: 1.1rem; margin: 1.5rem 0;">Veran cumplirse la paradoja: mas clientes = menos margen. Mas propuestas = menos tiempo para estrategia. Mas FAQs = mas burnout.</p>
+      <p><strong>Hacer click para ver el calculo detallado</strong></p>
+      <span class="card-click-hint">Costo de inaccion →</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="background: var(--mia-blue-dim); border-top: 1px solid var(--mia-blue);">
+  <div class="container" style="text-align: center; padding: 3rem 0;">
+    <h2>Proximos Pasos</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #64748B;">Agendar una sesion de 30 minutos para validar diagnosis, responder preguntas, y diseñar plan de accion personalizado.</p>
+    <a href="https://calendar.app.google/pf8cDe19Cr4ty9u99" class="cta-button" target="_blank">Agendar Sesion de Validacion</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg" style="width: 100px; height: 22px;">
+        <rect width="180" height="40" rx="8" fill="url(#miaGrad)"/>
+        <defs>
+          <linearGradient id="miaGrad" x1="0" y1="0" x2="180" y2="40">
+            <stop offset="0%" stop-color="#0A122A"/>
+            <stop offset="100%" stop-color="#1e293b"/>
+          </linearGradient>
+        </defs>
+        <path d="M16 28V12h4.5l4.5 10 4.5-10H34v16h-3V17l-4 9h-3l-4-9v11z" fill="white"/>
+        <path d="M38 28V12h3v16z" fill="white"/>
+        <path d="M50 12h3l7 16h-3.2l-1.5-3.5h-7.6L46.2 28H43zm1.5 4l-2.8 6.5h5.6z" fill="white"/>
+        <circle cx="160" cy="20" r="12" fill="none" stroke="#FFD700" stroke-width="1.5"/>
+      </svg>
+      <span class="footer-brand-name">V&A Consulting</span>
+    </div>
+    <p>Analisis AS-IS para (R)Evolución digital en consultoria HR</p>
+    <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--mia-text-muted);">MetodologIA × V&A Consulting — Marzo 2026</p>
+  </div>
+</footer>
+
+<!-- MODALS -->
+
+<!-- FORTALEZA: Metodologia -->
+<div id="modal-fortaleza-metodologia" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-fortaleza-metodologia')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-fortaleza-metodologia')">×</button>
+    <h2>Metodologia <span>Validada</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-gold">Fortaleza Actual</span>
+      <span class="badge badge-blue">Activo Principal</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Riesgo Sin IA</div>
+      <p>Metodologia escalable pero atada a personas. Si V&A agrega staff, metodologia se diluye. Sin protocolos digitales, cada junior interpreta diferente.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo Anticipamos</div>
+      <p>Una metodologia en personas no es escalable. Necesita codificarse en procesos, templates, y gemas. El riesgo es mayor a medida que crecen.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como Protegemos la Metodologia</div>
+      <ul>
+        <li>Cada paso de la metodologia se traduce a protocolo (especificacion).</li>
+        <li>Cada protocolo genera templates, checklists, y Gema vitaminada.</li>
+        <li>Cualquier nuevo consultor (o cliente) usa la Gema, no reinventa.</li>
+        <li>Metodologia se vuelve "codigo", reproducible, escalable.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Metodologia documentada y operacionalizada. Escalan sin perder diferenciacion. Nuevo staff o clientes siguen el mismo estándar de calidad. Activo valorizado (el codigo es activo, no las personas).</p>
+    </div>
+  </div>
+</div>
+
+<!-- FORTALEZA: Expertise -->
+<div id="modal-fortaleza-expertise" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-fortaleza-expertise')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-fortaleza-expertise')">×</button>
+    <h2>Expertise HR <span>Profunda</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-gold">Fortaleza Actual</span>
+      <span class="badge badge-green">Multiplicador de IA</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Limitacion Sin IA</div>
+      <p>Expertise es profunda pero lenta. Una diagnosis toma 20+ horas. Un playbook corporativo toma semanas. El expertise no se replica, se vende una vez a la vez.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo Anticipamos</div>
+      <p>IA no reemplaza expertise. Lo amplifica. Una Gema "nutrida" con el expertise de V&A puede escalar la diagnosis de 1 cliente a 10, sin perder calidad.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como la IA Amplifica</div>
+      <ul>
+        <li>Gemas vitaminadas entrenadas con playbooks, cases, y frameworks de V&A.</li>
+        <li>Gemini genera drafts en minutos; Verónica y Ángela revisan y ajustan en 1 hora vs 20.</li>
+        <li>Conocimiento de V&A se convierte en asistentes que trabajan 24/7.</li>
+        <li>Cada cliente recibe el mismo nivel de expertise, escala sin costo.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Expertise ampliada. Diagnosticos en horas. Playbooks en dias. Capacidad de consultoria se vuelve 10x. Verónica y Ángela se enfoca en strategy y client relationships, no en tareas repetitivas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FORTALEZA: PMF -->
+<div id="modal-fortaleza-pmf" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-fortaleza-pmf')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-fortaleza-pmf')">×</button>
+    <h2>Product-Market Fit <span>Probado</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-gold">Fortaleza Actual</span>
+      <span class="badge badge-green">Base para Escalado</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Oportunidad Perdida</div>
+      <p>Demanda organica esta ahi, pero no pueden servir a mas clientes. Capacidad limitada = demanda no satisfecha = ingresos no capturados. Cada cliente es "hasta donde damos abasto".</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo Anticipamos</div>
+      <p>PMF + Escalabilidad es la combinacion ganadora. Tienen la validacion del mercado. Ahora necesitan la automatizacion para multiplicar revenue sin multiplcar headcount.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como Escalamos sin Perder Calidad</div>
+      <ul>
+        <li>Protocolos sistematizados = calidad consistente.</li>
+        <li>IA maneja 90% del trabajo operational.</li>
+        <li>V&A se enfoca en strategy, deseo, diferenciacion.</li>
+        <li>Capacidad sube de 6 clientes/6 meses a 20+ clientes/6 meses.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Demanda ilimitada puede ser servida. Revenue escala sin ceiling. V&A pasa de "consultoria boutique limitada" a "consultoria nativa en IA, escalable". Valuacion multiplica con visible growth trajectory.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BRECHA: Sin CRM -->
+<div id="modal-brecha-crm" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-brecha-crm')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-brecha-crm')">×</button>
+    <h2>Sin CRM <span>Visibility Gap</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-red">Brecha Critica</span>
+      <span class="badge badge-blue">Protocolos: 1, 2</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>Clientes dispersos en emails, contactos en tel/whatsapp, propuestas perdidas en archivos. No hay pipeline visible. Preguntas: "Cuantos prospects en conversacion?", "Que edad tiene este lead?" → sin respuesta clara.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo Anticipamos</div>
+      <p>Sin CRM no hay datos. Sin datos, no hay IA efectiva. Gemini no puede scoring automático si no tiene datos limpios. Cada operacion toma 10x más porque todo es búsqueda manual.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como Removemos la Friccion</div>
+      <ul>
+        <li>CRM minimalista en Google Sheets: cliente, contacto, estado, fecha, valor estimado.</li>
+        <li>Gemini integrado para auto-scoring y alertas.</li>
+        <li>Flujos automatizados de notificación (AntiGravity).</li>
+        <li>Historial de cliente accesible, contexto disponible para cada interaccion.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Pipeline visible en 1 click. Leads rankeados por probabilidad. Alertas automáticas de clientes en riesgo. Capacidad de forecasting. Toma 2 meses implementar, genera valor inmediato.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BRECHA: Procesos Manuales -->
+<div id="modal-brecha-procesos" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-brecha-procesos')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-brecha-procesos')">×</button>
+    <h2>Procesos <span>100% Manuales</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-red">Brecha Critica</span>
+      <span class="badge badge-blue">Protocolos: 2, 4, 5</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>Propuestas: documento Word, cambios manuales, sin versionado. FAQs: respuesta email por email, sin base de conocimiento. Documentos: cada uno creado desde cero, sin plantillas, sin reutilizacion.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo Anticipamos</div>
+      <p>Procesos manuales = sin escala. Cada propuesta requiere 6 horas de V&A. Limite maximo: 5 propuestas/mes. Con 20 clientes nuevos, seria 40 propuestas/mes = imposible. Esto mata el crecimiento.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como Sistematizamos</div>
+      <ul>
+        <li>Protocolo de Propuestas: Gema + templates = 15 min vs 6h.</li>
+        <li>Protocolo de FAQs: Gema integrada en email = respuesta instant, no manual.</li>
+        <li>Protocolo de Docs: Gema genera drafts = 2h vs 20h.</li>
+        <li>Cada protocolo tiene checklist, approval flow, quality gate.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Procesos escalables. Velocidad sube de 1x a 24x (propuestas). Calidad consistente. Nuevo staff o futuro no necesita capacitacion larga: sigue el protocolo. Operaciones predecibles, mejorables, documentadas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BRECHA: Capacidad Estancada -->
+<div id="modal-brecha-capacidad" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-brecha-capacidad')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-brecha-capacidad')">×</button>
+    <h2>Capacidad <span>Estancada</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-red">Brecha Critica</span>
+      <span class="badge badge-blue">Todos los Protocolos</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>2 personas, 6 clientes actuales. Demanda no es el problema: hay 10+ clientes en lista de espera. Problema: V&A esta al 100% operacional. No hay bandwidth para strategy, innovation, o crecimiento consciente.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como lo Anticipamos</div>
+      <p>En 12 meses, sin sistematizacion, V&A estara burned out. Mas clientes = mas propuestas = mas FAQs = mas documentos = mas horas = mas burnout. La unica salida es: despedir clientes o agregar staff (perdiendo margen).</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como Escalar la Capacidad</div>
+      <ul>
+        <li>De 160h/mes operativas, 64h se recuperan con IA (40% de ahorro). Son 768h/año liberadas.</li>
+        <li>Esas horas se reasignan a: client relationships, estrategia, producto, desarrollo de negocio.</li>
+        <li>Resultado: de 6 clientes a 20+ clientes, misma carga horaria, mas revenue, menos burnout.</li>
+        <li>Escala sin agregar headcount = margen se dispara.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Capacidad 10x sin nuevo staff. V&A pasa de "saturados" a "escalables". Margin sube. Calidad mejora. Team puede pensar estrategicamente. Crecimiento es consciente, controlado, sostenible.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOLO: Ventas -->
+<div id="modal-protocolo-ventas" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-protocolo-ventas')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-protocolo-ventas')">×</button>
+    <h2>Protocolo de <span>Ventas</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Protocolo 1</span>
+      <span class="badge badge-gold">Mes 3-5</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>Prospección manual (networking). Sin CRM. Leads tirados en email. Sin scoring. Seguimiento ad-hoc. Algunas propuestas se pierden. Conversion rate desconocido.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo Anticipamos</div>
+      <p>Sin sistematizacion, V&A no puede saber que leads son "calientes". Pierden oportunidades. Cierre es lento (sale por referencias, no por process). Escala limitada a network personal.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo Removemos la Fricción</div>
+      <ul>
+        <li><strong>CRM minimalista en Sheets:</strong> empresa, contacto, fuente, fecha, estado, valor estimado.</li>
+        <li><strong>Gemini Auto-Scoring:</strong> Lee info del cliente, asigna score (A/B/C) basado en criterios V&A.</li>
+        <li><strong>AntiGravity Alerts:</strong> Notificacion cuando lead pasa de B a A, cuando se acerca deadline.</li>
+        <li><strong>Plantillas de Follow-up:</strong> Email templates para diferentes etapas del funnel.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Pipeline visible. 6 leads en conversacion, 2 en proposal stage, 1 negociando = clarity. Conversion rate medible. Seguimiento automatico = no se pierde ninguno. Escala: 20 leads simultaneos sin chaos. Revenue predecible.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOLO: Propuestas -->
+<div id="modal-protocolo-propuestas" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-protocolo-propuestas')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-protocolo-propuestas')">×</button>
+    <h2>Protocolo de <span>Propuestas</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Protocolo 2</span>
+      <span class="badge badge-gold">Mes 3-5</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>Propuesta = Word document 6 horas. Copy de template anterior, cambios manuales, ajustes de texto. Sin version control. A veces se mandan borradores por accidente. Sin libreria de componentes reutilizables.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo Anticipamos</div>
+      <p>Las propuestas consumen una fraccion enorme de las 160h operativas mensuales. Esto es el mayor cuello de botella. Sin automatizacion, escalar a 20 clientes es fisicamente imposible para 2 personas.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo Removemos la Fricción</div>
+      <ul>
+        <li><strong>Gema Propuestas:</strong> Entrenada con 10+ propuestas anteriores de V&A. Lee brief del cliente, genera draft ejecutivo, comercial, y timeline.</li>
+        <li><strong>Templates modularizados:</strong> Sections reutilizables (diagnosis, solucion, timeline, pricing, team).</li>
+        <li><strong>Approval flow:</strong> Draft auto → Verónica revisa (30 min) → cliente. No mas cambios manuales.</li>
+        <li><strong>Libreria de cases:</strong> Resultados anteriores, ROI, testimonios, integrados en propuesta.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Propuesta en 15 minutos vs 6 horas. Capacidad: 24 propuestas/mes (3/semana) vs 2-3/mes hoy. Tasa de aceptacion mejora (propuesta mas profesional, case studies integrados). Horas recuperadas se reinvierten en cerrar deals, no en escribir propuestas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOLO: Entrega -->
+<div id="modal-protocolo-entrega" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-protocolo-entrega')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-protocolo-entrega')">×</button>
+    <h2>Protocolo de <span>Entrega</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Protocolo 3</span>
+      <span class="badge badge-gold">Mes 6-8</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>Onboarding del cliente = 1-on-1 ad-hoc. Sin playbook. Sin estructura. Cada cliente es diferente = diferente proceso. Sin handbooks, sin checklists. Cliente no sabe que esperar.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo Anticipamos</div>
+      <p>Sin protocolos de entrega, calidad varia. Nuevo cliente puede tener experiencia 5x diferente al anterior. Riesgo: churn. Escalabilidad: imposible (cada cliente necesita atencion bespoke).</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo Removemos la Fricción</div>
+      <ul>
+        <li><strong>Guias por tipo de proyecto:</strong> (R)Evolución org, diagnosis cultura, diseño de rendimiento, etc. Cada uno con etapas, entregables, cronograma.</li>
+        <li><strong>Gema por tipo:</strong> Entrenada en dinamica de ese tipo de proyecto. Genera propuestas de talleres, agendas, diagnosticos preliminares.</li>
+        <li><strong>Portal de cliente:</strong> Verificaciones, entregables, cronograma visible. Recordatorios automaticos de seguimiento.</li>
+        <li><strong>Handbooks reutilizables:</strong> Si es diagnosis cultura, Gema genera handbook en 1h (vs V&A generándolo en 20h).</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Onboarding consistente, predecible, profesional. Cliente sabe que esperar desde dia 1. Escalabilidad: mismo standar de calidad con 20 clientes como con 2. Verónica y Ángela se enfoca en strategy de cliente, no en tareas. Churn baja. NPS sube.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOLO: FAQs -->
+<div id="modal-protocolo-faqs" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-protocolo-faqs')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-protocolo-faqs')">×</button>
+    <h2>Protocolo de <span>FAQs/Support</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Protocolo 4</span>
+      <span class="badge badge-gold">Mes 6-8</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>Cliente pregunta en email. V&A responde manualmente, 30 min-1h. Preguntas repetidas = respuestas repetidas. Horas semanales se van en FAQs. Clientes esperan 12-24h para respuesta. Sin knowledge base.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo Anticipamos</div>
+      <p>Con 20 clientes, las FAQs se multiplican exponencialmente. Sin automatizacion, V&A no puede escalar. La experiencia del cliente se degrada (espera mas tiempo).</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo Removemos la Fricción</div>
+      <ul>
+        <li><strong>Gema FAQs:</strong> Entrenada en knowledge de V&A (metodologia, procesos, tools, best practices). Lee pregunta del cliente, responde directo en <5 segundos.</li>
+        <li><strong>Integracion en email:</strong> Gema monitorea inbox, responde preguntas FAQ automaticamente, flagea complejas para Verónica.</li>
+        <li><strong>Knowledge base creativo:</strong> Gema aprende de cada pregunta. FAQ mas frecuentes se documentan, templatizan.</li>
+        <li><strong>Escalacion inteligente:</strong> Si pregunta es desconocida, forwarda a Verónica con contexto completo.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Respuestas instant 24/7. Cliente nunca espera. Horas semanales de FAQs se reducen a minutos de supervision. Verónica se libera para preguntas estrategicas. Knowledge se captura, se reutiliza, se mejora. Escalabilidad: mismo servicio, 20 clientes o 200.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOLO: Documentos -->
+<div id="modal-protocolo-docs" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-protocolo-docs')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-protocolo-docs')">×</button>
+    <h2>Protocolo de <span>Documentos</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Protocolo 5</span>
+      <span class="badge badge-gold">Mes 9-11</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Friccion Detectada</div>
+      <p>Documento = guides, reportes, playbooks, manuales. Cada uno escrito desde cero: investigacion, redaccion, revision = horas por documento. Parte significativa de las 160h operativas mensuales se va en produccion documental. Sin templates, sin estructura reutilizable.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Cómo lo Anticipamos</div>
+      <p>200 horas anuales en documentos es tiempo V&A que no puede dedicarse a clientes. Crecimiento = mas documentos = mas horas = bottleneck. Sin IA, documentacion es sacrificada (calidad baja).</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Cómo Removemos la Fricción</div>
+      <ul>
+        <li><strong>Gema Documentos:</strong> Entrenada con documentos anteriores de V&A (estructura, tono, frameworks). Lee brief del doc, genera draft completo (intro, sections, conclusiones, citas).</li>
+        <li><strong>Templates modularizados:</strong> Diagnosis, playbook, handbook, reporte, guia. Cada template tiene estructura + ejemplos.</li>
+        <li><strong>Research integrada:</strong> Gema hace research, busca ejemplos, arma referencias. V&A revisa, ajusta, publica.</li>
+        <li><strong>Libreria de componentes:</strong> Secciones reutilizables, graficos, cases, citas integradas en documentos futuros.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Documento en 2h vs 20h. Calidad consistente, profesional. La produccion documental se reduce al 10% del esfuerzo original. Documentacion es activo corporativo (se reutiliza, se mejora, se vende). Escalabilidad: documentacion abundante, no escasa. Verónica se libera para crear, no escribir.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Costo de Inaccion -->
+<div id="modal-costo-inaccion" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-costo-inaccion')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-costo-inaccion')">×</button>
+    <h2>Costo de <span>Inaccion</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-red">Escenario Pesimista</span>
+      <span class="badge badge-gold">Proximos 12 Meses</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Escenario Status Quo</div>
+      <p>V&A continua 100% manual. Consiguen 2-3 clientes nuevos/año (limites actuales). Demanda insatisfecha crece, pero no pueden servir. 64 horas/mes se pierden en trabajo repetitivo que nunca deberian hacer a mano.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Lo Que Pasa sin Sistematizacion</div>
+      <ul>
+        <li><strong>Burnout inevitable:</strong> Mas clientes = mas horas = saturacion = quality baja = churn.</li>
+        <li><strong>Revenue estancada:</strong> Limitados por tiempo personal. 12 clientes max vs 20+ posibles.</li>
+        <li><strong>Oportunidad perdida:</strong> 10+ clientes en lista de espera que no pueden servir. Cada mes sin sistematizar son 64 horas que se van en lo operativo en lugar de capturar demanda.</li>
+        <li><strong>Team bloqueada:</strong> No hay bandwidth para innovation, product development, strategy.</li>
+        <li><strong>Escala imposible:</strong> Para crecer, tendrian que contratar. Pero eso diluye metodologia, baja margen, agrega complejidad.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Alternativa: Sistematizacion + IA</div>
+      <p>12 meses de inversion (suscripcion MetodologIA) = 768 horas liberadas al año (64h/mes × 12). Capacidad para 20+ clientes. Revenue sube. Margin sube. Team respira. Crecimiento escalable sin techo.</p>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">ROI de la Accion</div>
+      <ul>
+        <li><strong>Conservador:</strong> 8 clientes nuevos en 12 meses. 768h liberadas reinvertidas en crecimiento y relaciones.</li>
+        <li><strong>Moderado:</strong> 15 clientes nuevos. Misma carga horaria, escala sin headcount adicional.</li>
+        <li><strong>Agresivo:</strong> 20+ clientes activos (capacity scaling). Margen se multiplica, operacion se escala sin limite de personas.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Modelo Suscripcion Detail -->
+<div id="modal-modelo-suscripcion" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-modelo-suscripcion')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-modelo-suscripcion')">×</button>
+    <h2>Modelo de <span>Suscripcion Anual</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">12 Meses</span>
+      <span class="badge badge-gold">6h/Semana</span>
+      <span class="badge badge-green">Primer Mes Prepagado</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Posicion en la Escalera de Valor</div>
+      <p>Este es el nivel mas alto del modelo modular. Los modulos anteriores (Diagnostico, Workshop Introductorio, Bootcamp de Ventas, Programa (R)Evolución) son puntos de entrada progresivos — cada uno incluye todo lo del anterior — que permiten al cliente validar antes de comprometerse. La suscripcion anual integra todos los beneficios y garantiza acompañamiento continuo.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Estructura Semanal</div>
+      <ul>
+        <li><strong>3h Sesiones Conjuntas:</strong> Modulos de formacion, configuracion de Gemas, testing, documentacion.</li>
+        <li><strong>3h Trabajo Independiente:</strong> Practica con herramientas IA, experimentacion, iteracion.</li>
+        <li><strong>2h Sincronizacion:</strong> Sesiones en vivo — revision de avances, resolucion de blockers, ajustes de gobernanza.</li>
+        <li><strong>1h Clínica Semanal:</strong> Semanal (mes 1), quincenal (meses 2-3), luego mensual.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Entregables Garantizados</div>
+      <ul>
+        <li>5 protocolos sistematizados y operacionalizados (Ventas, Propuestas, Entrega, FAQs, Documentos).</li>
+        <li>5 Gemas vitaminadas entrenadas con expertise V&A.</li>
+        <li>CRM funcional en Google Sheets.</li>
+        <li>Flujos de automatizacion en AntiGravity.</li>
+        <li>Documentacion completa y knowledge transfer.</li>
+        <li>V&A operando autonomamente al mes 12.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Madurez Digital -->
+<div id="modal-madurez" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-madurez')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-madurez')">×</button>
+    <h2>Madurez Digital <span>Evaluacion</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Hoy: N0</span>
+      <span class="badge badge-gold">Mes 12: N1</span>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">6 Dimensiones Evaluadas</div>
+      <ul>
+        <li><strong>Infraestructura:</strong> Email/Drive → Google Workspace integrado.</li>
+        <li><strong>CRM:</strong> Nada → CRM Sheets + Gemini.</li>
+        <li><strong>Documentacion:</strong> Ad-hoc → Libreria sistematizada + generables.</li>
+        <li><strong>Automatizacion:</strong> Cero → Flujos AntiGravity + triggers.</li>
+        <li><strong>GenAI:</strong> Experimentacion → 5 Gemas en produccion.</li>
+        <li><strong>Analytics:</strong> Manual → Dashboards automáticos + insights Gemini.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Beneficio de N0 → N1</div>
+      <p>Velocidad operacional 10x. Escalabilidad ilimitada (mismo esfuerzo, mas clientes). Calidad consistente. Riesgo operacional bajisimo. Preparados para futuro: AI-ready, data-ready, automation-ready.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Posicion Hoy -->
+<div id="modal-posicion-hoy" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-posicion-hoy')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-posicion-hoy')">×</button>
+    <h2>Posicion <span>Hoy</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-accent">Diagnostico Actual</span>
+      <span class="badge badge-gold">HR + Consulting Validado</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">El Cuello de Botella</div>
+      <p>V&A Consulting ha alcanzado product-market fit en 6 meses: 6 clientes organicos, metodologia probada, referencias positivas. Pero el crecimiento esta limitado por la capacidad manual. Cada propuesta toma 6 horas en Word desde cero. Cada FAQ se responde por email sin sistematizacion. Documentos se reinventan cada semana.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">El Riesgo Si No Cambian</div>
+      <p>Sin sistematizacion, agregar clientes significa agregar personas. Pero contratar consultores diluye la metodologia (cada junior interpreta diferente). Escalabilidad esta congelada: no pueden crecer sin costo de staff, y staff agrega riesgo de inconsistencia.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">La Realidad de Hoy</div>
+      <ul>
+        <li>160 horas operativas mensuales (entre Verónica y Ángela).</li>
+        <li>40% se va en tareas repetitivas (64 horas/mes).</li>
+        <li>Metodologia existe pero en cabezas, no en procesos.</li>
+        <li>3-5 propuestas/mes es el limite actual.</li>
+        <li>Target 2024: 20+ clientes = imposible sin cambio estructural.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Diagnóstico validado. El problema NO es demanda (hay clientes esperando). El problema es velocidad operacional. Con sistematizacion via IA, pueden escalar de 6 a 20+ clientes manteniendo calidad y sin agregar headcount.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Oportunidad -->
+<div id="modal-oportunidad" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-oportunidad')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-oportunidad')">×</button>
+    <h2>La <span>Oportunidad</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-gold">Monetizable en 12 Meses</span>
+      <span class="badge badge-blue">Ruta Probada</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Donde Se Va el Tiempo (Desglose)</div>
+      <p>De 160 horas mensuales:
+      - Propuestas (personalizadas): 24 horas
+      - FAQs (respondidas por email): 20 horas
+      - Documentos (generados desde cero): 12 horas
+      - Seguimiento administrativo: 8 horas
+      Total: 64 horas (40% del tiempo).</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Por Que Es Oportunidad Ahora</div>
+      <p>Gemini (Google's GenAI) permite sistematizar estas 64 horas en 12 meses. No es automatizacion ciega: es creacion de "Gemas vitaminadas" (Gemini custom instructions + templates) que V&A controla 100%. Pueden mantener voz, metodologia, y diferenciacion mientras acelera 10x la produccion.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">El Resultado: 64 Horas Recuperadas</div>
+      <ul>
+        <li>Propuestas: Gema Propuestas genera borrador en 1h, no 6h.</li>
+        <li>FAQs: Gema FAQs responde email automaticamente con voz V&A.</li>
+        <li>Documentos: Gema Documentos genera templates personalizados.</li>
+        <li>Neto: 64 horas/mes (768h/año) disponibles para crecimiento.</li>
+        <li>Impacto: escalar de 6 a 20+ clientes con el mismo team.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>64 horas recuperadas. Capacidad escalada 3-4x sin agregar headcount. Tiempo de Verónica y Ángela se redirecciona a venta, innovation, y client success (tareas de alto valor). V&A crece sin diluirse.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Proximos Pasos -->
+<div id="modal-proximos-pasos" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-proximos-pasos')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-proximos-pasos')">×</button>
+    <h2>Proximos <span>Pasos</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-accent">Suscripcion 12 Meses</span>
+      <span class="badge badge-blue">Modelo Probado</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">El Desafio del Cambio</div>
+      <p>No es trivial sistematizar 12 años de experiencia HR en 5 protocolos. Requiere:
+      - Documentar metodologia (no esta escrita).
+      - Crear Gemas vitaminadas para cada protocolo.
+      - Entrenar a V&A en cómo usar, refinar, escalar Gemas.
+      - Probar, iterar, validar con clientes reales.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Por Que Es 12 Meses</div>
+      <p>Sistematizar metodologia no es un sprint. Es un cambio de mentalidad: pasar de "ejecuto consultor" a "diseño, protocolo, Gema, escalo". Requiere 9h/semana (3h conjuntas + 3h independientes + 2h sync + 1h clínica) durante 12 meses. Ritmo sostenible que permite paralelizar con operaciones.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Los 5 Protocolos Clave</div>
+      <ul>
+        <li><strong>Protocolo Ventas:</strong> Identificar cliente, mapear pain, propuesta personalizada.</li>
+        <li><strong>Protocolo Propuestas:</strong> Estructura, pricing, timeline, términos.</li>
+        <li><strong>Protocolo Entrega:</strong> Onboarding, diagnostico, roadmap, ejecucion.</li>
+        <li><strong>Protocolo FAQs:</strong> Respuestas consistentes a preguntas recurrentes.</li>
+        <li><strong>Protocolo Documentos:</strong> Templates, checklists, reportes, actualizaciones.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Mes 12: V&A operando autonomamente con 5 Gemas en produccion. Metodologia codificada en procesos, no en personas. Nuevos clientes onboarded 3x mas rapido. Nuevos consultores entrenados en protocolos, no en historias. Listos para escala sin limite de capacidad.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: KPI 64h/Mes -->
+<div id="modal-kpi-horas" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-kpi-horas')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-kpi-horas')">×</button>
+    <h2>64 Horas <span>Por Mes</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-critical">40% del Tiempo Operativo</span>
+      <span class="badge badge-gold">Recuperable via IA</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Desglose Detallado de Donde Desaparece</div>
+      <ul>
+        <li><strong>Propuestas Personalizadas:</strong> 24 horas/mes. Cada propuesta toma 6h (research, estructura, pricing, revision). Generan 3-5/mes. Manual en Word.</li>
+        <li><strong>FAQ por Email:</strong> 20 horas/mes. Preguntas recurrentes de clientes respondidas email a email sin sistematizacion. 50+ preguntas/mes.</li>
+        <li><strong>Documentos Desde Cero:</strong> 12 horas/mes. Templates, reportes, checklists, actualizaciones. No hay libreria sistematizada.</li>
+        <li><strong>Seguimiento Admin:</strong> 8 horas/mes. Emails, actualizaciones de status, scheduling.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Costo de No Cambiar</div>
+      <p>768 horas/año en trabajo manual que una IA podria ejecutar en minutos (con guia de V&A). Equivalente a casi medio FTE. Perdida de oportunidad: cada hora en propuestas es una hora que NO se usa en venta, innovation, o client success.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Como Se Recuperan Las 64 Horas</div>
+      <ul>
+        <li>Propuestas: Gema genera borrador estructurado (1h esfuerzo vs 6h manual). Ahorro: 15h/mes.</li>
+        <li>FAQs: Gema responde email automaticamente siguiendo voz V&A. Ahorro: 18h/mes.</li>
+        <li>Documentos: Gema genera templates parametrizados. Ahorro: 10h/mes.</li>
+        <li>Admin: Automatizacion via AntiGravity workflows. Ahorro: 8h/mes.</li>
+        <li>Total: 51h/mes recuperadas. Target conservador: 64h al momento de escala completa.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>64 horas/mes disponibles para actividades que generan crecimiento: venta, onboarding premium, innovation en servicios, retención de clientes. Operaciones se vuelven "background": ejecutadas por Gemas, supervisadas por V&A.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: KPI 6 Clientes / 6 Meses -->
+<div id="modal-kpi-clientes" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-kpi-clientes')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-kpi-clientes')">×</button>
+    <h2>6 Clientes <span>en 6 Meses</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-blue">Crecimiento Organico</span>
+      <span class="badge badge-accent">Cuello de Botella Identificado</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">La Traccion Es Real, El Limite Es Operacional</div>
+      <p>V&A ha validado PMF: 6 clientes en 6 meses sin gasto en marketing, solo referencias. Clientes satisfechos recomiendan. Demanda existe pero no pueden aceptar mas porque:
+      - 3-5 propuestas/mes es el máximo actual (6h cada una).
+      - Onboarding toma 20h por cliente (no hay proceso sistematizado).
+      - Entrega requiere customizacion manual (no hay templates).</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Que Pasaria Sin Escala</div>
+      <p>Demanda esta ahi. Prospects piden propuestas. V&A dice "no" o retrasa 3 semanas. Clientes van a competidores. Oportunidad perdida: estiman 20+ clientes potenciales en next 12 meses, pero capacidad es 6.</p>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Calculo de Capacidad Máxima Hoy vs Con Gemas</div>
+      <ul>
+        <li><strong>Propuestas:</strong> 3-5/mes (6h cada una) = 180-300h/año. Con Gema: 2h por propuesta = 24 propuestas/año potencial.</li>
+        <li><strong>Onboarding:</strong> 20h/cliente hoy. Con protocolo: 8h/cliente. Capacidad: 6 clientes → 15+ clientes.</li>
+        <li><strong>Entrega:</strong> 160h/mes operativas. Hoy 40% va en tareas repetitivas. Recuperadas: 64h → redireccionar a growth.</li>
+        <li><strong>Neto:</strong> De "6 clientes en 6 meses" a "20+ clientes en 12 meses" sin agregar headcount.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Capacidad operacional 3-4x. Mismos recursos humanos, 4x mas clientes. Demanda convertida a ingresos. No se pierden oportunidades por cuello de botella operacional.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: KPI 9:1 Estándar de IA -->
+<div id="modal-kpi-estandar" class="modal-overlay" onclick="closeModalOnOverlay(event, 'modal-kpi-estandar')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-kpi-estandar')">×</button>
+    <h2>Estandar <span>9:1 de IA</span></h2>
+    <div class="modal-badge-row">
+      <span class="badge badge-gold">Benchmarking Global</span>
+      <span class="badge badge-blue">Implementable en V&A</span>
+    </div>
+
+    <div class="modal-section friction">
+      <div class="modal-section-label">Que Es El Estandar 9:1</div>
+      <p>Por cada 10 tareas operacionales en una consultoría moderna, 9 son ejecutadas por IA, 1 es ejecutada (o supervisada) por humano. Eso genera velocidad, consistencia, y escalabilidad. Aplicando esto a V&A:
+      - Hoy es 0:10 (todo es humano).
+      - Target es 9:1 en protocolos clave.</p>
+    </div>
+
+    <div class="modal-section anticipation">
+      <div class="modal-section-label">Como Hoy Es 0:10</div>
+      <ul>
+        <li>Propuestas: Verónica/Ángela diseña, redacta, customiza 100%. IA: 0%.</li>
+        <li>FAQs: Respuestas por email, cada una redactada desde cero. IA: 0%.</li>
+        <li>Documentos: Generados manualmente, sin templates. IA: 0%.</li>
+        <li>Seguimiento: Email manual, sin automation. IA: 0%.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section resolution">
+      <div class="modal-section-label">Ruta a 9:1 en 12 Meses</div>
+      <ul>
+        <li><strong>Mes 1-3:</strong> Gema Propuestas (genera borradores). Estandar: 5:5 (mitad IA, mitad humano).</li>
+        <li><strong>Mes 3-6:</strong> Gema FAQs (responde automaticamente). Estandar: 7:3 (IA ejecuta, humano revisa).</li>
+        <li><strong>Mes 6-9:</strong> Gema Documentos + Protocolo Entrega (templates parametrizados). Estandar: 8:2.</li>
+        <li><strong>Mes 9-12:</strong> Optimizacion, refinamiento, integracion total. Target: 9:1 en 3-4 protocolos clave.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section success">
+      <div class="modal-section-label">Success Delivered</div>
+      <p>Estandar 9:1 operacionalizado. Operaciones son "background": 90% ejecutadas por IA, 10% supervisadas por humano. V&A se dedica a venta, innovation, strategy. Escalabilidad sin limite. Calidad consistente. Costo marginal casi cero por cliente adicional.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function closeModalOnOverlay(event, modalId) {
+  if (event.target.classList.contains('modal-overlay')) {
+    closeModal(modalId);
+  }
+}
+
+// TOC active state tracking
+const tocLinks = document.querySelectorAll('nav.toc a.toc-link');
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 100) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  tocLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').slice(1) === current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Scroll animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+  observer.observe(el);
+});
+
+// Close modals on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+      modal.classList.remove('active');
+    });
+    document.body.style.overflow = 'auto';
+  }
+});
+</script>
+
+</body>
+</html>

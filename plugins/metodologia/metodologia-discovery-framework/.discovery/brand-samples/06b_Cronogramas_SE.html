@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronogramas por Escenario — V&A Consulting × MetodologIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mia-navy: #0A122A;
+  --mia-navy-light: #111D3A;
+  --mia-navy-mid: #1e293b;
+  --mia-blue: #137DC5;
+  --mia-blue-light: #38BDF8;
+  --mia-blue-dim: rgba(19,125,197,0.12);
+  --mia-gold: #FFD700;
+  --mia-gold-dim: rgba(255,215,0,0.12);
+  --mia-gold-dark: #B8860B;
+  --mia-white: #FFFFFF;
+  --mia-offwhite: #F8F9FC;
+  --mia-light: #E8ECF4;
+  --mia-text: #C8D1E0;
+  --mia-text-muted: #8892A8;
+  --mia-dark-text: #1F2833;
+  --mia-positive: #42D36F;
+  --mia-positive-dim: rgba(66,211,111,0.10);
+  --mia-warning: #F59E0B;
+  --mia-warning-dim: rgba(245,158,11,0.10);
+  --mia-critical: #EF4444;
+  --mia-critical-dim: rgba(239,68,68,0.10);
+  --font-display: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --font-body: 'Poppins', 'Montserrat', 'Trebuchet MS', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.25);
+  --transition-normal: 0.25s ease;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--mia-dark-text); background: var(--mia-offwhite); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.3px; color: var(--mia-navy); line-height: 1.2; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; font-weight: 600; }
+p { margin-bottom: 1rem; line-height: 1.7; }
+a { color: var(--mia-blue); text-decoration: none; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--mia-navy) 0%, var(--mia-navy-mid) 100%); position: relative; overflow: hidden; padding: 5rem 2rem 4rem; color: var(--mia-white); }
+.hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(ellipse at 70% 50%, rgba(19,125,197,0.08) 0%, transparent 60%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--mia-blue), var(--mia-gold), var(--mia-blue)); }
+.hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; text-align: center; }
+.brand-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+.brand-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.golden-accent { color: var(--mia-gold); }
+.brand-tagline { display: block; font-size: 0.7rem; color: var(--mia-text-muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.hero h1 { color: var(--mia-white); margin-bottom: 1rem; }
+.hero h1 span { color: var(--mia-gold); }
+.hero-subtitle { font-size: 1.15rem; color: var(--mia-text); margin-bottom: 0; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+/* LAYOUT */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 3rem 0; border-bottom: 1px solid #E2E8F0; }
+section.dark { background: var(--mia-navy); color: white; border-bottom-color: var(--mia-navy-mid); }
+section.dark h2, section.dark h3, section.dark h4 { color: white; }
+section.dark p, section.dark li { color: var(--mia-text); }
+
+/* BADGES */
+.badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-blue { background: var(--mia-blue-dim); color: var(--mia-blue); }
+.badge-gold { background: var(--mia-gold-dim); color: var(--mia-gold-dark); }
+.badge-green { background: var(--mia-positive-dim); color: #16A34A; }
+.badge-red { background: var(--mia-critical-dim); color: var(--mia-critical); }
+
+/* CALLOUT */
+.callout { border-radius: var(--radius-md); padding: 1.5rem; margin: 1.5rem 0; font-size: 0.95rem; }
+.callout-blue { background: var(--mia-blue-dim); border-left: 4px solid var(--mia-blue); }
+.callout-gold { background: var(--mia-gold-dim); border-left: 4px solid var(--mia-gold); }
+.callout-red { background: var(--mia-critical-dim); border-left: 4px solid var(--mia-critical); }
+
+/* GANTT-LIKE TIMELINE */
+.gantt { margin: 2rem 0; overflow-x: auto; }
+.gantt-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: .75rem; }
+.gantt-title .scenario-dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.gantt-grid { position: relative; min-width: 700px; }
+.gantt-header { display: grid; gap: 0; margin-bottom: .25rem; font-size: .65rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: .5px; }
+.gantt-header span { text-align: center; padding: .4rem .25rem; border-left: 1px solid #E2E8F0; }
+.gantt-header span:first-child { border-left: none; }
+.gantt-row { position: relative; height: 44px; margin-bottom: .5rem; display: flex; align-items: center; }
+.gantt-row-label { position: absolute; left: 0; width: 130px; font-size: .75rem; font-weight: 600; color: var(--mia-dark-text); z-index: 2; line-height: 1.2; }
+section.dark .gantt-row-label { color: var(--mia-text); }
+.gantt-row-track { position: absolute; left: 135px; right: 0; height: 100%; display: flex; align-items: center; }
+.gantt-bar { height: 28px; border-radius: 6px; position: absolute; display: flex; align-items: center; justify-content: center; font-size: .65rem; font-weight: 600; color: white; letter-spacing: .3px; transition: all var(--transition-normal); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 0 8px; }
+.gantt-bar:hover { filter: brightness(1.15); transform: scaleY(1.1); }
+.gantt-bar.blue { background: var(--mia-blue); }
+.gantt-bar.gold { background: linear-gradient(90deg, var(--mia-gold-dark), var(--mia-gold)); color: var(--mia-navy); }
+.gantt-bar.green { background: var(--mia-positive); }
+.gantt-bar.navy { background: var(--mia-navy); border: 1px solid var(--mia-gold); }
+.gantt-bar.red { background: var(--mia-critical); }
+.gantt-bar.muted { background: #94A3B8; }
+.gantt-bar.striped { background: repeating-linear-gradient(135deg, var(--mia-gold-dark), var(--mia-gold-dark) 4px, var(--mia-gold) 4px, var(--mia-gold) 8px); color: var(--mia-navy); }
+
+/* MONTH GRID LINES */
+.gantt-months { position: absolute; left: 135px; right: 0; top: 0; bottom: 0; display: grid; pointer-events: none; }
+.gantt-months span { border-left: 1px dashed rgba(0,0,0,0.06); }
+section.dark .gantt-months span { border-left-color: rgba(255,255,255,0.06); }
+
+/* GATE MARKERS */
+.gantt-gate { position: absolute; top: -6px; width: 2px; height: calc(100% + 12px); background: var(--mia-gold); z-index: 3; }
+.gantt-gate::before { content: attr(data-label); position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: .6rem; font-weight: 800; color: var(--mia-gold); white-space: nowrap; background: var(--mia-offwhite); padding: 0 4px; border-radius: 3px; }
+section.dark .gantt-gate::before { background: var(--mia-navy); }
+
+/* LEGEND */
+.legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; font-size: .8rem; }
+.legend-item { display: flex; align-items: center; gap: .5rem; }
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+/* COMPARISON TABLE */
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+.compare-table th { background: var(--mia-navy); color: white; padding: .75rem 1rem; font-size: .75rem; text-align: center; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.compare-table th:first-child { text-align: left; }
+.compare-table td { padding: .65rem 1rem; border-bottom: 1px solid var(--mia-light); font-size: .85rem; text-align: center; background: white; }
+.compare-table td:first-child { text-align: left; font-weight: 600; }
+.compare-table .highlight { background: var(--mia-gold-dim); font-weight: 700; }
+
+/* DISCLAIMER */
+.disclaimer { background: var(--mia-navy); color: var(--mia-text); border-radius: var(--radius-lg); padding: 2rem; margin: 2rem 0; text-align: center; }
+.disclaimer h3 { color: var(--mia-gold); margin-bottom: .75rem; }
+.disclaimer p { color: var(--mia-text-muted); font-size: .9rem; margin-bottom: 0; }
+
+/* FOOTER */
+footer { background: var(--mia-navy); color: var(--mia-text-muted); padding: 2rem; text-align: center; font-size: .8rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-brand-name { font-size: .85rem; font-weight: 700; color: var(--mia-text-muted); text-transform: uppercase; letter-spacing: 3px; }
+.footer-code { font-family: monospace; color: var(--mia-gold); margin-top: .5rem; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 2rem 0; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  .gantt-grid { min-width: 600px; }
+}
+@media print {
+  footer { display: none !important; }
+  .hero { background: var(--mia-navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="heroLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1E293B"/></linearGradient></defs>
+        <rect width="36" height="36" rx="10" fill="url(#heroLogo)"/>
+        <path d="M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z" fill="white"/>
+        <circle cx="18" cy="8" r="2" fill="#FFD700"/>
+      </svg>
+      <div>
+        <span class="brand-name">Metodolog<span class="golden-accent">IA</span></span>
+        <span class="brand-tagline">Success as a Service</span>
+      </div>
+    </div>
+    <h1>Cronogramas por <span>Escenario</span></h1>
+    <p class="hero-subtitle">Linea recta vs. cadencia recomendada. Cuanto tarda cada camino y donde se concentra la inversion.</p>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ============ ESCENARIO A ============ -->
+<section>
+  <div class="gantt-title">
+    <span class="scenario-dot" style="background:var(--mia-blue);"></span>
+    <h2>Escenario A: Conservador</h2>
+    <span class="badge badge-blue">Score: 57/100</span>
+  </div>
+
+  <p>Workshop Introductorio + Bootcamp de Ventas. Cada modulo incluye el anterior. Inversion concentrada en 2-4 semanas. Dos variantes: linea recta (todo seguido) vs. recomendado (con pausa de absorcion).</p>
+
+  <!-- Linea Recta A -->
+  <h4 style="margin:1.5rem 0 .5rem; color:var(--mia-critical);">Linea Recta (sin pausas)</h4>
+  <div class="gantt">
+    <div class="gantt-grid" style="height:160px;">
+      <div class="gantt-header" style="grid-template-columns: repeat(4,1fr); margin-left:135px;">
+        <span>Semana 1</span><span>Semana 2</span><span>Semana 3</span><span>Semana 4</span>
+      </div>
+      <div class="gantt-months" style="grid-template-columns: repeat(4,1fr); height:130px; top:28px;"><span></span><span></span><span></span><span></span></div>
+
+      <div class="gantt-row" style="top:32px;">
+        <div class="gantt-row-label">Diagnostico</div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:0%; width:20%;">3h — Gratis</div></div>
+      </div>
+      <div class="gantt-row" style="top:78px;">
+        <div class="gantt-row-label">Workshop</div>
+        <div class="gantt-row-track"><div class="gantt-bar blue" style="left:20%; width:25%;">3h — 200k/persona</div></div>
+      </div>
+      <div class="gantt-row" style="top:124px;">
+        <div class="gantt-row-label">Bootcamp</div>
+        <div class="gantt-row-track"><div class="gantt-bar blue" style="left:45%; width:30%;">2 dias — 800k/persona</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:.85rem; color:var(--mia-critical);"><strong>Duracion total: ~2 semanas.</strong> Todo comprimido. Riesgo: saturacion sin tiempo de absorcion. El aprendizaje no se asienta.</p>
+
+  <!-- Recomendado A -->
+  <h4 style="margin:1.5rem 0 .5rem; color:var(--mia-positive);">Recomendado (con pausas de absorcion)</h4>
+  <div class="gantt">
+    <div class="gantt-grid" style="height:160px;">
+      <div class="gantt-header" style="grid-template-columns: repeat(4,1fr); margin-left:135px;">
+        <span>Semana 1</span><span>Semana 2</span><span>Semana 3</span><span>Semana 4</span>
+      </div>
+      <div class="gantt-months" style="grid-template-columns: repeat(4,1fr); height:130px; top:28px;"><span></span><span></span><span></span><span></span></div>
+
+      <div class="gantt-row" style="top:32px;">
+        <div class="gantt-row-label">Diagnostico</div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:0%; width:18%;">3h — Gratis</div></div>
+      </div>
+      <div class="gantt-row" style="top:78px;">
+        <div class="gantt-row-label">Workshop</div>
+        <div class="gantt-row-track"><div class="gantt-bar blue" style="left:25%; width:20%;">3h — 200k/persona</div></div>
+      </div>
+      <div class="gantt-row" style="top:124px;">
+        <div class="gantt-row-label">Bootcamp</div>
+        <div class="gantt-row-track"><div class="gantt-bar blue" style="left:60%; width:30%;">2 dias — 800k/persona</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:.85rem; color:var(--mia-positive);"><strong>Duracion total: ~4 semanas.</strong> Pausa entre componentes para practicar lo aprendido. Mayor retencion.</p>
+
+  <table class="compare-table">
+    <thead><tr><th>Concepto</th><th>Linea Recta</th><th>Recomendado</th></tr></thead>
+    <tbody>
+      <tr><td>Duracion total</td><td>~2 semanas</td><td class="highlight">~4 semanas</td></tr>
+      <tr><td>Inversion por persona</td><td>1M COP</td><td>1M COP</td></tr>
+      <tr><td>Tiempo de absorcion</td><td class="highlight" style="background:var(--mia-critical-dim);">Nulo</td><td class="highlight">1 semana entre modulos</td></tr>
+      <tr><td>Riesgo de saturacion</td><td style="color:var(--mia-critical); font-weight:700;">Alto</td><td style="color:var(--mia-positive); font-weight:700;">Bajo</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ ESCENARIO B ============ -->
+<section class="dark">
+  <div class="gantt-title">
+    <span class="scenario-dot" style="background:var(--mia-gold);"></span>
+    <h2>Escenario B: Equilibrado (Recomendado)</h2>
+    <span class="badge badge-gold">Score: 87/100</span>
+  </div>
+
+  <p>Programa (R)Evolución 16 semanas (incluye todo lo del Bootcamp de Ventas) + Suscripcion Anual. Comparacion entre ejecucion comprimida vs. cadencia recomendada con gates de decision.</p>
+
+  <!-- Linea Recta B -->
+  <h4 style="margin:1.5rem 0 .5rem; color:var(--mia-critical);">Linea Recta (sin gates, todo seguido)</h4>
+  <div class="gantt">
+    <div class="gantt-grid" style="height:220px;">
+      <div class="gantt-header" style="grid-template-columns: repeat(12,1fr); margin-left:135px;">
+        <span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span><span>M7</span><span>M8</span><span>M9</span><span>M10</span><span>M11</span><span>M12</span>
+      </div>
+      <div class="gantt-months" style="grid-template-columns: repeat(12,1fr); height:185px; top:28px;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+      <div class="gantt-row" style="top:32px;">
+        <div class="gantt-row-label">Diagnostico</div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:0%; width:3%;">F0</div></div>
+      </div>
+      <div class="gantt-row" style="top:74px;">
+        <div class="gantt-row-label">Programa<br><span style="font-size:.65rem;font-weight:400;">16 semanas</span></div>
+        <div class="gantt-row-track"><div class="gantt-bar red" style="left:3%; width:30%;">6 agentes de golpe — 500k/asistente (3M total)</div></div>
+      </div>
+      <div class="gantt-row" style="top:120px;">
+        <div class="gantt-row-label">Suscripcion<br><span style="font-size:.65rem;font-weight:400;">12 meses</span></div>
+        <div class="gantt-row-track"><div class="gantt-bar muted" style="left:33%; width:67%;">9h/semana sin evaluacion intermedia</div></div>
+      </div>
+      <div class="gantt-row" style="top:166px;">
+        <div class="gantt-row-label">Gates</div>
+        <div class="gantt-row-track"><div class="gantt-bar muted" style="left:0%; width:3%; opacity:.5;">G1</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:.85rem; color:var(--mia-critical);"><strong>Riesgo:</strong> 6 agentes desplegados al mismo tiempo sin absorcion gradual. Sin evaluacion de madurez al mes 6. Sin punto de decision antes del mes 12. Si algo falla, se descubre tarde.</p>
+
+  <!-- Recomendado B -->
+  <h4 style="margin:1.5rem 0 .5rem; color:var(--mia-gold);">Recomendado (despliegue gradual + 3 gates)</h4>
+  <div class="gantt">
+    <div class="gantt-grid" style="height:280px; position:relative;">
+      <div class="gantt-header" style="grid-template-columns: repeat(12,1fr); margin-left:135px;">
+        <span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span><span>M7</span><span>M8</span><span>M9</span><span>M10</span><span>M11</span><span>M12</span>
+      </div>
+      <div class="gantt-months" style="grid-template-columns: repeat(12,1fr); height:245px; top:28px;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+      <!-- Gate lines -->
+      <div class="gantt-gate" data-label="G1" style="left: calc(135px + 0%); top:28px; height:245px;"></div>
+      <div class="gantt-gate" data-label="G2 Madurez" style="left: calc(135px + 50%); top:28px; height:245px;"></div>
+      <div class="gantt-gate" data-label="G3 Graduacion" style="left: calc(135px + 100% - 2px); top:28px; height:245px;"></div>
+
+      <div class="gantt-row" style="top:32px;">
+        <div class="gantt-row-label">Diagnostico</div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:0%; width:3%;">F0</div></div>
+      </div>
+      <div class="gantt-row" style="top:74px;">
+        <div class="gantt-row-label">F1: Fundaciones<br><span style="font-size:.65rem;font-weight:400;">2 agentes</span></div>
+        <div class="gantt-row-track"><div class="gantt-bar blue" style="left:3%; width:8%;">S1-S4</div></div>
+      </div>
+      <div class="gantt-row" style="top:116px;">
+        <div class="gantt-row-label">F2: Expansion<br><span style="font-size:.65rem;font-weight:400;">+4 agentes</span></div>
+        <div class="gantt-row-track"><div class="gantt-bar gold" style="left:11%; width:13%;">S5-S10</div></div>
+      </div>
+      <div class="gantt-row" style="top:158px;">
+        <div class="gantt-row-label">F3: Consolidacion<br><span style="font-size:.65rem;font-weight:400;">Optimizar + documentar</span></div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:24%; width:9%;">S11-S16</div></div>
+      </div>
+      <div class="gantt-row" style="top:200px;">
+        <div class="gantt-row-label">F4: Autonomia<br><span style="font-size:.65rem;font-weight:400;">Suscripcion 6h/sem</span></div>
+        <div class="gantt-row-track"><div class="gantt-bar gold" style="left:33%; width:67%;">Meses 5-12 — Acompañamiento continuo</div></div>
+      </div>
+      <div class="gantt-row" style="top:242px;">
+        <div class="gantt-row-label">Evaluacion B→C</div>
+        <div class="gantt-row-track"><div class="gantt-bar striped" style="left:75%; width:10%;">Mes 9-10</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:.85rem; color:var(--mia-gold);"><strong>Ventaja:</strong> Despliegue gradual (2→4→6 agentes), 3 gates de decision con criterios cuantitativos, y evaluacion B→C en mes 9 si la adopcion lo justifica.</p>
+
+  <table class="compare-table">
+    <thead><tr><th>Concepto</th><th>Linea Recta</th><th>Recomendado</th></tr></thead>
+    <tbody>
+      <tr><td>Duracion total</td><td>12 meses</td><td>12 meses</td></tr>
+      <tr><td>Inversion en Programa</td><td>3M COP (6 asistentes) + Suscripcion</td><td>3M COP (6 asistentes) + Suscripcion</td></tr>
+      <tr><td>Despliegue de agentes</td><td class="highlight" style="background:var(--mia-critical-dim);">6 simultaneos</td><td class="highlight">2 → 4 → 6 gradual</td></tr>
+      <tr><td>Gates de decision</td><td style="color:var(--mia-critical); font-weight:700;">1 (solo al inicio)</td><td style="color:var(--mia-positive); font-weight:700;">3 (inicio, mes 6, mes 12)</td></tr>
+      <tr><td>Deteccion de problemas</td><td style="color:var(--mia-critical);">Tardia (mes 10+)</td><td style="color:var(--mia-positive);">Temprana (semanal)</td></tr>
+      <tr><td>Opcion de evaluar C</td><td>No prevista</td><td class="highlight">Mes 9-10 si aplica</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ ESCENARIO C ============ -->
+<section>
+  <div class="gantt-title">
+    <span class="scenario-dot" style="background:var(--mia-positive);"></span>
+    <h2>Escenario C: Agresivo</h2>
+    <span class="badge badge-green">Score: 75/100</span>
+  </div>
+
+  <p>Todo lo del B + Certificacion Reseller. Comparacion entre lanzamiento simultaneo vs. activacion secuencial.</p>
+
+  <!-- Linea Recta C -->
+  <h4 style="margin:1.5rem 0 .5rem; color:var(--mia-critical);">Linea Recta (Reseller desde el dia 1)</h4>
+  <div class="gantt">
+    <div class="gantt-grid" style="height:220px;">
+      <div class="gantt-header" style="grid-template-columns: repeat(18,1fr); margin-left:135px;">
+        <span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span><span>M7</span><span>M8</span><span>M9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+      </div>
+      <div class="gantt-months" style="grid-template-columns: repeat(18,1fr); height:180px; top:28px;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+      <div class="gantt-row" style="top:32px;">
+        <div class="gantt-row-label">Programa</div>
+        <div class="gantt-row-track"><div class="gantt-bar red" style="left:0%; width:22%;">16 semanas — Todo junto</div></div>
+      </div>
+      <div class="gantt-row" style="top:74px;">
+        <div class="gantt-row-label">Suscripcion</div>
+        <div class="gantt-row-track"><div class="gantt-bar muted" style="left:22%; width:44%;">Meses 5-12</div></div>
+      </div>
+      <div class="gantt-row" style="top:116px;">
+        <div class="gantt-row-label">Reseller</div>
+        <div class="gantt-row-track"><div class="gantt-bar red" style="left:0%; width:100%;">Cert + venta desde mes 1 — Foco dividido</div></div>
+      </div>
+      <div class="gantt-row" style="top:158px;">
+        <div class="gantt-row-label">Expansion</div>
+        <div class="gantt-row-track"><div class="gantt-bar muted" style="left:66%; width:34%;">Meses 13-18 — Escalar sin base</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:.85rem; color:var(--mia-critical);"><strong>Riesgo critico:</strong> V&A intenta transformarse y vender simultaneamente. Sin dominio interno, los clientes referidos reciben un servicio incompleto. Daño reputacional probable.</p>
+
+  <!-- Recomendado C -->
+  <h4 style="margin:1.5rem 0 .5rem; color:var(--mia-positive);">Recomendado (B primero, C despues)</h4>
+  <div class="gantt">
+    <div class="gantt-grid" style="height:280px; position:relative;">
+      <div class="gantt-header" style="grid-template-columns: repeat(18,1fr); margin-left:135px;">
+        <span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span><span>M7</span><span>M8</span><span>M9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+      </div>
+      <div class="gantt-months" style="grid-template-columns: repeat(18,1fr); height:245px; top:28px;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+      <div class="gantt-gate" data-label="G2" style="left: calc(135px + 33.3%); top:28px; height:245px;"></div>
+      <div class="gantt-gate" data-label="G3" style="left: calc(135px + 66.6%); top:28px; height:245px;"></div>
+
+      <div class="gantt-row" style="top:32px;">
+        <div class="gantt-row-label">Programa</div>
+        <div class="gantt-row-track">
+          <div class="gantt-bar blue" style="left:0%; width:5.5%;">F1</div>
+          <div class="gantt-bar gold" style="left:6%; width:8.5%;">F2</div>
+          <div class="gantt-bar green" style="left:15%; width:7%;">F3</div>
+        </div>
+      </div>
+      <div class="gantt-row" style="top:74px;">
+        <div class="gantt-row-label">Suscripcion</div>
+        <div class="gantt-row-track"><div class="gantt-bar gold" style="left:22%; width:44.6%;">Meses 5-12 — Consolidar B</div></div>
+      </div>
+      <div class="gantt-row" style="top:116px;">
+        <div class="gantt-row-label">Evaluacion C</div>
+        <div class="gantt-row-track"><div class="gantt-bar striped" style="left:50%; width:5.5%;">Mes 9-10</div></div>
+      </div>
+      <div class="gantt-row" style="top:158px;">
+        <div class="gantt-row-label">Cert. Reseller<br><span style="font-size:.65rem;font-weight:400;">1 SMLV entrada</span></div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:61%; width:5.5%;">Mes 11-12</div></div>
+      </div>
+      <div class="gantt-row" style="top:200px;">
+        <div class="gantt-row-label">Piloto 1 cliente</div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:66.6%; width:11%;">Mes 13-14</div></div>
+      </div>
+      <div class="gantt-row" style="top:242px;">
+        <div class="gantt-row-label">Expansion canal</div>
+        <div class="gantt-row-track"><div class="gantt-bar green" style="left:77.7%; width:22.3%;">Meses 15-18 — Escalar con base</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:.85rem; color:var(--mia-positive);"><strong>Ventaja:</strong> V&A domina internamente antes de vender. Certificacion Reseller se activa solo si Gate 2 confirma madurez. Piloto con 1 cliente antes de escalar.</p>
+
+  <table class="compare-table">
+    <thead><tr><th>Concepto</th><th>Linea Recta</th><th>Recomendado</th></tr></thead>
+    <tbody>
+      <tr><td>Duracion total</td><td>~18 meses</td><td>~18 meses</td></tr>
+      <tr><td>Reseller activo desde</td><td class="highlight" style="background:var(--mia-critical-dim);">Mes 1</td><td class="highlight">Mes 11-12</td></tr>
+      <tr><td>Madurez interna al vender</td><td style="color:var(--mia-critical); font-weight:700;">Ninguna</td><td style="color:var(--mia-positive); font-weight:700;">10+ meses</td></tr>
+      <tr><td>Riesgo reputacional</td><td style="color:var(--mia-critical); font-weight:700;">Alto</td><td style="color:var(--mia-positive); font-weight:700;">Bajo</td></tr>
+      <tr><td>Primer cliente referido</td><td>Mes 2-3 (sin preparacion)</td><td class="highlight">Mes 13-14 (piloto controlado)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ RESUMEN COMPARATIVO ============ -->
+<section class="dark">
+  <h2 style="text-align:center;">Resumen: Demora vs. Retorno</h2>
+  <p style="text-align:center; color:var(--mia-text-muted); max-width:600px; margin:0 auto 2rem;">La linea recta es mas rapida pero mas fragil. La cadencia recomendada invierte semanas adicionales de absorcion a cambio de mayor solidez y puntos de decision.</p>
+
+  <table class="compare-table" style="background:var(--mia-navy-light);">
+    <thead>
+      <tr>
+        <th>Metrica</th>
+        <th style="color:var(--mia-blue-light);">A Conservador</th>
+        <th style="color:var(--mia-gold);">B Equilibrado</th>
+        <th style="color:var(--mia-positive);">C Agresivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background:var(--mia-navy-light); color:var(--mia-text);">Linea recta</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-text);">2 semanas</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-text);">12 meses (sin gates)</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-text);">18 meses (foco dividido)</td>
+      </tr>
+      <tr>
+        <td style="background:var(--mia-navy-light); color:var(--mia-text);">Recomendado</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-gold);">4 semanas</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-gold);">12 meses (con 3 gates)</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-gold);">18 meses (B primero, C despues)</td>
+      </tr>
+      <tr>
+        <td style="background:var(--mia-navy-light); color:var(--mia-text);">Demora adicional</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-gold); font-weight:700;">+2 semanas</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-gold); font-weight:700;">+0 (mismo plazo, mejor cadencia)</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-gold); font-weight:700;">+0 (mismo plazo, mejor secuencia)</td>
+      </tr>
+      <tr>
+        <td style="background:var(--mia-navy-light); color:var(--mia-text);">Prob. de exito</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-blue-light);">80% → 90%</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-gold);">60% → 80%</td>
+        <td style="background:var(--mia-navy-light); color:var(--mia-positive);">35% → 55%</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ DISCLAIMER ============ -->
+<section>
+  <div class="disclaimer">
+    <h3>Cronogramas Extendidos y Personalizados</h3>
+    <p>Los cronogramas presentados son referencias de cadencia basadas en el analisis de escenarios. Cronogramas mas detallados — con sprints semanales, asignacion de responsables, dependencias criticas y ajustes por capacidad real — se definen y revisan entre ambas partes durante la sesion de diagnostico (Fase 0) y se actualizan formalmente en cada gate de decision.</p>
+  </div>
+</section>
+
+</div><!-- /.container -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto 1rem;">
+      <defs><linearGradient id="footerLogo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0A122A"/><stop offset="100%" stop-color="#1e293b"/></linearGradient></defs>
+      <rect width="40" height="40" rx="10" fill="url(#footerLogo)"/>
+      <path d="M11 12h4v16h-4V12zm7 0h4v10h-4V12zm0 13h4v3h-4v-3zm7-13h4v7h-4V12zm0 10h4v6h-4v-6z" fill="white"/>
+      <circle cx="20" cy="8" r="2.5" fill="#FFD700"/>
+      <path d="M52 28V14h4.2l3.5 9.1L63.3 14h4.1v14h-3V18.5L61 27h-2.2l-3.5-8.5V28H52zm22.5 0V14h3.2v14h-3.2zm8.5 0V14h3.2l5.8 9.3V14h3v14h-3.1L86.1 19V28H83z" fill="white" opacity="0.7"/>
+    </svg>
+    <p class="footer-brand-name">Metodolog<span style="color:var(--mia-gold)">IA</span></p>
+    <p style="margin-top:.5rem;">Success as a Service</p>
+    <p class="footer-code">MTIA-06b-CRONOGRAMAS-VA-SE</p>
+    <p style="margin-top:.75rem; font-size:.7rem;">Documento confidencial preparado para V&A Consulting. Prohibida su reproduccion sin autorizacion.</p>
+  </div>
+</footer>
+
+</body>
+</html>

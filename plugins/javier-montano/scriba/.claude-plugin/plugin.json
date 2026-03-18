@@ -1,0 +1,21 @@
+{
+  "name": "scriba",
+  "version": "1.0.0",
+  "description": "Asistente editorial agentico para produccion de textos escolares K-12 basado en el Sistema de Orquestacion Agentica Prolipa (SOAP). 11 agentes especializados, 18 skills, 13 comandos, 4 quality gates.",
+  "author": {
+    "name": "JM Labs",
+    "url": "https://github.com/jm-labs"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "editorial",
+    "educacion",
+    "pedagogia",
+    "neurociencia",
+    "K-12",
+    "prolipa",
+    "sinapsis",
+    "curriculum",
+    "textbooks"
+  ]
+}
