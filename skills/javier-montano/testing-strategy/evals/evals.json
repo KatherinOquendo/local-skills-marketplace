@@ -1,0 +1,86 @@
+{
+  "skill_name": "testing-strategy",
+  "description": "Evaluates the testing strategy skill across different system types, test shapes, and advanced techniques. Each eval targets a specific testing architecture decision or capability.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "backend-api-pyramid-shape",
+      "prompt": "Design a test strategy for a business-logic-heavy Java Spring Boot API with 40 REST endpoints and PostgreSQL database.",
+      "expected_output": "Full 6-section strategy: pyramid shape selected for backend API, JUnit 5 + Testcontainers automation, contract testing if consumers exist, performance testing, test data management, and quality metrics.",
+      "files": [],
+      "expectations": [
+        "Pyramid shape selected with 70:20:10 ratio (unit-heavy for business logic)",
+        "JUnit 5 recommended for unit tests, Spring Boot Test + Testcontainers for integration",
+        "Coverage target: 80% line coverage for business logic, 60% overall",
+        "Test categorization: fast (<1s unit), medium (<10s integration), slow (<60s E2E)",
+        "CI trigger mapping: unit on push, integration on PR, E2E on merge to main",
+        "Test data strategy uses Testcontainers for integration tests",
+        "Mutation testing recommended for critical business logic modules"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "frontend-spa-trophy-shape",
+      "prompt": "Build test automation for a React TypeScript SPA with complex component interactions and a design system.",
+      "expected_output": "Trophy shape selected for frontend SPA: integration-heavy with Testing Library, Playwright for E2E, Chromatic for visual regression.",
+      "files": [],
+      "expectations": [
+        "Trophy shape selected with 20:50:20 ratio + 10% static analysis",
+        "Testing Library recommended for integration tests (best ROI for component interactions)",
+        "Vitest or Jest for unit tests",
+        "Playwright for E2E on critical user journeys",
+        "Chromatic or Percy for visual regression testing of design system",
+        "Shift-left strategy includes pre-commit linting and type checking",
+        "Local developer experience target: tests run in <30s for changed module"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "microservices-contract-testing",
+      "prompt": "Implement contract testing for our order management system with 8 microservices and 15 consumer relationships.",
+      "expected_output": "Deep S3 (Contract Testing): consumer-driven contracts with Pact, Pact Broker workflow, can-i-deploy gates, backward compatibility detection.",
+      "files": [],
+      "expectations": [
+        "Consumer-driven contracts recommended for internal microservices with multiple consumers",
+        "Pact workflow described: consumer writes test -> generates contract -> provider verifies",
+        "Pact Broker for contract storage and version management",
+        "can-i-deploy check before production promotion",
+        "Backward compatibility breaking change detection in CI",
+        "Contract testing reduces O(N*M) E2E to O(N+M) per skill documentation",
+        "Event contract testing addressed if async messaging present"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "legacy-no-tests-edge-case",
+      "prompt": "Define quality gates for a 10-year-old PHP monolith with zero test coverage that we need to stabilize before modernization.",
+      "expected_output": "Legacy edge case handled: starts with characterization tests, adds integration around critical paths, unit tests for new code only. Does not attempt retroactive 80% coverage.",
+      "files": [],
+      "expectations": [
+        "Starts with characterization tests to capture current behavior",
+        "Adds integration tests around critical business paths first",
+        "Unit tests required for new code only (not retroactive coverage)",
+        "Does NOT attempt 80% coverage retroactively on legacy code",
+        "Ice cream cone shape acknowledged as starting point, with plan to invert",
+        "Quality gates are pragmatic: passing characterization tests, no regression on critical paths",
+        "Flaky test management policy defined from the start"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "chaos-engineering-maturity",
+      "prompt": "Manage test data and introduce chaos engineering for our Kubernetes-deployed payment processing system.",
+      "expected_output": "Deep S4 (Chaos) + S5 (Test Data): chaos maturity model starting at Level 1, fault injection patterns, blast radius control. Test data with PII anonymization for payment data.",
+      "files": [],
+      "expectations": [
+        "Chaos maturity model starts at Level 1 (manual fault injection, staging only)",
+        "Fault injection patterns include pod termination, network latency, dependency unavailability",
+        "Blast radius control: start small (single pod), expand to zone, then region",
+        "Automatic rollback required if safety thresholds exceeded",
+        "Test data strategy includes PII anonymization for payment/financial data",
+        "Compliance addressed: no real customer payment data in non-production environments",
+        "Synthetic data generation for realistic payment scenarios"
+      ]
+    }
+  ]
+}

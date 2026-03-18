@@ -1,0 +1,82 @@
+{
+  "skill_name": "user-representative",
+  "description": "Evaluates the user representative skill across different deliverable types, audience personas, and quality dimensions. Each eval targets a specific review capability or scoring behavior.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "executive-deliverable-jargon-heavy",
+      "prompt": "Review for clarity: 'The proposed architecture leverages event-driven microservices with CQRS and saga orchestration patterns, achieving eventual consistency through CDC pipelines with Debezium connectors feeding into Kafka Streams for materialized view hydration.' Target audience: executives.",
+      "expected_output": "Low comprehension score for executive audience. Multiple micro-adjustments to replace jargon. Bias flags for technical bias (assuming reader knows distributed systems).",
+      "files": [],
+      "expectations": [
+        "Comprehension score below 7 for executive audience (heavy jargon without explanation)",
+        "Identifies at least 5 unexplained technical terms (CQRS, saga, CDC, Debezium, Kafka Streams, materialized view)",
+        "Micro-adjustments propose plain language alternatives with technical definitions",
+        "Technical bias flagged: assumes reader knows distributed systems architecture",
+        "Verdict is CONDITIONAL or FAIL for executive audience",
+        "Executive persona applied: 5-minute scan, zero jargon tolerance"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "well-structured-developer-doc",
+      "prompt": "Evaluate from user perspective: a developer-facing API documentation with code examples, clear headers, request/response samples, and error handling guide. Audience: developers.",
+      "expected_output": "High scores across dimensions for developer audience. Minimal micro-adjustments. Verdict: PASS.",
+      "files": [],
+      "expectations": [
+        "Comprehension score >= 7 for developer audience (technical terms acceptable)",
+        "Cognitive load score reflects good structure (clear headers, chunked sections)",
+        "Accessibility score reflects code examples and request/response samples",
+        "Adoption risks are minimal for developer audience",
+        "Verdict is PASS (all scores >= 7)",
+        "Developer persona applied: 30-minute deep dive, high jargon tolerance"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "multi-audience-document",
+      "prompt": "Check readability of a 25-page architecture decision document that will be read by executives, technical leads, and developers.",
+      "expected_output": "Multi-audience edge case: recommends reader track structure (exec summary > technical detail > appendix). Very long document triggers TOC requirement.",
+      "files": [],
+      "expectations": [
+        "All 4 reader personas applied (executive, technical lead, developer, business analyst)",
+        "Recommends 'reader track' structure: exec summary > technical detail > appendix",
+        "Very long document (>20 pages) triggers requirement for TOC + section summaries + key takeaway boxes",
+        "Accessibility score evaluates 80/20 rule: can reader get 80% value in 20% reading time",
+        "Different scores per persona (exec may score lower than developer on same content)",
+        "Navigation micro-adjustments proposed (section links, jump-to-recommendations)"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "optimism-bias-detection",
+      "prompt": "Assess adoption risk for a project proposal that claims 'migration will be seamless with zero downtime, no additional training needed, and immediate 50% cost reduction from day one.'",
+      "expected_output": "Optimism bias flagged on multiple claims. Adoption risk assessment identifies stakeholder skepticism potential. Bias flags include overstated benefits and underplayed risks.",
+      "files": [],
+      "expectations": [
+        "Optimism bias detected: 'seamless', 'zero downtime', 'no training needed', 'immediate 50% reduction'",
+        "Each optimistic claim flagged with specific bias description and suggested fix",
+        "Adoption risk identifies stakeholder skepticism when claims seem too good to be true",
+        "Micro-adjustments propose realistic language (ranges, conditions, timelines)",
+        "Does not just flag bias but provides concrete rewrite suggestions",
+        "Organizational bias may also be flagged (assuming org can absorb change without training)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "cognitive-load-overloaded-table",
+      "prompt": "Check cognitive load on a deliverable containing a single table with 15 columns and 50 rows of technical metrics, no summary, no callout boxes, and no section headers.",
+      "expected_output": "Very low cognitive load score. Micro-adjustments: split table, add key insight callout, add section headers, add TL;DR summary.",
+      "files": [],
+      "expectations": [
+        "Cognitive load score below 5 (information overload, no chunking)",
+        "Accessibility score low (no way to get 80% value in 20% reading time)",
+        "Micro-adjustment: split 15-column table into 2-3 focused tables",
+        "Micro-adjustment: add 'key insight' callout above the table",
+        "Micro-adjustment: add section headers and TL;DR summary",
+        "Verdict is FAIL (scores below 5 require rework)",
+        "Simplification type micro-adjustment: move non-essential columns to appendix"
+      ]
+    }
+  ]
+}
