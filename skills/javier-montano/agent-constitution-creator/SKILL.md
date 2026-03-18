@@ -1,6 +1,13 @@
 ---
 name: agent-constitution-creator
-description: Generate constitutional agent.md documents with 22 mandatory fields for agentic ecosystems.
+description: >
+  This skill should be used when the user asks to "create an agent constitution",
+  "define agent identity", "write agent.md", "generate agent spec", or "design
+  agent governance". Generates constitutional agent.md documents with 22 mandatory
+  fields covering identity, authority, governance, and quality for multi-agent
+  ecosystems. Use this skill whenever someone is building or extending an agentic
+  system and needs a persistent operational identity for a new agent, even if they
+  just say "add an agent" or "I need a new agent for X".
 argument-hint: <agent-id> [role-description]
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
@@ -37,7 +44,7 @@ Parse `$1` as agent ID (kebab-case), `$2` as role. If `$2` absent, ask:
 3. **Read tool registry**: Identify available tools for the Allowed Tools section
 4. **Read security spec**: If the ecosystem has security checkpoints, load them
 
-## The 21 Fields
+## The 22 Fields
 
 Organized in 4 categories for coherence:
 
@@ -206,6 +213,14 @@ version: "1.0.0"
 | Tool unavailable | Tool call timeout > 30s | Retry once, then escalate | Use alternative tool or manual approach |
 | Conflicting data | >5% rows with contradictory values | Flag conflicts, proceed with majority value | Escalate to human with conflict report |
 
+## Edge Cases
+
+- **Single-agent system:** The user says they only have one agent. A constitution is still valuable for documenting scope, tools, and completion criteria — but delegation, escalation, and orchestration fields can be marked N/A with a note: "No peer agents in current ecosystem."
+- **Agent that wraps an external API:** Inputs/outputs are dictated by the API contract. Derive fields 5-6 from the API spec. Decision rights are limited to request formatting and error handling.
+- **Agent with overlapping scope to an existing one:** Do not create the constitution without resolving the overlap first. Either merge the agents, split responsibilities with explicit boundaries, or add mutual non-goals referencing each other.
+- **User provides a vague role ("handles data"):** Enter interview mode. Ask: what data? what operations? what decisions can it make alone? what should it never touch? The role must be specific enough that two different people would write similar constitutions from it.
+- **Agent that needs all tools:** Suspicious — most agents need 3-5 tools. If the user claims "all," push back: "Which operations require which tools? Overly broad tool access is a security and scope risk."
+
 ## Validation Gate
 
 - [ ] All 22 fields present and non-empty
@@ -221,4 +236,4 @@ version: "1.0.0"
 - [ ] No two agents in the ecosystem have overlapping Scope
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026
