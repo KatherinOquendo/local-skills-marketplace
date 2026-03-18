@@ -1,9 +1,11 @@
 ---
 name: plugin-reload
 description: >
-  Deploy, validate, and reload Claude Code plugins from local development.
-  Use when the user says "reload plugins", "deploy plugin", "sync plugins",
-  "update local plugins", or needs to verify plugin structure after changes.
+  Deploys, validates, and reloads Claude Code plugins from local development.
+  Activates when the user says "reload plugins", "deploy plugin", "sync plugins",
+  "update local plugins", or "verify plugin structure". Also triggers on mentions of
+  plugin validation, plugin deployment, or post-change verification. Use this skill even if
+  the user just says something broke after editing a plugin — it diagnoses structure issues.
 allowed-tools:
   - Bash
   - Read

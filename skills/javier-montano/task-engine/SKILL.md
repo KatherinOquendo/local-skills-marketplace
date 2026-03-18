@@ -1,6 +1,10 @@
 ---
 name: task-engine
-description: "Meta-cognitive reasoning engine that decomposes complex problems using the DSVSR protocol (Decompose-Solve-Verify-Synthesize-Reflect) with explicit confidence calibration."
+description: >
+  Meta-cognitive reasoning engine that decomposes complex problems using the DSVSR protocol
+  (Decompose-Solve-Verify-Synthesize-Reflect) with explicit confidence calibration.
+  Use when the user asks to "break down this problem", "analyze with confidence scores",
+  "decompose and verify", "run DSVSR", or "reason through this step by step".
 argument-hint: "<problem description> [--target 0.95] [--fast]"
 allowed-tools:
   - Read
@@ -212,4 +216,4 @@ Before delivering a DSVSR response, confirm:
 - `reference/agent-delegation-patterns.md` — Subagent routing and confidence aggregation
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-18

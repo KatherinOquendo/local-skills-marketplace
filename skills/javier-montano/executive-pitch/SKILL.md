@@ -1,10 +1,11 @@
 ---
 name: executive-pitch
 description: >
-  C-level executive pitch with financial modeling and persuasion architecture.
-  Use when the user asks to "create a pitch", "build a business case", "justify the investment",
-  "present to executives", "ROI analysis", "executive summary", or mentions "C-level presentation",
-  "budget approval", "NPV", "IRR", "payback period", "business case", "Phase 5b".
+  This skill should be used when the user asks to "create a pitch",
+  "build a business case", "justify the investment", "present to executives",
+  or mentions ROI analysis, NPV, IRR, payback period, or C-level presentation.
+  It generates executive pitch decks with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models, and PAS persuasion architecture.
+  Use this skill whenever the user needs to persuade decision-makers with data-driven narratives, even if they don't explicitly ask for "executive pitch".
 allowed-tools:
   - Read
   - Write
@@ -178,4 +179,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Gantt chart: investment timeline by phase
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

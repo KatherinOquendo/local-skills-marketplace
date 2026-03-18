@@ -1,9 +1,11 @@
 ---
 name: plugin-builder
 description: >
-  Build complete Claude Code plugins from scratch — scaffolds plugin.json, CLAUDE.md, commands/, agents/,
-  skills/, hooks/, scripts/, settings.json. Use when the user asks to "create a plugin", "scaffold a plugin",
-  "build a new plugin", "initialize plugin structure", or mentions plugin creation, plugin scaffolding.
+  Builds complete Claude Code plugins from scratch — scaffolds plugin.json, CLAUDE.md, commands/, agents/,
+  skills/, hooks/, scripts/, settings.json. Activates when the user says "create a plugin", "scaffold a plugin",
+  "build a new plugin", "initialize plugin structure", or "set up a plugin project". Also triggers on mentions
+  of plugin creation, plugin scaffolding, or Claude Code extension packaging. Use this skill even if the user
+  only names the plugin — it interviews for missing details.
 allowed-tools:
   - Read
   - Write

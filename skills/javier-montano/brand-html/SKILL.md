@@ -1,6 +1,14 @@
 ---
 name: brand-html
-description: Brand-compliant HTML/CSS generation — reads brand tokens from config and applies colors, fonts, spacing, component templates, and responsive patterns for any brand
+description: >
+  This skill should be used when the user asks to "generate branded HTML",
+  "create a landing page", "build a brand-compliant web page",
+  "produce a styled HTML report", or "design a responsive page",
+  or mentions brand tokens, CSS variables, or HTML generation.
+  It generates brand-compliant HTML/CSS by reading brand tokens from config
+  and applying colors, fonts, spacing, component templates, and responsive patterns.
+  Use this skill whenever the user needs a self-contained branded web page,
+  even if they don't explicitly ask for "brand HTML".
 argument-hint: "<page-type> [brand-config-path]"
 allowed-tools:
   - Read
@@ -157,4 +165,4 @@ Flex row: wordmark left, links center, CTA button right in primary color.
 - [ ] Brand accent used for CTAs, highlights, borders consistently
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

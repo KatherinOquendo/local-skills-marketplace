@@ -1,9 +1,10 @@
 ---
 name: sofka-performance-engineering
 description: >
-  Performance assessment — load testing, capacity planning, bottleneck analysis, caching, CDN, SLAs.
-  Use when the user asks to "analyze performance", "design load tests", "plan capacity", "optimize caching",
-  "configure CDN", "define SLAs", "find bottlenecks", or mentions latency, throughput, p95, saturation, cache hit ratio, edge compute.
+  Produces performance assessments covering load testing, capacity planning, bottleneck analysis, caching, CDN, and SLAs.
+  Activates when the user says "analyze performance", "design load tests", "plan capacity", "optimize caching",
+  or "define SLAs". Also triggers on mentions of latency, throughput, p95, saturation, cache hit ratio, or edge compute.
+  Use this skill even if the user only mentions a vague slowness concern — it diagnoses and structures the full assessment.
 model: opus
 context: fork
 allowed-tools:
@@ -322,4 +323,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Load test scripts (k6/Gatling), USL capacity model spreadsheet, CDN cache rule configuration, SLO dashboard definitions, burn rate alert rules.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** March 12, 2026

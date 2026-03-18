@@ -1,6 +1,15 @@
 ---
 name: ecosystem-forge
-description: "Verifies, repairs, and bootstraps interconnected artifact ecosystems — skills, rules, workflows, and naming conventions — as coordinated systems."
+description: >
+  This skill should be used when the user asks to "bootstrap an ecosystem",
+  "audit artifact consistency", "create a coordinated system of skills",
+  "verify ecosystem integrity", or mentions ecosystem forge, artifact
+  coordination, cross-artifact validation, or governance bootstrap. It
+  verifies, repairs, and bootstraps interconnected artifact ecosystems
+  including skills, rules, workflows, and naming conventions as coordinated
+  systems. Use this skill whenever 3+ interrelated artifacts need to work
+  together as a system, even if they don't explicitly ask for "ecosystem
+  forge".
 argument-hint: "<domain-name or path-to-ecosystem> [--mode bootstrap|audit|repair] [--pattern governance|workflow|skill]"
 allowed-tools:
   - Read
@@ -170,4 +179,4 @@ Before declaring an ecosystem complete, confirm:
 - `reference/artifact-relationships.md` — How to map dependencies between artifacts
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

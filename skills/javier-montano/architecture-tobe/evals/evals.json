@@ -1,0 +1,37 @@
+[
+  {
+    "id": "tobe-happy-path",
+    "type": "happy_path",
+    "input": "Design the target architecture for migrating our banking monolith to microservices",
+    "expected_behavior": "Skill activates and produces C4 L2 container diagram, 6+ ADRs (saga, ACL, zero trust, event sourcing, K8s, caching), nightmare scenarios with mitigations, MVP component, and Strangler Fig migration plan",
+    "tags": ["migration", "microservices", "banking"]
+  },
+  {
+    "id": "tobe-conservative-scenario",
+    "type": "happy_path",
+    "input": "Create a TO-BE architecture for a conservative modernization — max 3 services, minimal risk",
+    "expected_behavior": "Skill activates with conservative conditional logic: monolith-first approach, 2-3 services max, 10-20% replacement over 18 months, ADRs emphasizing stability and risk mitigation",
+    "tags": ["conservative", "low-risk", "monolith-first"]
+  },
+  {
+    "id": "tobe-edge-case-no-cloud",
+    "type": "edge_case",
+    "input": "Design target architecture but we cannot use any cloud services — everything must be on-premises",
+    "expected_behavior": "Skill activates, replaces K8s with OpenShift or VM-based deployment, replaces managed services with self-hosted equivalents, documents increased operational overhead in ADRs",
+    "tags": ["on-prem", "no-cloud", "constraints"]
+  },
+  {
+    "id": "tobe-nightmare-scenarios",
+    "type": "happy_path",
+    "input": "Mitigate nightmare scenarios for our new distributed payment system",
+    "expected_behavior": "Skill activates and produces 5+ nightmare scenarios (ghost transaction, cascade failure, auth unavailable, schema drift, legacy corruption) with defense-in-depth mitigations, monitoring alerts, and acceptance criteria",
+    "tags": ["nightmare", "resilience", "payments"]
+  },
+  {
+    "id": "tobe-false-positive-current-state",
+    "type": "false_positive",
+    "input": "Analyze our current codebase and assess the existing architecture quality",
+    "expected_behavior": "Skill should NOT activate. This is a current-state (AS-IS) analysis request, not target-state design. Should route to asis-analysis skill instead.",
+    "tags": ["false-positive", "asis-analysis"]
+  }
+]

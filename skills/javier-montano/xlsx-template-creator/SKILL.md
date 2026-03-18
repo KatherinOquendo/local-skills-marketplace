@@ -1,6 +1,9 @@
 ---
 name: xlsx-template-creator
-description: Generate XLSX template specifications with columns, formulas, conditional formatting, and dashboard layouts for tracking and metrics.
+description: >
+  Generates XLSX template specifications with columns, formulas, conditional formatting, and dashboard layouts for tracking and metrics.
+  Use when the user asks to "create a spreadsheet template", "build a tracking matrix", "design a metrics dashboard",
+  "generate an XLSX spec", or mentions xlsx template, spreadsheet layout, or KPI dashboard.
 argument-hint: <tracking-matrix|metrics-dashboard> <title>
 allowed-tools: Read, Write, Edit, Glob
 ---
@@ -260,4 +263,4 @@ sheets:
 - [ ] Config sheet is clearly labeled as "edit here"
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** 2026-03-12

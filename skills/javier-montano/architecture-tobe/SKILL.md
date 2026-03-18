@@ -1,9 +1,15 @@
 ---
 name: sofka-architecture-tobe
 description: >
-  Target state (TO-BE) architecture design — C4 L2 containers, ADRs, nightmare scenario mitigations, MVP component, phased Strangler Fig migration.
-  Use when the user asks to "design the target architecture", "create a TO-BE architecture", "plan a migration strategy",
-  "define ADRs for a new system", "mitigate nightmare scenarios", or mentions Strangler Fig, C4 diagrams, saga pattern, anti-corruption layer, or legacy modernization.
+  This skill should be used when the user asks to "design the target architecture",
+  "create a TO-BE architecture", "plan a migration strategy",
+  "define ADRs for a new system", or "mitigate nightmare scenarios",
+  or mentions Strangler Fig, C4 diagrams, saga pattern, or legacy modernization.
+  It produces future-state architecture designs with C4 L2 container diagrams,
+  ADRs, nightmare scenario mitigations, MVP component design, and phased migration plans.
+  Use this skill whenever the user needs target-state architecture, anti-corruption
+  layers, or modernization roadmaps, even if they don't explicitly ask for
+  "TO-BE architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -324,4 +330,4 @@ Design the first deployable component (typically Authentication & Session Manage
 **Primary:** `04_Arquitectura_TO-BE_Deep.html` — C4 L2 diagram, trade-off matrices, nightmare scenarios with mitigations, MVP component design, ADRs, migration roadmap, acceptance criteria, RACI matrix.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

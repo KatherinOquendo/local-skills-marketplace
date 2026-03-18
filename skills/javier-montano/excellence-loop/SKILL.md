@@ -1,6 +1,11 @@
 ---
 name: excellence-loop
-description: "Iterative quality gate that evaluates output against a 10-criterion rubric, refines until criteria are met, detects diminishing returns, and delivers only the final polished version."
+description: >
+  This skill should be used when the user asks to "polish this output",
+  "evaluate quality", "refine this document", "run a quality gate",
+  or mentions excellence loop, rubric scoring, or iterative refinement.
+  It evaluates output against a 10-criterion rubric, refines until criteria are met, detects diminishing returns, and delivers only the final polished version.
+  Use this skill whenever the user needs document-level quality assurance on a deliverable, even if they don't explicitly ask for "excellence loop".
 argument-hint: "<content-path or inline content> [--strict] [--show-history] [--max-iterations 3]"
 allowed-tools:
   - Read
@@ -168,4 +173,4 @@ Before delivering the final version, confirm:
 - `reference/version-history-template.md` — Archive format for tracking iterations
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

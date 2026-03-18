@@ -1,9 +1,14 @@
 ---
 name: sofka-security-architecture
 description: >
-  Security architecture design — threat modeling, zero trust, identity, encryption, compliance.
-  Use when the user asks to "design security architecture", "model threats", "implement zero trust", "design IAM",
-  "plan encryption strategy", "map compliance requirements", or mentions STRIDE, OWASP, OAuth, RBAC, SOC2, ISO27001, PCI-DSS.
+  This skill should be used when the user asks to "design security architecture", "model
+  threats", "implement zero trust", "design IAM", "plan encryption strategy", "map
+  compliance requirements", or mentions STRIDE, OWASP, OAuth, RBAC, SOC2, ISO27001,
+  PCI-DSS, or zero trust. Designs comprehensive security architecture covering threat
+  modeling, zero trust implementation, identity management, data protection, application
+  security pipelines, and compliance mapping. Use this skill whenever security controls
+  or compliance need to be designed or evaluated, even if they don't explicitly ask for
+  "security-architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -312,4 +317,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Threat model diagrams (DFD), control matrix spreadsheet, compliance gap analysis, secret rotation runbook.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

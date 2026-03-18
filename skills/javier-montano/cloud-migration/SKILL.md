@@ -1,9 +1,13 @@
 ---
 name: sofka-cloud-migration
 description: >
-  Cloud migration planning -- 7R assessment, workload classification, wave planning, cutover.
-  Use when the user asks to "plan cloud migration", "assess workloads for migration", "design landing zone",
-  "create migration waves", "plan cutover strategy", or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory.
+  This skill should be used when the user asks to "plan a cloud migration",
+  "assess workloads for migration", "design a landing zone", "create migration waves",
+  or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory.
+  It produces comprehensive migration plans covering 7R assessment, workload analysis,
+  wave planning, landing zone design, cutover execution, and post-migration optimization.
+  Use this skill whenever the user discusses moving workloads to the cloud,
+  even if they don't explicitly ask for "cloud-migration".
 model: opus
 context: fork
 allowed-tools:
@@ -377,4 +381,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Application inventory spreadsheet, wave calendar, cutover runbook, rollback procedures, TCO comparison, decommission checklist.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

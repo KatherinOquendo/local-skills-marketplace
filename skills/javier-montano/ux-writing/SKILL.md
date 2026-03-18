@@ -260,4 +260,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Readability radar chart, information hierarchy map, terminology consistency report.
 
 ---
-**Autor:** Javier Montaño | **Ultima actualizacion:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** 2026-03-12

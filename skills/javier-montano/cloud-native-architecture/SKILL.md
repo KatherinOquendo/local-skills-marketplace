@@ -1,9 +1,13 @@
 ---
 name: sofka-cloud-native-architecture
 description: >
-  Cloud-native design -- containers, service mesh, serverless, multi-cloud, FinOps.
-  Use when the user asks to "design cloud-native architecture", "containerize the application", "evaluate service mesh",
-  "plan serverless migration", "implement multi-cloud strategy", "optimize cloud costs", or mentions Kubernetes, Istio, Docker, Helm, Terraform, FinOps, or 12-factor.
+  This skill should be used when the user asks to "design cloud-native architecture",
+  "containerize the application", "evaluate service mesh options",
+  "plan serverless migration", or mentions Kubernetes, Istio, FinOps, or 12-factor.
+  It produces architecture documentation covering containers, orchestration, service mesh,
+  serverless decisions, multi-cloud strategy, and cost-aware engineering with FinOps.
+  Use this skill whenever the user needs to design applications for the cloud,
+  even if they don't explicitly ask for "cloud-native-architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -344,4 +348,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Kubernetes manifest templates, Helm chart structure, service mesh configuration, cost allocation report, 12-factor compliance checklist.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

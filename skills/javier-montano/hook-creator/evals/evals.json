@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Create a hook that auto-formats files after every edit",
+    "expected_skill": "hook-creator",
+    "expected_output_contains": ["PostToolUse", "prettier", "Edit"],
+    "description": "Format-on-save hook request triggers skill"
+  },
+  {
+    "input": "Set up a file guard that blocks edits to lock files",
+    "expected_skill": "hook-creator",
+    "expected_output_contains": ["PreToolUse", "block", "lock"],
+    "description": "File guard request triggers skill"
+  },
+  {
+    "input": "Add a macOS notification hook when Claude needs attention",
+    "expected_skill": "hook-creator",
+    "expected_output_contains": ["Notification", "osascript", "display notification"],
+    "description": "Notification hook request triggers skill"
+  },
+  {
+    "input": "I want a quality gate that checks acceptance criteria before task completion",
+    "expected_skill": "hook-creator",
+    "expected_output_contains": ["TaskCompleted", "prompt", "verify"],
+    "description": "Quality gate hook request triggers skill"
+  },
+  {
+    "input": "Re-inject critical context after compaction using a SessionStart hook",
+    "expected_skill": "hook-creator",
+    "expected_output_contains": ["SessionStart", "compact", "context"],
+    "description": "Context re-injection hook triggers skill"
+  }
+]

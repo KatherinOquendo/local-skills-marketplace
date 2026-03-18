@@ -1,10 +1,11 @@
 ---
 name: sofka-functional-toolbelt
 description: >
-  Functional analysis toolkit with 6 tools for requirements engineering.
-  Use when the user asks to "run event storming", "create a story map", "extract business rules",
-  "write acceptance criteria", "build traceability matrix", "detect anti-patterns",
-  or mentions "Given/When/Then", "functional toolbelt", "requirements quality".
+  This skill should be used when the user asks to "run event storming",
+  "create a story map", "extract business rules", "write acceptance criteria",
+  or mentions traceability matrix, Given/When/Then, anti-pattern detection, or requirements quality.
+  It provides a 6-tool functional analysis toolkit covering event storming, story mapping, business rule extraction, acceptance criteria writing, traceability matrices, and anti-pattern detection.
+  Use this skill whenever the user needs structured requirements engineering techniques, even if they don't explicitly ask for "functional toolbelt".
 allowed-tools:
   - Read
   - Write
@@ -261,4 +262,4 @@ Before delivering toolbelt output, verify:
 - Type hierarchy visualization
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

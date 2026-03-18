@@ -1,13 +1,12 @@
 ---
 name: project-program-management
 description: >
-  PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
-  dependency control, and proposal QA validation across the entire discovery pipeline. Use when
-  the user asks to "track the discovery", "manage the portfolio", "validate the proposal",
-  "run governance check", "check phase dependencies", "coordinate resources", or mentions
-  PMO, program management, portfolio governance, phase gates, proposal readiness, milestone
-  tracking, or cross-phase dependency management. Works as the structural glue that holds
-  the entire discovery pipeline together — from Phase 0 through Handover.
+  Provides PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
+  dependency control, and proposal QA validation across the entire discovery pipeline. Activates when
+  the user says "track the discovery", "manage the portfolio", "validate the proposal",
+  "run governance check", or "coordinate resources". Also triggers on mentions of PMO, program management,
+  phase gates, proposal readiness, or cross-phase dependency management. Use this skill even if the user
+  only asks about project status — it activates the full governance layer.
 allowed-tools:
   - Read
   - Write
@@ -360,4 +359,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Sequence diagram: flujo de datos inter-fase
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** March 12, 2026

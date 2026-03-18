@@ -1,9 +1,13 @@
 ---
 name: sofka-roadmap-poc
 description: >
-  Execution roadmap generator with sprint breakdown, prerequisites, gates, team/budget, and risk register.
-  Use when the user asks to "create a roadmap", "plan a PoC", "build sprint plan", "execution timeline",
-  or mentions "proof of concept", "MVP plan", "milestones", "sprint breakdown", "iteracion", "go/no-go".
+  This skill should be used when the user asks to "create a roadmap", "plan a PoC",
+  "build sprint plan", "execution timeline", "define prerequisites", or mentions
+  proof of concept, MVP plan, milestones, sprint breakdown, go/no-go gates, or
+  team composition. Generates 4-8 week execution roadmaps with sprint-level planning,
+  prerequisite validation, measurable gate criteria, team composition, budget ranges,
+  and risk registers. Use this skill whenever delivery planning or execution sequencing
+  is needed, even if they don't explicitly ask for "roadmap-poc".
 model: opus
 context: fork
 allowed-tools:
@@ -256,4 +260,4 @@ Default output is Markdown with embedded Mermaid Gantt diagrams. HTML generation
 **Secondary:** Gantt chart (Mermaid), parallel setup grid, prerequisites tracker, risk register spreadsheet.
 
 ---
-**Autor:** Javier Montaño | **Ultima actualizacion:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

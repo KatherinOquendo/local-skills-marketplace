@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Design an event-driven system for our order processing platform",
+    "expected_skill": "event-architecture",
+    "expected_output_contains": ["event catalog", "broker"],
+    "description": "Direct event-driven system request triggers skill"
+  },
+  {
+    "input": "We need to implement CQRS and event sourcing for our financial domain",
+    "expected_skill": "event-architecture",
+    "expected_output_contains": ["command", "query", "event sourcing"],
+    "description": "CQRS and event sourcing mention triggers skill"
+  },
+  {
+    "input": "Set up a schema registry with backward compatibility for our Kafka events",
+    "expected_skill": "event-architecture",
+    "expected_output_contains": ["schema registry", "backward", "compatibility"],
+    "description": "Schema registry and Kafka mention triggers skill"
+  },
+  {
+    "input": "Design saga patterns for our multi-service checkout flow",
+    "expected_skill": "event-architecture",
+    "expected_output_contains": ["saga", "orchestration", "choreography"],
+    "description": "Saga pattern request triggers skill"
+  },
+  {
+    "input": "How should we handle dead-letter queues and consumer lag monitoring?",
+    "expected_skill": "event-architecture",
+    "expected_output_contains": ["DLT", "consumer lag", "monitoring"],
+    "description": "Operational event concerns trigger skill"
+  }
+]

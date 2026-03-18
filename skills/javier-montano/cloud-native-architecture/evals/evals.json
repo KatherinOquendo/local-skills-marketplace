@@ -1,0 +1,62 @@
+{
+  "skill_name": "cloud-native-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-k8s-architecture",
+      "prompt": "Design a cloud-native architecture for our e-commerce platform on Kubernetes",
+      "expected_output": "Architecture covering 12-factor assessment, container strategy, K8s topology, service mesh decision, and FinOps plan",
+      "expectations": [
+        "Includes 12-factor compliance audit",
+        "Defines container image and registry strategy",
+        "Specifies resource requests/limits guidance",
+        "Recommends service mesh with justification",
+        "Includes FinOps tooling selection"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-small-team",
+      "prompt": "We have 3 developers. Should we use Kubernetes with a service mesh?",
+      "expected_output": "Recommends managed Kubernetes, skip mesh, use cloud-managed services for small teams",
+      "expectations": [
+        "Acknowledges team size constraint",
+        "Recommends simpler managed approach",
+        "Defers mesh adoption until team grows"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "happy-path-serverless-decision",
+      "prompt": "Should we use serverless or containers for our event processing system?",
+      "expected_output": "Decision matrix comparing serverless vs containers based on traffic pattern, state, cold start tolerance, and cost",
+      "expectations": [
+        "Applies serverless decision framework",
+        "Considers traffic pattern and state requirements",
+        "Addresses cold start mitigation",
+        "Includes cost break-even analysis"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-cicd-pipeline",
+      "prompt": "Set up a CI/CD pipeline with GitHub Actions and ArgoCD",
+      "expected_output": "This skill should NOT be triggered; CI/CD pipeline design uses devsecops-architecture skill",
+      "expectations": [
+        "Skill is not invoked for CI/CD-only requests",
+        "Redirects to devsecops-architecture skill"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "edge-case-monolith-containerization",
+      "prompt": "We want to containerize our Java monolith and break it into microservices simultaneously",
+      "expected_output": "Recommends containerizing the monolith first, then decomposing via strangler fig pattern",
+      "expectations": [
+        "Warns against simultaneous containerization and decomposition",
+        "Recommends strangler fig pattern",
+        "Suggests phased approach"
+      ]
+    }
+  ]
+}

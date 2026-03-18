@@ -1,0 +1,37 @@
+[
+  {
+    "id": "html-happy-path",
+    "type": "happy_path",
+    "input": "Generate a branded HTML landing page for our product launch",
+    "expected_behavior": "Skill activates, reads brand config, and produces self-contained HTML with CSS variables from brand tokens, hero section, responsive grid, navigation with wordmark, and WCAG AA contrast compliance",
+    "tags": ["landing-page", "branded", "responsive"]
+  },
+  {
+    "id": "html-dark-hero",
+    "type": "happy_path",
+    "input": "Build a brand-compliant web page with a dark hero section and stat blocks",
+    "expected_behavior": "Skill activates with dark hero template (black bg, primary accent on key word, white text), stat blocks with primary-color left border, and proper color combination from approved palette",
+    "tags": ["dark-hero", "stat-blocks", "components"]
+  },
+  {
+    "id": "html-no-config",
+    "type": "edge_case",
+    "input": "Create an HTML page but I don't have any brand configuration",
+    "expected_behavior": "Skill activates with neutral defaults (#2563EB primary, #F8FAFC background, system fonts), produces valid responsive HTML, and adds comment noting customization is available via brand config",
+    "tags": ["no-config", "defaults", "fallback"]
+  },
+  {
+    "id": "html-rtl-language",
+    "type": "edge_case",
+    "input": "Generate a branded HTML page for our Arabic-language content",
+    "expected_behavior": "Skill activates, adds dir='rtl' to html element, mirrors layout accordingly, and maintains brand token compliance with RTL-appropriate styling",
+    "tags": ["rtl", "arabic", "internationalization"]
+  },
+  {
+    "id": "html-false-positive-docx",
+    "type": "false_positive",
+    "input": "Generate a branded Word document for our quarterly report",
+    "expected_behavior": "Skill should NOT activate. This is a Word/DOCX generation request. Should route to brand-docx skill instead.",
+    "tags": ["false-positive", "brand-docx"]
+  }
+]

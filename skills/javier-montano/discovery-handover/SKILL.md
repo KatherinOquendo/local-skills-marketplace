@@ -1,11 +1,16 @@
 ---
 name: sofka-discovery-handover
 description: >
-  Discovery-to-execution handover — operational transition package, commercial activation,
-  governance transfer, and Phase 1 kickoff plan. Use when the user asks to "create handover",
-  "transition to operations", "prepare delivery handoff", "activate commercial proposal",
-  "hand off discovery", "prepare operations package", "close discovery engagement",
-  or mentions handover, transition, delivery kickoff, proposal preparation, or discovery close-out.
+  This skill should be used when the user asks to "create handover",
+  "transition to operations", "prepare delivery handoff", "activate commercial
+  proposal", "hand off discovery", "prepare operations package", or "close
+  discovery engagement", or mentions handover, transition, delivery kickoff,
+  proposal preparation, or discovery close-out. It generates the operational
+  transition package that translates discovery deliverables into execution-ready
+  artifacts including commercial activation, governance transfer, and Phase 1
+  kickoff plan. Use this skill whenever a discovery engagement is closing or
+  needs to be handed to operations, even if they don't explicitly ask for
+  "discovery handover".
 model: opus
 context: fork
 allowed-tools:
@@ -320,4 +325,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - State diagram: discovery-to-execution transition lifecycle
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

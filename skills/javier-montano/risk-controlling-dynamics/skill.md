@@ -1,14 +1,15 @@
 ---
 name: risk-controlling-dynamics
 description: >
-  Proactive risk controller and financial vigilance — operates as an anxious CPA/PM hybrid
-  that anticipates worst-case scenarios at every discovery step, stress-tests assumptions,
-  tracks risk exposure, and feeds better insights back into each phase. Use when the user
-  asks to "assess risks", "stress-test the plan", "validate assumptions", "run worst-case
-  analysis", "check what could go wrong", "audit the discovery", or mentions risk register,
-  contingency planning, assumption validation, exposure analysis, risk appetite, worst-case
-  scenarios, financial controls, or "what keeps you up at night". The paranoid voice that
-  makes the discovery reliable and the proposal trustworthy.
+  This skill should be used when the user asks to "assess risks", "stress-test the plan",
+  "validate assumptions", "run worst-case analysis", "check what could go wrong",
+  "audit the discovery", or mentions risk register, contingency planning, assumption
+  validation, exposure analysis, risk appetite, worst-case scenarios, financial controls,
+  or "what keeps you up at night". Proactive risk controller and financial vigilance that
+  operates as an anxious CPA/PM hybrid — anticipates worst-case scenarios at every discovery
+  step, stress-tests assumptions, tracks risk exposure, and feeds better insights back into
+  each phase. Use this skill whenever a project involves uncertainty, assumptions, or
+  financial estimates, even if they don't explicitly ask for "risk-controlling-dynamics".
 allowed-tools:
   - Read
   - Write
@@ -404,4 +405,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: controles financieros y puntos de decisión
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

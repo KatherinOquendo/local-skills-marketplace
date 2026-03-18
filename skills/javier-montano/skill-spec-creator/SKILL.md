@@ -1,6 +1,13 @@
 ---
 name: skill-spec-creator
-description: Generate complete skill.yaml specifications with workflows, security, observability, and failure handling for agentic ecosystems.
+description: >
+  This skill should be used when the user asks to "create a skill spec", "generate a
+  skill.yaml", "define skill workflows", "design an agentic capability", or mentions
+  skill specifications, workflow decomposition, agent capabilities, or YAML skill
+  definitions. Generates complete skill.yaml specifications with workflows, security,
+  observability, and failure handling for agentic ecosystems. Use this skill whenever
+  the user needs to define a structured capability for a multi-agent system, even if
+  they don't explicitly ask for "skill-spec-creator".
 argument-hint: <skill-id> <owning-agent-id>
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
@@ -197,4 +204,4 @@ workflows:
 - [ ] `inputs` have validation constraints
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

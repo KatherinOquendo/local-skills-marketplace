@@ -1,6 +1,11 @@
 ---
 name: hook-creator
-description: Create Claude Code hooks for event-driven automation — format-on-save, file guards, notifications, quality gates.
+description: >
+  This skill should be used when the user asks to "create a hook",
+  "add format-on-save", "set up a file guard", "automate on tool use",
+  or mentions Claude Code hooks, PreToolUse, PostToolUse, or event-driven automation.
+  It generates Claude Code hook configurations for lifecycle events including format-on-save, file guards, notifications, and quality gates.
+  Use this skill whenever the user wants deterministic automation at Claude Code lifecycle points, even if they don't explicitly ask for "hook creator".
 argument-hint: <event-name> [handler-type]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
@@ -184,4 +189,4 @@ Matchers are **regex** applied to the event's matcher field:
 - [ ] Tested standalone before deployment: `echo '{"tool_name":"Edit"}' | your-command`
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

@@ -1,9 +1,14 @@
 ---
 name: sofka-analytics-engineering
 description: >
-  Analytics pipeline design — dbt-style transformations, data modeling, testing, documentation.
-  Use when the user asks to "design analytics models", "set up dbt project", "plan data transformations",
-  "define data contracts", "model star schema", or mentions staging models, marts, incremental strategies, or materializations.
+  This skill should be used when the user asks to "design analytics models",
+  "set up a dbt project", "plan data transformations", "define data contracts",
+  or "model a star schema", or mentions staging models, marts, incremental strategies,
+  or materializations. It produces analytics pipeline designs with dbt-style
+  transformations, data modeling patterns, testing strategies, and documentation plans.
+  Use this skill whenever the user needs source-to-target mapping, materialization
+  decisions, or transformation framework architecture, even if they don't explicitly
+  ask for "analytics engineering".
 model: opus
 context: fork
 allowed-tools:
@@ -336,4 +341,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Model dependency DAG, naming convention guide, test coverage report template, cost attribution dashboard spec.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

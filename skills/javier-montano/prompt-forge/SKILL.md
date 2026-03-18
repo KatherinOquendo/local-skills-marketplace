@@ -1,6 +1,11 @@
 ---
 name: prompt-forge
-description: "Creates, reviews, evolves, repairs, and ports system prompts across LLM platforms using the Playbook format, a 10-criterion evaluation rubric, and context engineering principles."
+description: >
+  Creates, reviews, evolves, repairs, and ports system prompts across LLM platforms using the Playbook format,
+  a 10-criterion evaluation rubric, and context engineering principles. Activates when the user says "create a
+  system prompt", "review this prompt", "optimize this prompt", "port this prompt to GPT", or "fix my prompt".
+  Also triggers on mentions of prompt engineering, prompt evaluation, prompt porting, or Playbook format.
+  Use this skill even if the user just pastes a prompt without instructions — it defaults to review mode.
 argument-hint: "<mode: create|review|evolve|repair|port> <domain or prompt-path> [--platform claude-project|custom-gpt|gemini-gem|api]"
 allowed-tools:
   - Read
@@ -205,4 +210,4 @@ Before delivering a prompt, confirm:
 - `reference/context-engineering.md` — Context hierarchy, token optimization, RAG integration
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** March 12, 2026

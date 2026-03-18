@@ -1,9 +1,11 @@
 ---
 name: sofka-mobile-architecture
 description: >
-  Mobile app architecture -- native vs cross-platform, offline-first, state management, release management.
-  Use when the user asks to "design mobile architecture", "choose between native and cross-platform", "implement offline-first",
-  "plan mobile CI/CD", "optimize app performance", or mentions Flutter, React Native, KMP, MVVM, SwiftUI, Jetpack Compose, or app store deployment.
+  This skill should be used when the user asks to "design mobile architecture", "choose between
+  native and cross-platform", "implement offline-first", "plan mobile CI/CD", or "optimize app
+  performance". Also triggers on mentions of Flutter, React Native, KMP, MVVM, SwiftUI, Jetpack
+  Compose, or app store deployment. Use this skill even if the user only asks about one mobile
+  concern like state management — the full platform strategy context is always relevant.
 model: opus
 context: fork
 allowed-tools:
@@ -339,4 +341,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Module dependency diagram, API contract specification, CI/CD pipeline configuration, app store compliance checklist, accessibility audit template.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

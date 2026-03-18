@@ -1,11 +1,13 @@
 ---
 name: commercial-model
 description: >
-  Business model and value capture strategy — identifies optimal commercial structures for
-  technology engagements beyond T&M. Use when the user asks to "define business model",
-  "structure the deal", "identify value capture", "design pricing strategy", "explore
-  commercial models", or mentions earned value, joint venture, revenue share, outcome-based,
-  licensing model, or commercial structure.
+  This skill should be used when the user asks to "define a business model",
+  "structure the deal", "identify value capture", "design a commercial model",
+  or mentions earned value, joint venture, revenue share, or outcome-based pricing.
+  It identifies optimal commercial structures for technology engagements beyond T&M,
+  producing model recommendations with trade-offs — not pricing.
+  Use this skill whenever the user discusses deal structure or commercial strategy,
+  even if they don't explicitly ask for "commercial-model".
 allowed-tools:
   - Read
   - Write
@@ -235,4 +237,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Quadrant chart: model fit analysis (alignment × risk)
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

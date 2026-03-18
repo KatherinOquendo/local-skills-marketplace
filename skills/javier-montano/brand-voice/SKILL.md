@@ -1,6 +1,14 @@
 ---
 name: brand-voice
-description: Configurable brand voice and tone guidelines — reads brand config to adapt voice pillars, content type calibration, vocabulary mapping, and writing rules for ANY brand
+description: >
+  This skill should be used when the user asks to "apply brand voice",
+  "write in our brand tone", "review copy for brand consistency",
+  "create brand writing guidelines", or "calibrate tone for a proposal",
+  or mentions voice pillars, tone calibration, or vocabulary mapping.
+  It applies configurable brand voice and tone guidelines by reading brand config
+  to adapt voice pillars, content type calibration, vocabulary mapping, and writing rules.
+  Use this skill whenever the user needs branded written content or voice
+  consistency checks, even if they don't explicitly ask for "brand voice".
 argument-hint: "<content-type> <text-or-path> [brand-config-path]"
 allowed-tools:
   - Read
@@ -176,4 +184,4 @@ That's why we [action].
 - [ ] No jargon without explanation
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

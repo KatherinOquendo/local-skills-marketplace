@@ -1,6 +1,10 @@
 ---
 name: step-creator
-description: Generate individual workflow steps with 12 mandatory fields. Internal helper for workflow-creator and skill-spec-creator.
+description: >
+  Generates individual workflow steps with all 12 mandatory fields as an internal helper.
+  Invoked by workflow-creator and skill-spec-creator when they need to "create a step",
+  "generate workflow steps", "build step definitions", "produce step specs",
+  or "expand a workflow into detailed steps".
 user-invocable: false
 allowed-tools: Read, Write, Edit
 ---
@@ -56,4 +60,4 @@ Receives from calling skill:
 - **Step with multiple possible handoffs**: List the decision logic: "If severity=critical -> `security-agent`; if severity=medium -> `review-agent`; else continue"
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-18

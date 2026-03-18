@@ -1,0 +1,63 @@
+{
+  "skill_name": "data-engineering",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-pipeline-architecture",
+      "prompt": "Design a data pipeline architecture for our e-commerce analytics platform",
+      "expected_output": "Complete data engineering documentation with ingestion patterns, orchestration design, storage architecture, quality framework, and lineage",
+      "expectations": [
+        "Defines ingestion method per data source",
+        "Selects and justifies orchestration tool",
+        "Designs storage zones with format selection",
+        "Includes data quality checks at zone boundaries",
+        "Addresses lineage and observability"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-legacy-etl-migration",
+      "prompt": "We need to migrate our Informatica ETL jobs to a modern stack",
+      "expected_output": "Maps existing jobs to modern orchestration, documents undocumented business logic, plans parallel validation",
+      "expectations": [
+        "Addresses legacy ETL migration explicitly",
+        "Plans parallel validation before cutover",
+        "Expects 20-30% of logic to be obsolete"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "happy-path-lakehouse",
+      "prompt": "Design a lakehouse architecture using Apache Iceberg on AWS",
+      "expected_output": "Lakehouse storage design with Iceberg table format, zone architecture, partitioning strategy, and compaction schedule",
+      "expectations": [
+        "Uses Iceberg as table format with rationale",
+        "Defines landing, curated, and consumption zones",
+        "Addresses small file problem with compaction",
+        "Includes lifecycle and retention policies"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-dashboard-design",
+      "prompt": "Design a Tableau dashboard for our sales team",
+      "expected_output": "This skill should NOT be triggered; dashboard design uses bi-architecture skill",
+      "expectations": [
+        "Skill is not invoked for dashboard/BI requests",
+        "Redirects to bi-architecture skill"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "edge-case-real-time-streaming",
+      "prompt": "We need to process 10 million events per second from IoT devices",
+      "expected_output": "Streaming architecture with Kafka, exactly-once semantics, backpressure handling, and consumer lag monitoring",
+      "expectations": [
+        "Addresses high-volume streaming patterns",
+        "Covers exactly-once delivery semantics",
+        "Includes backpressure and flow control",
+        "Monitors consumer lag as first-class metric"
+      ]
+    }
+  ]
+}

@@ -201,4 +201,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: team ramp-up/ramp-down visualization
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-18

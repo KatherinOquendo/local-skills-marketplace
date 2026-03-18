@@ -1,10 +1,13 @@
 ---
 name: sofka-data-governance
 description: >
-  Data governance framework — catalog, ownership, classification, retention, privacy compliance, data mesh.
-  Use when the user asks to "build a data catalog", "define data ownership", "classify sensitive data",
-  "design retention policies", "ensure privacy compliance", "implement data mesh governance",
-  or mentions GDPR, CCPA, LGPD, data stewardship, PII, data lineage, or federated governance.
+  This skill should be used when the user asks to "build a data catalog",
+  "define data ownership", "classify sensitive data", "design retention policies",
+  or mentions GDPR, CCPA, data stewardship, PII, or federated governance.
+  It produces governance frameworks covering catalog design, ownership models,
+  classification taxonomies, retention policies, privacy compliance, and data mesh governance.
+  Use this skill whenever the user needs data governance strategy,
+  even if they don't explicitly ask for "data-governance".
 model: opus
 context: fork
 allowed-tools:
@@ -304,4 +307,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Classification taxonomy document, RACI matrix, retention policy matrix, DSAR workflow diagram, OPA/Rego policy templates, catalog evaluation scorecard.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

@@ -1,10 +1,11 @@
 ---
 name: functional-spec
 description: >
-  Comprehensive functional specification with use cases, business rules, and complexity/risk matrix.
-  Use when the user asks to "write functional specs", "document use cases", "define business rules",
-  "create requirements", "specification document", or mentions "Phase 5a", "functional specification",
-  "MVP scope", "acceptance criteria", "casos de uso", "reglas de negocio".
+  This skill should be used when the user asks to "write functional specs",
+  "document use cases", "define business rules", "create requirements",
+  or mentions functional specification, MVP scope, acceptance criteria, or complexity/risk matrix.
+  It generates comprehensive functional specifications including MVP module inventories, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrices, data models, and per-module acceptance criteria.
+  Use this skill whenever the user needs to formalize system behavior into a contractual specification, even if they don't explicitly ask for "functional spec".
 allowed-tools:
   - Read
   - Write
@@ -165,4 +166,4 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

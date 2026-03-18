@@ -1,9 +1,11 @@
 ---
 name: sofka-observability
 description: >
-  Observability architecture — logging, tracing, metrics, alerting, SLO/SLI, incident response.
-  Use when the user asks to "design observability", "set up monitoring", "implement tracing", "configure alerting",
-  "define SLOs", "design incident response", or mentions OpenTelemetry, Prometheus, Grafana, ELK, correlation IDs, burn rate, runbooks.
+  This skill should be used when the user asks to "design observability", "set up monitoring",
+  "implement tracing", "configure alerting", or "define SLOs". Also triggers on mentions of
+  OpenTelemetry, Prometheus, Grafana, ELK, correlation IDs, burn rate, or runbooks. Use this
+  skill even if the user only asks about one pillar like logging — the full three-pillar
+  observability context is always relevant for production systems.
 model: opus
 context: fork
 allowed-tools:
@@ -348,4 +350,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** OTel Collector configuration (agent + gateway), Grafana dashboard JSON, burn rate alert rules, runbook templates, post-mortem template.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

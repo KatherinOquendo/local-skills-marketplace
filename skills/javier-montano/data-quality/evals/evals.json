@@ -1,0 +1,64 @@
+{
+  "skill_name": "data-quality",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-quality-framework",
+      "prompt": "Design a data quality framework for our customer analytics platform",
+      "expected_output": "Complete framework with profiling baseline, validation rules, data contracts, anomaly detection, remediation workflows, and SLA monitoring",
+      "expectations": [
+        "Establishes profiling baseline for critical datasets",
+        "Defines validation rules with severity classification",
+        "Specifies data contracts between producer and consumer teams",
+        "Includes anomaly detection with threshold calibration",
+        "Designs remediation workflows with quarantine pattern"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-no-historical-baseline",
+      "prompt": "Set up data quality monitoring but we have no historical data to baseline against",
+      "expected_output": "Uses first 30 days as baseline with wider thresholds (4-sigma), tightening gradually",
+      "expectations": [
+        "Acknowledges missing baseline",
+        "Uses wider initial thresholds",
+        "Plans gradual tightening over time",
+        "Accepts higher initial false positive rate"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "happy-path-data-contracts",
+      "prompt": "Set up data contracts between our payments team and the analytics team",
+      "expected_output": "Data contract specification with schema, freshness SLA, volume bounds, quality thresholds, and enforcement mechanisms",
+      "expectations": [
+        "Defines contract specification fields",
+        "Includes schema validation in CI",
+        "Sets freshness and quality SLAs",
+        "Specifies enforcement via Great Expectations or Soda"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-dbt-model-test",
+      "prompt": "Write dbt tests for my revenue model schema",
+      "expected_output": "This skill should NOT be triggered; dbt model testing uses analytics-engineering skill",
+      "expectations": [
+        "Skill is not invoked for dbt-specific test writing",
+        "Redirects to analytics-engineering skill"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "edge-case-third-party-data",
+      "prompt": "How do we ensure quality for data we receive from external vendors?",
+      "expected_output": "Monitoring-first approach with quarantine, aspirational contracts, and 2-3x more manual remediation budget",
+      "expectations": [
+        "Acknowledges no control over producer quality",
+        "Emphasizes monitoring and quarantine as essential",
+        "Budgets extra manual remediation time",
+        "Treats contracts as aspirational for external sources"
+      ]
+    }
+  ]
+}

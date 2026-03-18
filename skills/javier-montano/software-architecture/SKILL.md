@@ -1,9 +1,14 @@
 ---
 name: sofka-software-architecture
 description: >
-  Software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy.
-  Use when the user asks to "design the internal structure", "define module boundaries", "select architecture patterns",
-  "document architecture decisions", "evaluate code architecture", or mentions CQRS, Hexagonal, Event Sourcing, Clean Architecture, ADRs, or technical debt.
+  This skill should be used when the user asks to "design the internal structure", "define
+  module boundaries", "select architecture patterns", "document architecture decisions",
+  "evaluate code architecture", or mentions CQRS, Hexagonal, Event Sourcing, Clean
+  Architecture, ADRs, or technical debt. Produces comprehensive software architecture
+  documentation covering module views, component decomposition, design patterns, quality
+  attribute scenarios, ADRs, and debt evolution plans. Use this skill whenever internal
+  system structure needs to be designed, documented, or evaluated, even if they don't
+  explicitly ask for "software-architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -272,4 +277,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** ADR repository (.md files, version-controlled), module structure diagram (PNG/SVG), quality attribute scenario checklist.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

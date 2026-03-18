@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Map the end-to-end business flows for our payment processing system",
+    "expected_skill": "flow-mapping",
+    "expected_output_contains": ["flow", "sequence", "integration"],
+    "description": "Direct flow mapping request triggers skill"
+  },
+  {
+    "input": "Document business processes and trace integrations across our microservices",
+    "expected_skill": "flow-mapping",
+    "expected_output_contains": ["domain", "integration matrix"],
+    "description": "Business process documentation request triggers skill"
+  },
+  {
+    "input": "Identify critical failure points and system dependencies in our platform",
+    "expected_skill": "flow-mapping",
+    "expected_output_contains": ["failure point", "dependency graph"],
+    "description": "Failure point identification triggers skill"
+  },
+  {
+    "input": "Create a DDD domain taxonomy for our e-commerce platform",
+    "expected_skill": "flow-mapping",
+    "expected_output_contains": ["Core", "Supporting", "Generic", "bounded context"],
+    "description": "DDD domain taxonomy request triggers skill"
+  },
+  {
+    "input": "I need swimlane diagrams showing how orders flow through all our systems",
+    "expected_skill": "flow-mapping",
+    "expected_output_contains": ["swimlane", "sequence diagram", "trama"],
+    "description": "Swimlane diagram request triggers skill"
+  }
+]

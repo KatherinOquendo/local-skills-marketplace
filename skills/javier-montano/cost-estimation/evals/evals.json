@@ -1,0 +1,63 @@
+{
+  "skill_name": "cost-estimation",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-effort-estimation",
+      "prompt": "Estimate the effort for migrating our legacy ERP to a cloud-native platform",
+      "expected_output": "WBS with effort drivers, team composition model, magnitude framing in FTE-months, and risk-adjusted timeline with disclaimer",
+      "expectations": [
+        "Produces WBS with effort drivers per feature",
+        "Triangulates using multiple sizing methods",
+        "Team composition uses roles and quantities, not rates",
+        "Magnitude framed in FTE-months, not dollar amounts",
+        "Includes costing disclaimer"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-greenfield-no-history",
+      "prompt": "Size a brand new product with no comparable projects in our history",
+      "expected_output": "Uses reference-class forecasting with wider ranges and flags high uncertainty",
+      "expectations": [
+        "Applies reference-class forecasting",
+        "Uses wider estimation ranges",
+        "Flags as high uncertainty explicitly"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "happy-path-cost-drivers",
+      "prompt": "Identify all cost drivers for a microservices modernization project",
+      "expected_output": "Cost driver taxonomy covering personnel, licensing, infrastructure, tooling, training, migration, compliance, contingency, and opportunity",
+      "expectations": [
+        "Covers 8+ cost driver categories",
+        "Each driver has magnitude and phase impact",
+        "Includes innovation margin of 5%",
+        "No final prices in output"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-final-price-request",
+      "prompt": "How much will this project cost in dollars?",
+      "expected_output": "Redirects: identifies drivers and magnitude but explicitly refuses to produce a final price",
+      "expectations": [
+        "Does not produce dollar amounts",
+        "Explains separation of costing from pricing",
+        "Offers FTE-month magnitude instead"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "edge-case-regulatory-heavy",
+      "prompt": "Estimate effort for a healthcare platform that must comply with HIPAA and SOC 2",
+      "expected_output": "Includes compliance driver with 20-40% additional testing effort buffer",
+      "expectations": [
+        "Identifies compliance as major cost driver",
+        "Adds regulatory testing buffer",
+        "Includes certification and audit costs as drivers"
+      ]
+    }
+  ]
+}

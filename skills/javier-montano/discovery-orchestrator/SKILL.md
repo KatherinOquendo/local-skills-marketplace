@@ -1,11 +1,15 @@
 ---
 name: sofka-discovery-orchestrator
 description: >
-  This skill should be used when the user asks to "run a discovery", "orchestrate the pipeline",
-  "start a consulting engagement", "coordinate the dream team", "plan a discovery session",
-  "manage discovery inputs", or mentions discovery orchestration, phase sequencing, quality gates,
-  data contracts, expert committee, dream team, or consulting pipeline. Always use this skill
-  as the entry point for any discovery engagement — it coordinates all other skills.
+  This skill should be used when the user asks to "run a discovery",
+  "orchestrate the pipeline", "start a consulting engagement", "coordinate
+  the dream team", "plan a discovery session", "manage discovery inputs",
+  or mentions discovery orchestration, phase sequencing, quality gates, data
+  contracts, expert committee, dream team, or consulting pipeline. It is the
+  single entry point for every discovery engagement, coordinating 48 specialized
+  skills across 8 pipeline phases with quality gates and expert committees. Use
+  this skill whenever a consulting discovery or multi-phase assessment is needed,
+  even if they don't explicitly ask for "discovery orchestrator".
 allowed-tools:
   - Read
   - Write
@@ -761,4 +765,4 @@ Cada skill produce outputs de referencia en su directorio `examples/`:
 - Expert allocation matrix
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

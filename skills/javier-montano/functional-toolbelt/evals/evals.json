@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Run event storming for our insurance claims domain",
+    "expected_skill": "functional-toolbelt",
+    "expected_output_contains": ["domain event", "aggregate", "bounded context"],
+    "description": "Event storming request triggers skill"
+  },
+  {
+    "input": "Create a story map for the customer onboarding feature",
+    "expected_skill": "functional-toolbelt",
+    "expected_output_contains": ["backbone", "user story", "release"],
+    "description": "Story mapping request triggers skill"
+  },
+  {
+    "input": "Write acceptance criteria in Given/When/Then format for checkout",
+    "expected_skill": "functional-toolbelt",
+    "expected_output_contains": ["Given", "When", "Then"],
+    "description": "Given/When/Then acceptance criteria triggers skill"
+  },
+  {
+    "input": "Build a traceability matrix linking requirements to test cases",
+    "expected_skill": "functional-toolbelt",
+    "expected_output_contains": ["traceability", "requirement", "test case", "coverage"],
+    "description": "Traceability matrix request triggers skill"
+  },
+  {
+    "input": "Detect anti-patterns in our requirements document",
+    "expected_skill": "functional-toolbelt",
+    "expected_output_contains": ["ambiguity", "untestable", "anti-pattern"],
+    "description": "Anti-pattern detection request triggers skill"
+  }
+]

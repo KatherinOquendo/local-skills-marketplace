@@ -1,0 +1,37 @@
+[
+  {
+    "id": "asis-happy-path",
+    "type": "happy_path",
+    "input": "Run a full AS-IS analysis on our Java Spring Boot monolith",
+    "expected_behavior": "Skill activates and produces 10-section assessment: executive dashboard, technology inventory, code organization, C4 architecture, code quality metrics, tech debt inventory, NFR heatmap, security assessment, operational model, and risk register with recommendations",
+    "tags": ["full-analysis", "java", "monolith"]
+  },
+  {
+    "id": "asis-executive-variant",
+    "type": "happy_path",
+    "input": "Give me a quick technical health check of this codebase — executive summary only",
+    "expected_behavior": "Skill activates with executive variant (S0 + S5 + S9 + S10), producing executive dashboard, tech debt highlights, top risks, and prioritized recommendations",
+    "tags": ["executive", "quick", "health-check"]
+  },
+  {
+    "id": "asis-edge-case-no-tests",
+    "type": "edge_case",
+    "input": "Assess this legacy codebase that has zero test coverage and no CI/CD pipeline",
+    "expected_behavior": "Skill activates, flags test coverage as CRITICAL (0%), infers CI/CD from Dockerfiles and scripts, extrapolates quality risk via complexity metrics, and recommends test buildout as top priority",
+    "tags": ["no-tests", "no-cicd", "legacy"]
+  },
+  {
+    "id": "asis-tech-debt",
+    "type": "happy_path",
+    "input": "Evaluate tech debt in our microservices — we need to know what to fix first",
+    "expected_behavior": "Skill activates and produces categorized tech debt inventory (design, code, test, build, documentation, infrastructure, dependency) with severity scoring, business impact, and prioritized remediation pathways",
+    "tags": ["tech-debt", "prioritization", "microservices"]
+  },
+  {
+    "id": "asis-false-positive-design-future",
+    "type": "false_positive",
+    "input": "Design the future microservices architecture with ADRs and migration plan",
+    "expected_behavior": "Skill should NOT activate. This is a target-state (TO-BE) architecture design request. Should route to architecture-tobe skill instead.",
+    "tags": ["false-positive", "architecture-tobe"]
+  }
+]

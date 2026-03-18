@@ -1,9 +1,15 @@
 ---
 name: sofka-bi-architecture
 description: >
-  BI solution design — semantic layers, dashboard patterns, self-service analytics, KPI frameworks.
-  Use when the user asks to "design BI architecture", "build a KPI framework", "set up self-service analytics",
-  "design dashboard hierarchy", "create a semantic layer", or mentions metric trees, drill-down patterns, or reporting strategy.
+  This skill should be used when the user asks to "design BI architecture",
+  "build a KPI framework", "set up self-service analytics",
+  "design a dashboard hierarchy", or "create a semantic layer",
+  or mentions metric trees, drill-down patterns, or reporting strategy.
+  It produces BI solution designs covering KPI frameworks, semantic layers,
+  dashboard hierarchies, self-service analytics, and governance plans.
+  Use this skill whenever the user needs analytics consumption architecture
+  or visualization standards, even if they don't explicitly ask for
+  "BI architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -306,4 +312,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Metric catalog (.md), chart selection guide, dashboard template library, access control matrix.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

@@ -1,9 +1,13 @@
 ---
 name: sofka-data-quality
 description: >
-  Data quality framework — profiling, validation, anomaly detection, data contracts, SLA monitoring.
-  Use when the user asks to "design data quality framework", "set up data contracts", "plan data validation",
-  "detect data anomalies", "define data SLAs", or mentions data profiling, quarantine patterns, or remediation workflows.
+  This skill should be used when the user asks to "design a data quality framework",
+  "set up data contracts", "plan data validation", "detect data anomalies",
+  or mentions data profiling, quarantine patterns, or remediation workflows.
+  It produces data quality documentation covering profiling, validation rule engines,
+  data contracts, anomaly detection, remediation workflows, and SLA monitoring.
+  Use this skill whenever the user needs data quality strategy or implementation,
+  even if they don't explicitly ask for "data-quality".
 model: opus
 context: fork
 allowed-tools:
@@ -302,4 +306,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Validation rule catalog, data contract YAML templates, anomaly detection configuration, quality scorecard template, incident post-mortem template.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

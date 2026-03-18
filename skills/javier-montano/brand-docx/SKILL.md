@@ -1,6 +1,14 @@
 ---
 name: brand-docx
-description: Brand-compliant DOCX generation via python-docx — configurable brand tokens for colors, fonts, cover pages, headers, callouts, tables, and footers
+description: >
+  This skill should be used when the user asks to "generate a Word document",
+  "create a branded DOCX", "build a proposal in Word format",
+  "make a brand-compliant report", or "produce a cover page",
+  or mentions python-docx, Word templates, or DOCX generation.
+  It generates brand-compliant Word documents using python-docx with configurable
+  brand tokens for colors, fonts, cover pages, headers, callouts, tables, and footers.
+  Use this skill whenever the user needs a .docx file with branded styling,
+  even if they don't explicitly ask for "brand DOCX".
 argument-hint: "<document-type> <title> [brand-config-path]"
 allowed-tools:
   - Read
@@ -268,4 +276,4 @@ def add_header_footer(doc, title="", config={}):
 - [ ] Page margins are generous (brand breathing room)
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

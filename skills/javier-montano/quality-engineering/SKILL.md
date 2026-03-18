@@ -1,10 +1,11 @@
 ---
 name: sofka-quality-engineering
 description: >
-  Strategic quality engineering framework covering test strategy, automation architecture, quality gates, metrics, and shift-left practices.
-  Use when the user asks to "design test strategy", "plan quality gates", "set up test automation",
-  "assess quality maturity", "define quality metrics", or mentions "test pyramid", "shift-left",
-  "CI/CD quality", "automation architecture", "quality engineering".
+  Designs strategic quality engineering frameworks covering test strategy, automation architecture, quality gates,
+  metrics, and shift-left practices. Activates when the user says "design test strategy", "plan quality gates",
+  "set up test automation", "assess quality maturity", or "define quality metrics". Also triggers on mentions of
+  test pyramid, shift-left, CI/CD quality, automation architecture, or quality engineering. Use this skill even if
+  the user only asks about test coverage — it assesses the full quality posture.
 model: opus
 context: fork
 allowed-tools:
@@ -280,4 +281,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Quality maturity scorecard, gate criteria checklist, metrics dashboard template, implementation timeline.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** March 12, 2026

@@ -1,6 +1,13 @@
 ---
 name: brand-xlsx
-description: Brand-compliant XLSX generation via openpyxl — configurable brand tokens for title bars, section labels, column headers, KPI boxes, data rows, conditional formatting, and footers
+description: >
+  This skill should be used when the user asks to "generate a branded spreadsheet",
+  "create an Excel file with brand colors", "build an XLSX report",
+  "apply brand styling to a spreadsheet", or mentions openpyxl or brand tokens.
+  It generates brand-compliant Excel spreadsheets (.xlsx) using openpyxl with
+  configurable color fills, typography, layout patterns, KPI boxes, and footers.
+  Use this skill whenever the user needs any styled or branded Excel output,
+  even if they don't explicitly ask for "brand-xlsx".
 argument-hint: "<sheet-title> [brand-config-path]"
 allowed-tools:
   - Read
@@ -259,4 +266,4 @@ def auto_fit(ws, min_w=10, max_w=50):
 - [ ] Column widths auto-fitted
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

@@ -1,0 +1,63 @@
+{
+  "skill_name": "commercial-model",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-deal-structure",
+      "prompt": "Define the commercial model for a digital transformation engagement with a bank",
+      "expected_output": "Client value map, model catalog evaluation, fit analysis, recommended hybrid model, deal structure canvas, and negotiation prep",
+      "expectations": [
+        "Produces client value map with quantifiable sources",
+        "Evaluates all 7 commercial models",
+        "Recommends model with structure and KPIs",
+        "Includes deal structure canvas",
+        "Contains zero prices or rates"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-client-insists-tm",
+      "prompt": "The client only wants time and materials. What should we do?",
+      "expected_output": "Documents risks of misaligned incentives and proposes hybrid with minimal variable component",
+      "expectations": [
+        "Acknowledges client preference",
+        "Documents T&M risk of misaligned incentives",
+        "Proposes hybrid alternative"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge-case-startup-client",
+      "prompt": "Structure a deal for a startup with very limited budget for a platform build",
+      "expected_output": "Explores usage-based or JV model with lower barrier to entry",
+      "expectations": [
+        "Considers budget constraint",
+        "Proposes M5 usage-based or M4 JV options",
+        "Lowers barrier to entry"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-pricing-request",
+      "prompt": "What should we charge per hour for senior developers?",
+      "expected_output": "This skill should NOT produce pricing; redirects to commercial team for rate decisions",
+      "expectations": [
+        "Does not produce hourly rates or prices",
+        "Clarifies separation between model and pricing",
+        "Redirects pricing decisions to commercial area"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "happy-path-outcome-based",
+      "prompt": "We want to tie our fees to the client's cost savings. How do we structure this?",
+      "expected_output": "Outcome-based model with KPIs, baseline definition, measurement mechanism, and cap on variable component",
+      "expectations": [
+        "Designs M3 outcome-based or M7 hybrid structure",
+        "Defines measurable KPIs and baseline",
+        "Includes measurement governance",
+        "Sets cap on variable compensation"
+      ]
+    }
+  ]
+}

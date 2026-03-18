@@ -1,9 +1,14 @@
 ---
 name: sofka-data-engineering
 description: >
-  Data pipeline architecture — ingestion, orchestration, quality, lineage, SLAs.
-  Use when the user asks to "design data pipelines", "architect ingestion", "set up orchestration",
-  "plan data lake", "design lakehouse", or mentions Airflow, Dagster, CDC, data lineage, or pipeline SLAs.
+  This skill should be used when the user asks to "design data pipelines",
+  "architect data ingestion", "set up orchestration", "plan a data lake",
+  or mentions Airflow, Dagster, CDC, data lineage, or pipeline SLAs.
+  It produces data engineering documentation covering ingestion patterns,
+  orchestration design, storage architecture, quality frameworks, lineage,
+  and cost management for scalable data platforms.
+  Use this skill whenever the user needs data platform architecture,
+  even if they don't explicitly ask for "data-engineering".
 model: opus
 context: fork
 allowed-tools:
@@ -315,4 +320,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Source inventory catalog, DAG dependency diagram, storage zone map, pipeline runbook templates, cost attribution dashboard spec.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

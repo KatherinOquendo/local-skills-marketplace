@@ -1,6 +1,9 @@
 ---
 name: workflow-creator
-description: Generate complete workflow definitions with steps, DoD, RACI, KPIs, and failure handling for agentic ecosystems.
+description: >
+  Generates complete workflow definitions with steps, DoD, RACI, KPIs, and failure handling for agentic ecosystems.
+  Use when the user asks to "create a workflow", "define workflow steps", "build a workflow YAML",
+  "generate a workflow spec", or mentions workflow definition, step-by-step procedure, or RACI matrix.
 argument-hint: <workflow-id> [owning-skill-id]
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
@@ -135,4 +138,4 @@ The 12 fields per step are the atomic unit of traceability. Each must meet this 
 - [ ] `escalationRoute` names a specific target
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** 2026-03-12

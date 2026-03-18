@@ -1,9 +1,11 @@
 ---
 name: sofka-infrastructure-architecture
 description: >
-  Infrastructure and platform architecture — compute, network, storage, HA/DR, IAM, cloud landing zones, and cost optimization.
-  Use when the user asks to "design cloud infrastructure", "plan network topology", "define HA/DR strategy",
-  "set up cloud landing zones", "optimize cloud costs", or mentions VPC, Kubernetes, serverless, multi-AZ, IAM, reserved instances, or chaos testing.
+  This skill should be used when the user asks to "design cloud infrastructure", "plan network
+  topology", "define HA/DR strategy", "set up cloud landing zones", or "optimize cloud costs".
+  Also triggers on mentions of VPC, Kubernetes, serverless, multi-AZ, IAM, reserved instances,
+  chaos testing, or any compute/network/storage platform design. Use this skill even if the user
+  only mentions a single infrastructure concern — the full platform context is always relevant.
 model: opus
 context: fork
 allowed-tools:
@@ -276,4 +278,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Network diagram (VPC topology), auto-scaling policy, backup/recovery runbook, security compliance checklist, cost optimization quick wins.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

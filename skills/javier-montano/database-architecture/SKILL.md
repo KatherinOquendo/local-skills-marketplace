@@ -1,9 +1,14 @@
 ---
 name: sofka-database-architecture
 description: >
-  Database design — schema patterns, indexing, partitioning, replication, migration, performance tuning.
-  Use when the user asks to "design the database schema", "plan indexing strategy", "set up replication",
-  "partition large tables", "migrate database schema", "tune query performance", or mentions normalization, sharding, B-tree indexes, zero-downtime migration, or connection pooling.
+  This skill should be used when the user asks to "design the database schema",
+  "plan indexing strategy", "set up replication", "partition large tables",
+  "migrate database schema", "tune query performance", or mentions normalization,
+  sharding, B-tree indexes, zero-downtime migration, or connection pooling.
+  It produces comprehensive database architecture covering schema design, indexing,
+  partitioning, replication, migration strategy, and performance tuning. Use this
+  skill whenever the conversation involves data storage decisions or database
+  performance, even if they don't explicitly ask for "database architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -323,4 +328,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Migration scripts (.sql), index recommendation report, slow query analysis, replication monitoring dashboard config.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

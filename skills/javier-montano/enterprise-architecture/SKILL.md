@@ -1,9 +1,11 @@
 ---
 name: sofka-enterprise-architecture
 description: >
-  Enterprise architecture alignment — capability mapping, domain decomposition, governance, technology radar, and strategic initiative roadmap.
-  Use when the user asks to "map business capabilities", "build a technology radar", "define architecture governance",
-  "prioritize strategic initiatives", "design team topologies", or mentions DDD domains, ARB, DORA metrics, maturity models, or target operating model.
+  This skill should be used when the user asks to "map business capabilities",
+  "build a technology radar", "define architecture governance",
+  "prioritize strategic initiatives", or mentions capability mapping, DDD domains, ARB, DORA metrics, or target operating model.
+  It generates enterprise architecture alignment artifacts including capability maps, domain decomposition, governance frameworks, technology radars, and strategic initiative roadmaps.
+  Use this skill whenever the user needs to align technology initiatives with business strategy, even if they don't explicitly ask for "enterprise architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -311,4 +313,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Capability heat map (PNG/SVG), technology radar visualization, strategic roadmap (Gantt), governance flowchart, metrics dashboard.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

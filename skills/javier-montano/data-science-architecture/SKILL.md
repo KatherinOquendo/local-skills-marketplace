@@ -1,9 +1,14 @@
 ---
 name: sofka-data-science-architecture
 description: >
-  ML/AI system design — model lifecycle, feature stores, experiment tracking, model serving, MLOps pipelines.
-  Use when the user asks to "design an ML system", "architect model serving", "set up experiment tracking",
-  "design feature store", "plan MLOps pipeline", or mentions model registry, A/B testing, drift detection, or retraining triggers.
+  This skill should be used when the user asks to "design an ML system",
+  "architect model serving", "set up experiment tracking", "design feature store",
+  "plan MLOps pipeline", or mentions model registry, A/B testing, drift detection,
+  or retraining triggers. It produces end-to-end ML/AI system architecture covering
+  model lifecycle, feature stores, experiment tracking, model serving, and MLOps
+  pipelines. Use this skill whenever the conversation involves machine learning
+  infrastructure or productionizing models, even if they don't explicitly ask for
+  "data science architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -315,4 +320,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Model cards (.md), feature registry catalog, MLOps pipeline DAG diagram, bias audit report template.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

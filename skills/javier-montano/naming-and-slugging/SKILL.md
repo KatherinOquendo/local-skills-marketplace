@@ -1,6 +1,11 @@
 ---
 name: naming-and-slugging
-description: "Enforces naming conventions, generates URL-safe slugs, audits registries for consistency, and applies self-correction triggers during file operations."
+description: >
+  This skill should be used when the user asks to "generate a slug", "rename files to kebab-case",
+  "audit naming conventions", "clean up filenames", or "validate a name". Also triggers on mentions
+  of slug generation, kebab-case, filename linting, registry audit, or naming patterns. Use this
+  skill even if the user only has a single file to rename — the full naming protocol ensures
+  consistency across the project.
 argument-hint: "<name-to-slug or path-to-audit> [--clean] [--validate] [--strict] [--json]"
 allowed-tools:
   - Read
@@ -155,4 +160,4 @@ Before delivering a naming recommendation or rename operation, confirm:
 - `reference/naming-patterns.md` — Detailed conventions per entity type, edge cases (acronyms, numbers, compound extensions), canonical slug algorithm
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

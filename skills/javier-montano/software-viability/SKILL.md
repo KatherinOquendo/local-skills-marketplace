@@ -1,13 +1,13 @@
 ---
 name: software-viability
 description: >
-  Software and technology viability validator — deep forensic analysis of whether proposed
-  software solutions, AI/ML components, and technology choices are viable substance or speculative
-  smoke. Use when the user asks to "validate technology viability", "detect vaporware", "verify
-  AI claims", "assess software maturity", "check if this tech actually works", or mentions
-  technology due diligence, software validation, AI feasibility, vendor evaluation, or tech-stack
-  viability. This is the devoted software-specific validator — separate and more critical than
-  the multidimensional feasibility analysis.
+  This skill should be used when the user asks to "validate technology viability", "detect
+  vaporware", "verify AI claims", "assess software maturity", "check if this tech actually
+  works", or mentions technology due diligence, software validation, AI feasibility, vendor
+  evaluation, or tech-stack viability. Deep forensic analysis of whether proposed software
+  solutions, AI/ML components, and technology choices are viable substance or speculative
+  smoke. Use this skill whenever technology choices need validation or vendor claims need
+  scrutiny, even if they don't explicitly ask for "software-viability".
 allowed-tools:
   - Read
   - Write
@@ -246,4 +246,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - State diagram: viability verdict decision process (SUBSTANCIA → PROMESA → RIESGO → HUMO)
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

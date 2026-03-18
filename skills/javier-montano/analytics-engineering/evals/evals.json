@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ae-happy-path",
+    "type": "happy_path",
+    "input": "Design analytics models for our e-commerce platform using dbt",
+    "expected_behavior": "Skill activates and produces source-to-target mapping, star schema modeling, dbt project structure with staging/intermediate/marts layers, testing strategy, and documentation plan",
+    "tags": ["dbt", "star-schema", "source-to-target"]
+  },
+  {
+    "id": "ae-incremental-strategy",
+    "type": "happy_path",
+    "input": "Plan data transformations for a 500M-row event table with incremental strategies",
+    "expected_behavior": "Skill activates and recommends incremental materialization (microbatch or merge), partition pruning, clustering keys, and cost optimization for large-scale fact tables",
+    "tags": ["incremental", "performance", "large-scale"]
+  },
+  {
+    "id": "ae-edge-case-no-dbt",
+    "type": "edge_case",
+    "input": "We use stored procedures in SQL Server for all our transformations. Help us model our data.",
+    "expected_behavior": "Skill activates, acknowledges stored procedure environment, recommends migration path to dbt or similar framework, and adapts modeling patterns to current tooling",
+    "tags": ["legacy", "stored-procedures", "migration"]
+  },
+  {
+    "id": "ae-data-contracts",
+    "type": "happy_path",
+    "input": "Define data contracts between our analytics and data science teams",
+    "expected_behavior": "Skill activates and produces contract specifications with schema enforcement, breaking change policies, testing pyramid, and CI/CD integration for cross-team interfaces",
+    "tags": ["contracts", "cross-team", "testing"]
+  },
+  {
+    "id": "ae-false-positive-dashboard",
+    "type": "false_positive",
+    "input": "Design a revenue dashboard with drill-down charts and KPI cards",
+    "expected_behavior": "Skill should NOT activate. This is a BI/dashboard design request, not analytics engineering. Should route to bi-architecture skill instead.",
+    "tags": ["false-positive", "bi-architecture"]
+  }
+]

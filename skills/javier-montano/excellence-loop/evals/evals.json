@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Polish this document before I send it to the client",
+    "expected_skill": "excellence-loop",
+    "expected_output_contains": ["criterion", "score"],
+    "description": "Polish request triggers excellence loop"
+  },
+  {
+    "input": "Run a quality gate on this deliverable",
+    "expected_skill": "excellence-loop",
+    "expected_output_contains": ["rubric", "refinement"],
+    "description": "Quality gate request triggers skill"
+  },
+  {
+    "input": "Evaluate the quality of this architecture document and refine it",
+    "expected_skill": "excellence-loop",
+    "expected_output_contains": ["Foundation", "Truthfulness", "Quality"],
+    "description": "Evaluate and refine request triggers skill"
+  },
+  {
+    "input": "This report needs iterative refinement before delivery",
+    "expected_skill": "excellence-loop",
+    "expected_output_contains": ["iteration", "deliver"],
+    "description": "Iterative refinement mention triggers skill"
+  },
+  {
+    "input": "Score this output against the rubric and fix the weakest areas",
+    "expected_skill": "excellence-loop",
+    "expected_output_contains": ["score", "lowest", "fix"],
+    "description": "Rubric scoring request triggers skill"
+  }
+]

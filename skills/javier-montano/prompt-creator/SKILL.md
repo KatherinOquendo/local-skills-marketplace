@@ -1,6 +1,11 @@
 ---
 name: prompt-creator
-description: Generate structured prompts for 9 prompt types in agentic ecosystems — meta, handoff, deliberation, synthesis, validation, and fallback.
+description: >
+  Generates structured prompts for 9 prompt types in agentic ecosystems — meta, handoff, deliberation,
+  synthesis, validation, and fallback. Activates when the user says "create a prompt", "write a handoff prompt",
+  "generate a meta prompt", "build a committee deliberation prompt", or "make a fallback prompt". Also triggers
+  on mentions of prompt types, agent prompts, or multi-agent prompt design. Use this skill even if the user
+  only names the agent — it interviews for prompt type and context.
 argument-hint: <prompt-type> <owning-agent-id>
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
@@ -167,4 +172,4 @@ The handoff is complete when {{target_agent}} confirms:
 - [ ] Fallback prompts include escalation path
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** March 12, 2026

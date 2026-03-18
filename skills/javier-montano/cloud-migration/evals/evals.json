@@ -1,0 +1,60 @@
+{
+  "skill_name": "cloud-migration",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-migration-plan",
+      "prompt": "Plan a cloud migration for our 50 on-premises applications to AWS",
+      "expected_output": "Comprehensive migration plan with 7R classification, wave planning, landing zone design, and cutover strategy",
+      "expectations": [
+        "Classifies workloads using 7R framework",
+        "Designs wave-based migration sequence",
+        "Includes landing zone architecture",
+        "Defines cutover rehearsal checklist and rollback criteria"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-datacenter-exit-deadline",
+      "prompt": "We have 3 months to exit our datacenter. How do we migrate everything?",
+      "expected_output": "Recommends rehost-first strategy prioritized by lease expiry with post-migration optimization",
+      "expectations": [
+        "Favors rehost for speed under deadline",
+        "Acknowledges technical debt accepted",
+        "Plans post-migration optimization waves"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "happy-path-7r-assessment",
+      "prompt": "Assess our ERP, CRM, and legacy billing system using the 7R framework",
+      "expected_output": "Per-application 7R classification with rationale, effort estimate, and risk level",
+      "expectations": [
+        "Each application gets a specific 7R classification",
+        "Rationale documented per classification",
+        "Effort and risk levels assigned"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-new-cloud-app",
+      "prompt": "Design a new microservices application to run on Kubernetes",
+      "expected_output": "This skill should NOT be triggered; new cloud-native design uses cloud-native-architecture skill",
+      "expectations": [
+        "Skill is not invoked for greenfield cloud-native design",
+        "Redirects to cloud-native-architecture skill"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "edge-case-shared-database",
+      "prompt": "We need to migrate an application but it shares a database with 4 other systems",
+      "expected_output": "Addresses shared database migration with options: migrate all consumers together, introduce API layer, or replicate and gradually cut over",
+      "expectations": [
+        "Identifies shared database as migration constraint",
+        "Proposes multiple resolution strategies",
+        "Groups tightly coupled applications into same wave"
+      ]
+    }
+  ]
+}

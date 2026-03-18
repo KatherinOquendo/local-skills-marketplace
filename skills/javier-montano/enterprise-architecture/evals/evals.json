@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Map business capabilities for our fintech startup",
+    "expected_skill": "enterprise-architecture",
+    "expected_output_contains": ["capability", "maturity"],
+    "description": "Direct capability mapping request triggers skill"
+  },
+  {
+    "input": "Build a technology radar for our engineering organization",
+    "expected_skill": "enterprise-architecture",
+    "expected_output_contains": ["Adopt", "Trial", "Assess", "Hold"],
+    "description": "Technology radar request triggers skill"
+  },
+  {
+    "input": "We need to define architecture governance and an ARB process",
+    "expected_skill": "enterprise-architecture",
+    "expected_output_contains": ["ARB", "governance", "review"],
+    "description": "Governance keyword triggers skill"
+  },
+  {
+    "input": "Help me prioritize our strategic initiatives and align them with business objectives",
+    "expected_skill": "enterprise-architecture",
+    "expected_output_contains": ["portfolio", "initiative", "alignment"],
+    "description": "Strategic initiative prioritization triggers skill"
+  },
+  {
+    "input": "Design team topologies and target operating model with DORA metrics",
+    "expected_skill": "enterprise-architecture",
+    "expected_output_contains": ["stream-aligned", "platform", "DORA"],
+    "description": "Team topologies and DORA mention triggers skill"
+  }
+]

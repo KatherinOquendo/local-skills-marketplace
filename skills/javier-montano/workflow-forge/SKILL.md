@@ -1,6 +1,9 @@
 ---
 name: workflow-forge
-description: "Creates, validates, and optimizes step-by-step automation workflows with turbo annotations, safety gates, callgraph analysis, and sub-workflow orchestration."
+description: >
+  Creates, validates, and optimizes step-by-step automation workflows with turbo annotations, safety gates, callgraph analysis, and sub-workflow orchestration.
+  Use when the user asks to "build a workflow", "lint a workflow", "optimize workflow steps",
+  "add turbo annotations", or mentions workflow forge, workflow validation, or callgraph analysis.
 argument-hint: "<workflow description or path> [--mode create|lint|optimize] [--callgraph]"
 allowed-tools:
   - Read
@@ -188,4 +191,4 @@ Workflows are saved to the project's workflow directory (typically `.agent/workf
 - `reference/orchestration.md` — Patterns for multi-skill workflow coordination
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** 2026-03-12

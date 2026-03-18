@@ -1,11 +1,11 @@
 ---
 name: flow-mapping
 description: >
-  DDD domain taxonomy + 8-12 end-to-end business flows with trama specifications.
-  Use when the user asks to "map flows", "document business processes", "trace integrations",
-  "identify failure points", "domain mapping", "DDD analysis", or mentions "Phase 2",
-  "flow mapping", "integration matrix", "dependency graph", "swimlane diagrams",
-  "business process documentation".
+  This skill should be used when the user asks to "map business flows",
+  "document business processes", "trace integrations", "identify failure points",
+  or mentions DDD domain mapping, integration matrix, dependency graph, or swimlane diagrams.
+  It generates DDD domain taxonomies, 8-12 end-to-end business flows with sequence diagrams and trama specifications, integration matrices, critical failure point analysis, and system dependency graphs.
+  Use this skill whenever the user needs to understand how systems actually operate end-to-end, even if they don't explicitly ask for "flow mapping".
 allowed-tools:
   - Read
   - Write
@@ -240,4 +240,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: dependency graph between bounded contexts
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

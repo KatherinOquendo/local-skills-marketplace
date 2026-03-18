@@ -1,9 +1,11 @@
 ---
 name: sofka-mobile-assessment
 description: >
-  AS-IS assessment for mobile apps -- performance, compliance, dependency health, UX metrics.
-  Use when the user asks to "assess the mobile app", "audit app health", "review app dependencies",
-  "check app store compliance", "measure app performance", or mentions crash rate, ANR, app size, cold start time, or mobile tech debt.
+  This skill should be used when the user asks to "assess the mobile app", "audit app health",
+  "review app dependencies", "check app store compliance", or "measure app performance". Also
+  triggers on mentions of crash rate, ANR, app size, cold start time, or mobile tech debt. Use
+  this skill even if the user only asks about a single metric like crash rate — the full health
+  assessment context ensures no blind spots.
 model: opus
 context: fork
 allowed-tools:
@@ -387,4 +389,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** CVE report, accessibility audit spreadsheet, performance profiling captures, build time analysis, dependency license inventory, PrivacyInfo.xcprivacy audit report.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

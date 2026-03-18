@@ -1,0 +1,60 @@
+{
+  "skill_name": "brand-xlsx",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-generate-branded-spreadsheet",
+      "prompt": "Generate a branded Excel spreadsheet with our company colors for Q1 sales data",
+      "expected_output": "A Python script using openpyxl that creates a .xlsx file with brand-compliant styling including title bar, column headers, data rows, and footer",
+      "expectations": [
+        "Uses openpyxl library for generation",
+        "Applies brand color fills to title bar and headers",
+        "Includes alternating row colors for data",
+        "Adds a footer with brand wordmark"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-no-brand-config",
+      "prompt": "Create an Excel report but I don't have a brand config file",
+      "expected_output": "Generates spreadsheet using neutral blue default palette with Calibri font",
+      "expectations": [
+        "Falls back to default color palette",
+        "Uses Calibri as font family",
+        "Still applies structured layout pattern"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge-case-wide-data",
+      "prompt": "Build a branded XLSX with 25 columns of inventory data",
+      "expected_output": "Handles wide data with freeze panes and auto-fitted column widths",
+      "expectations": [
+        "Freezes panes at header row and first column",
+        "Auto-fits column widths",
+        "Maintains brand styling across all columns"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-csv-export",
+      "prompt": "Export this data as a CSV file",
+      "expected_output": "This skill should NOT be triggered; CSV export does not require brand-xlsx styling",
+      "expectations": [
+        "Skill is not invoked for CSV requests",
+        "No openpyxl or brand styling applied"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "happy-path-kpi-dashboard",
+      "prompt": "Create a branded Excel dashboard with KPI boxes showing revenue, churn rate, and NPS",
+      "expected_output": "Generates XLSX with KPI boxes using brand primary fill, plus data sections below",
+      "expectations": [
+        "Creates KPI boxes with label and value cells",
+        "Uses brand color fills for KPI sections",
+        "Includes section dividers between KPI and data areas"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "html-brand-happy-executive",
+    "title": "Executive HTML deliverable generation",
+    "prompt": "Create a Sofka HTML executive report for the Acme Banking project",
+    "expected_behavior": "Generates a self-contained HTML file with Design System v4, orange #FF7E08 primary, Clash Grotesk display font, numbered sections, hero with 3-4 KPIs, WCAG AA compliance, skip-link, and inline CSS."
+  },
+  {
+    "id": "html-brand-happy-technical",
+    "title": "Technical HTML deliverable generation",
+    "prompt": "Build a branded technical deep-dive document for the Event-Driven Architecture migration",
+    "expected_behavior": "Generates technical HTML with 10-15 sections, architecture diagrams, ADR-style content, higher content density per section, and all Sofka brand tokens."
+  },
+  {
+    "id": "html-brand-edge-no-green",
+    "title": "Color enforcement — no green for success",
+    "prompt": "Create a Sofka HTML report with a health dashboard showing success indicators in green",
+    "expected_behavior": "Uses yellow (#FFD700) for success states instead of green. Explains that the Sofka Design System v4 uses yellow for success to maintain warm palette coherence."
+  },
+  {
+    "id": "html-brand-edge-batch",
+    "title": "Batch upgrade of legacy HTML files",
+    "prompt": "Upgrade these 5 legacy HTML files in ./legacy-docs/ to Sofka brand compliance",
+    "expected_behavior": "Reads the operations guide, applies parallel sub-agent pattern for batch processing, preserves content while upgrading styles to DS v4 tokens."
+  },
+  {
+    "id": "html-brand-false-positive",
+    "title": "False positive — React web app request",
+    "prompt": "Build me a multi-page React application with routing for our customer portal",
+    "expected_behavior": "Does NOT activate this skill. Recognizes this is a web application with routing, not a branded HTML deliverable. Suggests using a framework instead."
+  }
+]

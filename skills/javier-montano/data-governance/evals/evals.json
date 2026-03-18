@@ -1,0 +1,64 @@
+{
+  "skill_name": "data-governance",
+  "evals": [
+    {
+      "id": 1,
+      "name": "happy-path-governance-framework",
+      "prompt": "Build a data governance framework for our financial services organization",
+      "expected_output": "Comprehensive governance framework with catalog, ownership model, classification taxonomy, retention policies, and privacy compliance",
+      "expectations": [
+        "Designs data catalog with metadata strategy",
+        "Establishes ownership and stewardship model with RACI",
+        "Defines classification taxonomy with handling rules",
+        "Maps retention policies to regulatory requirements",
+        "Includes GDPR/CCPA compliance workflows"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "edge-case-data-mesh-transition",
+      "prompt": "We're moving from centralized to federated data governance in a data mesh",
+      "expected_output": "Parallel governance models during transition with clear criteria for domain autonomy",
+      "expectations": [
+        "Addresses transition from centralized to federated",
+        "Defines global vs local policy boundaries",
+        "Requires Level 3 maturity before self-governing",
+        "Plans incremental domain adoption"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "happy-path-pii-classification",
+      "prompt": "Classify our customer data for GDPR compliance and design handling rules",
+      "expected_output": "Classification taxonomy with PII detection rules, automated tagging, and handling rules per sensitivity tier",
+      "expectations": [
+        "Defines sensitivity tiers from Public to Highly Restricted",
+        "Includes PII detection patterns",
+        "Maps GDPR articles to data elements",
+        "Specifies encryption and masking requirements per tier"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "false-positive-data-pipeline",
+      "prompt": "Design an ETL pipeline to ingest data from Salesforce into our warehouse",
+      "expected_output": "This skill should NOT be triggered; pipeline design uses data-engineering skill",
+      "expectations": [
+        "Skill is not invoked for pipeline design requests",
+        "Redirects to data-engineering skill"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "edge-case-merger-acquisition",
+      "prompt": "We just acquired a company. How do we combine our data governance?",
+      "expected_output": "Prioritizes asset discovery within 30 days, harmonizes classification and ownership, assigns interim owners",
+      "expectations": [
+        "Addresses M&A data estate combination",
+        "Plans 30-day inventory of both estates",
+        "Assigns interim data owners immediately",
+        "Expects 6-12 months for full integration"
+      ]
+    }
+  ]
+}

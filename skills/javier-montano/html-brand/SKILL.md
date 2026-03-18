@@ -353,4 +353,4 @@ Default output is self-contained HTML. This skill always produces HTML — it is
 **Design System:** v4 | **Last Updated:** 2026-03-12
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

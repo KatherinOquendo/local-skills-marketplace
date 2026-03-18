@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Write a functional specification for our loan origination module",
+    "expected_skill": "functional-spec",
+    "expected_output_contains": ["use case", "business rule", "acceptance criteria"],
+    "description": "Direct functional spec request triggers skill"
+  },
+  {
+    "input": "Document use cases and business rules for the user registration flow",
+    "expected_skill": "functional-spec",
+    "expected_output_contains": ["use case", "business rule", "validation"],
+    "description": "Use case and business rule request triggers skill"
+  },
+  {
+    "input": "Create a complexity/risk matrix for our MVP modules",
+    "expected_skill": "functional-spec",
+    "expected_output_contains": ["complexity", "risk", "matrix", "module"],
+    "description": "Complexity/risk matrix request triggers skill"
+  },
+  {
+    "input": "Define the acceptance criteria and scope boundaries for our first release",
+    "expected_skill": "functional-spec",
+    "expected_output_contains": ["acceptance criteria", "scope", "in scope", "out of scope"],
+    "description": "Acceptance criteria and scope definition triggers skill"
+  },
+  {
+    "input": "I need a requirements document with data model and integration specs",
+    "expected_skill": "functional-spec",
+    "expected_output_contains": ["data model", "entity", "integration"],
+    "description": "Requirements document request triggers skill"
+  }
+]

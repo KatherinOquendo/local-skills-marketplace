@@ -1,10 +1,14 @@
 ---
 name: sofka-design-system
 description: >
-  Configurable design system for HTML deliverables with tokens, page structure, and component library.
-  Use when the user asks to "apply design system", "generate styled HTML", "set up brand tokens",
-  "configure brand colors", or mentions "design system", "design tokens", "component library",
-  "brand config", "page template".
+  This skill should be used when the user asks to "apply design system",
+  "generate styled HTML", "set up brand tokens", "configure brand colors",
+  or mentions design system, design tokens, component library, brand config,
+  or page template. It provides a configurable design system for HTML
+  deliverables with tokens, page structure, and component library. Use this
+  skill whenever the conversation involves branded HTML output, visual
+  consistency, or deliverable styling, even if they don't explicitly ask
+  for "design system".
 allowed-tools:
   - Read
   - Write
@@ -316,4 +320,4 @@ Before delivering design system output:
 - Responsive breakpoint matrix
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

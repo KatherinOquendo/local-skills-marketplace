@@ -215,4 +215,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: workshop outputs and their connections to deliverables
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** 2026-03-12

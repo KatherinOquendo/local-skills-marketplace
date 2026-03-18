@@ -1,6 +1,12 @@
 ---
 name: rule-forge
-description: "Creates and validates binary governance rules (Pass/Fail constraints) with enforceability testing, scoped examples, and self-evaluation."
+description: >
+  This skill should be used when the user asks to "create a rule", "define a constraint",
+  "write a governance rule", "enforce a code standard", or mentions binary Pass/Fail rules,
+  enforceability testing, code constraints, linting rules, or rule validation. Creates and
+  validates binary governance rules with enforceability testing, scoped examples, and
+  self-evaluation. Use this skill whenever the user needs to codify a repeatable constraint
+  into a formal rule, even if they don't explicitly ask for "rule-forge".
 argument-hint: "<constraint description> [--scope 'src/**/*.ts'] [--validate path/to/rule.md]"
 allowed-tools:
   - Read
@@ -137,4 +143,4 @@ Before delivering a rule, confirm:
 - `reference/best-practices.md` — Scope precision, "Power of No", common mistakes
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

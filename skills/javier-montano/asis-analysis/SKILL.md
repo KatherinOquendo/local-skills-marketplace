@@ -1,10 +1,14 @@
 ---
 name: asis-analysis
 description: >
-  Current-state technical assessment producing 10-section analysis. Use when the user asks to
-  "analyze the codebase", "assess current architecture", "run AS-IS analysis", "technical audit",
-  "evaluate tech debt", "code quality assessment", or mentions "Phase 1", "current state",
-  "legacy system review", "technical health check".
+  This skill should be used when the user asks to "analyze the codebase",
+  "assess current architecture", "run an AS-IS analysis", "perform a technical audit",
+  or "evaluate tech debt", or mentions current state, legacy system review,
+  or technical health check. It produces a 10-section current-state technical
+  assessment with C4 diagrams, code quality metrics, tech debt inventory,
+  and prioritized recommendations. Use this skill whenever the user needs
+  a baseline assessment before modernization, even if they don't explicitly
+  ask for "AS-IS analysis".
 allowed-tools:
   - Read
   - Write
@@ -231,4 +235,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: technology stack overview
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

@@ -1,10 +1,15 @@
 ---
 name: sofka-api-architecture
 description: >
-  API design & governance — REST/GraphQL/gRPC, versioning, rate limiting, DX, contract-first.
-  Use when the user asks to "design an API", "define API strategy", "implement contract-first",
-  "set up API governance", "design API versioning", "improve developer experience",
-  or mentions REST, GraphQL, gRPC, AsyncAPI, OpenAPI, API gateway, rate limiting, or API catalog.
+  This skill should be used when the user asks to "design an API",
+  "define API strategy", "implement contract-first development",
+  "set up API governance", or "improve developer experience",
+  or mentions REST, GraphQL, gRPC, OpenAPI, or API gateway.
+  It produces API architecture designs covering style selection, contract-first
+  workflows, versioning, security, rate limiting, and DX plans.
+  Use this skill whenever the user needs API design decisions, deprecation
+  policies, or developer portal planning, even if they don't explicitly
+  ask for "API architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -295,4 +300,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** OpenAPI spec templates, API style guide, review checklist, deprecation policy document, SDK generation configuration.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

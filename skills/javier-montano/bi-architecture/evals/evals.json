@@ -1,0 +1,37 @@
+[
+  {
+    "id": "bi-happy-path",
+    "type": "happy_path",
+    "input": "Design BI architecture for our company including KPI framework and dashboard hierarchy",
+    "expected_behavior": "Skill activates and produces KPI metric tree (north star to operational), semantic layer design, dashboard hierarchy (L1-L4), self-service analytics strategy, visualization standards, and platform governance",
+    "tags": ["bi-design", "kpi", "dashboards"]
+  },
+  {
+    "id": "bi-semantic-layer",
+    "type": "happy_path",
+    "input": "Create a semantic layer so all teams calculate revenue the same way",
+    "expected_behavior": "Skill activates and produces semantic layer design with tool comparison (dbt MetricFlow vs Cube vs LookML), metric definitions, dimension modeling, access control, and drift prevention strategy",
+    "tags": ["semantic-layer", "metrics", "consistency"]
+  },
+  {
+    "id": "bi-edge-case-startup",
+    "type": "edge_case",
+    "input": "We're a 5-person startup with no BI tools. Where do we start?",
+    "expected_behavior": "Skill activates with startup-appropriate recommendations: one dashboard tool, shared metric definitions, basic access control, avoiding over-engineering, semantic layer deferred until 10+ reports",
+    "tags": ["startup", "simple", "getting-started"]
+  },
+  {
+    "id": "bi-self-service",
+    "type": "happy_path",
+    "input": "Set up self-service analytics with guardrails so business users can explore data safely",
+    "expected_behavior": "Skill activates and produces governed vs exploratory zones, user segmentation, compute guardrails (query timeouts, row limits, cost quotas), training plan, and feedback loop design",
+    "tags": ["self-service", "governance", "guardrails"]
+  },
+  {
+    "id": "bi-false-positive-dbt",
+    "type": "false_positive",
+    "input": "Set up a dbt project with staging models and incremental materializations",
+    "expected_behavior": "Skill should NOT activate. This is a data transformation/analytics engineering request. Should route to analytics-engineering skill instead.",
+    "tags": ["false-positive", "analytics-engineering"]
+  }
+]

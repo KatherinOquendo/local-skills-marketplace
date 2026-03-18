@@ -1,10 +1,11 @@
 ---
 name: sofka-event-architecture
 description: >
-  Event-driven architecture — event catalog, schema registry, eventual consistency, saga, CQRS, event sourcing.
-  Use when the user asks to "design event-driven system", "build event catalog", "implement CQRS",
-  "design saga patterns", "set up schema registry", "implement event sourcing",
-  or mentions Kafka, RabbitMQ, Pulsar, event bus, dead-letter queue, consumer groups, or event replay.
+  This skill should be used when the user asks to "design an event-driven system",
+  "build an event catalog", "implement CQRS", "design saga patterns",
+  or mentions Kafka, RabbitMQ, Pulsar, event bus, dead-letter queue, or event sourcing.
+  It generates event-driven architecture artifacts including event catalogs, schema registry designs, consistency patterns (sagas, outbox, idempotency), CQRS models, and operational runbooks.
+  Use this skill whenever the user needs asynchronous messaging architecture, even if they don't explicitly ask for "event architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -330,4 +331,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** AsyncAPI specifications, event schema definitions, saga flow diagrams, DLT handling procedures, consumer lag dashboard configuration.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

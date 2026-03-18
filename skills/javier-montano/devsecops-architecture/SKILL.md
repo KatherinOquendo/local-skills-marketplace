@@ -1,9 +1,15 @@
 ---
 name: sofka-devsecops-architecture
 description: >
-  DevSecOps pipeline architecture — CI/CD design, shift-left security, supply chain integrity, release management, and compliance automation.
-  Use when the user asks to "design the CI/CD pipeline", "integrate security into delivery", "set up SBOM and artifact signing",
-  "automate compliance", "measure DORA metrics", or mentions SAST, SCA, DAST, secrets scanning, IaC scanning, canary deployment, or policy-as-code.
+  This skill should be used when the user asks to "design the CI/CD pipeline",
+  "integrate security into delivery", "set up SBOM and artifact signing",
+  "automate compliance", "measure DORA metrics", or mentions SAST, SCA, DAST,
+  secrets scanning, IaC scanning, canary deployment, or policy-as-code. It
+  produces DevSecOps pipeline architecture covering CI/CD design, shift-left
+  security, supply chain integrity, release management, and compliance
+  automation. Use this skill whenever the conversation involves build pipelines,
+  deployment security, or delivery automation, even if they don't explicitly
+  ask for "devsecops architecture".
 model: opus
 context: fork
 allowed-tools:
@@ -300,4 +306,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Secondary:** Pipeline stage diagram, security gate checklist, deployment playbook, DORA metrics dashboard, compliance evidence template.
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

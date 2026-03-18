@@ -1,0 +1,37 @@
+[
+  {
+    "id": "api-happy-path",
+    "type": "happy_path",
+    "input": "Design an API strategy for our new SaaS platform that serves mobile and web clients",
+    "expected_behavior": "Skill activates and produces API style selection (REST vs GraphQL), contract-first workflow with OpenAPI, versioning strategy, security design with OAuth2, and DX plan",
+    "tags": ["api-design", "saas", "multi-client"]
+  },
+  {
+    "id": "api-graphql-federation",
+    "type": "happy_path",
+    "input": "We have 5 teams contributing to a shared GraphQL API. Help us set up federation.",
+    "expected_behavior": "Skill activates and recommends GraphQL federation with supergraph architecture, gateway selection (Apollo Router/DGS), subgraph ownership model, and entity references via @key directive",
+    "tags": ["graphql", "federation", "multi-team"]
+  },
+  {
+    "id": "api-edge-case-legacy",
+    "type": "edge_case",
+    "input": "We have 50 undocumented REST endpoints with no specs. How do we modernize?",
+    "expected_behavior": "Skill activates, recommends code-first spec generation from existing endpoints, then contract-first migration with facade pattern, versioning, and deprecation timeline",
+    "tags": ["legacy", "modernization", "no-spec"]
+  },
+  {
+    "id": "api-rate-limiting",
+    "type": "happy_path",
+    "input": "Implement rate limiting for our public API with different tier levels",
+    "expected_behavior": "Skill activates and produces rate limiting algorithm comparison (token bucket vs sliding window), tier definitions (free/standard/enterprise), 429 response handling, and latency budget (<5ms)",
+    "tags": ["rate-limiting", "security", "tiers"]
+  },
+  {
+    "id": "api-false-positive-internal-code",
+    "type": "false_positive",
+    "input": "Refactor the internal module structure of our Python application",
+    "expected_behavior": "Skill should NOT activate. This is internal code architecture, not API design. Should route to software-architecture skill instead.",
+    "tags": ["false-positive", "software-architecture"]
+  }
+]

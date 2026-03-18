@@ -1,6 +1,11 @@
 ---
 name: open-claw-builder
-description: Build production-grade tool-calling AI agents with TypeScript on open LLM stacks (Groq, OpenRouter, Ollama).
+description: >
+  Builds production-grade tool-calling AI agents with TypeScript on open LLM stacks (Groq, OpenRouter, Ollama).
+  Activates when the user says "build an agent", "create a bot", "scaffold a Telegram bot",
+  "make a Discord agent", or "set up an HTTP agent". Also triggers on mentions of tool-calling,
+  open LLM stack, Groq agent, or OpenRouter bot. Use this skill even if the user only has a
+  vague idea — it interviews for missing details.
 argument-hint: <agent-name> [platform: telegram|discord|http]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Agent
 model: opus
@@ -177,4 +182,4 @@ Sub-agents in `delegate.ts`: `{name, description, systemPrompt, tools[]}`. Main 
 - [ ] `.env.example` documents all required variables
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** March 12, 2026

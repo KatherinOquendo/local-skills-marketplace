@@ -1,9 +1,15 @@
 ---
 name: dynamic-sme
 description: >
-  Context-adaptive industry expert that dynamically adopts the right SME lens based on client sector.
-  Use when the user asks to "add industry context", "act as domain expert", "give me the banking/retail/health perspective",
-  or mentions "SME", "subject matter expert", "industry lens", "sector analysis", "regulatory context".
+  This skill should be used when the user asks to "add industry context",
+  "act as domain expert", "give me the banking perspective", "give me the
+  retail perspective", "give me the health perspective", or mentions SME,
+  subject matter expert, industry lens, sector analysis, or regulatory
+  context. It is a context-adaptive industry expert that dynamically adopts
+  the right SME lens based on client sector, providing risk overlays,
+  benchmarks, and regulatory flags. Use this skill whenever domain-specific
+  industry knowledge is needed for any deliverable, even if they don't
+  explicitly ask for "dynamic SME".
 allowed-tools:
   - Read
   - Write
@@ -177,4 +183,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: industry regulatory and compliance landscape
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

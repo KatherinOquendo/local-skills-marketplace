@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Create a pitch for the CTO to justify our cloud migration investment",
+    "expected_skill": "executive-pitch",
+    "expected_output_contains": ["investment", "ROI", "recommendation"],
+    "description": "Direct pitch creation request triggers skill"
+  },
+  {
+    "input": "Build a business case with NPV and IRR for the modernization program",
+    "expected_skill": "executive-pitch",
+    "expected_output_contains": ["NPV", "IRR", "payback"],
+    "description": "Financial modeling keywords trigger skill"
+  },
+  {
+    "input": "I need to present to the board and justify a $3M budget for platform rebuild",
+    "expected_skill": "executive-pitch",
+    "expected_output_contains": ["board", "sensitivity", "investment"],
+    "description": "Board presentation with budget triggers skill"
+  },
+  {
+    "input": "What's the cost of inaction if we don't modernize our legacy systems?",
+    "expected_skill": "executive-pitch",
+    "expected_output_contains": ["cost of inaction", "burn rate"],
+    "description": "Cost of inaction framing triggers skill"
+  },
+  {
+    "input": "Help me convince the CFO with an ROI analysis for this project",
+    "expected_skill": "executive-pitch",
+    "expected_output_contains": ["CFO", "financial", "payback period"],
+    "description": "CFO-targeted ROI request triggers skill"
+  }
+]

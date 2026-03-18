@@ -1,10 +1,13 @@
 ---
 name: scenario-analysis
 description: >
-  Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension weighted scoring.
-  Use when the user asks to "compare scenarios", "evaluate options", "run scenario analysis",
-  "Tree of Thought", "which approach should we take", "compare architectures", or mentions
-  "Phase 3", "strategic analysis", "trade-off analysis", "SWOT comparison".
+  This skill should be used when the user asks to "compare scenarios", "evaluate options",
+  "run scenario analysis", "Tree of Thought", "which approach should we take", "compare
+  architectures", or mentions Phase 3, strategic analysis, trade-off analysis, or SWOT
+  comparison. Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension
+  weighted scoring, SWOT analysis, and conditional switching logic. Use this skill whenever
+  a strategic decision requires structured comparison of alternatives, even if they don't
+  explicitly ask for "scenario-analysis".
 allowed-tools:
   - Read
   - Write
@@ -198,4 +201,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Quadrant chart: scenario positioning (feasibility × impact)
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026

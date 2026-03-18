@@ -1,0 +1,32 @@
+[
+  {
+    "id": "infra-happy-cloud-design",
+    "title": "Full cloud infrastructure design",
+    "prompt": "Design the cloud infrastructure for our new e-commerce platform on AWS",
+    "expected_behavior": "Produces all 7 sections: network topology (VPC with public/private/protected subnets), compute strategy, storage architecture, HA/DR with multi-AZ, IAM model, cloud landing zone, and cost optimization."
+  },
+  {
+    "id": "infra-happy-kubernetes",
+    "title": "Kubernetes platform architecture",
+    "prompt": "Plan a Kubernetes platform for our microservices with auto-scaling and HA",
+    "expected_behavior": "Covers EKS/GKE/AKS control plane, worker node auto-scaling, ingress, namespace strategy, resource limits, and multi-AZ deployment for HA."
+  },
+  {
+    "id": "infra-edge-multicloud",
+    "title": "Multi-cloud complexity",
+    "prompt": "We need infrastructure spanning AWS and Azure with consistent governance",
+    "expected_behavior": "Addresses multi-cloud complexity: abstraction layer (Kubernetes), consistent tagging strategy, multi-cloud governance, no unified API caveat, Transit Gateway / ExpressRoute interconnect."
+  },
+  {
+    "id": "infra-edge-cost-constrained",
+    "title": "Startup with limited budget",
+    "prompt": "Design infrastructure for our startup — we have almost no budget but need to scale",
+    "expected_behavior": "Recommends serverless where possible, auto-scaling, spot instances for batch, avoids reserved instances initially, emphasizes FinOps from day one."
+  },
+  {
+    "id": "infra-false-positive",
+    "title": "False positive — application code architecture",
+    "prompt": "Design the internal module structure and dependency injection for our Java backend",
+    "expected_behavior": "Does NOT activate this skill. Recognizes this is software architecture (internal code structure), not infrastructure. Defers to software-architecture skill."
+  }
+]

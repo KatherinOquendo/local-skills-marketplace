@@ -1,6 +1,11 @@
 ---
 name: mcp-creator
-description: Configure MCP server connections for Claude Code to access external tools, databases, and APIs.
+description: >
+  This skill should be used when the user asks to "configure an MCP server", "connect Claude to
+  an external tool", "set up a database MCP", "add an API integration via MCP", or "list MCP
+  servers". Also triggers on mentions of Model Context Protocol, stdio transport, MCP JSON config,
+  or remote tool connections. Use this skill even if the user only wants to check existing MCP
+  configuration — the full setup and validation workflow applies.
 argument-hint: <server-name> [transport: stdio|http]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
@@ -207,4 +212,4 @@ When MCP tools exceed 10% of context window, Claude auto-enables tool search —
 - [ ] Env vars referenced in config are actually set in environment
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

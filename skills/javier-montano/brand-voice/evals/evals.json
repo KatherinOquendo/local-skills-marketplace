@@ -1,0 +1,37 @@
+[
+  {
+    "id": "voice-happy-path",
+    "type": "happy_path",
+    "input": "Apply our brand voice to this proposal draft for a Fortune 500 client",
+    "expected_behavior": "Skill activates, reads brand config, applies confident+structured tone calibration for proposals, uses preferred vocabulary, ensures active voice dominance (<15% passive), and closes with appropriate brand closing line",
+    "tags": ["proposal", "brand-voice", "tone-calibration"]
+  },
+  {
+    "id": "voice-social-media",
+    "type": "happy_path",
+    "input": "Write a LinkedIn post about our latest project in our brand tone",
+    "expected_behavior": "Skill activates with warm+energetic social tone, uses human hook opening, conversational style without buzzwords, concrete takeaway, and brand tagline when appropriate",
+    "tags": ["social", "linkedin", "marketing-tone"]
+  },
+  {
+    "id": "voice-no-config",
+    "type": "edge_case",
+    "input": "Review this copy for brand consistency but we haven't set up our brand config yet",
+    "expected_behavior": "Skill activates with neutral professional defaults (clear, direct, active voice, no jargon), applies review, and prompts user to provide brand config for branded output",
+    "tags": ["no-config", "defaults", "neutral"]
+  },
+  {
+    "id": "voice-crisis-communication",
+    "type": "edge_case",
+    "input": "Help us write a crisis communication about a data breach in our brand voice",
+    "expected_behavior": "Skill activates with crisis tone (calm+accountable), overrides any other tone context, ensures transparent and solution-focused language, avoids deflection or blame",
+    "tags": ["crisis", "sensitive", "tone-override"]
+  },
+  {
+    "id": "voice-false-positive-visual",
+    "type": "false_positive",
+    "input": "Design the visual layout and color palette for our website",
+    "expected_behavior": "Skill should NOT activate. This is a visual design/HTML request, not a voice/tone request. Should route to brand-html or design-system skill instead.",
+    "tags": ["false-positive", "brand-html"]
+  }
+]

@@ -1,11 +1,14 @@
 ---
 name: cost-estimation
 description: >
-  Cost driver identification — effort inductors, scope drivers, magnitude estimation, team composition
-  modeling, and risk-adjusted timeline ranges. Use when the user asks to "estimate effort", "identify
-  cost drivers", "size the project", "plan team composition", "identify effort inductors", or mentions
-  WBS, sizing, contingency, burn rate, PERT, Monte Carlo, or "Phase 4" cost work. NEVER produces
-  final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
+  This skill should be used when the user asks to "estimate project effort",
+  "identify cost drivers", "size the project", "plan team composition",
+  or mentions WBS, PERT, Monte Carlo, contingency, or burn rate.
+  It translates technical scope into effort drivers, magnitude indicators,
+  team composition models, and risk-adjusted timeline ranges. NEVER produces
+  final prices — only drivers, ranges, and magnitude indicators with disclaimers.
+  Use this skill whenever the user needs effort or cost analysis,
+  even if they don't explicitly ask for "cost-estimation".
 allowed-tools:
   - Read
   - Write
@@ -251,4 +254,4 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: árbol de decisión para escenarios de magnitud
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 18, 2026
