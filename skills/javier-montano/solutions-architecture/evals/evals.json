@@ -1,0 +1,83 @@
+{
+  "skill_name": "solutions-architecture",
+  "description": "Evaluates the end-to-end solution architecture skill across different system types, integration patterns, and security models. Each eval targets a specific architectural capability.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "full-7-section-microservices",
+      "prompt": "Design the full solution architecture for an e-commerce platform with 5 microservices, mobile and web channels, and third-party payment integration.",
+      "expected_output": "Complete 7-section architecture: solution view (C4 containers), integration architecture, channel/BFF design, identity/security (Zero Trust), observability (SLI/SLO), cross-cutting concerns, and transition plan.",
+      "files": [],
+      "expectations": [
+        "C4 container diagram identifies all 5 microservices plus payment gateway as external system",
+        "Integration architecture specifies sync vs async patterns per service boundary",
+        "Channel architecture includes BFF for mobile and web with justification",
+        "Identity section covers OAuth2/OIDC for customer auth and PCI-DSS for payment",
+        "Observability defines SLIs and SLOs for critical paths (checkout, payment)",
+        "Cross-cutting concerns include circuit breaker for payment gateway dependency",
+        "Transition plan uses strangler fig or phased migration with rollback criteria"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "legacy-mainframe-integration",
+      "prompt": "Plan the API gateway strategy to integrate our COBOL mainframe with a new React frontend and mobile app.",
+      "expected_output": "Architecture handles legacy mainframe edge case: impedance mismatch addressed, integration layer with adapter/translator, strangler fig pattern, eventual retirement timeline.",
+      "files": [],
+      "expectations": [
+        "Identifies impedance mismatch: batch vs real-time, EBCDIC vs UTF-8",
+        "Proposes integration layer with adapter pattern between mainframe and API gateway",
+        "API gateway handles routing, rate limiting, and request transformation",
+        "BFF pattern recommended for divergent mobile vs web needs",
+        "Strangler fig migration strategy with parallel running phase",
+        "Data consistency model addresses eventual consistency during transition"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "zero-trust-security-focus",
+      "prompt": "Define the identity and security architecture for a healthcare platform handling PHI data with HIPAA compliance.",
+      "expected_output": "Deep S4 (Identity & Security) with HIPAA compliance mapping, Zero Trust throughout, encryption in transit and at rest, audit trails, data residency, consent management.",
+      "files": [],
+      "expectations": [
+        "Zero Trust applied: every request authenticated and authorized",
+        "HIPAA compliance mapped to specific architectural decisions",
+        "Encryption in transit (TLS 1.2+) and at rest explicitly specified",
+        "PII/PHI tokenization or masking strategy defined",
+        "Audit trails for all data access with retention policy",
+        "MFA required for all staff access to PHI systems",
+        "Data classification includes restricted tier for PHI"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "observability-stack-design",
+      "prompt": "Set up observability for our distributed order management system with 12 services across 3 regions.",
+      "expected_output": "Deep S5 (Observability) with structured logging, distributed tracing (OpenTelemetry), metrics at application/infra/business levels, alerting, and SLI/SLO definitions.",
+      "files": [],
+      "expectations": [
+        "Structured logging with correlation IDs across all 12 services",
+        "Distributed tracing with OpenTelemetry and sampling strategy for 3 regions",
+        "Metrics at three levels: application (RPS, latency p50/p95/p99), infrastructure, business",
+        "SLIs defined for critical order flow paths",
+        "SLOs with targets and SLA consequence mapping",
+        "Alerting with escalation paths and alert fatigue management",
+        "Dashboards designed for executive, operational, and debugging audiences"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "executive-variant-abbreviated",
+      "prompt": "Design the solution architecture for our CRM modernization. Use variante ejecutiva.",
+      "expected_output": "Abbreviated output (~40%) covering only S1 (solution view), S2 (integration), and S4 (security). Omits channels, observability, cross-cutting, and transition.",
+      "files": [],
+      "expectations": [
+        "Output contains only S1, S2, and S4 sections",
+        "S1 includes C4 container diagram with system boundaries",
+        "S2 covers integration patterns with trade-off justification",
+        "S4 covers authentication, authorization, and encryption",
+        "Does not include S3 (channels), S5 (observability), S6 (cross-cutting), or S7 (transition)"
+      ]
+    }
+  ]
+}

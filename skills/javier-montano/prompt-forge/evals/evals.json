@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pf-1-create-mode",
+    "input": "Create a system prompt for a financial advisor assistant targeting Claude Projects",
+    "expected_behavior": "Produces full Playbook format: Role & Archetype (composite identity), Objective, Parameters, Interaction Flow (3 phases), Constraints, Key Questions, Output Template, Self-Correction Triggers. Platform-specific formatting for Claude Projects.",
+    "criteria": ["Playbook format complete", "composite archetype not generic", "3-phase interaction flow", "output template with placeholders", "self-correction triggers present"]
+  },
+  {
+    "id": "pf-2-review-mode",
+    "input": "Review this prompt: 'You are a helpful assistant. Help users with their questions.'",
+    "expected_behavior": "Scores against 10-criterion rubric (Foundation through Value), identifies low-scoring dimensions (Foundation, Density, Depth likely fail), delivers prioritized fix list with specific improvements per criterion.",
+    "criteria": ["all 10 criteria scored", "low scores identified", "prioritized fix list", "specific improvements per criterion", "target 8+ threshold referenced"]
+  },
+  {
+    "id": "pf-3-evolve-mode",
+    "input": "Optimize this marketing copywriter prompt to be more effective",
+    "expected_behavior": "Identifies weakest rubric dimensions, applies targeted improvements (density compression, constraint sharpening, flow restructuring), re-evaluates to confirm improvement, delivers before/after comparison.",
+    "criteria": ["weakness identified via rubric", "targeted improvements applied", "re-evaluation shows improvement", "changes explained", "Playbook structure maintained"]
+  },
+  {
+    "id": "pf-4-repair-mode",
+    "input": "My AI assistant keeps giving generic answers instead of specific recommendations. Fix the prompt.",
+    "expected_behavior": "Diagnoses failure pattern (likely weak constraints or missing output template), applies surgical fix to specific section, adds self-correction trigger to prevent recurrence, explains root cause.",
+    "criteria": ["failure pattern diagnosed", "surgical fix to specific section", "self-correction trigger added", "root cause explained", "minimal changes to working sections"]
+  },
+  {
+    "id": "pf-5-port-mode",
+    "input": "Port this Claude Project prompt to a Custom GPT",
+    "expected_behavior": "Maps Claude features to GPT equivalents (Project instructions to Instructions field, knowledge files to uploaded files, MCP to Actions), adjusts token limits, replaces unsupported features, documents what was lost in porting.",
+    "criteria": ["platform features mapped", "format adapted for GPT", "unsupported features documented", "token limits adjusted", "deployment instructions included"]
+  }
+]

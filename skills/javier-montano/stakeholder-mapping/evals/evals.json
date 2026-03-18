@@ -1,0 +1,82 @@
+{
+  "skill_name": "stakeholder-mapping",
+  "description": "Evaluates the stakeholder mapping skill across different organizational contexts, political dynamics, and change readiness scenarios. Each eval targets a specific stakeholder analysis capability.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "full-6-section-transformation",
+      "prompt": "Map stakeholders for a company-wide ERP migration affecting 500 employees across 4 departments.",
+      "expected_output": "Complete 6-section analysis: stakeholder identification with hidden stakeholder detection, influence-interest matrix, RACI, communication plan, change readiness assessment, and engagement monitoring.",
+      "files": [],
+      "expectations": [
+        "Stakeholder categories cover sponsors, decision-makers, implementers, end users, and affected parties",
+        "Hidden stakeholder detection techniques applied (snowball method, meeting archaeology, veto scan)",
+        "Influence-interest matrix has 4 quadrants with engagement strategy per quadrant",
+        "RACI matrix has exactly one Accountable per deliverable/decision",
+        "Communication plan specifies channel, frequency, format, and owner per stakeholder group",
+        "Change readiness maps adoption curve and identifies resistance archetypes",
+        "Champions identified with activation plan"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "highly-political-organization",
+      "prompt": "Build an influence matrix for a merger integration where two leadership teams are competing for control of the combined IT organization.",
+      "expected_output": "Handles highly political edge case: informal network analysis supplements org chart, confidential 1:1 interviews recommended, power dynamics mapping plots formal vs informal authority.",
+      "files": [],
+      "expectations": [
+        "Detects highly political scenario and supplements formal org chart with informal network analysis",
+        "Power dynamics mapping plots formal authority against informal influence",
+        "Coalition building identifies natural alliances and fault lines across both organizations",
+        "Attitude overlay marks stakeholders as +, -, or ? to shape engagement tone",
+        "Influence matrix treated as confidential document",
+        "Recommends 1:1 confidential interviews for accurate power assessment"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "resistance-archetype-detection",
+      "prompt": "Assess change readiness for adopting DevOps practices in a team with a senior architect who publicly opposes the initiative.",
+      "expected_output": "Change readiness assessment identifies resistance archetypes: the senior architect mapped as Blocker or Saboteur with tailored engagement strategy.",
+      "files": [],
+      "expectations": [
+        "Senior architect classified under appropriate resistance archetype (Blocker or Saboteur)",
+        "Tailored response strategy matches the archetype (needs to be heard, given a role, or confronted)",
+        "Adoption curve maps the team across innovators through laggards",
+        "Champion candidates identified from early adopters",
+        "Training needs analysis addresses DevOps skill gaps",
+        "Escalation protocol defined if resistance persists after engagement"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "raci-conflict-resolution",
+      "prompt": "Assign RACI for a cross-departmental data platform project where Engineering, Data Science, and Product all claim ownership.",
+      "expected_output": "RACI with clear single accountability per deliverable, conflict resolution process for overlapping claims, and escalation protocol.",
+      "files": [],
+      "expectations": [
+        "Exactly one A (Accountable) assigned per deliverable despite competing claims",
+        "Decision authority framework clarifies what can be decided locally vs needs escalation",
+        "Conflict resolution process defined for disagreements between departments",
+        "Escalation protocol includes trigger criteria, path, and time limits",
+        "RACI validation step recommends review with all three department heads",
+        "Single accountability rule enforced and explained"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "remote-distributed-teams",
+      "prompt": "Create a communication plan for a globally distributed team across US, Europe, and Asia implementing a new CI/CD pipeline.",
+      "expected_output": "Communication plan accounts for async channels, time zones, and cultural sensitivity in engagement approach.",
+      "files": [],
+      "expectations": [
+        "Communication matrix includes async-first channels (Slack, email, recorded updates)",
+        "Time zone coverage ensures no team is systematically excluded from live meetings",
+        "Cultural sensitivity addressed: direct vs indirect feedback norms across regions",
+        "Cadence calendar aligned with phase gates and accounts for regional holidays",
+        "Feedback loops support async participation (not just live meetings)",
+        "Crisis communication plan includes rapid notification across time zones"
+      ]
+    }
+  ]
+}

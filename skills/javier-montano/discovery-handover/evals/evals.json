@@ -1,0 +1,65 @@
+{
+  "skill_name": "discovery-handover",
+  "evals": [
+    {
+      "id": 1,
+      "name": "full_handover_package",
+      "prompt": "Create the handover package for our completed banking discovery engagement",
+      "expected_output": "success",
+      "expectations": [
+        "Validates Gate 3 approval before proceeding",
+        "Includes executive transition summary with approved scenario",
+        "Covers commercial activation package with pricing structure",
+        "Generates 90-day kickoff plan with Sprint 0 detail"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "commercial_only",
+      "prompt": "The client only wants the commercial proposal from the discovery",
+      "expected_output": "success",
+      "expectations": [
+        "Generates only S1 (executive summary) and S2 (commercial package)",
+        "Marks S3-S7 as pending post-closure",
+        "Includes pricing structure and closing timeline",
+        "Derives narrative from executive pitch deliverable"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "governance_transition",
+      "prompt": "Prepare the governance transition from discovery to execution team",
+      "expected_output": "success",
+      "expectations": [
+        "Maps discovery roles to execution roles",
+        "Defines ceremony structure for execution phase",
+        "Includes escalation path with response times",
+        "Covers stakeholder transition matrix"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "risk_assumption_tracker",
+      "prompt": "Create the assumption validation tracker from our discovery findings",
+      "expected_output": "success",
+      "expectations": [
+        "Operationalizes pivot points from Phase 4",
+        "Includes validation proposals with deadlines and owners",
+        "Defines kill criteria with numeric thresholds",
+        "Covers early warning indicators for inherited risks"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "missing_deliverables",
+      "prompt": "Generate handover but we only ran the quick reference pipeline (Phases 1, 3, 5b)",
+      "expected_output": "success",
+      "expectations": [
+        "Produces simplified handover with S1 + S2 + S6 only",
+        "Omits 90-day plan due to incomplete pipeline",
+        "Documents which phases were skipped and impact",
+        "Flags limitations of the abbreviated handover"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "dynamic-sme",
+  "evals": [
+    {
+      "id": 1,
+      "name": "banking_lens",
+      "prompt": "Add industry context for our banking client's architecture review",
+      "expected_output": "success",
+      "expectations": [
+        "Activates banking/insurance lens explicitly",
+        "Includes regulatory flags (SOX, PCI-DSS, Basel)",
+        "Provides banking-specific risk overlay",
+        "References core banking systems and audit trail patterns"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "retail_risks",
+      "prompt": "Give me the retail perspective on our supply chain modernization risks",
+      "expected_output": "success",
+      "expectations": [
+        "Activates retail industry lens",
+        "Covers supply chain disruption and demand spike risks",
+        "Includes retail-specific benchmarks (conversion rate, inventory turnover)",
+        "Addresses omnichannel and real-time inventory patterns"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "healthcare_regulatory",
+      "prompt": "What regulatory context should we consider for our healthcare EMR system?",
+      "expected_output": "success",
+      "expectations": [
+        "Activates healthcare lens with HIPAA and HL7/FHIR focus",
+        "Covers interoperability requirements",
+        "Includes patient data privacy constraints",
+        "Provides healthcare-specific metrics (time-to-care, readmission rate)"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "unknown_industry",
+      "prompt": "Act as domain expert for our client but I'm not sure what industry they are in",
+      "expected_output": "success",
+      "expectations": [
+        "Asks clarifying question about client industry",
+        "Falls back to Technology Services generalist lens if needed",
+        "Flags limited insights without industry context",
+        "Suggests 3 discovery questions to resolve ambiguity"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "multi_industry_composite",
+      "prompt": "Our client spans both banking and retail (financial services + merchant acquiring). What lens should we use?",
+      "expected_output": "success",
+      "expectations": [
+        "Uses composite lens covering both industries",
+        "Flags where recommendations diverge between sectors",
+        "Covers regulatory requirements from both domains",
+        "Recommends separate tracks if divergence is high"
+      ]
+    }
+  ]
+}

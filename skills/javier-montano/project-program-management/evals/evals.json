@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ppm-1-program-charter",
+    "input": "Set up program governance for the Acme Banking Modernization discovery",
+    "expected_behavior": "Produces S1 Program Charter with phase dependency map, governance model (decision rights matrix), communication plan, and Gantt chart (Mermaid) showing full program timeline with gate milestones.",
+    "criteria": ["phase dependency map present", "decision rights matrix defined", "communication cadence set", "Gantt chart in Mermaid", "all 8 phases covered"]
+  },
+  {
+    "id": "ppm-2-gate-evaluation",
+    "input": "Evaluate Gate G1 after scenario phase completion",
+    "expected_behavior": "Applies Gate Evaluation Protocol: entry criteria checklist, deliverables check, evidence chain, dependencies resolved, risks carried forward, and verdict (PASS/CONDITIONAL PASS/FAIL) with conditions if applicable.",
+    "criteria": ["entry criteria evaluated", "deliverables checked", "evidence chain traced", "verdict rendered", "conditions documented if conditional"]
+  },
+  {
+    "id": "ppm-3-proposal-qa",
+    "input": "Validate the proposal before sending to the client",
+    "expected_behavior": "Executes S5 Proposal QA across 4 dimensions: coherencia tecnica, completitud, viabilidad, alineacion. Produces scorecard with composite score, traces failures to source phases, and renders verdict (threshold 3.5/5.0).",
+    "criteria": ["4 QA dimensions scored", "composite calculated", "failures traced to phases", "threshold applied", "verdict with conditions"]
+  },
+  {
+    "id": "ppm-4-dependency-control",
+    "input": "Map cross-phase dependencies for the discovery pipeline",
+    "expected_behavior": "Produces S4 dependency matrix showing source phase outputs, consumer phases, data contracts, and status. Includes scope change log and dependency blockers. Mermaid sequence diagram of inter-phase data flow.",
+    "criteria": ["dependency matrix complete", "data contracts listed", "scope change log present", "blockers identified", "sequence diagram in Mermaid"]
+  },
+  {
+    "id": "ppm-5-status-dashboard",
+    "input": "Generate the program status dashboard with RAG indicators",
+    "expected_behavior": "Produces S6 dashboard with RAG status per phase, milestone tracking (planned vs actual), risk burn-down, decision log, and variance analysis. Timeline/Gantt shows current state.",
+    "criteria": ["RAG per phase", "planned vs actual dates", "variance calculated", "risk burn-down shown", "decision log maintained"]
+  }
+]

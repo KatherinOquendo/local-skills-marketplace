@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pc-1-meta-prompt",
+    "input": "Create a meta_prompt for reasoning behavior for the data-analyst agent",
+    "expected_behavior": "Generates a meta prompt focused on exactly ONE aspect (reasoning), with preamble referencing agent identity from agent.md, framework section with step-by-step reasoning process, and constraints section with hard limits.",
+    "criteria": ["single aspect focus", "agent identity referenced", "framework steps defined", "constraints listed", "YAML frontmatter complete"]
+  },
+  {
+    "id": "pc-2-handoff-prompt",
+    "input": "Write a handoff_prompt for transferring tasks from researcher to writer agent",
+    "expected_behavior": "Generates handoff prompt specifying context to PASS (task state, progress, data), context to OMIT (internal reasoning, failed attempts), target agent ID, and success criteria with completion checklist.",
+    "criteria": ["context to pass defined", "context to omit defined", "target agent explicit", "success criteria measurable", "no full conversation passing"]
+  },
+  {
+    "id": "pc-3-committee-deliberation",
+    "input": "Generate a committee_deliberation prompt for 4 architecture reviewers",
+    "expected_behavior": "Creates deliberation prompt requiring independent evaluation FIRST before seeing others, includes weighted scoring rubric, structured output format for comparison, and prevents premature convergence.",
+    "criteria": ["independent evaluation required", "scoring rubric with weights", "structured output format", "prevents premature convergence", "minimum 3 agents specified"]
+  },
+  {
+    "id": "pc-4-validation-prompt",
+    "input": "Create a validation_prompt for checking output quality of the report-generator agent",
+    "expected_behavior": "Generates validation prompt with pass/fail criteria at 3 severity levels (critical/major/minor), actionable feedback format (specific section + missing field), and reference to originating workflow DoD.",
+    "criteria": ["severity levels defined", "actionable feedback format", "references DoD/qaChecklist", "specific not vague feedback", "pass/fail threshold clear"]
+  },
+  {
+    "id": "pc-5-fallback-prompt",
+    "input": "Build a fallback_prompt for when the primary customer-support agent fails",
+    "expected_behavior": "Creates fallback prompt defining trigger conditions (when fallback activates), preservation priorities (what to save vs sacrifice), user communication template (how to explain degradation), and escalation path if fallback also fails.",
+    "criteria": ["trigger conditions defined", "preservation priorities set", "user communication template", "escalation path included", "graceful degradation strategy"]
+  }
+]

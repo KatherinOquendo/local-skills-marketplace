@@ -1,0 +1,32 @@
+[
+  {
+    "id": "observ-happy-full-design",
+    "title": "Full observability architecture",
+    "prompt": "Design the observability stack for our microservices platform",
+    "expected_behavior": "Produces all 6 sections: strategy with OTel Collector topology (hierarchical agent+gateway), structured logging with mandatory fields, distributed tracing with W3C propagation, RED/USE metrics with naming conventions, SLO-based burn rate alerting, and incident response integration."
+  },
+  {
+    "id": "observ-happy-alerting",
+    "title": "SLO-based alerting design",
+    "prompt": "Set up alerting for our services — we're drowning in false alerts",
+    "expected_behavior": "Focuses on S5: replaces threshold alerting with SLO-based burn rate model (14.4x fast, 6x medium, 1x slow), multi-window approach, severity levels (P1-P3), mandatory runbook linkage, and alert hygiene metrics."
+  },
+  {
+    "id": "observ-edge-legacy-monolith",
+    "title": "Observability for legacy monolith",
+    "prompt": "Add monitoring to our legacy monolith — it only has access logs today",
+    "expected_behavior": "Addresses the edge case: starts with infrastructure metrics and access logs, adds structured logging incrementally, uses APM agents for automatic instrumentation, traces at external call boundaries."
+  },
+  {
+    "id": "observ-edge-high-cardinality",
+    "title": "Cardinality explosion management",
+    "prompt": "Our Prometheus storage costs are exploding because of too many time series",
+    "expected_behavior": "Covers S4 cardinality management: normalize URL paths with IDs, remove per-user labels, allowlist known enum values, enforce per-service series budgets (max 5000), use delta temporality for high-cardinality counters."
+  },
+  {
+    "id": "observ-false-positive",
+    "title": "False positive — load testing request",
+    "prompt": "Run load tests against our API to find the breaking point",
+    "expected_behavior": "Does NOT activate this skill. Recognizes this is performance engineering / load testing, not observability architecture design. Defers to performance-engineering skill."
+  }
+]
