@@ -1,0 +1,82 @@
+{
+  "skill_name": "technical-feasibility",
+  "description": "Evaluates the technical feasibility and fact-checking skill across different validation scenarios, evidence levels, and verdict outcomes. Each eval targets a specific feasibility dimension or decision point.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "full-6d-analysis-mixed-evidence",
+      "prompt": "Validate feasibility for migrating a Java monolith to microservices with Kafka event-driven architecture. The team has 5 years of Java experience but no Kafka experience. Timeline: 12 months.",
+      "expected_output": "Full 6-dimension analysis: claim inventory with mixed evidence statuses, all 6 dimensions scored, spike/PoC recommendations for unvalidated claims, blocker analysis, verdict, and updated risk register.",
+      "files": [],
+      "expectations": [
+        "Claim inventory extracts technical claims with evidence tags ([CODIGO], [CONFIG], [INFERENCIA])",
+        "Kafka experience gap classified as AT RISK or UNVALIDATED with evidence",
+        "All 6 dimensions scored 1-5: Technical, Organizational, Timeline, Financial, Regulatory, Operational",
+        "Organizational feasibility flags Conway's Law implications",
+        "Spike/PoC recommendations include MUST-DO for critical unvalidated claims",
+        "Verdict is FEASIBLE WITH CONDITIONS (not unconditional given skill gap)",
+        "Evidence tags present on all assertions"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "multiple-claims-refuted",
+      "prompt": "Fact-check the scenario: we plan to migrate our COBOL mainframe to serverless AWS Lambda in 6 months with our current team of 3 COBOL developers.",
+      "expected_output": "Multiple claims refuted: timeline unrealistic, team skill mismatch severe, serverless for COBOL migration has no proven patterns. Recommends pivoting to alternative scenario.",
+      "files": [],
+      "expectations": [
+        "Multiple claims classified as REFUTED or AT RISK",
+        "Timeline feasibility scores very low (COBOL-to-serverless in 6 months with 3 devs)",
+        "Organizational feasibility flags critical skill gap (COBOL developers vs serverless)",
+        "Technical feasibility questions proven patterns for COBOL-to-Lambda migration",
+        "Verdict is NOT FEASIBLE or FEASIBLE WITH CONDITIONS requiring major pivot",
+        "Recommends alternative scenario from Phase 3 options"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "no-codebase-access",
+      "prompt": "Run feasibility analysis for modernizing a healthcare claims processing system. We have the architecture documents but no codebase access.",
+      "expected_output": "Paper analysis only: all technical claims marked as [INFERENCIA], increased uncertainty flagged, regulatory dimension (HIPAA) given extra weight.",
+      "files": [],
+      "expectations": [
+        "All technical claims marked as [INFERENCIA] due to no codebase access",
+        "Increased uncertainty explicitly documented in verdict",
+        "Regulatory feasibility (HIPAA) thoroughly analyzed from documentation",
+        "Spike/PoC recommendations include codebase access as prerequisite",
+        "Confidence in technical dimension lower than with code access",
+        "Does not fabricate code-level evidence"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "time-pressure-abbreviated",
+      "prompt": "Stress-test our Kubernetes migration approach. We need a quick feasibility check by end of day - just the claims and verdict.",
+      "expected_output": "Abbreviated S1+S5 delivery: claim inventory and feasibility verdict only. Flags risk of skipping full 6D analysis.",
+      "files": [],
+      "expectations": [
+        "Delivers only S1 (claim inventory) and S5 (verdict)",
+        "Explicitly flags risk of skipping full 6-dimension analysis",
+        "Claims still have evidence tags even in abbreviated form",
+        "Verdict includes conditions and caveats about limited analysis depth",
+        "Does not fabricate dimension scores it didn't analyze"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "all-claims-validated",
+      "prompt": "Verify technical claims for adding a Redis caching layer to our existing Node.js Express API. Team has 2 years Redis experience, existing Docker infrastructure, and 3-month timeline.",
+      "expected_output": "Rare case: most or all claims validated with evidence. Documents evidence, proceeds with confidence, recommends reduced contingency.",
+      "files": [],
+      "expectations": [
+        "Most claims classified as VALIDATED with supporting evidence",
+        "Team experience (2 years Redis) validated against organizational dimension",
+        "Timeline (3 months for caching layer) assessed as realistic for scope",
+        "Infrastructure (existing Docker) supports operational feasibility",
+        "Verdict is FEASIBLE (unconditional or with minor conditions)",
+        "Recommends reduced contingency budget given validated claims",
+        "Does not fabricate risks where evidence supports feasibility"
+      ]
+    }
+  ]
+}
