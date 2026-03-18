@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Node
+node_modules/
+.npm
+*.tgz
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editor
+.vscode/
+.idea/
+*.sublime-*
+
+# Environment
+.env
+.env.*
+*.local
+
+# Claude Code
+.claude/plans/
+.claude/worktrees/
+
+# Archives
+*.zip
+*.tar.gz
+*.skill
