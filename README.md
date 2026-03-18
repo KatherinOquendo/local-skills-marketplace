@@ -1,65 +1,68 @@
 # JM Labs
 
-Private monorepo for Javier Montano's skill engineering, plugin frameworks, orchestration systems, and professional tooling.
+Private monorepo for Javier Montano's professional ecosystem.
 
 ## Brand Map
 
-| Brand | Scope | License | Where |
-|-------|-------|---------|-------|
-| **JM Labs** | Personal innovation, core tools, experiments | MIT | This repo (`skills/`, `plugins/`, `software/`) |
-| **MetodologIA** | Open methodology, community skills | GPL-3.0 | Mirrored in `skills/metodologia/`; upstream in MAO plugin |
-| **Sofka** | Enterprise discovery, client delivery | All Rights Reserved | Separate repos (`sofka-discovery-framework`, `sofka-presales-skills`) |
+| Brand | Entity | License | Scope |
+|-------|--------|---------|-------|
+| **Sofka** | Sofka Technologies | All Rights Reserved | Enterprise discovery, client delivery |
+| **MetodologIA** | MetodologIA (GPL-3.0) | GPL-3.0 | Open methodology, community tools |
+| **Javier Montano** | Personal / JM Labs | MIT | Innovation, core tools, experiments |
 
-## Repository Structure
+## Structure
 
-| Directory | Content | Status |
-|-----------|---------|--------|
-| `skills/` | Canonical skill library across 10 categories | Active |
-| `plugins/` | Plugin frameworks (MAO, PM, Sovereign Architect, Scriba) | Active |
-| `orchestration/` | Meta-orchestrator network (14 files) | Active |
-| `governance/` | Policies, standards, frameworks, templates | Scaffolding |
-| `deliverables/` | Discovery outputs, architecture docs, proposals | Scaffolding |
-| `software/` | Code projects, tools, experiments | Scaffolding |
-
-## Skills Overview
-
-| Category | Count | Description |
-|----------|-------|-------------|
-| `core/` | ~5 | Foundational skills: input-analyst, task-engine, excellence-loop |
-| `quality-suite/` | 6 | Skill engineering pipeline: x-ray, surgeon, certify, trigger, benchmark, assembly |
-| `forge/` | 5 | Meta-creation: prompt-forge, workflow-forge, rule-forge, ecosystem-forge, creator-moat |
-| `architecture/` | 12+ | API, software, enterprise, cloud, security, mobile, infrastructure, etc. |
-| `discovery/` | 10+ | AS-IS analysis, flow mapping, scenario analysis, roadmap, feasibility, etc. |
-| `data/` | 5+ | Data engineering, governance, quality, analytics, data science architecture |
-| `output/` | 5+ | Brand output formats: DOCX, HTML, XLSX, design system, UX writing |
-| `agents/` | 3+ | Agent creator, agent constitution, open-claw-builder |
-| `orchestration-skills/` | 3+ | Discovery orchestrator, project management, risk controlling |
-| `metodologia/` | 52 | MetodologIA mirror (GPL-3.0) |
-
-## Quick Start
-
-```bash
-# Browse skills
-cat skills/README.md
-
-# Use the quality pipeline on any skill
-# /x-ray-skill skills/core/input-analyst
-# /surgeon-skill skills/core/input-analyst
-# /certify-skill skills/core/input-analyst
-
-# Or run the full pipeline in one command
-# /assembly-skill skills/core/input-analyst
+```
+jm-labs/
+├── skills/           → Level 1: Content type
+│   ├── sofka/        → Level 2: Entity
+│   │   ├── {skill}/  → Level 3: Atomic unit
+│   │   └── index.md  → Entity-level index
+│   ├── metodologia/
+│   ├── javier-montano/
+│   └── index.md      → Type-level index
+├── plugins/
+│   ├── sofka/
+│   ├── metodologia/
+│   └── javier-montano/
+├── projects/
+│   ├── sofka/
+│   ├── metodologia/
+│   └── javier-montano/
+├── governance/
+│   ├── sofka/
+│   ├── metodologia/
+│   └── javier-montano/
+├── deliverables/
+│   ├── sofka/
+│   ├── metodologia/
+│   └── javier-montano/
+├── orchestration/
+│   ├── sofka/
+│   ├── metodologia/
+│   └── javier-montano/
+└── {changelog,tasklog,log,index}.md  → Root-level tracking
 ```
 
-## Quality Standards
+## Tracking Files (at every level)
 
-Every skill in this repo targets CERTIFIED status (10-criterion rubric, 13-point gate). Quality is tracked in `skills/README.md` per skill.
+| File | Purpose |
+|------|---------|
+| `index.md` | Catalog of items at this level with status and metadata |
+| `changelog.md` | Chronological record of changes |
+| `tasklog.md` | Active and completed tasks |
+| `log.md` | Session logs, notes, observations |
 
-| Status | Meaning |
-|--------|---------|
-| CERTIFIED | Passes all quality checks, production-ready |
-| MOAT | CERTIFIED + elevated to 10x density and systemic coherence |
-| PENDING | Uploaded but not yet audited/improved |
+## Quick Navigation
+
+| I need to... | Go to |
+|-------------|-------|
+| Browse all skills | `skills/index.md` |
+| See JM Labs personal skills | `skills/javier-montano/index.md` |
+| Find a plugin | `plugins/index.md` |
+| Check governance docs | `governance/index.md` |
+| Review project deliverables | `deliverables/index.md` |
+| Understand orchestration | `orchestration/index.md` |
 
 ## Related Repositories
 
