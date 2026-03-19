@@ -18,6 +18,7 @@ allowed-tools:
   - Grep
   - Bash
 model: opus
+context: fork
 ---
 
 # Skill Certify
@@ -61,7 +62,7 @@ wc -l {path}/SKILL.md                                   # S2: under 500 lines?
 grep -oP '`[^`]*\.(md|py|json|html)`' {path}/SKILL.md   # S6: grep paths → ls each
 ls -R {path}/ | grep -v SKILL.md                         # S7: list all files → check each referenced
 python3 -m json.tool {path}/evals/evals.json 2>/dev/null # S8: valid JSON?
-grep -r 'reference/\|tools/' {path}                      # S9: no old paths?
+grep -r 'references/\|tools/' {path}                      # S9: no old paths?
 ```
 
 **Abort condition:** If S1 fails (no SKILL.md), report BLOCKED immediately. No further phases.

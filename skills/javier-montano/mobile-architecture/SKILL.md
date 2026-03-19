@@ -1,11 +1,13 @@
 ---
 name: sofka-mobile-architecture
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design mobile architecture", "choose between
   native and cross-platform", "implement offline-first", "plan mobile CI/CD", or "optimize app
   performance". Also triggers on mentions of Flutter, React Native, KMP, MVVM, SwiftUI, Jetpack
   Compose, or app store deployment. Use this skill even if the user only asks about one mobile
   concern like state management — the full platform strategy context is always relevant.
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

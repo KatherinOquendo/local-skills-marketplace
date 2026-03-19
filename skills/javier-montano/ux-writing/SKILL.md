@@ -1,10 +1,12 @@
 ---
 name: sofka-ux-writing
+argument-hint: "<component-or-flow-name>"
 description: >
   UX writing and document accessibility standards for technical deliverables.
   Use when the user asks to "improve readability", "fix information hierarchy", "reduce cognitive load",
   "write microcopy", "check readability score", or mentions "UX writing", "scanability",
   "Flesch-Kincaid", "escritura UX", "legibilidad", "cognitive load".
+argument-hint: "<component-or-flow-name>"
 model: opus
 context: fork
 allowed-tools:

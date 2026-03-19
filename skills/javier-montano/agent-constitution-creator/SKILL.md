@@ -9,6 +9,8 @@ description: >
   system and needs a persistent operational identity for a new agent, even if they
   just say "add an agent" or "I need a new agent for X".
 argument-hint: <agent-id> [role-description]
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 

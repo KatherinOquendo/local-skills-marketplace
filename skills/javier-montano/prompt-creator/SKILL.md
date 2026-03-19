@@ -7,6 +7,8 @@ description: >
   on mentions of prompt types, agent prompts, or multi-agent prompt design. Use this skill even if the user
   only names the agent — it interviews for prompt type and context.
 argument-hint: <prompt-type> <owning-agent-id>
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 

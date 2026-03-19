@@ -11,6 +11,8 @@ description: >
   x-ray-skill report and wants to act on it, or when they point to a
   skill directory and say "make it better".
 argument-hint: "<path-to-skill-directory>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

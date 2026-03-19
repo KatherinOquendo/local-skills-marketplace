@@ -1,11 +1,15 @@
 ---
 name: executive-pitch
+argument-hint: "<project-or-engagement-name>"
 description: >
   This skill should be used when the user asks to "create a pitch",
   "build a business case", "justify the investment", "present to executives",
   or mentions ROI analysis, NPV, IRR, payback period, or C-level presentation.
   It generates executive pitch decks with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models, and PAS persuasion architecture.
   Use this skill whenever the user needs to persuade decision-makers with data-driven narratives, even if they don't explicitly ask for "executive pitch".
+argument-hint: "<project-or-engagement-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

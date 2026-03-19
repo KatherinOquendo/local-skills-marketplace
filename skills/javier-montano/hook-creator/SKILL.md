@@ -7,6 +7,8 @@ description: >
   It generates Claude Code hook configurations for lifecycle events including format-on-save, file guards, notifications, and quality gates.
   Use this skill whenever the user wants deterministic automation at Claude Code lifecycle points, even if they don't explicitly ask for "hook creator".
 argument-hint: <event-name> [handler-type]
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

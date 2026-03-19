@@ -5,6 +5,8 @@ description: >
   Use when the user asks to "create a spreadsheet template", "build a tracking matrix", "design a metrics dashboard",
   "generate an XLSX spec", or mentions xlsx template, spreadsheet layout, or KPI dashboard.
 argument-hint: <tracking-matrix|metrics-dashboard> <title>
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Glob
 ---
 

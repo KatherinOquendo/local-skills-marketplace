@@ -1,10 +1,12 @@
 ---
 name: sofka-user-representative
+argument-hint: "<user-persona-or-segment>"
 description: >
   End-user advocate that evaluates deliverable clarity, cognitive load, accessibility, adoption risks, and biases.
   Use when the user asks to "review for clarity", "check readability", "evaluate from user perspective",
   "assess adoption risk", or mentions "user representative", "voice of the user", "representante del usuario",
   "clarity review", "cognitive load check".
+argument-hint: "<user-persona-or-segment>"
 model: opus
 context: fork
 allowed-tools:

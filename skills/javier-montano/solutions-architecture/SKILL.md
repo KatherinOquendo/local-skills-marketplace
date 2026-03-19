@@ -1,9 +1,11 @@
 ---
 name: sofka-solutions-architecture
+argument-hint: "<project-or-system-name>"
 description: >
   End-to-end solution design — system integration, channel orchestration, identity management, observability, and cross-cutting concerns.
   Use when the user asks to "design the full solution", "integrate multiple systems", "plan API gateway strategy",
   "define identity and security architecture", "set up observability", or mentions C4 containers, BFF, Zero Trust, SLI/SLO, circuit breaker, or migration planning.
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

@@ -1,5 +1,6 @@
 ---
 name: project-program-management
+argument-hint: "<project-or-engagement-name>"
 description: >
   Provides PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
   dependency control, and proposal QA validation across the entire discovery pipeline. Activates when
@@ -7,6 +8,9 @@ description: >
   "run governance check", or "coordinate resources". Also triggers on mentions of PMO, program management,
   phase gates, proposal readiness, or cross-phase dependency management. Use this skill even if the user
   only asks about project status — it activates the full governance layer.
+argument-hint: "<project-or-engagement-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

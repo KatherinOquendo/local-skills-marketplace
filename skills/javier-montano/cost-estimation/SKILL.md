@@ -1,5 +1,6 @@
 ---
 name: cost-estimation
+argument-hint: "<project-or-engagement-name>"
 description: >
   This skill should be used when the user asks to "estimate project effort",
   "identify cost drivers", "size the project", "plan team composition",
@@ -9,6 +10,9 @@ description: >
   final prices — only drivers, ranges, and magnitude indicators with disclaimers.
   Use this skill whenever the user needs effort or cost analysis,
   even if they don't explicitly ask for "cost-estimation".
+argument-hint: "<project-or-engagement-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

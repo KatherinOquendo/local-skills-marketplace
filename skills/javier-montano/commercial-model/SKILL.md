@@ -1,5 +1,6 @@
 ---
 name: commercial-model
+argument-hint: "<project-or-engagement-name>"
 description: >
   This skill should be used when the user asks to "define a business model",
   "structure the deal", "identify value capture", "design a commercial model",
@@ -8,6 +9,9 @@ description: >
   producing model recommendations with trade-offs — not pricing.
   Use this skill whenever the user discusses deal structure or commercial strategy,
   even if they don't explicitly ask for "commercial-model".
+argument-hint: "<project-or-engagement-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

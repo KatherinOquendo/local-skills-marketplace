@@ -10,6 +10,8 @@ description: >
   Use this skill whenever the user needs a self-contained branded web page,
   even if they don't explicitly ask for "brand HTML".
 argument-hint: "<page-type> [brand-config-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Grep

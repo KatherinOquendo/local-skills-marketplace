@@ -1,5 +1,6 @@
 ---
 name: sofka-data-governance
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "build a data catalog",
   "define data ownership", "classify sensitive data", "design retention policies",
@@ -8,6 +9,7 @@ description: >
   classification taxonomies, retention policies, privacy compliance, and data mesh governance.
   Use this skill whenever the user needs data governance strategy,
   even if they don't explicitly ask for "data-governance".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

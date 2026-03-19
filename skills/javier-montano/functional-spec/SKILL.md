@@ -1,11 +1,15 @@
 ---
 name: functional-spec
+argument-hint: "<module-or-system-name>"
 description: >
   This skill should be used when the user asks to "write functional specs",
   "document use cases", "define business rules", "create requirements",
   or mentions functional specification, MVP scope, acceptance criteria, or complexity/risk matrix.
   It generates comprehensive functional specifications including MVP module inventories, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrices, data models, and per-module acceptance criteria.
   Use this skill whenever the user needs to formalize system behavior into a contractual specification, even if they don't explicitly ask for "functional spec".
+argument-hint: "<module-or-system-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

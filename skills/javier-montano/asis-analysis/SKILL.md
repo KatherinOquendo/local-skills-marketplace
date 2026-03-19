@@ -1,5 +1,6 @@
 ---
 name: asis-analysis
+argument-hint: "<project-name> [codebase-path]"
 description: >
   This skill should be used when the user asks to "analyze the codebase",
   "assess current architecture", "run an AS-IS analysis", "perform a technical audit",
@@ -9,6 +10,9 @@ description: >
   and prioritized recommendations. Use this skill whenever the user needs
   a baseline assessment before modernization, even if they don't explicitly
   ask for "AS-IS analysis".
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

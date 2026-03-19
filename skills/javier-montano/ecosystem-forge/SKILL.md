@@ -11,6 +11,8 @@ description: >
   together as a system, even if they don't explicitly ask for "ecosystem
   forge".
 argument-hint: "<domain-name or path-to-ecosystem> [--mode bootstrap|audit|repair] [--pattern governance|workflow|skill]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -44,7 +46,7 @@ my-domain/
 ├── skills/
 │   └── my-skill/
 │       ├── SKILL.md
-│       ├── reference/
+│       ├── references/
 │       └── tools/
 ├── rules/
 │   ├── R-constraint-one.md
@@ -175,8 +177,8 @@ Before declaring an ecosystem complete, confirm:
 
 ## Reference Files
 
-- `reference/ecosystem-checklist.md` — Complete integration verification checklist
-- `reference/artifact-relationships.md` — How to map dependencies between artifacts
+- `references/ecosystem-checklist.md` — Complete integration verification checklist
+- `references/artifact-relationships.md` — How to map dependencies between artifacts
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026

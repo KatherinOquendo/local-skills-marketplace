@@ -1,5 +1,6 @@
 ---
 name: sofka-html-brand
+argument-hint: "[executive|technical] [output-path]"
 description: >
   This skill should be used when the user asks to "create a Sofka HTML document",
   "generate a branded report", "build an executive deliverable", "upgrade HTML to
@@ -7,6 +8,7 @@ description: >
   brand deliverable, Design System v4, or any combination of Sofka + document/report/
   summary/analysis/roadmap. Also use when batch-upgrading existing HTML files to
   Sofka brand compliance, even if the user does not explicitly say "brand".
+argument-hint: "[executive|technical] [output-path]"
 model: opus
 context: fork
 allowed-tools:

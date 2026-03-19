@@ -1,5 +1,6 @@
 ---
 name: sofka-design-system
+argument-hint: "<brand-or-project-name>"
 description: >
   This skill should be used when the user asks to "apply design system",
   "generate styled HTML", "set up brand tokens", "configure brand colors",
@@ -9,6 +10,9 @@ description: >
   skill whenever the conversation involves branded HTML output, visual
   consistency, or deliverable styling, even if they don't explicitly ask
   for "design system".
+argument-hint: "<brand-or-project-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

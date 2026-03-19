@@ -1,5 +1,6 @@
 ---
 name: sofka-security-architecture
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design security architecture", "model
   threats", "implement zero trust", "design IAM", "plan encryption strategy", "map
@@ -9,6 +10,7 @@ description: >
   security pipelines, and compliance mapping. Use this skill whenever security controls
   or compliance need to be designed or evaluated, even if they don't explicitly ask for
   "security-architecture".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

@@ -1,11 +1,15 @@
 ---
 name: mermaid-diagramming
+argument-hint: "<diagram-type> [source-file]"
 description: >
   This skill should be used when the user asks to "create diagrams", "generate Mermaid",
   "visualize architecture", "diagram flows", "draw a sequence diagram", "create a C4 diagram",
   "add visual diagrams", or mentions diagramming, visualization, flowcharts, sequence diagrams,
   Mermaid syntax, architecture diagrams, or visual documentation. Use this skill to embed
   precise, syntactically valid Mermaid diagrams in any discovery deliverable.
+argument-hint: "<diagram-type> [source-file]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

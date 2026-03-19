@@ -1,11 +1,13 @@
 ---
 name: sofka-event-architecture
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design an event-driven system",
   "build an event catalog", "implement CQRS", "design saga patterns",
   or mentions Kafka, RabbitMQ, Pulsar, event bus, dead-letter queue, or event sourcing.
   It generates event-driven architecture artifacts including event catalogs, schema registry designs, consistency patterns (sagas, outbox, idempotency), CQRS models, and operational runbooks.
   Use this skill whenever the user needs asynchronous messaging architecture, even if they don't explicitly ask for "event architecture".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

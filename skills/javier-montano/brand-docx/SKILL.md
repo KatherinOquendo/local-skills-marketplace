@@ -10,6 +10,8 @@ description: >
   Use this skill whenever the user needs a .docx file with branded styling,
   even if they don't explicitly ask for "brand DOCX".
 argument-hint: "<document-type> <title> [brand-config-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Grep

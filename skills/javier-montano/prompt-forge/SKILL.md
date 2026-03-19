@@ -7,6 +7,8 @@ description: >
   Also triggers on mentions of prompt engineering, prompt evaluation, prompt porting, or Playbook format.
   Use this skill even if the user just pastes a prompt without instructions — it defaults to review mode.
 argument-hint: "<mode: create|review|evolve|repair|port> <domain or prompt-path> [--platform claude-project|custom-gpt|gemini-gem|api]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -44,7 +46,7 @@ Turn vague assistant ideas into structured, high-performance system prompts — 
 6. **Complete Structure** — Use the Playbook format as canonical output.
 7. **Iterative Co-Design** — Build self-correction triggers into the prompt.
 
-For deep explanations and examples, read `reference/design-principles.md`.
+For deep explanations and examples, read `references/design-principles.md`.
 
 ## The Playbook Format
 
@@ -87,7 +89,7 @@ Universal output template for generated prompts:
 [Patterns that signal recalibration]
 ```
 
-For per-section guidance, read `reference/playbook-template.md`.
+For per-section guidance, read `references/playbook-template.md`.
 
 ## Evaluation Rubric
 
@@ -106,7 +108,7 @@ Every prompt scored 1-10 on each dimension. Target: 8+ on all for production qua
 | 9 | Coherence | All sections reinforce each other? |
 | 10 | Value | User gets meaningfully better results? |
 
-For detailed scoring and repair protocols, read `reference/evaluation-rubric.md`.
+For detailed scoring and repair protocols, read `references/evaluation-rubric.md`.
 
 ## Context Engineering
 
@@ -120,7 +122,7 @@ Modern prompt design manages everything the model sees, not just instruction tex
 
 Design for all three layers. A great L1 with poor L2 design underperforms.
 
-For context hierarchy patterns and token optimization, read `reference/context-engineering.md`.
+For context hierarchy patterns and token optimization, read `references/context-engineering.md`.
 
 ## Multi-Platform Deployment
 
@@ -131,7 +133,7 @@ For context hierarchy patterns and token optimization, read `reference/context-e
 | Gemini Gems | System instructions | Google Docs/Drive | Extensions |
 | API / Code | `system` parameter | RAG pipeline | Function calling |
 
-For platform-specific limits and deployment guides, read `reference/platform-guides.md`.
+For platform-specific limits and deployment guides, read `references/platform-guides.md`.
 
 ## Workflow by Mode
 
@@ -203,11 +205,11 @@ Before delivering a prompt, confirm:
 
 ## Reference Files
 
-- `reference/design-principles.md` — Deep dive into the 7 principles with examples and antipatterns
-- `reference/evaluation-rubric.md` — Full scoring parameters, failure criteria, repair protocols
-- `reference/playbook-template.md` — Complete template with per-section guidance
-- `reference/platform-guides.md` — Platform-specific formatting, limits, deployment for Claude, GPT, Gemini, API
-- `reference/context-engineering.md` — Context hierarchy, token optimization, RAG integration
+- `references/design-principles.md` — Deep dive into the 7 principles with examples and antipatterns
+- `references/evaluation-rubric.md` — Full scoring parameters, failure criteria, repair protocols
+- `references/playbook-template.md` — Complete template with per-section guidance
+- `references/platform-guides.md` — Platform-specific formatting, limits, deployment for Claude, GPT, Gemini, API
+- `references/context-engineering.md` — Context hierarchy, token optimization, RAG integration
 
 ---
 **Author:** Javier Montaño | **Last updated:** March 12, 2026

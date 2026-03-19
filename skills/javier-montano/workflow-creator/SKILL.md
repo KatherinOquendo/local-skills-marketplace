@@ -5,6 +5,8 @@ description: >
   Use when the user asks to "create a workflow", "define workflow steps", "build a workflow YAML",
   "generate a workflow spec", or mentions workflow definition, step-by-step procedure, or RACI matrix.
 argument-hint: <workflow-id> [owning-skill-id]
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 

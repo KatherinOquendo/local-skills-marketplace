@@ -1,11 +1,15 @@
 ---
 name: flow-mapping
+argument-hint: "<project-name> [codebase-path]"
 description: >
   This skill should be used when the user asks to "map business flows",
   "document business processes", "trace integrations", "identify failure points",
   or mentions DDD domain mapping, integration matrix, dependency graph, or swimlane diagrams.
   It generates DDD domain taxonomies, 8-12 end-to-end business flows with sequence diagrams and trama specifications, integration matrices, critical failure point analysis, and system dependency graphs.
   Use this skill whenever the user needs to understand how systems actually operate end-to-end, even if they don't explicitly ask for "flow mapping".
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

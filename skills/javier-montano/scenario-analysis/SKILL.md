@@ -1,5 +1,6 @@
 ---
 name: scenario-analysis
+argument-hint: "<project-name> [codebase-path]"
 description: >
   This skill should be used when the user asks to "compare scenarios", "evaluate options",
   "run scenario analysis", "Tree of Thought", "which approach should we take", "compare
@@ -8,6 +9,9 @@ description: >
   weighted scoring, SWOT analysis, and conditional switching logic. Use this skill whenever
   a strategic decision requires structured comparison of alternatives, even if they don't
   explicitly ask for "scenario-analysis".
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

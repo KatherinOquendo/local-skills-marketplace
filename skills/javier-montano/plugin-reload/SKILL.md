@@ -1,11 +1,15 @@
 ---
 name: plugin-reload
+argument-hint: "<plugin-name>"
 description: >
   Deploys, validates, and reloads Claude Code plugins from local development.
   Activates when the user says "reload plugins", "deploy plugin", "sync plugins",
   "update local plugins", or "verify plugin structure". Also triggers on mentions of
   plugin validation, plugin deployment, or post-change verification. Use this skill even if
   the user just says something broke after editing a plugin — it diagnoses structure issues.
+argument-hint: "<plugin-name>"
+model: opus
+context: fork
 allowed-tools:
   - Bash
   - Read

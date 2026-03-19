@@ -1,5 +1,6 @@
 ---
 name: sofka-discovery-orchestrator
+argument-hint: "<project-name> [codebase-path]"
 description: >
   This skill should be used when the user asks to "run a discovery",
   "orchestrate the pipeline", "start a consulting engagement", "coordinate
@@ -10,6 +11,9 @@ description: >
   skills across 8 pipeline phases with quality gates and expert committees. Use
   this skill whenever a consulting discovery or multi-phase assessment is needed,
   even if they don't explicitly ask for "discovery orchestrator".
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

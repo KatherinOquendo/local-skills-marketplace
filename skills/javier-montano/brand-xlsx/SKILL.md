@@ -9,6 +9,8 @@ description: >
   Use this skill whenever the user needs any styled or branded Excel output,
   even if they don't explicitly ask for "brand-xlsx".
 argument-hint: "<sheet-title> [brand-config-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Grep

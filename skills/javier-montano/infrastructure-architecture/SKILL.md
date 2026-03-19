@@ -1,11 +1,13 @@
 ---
 name: sofka-infrastructure-architecture
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design cloud infrastructure", "plan network
   topology", "define HA/DR strategy", "set up cloud landing zones", or "optimize cloud costs".
   Also triggers on mentions of VPC, Kubernetes, serverless, multi-AZ, IAM, reserved instances,
   chaos testing, or any compute/network/storage platform design. Use this skill even if the user
   only mentions a single infrastructure concern — the full platform context is always relevant.
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

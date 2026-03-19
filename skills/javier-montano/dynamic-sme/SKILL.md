@@ -1,5 +1,6 @@
 ---
 name: dynamic-sme
+argument-hint: "<project-name> [codebase-path]"
 description: >
   This skill should be used when the user asks to "add industry context",
   "act as domain expert", "give me the banking perspective", "give me the
@@ -10,6 +11,9 @@ description: >
   benchmarks, and regulatory flags. Use this skill whenever domain-specific
   industry knowledge is needed for any deliverable, even if they don't
   explicitly ask for "dynamic SME".
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

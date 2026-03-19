@@ -1,10 +1,14 @@
 ---
 name: stakeholder-mapping
+argument-hint: "<project-name> [codebase-path]"
 description: >
   Stakeholder analysis — influence/interest matrix, communication plan, RACI, change readiness.
   Use when the user asks to "map stakeholders", "build influence matrix", "create communication plan",
   "assign RACI", "assess change readiness", "identify champions",
   or mentions stakeholder analysis, power/interest grid, engagement strategy, or adoption curve.
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

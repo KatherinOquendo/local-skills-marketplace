@@ -16,6 +16,7 @@ allowed-tools:
   - Grep
   - Bash
 model: opus
+context: fork
 ---
 
 # Skill Benchmark

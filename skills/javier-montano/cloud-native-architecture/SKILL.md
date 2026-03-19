@@ -1,5 +1,6 @@
 ---
 name: sofka-cloud-native-architecture
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design cloud-native architecture",
   "containerize the application", "evaluate service mesh options",
@@ -8,6 +9,7 @@ description: >
   serverless decisions, multi-cloud strategy, and cost-aware engineering with FinOps.
   Use this skill whenever the user needs to design applications for the cloud,
   even if they don't explicitly ask for "cloud-native-architecture".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

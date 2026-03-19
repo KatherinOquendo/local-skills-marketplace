@@ -7,6 +7,8 @@ description: >
   or remote tool connections. Use this skill even if the user only wants to check existing MCP
   configuration — the full setup and validation workflow applies.
 argument-hint: <server-name> [transport: stdio|http]
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

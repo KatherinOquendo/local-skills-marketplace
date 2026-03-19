@@ -1,11 +1,13 @@
 ---
 name: sofka-observability
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design observability", "set up monitoring",
   "implement tracing", "configure alerting", or "define SLOs". Also triggers on mentions of
   OpenTelemetry, Prometheus, Grafana, ELK, correlation IDs, burn rate, or runbooks. Use this
   skill even if the user only asks about one pillar like logging — the full three-pillar
   observability context is always relevant for production systems.
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

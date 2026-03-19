@@ -11,6 +11,7 @@ description: >
 argument-hint: <skill-name> [description]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Agent
 model: opus
+context: fork
 ---
 
 # Skill Creator Moat
@@ -292,4 +293,4 @@ Before declaring a skill production-ready:
 - [ ] Skill's intent would not surprise the user if described
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

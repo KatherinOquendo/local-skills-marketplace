@@ -9,6 +9,8 @@ description: >
   subprocess for their project, even if they just say "I need something
   to handle X automatically".
 argument-hint: <agent-name> [description]
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

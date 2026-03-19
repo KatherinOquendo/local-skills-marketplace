@@ -1,5 +1,6 @@
 ---
 name: software-viability
+argument-hint: "<project-name> [codebase-path]"
 description: >
   This skill should be used when the user asks to "validate technology viability", "detect
   vaporware", "verify AI claims", "assess software maturity", "check if this tech actually
@@ -8,6 +9,9 @@ description: >
   solutions, AI/ML components, and technology choices are viable substance or speculative
   smoke. Use this skill whenever technology choices need validation or vendor claims need
   scrutiny, even if they don't explicitly ask for "software-viability".
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

@@ -6,6 +6,8 @@ description: >
   Use when the user asks to "break down this problem", "analyze with confidence scores",
   "decompose and verify", "run DSVSR", or "reason through this step by step".
 argument-hint: "<problem description> [--target 0.95] [--fast]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Grep
@@ -209,11 +211,11 @@ Before delivering a DSVSR response, confirm:
 
 ## Reference Files
 
-- `reference/dsvsr-protocol.md` — Worked examples per stage
-- `reference/confidence-calibration.md` — Calibration methodology and common mis-calibration patterns
-- `reference/complexity-heuristics.md` — When to activate full DSVSR vs fast path
-- `reference/recursion-protocol.md` — Thread and attachment scanning protocol
-- `reference/agent-delegation-patterns.md` — Subagent routing and confidence aggregation
+- `references/dsvsr-protocol.md` — Worked examples per stage
+- `references/confidence-calibration.md` — Calibration methodology and common mis-calibration patterns
+- `references/complexity-heuristics.md` — When to activate full DSVSR vs fast path
+- `references/recursion-protocol.md` — Thread and attachment scanning protocol
+- `references/agent-delegation-patterns.md` — Subagent routing and confidence aggregation
 
 ---
 **Author:** Javier Montaño | **Last updated:** 2026-03-18

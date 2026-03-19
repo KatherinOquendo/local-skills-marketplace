@@ -2,6 +2,8 @@
 name: input-analyst
 description: "Pre-processing layer that analyzes raw user input — detecting surface errors, performing root-cause analysis (5 Whys), impact tracing (7 So-Whats), and intent gap analysis — then reformulates into a precise, actionable prompt."
 argument-hint: "<raw user input> [--passes 1,2,3,4,5] [--json]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Grep
@@ -48,7 +50,7 @@ Detect and catalog surface-level issues.
 
 **Critical rule:** Preserve intent when correcting. Fix surface errors only — never change meaning.
 
-For pattern libraries and detection heuristics, read `reference/analysis-patterns.md`.
+For pattern libraries and detection heuristics, read `references/analysis-patterns.md`.
 
 ### Pass 2: Five Whys Analysis
 
@@ -72,7 +74,7 @@ Root need: A persuasive case for continued investment despite Q4 misses,
 - Each "why" must be answerable from context or reasonable inference.
 - If a "why" requires unavailable information, note it as an open question — do not guess.
 
-For the complete protocol with examples, read `reference/five-whys-guide.md`.
+For the complete protocol with examples, read `references/five-whys-guide.md`.
 
 ### Pass 3: Seven So-Whats Analysis
 
@@ -85,7 +87,7 @@ Trace implications forward. If we solve this, what happens next?
 - Stop when implications become speculative.
 - Use the result to set quality calibration for downstream skills.
 
-For the complete protocol, read `reference/seven-so-whats-guide.md`.
+For the complete protocol, read `references/seven-so-whats-guide.md`.
 
 ### Pass 4: Intent Analysis
 
@@ -107,7 +109,7 @@ Compare what was typed with what was meant. Identify the gap.
 3. Identify gaps between explicit and implicit.
 4. Formulate the "real ask" — what they would say with perfect clarity.
 
-For detailed heuristics, read `reference/intent-detection.md`.
+For detailed heuristics, read `references/intent-detection.md`.
 
 ### Pass 5: Reformulation
 
@@ -176,10 +178,10 @@ Before passing the reformulated prompt downstream, confirm:
 
 ## Reference Files
 
-- `reference/analysis-patterns.md` — Dyslexia patterns, common typos, autocorrect artifacts, detection heuristics
-- `reference/five-whys-guide.md` — Complete 5 Whys protocol with cross-domain examples
-- `reference/seven-so-whats-guide.md` — Complete 7 So Whats protocol with value chain examples
-- `reference/intent-detection.md` — Gap analysis framework, signal detection, reformulation strategies
+- `references/analysis-patterns.md` — Dyslexia patterns, common typos, autocorrect artifacts, detection heuristics
+- `references/five-whys-guide.md` — Complete 5 Whys protocol with cross-domain examples
+- `references/seven-so-whats-guide.md` — Complete 7 So Whats protocol with value chain examples
+- `references/intent-detection.md` — Gap analysis framework, signal detection, reformulation strategies
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montaño | **Last updated:** 2026-03-12

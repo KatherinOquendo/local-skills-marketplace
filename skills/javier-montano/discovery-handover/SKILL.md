@@ -1,5 +1,6 @@
 ---
 name: sofka-discovery-handover
+argument-hint: "<discovery-directory>"
 description: >
   This skill should be used when the user asks to "create handover",
   "transition to operations", "prepare delivery handoff", "activate commercial
@@ -11,6 +12,7 @@ description: >
   kickoff plan. Use this skill whenever a discovery engagement is closing or
   needs to be handed to operations, even if they don't explicitly ask for
   "discovery handover".
+argument-hint: "<discovery-directory>"
 model: opus
 context: fork
 allowed-tools:

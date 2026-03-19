@@ -1,11 +1,13 @@
 ---
 name: sofka-quality-engineering
+argument-hint: "<project-or-system-name>"
 description: >
   Designs strategic quality engineering frameworks covering test strategy, automation architecture, quality gates,
   metrics, and shift-left practices. Activates when the user says "design test strategy", "plan quality gates",
   "set up test automation", "assess quality maturity", or "define quality metrics". Also triggers on mentions of
   test pyramid, shift-left, CI/CD quality, automation architecture, or quality engineering. Use this skill even if
   the user only asks about test coverage — it assesses the full quality posture.
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

@@ -5,6 +5,8 @@ description: >
   Use when the user asks to "build a workflow", "lint a workflow", "optimize workflow steps",
   "add turbo annotations", or mentions workflow forge, workflow validation, or callgraph analysis.
 argument-hint: "<workflow description or path> [--mode create|lint|optimize] [--callgraph]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -137,7 +139,7 @@ step-1 → condition? → YES → step-2a → verify
 ```
 Avoid when possible. Prefer separate workflows for each branch. If unavoidable, document both paths clearly.
 
-For multi-skill orchestration patterns, read `reference/orchestration.md`.
+For multi-skill orchestration patterns, read `references/orchestration.md`.
 
 ## Quality Checklist
 
@@ -186,9 +188,9 @@ Workflows are saved to the project's workflow directory (typically `.agent/workf
 
 ## Reference Files
 
-- `reference/output-template.md` — Complete workflow template with all sections
-- `reference/self-evaluation.md` — Quality rubric for grading workflows
-- `reference/orchestration.md` — Patterns for multi-skill workflow coordination
+- `references/output-template.md` — Complete workflow template with all sections
+- `references/self-evaluation.md` — Quality rubric for grading workflows
+- `references/orchestration.md` — Patterns for multi-skill workflow coordination
 
 ---
 **Author:** Javier Montano | **Last updated:** 2026-03-12

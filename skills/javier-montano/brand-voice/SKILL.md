@@ -10,6 +10,8 @@ description: >
   Use this skill whenever the user needs branded written content or voice
   consistency checks, even if they don't explicitly ask for "brand voice".
 argument-hint: "<content-type> <text-or-path> [brand-config-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Grep

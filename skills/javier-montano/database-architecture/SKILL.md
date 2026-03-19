@@ -1,5 +1,6 @@
 ---
 name: sofka-database-architecture
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design the database schema",
   "plan indexing strategy", "set up replication", "partition large tables",
@@ -9,6 +10,7 @@ description: >
   partitioning, replication, migration strategy, and performance tuning. Use this
   skill whenever the conversation involves data storage decisions or database
   performance, even if they don't explicitly ask for "database architecture".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

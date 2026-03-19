@@ -11,6 +11,8 @@ description: >
   separately, or when they say "make this skill great" without
   specifying which step to run.
 argument-hint: "<path-to-skill> [--mode quick|standard|deep]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

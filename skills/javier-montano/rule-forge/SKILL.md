@@ -8,6 +8,8 @@ description: >
   self-evaluation. Use this skill whenever the user needs to codify a repeatable constraint
   into a formal rule, even if they don't explicitly ask for "rule-forge".
 argument-hint: "<constraint description> [--scope 'src/**/*.ts'] [--validate path/to/rule.md]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -33,7 +35,7 @@ Every rule has five mandatory parts:
 | Bad example | Concrete violation | Code snippet showing the problem |
 | Good example | Corrected version | Same code with only the violation fixed |
 
-Rules are named `R-kebab-case.md`. For the full template, read `reference/output-template.md`.
+Rules are named `R-kebab-case.md`. For the full template, read `references/output-template.md`.
 
 ## Creation Protocol
 
@@ -138,9 +140,9 @@ Before delivering a rule, confirm:
 
 ## Reference Files
 
-- `reference/output-template.md` — Complete rule template with worked example
-- `reference/self-evaluation.md` — 10-point quality rubric with red flags
-- `reference/best-practices.md` — Scope precision, "Power of No", common mistakes
+- `references/output-template.md` — Complete rule template with worked example
+- `references/self-evaluation.md` — 10-point quality rubric with red flags
+- `references/best-practices.md` — Scope precision, "Power of No", common mistakes
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026

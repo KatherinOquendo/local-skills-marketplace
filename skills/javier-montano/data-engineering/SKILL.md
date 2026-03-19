@@ -1,5 +1,6 @@
 ---
 name: sofka-data-engineering
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design data pipelines",
   "architect data ingestion", "set up orchestration", "plan a data lake",
@@ -9,6 +10,7 @@ description: >
   and cost management for scalable data platforms.
   Use this skill whenever the user needs data platform architecture,
   even if they don't explicitly ask for "data-engineering".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

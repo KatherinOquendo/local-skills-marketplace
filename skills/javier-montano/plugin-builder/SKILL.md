@@ -1,11 +1,15 @@
 ---
 name: plugin-builder
+argument-hint: "<plugin-name>"
 description: >
   Builds complete Claude Code plugins from scratch — scaffolds plugin.json, CLAUDE.md, commands/, agents/,
   skills/, hooks/, scripts/, settings.json. Activates when the user says "create a plugin", "scaffold a plugin",
   "build a new plugin", "initialize plugin structure", or "set up a plugin project". Also triggers on mentions
   of plugin creation, plugin scaffolding, or Claude Code extension packaging. Use this skill even if the user
   only names the plugin — it interviews for missing details.
+argument-hint: "<plugin-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -64,7 +68,9 @@ Creates production-ready Claude Code plugins following the official plugin speci
 
 ```yaml
 ---
+argument-hint: "<plugin-name>"
 description: "{What it does — shown in /help}"
+argument-hint: "<plugin-name>"
 user-invocable: true
 ---
 
@@ -91,7 +97,9 @@ user-invocable: true
 ```yaml
 ---
 name: {role-name}
+argument-hint: "<plugin-name>"
 description: "{Role and when activated}"
+argument-hint: "<plugin-name>"
 co-authored-by: {Author} (with Claude Code)
 ---
 
@@ -106,8 +114,12 @@ co-authored-by: {Author} (with Claude Code)
 ---
 name: {skill-name}
 author: {Team/Author}
+argument-hint: "<plugin-name>"
 description: >
   {When to use this skill — trigger phrases and keywords}
+argument-hint: "<plugin-name>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -163,7 +175,9 @@ allowed-tools:
 
 ```yaml
 ---
+argument-hint: "<plugin-name>"
 description: "Alias → {target-command}. Use /{plugin}:{target-command} instead."
+argument-hint: "<plugin-name>"
 user-invocable: true
 ---
 

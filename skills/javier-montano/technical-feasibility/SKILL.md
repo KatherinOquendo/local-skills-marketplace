@@ -1,11 +1,15 @@
 ---
 name: technical-feasibility
+argument-hint: "<project-name> [codebase-path]"
 description: >
   Technical fact-checking and multidimensional feasibility analysis — validates claims, assumptions,
   and technical decisions from scenario analysis against evidence. Use when the user asks to "validate
   feasibility", "fact-check the scenario", "verify technical claims", "run feasibility analysis",
   "stress-test the approach", or mentions technical due diligence, feasibility study, risk validation,
   or "Phase 3b" verification work.
+argument-hint: "<project-name> [codebase-path]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

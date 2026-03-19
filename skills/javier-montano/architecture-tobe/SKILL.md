@@ -1,5 +1,6 @@
 ---
 name: sofka-architecture-tobe
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design the target architecture",
   "create a TO-BE architecture", "plan a migration strategy",
@@ -10,6 +11,7 @@ description: >
   Use this skill whenever the user needs target-state architecture, anti-corruption
   layers, or modernization roadmaps, even if they don't explicitly ask for
   "TO-BE architecture".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

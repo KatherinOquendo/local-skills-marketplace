@@ -7,6 +7,8 @@ description: >
   skill even if the user only has a single file to rename — the full naming protocol ensures
   consistency across the project.
 argument-hint: "<name-to-slug or path-to-audit> [--clean] [--validate] [--strict] [--json]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -61,7 +63,7 @@ Input                        →  Output
 
 Determine if it's a skill, workflow, rule, document, or general file. Each type has a specific pattern (see table above).
 
-For detailed conventions per entity type, read `reference/naming-patterns.md`.
+For detailed conventions per entity type, read `references/naming-patterns.md`.
 
 ### Step 2: Generate the Slug
 
@@ -157,7 +159,7 @@ Before delivering a naming recommendation or rename operation, confirm:
 
 ## Reference Files
 
-- `reference/naming-patterns.md` — Detailed conventions per entity type, edge cases (acronyms, numbers, compound extensions), canonical slug algorithm
+- `references/naming-patterns.md` — Detailed conventions per entity type, edge cases (acronyms, numbers, compound extensions), canonical slug algorithm
 
 ---
 **Author:** Javier Montaño | **Last updated:** 2026-03-12

@@ -11,6 +11,8 @@ description: >
   skill whenever a skill under-triggers, over-triggers, or the user wants
   to ensure their description is production-grade.
 argument-hint: "<path-to-skill-directory> [--queries custom-queries.json]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write

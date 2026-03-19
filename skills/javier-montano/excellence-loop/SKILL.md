@@ -7,6 +7,8 @@ description: >
   It evaluates output against a 10-criterion rubric, refines until criteria are met, detects diminishing returns, and delivers only the final polished version.
   Use this skill whenever the user needs document-level quality assurance on a deliverable, even if they don't explicitly ask for "excellence loop".
 argument-hint: "<content-path or inline content> [--strict] [--show-history] [--max-iterations 3]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Edit
@@ -46,7 +48,7 @@ Each criterion scored 1-10. Target: all criteria at 10 before delivery.
 | 9 | **Coherence** | Internal consistency — no contradictions? | Do all sections reinforce each other? |
 | 10 | **Value** | User impact — meaningful improvement over not having this? | Would the user pay for this quality? |
 
-For detailed scoring parameters and repair protocols, read `reference/rubric-criteria.md`.
+For detailed scoring parameters and repair protocols, read `references/rubric-criteria.md`.
 
 ## The Loop
 
@@ -93,7 +95,7 @@ Fix lowest-scoring criteria first (highest impact).
 | Coherence | Map cross-section dependencies, resolve contradictions |
 | Value | Add domain expertise, methodology, reasoning that goes beyond generic |
 
-For detailed tactics with examples, read `reference/refinement-tactics.md`.
+For detailed tactics with examples, read `references/refinement-tactics.md`.
 
 ## Fast Path
 
@@ -167,10 +169,10 @@ Before delivering the final version, confirm:
 
 ## Reference Files
 
-- `reference/rubric-criteria.md` — Detailed scoring guide per criterion with examples and repair protocols
-- `reference/refinement-tactics.md` — Specific tactics for improving each criterion
-- `reference/diminishing-returns.md` — When to stop iterating, signal detection, cost-benefit
-- `reference/version-history-template.md` — Archive format for tracking iterations
+- `references/rubric-criteria.md` — Detailed scoring guide per criterion with examples and repair protocols
+- `references/refinement-tactics.md` — Specific tactics for improving each criterion
+- `references/diminishing-returns.md` — When to stop iterating, signal detection, cost-benefit
+- `references/version-history-template.md` — Archive format for tracking iterations
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026

@@ -1,5 +1,6 @@
 ---
 name: sofka-data-quality
+argument-hint: "<project-or-system-name>"
 description: >
   This skill should be used when the user asks to "design a data quality framework",
   "set up data contracts", "plan data validation", "detect data anomalies",
@@ -8,6 +9,7 @@ description: >
   data contracts, anomaly detection, remediation workflows, and SLA monitoring.
   Use this skill whenever the user needs data quality strategy or implementation,
   even if they don't explicitly ask for "data-quality".
+argument-hint: "<project-or-system-name>"
 model: opus
 context: fork
 allowed-tools:

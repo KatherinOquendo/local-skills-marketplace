@@ -9,6 +9,8 @@ description: >
   the user needs to define a structured capability for a multi-agent system, even if
   they don't explicitly ask for "skill-spec-creator".
 argument-hint: <skill-id> <owning-agent-id>
+model: opus
+context: fork
 allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 

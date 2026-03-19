@@ -9,6 +9,7 @@ description: >
 argument-hint: <agent-name> [platform: telegram|discord|http]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Agent
 model: opus
+context: fork
 ---
 
 # Open-Claw Agent Builder
