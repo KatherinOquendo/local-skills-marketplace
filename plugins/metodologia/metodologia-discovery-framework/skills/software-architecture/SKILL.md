@@ -17,21 +17,21 @@ allowed-tools:
   - Bash
 ---
 
-> **Alcance:** Este skill es específico para `{TIPO_SERVICIO}=SDA` (Software Development & Architecture). Para arquitectura en otros tipos de servicio, consulte `enterprise-architecture` (visión empresarial), `solutions-architecture` (integración E2E), `infrastructure-architecture` (infraestructura), o el skill de discovery específico del tipo de servicio.
+> **Scope:** This skill is specific to `{TIPO_SERVICIO}=SDA` (Software Development & Architecture). For architecture in other service types, see `enterprise-architecture` (enterprise vision), `solutions-architecture` (E2E integration), `infrastructure-architecture` (infrastructure), or the service-type-specific discovery skill.
 
 # Software Architecture: Internal System Structure & Design Decisions
 
 Software architecture defines how code is organized internally — module boundaries, layer separation, dependency direction, design patterns, and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand structure, maintain it consistently, and evolve it strategically.
 
-## Principio Rector
+## Grounding Guideline
 
-**La arquitectura es la decisión que más cuesta cambiar después.** Por eso se documenta ANTES de implementar, se valida contra quality attributes medibles, y cada decisión vive en un ADR con alternatives y trade-offs. Arquitectura implícita es deuda garantizada.
+**Architecture is the decision that costs the most to change later.** That is why it is documented BEFORE implementing, validated against measurable quality attributes, and every decision lives in an ADR with alternatives and trade-offs. Implicit architecture is guaranteed debt.
 
-### Filosofía de Arquitectura de Software
+### Software Architecture Philosophy
 
-1. **Decisiones explícitas > convenciones implícitas.** Si no hay un ADR, no hay una decisión — hay una casualidad que se confundirá con intención.
-2. **Quality attributes mandan.** Los patterns sirven a los atributos de calidad (performance, modifiability, availability), no al revés. CQRS sin necesidad de performance es complejidad gratuita.
-3. **Deuda técnica es una decisión, no un accidente.** Se documenta, se prioriza, se paga. Ignorarla no la elimina — la capitaliza.
+1. **Explicit decisions > implicit conventions.** If there is no ADR, there is no decision — there is a coincidence that will be confused with intention.
+2. **Quality attributes rule.** Patterns serve quality attributes (performance, modifiability, availability), not the other way around. CQRS without a performance need is free complexity.
+3. **Technical debt is a decision, not an accident.** It is documented, prioritized, and paid off. Ignoring it does not eliminate it — it compounds it.
 
 ## Inputs
 
@@ -40,7 +40,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de refactoring.
-  - **desatendido**: Cero interrupciones. Arquitectura documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en pattern selection y ADRs.
   - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -216,9 +216,9 @@ Identifies current architectural debt and a strategy for evolution without disru
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Sistema greenfield sin estructura previa | Iniciar con arquitectura simple; diferir complejidad; usar ADRs para decisiones reversibles; evitar sobre-ingenieria para escala hipotetica |
 | Sistema legacy con dependencias enredadas | Documentar estado actual (as-is) y estado objetivo (to-be); planificar migracion por fases; aceptar coexistencia temporal de multiples versiones de arquitectura |
@@ -226,9 +226,9 @@ Identifies current architectural debt and a strategy for evolution without disru
 | Transicion de monolito a microservicios | Usar strangler fig con criterios claros de cutover; vigilar anti-patrones (monolito distribuido, servicios chatty); documentar estrategia de datos |
 | Sistema de alta escala o tiempo real | Abordar escala y latencia desde el diseno inicial; CQRS, event sourcing, sharding y caching como decisiones obligatorias; escenarios de quality attributes con evidencia de load testing |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Documentar ADRs ANTES de implementar | Documentar post-implementacion | El costo de cambiar una decision arquitectonica crece exponencialmente despues del codigo; documentar antes fuerza la deliberacion explicita |
 | Quality attributes como drivers de seleccion de patterns | Seleccionar patterns por popularidad o conveniencia | Un pattern sin quality attribute que lo justifique es complejidad gratuita; los atributos medibles evitan decisiones por moda |
@@ -288,9 +288,9 @@ graph TD
 |---|---|---|
 | **Markdown** | `A-01_Software_Architecture_Deep.md` | Documento completo con Module View, Component View, Design Patterns, Quality Attribute Scenarios (ATAM), ADRs, Debt & Evolution Plan. Diagramas Mermaid embebidos. |
 | **HTML** | `A-01_Software_Architecture_Deep.html` | Mismo contenido en HTML branded (Design System MetodologIA). Incluye navegacion interna, tooltips en diagramas, y tabla de contenidos interactiva. |
-| **DOCX** | `{fase}_software_architecture_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre del sistema y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Module View, Component View, Design Patterns, Quality Attribute Scenarios, ADRs, Debt & Evolution Plan. |
-| **XLSX** | `{fase}_software_architecture_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Module View (módulo, responsabilidad, dependencias, layer, owner, violaciones detectadas), Design Patterns (pattern, justificación, quality attribute habilitado, anti-patterns detectados), ADR Log (ID, título, status, decisión, consecuencias positivas, consecuencias negativas, alternativas descartadas), Debt Inventory (ítem, síntoma, causa raíz, quality attribute impactado, esfuerzo de repago, riesgo si no se aborda), Quality Attributes (atributo, escenario estímulo, respuesta esperada, métrica, estado actual). Conditional formatting por estado de ADR y nivel de riesgo de deuda. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
-| **PPTX** | `{fase}_software_architecture_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 30 slides (técnica). Speaker notes con referencias de evidencia. Slides: Portada, Principio Rector, Module View (diagrama), Component View, Design Patterns seleccionados, Quality Attribute Scenarios (ATAM), ADR highlights, Debt & Evolution Plan, próximos pasos. |
+| **DOCX** | `{fase}_software_architecture_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre del sistema y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Module View, Component View, Design Patterns, Quality Attribute Scenarios, ADRs, Debt & Evolution Plan. |
+| **XLSX** | `{fase}_software_architecture_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Module View (módulo, responsabilidad, dependencias, layer, owner, violaciones detectadas), Design Patterns (pattern, justificación, quality attribute habilitado, anti-patterns detectados), ADR Log (ID, título, status, decisión, consecuencias positivas, consecuencias negativas, alternativas descartadas), Debt Inventory (ítem, síntoma, causa raíz, quality attribute impactado, esfuerzo de repago, riesgo si no se aborda), Quality Attributes (atributo, escenario estímulo, respuesta esperada, métrica, estado actual). Conditional formatting por estado de ADR y nivel de riesgo de deuda. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
+| **PPTX** | `{fase}_software_architecture_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 30 slides (técnica). Speaker notes con referencias de evidencia. Slides: Portada, Grounding Guideline, Module View (diagrama), Component View, Design Patterns seleccionados, Quality Attribute Scenarios (ATAM), ADR highlights, Debt & Evolution Plan, próximos pasos. |
 
 ## Evaluacion
 

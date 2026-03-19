@@ -2,16 +2,30 @@
 name: metodologia-cross-platform-convert
 description: Cross-platform skill converter that transforms MAO MOAT skills into formats compatible with Cursor, Codex CLI, Gemini CLI, Aider, and Windsurf. Use when the user asks to convert skills, export for other tools, make skills cross-platform, or distribute skills to non-Claude tools. Triggered by "convert skills", "export for cursor", "cross-platform", "convert to codex".
 author: Comunidad MetodologIA
-version: 1.0.0
-category: Herramientas & DX
-tags: [cross-platform, conversion, cursor, codex, gemini, aider, windsurf, distribution]
-allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
+argument-hint: "<skill-path> [cursor|codex|gemini|aider|windsurf|all]"
+model: opus
+context: fork
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # metodologia-cross-platform-convert
 
 > Converts MAO MOAT skills to formats compatible with 5+ AI coding platforms.
 > Expands MAO's reach beyond Claude Code without sacrificing MOAT quality.
+
+## Grounding Guideline
+
+> *A skill that only works in one IDE is a captive skill. Portability is freedom.*
+
+1. **Semantics over format.** The conversion must preserve intent and logic, not just text.
+2. **Graceful degradation.** If the target platform does not support a feature, document the loss — do not fail silently.
+3. **Roundtrip as ideal.** Perfect conversion allows going back and forth without information loss.
 
 ---
 

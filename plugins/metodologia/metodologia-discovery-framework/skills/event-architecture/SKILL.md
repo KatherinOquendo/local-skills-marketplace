@@ -22,15 +22,15 @@ allowed-tools:
 
 Event-driven architecture decouples producers from consumers through asynchronous messaging — enabling scalability, resilience, and temporal flexibility. The skill covers event catalog design, broker selection, schema governance, consistency patterns (sagas, CQRS, event sourcing), and the operational practices that keep event systems reliable.
 
-## Principio Rector
+## Grounding Guideline
 
-**Los eventos son hechos inmutables — no mensajes descartables.** Un evento publicado es historia del sistema. El catálogo de eventos es el system of record, el schema registry previene breaking changes, y la consistencia eventual es una feature, no un bug.
+**Events are immutable facts — not disposable messages.** A published event is system history. The event catalog is the system of record, the schema registry prevents breaking changes, and eventual consistency is a feature, not a bug.
 
-### Filosofía de Event Architecture
+### Event Architecture Philosophy
 
-1. **El catálogo de eventos ES el sistema.** Si un evento no está catalogado, no existe. El catálogo es la fuente de verdad que conecta dominios, equipos y contratos.
-2. **Schema registry previene breaking changes.** Sin schema registry, cada deploy es una ruleta rusa. La compatibilidad se valida en CI, no en producción a las 3am.
-3. **Eventual consistency es una feature, no un bug.** Los sistemas distribuidos son eventualmente consistentes por naturaleza. Diseñarlo explícitamente (sagas, outbox, idempotencia) transforma un problema en una ventaja.
+1. **The event catalog IS the system.** If an event is not cataloged, it does not exist. The catalog is the source of truth connecting domains, teams, and contracts.
+2. **Schema registry prevents breaking changes.** Without a schema registry, every deploy is Russian roulette. Compatibility is validated in CI, not in production at 3am.
+3. **Eventual consistency is a feature, not a bug.** Distributed systems are eventually consistent by nature. Designing for it explicitly (sagas, outbox, idempotency) transforms a problem into an advantage.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the *
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para event catalog y broker config, HITL para saga design y schema compatibility decisions.
-  - **desatendido**: Cero interrupciones. Event architecture documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Event architecture documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en broker selection y consistency pattern design.
   - **paso-a-paso**: Confirma cada event definition, schema, saga flow, y operational procedure.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -282,18 +282,18 @@ Ensure event systems are reliable, observable, and recoverable in production.
 - Event sourcing adds significant complexity — not recommended unless audit/temporal queries required
 - Distributed tracing across event chains requires dedicated tooling investment
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Migracion de comunicacion sincrona a event-driven en sistema en produccion | Strangler fig pattern. Identificar boundaries de mayor valor asincrono primero (long-running processes, fan-out). Dual-write sync+async durante transicion. Validar con shadow traffic antes de cutover. |
 | Schema evolution con consumidores en versiones diferentes (N, N-1, N-2) | Schema registry con backward compatibility obligatorio. Deploy consumidores antes que productores cuando se agregan campos required. Upcasting para transformar eventos legacy durante replay. Max 2 versiones en paralelo. |
 | Event storm de alto volumen (>100K msgs/sec burst) que desborda consumidores | Backpressure via consumer throttling. Auto-scaling de instancias por consumer lag >1000 msgs. Circuit breaker para poison pills. DLT previene que un evento malo bloquee el stream. Pre-provision para picos conocidos. |
 | Multi-region con latencia de replicacion cross-region >200ms | Definir eventos globales vs regionales. Eventos globales: replicacion async con CRDTs o last-writer-wins. Eventos regionales: procesamiento local sin dependencia cross-region. Conflict resolution explicito. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Outbox pattern con CDC (Debezium) sobre publicacion directa al broker | Publish al broker dentro de la transaccion de negocio | Publicacion directa no es atomica: si el broker falla post-commit, se pierde el evento. Outbox + CDC garantiza exactly-once semantics a nivel de negocio. Complejidad adicional justificada por confiabilidad. |
 | Backward compatibility como default en schema registry sobre full compatibility | Full compatibility (mas restrictivo) | Full compatibility bloquea cambios validos como eliminar campos opcionales. Backward permite evolucion controlada mientras consumidores mantienen compatibilidad. Full solo para dominios criticos (pagos, compliance). |
@@ -351,7 +351,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `A-01_Event_Architecture_{cliente}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
@@ -359,7 +359,7 @@ graph TD
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Event Catalog & Taxonomy, Broker Architecture, Schema Registry, Consistency Patterns (Sagas/CQRS), Operational Excellence (DLT/Lag), Trade-off Matrix.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Event Catalog & Taxonomy, Broker Architecture, Schema Registry, Consistency Patterns (Sagas/CQRS), Operational Excellence (DLT/Lag), Trade-off Matrix.
 
 ## Evaluacion
 

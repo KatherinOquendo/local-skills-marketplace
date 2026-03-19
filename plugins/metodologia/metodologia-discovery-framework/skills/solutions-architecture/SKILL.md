@@ -21,15 +21,15 @@ allowed-tools:
 
 Solutions architecture designs the complete system that solves a business problem — how multiple systems connect, how users interact, how data flows, how security is enforced, and how the solution is observed and operated. It bridges business requirements and technical implementation.
 
-## Principio Rector
+## Grounding Guideline
 
-**Una solución es más que la suma de sus sistemas.** La arquitectura de solución diseña cómo múltiples componentes — APIs, canales, identidad, datos, observabilidad — se integran para resolver un problema de negocio completo. Cada integración es un contrato. Cada contrato es un punto de fallo. Cada punto de fallo necesita un plan B.
+**A solution is more than the sum of its systems.** Solution architecture designs how multiple components — APIs, channels, identity, data, observability — integrate to solve a complete business problem. Every integration is a contract. Every contract is a failure point. Every failure point needs a plan B.
 
-### Filosofía de Solución End-to-End
+### End-to-End Solution Philosophy
 
-1. **Integration-first thinking.** Los sistemas individuales funcionan solos; la solución falla en las costuras. El foco está en los puntos de conexión.
-2. **Zero Trust by default.** Cada servicio verifica, cada canal autentica, cada dato se cifra en tránsito y reposo. La seguridad no es un layer — es una propiedad.
-3. **Observable antes que operacional.** Si no se puede observar, no se puede operar. Logging, tracing, y metrics se diseñan junto con la funcionalidad, no después.
+1. **Integration-first thinking.** Individual systems work alone; the solution fails at the seams. The focus is on the connection points.
+2. **Zero Trust by default.** Every service verifies, every channel authenticates, every piece of data is encrypted in transit and at rest. Security is not a layer — it is a property.
+3. **Observable before operational.** If it cannot be observed, it cannot be operated. Logging, tracing, and metrics are designed alongside functionality, not after.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para solution view y integration patterns, HITL para security model y transition plan.
-  - **desatendido**: Cero interrupciones. Arquitectura de solución documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura de solución documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en integration architecture y identity model.
   - **paso-a-paso**: Confirma cada container, integration pattern, security decision, y observability config.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -232,9 +232,9 @@ How to move from current state to target state without disrupting operations.
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Solucion greenfield multi-sistema | Iniciar con APIs sincronas simples; agregar async/caching cuando las metricas lo justifiquen; evitar sobre-diseno para escala hipotetica |
 | Integracion con mainframe legacy | Capa de integracion (adapter, translator) para impedance mismatch (batch vs real-time, EBCDIC vs UTF-8); strangler fig con timeline de retiro |
@@ -242,9 +242,9 @@ How to move from current state to target state without disrupting operations.
 | Requisitos de tiempo real y baja latencia | Sincronico preferido; trade-offs de async documentados; infraestructura global con distribution y failover |
 | Sistema altamente regulado (GDPR, HIPAA, PCI-DSS) | Compliance como constraint no-negociable; cada decision mapeada a requisito regulatorio; audit trails, encryption y consent management desde el inicio |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Integration-first thinking (foco en costuras) | Foco en sistemas individuales | Los sistemas individuales funcionan solos; la solucion falla en los puntos de conexion; las costuras son donde se pierde valor |
 | Zero Trust by default en cada servicio | Seguridad perimetral clasica | La seguridad perimetral asume que el interior es confiable; Zero Trust verifica cada request, cada canal, cada dato |
@@ -307,9 +307,9 @@ graph TD
 |---|---|---|
 | **Markdown** | `A-02_Solutions_Architecture_Deep.md` | Documento completo con Solution View (C4), Integration Architecture, Channel & BFF, Identity/Security, Observability, Cross-Cutting Concerns y Transition Plan. Diagramas Mermaid embebidos. |
 | **HTML** | `A-02_Solutions_Architecture_Deep.html` | Mismo contenido en HTML branded (Design System MetodologIA). Diagramas C4 interactivos, navigation entre secciones, y integration contract specs detallados. |
-| **DOCX** | `{fase}_solutions_architecture_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre de la solución y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Solution View (C4), Integration Architecture, Channel & BFF, Identity/Security, Observability, Cross-Cutting Concerns, Transition Plan. |
-| **XLSX** | `{fase}_solutions_architecture_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Integration Contracts (sistema origen, sistema destino, protocolo, patrón sync/async, SLA, fallback, responsable), Security Model (capa, mecanismo AuthN/AuthZ, cifrado, compliance mapping, gaps), SLI/SLO Targets (servicio, SLI, SLO objetivo, SLA contractual, estado actual), Cross-Cutting Concerns (concern, patrón aplicado, sistemas afectados, configuración, riesgo), Transition Plan (fase, actividad, owner, criterio de rollback, riesgo). Conditional formatting por estado de SLO y severidad de gaps de seguridad. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
-| **PPTX** | `{fase}_solutions_architecture_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 30 slides (técnica). Speaker notes con referencias de evidencia. Slides: Portada, Principio Rector, Solution View (C4 containers), Integration Architecture, Channel & BFF Strategy, Identity & Security (Zero Trust), Observability (SLI/SLO), Cross-Cutting Concerns, Transition Plan, próximos pasos. |
+| **DOCX** | `{fase}_solutions_architecture_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre de la solución y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Solution View (C4), Integration Architecture, Channel & BFF, Identity/Security, Observability, Cross-Cutting Concerns, Transition Plan. |
+| **XLSX** | `{fase}_solutions_architecture_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Integration Contracts (sistema origen, sistema destino, protocolo, patrón sync/async, SLA, fallback, responsable), Security Model (capa, mecanismo AuthN/AuthZ, cifrado, compliance mapping, gaps), SLI/SLO Targets (servicio, SLI, SLO objetivo, SLA contractual, estado actual), Cross-Cutting Concerns (concern, patrón aplicado, sistemas afectados, configuración, riesgo), Transition Plan (fase, actividad, owner, criterio de rollback, riesgo). Conditional formatting por estado de SLO y severidad de gaps de seguridad. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
+| **PPTX** | `{fase}_solutions_architecture_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 30 slides (técnica). Speaker notes con referencias de evidencia. Slides: Portada, Grounding Guideline, Solution View (C4 containers), Integration Architecture, Channel & BFF Strategy, Identity & Security (Zero Trust), Observability (SLI/SLO), Cross-Cutting Concerns, Transition Plan, próximos pasos. |
 
 ## Evaluacion
 

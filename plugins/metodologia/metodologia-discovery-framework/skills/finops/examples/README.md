@@ -23,4 +23,4 @@ Sample deliverables for the fictional **Acme Corp Digital Platform** FinOps asse
 - **Evidence tags:** Every claim tagged with [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO], [STAKEHOLDER]
 - **Diagrams:** Mermaid embedded (quadrant chart for maturity, mindmap for taxonomy, gantt for roadmap)
 - **Unit economics:** Always include cost-per-business-unit metrics, not just absolute spend
-- **MetodologIA HTML branding:** Primary #6366F1, Dark #1A1A2E, Success #22D3EE (NEVER green for success states)
+- **MetodologIA HTML branding:** Primary #122562, Dark #1F2833, Success #FFD700 (NEVER green for success states)

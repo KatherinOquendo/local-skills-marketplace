@@ -11,6 +11,8 @@ description: >
   or mentions technology due diligence, software validation, AI feasibility, vendor evaluation, or
   tech-stack viability. This is the devoted software-specific validator — separate and more critical
   than the multidimensional feasibility analysis.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -29,17 +31,17 @@ This is NOT the multidimensional feasibility analysis (technical-feasibility cov
 This is a **devoted, deep-cut software validator** that operates at the level of code, APIs,
 vendor maturity, community health, and real-world production evidence.
 
-> **Alcance universal:** Este skill valida viabilidad de tecnologías de software (SDA), plataformas de automatización (RPA), herramientas de testing (QA), frameworks de gestión (Management), plataformas de datos (Data-AI), servicios cloud (Cloud), y cualquier componente tecnológico o metodológico propuesto en un engagement de servicios.
+> **Universal scope:** This skill validates viability of software technologies (SDA), automation platforms (RPA), testing tools (QA), management frameworks (Management), data platforms (Data-AI), cloud services (Cloud), and any technological or methodological component proposed in a services engagement.
 
-## Principio Rector
+## Grounding Guideline
 
-**Todo en software es una promesa hasta que se demuestra en producción.** Este skill separa promesas verificables de humo. Usa evidencia de primera mano: código ejecutable, APIs documentadas, benchmarks reproducibles, postmortems públicos, adoption data. NO usa: marketing decks, feature comparison tables de vendors, demos no reproducibles.
+**Everything in software is a promise until proven in production.** This skill separates verifiable promises from smoke. It uses first-hand evidence: executable code, documented APIs, reproducible benchmarks, public postmortems, adoption data. It does NOT use: marketing decks, vendor feature comparison tables, non-reproducible demos.
 
-### Filosofía de Validación de Software
+### Software Validation Philosophy
 
-1. **Evidencia > narrativa.** Un benchmark reproducible vale más que diez testimonios de clientes. Si la evidencia no existe, el veredicto es provisional — y se documenta como tal.
-2. **El humo se detecta en los detalles.** Claims vagos ("state of the art", "enterprise-grade", "AI-powered") sin métricas específicas, datasets documentados, o casos de producción verificables son señales de humo hasta que se demuestre lo contrario.
-3. **Viabilidad es contextual.** Una tecnología puede ser 🟢 SUBSTANCIA para un equipo con experiencia y 🟠 RIESGO ALTO para otro sin ella. El veredicto siempre se emite en el contexto del proyecto, el equipo, y las restricciones específicas.
+1. **Evidence > narrative.** A reproducible benchmark is worth more than ten customer testimonials. If evidence does not exist, the verdict is provisional — and documented as such.
+2. **Smoke is detected in the details.** Vague claims ("state of the art", "enterprise-grade", "AI-powered") without specific metrics, documented datasets, or verifiable production cases are smoke signals until proven otherwise.
+3. **Viability is contextual.** A technology can be SUBSTANCE for a team with experience and HIGH RISK for another without it. The verdict is always issued in the context of the project, the team, and the specific constraints.
 
 Escala de veredicto:
 - 🟢 **SUBSTANCIA** — producción comprobada, comunidad activa, API estable
@@ -55,7 +57,7 @@ Accepts: technology names, vendor products, AI/ML proposals, architectural patte
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario y análisis de madurez, HITL para veredictos de AI/ML y evaluación de vendors.
-  - **desatendido**: Cero interrupciones. Scorecard generado automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Scorecard generado automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en scorecard antes de entrega.
   - **paso-a-paso**: Confirma cada tecnología evaluada, cada score, y el veredicto global.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -238,18 +240,18 @@ TECNOLOGÍAS DESCARTADAS: [lista]
 | Open source with no corporate backing | Assess bus factor and funding sustainability. Flag if bus factor = 1 |
 | Client already committed to vendor | Still validate — document risks for risk register, design guardrails |
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Vendor provee exclusivamente materiales de marketing sin documentacion tecnica | Flag como RIESGO ALTO minimo; solicitar API reference, benchmark methodology, production case studies; si no proporcionan, el veredicto no puede ser mejor que PROMESA VIABLE |
 | Tecnologia tiene menos de 6 meses de existencia | Techo automatico de PROMESA VIABLE; no puede ser SUBSTANCIA sin evidencia de produccion; disenar PoC obligatorio con kill criteria |
 | Cliente ya comprometido contractualmente con un vendor | Validar igual; documentar riesgos para risk register; disenar guardrails y vendor exit strategy; no omitir problemas porque ya se firmo |
 | Open source sin corporate backing y bus factor = 1 | Evaluar sostenibilidad de funding y contribuciones; flag como RIESGO ALTO por single point of failure; identificar alternativas con mejor community health |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Escala de 4 niveles (SUBSTANCIA / PROMESA VIABLE / RIESGO ALTO / HUMO) | Binario (viable / no viable) | Los 4 niveles permiten accion graduada: SUBSTANCIA procede, PROMESA necesita PoC, RIESGO necesita alternativa, HUMO se descarta |
 | Seccion dedicada a AI/ML validation (S3) con red flags especificos | Tratar AI igual que cualquier otra tecnologia | AI tiene el mayor ratio humo/substancia del mercado; requiere validacion especifica de training data, eval metrics, failure modes, drift monitoring |
@@ -338,15 +340,15 @@ Footer: Attribution MetodologIA + re-evaluation triggers
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_software_viability_{cliente}_{WIP}.docx`
-- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Technology Inventory, Maturity Assessment, AI/ML Validation, Vendor Risk, PoC Designs, Viability Scorecard, Recommendations.
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Technology Inventory, Maturity Assessment, AI/ML Validation, Vendor Risk, PoC Designs, Viability Scorecard, Recommendations.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_software_viability_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Technology Inventory (tecnología, claim, fuente del claim, evidencia requerida, tipo de servicio), Maturity Assessment (tecnología, versión, release cadence, community health, production evidence, bus factor, score), AI/ML Validation (claim, benchmark citado, benchmark real, gap, veredicto), Vendor Risk (vendor, funding/revenue, competitive position, acquisition risk, pricing stability, lock-in assessment), PoC Designs (tecnología, objetivo PoC, success criteria, kill criteria, esfuerzo, timeline), Viability Scorecard (tecnología, maturity, community, production, AI score, vendor, veredicto). Conditional formatting por veredicto SUBSTANCIA/PROMESA/RIESGO/HUMO. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Technology Inventory (tecnología, claim, fuente del claim, evidencia requerida, tipo de servicio), Maturity Assessment (tecnología, versión, release cadence, community health, production evidence, bus factor, score), AI/ML Validation (claim, benchmark citado, benchmark real, gap, veredicto), Vendor Risk (vendor, funding/revenue, competitive position, acquisition risk, pricing stability, lock-in assessment), PoC Designs (tecnología, objetivo PoC, success criteria, kill criteria, esfuerzo, timeline), Viability Scorecard (tecnología, maturity, community, production, AI score, vendor, veredicto). Conditional formatting por veredicto SUBSTANCIA/PROMESA/RIESGO/HUMO. Auto-filters en todas las hojas. Valores directos sin fórmulas.
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_software_viability_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo (veredicto global), Technology Inventory, Viability Scorecard (tabla con semáforo SUBSTANCIA/PROMESA/RIESGO/HUMO), AI/ML Red Flags (si aplica), PoC Designs priorizados, Recomendaciones y guardrails, próximos pasos.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo (veredicto global), Technology Inventory, Viability Scorecard (tabla con semáforo SUBSTANCIA/PROMESA/RIESGO/HUMO), AI/ML Red Flags (si aplica), PoC Designs priorizados, Recomendaciones y guardrails, próximos pasos.
 
 ### HTML (bajo demanda)
 - Filename: `{fase}_software_viability_{cliente}_{WIP}.html`

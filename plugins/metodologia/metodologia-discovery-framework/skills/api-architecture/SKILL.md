@@ -22,15 +22,15 @@ allowed-tools:
 
 API architecture defines how services expose capabilities to consumers — internal teams, partners, and third parties. The skill covers style selection, contract-first design, versioning strategy, security, developer experience, and lifecycle governance for APIs that scale and evolve gracefully.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un API sin contrato es una promesa sin garantía.** La especificación es el producto — el código es solo la implementación. Cada API nace de un contrato versionado, se valida contra DX medible, y evoluciona con política de deprecación explícita.
+**An API without a contract is a promise without a guarantee.** The specification is the product — the code is just the implementation. Every API is born from a versioned contract, validated against measurable DX, and evolves with an explicit deprecation policy.
 
-### Filosofía de API Architecture
+### API Architecture Philosophy
 
-1. **Contract-first, siempre.** El spec (OpenAPI, Protobuf, SDL) se escribe ANTES del código. Si no hay contrato, no hay API — hay un accidente expuesto al mundo.
-2. **Versioning strategy upfront.** La estrategia de versionamiento se define en el diseño, no cuando el primer breaking change rompe producción. Cambiar la estrategia después cuesta 10x.
-3. **DX drives adoption.** Developer Experience no es un nice-to-have — es el diferenciador competitivo. Un API con docs pobres es un API abandonado. Las APIs con mejor DX generan 2x más adopción.
+1. **Contract-first, always.** The spec (OpenAPI, Protobuf, SDL) is written BEFORE the code. If there is no contract, there is no API — there is an accident exposed to the world.
+2. **Versioning strategy upfront.** The versioning strategy is defined at design time, not when the first breaking change breaks production. Changing the strategy later costs 10x.
+3. **DX drives adoption.** Developer Experience is not a nice-to-have — it is the competitive differentiator. An API with poor docs is an abandoned API. APIs with better DX generate 2x more adoption.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the *
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para análisis de estilos y contract design, HITL para versioning strategy y governance decisions.
-  - **desatendido**: Cero interrupciones. API architecture documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. API architecture documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en style selection y security design.
   - **paso-a-paso**: Confirma cada style decision, contract spec, versioning policy, y DX plan.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -249,23 +249,23 @@ Manage API portfolio — discovery, review, consistency, and retirement.
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| APIs legacy sin spec existente | Generar spec desde codigo (code-first); disenar API target; migrar consumers con facade pattern; timeline de deprecacion del legacy |
-| APIs internas entre 1-2 equipos | Menor ceremonia pero contratos obligatorios; governance mas ligera (guidelines, no gates); gRPC con code generation reduce friccion |
-| API como producto publico | DX es ventaja competitiva; invertir en docs, SDKs, sandboxes; versioning conservador porque breaking changes pierden clientes |
-| Alto throughput / baja latencia | gRPC con streaming, connection pooling, serialization binaria; limitar complejidad de queries GraphQL; rate limiting < 5ms overhead |
-| API multi-tenant | Tenant isolation en API layer (scoping, data filtering); rate limiting por tenant; API universal con configuracion por tenant sobre APIs tenant-specific |
+| Legacy APIs without existing spec | Generate spec from code (code-first); design target API; migrate consumers with facade pattern; legacy deprecation timeline |
+| Internal APIs between 1-2 teams | Less ceremony but mandatory contracts; lighter governance (guidelines, not gates); gRPC with code generation reduces friction |
+| API as public product | DX is competitive advantage; invest in docs, SDKs, sandboxes; conservative versioning because breaking changes lose clients |
+| High throughput / low latency | gRPC with streaming, connection pooling, binary serialization; limit GraphQL query complexity; rate limiting < 5ms overhead |
+| Multi-tenant API | Tenant isolation in API layer (scoping, data filtering); per-tenant rate limiting; universal API with per-tenant configuration over tenant-specific APIs |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Contract-first siempre (spec antes que codigo) | Code-first con spec generado | El spec es el producto; el codigo es la implementacion; sin contrato previo hay riesgo de spec drift, leaked internals y breaking changes no detectados |
-| Estrategia de versioning definida en el diseno | Definir versioning cuando ocurra el primer breaking change | Cambiar la estrategia de versioning despues de publicar cuesta 10x; los consumers build contra el contrato de estabilidad inicial |
-| DX como driver de adopcion, no como nice-to-have | Documentacion minima y funcional | APIs con mejor DX generan 2x mas adopcion; docs pobres producen APIs abandonados independientemente de la calidad tecnica |
+| Contract-first always (spec before code) | Code-first with generated spec | The spec is the product; the code is the implementation; without a prior contract there is risk of spec drift, leaked internals, and undetected breaking changes |
+| Versioning strategy defined at design time | Define versioning when the first breaking change occurs | Changing the versioning strategy after publishing costs 10x; consumers build against the initial stability contract |
+| DX as adoption driver, not as nice-to-have | Minimal functional documentation | APIs with better DX generate 2x more adoption; poor docs produce abandoned APIs regardless of technical quality |
 
 ## Knowledge Graph
 
@@ -324,7 +324,7 @@ graph TD
 | **HTML** | `A-01_API_Architecture.html` | Mismo contenido en HTML branded (Design System MetodologIA). Incluye interactive API style decision matrix, rate limiting algorithm comparison, y API health score calculator. |
 | **DOCX** | `{fase}_{entregable}_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Para circulacion formal y auditoria. |
 | **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Via openpyxl con Design System MetodologIA v5. Headers branded (fondo navy, texto blanco, Poppins), formato condicional con colores semaforo, auto-filtros, valores sin formulas. Para inventario de APIs, matrices de versionamiento y tracking de health score. |
-| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level. |
 
 ## Evaluacion
 

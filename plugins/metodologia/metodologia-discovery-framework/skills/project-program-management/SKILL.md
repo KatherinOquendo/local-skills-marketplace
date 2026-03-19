@@ -10,6 +10,8 @@ description: >
   PMO, program management, portfolio governance, phase gates, proposal readiness, milestone
   tracking, or cross-phase dependency management. Works as the structural glue that holds
   the entire discovery pipeline together — from Phase 0 through Handover.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -26,24 +28,24 @@ tracking phases, gates, resources, dependencies, risks, and proposal readiness. 
 as the connective tissue between all 48 skills, ensuring nothing falls through cracks,
 phases don't skip prerequisites, and the final proposal is validated before client delivery.
 
-## Principio Rector
+## Grounding Guideline
 
-**El descubrimiento sin gobernanza es improvisación disfrazada de metodología.** Este skill
-impone la disciplina de programa sobre el pipeline: cada fase tiene prerequisites, cada gate
-tiene criteria, cada entregable tiene owner y fecha. No es burocracia — es la diferencia
-entre "hicimos un discovery" y "ejecutamos un programa de discovery confiable."
+**Discovery without governance is improvisation disguised as methodology.** This skill
+imposes program discipline on the pipeline: every phase has prerequisites, every gate
+has criteria, every deliverable has an owner and a date. It is not bureaucracy — it is the difference
+between "we did a discovery" and "we executed a reliable discovery program."
 
-### Filosofía de Gobierno
+### Governance Philosophy
 
-1. **Governance ≠ Burocracia.** El gobierno existe para habilitar velocidad con confianza,
-   no para frenar. Cada control debe justificar su existencia con un riesgo que mitiga.
+1. **Governance is not bureaucracy.** Governance exists to enable speed with confidence,
+   not to slow things down. Every control must justify its existence with a risk it mitigates.
 
-2. **Trazabilidad Total.** Cada decisión, cambio de alcance, riesgo materializado, y
-   dependencia resuelta queda registrada. El programa se puede auditar en cualquier momento.
+2. **Total traceability.** Every decision, scope change, materialized risk, and
+   resolved dependency is recorded. The program can be audited at any time.
 
-3. **Proposal QA = Quality Gate Final.** La propuesta v1 no sale hasta que pasa una validación
-   multidimensional que verifica coherencia técnica, viabilidad, completitud, y alineación
-   con hallazgos del discovery.
+3. **Proposal QA = Final Quality Gate.** Proposal v1 does not go out until it passes a
+   multidimensional validation that verifies technical coherence, viability, completeness, and
+   alignment with discovery findings.
 
 ## Inputs
 
@@ -52,9 +54,9 @@ Parse `$1` as **project/program name**. Detect discovery context from repo.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para tracking rutinario, HITL para decisiones de gate, cambios de alcance, y validación de propuesta.
-  - **desatendido**: Cero interrupciones. Gates auto-evaluados. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Gates auto-evaluados. Assumptions documented.
   - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en gates y QA de propuesta.
-  - **paso-a-paso**: Confirma antes de cada evaluación de gate y cada sección de QA.
+  - **paso-a-paso**: Confirms before cada evaluación de gate y cada sección de QA.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -412,7 +414,7 @@ Reporte formal de gobernanza PMO: charter con firmas, evaluaciones de gate docum
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_project_program_management_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Program Charter, Phase Dependency Map (Gantt), Gate Evaluation Scorecards, Resource Allocation, Dependency Matrix, Proposal QA Scorecard, Status Dashboard RAG.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Program Charter, Phase Dependency Map (Gantt), Gate Evaluation Scorecards, Resource Allocation, Dependency Matrix, Proposal QA Scorecard, Status Dashboard RAG.
 
 ## Evaluacion
 

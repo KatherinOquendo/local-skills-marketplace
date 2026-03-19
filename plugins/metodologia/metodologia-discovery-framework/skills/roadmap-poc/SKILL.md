@@ -21,15 +21,15 @@ allowed-tools:
 
 Generates 4-8 week execution roadmaps with sprint-level planning, prerequisite validation, measurable go/no-go gate criteria, team composition, budget ranges, and risk registers.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un PoC sin kill criteria es un prototipo disfrazado de validacion.** La planificacion de ejecucion no es un ejercicio de optimismo — es un acto de ingenieria donde cada sprint tiene entregables medibles, cada gate tiene criterios binarios (pasa/no pasa), y cada riesgo tiene un costo cuantificado.
+**A PoC without kill criteria is a prototype disguised as validation.** Execution planning is not an exercise in optimism — it is an engineering act where every sprint has measurable deliverables, every gate has binary criteria (pass/fail), and every risk has a quantified cost.
 
-### Filosofia de Execution Planning
+### Execution Planning Philosophy
 
-1. **Sprints with gates, not just demos.** Cada gate existe para tomar una decision concreta: seguir, pivotar o parar. Si no hay criterio medible, no es un gate — es una reunion.
-2. **Prerequisites before Sprint 1.** El equipo mas talentoso del mundo no puede compensar un prerequisito bloqueado. Validar prerequisites en Week 0 es inversion; descubrirlos en Sprint 2 es desperdicio.
-3. **Team + budget realistic from Day 1.** Un roadmap con equipo indefinido y presupuesto "TBD" no es un plan — es una esperanza. FTE allocation y budget ranges son requisitos, no opcionales.
+1. **Sprints with gates, not just demos.** Every gate exists to make a concrete decision: continue, pivot, or stop. If there is no measurable criterion, it is not a gate — it is a meeting.
+2. **Prerequisites before Sprint 1.** The most talented team in the world cannot compensate for a blocked prerequisite. Validating prerequisites in Week 0 is investment; discovering them in Sprint 2 is waste.
+3. **Team + budget realistic from Day 1.** A roadmap with an undefined team and a "TBD" budget is not a plan — it is a hope. FTE allocation and budget ranges are requirements, not optional.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a scope and duration as `$ARGUMENTS`. Parse `$1` as the **PoC/
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para sprint breakdown y prerequisites, HITL para gate criteria y budget decisions.
-  - **desatendido**: Cero interrupciones. Roadmap completo con supuestos documentados.
+  - **desatendido**: Zero interruptions. Roadmap completo con supuestos documentados.
   - **supervisado**: Autonomo con checkpoint en gate criteria y risk register.
   - **paso-a-paso**: Confirma cada sprint plan, gate criterion, budget range, y risk mitigation.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -234,18 +234,18 @@ Before delivering roadmap:
 - [ ] Risk register has 5-6 risks with delay/cost estimates
 - [ ] Roadmap is immediately actionable — team can execute Day 1 without rework
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Prerequisito critico bloqueado en Week 0 sin resolucion a la vista | Escalar con costo cuantificado ("Equipo esperando cuesta $X/dia"); no iniciar Sprint 1 hasta resolucion; documentar impacto en timeline |
 | Equipo menor a 4 ingenieros | Extender sprints a 3 semanas para reducir ratio ceremonies/coding; ajustar expectativas de velocidad; reducir scope por sprint |
 | Gate de Sprint 1 falla (entregables no cumplen criterios) | Ejecutar sprint de remediacion antes de Sprint 2; no saltar adelante porque los defectos se acumulan; re-evaluar scope si persiste |
 | Budget aprobado pero equipo no contratado aun | Insertar fase de reclutamiento de 2-4 semanas antes de Week 0; ajustar timeline total; documentar riesgo de hiring delays |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Sprints de 2 semanas como default | Sprints de 3 semanas o 1 semana | 2 semanas balancea feedback rapido con overhead de ceremonies; 1 semana es demasiado overhead; 3 semanas retrasa deteccion de problemas |
 | Prerequisites validados en Week 0 antes de Sprint 1 | Descubrir prerequisites durante ejecucion | El equipo mas talentoso no compensa un prerequisito bloqueado; descubrirlos en Sprint 2 es desperdicio puro |
@@ -343,15 +343,15 @@ Footer: Attribution MetodologIA + proximos pasos
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_roadmap_poc_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de prerequisites, sprint breakdown y risk register con zebra striping. Encabezados y pies de página con branding MetodologIA.
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de prerequisites, sprint breakdown y risk register con zebra striping. Encabezados y pies de página con branding MetodologIA.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_roadmap_poc_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Prerequisites Tracker (ID, prerequisito, status, owner, deadline, blocker flag), Sprint Breakdown (sprint, día, tarea, owner, entregable, acceptance criteria), Risk Register (ID, descripción, probabilidad, impacto, delay días, cost impact, mitigación, owner), Team & Budget (rol, tipo, FTE, fase). Conditional formatting por status de prerequisitos y severidad de riesgos. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Prerequisites Tracker (ID, prerequisito, status, owner, deadline, blocker flag), Sprint Breakdown (sprint, día, tarea, owner, entregable, acceptance criteria), Risk Register (ID, descripción, probabilidad, impacto, delay días, cost impact, mitigación, owner), Team & Budget (rol, tipo, FTE, fase). Conditional formatting por status de prerequisitos y severidad de riesgos. Auto-filters en todas las hojas. Valores directos sin fórmulas.
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_roadmap_poc_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Pre-Service Kickoff Agenda, Prerequisites Status Board, Timeline Visualization (Gantt), Sprint Breakdown, Team Composition, Gate Criteria, Risk Register, Budget Summary.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Pre-Service Kickoff Agenda, Prerequisites Status Board, Timeline Visualization (Gantt), Sprint Breakdown, Team Composition, Gate Criteria, Risk Register, Budget Summary.
 
 ## Evaluacion
 

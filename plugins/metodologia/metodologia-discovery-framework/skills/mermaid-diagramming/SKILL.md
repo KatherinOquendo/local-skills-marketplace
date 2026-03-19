@@ -8,6 +8,8 @@ description: >
   "add visual diagrams", or mentions diagramming, visualization, flowcharts, sequence diagrams,
   Mermaid syntax, architecture diagrams, or visual documentation. Use this skill to embed
   precise, syntactically valid Mermaid diagrams in any discovery deliverable.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,15 +23,15 @@ allowed-tools:
 
 Generates syntactically valid, semantically precise Mermaid diagrams for discovery deliverables. Every diagram earns its place — no decorative visuals. Each diagram must compress complexity into clarity, replacing paragraphs of prose with a single visual that a reader grasps in seconds.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un diagrama que no comprime complejidad en claridad no merece existir.** Cada diagrama Mermaid debe reemplazar párrafos de prosa con una visual que el lector comprende en segundos. Decoración ≠ documentación — solo diagramas que ganan su lugar sobreviven.
+**A diagram that does not compress complexity into clarity does not deserve to exist.** Every Mermaid diagram must replace paragraphs of prose with a visual that the reader grasps in seconds. Decoration ≠ documentation — only diagrams that earn their place survive.
 
-### Filosofía de Diagramación
+### Diagramming Philosophy
 
-1. **Densidad informativa.** Si un diagrama no transmite más que 3 oraciones de texto, es ruido visual. Eliminar.
-2. **Sintaxis impecable.** Un diagrama que no renderiza es peor que ningún diagrama. Validación antes de entrega.
-3. **Contexto > estética.** Los nodos se nombran con significado de dominio, no con códigos. Las flechas llevan etiquetas. Los subgrafos agrupan con propósito.
+1. **Information density.** If a diagram does not convey more than 3 sentences of text, it is visual noise. Remove it.
+2. **Impeccable syntax.** A diagram that does not render is worse than no diagram. Validate before delivery.
+3. **Context > aesthetics.** Nodes are named with domain meaning, not codes. Arrows carry labels. Subgraphs group with purpose.
 
 ## Inputs ($ARGUMENTS)
 
@@ -42,7 +44,7 @@ Generates syntactically valid, semantically precise Mermaid diagrams for discove
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para selección de tipo y composición, HITL para validación de diagramas complejos (>15 nodos).
-  - **desatendido**: Cero interrupciones. Diagramas generados automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Diagramas generados automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint al seleccionar tipo de diagrama.
   - **paso-a-paso**: Confirma tipo, composición, y validación de cada diagrama.
 - `{FORMATO}`: `markdown` (default, fenced code blocks) | `html` (pre class="mermaid") | `dual`
@@ -177,18 +179,18 @@ Before delivering any diagram:
 3. Can the target audience understand it without explanation? If no, simplify.
 4. Are all labels/names consistent with the document? If no, align.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Requested diagram type is not supported by the target renderer (e.g., C4 extension in a basic Mermaid viewer) | Fall back to flowchart with subgraphs that emulate C4 structure; document the fallback with a note to the reader |
 | Source data would require >40 nodes for a complete representation | Decompose into 2-3 sub-diagrams with explicit cross-reference labels (e.g., "see Diagram 2B for detail"); add an index diagram showing how sub-diagrams relate |
 | Diagram contains node labels with special characters that break Mermaid syntax (quotes, brackets, pipes) | Escape characters per Mermaid spec; use descriptive IDs without special characters; place full labels in quoted strings |
 | Two equally valid diagram types for the same content (e.g., flowchart vs sequence for an API call chain) | Prefer the type with fewer nodes; if equal, prefer the type that shows temporal ordering (sequence) over structural relationship (flowchart) |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Enforce max 20 nodes per diagram as a hard rule | Allow unlimited nodes with a "best effort" readability guideline | Soft guidelines are ignored under time pressure; the hard cap forces conscious decomposition decisions that improve every diagram |
 | Require accessibility text summary before every diagram | Rely on diagram self-explanation | Screen readers cannot parse Mermaid; non-rendering contexts (email, print) lose all information without text summaries; accessibility is non-negotiable |
@@ -230,7 +232,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold. Diagramas Mermaid exportados como imagen PNG e incrustados en el documento.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold. Diagramas Mermaid exportados como imagen PNG e incrustados en el documento.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
@@ -238,7 +240,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

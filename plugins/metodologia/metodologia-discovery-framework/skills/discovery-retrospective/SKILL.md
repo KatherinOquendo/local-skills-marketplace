@@ -2,16 +2,30 @@
 name: metodologia-discovery-retrospective
 description: Quantitative retrospective for discovery engagements. Use when the user asks to review engagement metrics, generate a retrospective, analyze evidence density, measure discovery progress, compute engagement analytics, or review session performance. Triggered by "retro", "retrospective", "metrics", "how are we doing".
 author: Comunidad MetodologIA
-version: 1.0.0
-category: Calidad & Ops
-tags: [retrospective, metrics, analytics, evidence, quality, engagement]
-allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+argument-hint: "[discovery-directory]"
+model: opus
+context: fork
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # metodologia-discovery-retrospective
 
 > Quantitative retrospective engine for discovery engagements.
 > Computes evidence density, deliverable completion, phase velocity, and engagement health.
+
+## Grounding Guideline
+
+> *A discovery without a retrospective is a project that does not learn from itself.*
+
+1. **Evidence metrics, not opinion metrics.** The retro measures % of assumptions, gate coverage, and deliverable quality — not subjective satisfaction.
+2. **Quantitative retrospective.** Each engagement produces data that can be compared against benchmarks from previous engagements.
+3. **Lessons that persist.** If lessons are not recorded in lessons-learned.md, they are lost when the session closes.
 
 ---
 

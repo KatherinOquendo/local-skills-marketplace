@@ -22,15 +22,15 @@ allowed-tools:
 
 Ensures deliverables are business-readable, scannable, and cognitively accessible. Provides 5 standards: information hierarchy, cognitive load reduction, scannability, microcopy, and readability heuristics. Spanish-first bilingual support.
 
-## Principio Rector
+## Grounding Guideline
 
-**Las palabras son interfaz. Cada titulo, cada etiqueta, cada callout es una decision de diseno de informacion.** UX writing no es "pulir el texto al final" — es la primera capa de usabilidad de todo entregable. Si el lector no puede escanear, entender, y actuar en su presupuesto de tiempo, el contenido no existe.
+**Words are interface. Every title, every label, every callout is an information design decision.** UX writing is not "polishing the text at the end" — it is the first usability layer of every deliverable. If the reader cannot scan, understand, and act within their time budget, the content does not exist.
 
-### Filosofia de UX Writing
+### UX Writing Philosophy
 
-1. **Progressive disclosure reduces cognitive load.** El lector elige profundidad: summary > detail > appendix. Forzar la lectura completa es un antipatron.
-2. **Consistent terminology across deliverables.** Un mismo concepto con tres nombres diferentes es tres conceptos para el lector. Glosario implicito, nunca explicito.
-3. **Microcopy matters.** Cada boton, cada mensaje de error, cada tooltip es una micro-decision de diseno. "Click here" no es microcopy — es ruido.
+1. **Progressive disclosure reduces cognitive load.** The reader chooses depth: summary > detail > appendix. Forcing full reading is an anti-pattern.
+2. **Consistent terminology across deliverables.** The same concept with three different names is three concepts for the reader. Implicit glossary, never explicit.
+3. **Microcopy matters.** Every button, every error message, every tooltip is a micro design decision. "Click here" is not microcopy — it is noise.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a standard or target content as `$ARGUMENTS`. Parse `$1` as **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para readability metrics y hierarchy analysis, HITL para microcopy recommendations y audience adaptation.
-  - **desatendido**: Cero interrupciones. Auditoria completa con supuestos documentados.
+  - **desatendido**: Zero interruptions. Auditoria completa con supuestos documentados.
   - **supervisado**: Autonomo con checkpoint en readability scores y anti-pattern findings.
   - **paso-a-paso**: Confirma cada standard assessment, anti-pattern fix, y readability target.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -238,18 +238,18 @@ Before delivering UX writing audit:
 - [ ] Audience identified and standards adapted accordingly
 - [ ] Bilingual considerations addressed if applicable
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | No existe contenido previo para auditar | Comenzar con benchmark de competidores/industria; crear content style guide desde cero con workshop de stakeholders; entregar standards baseline + 10 rewrites de ejemplo |
 | Audiencia altamente tecnica (developers, ingenieros) | Ajustar targets de readability hacia arriba (Grade 10-12 aceptable); priorizar precision sobre simplicidad; preservar jargon de dominio pero definir en primer uso |
 | Producto multi-idioma (3+ idiomas, no solo bilingue) | Definir idioma primario para creacion de contenido; crear translation brief por idioma con adaptaciones de tono; presupuestar 40% mas para 3+ idiomas |
 | Contenido regulado (disclaimers financieros, medicos) | Legal review obligatorio; UX writing optimiza dentro de restricciones legales, no las reemplaza; mantener registro de copy aprobado con versionamiento |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Progressive disclosure (summary > detail > appendix) como patron default | Todo el contenido al mismo nivel de detalle | Forzar lectura completa es un antipatron; el lector elige profundidad segun su presupuesto de tiempo |
 | Regla 80/20 de scannability (80% del valor en 20% del contenido) | Disenar para lectura lineal completa | Los lectores de negocio escanean, no leen linealmente; el contenido debe funcionar para scanners y deep-readers por igual |
@@ -318,7 +318,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_ux-writing_{cliente}_{WIP}.xlsx`
@@ -326,7 +326,7 @@ graph TD
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, resumen ejecutivo (standards evaluados, anti-patterns encontrados, readability score), assessment por standard (5 slides), anti-patterns top con before/after, métricas de readability vs target (Flesch-Kincaid), recomendaciones priorizadas por impacto.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, resumen ejecutivo (standards evaluados, anti-patterns encontrados, readability score), assessment por standard (5 slides), anti-patterns top con before/after, métricas de readability vs target (Flesch-Kincaid), recomendaciones priorizadas por impacto.
 
 **Formato HTML (para revision de deliverables):**
 

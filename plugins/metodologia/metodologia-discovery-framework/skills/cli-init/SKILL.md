@@ -1,18 +1,31 @@
 ---
 name: cli-init
 description: CLI interactivo de inicialización que configura el entorno del cliente, pre-puebla discovery/, ejecuta G0 security scan y prepara el contexto para discovery.
-author: Equipo MetodologIA
-version: 1.0.0
-license: MIT
-category: Herramientas & DX
-tags: [cli, init, wizard, setup, onboarding, automation]
-allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<project-name> [industry]"
+model: opus
+context: fork
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # cli-init
 
 > CLI interactivo de inicialización para MetodologIA.
 > Configura el entorno del cliente como paso previo a iniciar Claude Code.
+
+## Grounding Guideline
+
+> *The first impression of the framework is the initialization. If it fails, the user does not return.*
+
+1. **Zero-config by default.** The user must be able to start without configuring anything — default values must be intelligent.
+2. **Automatic context detection.** The init must read the repository, detect technologies, and pre-configure the discovery.
+3. **Fail fast, fail clear.** If something is missing, say so immediately with remediation instructions.
 
 ---
 
@@ -54,9 +67,9 @@ Wizard interactivo que pre-puebla `discovery/SESSION-README.md` con datos del cl
 |---------|---------------|
 | **Markdown** | SESSION-README.md con tabla de cliente, estado de discovery, quick start commands. Ghost menu. |
 | **HTML** | Self-contained con tokens canónicos MetodologIA. Reporte de inicialización con status badges. WCAG AA. |
-| **DOCX** | python-docx. Heading 1 = Montserrat 700 #6366F1. Tabla de configuración del cliente. Header MetodologIA. |
-| **XLSX** | openpyxl. Hoja "Init Config" con columnas: Parameter, Value, Status. Header indigo #6366F1. |
-| **PPTX** | python-pptx. 5 slides: Banner, Client Info, Service Type, G0 Status, Next Steps. Slide master indigo. |
+| **DOCX** | python-docx. Heading 1 = Poppins 700 #122562. Tabla de configuración del cliente. Header MetodologIA. |
+| **XLSX** | openpyxl. Hoja "Init Config" con columnas: Parameter, Value, Status. Header navy #122562. |
+| **PPTX** | python-pptx. 5 slides: Banner, Client Info, Service Type, G0 Status, Next Steps. Slide master navy. |
 
 ---
 

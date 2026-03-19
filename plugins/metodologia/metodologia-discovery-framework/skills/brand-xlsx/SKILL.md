@@ -22,6 +22,14 @@ allowed-tools:
 
 Generates production-ready Excel spreadsheets following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every spreadsheet uses navy header fills, gold accent rows, Poppins header text, Trebuchet MS body text, and semantic conditional formatting.
 
+## Grounding Guideline
+
+> *A spreadsheet without structure is a data dump disguised as analysis.*
+
+1. **Branded header, clean data.** The first visual impression matters — MetodologIA colors in headers, well-formatted data below.
+2. **Every sheet has a purpose.** One sheet = one concept. Workbooks with a single giant sheet are ungovernable.
+3. **Documented formulas.** Calculated cells must have comments explaining the logic — the sheet must be readable without the author.
+
 ## CRITICAL: Before Generating ANY XLSX
 
 **ALWAYS read the brand config first:**

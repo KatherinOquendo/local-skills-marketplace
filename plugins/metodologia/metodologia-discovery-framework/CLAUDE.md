@@ -73,7 +73,7 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 | Reglas de etiquetado de evidencia | `references/ontology/protocol-zero-hallucination.md` |
 | Fases del pipeline y quality gates | `references/ontology/pipeline-orchestration.md` |
 | Roster de 48 agentes y roles | `references/ontology/agent-committee.md` |
-| Catálogo de 108 skills por dominio | `references/ontology/skills-catalog.md` |
+| Catálogo de 111 skills por dominio | `references/ontology/skills-catalog.md` |
 | Referencia de 109 comandos | `references/ontology/commands-reference.md` |
 | Política de RAG-priming y adjuntos | `references/ontology/rag-priming-policy.md` |
 | Estándares de output y branding | `references/ontology/output-standards.md` |
@@ -168,7 +168,7 @@ Este CLAUDE.md es un hub. El conocimiento profundo vive en 13 sub-archivos espec
 metodologia-discovery-framework/
 ├── agents/              # 101 agentes especializados
 ├── commands/            # 109 comandos (primarios + aliases + service discovery + coaching)
-├── skills/              # 108 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
+├── skills/              # 111 skills MOAT (SKILL.md + references/ + examples/ + prompts/)
 ├── references/
 │   ├── ontology/        # 13 sub-archivos de ontología viva
 │   ├── priming-rag-*/   # 8 docs de conocimiento RAG

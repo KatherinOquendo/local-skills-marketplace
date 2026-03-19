@@ -17,15 +17,15 @@ allowed-tools:
   - Bash
 ---
 
-> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Data-AI`. El diseño de bases de datos es relevante para desarrollo de software y para estrategia de datos. Para otros contextos de datos, consulte `data-engineering`, `data-governance`, o `bi-architecture`.
+> **Scope:** This skill applies to `{TIPO_SERVICIO}=SDA` and `{TIPO_SERVICIO}=Data-AI`. Database design is relevant for software development and data strategy. For other data contexts, see `data-engineering`, `data-governance`, or `bi-architecture`.
 
 # Database Architecture: Schema Design, Storage Strategy & Data Evolution
 
 Database architecture defines how data is structured, stored, accessed, replicated, and evolved over time. This skill produces comprehensive database design documentation covering schema modeling, indexing, partitioning, high availability, migration strategy, and performance tuning.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un schema sin estrategia de evolución es un schema condenado a romperse.** La evolución del esquema se planifica ANTES de la primera migración. Los índices se diseñan a partir de access patterns medidos, no de intuición. Las migraciones se ejecutan con zero-downtime o no se ejecutan. Cada decisión de particionamiento, replicación e indexación lleva justificación cuantitativa y plan de rollback.
+**A schema without an evolution strategy is a schema condemned to break.** Schema evolution is planned BEFORE the first migration. Indexes are designed from measured access patterns, not intuition. Migrations are executed with zero-downtime or not executed at all. Every partitioning, replication, and indexing decision carries quantitative justification and a rollback plan.
 
 ## Inputs
 
@@ -34,7 +34,7 @@ The user provides a system or database name as `$ARGUMENTS`. Parse `$1` as the *
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para profiling y schema design, HITL para decisiones de particionamiento y replicación.
-  - **desatendido**: Cero interrupciones. Schema, índices y migraciones documentados automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Schema, índices y migraciones documentados automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en indexing strategy y migration plan.
   - **paso-a-paso**: Confirma cada tabla, índice, partición y plan de migración.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -281,22 +281,22 @@ Query optimization, connection management, caching, and monitoring.
 - Schema recommendations assume relational as default; document or graph models require explicit justification
 - Migration complexity estimates assume clean schemas; legacy databases with undocumented triggers/procedures add 30-50% overhead
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Base de datos legacy sin documentacion (triggers ocultos, stored procedures sin versionado) | Reverse-engineer desde `information_schema` y `pg_stat_statements`. Documentar as-is antes de proponer cambios. Agregar 30-50% overhead a estimaciones de migracion. |
-| Multi-tenant con >1000 tenants y tablas >1TB | Evaluar shard-by-tenant con consistent hashing. Implementar RLS para aislamiento en shared-schema. Monitorear noisy-neighbor con metricas per-tenant. |
-| Migracion zero-downtime en tablas con >100M filas | Usar expand-contract con backfill en batches de 5K-10K filas. Shadow columns con triggers de sync. Validar checksums antes de cutover. Definir ventana de rollback de 48h. |
-| Requisitos regulatorios cruzados (GDPR + HIPAA + data residency) | Replicacion restringida por geografia. Soft-delete con audit trail para right-to-erasure. TDE + TLS obligatorio. Separar PII en esquemas dedicados con acceso auditado. |
+| Legacy database without documentation (hidden triggers, unversioned stored procedures) | Reverse-engineer from `information_schema` and `pg_stat_statements`. Document as-is before proposing changes. Add 30-50% overhead to migration estimates. |
+| Multi-tenant with >1000 tenants and tables >1TB | Evaluate shard-by-tenant with consistent hashing. Implement RLS for shared-schema isolation. Monitor noisy-neighbor with per-tenant metrics. |
+| Zero-downtime migration on tables with >100M rows | Use expand-contract with backfill in batches of 5K-10K rows. Shadow columns with sync triggers. Validate checksums before cutover. Define 48h rollback window. |
+| Cross-regulatory requirements (GDPR + HIPAA + data residency) | Geography-restricted replication. Soft-delete with audit trail for right-to-erasure. TDE + TLS mandatory. Separate PII in dedicated schemas with audited access. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Backward-compatible migrations con expand-contract | ALTER directo en tabla activa | ALTER bloquea lecturas/escrituras en tablas grandes. Expand-contract permite zero-downtime con rollback seguro. |
-| BRIN indexes para tablas time-series en vez de B-tree | B-tree convencional | BRIN ocupa 1000x menos espacio para datos naturalmente ordenados. B-tree innecesario cuando las queries siempre filtran por rango temporal. |
-| PgBouncer transaction-mode en vez de session-mode | Session pooling | Transaction-mode permite reutilizar conexiones entre requests, soportando mas usuarios concurrentes con menos conexiones al backend. Session-mode desperdicia conexiones en idle. |
+| Backward-compatible migrations with expand-contract | Direct ALTER on active table | ALTER blocks reads/writes on large tables. Expand-contract allows zero-downtime with safe rollback. |
+| BRIN indexes for time-series tables instead of B-tree | Conventional B-tree | BRIN occupies 1000x less space for naturally ordered data. B-tree unnecessary when queries always filter by time range. |
+| PgBouncer transaction-mode instead of session-mode | Session pooling | Transaction-mode allows connection reuse between requests, supporting more concurrent users with fewer backend connections. Session-mode wastes connections on idle. |
 
 ## Knowledge Graph
 
@@ -351,11 +351,11 @@ graph TD
 
 **Formato DOCX (circulación formal):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
 
 ## Evaluacion
 

@@ -8,6 +8,8 @@ description: >
   Use when the user asks to "design a workshop", "plan event storming", "design impact mapping session",
   "design a sprint", "create user story map", "design discovery session",
   or mentions workshop design, design sprint, event storming, story mapping, or collaborative design.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,7 +23,7 @@ allowed-tools:
 
 Workshop design creates structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints.
 
-## Guiding Principle
+## Grounding Guideline
 
 > A poorly facilitated workshop does not just waste time — it destroys the team's trust in collaborative processes. Excellent facilitation is the difference between genuine alignment and superficial consensus.
 
@@ -185,18 +187,18 @@ Consolidates workshop outputs into actionable artifacts and establishes follow-u
 
 **Workshop Fatigue:** Demonstrate follow-through. Keep session shorter, action-oriented. Show how prior outputs were used.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Equipo 100% remoto sin experiencia en talleres colaborativos | Usar Miro/FigJam; sesiones mas cortas (2-3h max); facilitacion mas estructurada con templates pre-llenados; breaks cada 40 min; instrucciones escritas en cada actividad |
 | Grupo grande (15+ participantes) sin posibilidad de reducir | Dividir en breakout groups de 4-6; asignar sub-facilitadores; usar gallery walks y dot voting para convergencia; evitar plenarias extensas |
 | Domain experts no disponibles para event storming | Posponer event storming o ejecutar sesion preliminar marcando supuestos explicitamente; el output sin domain experts es developer assumptions, no domain knowledge |
 | Fatiga de talleres en la organizacion (demasiados workshops sin follow-through) | Demostrar follow-through de sesiones anteriores; mantener sesiones cortas y orientadas a accion; mostrar como outputs anteriores fueron utilizados |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Seleccionar tecnica segun objetivo del taller (event storming para dominio, impact mapping para scope, etc.) | Usar siempre la misma tecnica independiente del objetivo | Cada tecnica tiene un sweet spot; usar event storming para priorizar o design sprint para descubrir dominio produce resultados sub-optimos |
 | Aplicar regla "silent-before-spoken" en toda ideacion | Comenzar directamente con discusion abierta | La ideacion silenciosa produce mas ideas diversas; la discusion abierta tiende a sesgo del mas vocal y groupthink |
@@ -273,7 +275,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_workshop-design_{cliente}_{WIP}.xlsx`
@@ -281,7 +283,7 @@ graph TD
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, objetivo y criterios de éxito, técnica seleccionada con justificación, agenda visual time-boxed, participantes y roles, pre-work requerido, guía de facilitación por bloque, template de síntesis, action items con owners y deadlines.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, objetivo y criterios de éxito, técnica seleccionada con justificación, agenda visual time-boxed, participantes y roles, pre-work requerido, guía de facilitación por bloque, template de síntesis, action items con owners y deadlines.
 
 **Formato HTML (para distribucion a participantes):**
 

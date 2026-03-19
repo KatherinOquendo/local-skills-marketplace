@@ -7,7 +7,7 @@ Sample outputs demonstrating what the hypothesis-driven-development skill produc
 | File | Format | Description |
 |------|--------|-------------|
 | `sample-output.md` | Markdown | Primary artifact — 5 hypotheses with full HDD structure, BML cycle diagram, experiment design matrix, decision log, and portfolio summary |
-| `sample-output.html` | HTML | Branded version (MetodologIA Design System: Primary #6366F1, Dark #1A1A2E, Success #22D3EE). Hypothesis cards with status badges, threshold bars, and Mermaid CDN v10 diagrams |
+| `sample-output.html` | HTML | Branded version (MetodologIA Design System: Primary #122562, Dark #1F2833, Success #FFD700). Hypothesis cards with status badges, threshold bars, and Mermaid CDN v10 diagrams |
 
 ## Format Selection Guide
 

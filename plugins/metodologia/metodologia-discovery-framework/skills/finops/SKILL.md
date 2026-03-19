@@ -8,6 +8,8 @@ description: >
   "cloud unit economics", "cost allocation", or mentions "cloud financial management",
   "cost optimization", "FinOps maturity".
 argument-hint: "[cloud-provider] [scope: full|assessment|optimization]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,7 +23,7 @@ allowed-tools:
 
 Generates cloud financial operations assessment and strategy: FinOps maturity evaluation (Crawl/Walk/Run), cost visibility analysis, optimization opportunity identification, governance model design, and unit economics framework.
 
-## Guiding Principle
+## Grounding Guideline
 
 > *Cloud cost is not an infrastructure problem — it is a business problem. Every cloud unit of spend must trace to a business value or be eliminated.*
 
@@ -134,18 +136,18 @@ Budget policies, alerting thresholds, anomaly detection rules, approval workflow
 ### S8: FinOps Operating Model
 Team structure (centralized, embedded, federated). RACI for cost decisions. Reporting cadence and audience. Tool recommendations. Training plan for engineering teams.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Organizacion con zero tagging y zero billing exports | Analisis basado exclusivamente en IaC; toda recomendacion marcada [INFERENCIA]; proponer tagging taxonomy como prerequisito antes de optimizacion |
 | Migracion multi-cloud activa (workloads moviendose entre proveedores) | Congelar analisis en snapshot temporal; separar recomendaciones por cloud destino; agregar capa de arbitraje cross-cloud |
 | Startup en hyper-growth con costos duplicandose cada trimestre | Priorizar unit economics y auto-scaling sobre reservaciones; enfocar en costo por transaccion, no en gasto absoluto |
 | Organizacion con contratos enterprise (EDP/PPA) ya firmados | Analizar dentro de restricciones contractuales; enfocar optimizacion en rightsizing y waste, no en rate optimization |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Expresar costos en magnitudes y porcentajes, nunca en valores exactos | Reportar cifras exactas de billing | Los valores exactos caducan rapidamente y crean compromisos contractuales implicitos; las magnitudes son accionables sin ser vinculantes |
 | Evaluar madurez FinOps con el modelo Crawl/Walk/Run de FinOps Foundation | Crear modelo de madurez propietario | El framework de FinOps Foundation es el estandar de la industria; usar otro reduce comparabilidad con benchmarks externos |
@@ -218,7 +220,7 @@ gantt
     section Quick Wins
     ...
 ```
-## Apendice: Datos de Soporte
+## Appendix: Supporting Data
 ```
 
 **Formato XLSX (para audiencia financiera):**
@@ -238,11 +240,11 @@ Hoja 6: Roadmap de Implementacion con Timeline
 
 **Formato DOCX (bajo demanda):**
 - Filename: `FinOps_Assessment_{project}_{WIP}.docx`
-- Generado con python-docx bajo Metodología Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo Metodología Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: FinOps Maturity Assessment, Cost Visibility & Waste Identification, Top Optimization Opportunities (Quick Wins / Medium / Strategic), Unit Economics, Governance & Operating Model, Roadmap de Implementación.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: FinOps Maturity Assessment, Cost Visibility & Waste Identification, Top Optimization Opportunities (Quick Wins / Medium / Strategic), Unit Economics, Governance & Operating Model, Roadmap de Implementación.
 
 ## Evaluacion
 

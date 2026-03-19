@@ -21,13 +21,21 @@ allowed-tools:
 
 Accessibility audit evaluates digital products against WCAG 2.1/2.2 standards and inclusive design principles. The skill produces accessibility scorecards, violation inventories, and remediation roadmaps that ensure digital experiences are usable by people with diverse abilities.
 
+## Grounding Guideline
+
+> *Accessibility is not compliance — it is the guarantee that 100% of users can use the product.*
+
+1. **WCAG as floor, not ceiling.** AA is the minimum — accessibility excellence goes beyond checkpoints.
+2. **Automate the automatable, test the human.** Tools detect 30% of problems — manual testing with real users detects the rest.
+3. **Accessibility by design, not as a patch.** Retrofitting accessibility is 10x more expensive than designing it from the start.
+
 ## TL;DR
 
-- Evalua conformidad WCAG 2.1/2.2 en niveles A, AA y AAA con inventario detallado de violaciones
-- Clasifica hallazgos por severidad, impacto en usuarios y esfuerzo de remediacion
-- Produce scorecard de accesibilidad por componente, pagina y flujo critico
-- Define estrategia de testing a11y (automatizado + manual + usuarios reales)
-- Genera roadmap de remediacion priorizado con quick wins y mejoras estructurales
+- Evaluates WCAG 2.1/2.2 conformance at A, AA, and AAA levels with detailed violation inventory
+- Classifies findings by severity, user impact, and remediation effort
+- Produces accessibility scorecard per component, page, and critical flow
+- Defines a11y testing strategy (automated + manual + real users)
+- Generates prioritized remediation roadmap with quick wins and structural improvements
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides a product or application name as `$ARGUMENTS`. Parse `$1` as t
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{NIVEL}`: `A` | `AA` (default) | `AAA`
 
-## Entregables
+## Deliverables
 
-1. **Scorecard de accesibilidad** — Compliance score per WCAG principle (Perceivable, Operable, Understandable, Robust) and conformance level
-2. **Inventario de violaciones** — Detailed catalog of violations with WCAG criterion, severity, location, and remediation guidance
-3. **Hoja de ruta de remediacion** — Prioritized action plan: quick wins (CSS/ARIA fixes), medium-term (component redesign), strategic (architecture changes)
-4. **Estrategia de testing a11y** — Automated tools, manual testing protocols, and assistive technology testing plan
-5. **Guia de diseno inclusivo** — Design patterns and component guidelines for ongoing accessible development
+1. **Accessibility Scorecard** — Compliance score per WCAG principle (Perceivable, Operable, Understandable, Robust) and conformance level
+2. **Violation Inventory** — Detailed catalog of violations with WCAG criterion, severity, location, and remediation guidance
+3. **Remediation Roadmap** — Prioritized action plan: quick wins (CSS/ARIA fixes), medium-term (component redesign), strategic (architecture changes)
+4. **a11y Testing Strategy** — Automated tools, manual testing protocols, and assistive technology testing plan
+5. **Inclusive Design Guide** — Design patterns and component guidelines for ongoing accessible development
 
-## Proceso
+## Process
 
-1. **Definir alcance** — Identify pages, flows, and components in scope; determine target conformance level (A, AA, AAA)
-2. **Ejecutar auditoria automatizada** — Run automated tools (axe-core, Lighthouse, WAVE) to identify programmatic violations
-3. **Realizar testing manual** — Keyboard-only navigation, screen reader testing (NVDA, VoiceOver, JAWS), zoom/magnification testing
-4. **Evaluar por principio WCAG** — Assess each POUR principle: Perceivable (alt text, contrast, captions), Operable (keyboard, timing, seizures), Understandable (readable, predictable, input assistance), Robust (parsing, name/role/value)
-5. **Clasificar violaciones** — Rate each finding by severity (critical/major/minor/advisory) and user impact
-6. **Priorizar remediacion** — Rank fixes by: critical user impact first, then legal exposure, then effort-to-impact ratio
-7. **Disenar estrategia de testing** — Establish automated CI checks, manual testing cadence, and assistive technology testing protocol
-8. **Producir guia de diseno** — Document accessible patterns for ongoing development (color, typography, forms, navigation, media)
+1. **Define scope** — Identify pages, flows, and components in scope; determine target conformance level (A, AA, AAA)
+2. **Execute automated audit** — Run automated tools (axe-core, Lighthouse, WAVE) to identify programmatic violations
+3. **Perform manual testing** — Keyboard-only navigation, screen reader testing (NVDA, VoiceOver, JAWS), zoom/magnification testing
+4. **Evaluate per WCAG principle** — Assess each POUR principle: Perceivable (alt text, contrast, captions), Operable (keyboard, timing, seizures), Understandable (readable, predictable, input assistance), Robust (parsing, name/role/value)
+5. **Classify violations** — Rate each finding by severity (critical/major/minor/advisory) and user impact
+6. **Prioritize remediation** — Rank fixes by: critical user impact first, then legal exposure, then effort-to-impact ratio
+7. **Design testing strategy** — Establish automated CI checks, manual testing cadence, and assistive technology testing protocol
+8. **Produce design guide** — Document accessible patterns for ongoing development (color, typography, forms, navigation, media)
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] All WCAG 2.1/2.2 success criteria evaluated at target conformance level
 - [ ] Automated and manual testing combined (automated catches ~30-40% of issues)
@@ -69,26 +77,26 @@ The user provides a product or application name as `$ARGUMENTS`. Parse `$1` as t
 - [ ] Remediation roadmap includes effort estimates and ownership
 - [ ] Design guidelines are actionable for development teams
 
-## Supuestos y Limites
+## Assumptions and Limits
 
 - Automated tools detect only 30-40% of accessibility issues — manual testing is essential
 - Full WCAG AAA conformance is aspirational; AA is the standard legal/regulatory target
 - Does not replace formal accessibility audit by certified professionals (IAAP)
 - Assistive technology behavior varies across versions and platforms
 
-## Casos Borde
+## Edge Cases
 
-1. **Aplicacion legacy sin semantica HTML** — Cuando el producto usa tablas para layout o divs sin roles ARIA, el skill genera un inventario de deuda semantica y prioriza remediacion por flujo critico en lugar de cobertura completa.
-2. **SPA con contenido dinamico pesado** — Single Page Applications que actualizan el DOM sin notificar al screen reader requieren auditoria especifica de live regions, focus management y route announcements.
-3. **Contenido multimedia sin captions** — Si el producto tiene video/audio extenso sin subtitulos ni transcripciones, el skill calcula esfuerzo de captioning y propone priorizacion por trafico y criticidad del contenido.
-4. **Objetivo AAA solicitado** — Cuando se pide conformidad AAA, el skill advierte que es aspiracional, identifica criterios AAA alcanzables y separa los que requieren inversion desproporcionada.
+1. **Legacy application without semantic HTML** — When the product uses tables for layout or divs without ARIA roles, the skill generates a semantic debt inventory and prioritizes remediation by critical flow instead of full coverage.
+2. **SPA with heavy dynamic content** — Single Page Applications that update the DOM without notifying the screen reader require specific auditing of live regions, focus management, and route announcements.
+3. **Multimedia content without captions** — If the product has extensive video/audio without subtitles or transcriptions, the skill estimates captioning effort and proposes prioritization by traffic and content criticality.
+4. **AAA target requested** — When AAA conformance is requested, the skill warns it is aspirational, identifies achievable AAA criteria, and separates those requiring disproportionate investment.
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-1. **Auditoria automatizada + manual vs. solo automatizada** — Se requiere ambas porque las herramientas automaticas detectan solo 30-40% de issues; el costo adicional de testing manual se justifica por la cobertura critica que aporta.
-2. **Nivel AA como default vs. A** — AA es el estandar legal en la mayoria de jurisdicciones (ADA, EN 301 549) y cubre issues de mayor impacto; A es insuficiente para usuarios reales.
-3. **Priorizacion por impacto en usuario vs. por esfuerzo** — Se prioriza impacto en usuario primero (bloqueos de acceso antes que inconvenientes), aceptando que algunas correcciones de alto impacto son costosas.
-4. **Testing con un AT vs. multiples** — Se requiere minimo un screen reader (VoiceOver o NVDA) como baseline; testing con multiples ATs es ideal pero se deja como recomendacion, no requisito.
+1. **Automated + manual audit vs. automated only** — Both are required because automated tools detect only 30-40% of issues; the additional cost of manual testing is justified by the critical coverage it provides.
+2. **AA level as default vs. A** — AA is the legal standard in most jurisdictions (ADA, EN 301 549) and covers higher-impact issues; A is insufficient for real users.
+3. **Prioritization by user impact vs. by effort** — User impact is prioritized first (access blockers before inconveniences), accepting that some high-impact fixes are costly.
+4. **Testing with one AT vs. multiple** — A minimum of one screen reader (VoiceOver or NVDA) is required as baseline; testing with multiple ATs is ideal but left as a recommendation, not a requirement.
 
 ## Knowledge Graph
 
@@ -137,7 +145,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

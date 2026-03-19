@@ -21,15 +21,15 @@ allowed-tools:
 
 Performance engineering ensures systems meet latency, throughput, and reliability targets under current and projected load. The skill produces actionable performance baselines, load testing strategies, capacity models, caching architectures, CDN configurations, and SLA/SLO definitions that translate technical metrics into business guarantees.
 
-## Principio Rector
+## Grounding Guideline
 
-**Performance no se optimiza al final — se diseña desde el principio.** Los SLOs se definen antes que los SLIs, load testing vive en CI, y capacity planning usa datos, no esperanzas. Medir primero, optimizar después, nunca adivinar.
+**Performance is not optimized at the end — it is designed from the start.** SLOs are defined before SLIs, load testing lives in CI, and capacity planning uses data, not hope. Measure first, optimize second, never guess.
 
-### Filosofía de Performance Engineering
+### Performance Engineering Philosophy
 
-1. **SLOs before SLIs.** Primero se define qué significa "suficientemente rápido" para el negocio. Después se instrumenta para medirlo. Instrumentar sin SLOs es coleccionar métricas sin propósito.
-2. **Load testing in CI.** Si el test de carga se corre "antes del release", ya es demasiado tarde. Benchmarks livianos en cada release candidate, regresiones detectadas automáticamente.
-3. **Capacity planning uses data, not hope.** USL (Universal Scalability Law) reemplaza la adivinanza con un modelo matemático. 3-5 mediciones de throughput predicen el punto de saturación sin hardware adicional.
+1. **SLOs before SLIs.** First define what "fast enough" means for the business. Then instrument to measure it. Instrumenting without SLOs is collecting metrics without purpose.
+2. **Load testing in CI.** If load testing runs "before release," it is already too late. Lightweight benchmarks on every release candidate, regressions detected automatically.
+3. **Capacity planning uses data, not hope.** USL (Universal Scalability Law) replaces guesswork with a mathematical model. 3-5 throughput measurements predict the saturation point without additional hardware.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or service name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para baseline measurement y caching analysis, HITL para SLO definition y capacity model decisions.
-  - **desatendido**: Cero interrupciones. Performance assessment documentado automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Performance assessment documentado automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en load test design y SLO targets.
   - **paso-a-paso**: Confirma cada baseline metric, test scenario, caching decision, y SLO target.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -398,11 +398,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Primary:** `A-01_Performance_Engineering.html` — Executive summary, performance baseline, load testing strategy, capacity model, caching architecture, CDN configuration, SLA/SLO definitions with error budgets.
 
 | **HTML** | `{fase}_Performance_Engineering_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Light-First Technical. Incluye tabla de percentiles p50/p95/p99 por servicio, modelo USL interactivo, y SLO error budget tracker. |
-| **DOCX** | `{fase}_performance_engineering_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de percentiles, scaling triggers y SLO targets con zebra striping. Encabezados y pies de página con branding MetodologIA. |
+| **DOCX** | `{fase}_performance_engineering_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de percentiles, scaling triggers y SLO targets con zebra striping. Encabezados y pies de página con branding MetodologIA. |
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_Performance_Engineering_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 **Secondary:** Load test scripts (k6/Gatling), USL capacity model spreadsheet, CDN cache rule configuration, SLO dashboard definitions, burn rate alert rules.
 

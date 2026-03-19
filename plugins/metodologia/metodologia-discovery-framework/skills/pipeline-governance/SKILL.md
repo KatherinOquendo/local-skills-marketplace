@@ -11,6 +11,8 @@ description: >
   pipeline governance, phase gates, proposal readiness, milestone tracking, or cross-phase
   dependency management. Works as the structural glue that holds the entire discovery pipeline
   together — from Phase 0 through Handover.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -27,7 +29,7 @@ tracking phases, gates, resources, dependencies, risks, and proposal readiness. 
 as the connective tissue between all 48 skills, ensuring nothing falls through cracks,
 phases do not skip prerequisites, and the final proposal is validated before client delivery.
 
-## Guiding Principle
+## Grounding Guideline
 
 **Discovery without governance is improvisation disguised as methodology.** This skill
 imposes program discipline on the pipeline: every phase has prerequisites, every gate
@@ -417,7 +419,7 @@ Reporte de gobernanza de programa en formato documento formal: charter ejecutivo
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_Pipeline_Governance_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

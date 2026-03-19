@@ -21,15 +21,15 @@ allowed-tools:
 
 Enterprise architecture aligns technology initiatives with business strategy. It defines what capabilities the enterprise needs, what technologies support them, how decisions are governed, and how investments are prioritized.
 
-## Principio Rector
+## Grounding Guideline
 
-**Una empresa sin mapa de capacidades es un ejército sin mapa del terreno.** La arquitectura enterprise conecta la estrategia de negocio con la tecnología: qué capacidades necesita la empresa, qué tecnología las soporta, cómo se gobierna, y cómo se prioriza la inversión. Sin esta capa, cada equipo optimiza localmente mientras la empresa se fragmenta.
+**An enterprise without a capability map is an army without a terrain map.** Enterprise architecture connects business strategy with technology: what capabilities the enterprise needs, what technology supports them, how they are governed, and how investment is prioritized. Without this layer, each team optimizes locally while the enterprise fragments.
 
-### Filosofía de Arquitectura Enterprise
+### Enterprise Architecture Philosophy
 
-1. **Capacidades > sistemas.** Los sistemas cambian; las capacidades del negocio persisten. Se invierte en capacidades, no en tecnología por sí misma.
-2. **Radar > mandato.** El technology radar guía, no obliga. Los equipos proponen, el ARB valida, el contexto decide.
-3. **Gobierno proporcional.** Más governance para alto riesgo/costo. Menos para experimentos y innovación. El gobierno habilita, no frena.
+1. **Capabilities > systems.** Systems change; business capabilities persist. Invest in capabilities, not in technology for its own sake.
+2. **Radar > mandate.** The technology radar guides, it does not mandate. Teams propose, the ARB validates, context decides.
+3. **Proportional governance.** More governance for high risk/cost. Less for experiments and innovation. Governance enables, it does not hinder.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides an organization or initiative name as `$ARGUMENTS`. Parse `$1`
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para capability mapping y radar, HITL para governance decisions y portfolio prioritization.
-  - **desatendido**: Cero interrupciones. Arquitectura enterprise documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura enterprise documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en domain boundaries y governance framework.
   - **paso-a-paso**: Confirma cada capability, domain context, radar entry, y initiative.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -251,18 +251,18 @@ How the organization is structured and operates to deliver and manage architectu
 - Does not manage day-to-day delivery (product/engineering management)
 - Governance is advisory; enforcement requires executive sponsorship
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Legacy enterprise con deuda tecnica masiva y >50 sistemas en produccion | Capability map retroactivo desde sistemas existentes. Priorizar modernizacion por valor de negocio (Pareto: 20% de sistemas = 80% valor). Parallel running durante transicion. No big-bang. |
 | Startup en crecimiento rapido sin governance previo | Introducir governance gradualmente. Empezar con technology radar y principios arquitectonicos (3-5 maximos). ARB ligero (async reviews). Evitar burocracia prematura que frene innovacion. |
 | Fusion o adquisicion con dos stacks tecnologicos incompatibles | Capability analysis separada por empresa. Identificar sinergias (shared kernel). Roadmap de integracion phased: datos primero, plataforma despues, aplicaciones ultimo. Domain model por region si regulacion difiere. |
 | Organizacion multi-geografica con regulaciones divergentes (GDPR, CCPA, LGPD) | Arquitectura con regional customization. Domain model per region con shared kernel para capabilities comunes. Compliance controls mapeados a controles de arquitectura por jurisdiccion. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Capability map como eje organizador sobre inventario de sistemas | Inventario de aplicaciones como base de analisis | Los sistemas cambian; las capacidades del negocio persisten. Organizar por capability permite razonar sobre inversion en terminos de negocio, no de tecnologia. |
 | Technology radar advisory (Adopt/Trial/Assess/Hold) sobre mandatos tecnologicos | Lista de tecnologias aprobadas con prohibicion de alternativas | Mandatos generan shadow IT y resentimiento. Radar advisory guia decisiones respetando autonomia de equipos. Platform team facilita, no impone. |
@@ -324,7 +324,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `A-03_Enterprise_Architecture_{cliente}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`

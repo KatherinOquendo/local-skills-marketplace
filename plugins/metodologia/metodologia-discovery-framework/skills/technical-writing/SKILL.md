@@ -7,6 +7,8 @@ description: >
   evidence attribution, and reproducible analysis. Use when writing AS-IS analyses,
   functional specs, architecture documents, handover guides, or any deliverable
   requiring technical rigor and documentation standards.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -19,7 +21,7 @@ allowed-tools:
 
 Ensures technical deliverables are precise, reproducible, and progressively disclosed. Owns terminology consistency, evidence attribution, structural patterns, and anti-pattern enforcement across all discovery documentation.
 
-## Guiding Principle
+## Grounding Guideline
 
 **Technical documentation is a knowledge contract.** Every assertion is verifiable. Every term is consistent. Every section builds on the previous one. The reader must be able to reproduce the analysis, validate the conclusions, and act on the recommendations without needing the author.
 
@@ -154,14 +156,14 @@ Level 0: TL;DR (3-5 bullets)
 | Terminology consistent | Same terms across the document |
 | Mermaid diagrams present | Minimum 1 per deliverable |
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - El input contiene datos tecnicos verificados o claramente etiquetados con nivel de confianza.
 - Toda documentacion sigue el estandar markdown-excellence como baseline.
 - Esta skill posee **precision documental y estructura**. NO posee persuasion narrativa (eso es copywriting) ni produccion de formato visual (eso es output-engineering).
 - NUNCA producir precios. Solo FTE-meses, magnitudes, cost drivers.
 
-## Casos Borde
+## Edge Cases
 
 | Caso Borde | Estrategia de Manejo |
 |---|---|
@@ -170,7 +172,7 @@ Level 0: TL;DR (3-5 bullets)
 | Cero documentacion previa existente | Flaggear como hallazgo critico en TL;DR. Usar [CODIGO] y [CONFIG] como fuentes primarias. Recomendar Sprint 0 de documentacion. Producir glossario como primer entregable. |
 | Terminologia inconsistente en el sistema existente | Crear tabla de reconciliacion de terminos. Documentar sinonimos encontrados y el termino canonico elegido. Aplicar termino canonico consistentemente con nota de mapeo. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Justificacion | Alternativa Descartada |
 |---|---|---|
@@ -287,9 +289,9 @@ graph TD
 | Riesgo | Probabilidad | Impacto | Mitigacion |
 |---|---|---|---|
 
-## Criterios de Exito de la Transicion
-- [ ] {Criterio medible 1}
-- [ ] {Criterio medible 2}
+## Transition Success Criteria
+- [ ] {Measurable criterion 1}
+- [ ] {Measurable criterion 2}
 ```
 
 ### Template 3: HTML (bajo demanda)
@@ -305,7 +307,7 @@ graph TD
 ### Template 5: PPTX (bajo demanda)
 
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, TL;DR de hallazgos clave, estructura de progressive disclosure (niveles 0-3), tabla de evidencias con tags, glosario de términos canónicos, cross-references activos, anti-patterns detectados, recomendaciones priorizadas.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, TL;DR de hallazgos clave, estructura de progressive disclosure (niveles 0-3), tabla de evidencias con tags, glosario de términos canónicos, cross-references activos, anti-patterns detectados, recomendaciones priorizadas.
 
 ## Evaluacion
 

@@ -9,6 +9,8 @@ description: >
   feasibility, and economic viability. Use when validating approved scenarios before roadmap
   commitment, when stakeholders need confidence in technical achievability, or when "Phase 3b"
   / "feasibility" / "think tank" / "7 sabios" is mentioned.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -29,7 +31,7 @@ dimension — who deliberate collectively to produce a feasibility verdict that 
 
 **This is NOT a rubber stamp. This is the last line of defense before committing resources.**
 
-## Guiding Principle
+## Grounding Guideline
 
 **If there is no evidence, there is no feasibility. If there is no feasibility, there is no roadmap.**
 
@@ -220,18 +222,18 @@ PHASE 5: VERDICT
 - Economic analysis produces magnitudes and intervals, NEVER prices
 - Academic evidence limited to what is searchable — may miss proprietary research
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | No codebase access available for D1 (Research & Technology Readiness) validation | Mark all D1 technical claims as [INFERENCIA]; increase uncertainty margins by 30%; add "codebase access" as a mandatory condition in the verdict; recommend code-level spike as MUST-DO |
 | Vendor refuses to share benchmarks or internal documentation for D4 assessment | Flag as [VENDOR-DOC: UNAVAILABLE]; increase D4 risk score by 1 point; recommend independent benchmarking PoC; add vendor transparency as a contractual condition |
 | Think Tank vote results in a 4-3 split (minimum 5 required for verdict) | Document both majority and minority positions with full evidence; recommend targeted spike on the contested dimension(s); schedule re-vote after spike results are available |
 | All 7 sages agree FEASIBLE with high confidence — unanimous positive verdict | Rare case. Verify evidence strength across all dimensions; reduce contingency budget by 10-15%; document as "high confidence" but maintain standard governance gates |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Require 5-of-7 sage agreement for a binding verdict | Simple majority (4-of-7) or unanimous (7-of-7) | Simple majority allows too-narrow margins on critical decisions; unanimity is unrealistic for complex multi-dimensional analysis; 5-of-7 ensures strong consensus while allowing productive dissent |
 | Cross-validate every finding with at least 2 sages from other dimensions | Allow each sage to work independently without peer review | Independent analysis creates dimensional silos; cross-validation catches blind spots where one dimension's assumption is another dimension's risk |
@@ -285,7 +287,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_Feasibility_ThinkTank_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_Feasibility_ThinkTank_{cliente}_{WIP}.xlsx`
@@ -293,7 +295,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_Feasibility_ThinkTank_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

@@ -7,14 +7,8 @@ description: >
   or knowledge map.
 argument-hint: "<project-or-org> <role-or-team>"
 author: Javier Montaño · Comunidad MetodologIA
-version: 1.0.0
-tags:
-  - onboarding
-  - knowledge-transfer
-  - ramp-up
-  - team-building
-  - developer-enablement
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -30,13 +24,21 @@ allowed-tools:
 Diseno de programa de onboarding para developers y equipos, framework de transferencia
 de conocimiento y definicion de metricas de ramp-up.
 
+## Grounding Guideline
+
+> *A team that does not know where to start loses its first two weeks — and the client's trust.*
+
+1. **Onboarding as investment, not expense.** Every hour invested in a clear playbook saves days of confusion for the receiving team.
+2. **Context before tasks.** The team needs to understand the why before the what — without context, tasks are meaningless instructions.
+3. **Living document.** A static playbook becomes outdated in the first week — it must evolve with the project.
+
 ## TL;DR
 
-- Disena programa de onboarding estructurado con checkpoints medibles
-- Crea knowledge map del sistema/organizacion para acelerar ramp-up
-- Define plan 30-60-90 con objetivos claros y metricas de progreso
-- Establece framework de knowledge transfer para reducir dependencia de conocimiento tribal
-- Genera checklists reutilizables por rol y nivel de experiencia
+- Design structured onboarding program with measurable checkpoints
+- Create knowledge map of the system/organization to accelerate ramp-up
+- Define 30-60-90 plan with clear objectives and progress metrics
+- Establish knowledge transfer framework to reduce tribal knowledge dependency
+- Generate reusable checklists per role and experience level
 
 ## Inputs
 
@@ -48,17 +50,17 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo t
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{ROL}`: `developer` (default) | `qa` | `devops` | `lead` | `manager`
 
-## Entregables
+## Deliverables
 
-1. **Onboarding Checklist** — Lista de actividades por dia/semana con responsables
-2. **Knowledge Map** — Mapa visual de conocimiento critico del sistema/organizacion
-3. **Plan 30-60-90** — Objetivos y metricas por periodo con checkpoints
-4. **Knowledge Transfer Framework** — Proceso estructurado de transferencia de conocimiento
-5. **Buddy/Mentor Guide** — Guia para el buddy o mentor asignado
+1. **Onboarding Checklist** — Activity list per day/week with owners
+2. **Knowledge Map** — Visual map of critical system/organization knowledge
+3. **30-60-90 Plan** — Objectives and metrics per period with checkpoints
+4. **Knowledge Transfer Framework** — Structured knowledge transfer process
+5. **Buddy/Mentor Guide** — Guide for the assigned buddy or mentor
 
-## Proceso
+## Process
 
-1. **Mapeo de Conocimiento Critico** — Identificar conocimiento necesario por categoria:
+1. **Critical Knowledge Mapping** — Identify required knowledge per category:
    | Categoria | Ejemplos | Prioridad |
    |---|---|---|
    | Arquitectura | System overview, design decisions, patterns | Semana 1 |
@@ -67,15 +69,15 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo t
    | Dominio | Business domain, key concepts, stakeholders | Semana 2-3 |
    | Herramientas | IDE setup, CI/CD, monitoring, communication | Dia 1 |
    | Cultura | Team norms, communication style, decision making | Continuo |
-2. **Diseno del Plan 30-60-90**:
-   - **30 dias (Absorber)**: Setup completo, primer commit, conocer equipo, entender arquitectura
-   - **60 dias (Contribuir)**: Features independientes, participar en code reviews, on-call shadow
-   - **90 dias (Liderar)**: Ownership de componente, mentoria a nuevos, propuestas de mejora
-3. **Creacion de Checklists** — Actividades diarias/semanales con responsable y criterio de completitud
-4. **Framework de Knowledge Transfer** — Estructura sesiones de KT:
-   - Sesiones grabadas con outline previo
-   - Documentacion write-up post-sesion
-   - Ejercicios practicos por cada sesion
+2. **30-60-90 Plan Design**:
+   - **30 days (Absorb)**: Complete setup, first commit, meet team, understand architecture
+   - **60 days (Contribute)**: Independent features, participate in code reviews, on-call shadow
+   - **90 days (Lead)**: Component ownership, mentoring newcomers, improvement proposals
+3. **Checklist Creation** — Daily/weekly activities with owner and completion criteria
+4. **Knowledge Transfer Framework** — Structure KT sessions:
+   - Recorded sessions with prior outline
+   - Documentation write-up post-session
+   - Practical exercises per session
    - Q&A asincronico documentado
 5. **Guia de Buddy/Mentor** — Responsabilidades, cadencia de check-ins, escalation
 6. **Metricas de Ramp-up** — Definir indicadores de progreso:
@@ -86,7 +88,7 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo t
    | Resolucion de incidentes | Shadow | Con soporte | Independiente |
    | Contribucion a code reviews | Observa | Participa | Lidera |
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Knowledge map completo con priorizacion temporal
 - [ ] Plan 30-60-90 con objetivos SMART por periodo
@@ -96,14 +98,14 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo t
 - [ ] Guia de buddy/mentor con responsabilidades explicitas
 - [ ] Adaptable por rol (developer, QA, DevOps, lead)
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Se asume acceso a al menos 1 persona con conocimiento del sistema para sesiones de KT.
 - El programa de onboarding cubre los primeros 90 dias; retenciones posteriores son responsabilidad del equipo.
 - Esta skill NO ejecuta el onboarding; genera los artefactos de planificacion y seguimiento.
 - Los roles soportados son: developer, QA, DevOps, lead, manager. Roles adicionales requieren extension.
 
-## Casos Borde
+## Edge Cases
 
 | Caso Borde | Estrategia de Manejo |
 |---|---|
@@ -112,7 +114,7 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo t
 | Legacy system sin documentacion ni tests | Sprint 0 de documentacion obligatorio antes del onboarding. Pair programming intensivo con knowledge holders. Priorizar documentar arquitectura y flujos criticos como primer entregable del nuevo integrante. |
 | Unico knowledge holder (bus factor = 1) | Priorizar KT de ese conocimiento como urgente. Grabar todas las sesiones. Documentar como riesgo operativo. Disenar plan de redundancia de conocimiento como entregable del onboarding. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Justificacion | Alternativa Descartada |
 |---|---|---|
@@ -279,7 +281,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_onboarding_playbook_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con nombre del proyecto y rol target, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de checklist y plan 30-60-90 con zebra striping. Encabezados y pies de página con branding MetodologIA.
+- Generado via python-docx con MetodologIA Design System v5. Portada con nombre del proyecto y rol target, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de checklist y plan 30-60-90 con zebra striping. Encabezados y pies de página con branding MetodologIA.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_onboarding_playbook_{cliente}_{WIP}.xlsx`
@@ -287,7 +289,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_onboarding_playbook_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ### Diagramas (Mermaid)
 - Timeline: plan 30-60-90 con milestones

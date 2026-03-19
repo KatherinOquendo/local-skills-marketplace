@@ -21,16 +21,16 @@ allowed-tools:
 
 Cloud migration moves workloads from on-premises or legacy environments to cloud platforms. This skill produces comprehensive migration plans covering 7R assessment, workload analysis, wave planning, landing zone design, execution patterns, and post-migration optimization.
 
-## Principio Rector
+## Grounding Guideline
 
-**Migrar sin estrategia 7R es mover problemas de datacenter a la nube.** Cada workload merece una clasificación explícita (rehost, replatform, refactor, repurchase, retire, retain, relocate). Wave planning reduce riesgo. Cutover rehearsal es obligatorio — nunca se hace un cutover en producción sin haber ensayado en staging.
+**Migrating without a 7R strategy is moving datacenter problems to the cloud.** Every workload deserves an explicit classification (rehost, replatform, refactor, repurchase, retire, retain, relocate). Wave planning reduces risk. Cutover rehearsal is mandatory — a production cutover is never performed without a staging rehearsal.
 
-### Filosofía de Migración Cloud
+### Cloud Migration Philosophy
 
-1. **7R assessment per workload.** No existe "migrar todo igual". Cada aplicación tiene contexto, dependencias, y restricciones que determinan su estrategia óptima.
-2. **Wave planning reduces risk.** Migraciones big-bang son apuestas. Waves incrementales permiten aprender, ajustar tooling, y escalar throughput progresivamente.
-3. **Cutover rehearsal is mandatory.** Si el runbook no se ha ejecutado end-to-end en staging, no está listo para producción. Incluye rollback — siempre.
-4. **Retire ruthlessly.** Cada workload que no migra es costo evitado. La clasificación "retain" y "retire" son decisiones legítimas de arquitectura.
+1. **7R assessment per workload.** There is no "migrate everything the same way". Each application has context, dependencies, and constraints that determine its optimal strategy.
+2. **Wave planning reduces risk.** Big-bang migrations are gambles. Incremental waves allow learning, tooling adjustments, and progressive throughput scaling.
+3. **Cutover rehearsal is mandatory.** If the runbook has not been executed end-to-end in staging, it is not ready for production. Includes rollback — always.
+4. **Retire ruthlessly.** Every workload that does not migrate is cost avoided. The "retain" and "retire" classifications are legitimate architecture decisions.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a migration program or portfolio name as `$ARGUMENTS`. Parse `
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para discovery y 7R classification, HITL para wave sequencing y cutover decisions.
-  - **desatendido**: Cero interrupciones. Plan de migración completo automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Plan de migración completo automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en 7R classification y landing zone design.
   - **paso-a-paso**: Confirma cada workload classification, wave assignment, landing zone component, y cutover step.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -378,25 +378,25 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Application inventory spreadsheet, wave calendar, cutover runbook, rollback procedures, TCO comparison, decommission checklist.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Datacenter exit con hard deadline | Favor rehost para velocidad. Aceptar tech debt. Plan post-migration optimization waves. Priorizar por lease expiry. |
-| Shared database serving multiple apps | No migrar DB independientemente. Opciones: migrar todos los consumers juntos, API layer para desacoplar, o replicar y gradual cutover. |
-| Mainframe workloads | Tools especializados (Micro Focus, AWS Mainframe Modernization). Replatform a cloud-hosted emulation primero, refactor gradual. |
-| Compliance-restricted data | Data residency puede limitar regiones. Encryption requirements afectan tooling de replicacion. Audit trail durante migracion. |
-| No source code available | Rehost es la unica estrategia viable. Containerizacion posible para binary apps. Evaluar repurchase con SaaS alternative. |
-| >200 workloads sin inventario | Deploy agentless discovery minimo 30 dias antes de clasificar. Migration factory model es mandatorio para throughput. |
+| Datacenter exit with hard deadline | Favor rehost for speed. Accept tech debt. Plan post-migration optimization waves. Prioritize by lease expiry. |
+| Shared database serving multiple apps | Do not migrate DB independently. Options: migrate all consumers together, API layer to decouple, or replicate and gradual cutover. |
+| Mainframe workloads | Specialized tools (Micro Focus, AWS Mainframe Modernization). Replatform to cloud-hosted emulation first, gradual refactor. |
+| Compliance-restricted data | Data residency may limit regions. Encryption requirements affect replication tooling. Audit trail during migration. |
+| No source code available | Rehost is the only viable strategy. Containerization possible for binary apps. Evaluate repurchase with SaaS alternative. |
+| >200 workloads without inventory | Deploy agentless discovery minimum 30 days before classifying. Migration factory model is mandatory for throughput. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| 7R framework para clasificacion | Binary migrate/no-migrate, 3R simplificado | 7R (Rehost/Replatform/Refactor/Repurchase/Retire/Retain/Relocate) cubre el espectro completo de opciones. Retire y Retain son decisiones legitimas que evitan costo innecesario. |
-| Wave-based migration sobre big-bang | Big-bang de todo el portfolio | Waves reducen blast radius, permiten aprendizaje incremental, y escalan throughput progresivamente. Big-bang maximiza riesgo. |
-| Cutover rehearsal mandatorio | Cutover directo en produccion | Rehearsal valida runbook end-to-end, mide duracion real, y prueba rollback. Sin rehearsal, sorpresas en go-live night. |
-| Migration factory model para >20 apps | Migracion artesanal por aplicacion | Factory estandariza procesos repetibles, habilita metricas (apps/week), y escala throughput a 15-25 apps/month. |
+| 7R framework for classification | Binary migrate/no-migrate, simplified 3R | 7R (Rehost/Replatform/Refactor/Repurchase/Retire/Retain/Relocate) covers the full spectrum of options. Retire and Retain are legitimate decisions that avoid unnecessary cost. |
+| Wave-based migration over big-bang | Big-bang of entire portfolio | Waves reduce blast radius, enable incremental learning, and scale throughput progressively. Big-bang maximizes risk. |
+| Mandatory cutover rehearsal | Direct cutover in production | Rehearsal validates runbook end-to-end, measures real duration, and tests rollback. Without rehearsal, surprises on go-live night. |
+| Migration factory model for >20 apps | Artisanal migration per application | Factory standardizes repeatable processes, enables metrics (apps/week), and scales throughput to 15-25 apps/month. |
 
 ## Knowledge Graph
 
@@ -496,11 +496,11 @@ Sheet 6: Post-Migration Optimization — right-sizing, RI/SP, storage tiering
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Cloud_Migration_Plan_{cliente}_{WIP}.docx`
-- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

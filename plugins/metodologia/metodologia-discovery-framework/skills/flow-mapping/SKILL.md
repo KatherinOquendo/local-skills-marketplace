@@ -9,6 +9,8 @@ description: >
   "identify failure points", "domain mapping", "DDD analysis", or mentions "Phase 2",
   "flow mapping", "integration matrix", "dependency graph", "swimlane diagrams",
   "business process documentation".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -22,15 +24,15 @@ allowed-tools:
 
 Translates AS-IS architecture findings into business flow documentation. Delivers DDD domain taxonomy, 8-12 primary E2E business flows with sequence diagrams and trama specifications, integration matrix, critical failure point analysis, and system dependency graph.
 
-## Principio Rector
+## Grounding Guideline
 
-**Sin flujos documentados, la arquitectura es un mapa sin rutas.** Los flujos de negocio son la prueba viva de cómo el sistema realmente opera — no cómo alguien pensó que operaría. Este skill traduce código en recorridos de negocio trazables, desde el trigger hasta la completación, pasando por cada integración, cada transformación, cada punto de fallo.
+**Without documented flows, architecture is a map without routes.** Business flows are living proof of how the system actually operates — not how someone thought it would operate. This skill translates code into traceable business journeys, from trigger to completion, passing through every integration, every transformation, every failure point.
 
-### Filosofía de Mapeo
+### Mapping Philosophy
 
-1. **La fuente de verdad depende del contexto.** Para SDA, el código no miente. Para RPA, los procesos BPMN son la verdad. Para Management, los ceremonies y workflows son la verdad. Para Data-AI, los pipelines y catálogos son la verdad. El skill adapta su fuente de extracción al tipo de servicio.
-2. **Dominios antes que flujos.** Sin taxonomía DDD, los flujos son secuencias sin contexto. Primero los bounded contexts, luego los recorridos que los cruzan.
-3. **Cada flecha es un contrato.** Cada integración documentada incluye protocolo, payload, SLA, y comportamiento ante fallo. Una flecha sin etiqueta es deuda de documentación.
+1. **The source of truth depends on context.** For SDA, code does not lie. For RPA, BPMN processes are the truth. For Management, ceremonies and workflows are the truth. For Data-AI, pipelines and catalogs are the truth. The skill adapts its extraction source to the service type.
+2. **Domains before flows.** Without DDD taxonomy, flows are sequences without context. First the bounded contexts, then the journeys that cross them.
+3. **Every arrow is a contract.** Every documented integration includes protocol, payload, SLA, and failure behavior. An unlabeled arrow is documentation debt.
 
 ## Inputs
 
@@ -42,7 +44,7 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para extracción de flujos y análisis de integraciones, HITL para validación de taxonomía de dominios y puntos de fallo críticos.
-  - **desatendido**: Cero interrupciones. Flujos extraídos automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Flujos extraídos automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con reportes al completar taxonomía y cada grupo de flujos.
   - **paso-a-paso**: Confirma taxonomía, cada flujo individual, y análisis de fallos.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -236,9 +238,9 @@ IF single system handles multiple bounded contexts:
 - **CQRS/Event Sourcing:** Separate command flows from query flows. Document event store projection patterns.
 - **Legacy COBOL/mainframe:** Map at job/program level. Document JCL/batch sequences as flows.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Sistema event-driven sin entry points claros | Identificar trigger sources (queues, cron, webhooks); trazar desde trigger hasta completion; documentar event contracts, timing y ordering guarantees |
 | Procesamiento batch sin flujos interactivos | Documentar como scheduled triggers + transformation pipeline; incluir batch SLA y recovery ante fallo; mapear dependencias entre jobs |
@@ -246,9 +248,9 @@ IF single system handles multiple bounded contexts:
 | Legacy COBOL/mainframe sin API specs | Mapear a nivel job/programa; documentar secuencias JCL/batch como flujos; reverse-engineer desde DB triggers, stored procedures y scheduled jobs; flag confianza reducida |
 | >20 puntos de integracion | Agrupar por dominio (Finance, Customer, Risk); detallar top 12 flujos por criticidad; resumir el resto solo en integration matrix |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Dominios DDD antes que flujos | Mapear flujos sin taxonomia previa | Sin taxonomia DDD, los flujos son secuencias sin contexto; los bounded contexts dan el marco semantico para interpretar las interacciones |
 | Cada flecha de integracion es un contrato documentado | Flechas sin etiqueta entre sistemas | Una flecha sin protocolo, payload, SLA y comportamiento ante fallo es deuda de documentacion que se convierte en riesgo operativo |
@@ -311,7 +313,7 @@ graph TD
 | **DOCX** | `04_Mapeo_Flujos_{TIPO_SERVICIO}_{project}.docx` | Documento ejecutivo con diagramas exportados como imagenes, tablas de trama formateadas, y analisis de failure points para revision con stakeholders no tecnicos. |
 | **HTML** | `04_Mapeo_Flujos_{TIPO_SERVICIO}_{project}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Light-First Technical page con sequence diagrams navegables, integration matrix con filtros, y failure points con severity semáforo. WCAG AA, responsive, print-ready. |
 | **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por tipo de dominio (Core/Supporting/Generic) y severidad de fallo, auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Domain Taxonomy, Integration Matrix, Critical Failure Points (Top-10), System Dependency Register. |
-| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Domain Taxonomy (DDD), E2E Business Flows Overview, Integration Matrix, Critical Failure Points (Top-10), System Dependency Graph, Recomendaciones. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Domain Taxonomy (DDD), E2E Business Flows Overview, Integration Matrix, Critical Failure Points (Top-10), System Dependency Graph, Recomendaciones. |
 
 ## Evaluacion
 

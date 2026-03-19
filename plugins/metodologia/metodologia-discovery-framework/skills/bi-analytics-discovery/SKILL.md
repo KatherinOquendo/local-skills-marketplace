@@ -24,15 +24,15 @@ allowed-tools:
 
 # BI & Analytics Discovery — Data Maturity Assessment & Transformation Roadmap
 
-Genera un discovery integral de BI & Analytics que cubre data maturity assessment (DCAM/DMM), dashboard landscape inventory, semantic layer evaluation, self-service analytics readiness, data literacy assessment, analytics use case portfolio, y BI transformation roadmap. Distinto de bi-architecture (skill de diseño de arquitectura BI); este skill es el discovery/assessment para engagements de BI-as-a-service.
+Generates a comprehensive BI & Analytics discovery covering data maturity assessment (DCAM/DMM), dashboard landscape inventory, semantic layer evaluation, self-service analytics readiness, data literacy assessment, analytics use case portfolio, and BI transformation roadmap. Distinct from bi-architecture (BI architecture design skill); this skill is the discovery/assessment for BI-as-a-service engagements.
 
-## Principio Rector
+## Grounding Guideline
 
-> *Los datos sin contexto son ruido. Los dashboards sin adopción son decoración. La analítica solo transforma cuando la organización entera sabe leer, cuestionar y actuar basándose en datos.*
+> *Data without context is noise. Dashboards without adoption are decoration. Analytics only transforms when the entire organization knows how to read, question, and act based on data.*
 
-1. **Adopción sobre tecnología.** El mejor dashboard del mundo no tiene valor si nadie lo consulta. La data literacy de la organización determina el ROI de cualquier inversión en BI. Medir adopción, no solo deployment.
-2. **Una sola fuente de verdad.** Métricas inconsistentes entre departamentos erosionan la confianza en los datos. El semantic layer — definiciones compartidas, cálculos estandarizados, governance de métricas — es el fundamento de BI confiable.
-3. **Self-service con governance.** Democratizar el acceso a datos no significa anarquía. Self-service analytics funciona cuando hay governance (quién puede ver qué), quality (los datos son confiables), y literacy (los usuarios saben interpretar).
+1. **Adoption over technology.** The best dashboard in the world has no value if nobody consults it. The organization's data literacy determines the ROI of any BI investment. Measure adoption, not just deployment.
+2. **A single source of truth.** Inconsistent metrics between departments erode trust in data. The semantic layer — shared definitions, standardized calculations, metric governance — is the foundation of reliable BI.
+3. **Self-service with governance.** Democratizing data access does not mean anarchy. Self-service analytics works when there is governance (who can see what), quality (the data is reliable), and literacy (users know how to interpret).
 
 ## Inputs
 
@@ -41,9 +41,9 @@ The user provides a project or client name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para data maturity assessment y dashboard inventory, HITL para use case prioritization y roadmap decisions.
-  - **desatendido**: Cero interrupciones. Discovery completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Discovery completo automatizado. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint al completar cada sección.
-  - **paso-a-paso**: Confirma antes de cada sección del discovery.
+  - **paso-a-paso**: Confirms before cada sección del discovery.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 + S6 + S7 only) | `técnica` (full 7 sections, default)
 
@@ -409,24 +409,24 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - BI transformation roadmap: phased Gantt with maturity targets per phase
 - Data literacy distribution: department-level bar chart
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Organizacion sin data warehouse (todo en spreadsheets) | S1 maturity nivel 1. Roadmap incluye data infrastructure foundation como prerequisito. Referir a data-engineering y bi-architecture. |
-| Multiples herramientas de BI con ownership politico | Consolidation es tecnicamente simple pero politicamente complejo. Mapear stakeholders. Proponer coexistencia temporal con semantic layer unificado. |
-| Organizacion altamente regulada (banca, salud) | Self-service analytics con restricciones de compliance. Row-level security y data classification son pre-requisitos. Regulatory reporting tiene prioridad. |
-| Data literacy muy baja (nivel 1 organization-wide) | No intentar self-service. Dashboards curados por equipo centralizado. Self-service como meta a mediano plazo. |
-| Analytics use cases que requieren datos inexistentes | Documentar gap de datos como pre-requisito. Incluir data collection como fase explicita en roadmap. |
+| Organization without data warehouse (everything in spreadsheets) | S1 maturity level 1. Roadmap includes data infrastructure foundation as prerequisite. Refer to data-engineering and bi-architecture. |
+| Multiple BI tools with political ownership | Consolidation is technically simple but politically complex. Map stakeholders. Propose temporary coexistence with unified semantic layer. |
+| Highly regulated organization (banking, healthcare) | Self-service analytics with compliance restrictions. Row-level security and data classification are prerequisites. Regulatory reporting takes priority. |
+| Very low data literacy (level 1 organization-wide) | Do not attempt self-service. Curated dashboards by centralized team. Self-service as a medium-term goal. |
+| Analytics use cases requiring non-existent data | Document data gap as prerequisite. Include data collection as an explicit phase in roadmap. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| DCAM/DMM como frameworks de madurez | Frameworks propietarios, assessment ad-hoc | DCAM (EDM Council) y DMM (CMMI Institute) son estandares reconocidos de industria con benchmarks disponibles. Permiten comparabilidad entre organizaciones. |
-| 7 secciones de discovery | Assessment de 3 secciones rapido, assessment de 12 secciones exhaustivo | 7 secciones cubren el ciclo completo: maturity, landscape, semantic, self-service, literacy, use cases, roadmap. Variante ejecutiva reduce a 3 sin perder decision-readiness. |
-| Data literacy como seccion dedicada (S5) | Literacy como sub-seccion de self-service readiness | La literacy organizacional es el predictor mas fuerte de ROI de BI. Merece evaluacion independiente con niveles 1-5 por departamento y plan de training dedicado. |
-| Impact x Feasibility scoring compuesto (5 criterios) | Scoring simple de 2 criterios (impacto y esfuerzo) | 5 criterios (impact, data availability, technical feasibility, org readiness, time-to-value) con pesos diferenciados producen priorizacion mas robusta. |
+| DCAM/DMM as maturity frameworks | Proprietary frameworks, ad-hoc assessment | DCAM (EDM Council) and DMM (CMMI Institute) are recognized industry standards with available benchmarks. They enable comparability across organizations. |
+| 7 discovery sections | 3-section rapid assessment, 12-section exhaustive assessment | 7 sections cover the complete cycle: maturity, landscape, semantic, self-service, literacy, use cases, roadmap. Executive variant reduces to 3 without losing decision-readiness. |
+| Data literacy as dedicated section (S5) | Literacy as sub-section of self-service readiness | Organizational literacy is the strongest predictor of BI ROI. It deserves independent evaluation with levels 1-5 per department and a dedicated training plan. |
+| Composite Impact x Feasibility scoring (5 criteria) | Simple 2-criteria scoring (impact and effort) | 5 criteria (impact, data availability, technical feasibility, org readiness, time-to-value) with differentiated weights produce more robust prioritization. |
 
 ## Knowledge Graph
 

@@ -2,16 +2,39 @@
 name: metodologia-client-browser-audit
 description: Browser-based client application audit using MCP Playwright. Use when the user asks to browse the client app, take screenshots, audit UI flows, check accessibility, validate UX, inspect the running application, or do visual QA. Triggered by "browse client", "screenshot", "inspect app", "visual audit", "accessibility check".
 author: Comunidad MetodologIA
-version: 1.0.0
-category: Herramientas & DX
-tags: [browser, audit, screenshots, accessibility, ux, visual-qa, playwright]
-allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, mcp__playwright__browser_navigate, mcp__playwright__browser_snapshot, mcp__playwright__browser_take_screenshot, mcp__playwright__browser_click, mcp__playwright__browser_fill_form, mcp__playwright__browser_console_messages, mcp__playwright__browser_network_requests, mcp__playwright__browser_evaluate, mcp__playwright__browser_tabs]
+argument-hint: "<url-or-app-path>"
+model: opus
+context: fork
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - mcp__playwright__browser_navigate
+  - mcp__playwright__browser_snapshot
+  - mcp__playwright__browser_take_screenshot
+  - mcp__playwright__browser_click
+  - mcp__playwright__browser_fill_form
+  - mcp__playwright__browser_console_messages
+  - mcp__playwright__browser_network_requests
+  - mcp__playwright__browser_evaluate
+  - mcp__playwright__browser_tabs
 ---
 
 # metodologia-client-browser-audit
 
 > Browser-based client application audit via MCP Playwright.
 > Gives the discovery agent "eyes" to navigate, screenshot, and inspect the client's running application.
+
+## Grounding Guideline
+
+> *Seeing the client's application is understanding the reality that documents do not capture.*
+
+1. **Screenshot as evidence.** Every visual finding must be backed by a capture with context.
+2. **Systematic audit, not casual browsing.** Follow a protocol of critical flows, do not click randomly.
+3. **Accessibility and performance on every visit.** Every visual audit is an opportunity to evaluate WCAG and performance.
 
 ---
 

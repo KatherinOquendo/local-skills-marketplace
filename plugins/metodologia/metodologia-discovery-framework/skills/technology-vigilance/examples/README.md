@@ -26,8 +26,8 @@
 
 ### HTML (`sample-output.html`)
 
-- **Design System MetodologIA v4:** Primary #6366F1, Dark #1A1A2E, Success #22D3EE
-- **Nunca usar verde** para estados de exito — siempre amarillo (#22D3EE)
+- **Design System MetodologIA v4:** Primary #122562, Dark #1F2833, Success #FFD700
+- **Nunca usar verde** para estados de exito — siempre amarillo (#FFD700)
 - **Signal cards:** Tarjetas con indicadores de urgencia (&#128308;/&#128993;/&#128994;) y source badges por tier
 - **Recommendation cards:** Codificadas por color (MUST=rojo, SHOULD=amarillo, COULD=dorado)
 - **Source badges:** Coloreados por tier (ANALYST=naranja, ACADEMIC=azul, OPENSOURCE=dorado, REFERENT=purpura)

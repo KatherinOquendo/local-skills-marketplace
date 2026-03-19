@@ -23,15 +23,15 @@ allowed-tools:
 
 # Cloud Service Discovery — Cloud Operations Assessment & Roadmap
 
-Genera un discovery integral de Cloud-as-a-Service que cubre cloud readiness assessment, DevOps maturity (DORA), cloud operations model, FinOps assessment, cloud security posture, y cloud services roadmap. Distinto de cloud-migration (que cubre estrategia de migración); este skill cubre Cloud como oferta de servicio continuo — operaciones, optimización, y madurez de la plataforma cloud.
+Generates a comprehensive Cloud-as-a-Service discovery covering cloud readiness assessment, DevOps maturity (DORA), cloud operations model, FinOps assessment, cloud security posture, and cloud services roadmap. Distinct from cloud-migration (which covers migration strategy); this skill covers Cloud as a continuous service offering — operations, optimization, and cloud platform maturity.
 
-## Principio Rector
+## Grounding Guideline
 
-> *La nube no es un destino — es un modelo operativo. Migrar sin transformar las operaciones es trasladar los mismos problemas a una factura mensual más cara.*
+> *The cloud is not a destination — it is an operating model. Migrating without transforming operations is moving the same problems to a more expensive monthly bill.*
 
-1. **Operaciones cloud-native, no lift-and-shift de procesos.** Mover workloads a la nube sin adoptar prácticas cloud-native (IaC, CI/CD, observability, SRE) es pagar más por lo mismo. La transformación operativa es tan importante como la migración técnica.
-2. **DORA metrics como brújula.** Deployment frequency, lead time, change failure rate, y MTTR son los indicadores más confiables de madurez DevOps. Sin medirlos, la mejora es anecdótica.
-3. **FinOps es una disciplina, no un dashboard.** La optimización de costos cloud requiere cultura (accountability), proceso (showback/chargeback), y herramientas (tagging, right-sizing). Sin los tres, los costos crecen sin control.
+1. **Cloud-native operations, not process lift-and-shift.** Moving workloads to the cloud without adopting cloud-native practices (IaC, CI/CD, observability, SRE) is paying more for the same thing. Operational transformation is as important as technical migration.
+2. **DORA metrics as compass.** Deployment frequency, lead time, change failure rate, and MTTR are the most reliable indicators of DevOps maturity. Without measuring them, improvement is anecdotal.
+3. **FinOps is a discipline, not a dashboard.** Cloud cost optimization requires culture (accountability), process (showback/chargeback), and tools (tagging, right-sizing). Without all three, costs grow without control.
 
 ## Inputs
 
@@ -40,9 +40,9 @@ The user provides a project or client name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para cloud readiness y DORA assessment, HITL para FinOps findings y security posture decisions.
-  - **desatendido**: Cero interrupciones. Discovery completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Discovery completo automatizado. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint al completar cada sección.
-  - **paso-a-paso**: Confirma antes de cada sección del discovery.
+  - **paso-a-paso**: Confirms before cada sección del discovery.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 + S2 + S6 only) | `técnica` (full 6 sections, default)
 
@@ -384,24 +384,24 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - FinOps optimization waterfall: current spend → savings opportunities → optimized spend
 - Cloud services roadmap: phased Gantt with capability milestones
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Multi-cloud con diferentes niveles de madurez | Evaluar cada cloud por separado en S1-S5. Roadmap (S6) considera donde invertir en madurez y donde consolidar workloads. |
-| Startup con infraestructura 100% serverless | DORA metrics relevantes pero metricas de infra cambian. Foco en observability, cost per invocation, cold start optimization. SRE practices simplificadas. |
-| Organizacion regulada (banca, salud) | S5 (Security Posture) es la seccion mas critica. Compliance frameworks dictan el roadmap. Security gates son pre-requisito. |
-| Cloud spend fuera de control (>50% growth YoY) | S4 (FinOps) es prioridad inmediata. Quick wins de cost optimization primero. Governance de costos antes de invertir en otras capabilities. |
-| Equipo sin experiencia cloud (todo outsourced) | Roadmap incluye knowledge transfer y upskilling como workstream explicito. Dependency en vendor externo es riesgo documentado. |
+| Multi-cloud with different maturity levels | Evaluate each cloud separately in S1-S5. Roadmap (S6) considers where to invest in maturity and where to consolidate workloads. |
+| Startup with 100% serverless infrastructure | DORA metrics relevant but infra metrics change. Focus on observability, cost per invocation, cold start optimization. Simplified SRE practices. |
+| Regulated organization (banking, healthcare) | S5 (Security Posture) is the most critical section. Compliance frameworks dictate the roadmap. Security gates are prerequisite. |
+| Cloud spend out of control (>50% growth YoY) | S4 (FinOps) is immediate priority. Cost optimization quick wins first. Cost governance before investing in other capabilities. |
+| Team with no cloud experience (fully outsourced) | Roadmap includes knowledge transfer and upskilling as explicit workstream. External vendor dependency is a documented risk. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| DORA metrics como brujula de madurez DevOps | Metricas internas adhoc, maturity frameworks genericos | DORA (Deployment Frequency, Lead Time, CFR, MTTR) tiene respaldo de investigacion (Accelerate/DORA State of DevOps). Medible, comparable, y predictivo de performance organizacional. |
-| 6 secciones de discovery cloud | Assessment tecnico unico, assessment de 10 secciones | 6 secciones cubren readiness, DevOps, operations, FinOps, security, y roadmap. Balancean profundidad y accionabilidad. |
-| FinOps como seccion dedicada (S4) | Costos como sub-seccion de operations | Cloud spend es el pain point #1 para la mayoria de organizaciones. Seccion dedicada con maturity levels, optimization opportunities, y waste identification. |
-| Toil measurement en operations model (S3) | Solo practicas SRE sin cuantificar toil | El toil budget (max 50% tiempo SRE) es framework concreto de Google SRE book. Medir toil identifica donde automatizar. |
+| DORA metrics as DevOps maturity compass | Ad-hoc internal metrics, generic maturity frameworks | DORA (Deployment Frequency, Lead Time, CFR, MTTR) has research backing (Accelerate/DORA State of DevOps). Measurable, comparable, and predictive of organizational performance. |
+| 6 cloud discovery sections | Single technical assessment, 10-section assessment | 6 sections cover readiness, DevOps, operations, FinOps, security, and roadmap. Balance depth and actionability. |
+| FinOps as dedicated section (S4) | Costs as sub-section of operations | Cloud spend is the #1 pain point for most organizations. Dedicated section with maturity levels, optimization opportunities, and waste identification. |
+| Toil measurement in operations model (S3) | SRE practices only without quantifying toil | The toil budget (max 50% SRE time) is a concrete framework from the Google SRE book. Measuring toil identifies where to automate. |
 
 ## Knowledge Graph
 
@@ -511,7 +511,7 @@ Slide 10: Next Steps + Budget Magnitudes (FTE-meses)
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Cloud_Service_Discovery_{project}_{WIP}.docx`
-- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_Cloud_Service_Discovery_{cliente}_{WIP}.xlsx`

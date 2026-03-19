@@ -21,13 +21,21 @@ allowed-tools:
 
 Product strategy translates business objectives into actionable product plans. The skill produces product vision documents, prioritization matrices, and value hypothesis canvases that align development effort with measurable customer and business outcomes.
 
+## Grounding Guideline
+
+> *A product strategy without market data is opinion. A strategy with data but without vision is reaction.*
+
+1. **Vision -> Strategy -> Tactics.** The order matters — without a clear vision, the strategy is a set of disconnected initiatives.
+2. **User value first.** Features that do not solve real user problems are product debt.
+3. **Measure outcomes, not outputs.** Success is not how many features ship — it is how much value they capture.
+
 ## TL;DR
 
-- Define producto vision y estrategia de roadmap alineada con objetivos de negocio
-- Prioriza backlog con frameworks cuantitativos (RICE, WSJF, Opportunity Scoring)
-- Mapea value streams para identificar desperdicio y oportunidades de optimizacion
-- Valida product-market fit con hypothesis canvas y metricas de traccion
-- Estructura dual-track agile: discovery continuo + delivery disciplinado
+- Defines product vision and roadmap strategy aligned with business objectives
+- Prioritizes backlog with quantitative frameworks (RICE, WSJF, Opportunity Scoring)
+- Maps value streams to identify waste and optimization opportunities
+- Validates product-market fit with hypothesis canvas and traction metrics
+- Structures dual-track agile: continuous discovery + disciplined delivery
 
 ## Inputs
 
@@ -39,27 +47,27 @@ The user provides a product or initiative name as `$ARGUMENTS`. Parse `$1` as th
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{ETAPA}`: `inception` | `growth` | `maturity` | `auto` (default — detected from context)
 
-## Entregables
+## Deliverables
 
-1. **Documento de vision de producto** — North star, target personas, value proposition, success metrics
-2. **Matriz de priorizacion** — RICE/WSJF scored backlog with effort-impact quadrants
+1. **Product vision document** — North star, target personas, value proposition, success metrics
+2. **Prioritization matrix** — RICE/WSJF scored backlog with effort-impact quadrants
 3. **Value hypothesis canvas** — Assumptions, experiments, validation criteria per feature area
-4. **Mapa de value stream** — End-to-end flow from idea to customer value with waste identification
-5. **Roadmap estrategico** — Now/Next/Later roadmap with outcome-based milestones
+4. **Value stream map** — End-to-end flow from idea to customer value with waste identification
+5. **Strategic roadmap** — Now/Next/Later roadmap with outcome-based milestones
 
-## Proceso
+## Process
 
-1. **Establecer vision y north star** — Define product vision statement, north star metric, and strategic guardrails
-2. **Identificar personas y jobs-to-be-done** — Map target user segments and their core jobs, pains, and gains
-3. **Construir opportunity tree** — Decompose desired outcomes into opportunities, then into solution ideas
-4. **Priorizar con framework cuantitativo** — Score each opportunity using RICE (Reach, Impact, Confidence, Effort) or WSJF
-5. **Mapear value stream actual** — Document current flow from idea to production, measure lead times and wait times
-6. **Identificar desperdicio** — Flag handoffs, wait states, rework loops, and gold plating in the value stream
-7. **Disenar roadmap por outcomes** — Structure roadmap around outcomes (not features) with Now/Next/Later horizons
-8. **Definir hipotesis de valor** — For each major bet, document assumption, experiment, success criteria, and pivot trigger
-9. **Establecer metricas de traccion** — Define leading and lagging indicators for product-market fit validation
+1. **Establish vision and north star** — Define product vision statement, north star metric, and strategic guardrails
+2. **Identify personas and jobs-to-be-done** — Map target user segments and their core jobs, pains, and gains
+3. **Build opportunity tree** — Decompose desired outcomes into opportunities, then into solution ideas
+4. **Prioritize with quantitative framework** — Score each opportunity using RICE (Reach, Impact, Confidence, Effort) or WSJF
+5. **Map current value stream** — Document current flow from idea to production, measure lead times and wait times
+6. **Identify waste** — Flag handoffs, wait states, rework loops, and gold plating in the value stream
+7. **Design outcome-based roadmap** — Structure roadmap around outcomes (not features) with Now/Next/Later horizons
+8. **Define value hypotheses** — For each major bet, document assumption, experiment, success criteria, and pivot trigger
+9. **Establish traction metrics** — Define leading and lagging indicators for product-market fit validation
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Vision statement is specific, measurable, and time-bound
 - [ ] Prioritization uses quantitative framework with documented scores
@@ -70,14 +78,14 @@ The user provides a product or initiative name as `$ARGUMENTS`. Parse `$1` as th
 - [ ] Roadmap distinguishes committed vs. speculative items
 - [ ] Product metrics include both leading and lagging indicators
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Assumes product team exists or will be formed with clear ownership
 - Does not replace user research — flags where primary research is needed
 - Financial projections are directional estimates, not forecasts
 - Market analysis relies on available data and documented assumptions
 
-## Casos Borde
+## Edge Cases
 
 | Escenario | Estrategia de Manejo |
 |---|---|
@@ -86,7 +94,7 @@ The user provides a product or initiative name as `$ARGUMENTS`. Parse `$1` as th
 | Producto legacy con backlog heredado de +500 items | Aplicar triage agresivo: archivar items >12 meses sin actividad, re-score solo los top 50 por volumen de solicitud |
 | Pivot en curso — cambio de mercado objetivo | Generar two-track roadmap (current + pivot), con decision gate y criterios explicitos de go/no-go |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Habilita | Restringe | Justificacion |
 |---|---|---|---|
@@ -135,7 +143,7 @@ graph TD
 
 **Formato 3 — DOCX (bajo demanda)**
 - Filename: `{fase}_product_strategy_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de scoring RICE/WSJF y value hypotheses con zebra striping. Encabezados y pies de página con branding MetodologIA.
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de scoring RICE/WSJF y value hypotheses con zebra striping. Encabezados y pies de página con branding MetodologIA.
 
 **Formato 4 — XLSX (bajo demanda)**
 - Filename: `{fase}_product_strategy_{cliente}_{WIP}.xlsx`
@@ -143,7 +151,7 @@ graph TD
 
 **Formato 5 — PPTX (bajo demanda)**
 - Filename: `{fase}_product_strategy_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Vision y North Star, Personas y JTBD, Opportunity Tree, Prioritization Matrix RICE/WSJF, Value Hypotheses, Roadmap Now/Next/Later, Métricas de tracción.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Vision y North Star, Personas y JTBD, Opportunity Tree, Prioritization Matrix RICE/WSJF, Value Hypotheses, Roadmap Now/Next/Later, Métricas de tracción.
 
 ## Evaluacion
 

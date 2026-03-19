@@ -24,17 +24,17 @@ allowed-tools:
 
 Generate beautiful, accessible, on-brand HTML deliverables following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every output is a self-contained single-file HTML document with all CSS inline, no external dependencies, and full WCAG AA accessibility.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un entregable sin identidad de marca es ruido visual disfrazado de documento.** La generacion de HTML con marca no es estetica — es comunicacion estrategica. Cada token de color, cada tipografia, cada componente refuerza la credibilidad y autoridad del mensaje.
+**A deliverable without brand identity is visual noise disguised as a document.** Branded HTML generation is not aesthetics — it is strategic communication. Every color token, every typeface, every component reinforces the credibility and authority of the message.
 
-### Filosofia de Brand HTML
+### Brand HTML Philosophy
 
-1. **Brand = Confianza visual.** Cada elemento del Design System existe para transmitir profesionalismo y consistencia. Romper un token de marca es romper la promesa visual al cliente.
+1. **Brand = Visual trust.** Every Design System element exists to convey professionalism and consistency. Breaking a brand token is breaking the visual promise to the client.
 
-2. **Self-contained = Portabilidad garantizada.** Un archivo HTML que depende de recursos externos es un deliverable fragil. La autonomia del archivo es un requisito funcional, no una preferencia tecnica.
+2. **Self-contained = Guaranteed portability.** An HTML file that depends on external resources is a fragile deliverable. File autonomy is a functional requirement, not a technical preference.
 
-3. **Accesibilidad = Alcance real.** WCAG AA no es compliance — es la garantia de que el 100% de los stakeholders pueden consumir el entregable sin barreras. Un documento bonito que no se puede leer tiene impacto cero.
+3. **Accessibility = Real reach.** WCAG AA is not compliance — it is the guarantee that 100% of stakeholders can consume the deliverable without barriers. A beautiful document that cannot be read has zero impact.
 
 ---
 
@@ -110,18 +110,18 @@ Read ${CLAUDE_SKILL_DIR}/references/operations-guide.md
 - Cannot produce interactive dashboards with live data (build a React/Vue app)
 - Maximum 15 sections per document; beyond that, split into separate deliverables
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | HTML existente corrupto con CSS mezclado de DS v1/v2/v3/v4/v5 | Parsear contenido salvable (texto, tablas, datos). Reconstruir desde neo-swiss-template.css preservando content. Flag como generacion degradada si se pierde estructura. |
 | Documento con >15 secciones solicitado por el cliente | Dividir en 2 deliverables enlazados con navigation footer cruzado. Cada documento self-contained. Maximo 12 secciones por archivo para UX optima de TOC. |
 | Output requerido en idioma RTL (arabe, hebreo) | Agregar `dir="rtl"` en `<html>`. Mirror layout: border-left a border-right en accent cards. Testear texto bidireccional. Validar contrast con fonts RTL. |
 | Entorno sin acceso a Google Fonts CDN (red corporativa restringida) | Fallback a system-ui, -apple-system, sans-serif. Documentar degradacion visual. Alternativa: embeber font subset en base64 si peso total < 500KB. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Single-file HTML self-contained sobre modular CSS+JS | Archivos CSS y JS separados | Portabilidad garantizada: un archivo se abre en cualquier browser sin dependencias. Deliverables modulares rompen al moverse entre carpetas o enviarse por email. |
 | Gold (#FFD700) para accent sobre cyan/indigo | Indigo #6366F1 (DS v4/v5 legacy) | Gold transmite calidez y autoridad profesional. Indigo era frio y generico. Gold es diferenciador visual de MetodologIA. |

@@ -21,15 +21,15 @@ allowed-tools:
 
 BI architecture defines how organizations consume data for decision-making — KPI frameworks, semantic layers, dashboard hierarchies, self-service analytics, and governance. This skill produces BI documentation that enables teams to deliver trustworthy, scalable, and accessible analytics.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un dashboard sin semántica es un gráfico bonito sin significado.** La arquitectura BI diseña cómo las organizaciones consumen datos para decidir — desde el semantic layer que define qué significan las métricas hasta los dashboards que las presentan a la audiencia correcta.
+**A dashboard without semantics is a pretty chart without meaning.** BI architecture designs how organizations consume data for decision-making — from the semantic layer that defines what metrics mean to the dashboards that present them to the right audience.
 
-### Filosofía BI
+### BI Philosophy
 
-1. **Semantic layer = contrato de significado.** Cada métrica tiene una definición única, una fórmula, y un owner. Sin semantic layer, cada equipo calcula revenue diferente.
-2. **Self-service con guardrails.** Los usuarios deben poder explorar datos sin pedir tickets, pero dentro de un framework de gobernanza que asegure calidad y seguridad.
-3. **Menos dashboards, más decisiones.** La meta no es 100 dashboards — es que los decisores actúen con confianza. KPI trees > dashboard sprawl.
+1. **Semantic layer = meaning contract.** Every metric has a unique definition, a formula, and an owner. Without a semantic layer, every team calculates revenue differently.
+2. **Self-service with guardrails.** Users must be able to explore data without filing tickets, but within a governance framework that ensures quality and security.
+3. **Fewer dashboards, more decisions.** The goal is not 100 dashboards — it is for decision-makers to act with confidence. KPI trees > dashboard sprawl.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para KPI framework y semantic layer, HITL para dashboard hierarchy y self-service strategy.
-  - **desatendido**: Cero interrupciones. Arquitectura BI documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura BI documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en semantic layer design y platform selection.
   - **paso-a-paso**: Confirma cada KPI tree, metric definition, dashboard tier, y governance policy.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -255,24 +255,24 @@ Defines chart selection, accessibility, color palettes, and interactivity guidel
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Startup sin BI existente | Iniciar simple: una herramienta de dashboard, spreadsheet compartida para definiciones de metricas, access control basico; semantic layer se justifica con 10+ reportes |
-| Ambiente multi-herramienta (Tableau + Power BI + Looker) | Enforcing single semantic layer independiente de herramienta de consumo; o aceptar duplicacion con ownership boundaries claros por equipo |
-| Resistencia ejecutiva a self-service | Enfoque por tiers: L1 curado para ejecutivos, L3-L4 self-service para analistas; ganar confianza incrementalmente con labels de contenido certificado |
-| Datos de alta frecuencia (sub-segundo) | Dashboards real-time requieren streaming architecture y materialized views; la mayoria de BI tools limitan a 1-min refresh; Grafana o custom dashboards para true real-time |
-| Reportes regulados (SOX, HIPAA) | Audit trails, version control de reportes, access logging y certified reports con change management workflows; cero modificaciones ad-hoc a dashboards de compliance |
+| Startup with no existing BI | Start simple: one dashboard tool, shared spreadsheet for metric definitions, basic access control; semantic layer is justified at 10+ reports |
+| Multi-tool environment (Tableau + Power BI + Looker) | Enforce single semantic layer independent of consumption tool; or accept duplication with clear ownership boundaries per team |
+| Executive resistance to self-service | Tiered approach: L1 curated for executives, L3-L4 self-service for analysts; build confidence incrementally with certified content labels |
+| High-frequency data (sub-second) | Real-time dashboards require streaming architecture and materialized views; most BI tools limit to 1-min refresh; Grafana or custom dashboards for true real-time |
+| Regulated reports (SOX, HIPAA) | Audit trails, report version control, access logging, and certified reports with change management workflows; zero ad-hoc modifications to compliance dashboards |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Semantic layer como unica fuente de verdad para metricas | Definiciones de metricas en cada dashboard individual | Metricas duplicadas en dashboards son la causa #1 de "mis numeros no cuadran"; semantic layer enforza una definicion unica por metrica |
-| Self-service con guardrails (zonas governed vs sandbox) | Self-service sin restricciones o acceso solo via tickets | Sin guardrails hay riesgo de malinterpretacion; con solo tickets el data team se convierte en bottleneck; las zonas balancean autonomia y gobierno |
-| Performance budget no-negociable (render < 2s, query < 5s) | Performance como nice-to-have | Por encima de 3 segundos de render, los usuarios abandonan el dashboard; el performance budget es un constraint de diseno, no una meta aspiracional |
-| Dashboard audit trimestral con archivado automatico | Dejar dashboards acumularse indefinidamente | Dashboard sprawl es entropia organizacional; archivar dashboards con zero views en 90 dias previene la proliferacion sin valor |
+| Semantic layer as single source of truth for metrics | Metric definitions in each individual dashboard | Duplicated metrics in dashboards are the #1 cause of "my numbers don't match"; semantic layer enforces a single definition per metric |
+| Self-service with guardrails (governed vs sandbox zones) | Unrestricted self-service or access only via tickets | Without guardrails there is risk of misinterpretation; with tickets only the data team becomes a bottleneck; zones balance autonomy and governance |
+| Non-negotiable performance budget (render < 2s, query < 5s) | Performance as nice-to-have | Above 3 seconds of render, users abandon the dashboard; the performance budget is a design constraint, not an aspirational target |
+| Quarterly dashboard audit with automatic archiving | Let dashboards accumulate indefinitely | Dashboard sprawl is organizational entropy; archiving dashboards with zero views in 90 days prevents valueless proliferation |
 
 ## Knowledge Graph
 

@@ -22,15 +22,15 @@ allowed-tools:
 
 Represents the end user and business reader. Evaluates every deliverable for: comprehension, cognitive load, accessibility, adoption risk, and bias. Proposes specific micro-adjustments to copy and structure. Produces a scored verdict: PASS / CONDITIONAL / FAIL.
 
-## Principio Rector
+## Grounding Guideline
 
-**Si el usuario necesita un manual para entender el deliverable, el deliverable fallo.** La claridad no es un nice-to-have — es el primer requisito funcional de todo entregable. Un documento técnicamente perfecto que nadie entiende tiene el mismo impacto que uno que no existe.
+**If the user needs a manual to understand the deliverable, the deliverable failed.** Clarity is not a nice-to-have — it is the first functional requirement of every deliverable. A technically perfect document that nobody understands has the same impact as one that does not exist.
 
-### Filosofia de User Representation
+### User Representation Philosophy
 
-1. **Cognitive load is the enemy.** Cada concepto sin explicar, cada tabla sin resumen, cada acronimo sin definir multiplica la carga cognitiva. El lector abandona antes de llegar a la conclusion.
-2. **Accessibility is non-negotiable.** No es un checklist de compliance — es el compromiso de que todo stakeholder pueda extraer valor del entregable en su presupuesto de tiempo.
-3. **Adoption risk lives in the gap.** El riesgo de adopcion vive en la brecha entre lo que entregamos y lo que los usuarios entienden. Cerrar esa brecha es la mision del user representative.
+1. **Cognitive load is the enemy.** Every unexplained concept, every table without a summary, every undefined acronym multiplies cognitive load. The reader abandons before reaching the conclusion.
+2. **Accessibility is non-negotiable.** It is not a compliance checklist — it is the commitment that every stakeholder can extract value from the deliverable within their time budget.
+3. **Adoption risk lives in the gap.** Adoption risk lives in the gap between what we deliver and what users understand. Closing that gap is the user representative's mission.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a deliverable path or content as `$ARGUMENTS`. Parse `$1` as t
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para scorecard y micro-adjustments, HITL para adoption risk assessment y verdict.
-  - **desatendido**: Cero interrupciones. Review completo con supuestos documentados.
+  - **desatendido**: Zero interruptions. Review completo con supuestos documentados.
   - **supervisado**: Autonomo con checkpoint en verdict y adoption risk findings.
   - **paso-a-paso**: Confirma cada dimension score, micro-adjustment, bias flag, y verdict.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -185,18 +185,18 @@ Before delivering user representative output:
 - [ ] Verdict is clear with explicit next steps
 - [ ] Reader persona(s) identified and review tailored accordingly
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Deliverable is intentionally dense (legal/regulatory document) | Assess summary layer and navigation aids only; accept body density if the executive summary and section summaries are clear; do not penalize necessary precision |
 | Deliverable targets a single-persona audience but will be read by multiple personas | Recommend "reader track" structure (executive summary > technical detail > appendix); score against the primary persona but flag gaps for secondary readers |
 | Deliverable is in a language the reviewer cannot assess for nuance (e.g., localized to a language outside Spanish/English) | Review structure, navigation, and visual hierarchy only; flag that linguistic clarity review requires a native speaker; score comprehension as N/A with explanation |
 | Reviewer disagrees with the technical content but the content is accurate | Separate readability verdict from accuracy verdict; the user representative reviews form, not substance; document the concern and route to domain expert |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Score 5 dimensions on a 0-10 scale with evidence per score | Binary pass/fail per dimension | Granular scoring enables targeted improvement; binary verdicts do not tell the author WHERE to invest effort |
 | Propose specific micro-adjustments (copy, structure, visual) | Provide general feedback ("improve clarity") | General feedback is non-actionable; specific adjustments ("change X to Y") can be implemented immediately without interpretation |
@@ -241,7 +241,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_user-representative_{cliente}_{WIP}.xlsx`
@@ -249,7 +249,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, scorecard visual 5 dimensiones (semáforo), top 5 micro-ajustes con before/after, adoption risks identificados, bias flags con fixes propuestos, veredicto final (PASS/CONDITIONAL/FAIL) con próximos pasos.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, scorecard visual 5 dimensiones (semáforo), top 5 micro-ajustes con before/after, adoption risks identificados, bias flags con fixes propuestos, veredicto final (PASS/CONDITIONAL/FAIL) con próximos pasos.
 
 ## Evaluacion
 

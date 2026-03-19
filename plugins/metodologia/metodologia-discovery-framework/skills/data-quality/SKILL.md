@@ -21,9 +21,9 @@ allowed-tools:
 
 Data quality architecture defines how organizations detect, prevent, and remediate data issues through profiling, validation rules, anomaly detection, contracts between teams, and SLA monitoring. This skill produces data quality documentation that enables teams to build trust in their data through systematic quality management.
 
-## Principio Rector
+## Grounding Guideline
 
-**La calidad de datos no se inspecciona al final — se construye en cada paso.** La prevención supera a la detección. Los data contracts entre productores y consumidores son la primera línea de defensa. Los patrones de quarantine protegen al pipeline sin detenerlo. Cada regla de validación tiene severity, owner, y fecha de última revisión.
+**Data quality is not inspected at the end — it is built at every step.** Prevention surpasses detection. Data contracts between producers and consumers are the first line of defense. Quarantine patterns protect the pipeline without stopping it. Every validation rule has severity, owner, and last review date.
 
 ## Inputs
 
@@ -32,7 +32,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para profiling y reglas de validación, HITL para data contracts y thresholds de anomalía.
-  - **desatendido**: Cero interrupciones. Framework completo generado automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Framework completo generado automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en severity classification y anomaly thresholds.
   - **paso-a-paso**: Confirma cada regla de validación, contrato, threshold y workflow de remediación.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -258,24 +258,24 @@ Dashboards and metrics for ongoing data quality visibility.
 - Automated remediation rules require human validation before production deployment
 - Real-time quality monitoring assumes streaming infrastructure exists; batch-only environments use scheduled profiling
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Sin baseline historico | Usar primeros 30 dias como baseline con thresholds amplios (4-sigma); ajustar gradualmente; aceptar mayor tasa de falsos positivos inicialmente |
-| Entorno schema-on-read | Quality checks como capa de enforcement; profiling y validacion on-read; quarantine en primer acceso en lugar de ingestion |
-| Fuentes de datos de terceros | Sin control sobre calidad del productor; contratos son aspiracionales; monitoring y quarantine esenciales; presupuestar 2-3x mas remediacion manual |
-| Streaming de alto volumen | Profiling basado en sampling (1-5%); ventanas de calidad micro-batch (1-5 min); aceptar confianza estadistica en lugar de validacion deterministica |
-| Datos regulados (GDPR, HIPAA) | Monitoring no debe exponer PII en logs o dashboards; solo metricas agregadas; quarantine respeta clasificacion; audit trail de decisiones de calidad obligatorio |
+| No historical baseline | Use first 30 days as baseline with wide thresholds (4-sigma); adjust gradually; accept higher false positive rate initially |
+| Schema-on-read environment | Quality checks as enforcement layer; profiling and validation on-read; quarantine on first access instead of ingestion |
+| Third-party data sources | No control over producer quality; contracts are aspirational; monitoring and quarantine essential; budget 2-3x more manual remediation |
+| High-volume streaming | Sampling-based profiling (1-5%); micro-batch quality windows (1-5 min); accept statistical confidence instead of deterministic validation |
+| Regulated data (GDPR, HIPAA) | Monitoring must not expose PII in logs or dashboards; aggregated metrics only; quarantine respects classification; mandatory quality decision audit trail |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Prevencion (data contracts) sobre deteccion (monitoring) | Solo deteccion post-ingestion | Los data contracts entre productores y consumidores son la primera linea de defensa; detectar problemas post-ingestion es 10x mas costoso que prevenirlos |
-| Quarantine pattern para aislar sin detener pipeline | Pipeline completo se detiene ante error | En pipelines de alto volumen, detener todo por registros malos afecta SLA de datos buenos; quarantine aisla malos y continua con buenos |
-| Auto-fix solo para correcciones deterministicas | Auto-fix para cualquier tipo de error | Correcciones no deterministicas (logica de negocio ambigua, conflictos cross-system) requieren juicio humano; auto-fix incorrecto es peor que no corregir |
-| Alertas calibradas para < 5 falsos positivos/semana | Thresholds muy ajustados que maximizan deteccion | Alert fatigue es la causa #1 de que los equipos ignoren alertas reales; < 5 FP/semana es el umbral de atencion sostenible |
+| Prevention (data contracts) over detection (monitoring) | Post-ingestion detection only | Data contracts between producers and consumers are the first line of defense; detecting problems post-ingestion is 10x more expensive than preventing them |
+| Quarantine pattern to isolate without stopping pipeline | Full pipeline stops on error | In high-volume pipelines, stopping everything for bad records affects SLA of good data; quarantine isolates bad and continues with good |
+| Auto-fix only for deterministic corrections | Auto-fix for any type of error | Non-deterministic corrections (ambiguous business logic, cross-system conflicts) require human judgment; incorrect auto-fix is worse than not correcting |
+| Alerts calibrated for < 5 false positives/week | Very tight thresholds that maximize detection | Alert fatigue is the #1 cause of teams ignoring real alerts; < 5 FP/week is the sustainable attention threshold |
 
 ## Knowledge Graph
 
@@ -333,8 +333,8 @@ graph TD
 | **Markdown** | `A-01_Data_Quality_Framework.md` | Framework completo con profiling baseline, validation rule engine, data contracts, anomaly detection, remediation workflows y SLA monitoring. Diagramas Mermaid de validation flow y remediation workflow. |
 | **XLSX** | `A-01_Data_Quality_Scorecard.xlsx` | Scorecard interactivo con composite quality score por dimension (accuracy, completeness, timeliness, consistency, validity, uniqueness), tendencias a 90 dias, y SLA compliance por dataset. |
 | **HTML** | `A-01_Data_Quality_Framework_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Light-First Technical, self-contained, WCAG AA, responsive. Incluye quality scorecard por dimension, SLA escalation matrix visual, y remediation workflow interactivo con DLQ status. |
-| **DOCX** | `{fase}_Data_Quality_Framework_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents. |
-| **PPTX** | `{fase}_Data_Quality_Framework_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia. |
+| **DOCX** | `{fase}_Data_Quality_Framework_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents. |
+| **PPTX** | `{fase}_Data_Quality_Framework_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia. |
 
 ## Evaluacion
 

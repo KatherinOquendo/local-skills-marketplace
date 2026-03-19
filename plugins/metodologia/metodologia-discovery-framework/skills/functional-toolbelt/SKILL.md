@@ -7,6 +7,8 @@ description: >
   Use when the user asks to "run event storming", "create a story map", "extract business rules",
   "write acceptance criteria", "build traceability matrix", "detect anti-patterns",
   or mentions "Given/When/Then", "functional toolbelt", "requirements quality".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,15 +22,15 @@ allowed-tools:
 
 Mental models, techniques, and validation tools for producing better functional analysis. NOT a deliverable skill — a **toolbelt** that enhances output quality of any requirements or specification work.
 
-## Principio Rector
+## Grounding Guideline
 
-**Las herramientas no producen calidad — la disciplina en su uso sí.** El functional toolbelt no es un deliverable — es un kit de técnicas que eleva la calidad de cualquier trabajo de análisis funcional. Event storming sin disciplina es brainstorming caótico. Acceptance criteria sin estructura es prosa ambigua.
+**Tools do not produce quality — discipline in their use does.** The functional toolbelt is not a deliverable — it is a techniques kit that elevates the quality of any functional analysis work. Event storming without discipline is chaotic brainstorming. Acceptance criteria without structure is ambiguous prose.
 
-### Filosofía del Toolbelt
+### Toolbelt Philosophy
 
-1. **Técnica correcta para el contexto.** Event storming para descubrir dominios, story mapping para planificar releases, acceptance criteria para validar. No usar martillo para todo.
-2. **Formalismo proporcional.** Business rules críticas en pseudo-código. Rules simples en lenguaje natural. El nivel de formalismo depende de la severidad.
-3. **Traceability end-to-end.** Cada requirement tiene un origen (stakeholder, rule, flow) y un destino (test, acceptance criteria). Sin trazabilidad, los requirements son declaraciones sueltas.
+1. **Right technique for the context.** Event storming to discover domains, story mapping to plan releases, acceptance criteria to validate. Do not use a hammer for everything.
+2. **Proportional formalism.** Critical business rules in pseudo-code. Simple rules in natural language. The level of formalism depends on severity.
+3. **End-to-end traceability.** Every requirement has an origin (stakeholder, rule, flow) and a destination (test, acceptance criteria). Without traceability, requirements are loose declarations.
 
 ## $ARGUMENTS
 
@@ -44,28 +46,28 @@ Examples:
 - If no tool specified → show 6-tool menu with one-line descriptions
 - If tool specified without context → ask for the input artifact
 
-### Parámetros de Pipeline
+### Pipeline Parameters
 
-| Parámetro | Valores | Default | Efecto |
+| Parameter | Values | Default | Effect |
 |-----------|---------|---------|--------|
-| `MODO` | `piloto-auto`, `desatendido`, `supervisado`, `paso-a-paso` | `piloto-auto` | Nivel de intervención humana durante ejecución de herramienta |
-| `FORMATO` | `markdown`, `html`, `dual` | `markdown` | Formato de salida del artefacto generado |
-| `VARIANTE` | `ejecutiva`, `técnica` | `técnica` | Ejecutiva (~40% contenido, resumen visual) vs técnica (full detail + matrices) |
+| `MODO` | `piloto-auto`, `desatendido`, `supervisado`, `paso-a-paso` | `piloto-auto` | Level of human intervention during tool execution |
+| `FORMATO` | `markdown`, `html`, `dual` | `markdown` | Generated artifact output format |
+| `VARIANTE` | `ejecutiva`, `tecnica` | `tecnica` | Executive (~40% content, visual summary) vs technical (full detail + matrices) |
 
-- `MODO=paso-a-paso` → pausa después de cada tool output para revisión
-- `FORMATO=html` → aplica design-system tokens al output
-- `VARIANTE=ejecutiva` → solo resumen de hallazgos, sin matrices detalladas
+- `MODO=paso-a-paso` → pauses after each tool output for review
+- `FORMATO=html` → applies design-system tokens to output
+- `VARIANTE=ejecutiva` → findings summary only, no detailed matrices
 
 ## Output Format Protocol
 
-| FORMATO | Estructura | Uso Principal |
+| FORMATO | Structure | Primary Use |
 |---------|-----------|---------------|
-| `markdown` | Tablas MD, code blocks para GWT, matrices en texto | Wikis, repos, documentación interna |
-| `html` | Styled con design-system tokens, tablas responsive, callouts | Presentaciones a stakeholders, deliverables formales |
-| `dual` | Ambos generados; MD como fuente, HTML como render | Cuando el equipo necesita editar (MD) y presentar (HTML) |
+| `markdown` | MD tables, code blocks for GWT, matrices in text | Wikis, repos, internal documentation |
+| `html` | Styled with design-system tokens, responsive tables, callouts | Stakeholder presentations, formal deliverables |
+| `dual` | Both generated; MD as source, HTML as render | When the team needs to edit (MD) and present (HTML) |
 
-- Markdown siempre incluye front-matter con metadata (tool used, domain, date)
-- HTML aplica brand-config.json si disponible
+- Markdown always includes front-matter with metadata (tool used, domain, date)
+- HTML applies brand-config.json if available
 
 ## Tool 1: Event Storming (Lightweight — 90 min)
 
@@ -246,22 +248,22 @@ Before delivering toolbelt output, verify:
 - [ ] Traceability links present (requirement origin → test destination)
 - [ ] Domain glossary terms used consistently across all outputs
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
-| No hay domain expert disponible para event storming o story mapping | Usar documentacion existente + anti-pattern detector para surfacear gaps; marcar output como developer assumptions, no domain knowledge; flag como riesgo |
-| Sistema legacy sin documentacion alguna | Comenzar con reverse event storming (trazar desde outputs hacia atras hasta eventos); combinar con Tool 6 anti-pattern detector para identificar gaps estructurales |
-| Dominio regulado (healthcare, finance) requiere trazabilidad 100% | Usar suite completa de 6 herramientas; traceability matrix obligatoria con cobertura 100%; cada requirement trazado desde origen a test case |
-| Equipo agile resiste formalizacion de acceptance criteria | Comenzar solo con Tool 4 (GWT); demostrar valor con ejemplos concretos antes de introducir suite completa; no forzar adopcion simultanea |
+| No domain expert available for event storming or story mapping | Use existing documentation + anti-pattern detector to surface gaps; mark output as developer assumptions, not domain knowledge; flag as risk |
+| Legacy system without any documentation | Start with reverse event storming (trace from outputs back to events); combine with Tool 6 anti-pattern detector to identify structural gaps |
+| Regulated domain (healthcare, finance) requires 100% traceability | Use full 6-tool suite; traceability matrix mandatory with 100% coverage; every requirement traced from origin to test case |
+| Agile team resists formalization of acceptance criteria | Start with Tool 4 (GWT) only; demonstrate value with concrete examples before introducing full suite; do not force simultaneous adoption |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
-| Disenar como toolbelt de 6 herramientas independientes (no un flujo secuencial) | Pipeline secuencial obligatorio de las 6 herramientas | Los proyectos adaptan o saltan herramientas segun contexto; forzar las 6 en secuencia desperdicia esfuerzo en proyectos simples |
-| Formalismo proporcional (pseudo-codigo para reglas criticas, lenguaje natural para reglas simples) | Mismo nivel de formalismo para todas las reglas | El formalismo excesivo en reglas simples genera overhead; el formalismo insuficiente en reglas criticas genera ambiguedad |
-| GWT acceptance criteria con regla de un comportamiento por escenario | Permitir multiples comportamientos por escenario GWT | Multiples comportamientos en un escenario hacen los tests fragiles y los resultados ambiguos; un comportamiento = un escenario = un test |
+| Design as toolbelt of 6 independent tools (not a sequential flow) | Mandatory sequential pipeline of all 6 tools | Projects adapt or skip tools based on context; forcing all 6 in sequence wastes effort on simple projects |
+| Proportional formalism (pseudo-code for critical rules, natural language for simple rules) | Same level of formalism for all rules | Excessive formalism on simple rules generates overhead; insufficient formalism on critical rules generates ambiguity |
+| GWT acceptance criteria with one-behavior-per-scenario rule | Allow multiple behaviors per GWT scenario | Multiple behaviors in one scenario make tests fragile and results ambiguous; one behavior = one scenario = one test |
 
 ## Knowledge Graph
 
@@ -317,62 +319,62 @@ graph TD
 
 ## Output Templates
 
-**Formato MD (default):**
+**MD format (default):**
 
 ```
-# Functional Toolbelt — {proyecto} — Tool {N}: {nombre}
-## Resumen
-> Herramienta aplicada: {nombre}. Dominio: {contexto}. Hallazgos: X items generados, Y gaps identificados.
-## Output de la Herramienta
-[Contenido especifico del tool seleccionado: event timeline, story map, rule catalog, GWT, matrix, o anti-pattern report]
-## Gaps Identificados
-| Gap | Severidad | Owner Sugerido | Accion |
+# Functional Toolbelt — {project} — Tool {N}: {name}
+## Summary
+> Tool applied: {name}. Domain: {context}. Findings: X items generated, Y gaps identified.
+## Tool Output
+[Specific content of the selected tool: event timeline, story map, rule catalog, GWT, matrix, or anti-pattern report]
+## Identified Gaps
+| Gap | Severity | Suggested Owner | Action |
 ## Cross-Reference
-[Trazabilidad hacia herramientas upstream/downstream]
+[Traceability to upstream/downstream tools]
 ```
 
-**Formato HTML (para presentacion a stakeholders):**
+**HTML format (for stakeholder presentation):**
 
 ```
-Header: Logo + proyecto + tool seleccionado
-Section 1: Tool Output (visualizacion interactiva segun tool)
-  - Event Storming: timeline visual con stickies de colores
-  - Story Map: backbone horizontal + stories verticales
-  - Rule Catalog: tabla expandible con decision trees
-  - GWT: scenarios formateados con syntax highlighting
-  - Traceability: matrix interactiva con filtros
-  - Anti-Patterns: report con semaforo de severidad
+Header: Logo + project + selected tool
+Section 1: Tool Output (interactive visualization per tool)
+  - Event Storming: visual timeline with colored stickies
+  - Story Map: horizontal backbone + vertical stories
+  - Rule Catalog: expandable table with decision trees
+  - GWT: formatted scenarios with syntax highlighting
+  - Traceability: interactive matrix with filters
+  - Anti-Patterns: report with severity traffic-light
 Section 2: Gaps & Action Items
 Section 3: Cross-References to Related Tools
-Footer: Attribution MetodologIA + fecha
+Footer: MetodologIA attribution + date
 ```
 - Filename: `D-01_Functional_Toolbelt_{project}_{WIP}.html`
-- Branded (Design System MetodologIA v5). Light-First Technical page con tool output interactivo adaptado al tool seleccionado (event timeline, story map, traceability matrix, etc.), gaps en semáforo, y cross-references navegables. WCAG AA, responsive, print-ready.
+- Branded (Design System MetodologIA v5). Light-First Technical page with interactive tool output adapted to the selected tool (event timeline, story map, traceability matrix, etc.), gaps with traffic-light indicators, and navigable cross-references. WCAG AA, responsive, print-ready.
 
-**Formato DOCX (bajo demanda):**
+**DOCX format (on demand):**
 - Filename: `D-01_Functional_Toolbelt_{project}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generated with python-docx under MetodologIA Design System v5: cover page, auto-generated TOC, branded headers/footers, zebra tables, Poppins typography (navy headings), Trebuchet MS (body), gold accents
 
-**Formato XLSX (bajo demanda):**
+**XLSX format (on demand):**
 - Filename: `D-01_Functional_Toolbelt_{project}_{WIP}.xlsx`
-- Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Event Storming, Story Map, Business Rules, Acceptance Criteria, Traceability Matrix, Anti-Patterns.
+- Generated with openpyxl under MetodologIA Design System v5. Headers with navy background and white Poppins typography, conditional formatting, auto-filters enabled, values without formulas. Sheets: Event Storming, Story Map, Business Rules, Acceptance Criteria, Traceability Matrix, Anti-Patterns.
 
-**Formato PPTX (bajo demanda):**
-- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+**PPTX format (on demand):**
+- Filename: `{phase}_{deliverable}_{client}_{WIP}.pptx`
+- Generated with python-pptx under MetodologIA Design System v5. Slide master with navy gradient, Poppins titles, Trebuchet MS body, gold accents. Max 20 slides executive variant / 30 technical variant. Speaker notes with evidence references ([CODE], [DOC], [INFERENCE], [ASSUMPTION]).
 
-## Evaluacion
+## Evaluation
 
-| Dimension | Peso | Criterio | Umbral Minimo |
+| Dimension | Weight | Criterion | Minimum Threshold |
 |-----------|------|----------|---------------|
-| Trigger Accuracy | 10% | El skill se activa ante prompts de event storming, story map, business rules, GWT, traceability, anti-patterns | 7/10 |
-| Completeness | 25% | Tool seleccionado ejecutado completamente; edge cases del tool abordados; output incluye gaps identificados y cross-references | 7/10 |
-| Clarity | 20% | Output es consumible por el rol downstream (dev, QA, product); GWT sigue las 5 quality rules; event timeline es cronologica | 7/10 |
-| Robustness | 20% | Edge cases cubiertos (sin domain expert, legacy sin docs, regulado, equipo resiste formalizacion); conditional logic aplicada | 7/10 |
-| Efficiency | 10% | Tool correcto seleccionado para el contexto; no se ejecuta suite completa cuando una herramienta es suficiente | 7/10 |
-| Value Density | 15% | Trazabilidad end-to-end presente; anti-patterns detectados con fix concreto; domain glossary consistente across outputs | 7/10 |
+| Trigger Accuracy | 10% | Skill activates on prompts for event storming, story map, business rules, GWT, traceability, anti-patterns | 7/10 |
+| Completeness | 25% | Selected tool executed completely; tool edge cases addressed; output includes identified gaps and cross-references | 7/10 |
+| Clarity | 20% | Output is consumable by downstream role (dev, QA, product); GWT follows the 5 quality rules; event timeline is chronological | 7/10 |
+| Robustness | 20% | Edge cases covered (no domain expert, legacy without docs, regulated, team resists formalization); conditional logic applied | 7/10 |
+| Efficiency | 10% | Correct tool selected for context; full suite not executed when a single tool is sufficient | 7/10 |
+| Value Density | 15% | End-to-end traceability present; anti-patterns detected with concrete fix; domain glossary consistent across outputs | 7/10 |
 
-**Umbral minimo global: 7/10.** Si alguna dimension cae por debajo, el entregable requiere revision antes de entrega.
+**Global minimum threshold: 7/10.** If any dimension falls below, the deliverable requires revision before delivery.
 
 ## Cross-References
 
@@ -383,12 +385,12 @@ Footer: Attribution MetodologIA + fecha
 
 ## Output Artifact
 
-**Primary:** `D-01_Functional_Toolbelt_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Functional patterns catalog, composition strategies, implementation guidelines.
+**Primary:** `D-01_Functional_Toolbelt_{project}.md` (or `.html` if `{FORMATO}=html|dual`) — Functional patterns catalog, composition strategies, implementation guidelines.
 
-**Diagramas incluidos:**
+**Included diagrams:**
 - Pattern composition diagram
 - Function pipeline flowchart
 - Type hierarchy visualization
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 12, 2026

@@ -9,6 +9,8 @@ description: >
   or when "HDD", "hypothesis", "hipótesis", "lean startup", "build-measure-learn", "experiment",
   "kill/pivot/persevere", or "validación de hipótesis" is mentioned.
 argument-hint: "[project-name]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -24,7 +26,7 @@ Transforms modernization proposals into testable hypotheses with Build-Measure-L
 Instead of assuming a solution works and planning its full execution, HDD proposes:
 first the hypothesis, then the minimum experiment, then the evidence, then the decision.
 
-## Guiding Principle
+## Grounding Guideline
 
 **We do not assume it works. We propose that it should work, define how we would know, and test it.**
 
@@ -208,18 +210,18 @@ At the end of the process, the portfolio shows:
 - [ ] Kill/Pivot/Persevere criteria are quantitative, not qualitative
 - [ ] Integration with roadmap phases documented
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Cliente no tiene baseline de metricas para definir umbrales | El primer experimento se dedica a establecer baseline; agregar 1-2 sprints de instrumentacion antes de formular hipotesis con umbrales cuantitativos |
 | Todas las hipotesis MUST son validadas exitosamente | Caso raro pero ideal; reducir margen de contingencia en el roadmap; documentar evidencia para fortalecer la propuesta de inversion |
 | Cadena de pivots en cascada (pivot genera nueva hipotesis que tambien falla) | Permitir maximo 2 niveles de pivot encadenados; si el tercer intento falla, ejecutar kill y retornar a Phase 3 para reevaluar el escenario completo |
 | Stakeholders se rehusan a ejecutar kill a pesar de evidencia negativa | Documentar explicitamente el riesgo de sunk cost fallacy; escalar a sponsor ejecutivo con datos cuantitativos; proceder con disclaimer formal si insisten |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Formular cada feature MUST como hipotesis testeable | Tratar features como requisitos fijos sin validacion | Las features asumidas sin evidencia son la causa principal de desperdicio en transformaciones; HDD reduce riesgo antes de comprometer presupuesto |
 | Ciclos BML cortos de 1-5 dias por experimento | Sprints largos de 2-4 semanas para validacion | Ciclos cortos permiten decision rapida; ciclos largos acumulan costo antes de generar evidencia y retrasan el kill/pivot |
@@ -280,9 +282,9 @@ graph TD
 ## S1: Business Hypothesis Canvas
 | # | Hipotesis | Metrica | Umbral Exito | Umbral Kill | Prioridad |
 ## S2: Experiment Design Matrix
-| Hipotesis | Tipo Experimento | Duracion | FTEs | Entregable Minimo |
-## S3-S6: [secciones completas con diagramas BML]
-## Apendice: Referencias y Supuestos
+| Hypothesis | Experiment Type | Duration | FTEs | Minimum Deliverable |
+## S3-S6: [complete sections with BML diagrams]
+## Appendix: References & Assumptions
 ```
 
 **Formato PPTX (para presentacion a steering committee):**
@@ -302,7 +304,7 @@ Slide N+3: Decision framework (que pasa si H1 falla, si H2 pivota, etc.)
 
 **Formato DOCX (bajo demanda):**
 - Filename: `A-03_HDD_Hypotheses_{project}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 **Formato XLSX (bajo demanda):**
 - Filename: `A-03_HDD_Hypotheses_{project}_{WIP}.xlsx`

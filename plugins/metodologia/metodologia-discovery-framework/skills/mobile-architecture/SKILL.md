@@ -21,16 +21,16 @@ allowed-tools:
 
 Mobile architecture defines how mobile applications are structured, how they communicate with backends, handle offline scenarios, manage state, and reach users through app stores. This skill produces comprehensive mobile architecture documentation covering platform selection, app architecture patterns, offline-first design, performance optimization, backend integration, and release strategy.
 
-## Principio Rector
+## Grounding Guideline
 
-**Mobile no es "web en pantalla chica" — es un canal con restricciones únicas.** Red inestable, batería finita, ciclos de release controlados por stores, y usuarios que abandonan a los 3 segundos. Diseñar mobile requiere respetar estas restricciones como first-class constraints, no como afterthoughts.
+**Mobile is not "web on a small screen" — it is a channel with unique constraints.** Unstable network, finite battery, release cycles controlled by stores, and users who abandon at 3 seconds. Designing mobile requires respecting these constraints as first-class constraints, not afterthoughts.
 
-### Filosofía de Arquitectura Mobile
+### Mobile Architecture Philosophy
 
-1. **Offline-first for unreliable networks.** La app debe funcionar sin conexión. Sync cuando hay red, cache siempre, queue de acciones persistente. El usuario no debería notar la diferencia.
-2. **Native vs cross-platform is a business decision.** No es técnica — es de equipo, velocidad, y presupuesto. Flutter para velocity, Native para performance extremo, KMP para lógica compartida con UI nativa.
-3. **Release management is more complex than web.** No hay "deploy to production in 5 minutes". Hay review de stores, staged rollouts, feature flags, y forced updates. El pipeline de release es arquitectura.
-4. **Performance is UX.** Cold start <2s, 60fps mínimo, <200MB RAM. Cada milisegundo cuenta en mobile.
+1. **Offline-first for unreliable networks.** The app must work without connectivity. Sync when there is a network, cache always, persistent action queue. The user should not notice the difference.
+2. **Native vs cross-platform is a business decision.** It is not technical — it is about team, velocity, and budget. Flutter for velocity, Native for extreme performance, KMP for shared logic with native UI.
+3. **Release management is more complex than web.** There is no "deploy to production in 5 minutes." There are store reviews, staged rollouts, feature flags, and forced updates. The release pipeline is architecture.
+4. **Performance is UX.** Cold start <2s, 60fps minimum, <200MB RAM. Every millisecond counts in mobile.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides an app or project name as `$ARGUMENTS`. Parse `$1` as the **ap
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para platform comparison y architecture patterns, HITL para platform selection y offline strategy.
-  - **desatendido**: Cero interrupciones. Arquitectura mobile documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura mobile documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en platform decision y release strategy.
   - **paso-a-paso**: Confirma cada platform evaluation, architecture pattern, offline design, y release pipeline.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -286,18 +286,18 @@ Read ${CLAUDE_SKILL_DIR}/references/mobile-patterns.md
 - Does not cover API design in isolation (use solutions-architecture skill)
 - Platform SDKs evolve rapidly; verify against latest documentation
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Desarrollador unico construyendo para ambas plataformas (iOS + Android) | Cross-platform obligatorio (Flutter o React Native). Maximizar code sharing. Usar managed services para backend. Evitar native modules custom. Priorizar velocity sobre optimizacion. |
 | App enterprise con requisitos MDM (Mobile Device Management) | Integrar MDM desde Sprint 0. Managed app config, VPN tunneling, data loss prevention como constraints de arquitectura. Testear con perfiles MDM reales tempranamente. Certificate pinning obligatorio. |
 | Industria regulada (healthcare/finance) con requisitos de compliance estrictos | Biometric auth obligatorio. Certificate pinning. No sensitive data en logs ni screenshots. Jailbreak/root detection. HIPAA/PCI-DSS compliance checklist. Encriptar storage local. Audit trail de acciones criticas. |
 | Super app con >10 feature modules y multiples equipos de desarrollo | Micro-frontend architecture. Cada feature team owner de un module. Dynamic feature delivery para reducir APK/IPA inicial. Navigation contract entre modules. CI/CD por modulo con integration testing cruzado. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Flutter como default para cross-platform sobre React Native | React Native con New Architecture | Flutter ofrece Impeller renderer (60/120 FPS sin shader jank), 90-95% code sharing, y hot reload sub-segundo. React Native requiere migracion a New Arch para beneficios similares. Flutter mejor para equipos sin experiencia React previa. |
 | Offline-first con optimistic UI como patron default | Online-only con loading spinners | Mobile opera en redes inestables. Optimistic UI elimina latencia percibida. Queue persistente sobrevive restart. El costo de sync complexity se justifica por UX superior y retenciones 2-3x mayores. |
@@ -350,7 +350,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Mobile_Architecture_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_Mobile_Architecture_{cliente}_{WIP}.xlsx`
@@ -358,7 +358,7 @@ graph TD
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_Mobile_Architecture_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

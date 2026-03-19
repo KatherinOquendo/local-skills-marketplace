@@ -7,6 +7,8 @@ description: >
   Use when the user asks to "plan a workshop", "run event storming", "facilitate impact mapping",
   "design a sprint", "create user story map", "facilitate discovery session",
   or mentions workshop facilitation, design sprint, event storming, story mapping, or collaborative design.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,13 +22,13 @@ allowed-tools:
 
 Workshop facilitation designs and runs structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints.
 
-## Principio Rector
+## Grounding Guideline
 
-> Un taller mal facilitado no solo desperdicia tiempo — destruye la confianza del equipo en los procesos colaborativos. La facilitación excelente es la diferencia entre alineamiento genuino y consenso superficial.
+> A poorly facilitated workshop does not just waste time — it destroys the team's trust in collaborative processes. Excellent facilitation is the difference between genuine alignment and superficial consensus.
 
-1. **Descubrimiento colaborativo sobre presentación unilateral.** El conocimiento tácito solo emerge cuando las personas hacen, no cuando escuchan. Cada minuto de un taller debe diseñarse para extraer, no para transmitir.
-2. **Estructura al servicio de la creatividad.** Los time-boxes, las técnicas y las reglas de participación no limitan la creatividad — la potencian. Sin estructura, dominan las voces más fuertes y se pierden las ideas más valiosas.
-3. **Artefactos vivos sobre actas muertas.** El valor de un taller no está en el documento de síntesis — está en los modelos mentales compartidos que se construyen. Los artefactos deben ser herramientas de trabajo, no archivos de evidencia.
+1. **Collaborative discovery over unilateral presentation.** Tacit knowledge only emerges when people do, not when they listen. Every minute of a workshop must be designed to extract, not to transmit.
+2. **Structure in service of creativity.** Time-boxes, techniques, and participation rules do not limit creativity — they amplify it. Without structure, the loudest voices dominate and the most valuable ideas are lost.
+3. **Living artifacts over dead meeting notes.** The value of a workshop is not in the synthesis document — it is in the shared mental models that are built. Artifacts must be working tools, not evidence files.
 
 ## Inputs
 
@@ -41,9 +43,9 @@ find . -name "*.md" -o -name "*.miro" -o -name "*.figjam" -o -name "*.pdf" -o -n
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para diseño de agenda y selección de técnicas, HITL para validación de participantes y decisiones de formato.
-  - **desatendido**: Cero interrupciones. Diseño completo auto-generado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Diseño completo auto-generado. Assumptions documented.
   - **supervisado**: Autónomo con checkpoints en selección de técnica y diseño final.
-  - **paso-a-paso**: Confirma antes de cada decisión de diseño.
+  - **paso-a-paso**: Confirms before cada decisión de diseño.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -216,18 +218,18 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: workshop agenda flow with decision points
 - Mindmap: workshop outputs and their connections to deliverables
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Key domain expert is unavailable for the scheduled workshop | Postpone the session if the expert's knowledge is critical (event storming without domain experts produces developer assumptions); alternatively, run a preliminary session and mark all outputs as [SUPUESTO] pending expert validation |
 | Workshop participants speak different languages (e.g., Spanish + English + Portuguese) | Designate bilingual facilitators per breakout group; use visual artifacts (stickies, diagrams) as the primary communication medium; provide translated templates for key activities |
 | Hybrid workshop (some in-person, some remote) | Assign a dedicated "bridge facilitator" to ensure remote participants have equal voice; use a shared digital board as the canonical artifact even for in-person participants; run explicit check-ins with remote attendees every 20 minutes |
 | Workshop output contradicts prior discovery phase findings | Document the contradiction explicitly; do not suppress either version; flag for steering committee arbitration; the workshop may have surfaced tacit knowledge that prior analysis missed |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Silent-before-spoken rule for all ideation activities | Open discussion from the start | Open discussion allows dominant voices to anchor the group; 5-10 minutes of silent individual writing produces broader, more diverse input that discussion then refines |
 | Maximum 8 participants per workshop session (breakouts for larger groups) | Allow 15+ participants in a single session | Groups larger than 8 suffer from diffusion of responsibility and reduced psychological safety; breakouts with sub-facilitators maintain quality and participation |
@@ -271,7 +273,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_workshop-facilitator_{cliente}_{WIP}.xlsx`
@@ -279,7 +281,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, objetivo y criterios de éxito, técnica seleccionada con justificación, agenda visual time-boxed, participantes y roles, pre-work requerido, guía de facilitación por bloque, template de síntesis, action items con owners y deadlines.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, objetivo y criterios de éxito, técnica seleccionada con justificación, agenda visual time-boxed, participantes y roles, pre-work requerido, guía de facilitación por bloque, template de síntesis, action items con owners y deadlines.
 
 ## Evaluacion
 

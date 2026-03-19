@@ -24,7 +24,7 @@ allowed-tools:
 
 Mobile platform assessment unifies two formerly separate concerns — designing mobile architecture and evaluating existing mobile app health — into a single comprehensive skill. It produces deliverables covering platform strategy, architecture patterns, offline-first design, performance optimization, store compliance, dependency security, code quality, and prioritized remediation.
 
-## Guiding Principle
+## Grounding Guideline
 
 **Mobile is not "web on a small screen" — it is a channel with unique constraints. And an app without vitals metrics is an app flying blind.** Unstable network, finite battery, release cycles controlled by stores, users who abandon at 3 seconds, and store compliance that is non-negotiable. Designing and evaluating mobile requires respecting these constraints as first-class concerns.
 
@@ -597,7 +597,7 @@ Resumen ejecutivo de plataforma mobile en formato presentacion: slide de compara
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Mobile_Platform_Assessment_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_Mobile_Platform_Assessment_{cliente}_{WIP}.xlsx`

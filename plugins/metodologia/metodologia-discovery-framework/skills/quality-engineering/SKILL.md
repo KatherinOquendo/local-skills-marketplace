@@ -22,15 +22,15 @@ allowed-tools:
 
 Strategic quality engineering framework. Designs the system — QA teams execute it. For architects, engineering leads, and quality strategists who define *how* quality works.
 
-## Principio Rector
+## Grounding Guideline
 
-**La calidad no se inspecciona — se construye en cada commit.** La calidad es un atributo arquitectónico, no una fase del ciclo de vida. Se diseña en la estructura del código, se automatiza en el pipeline, y se mide con indicadores adelantados — no con bugs en producción.
+**Quality is not inspected — it is built in every commit.** Quality is an architectural attribute, not a lifecycle phase. It is designed into the code structure, automated in the pipeline, and measured with leading indicators — not with bugs in production.
 
-### Filosofía de Quality Engineering
+### Quality Engineering Philosophy
 
-1. **Test strategy shapes > test counts.** La pirámide, el trofeo y el diamante son guías, no dogmas. La forma correcta depende de la arquitectura, no de la convención.
-2. **Shift-left quality.** Cada defecto encontrado después del merge cuesta 10-100x más. Pre-commit hooks, PR gates, y developer-owned tests son inversión, no overhead.
-3. **Quality gates in pipeline.** Un gate sin criterio medible es un semáforo decorativo. Cada gate define pass/fail, timeout, y escalation path.
+1. **Test strategy shapes > test counts.** The pyramid, the trophy, and the diamond are guides, not dogmas. The right shape depends on the architecture, not on convention.
+2. **Shift-left quality.** Every defect found after merge costs 10-100x more. Pre-commit hooks, PR gates, and developer-owned tests are investment, not overhead.
+3. **Quality gates in pipeline.** A gate without measurable criteria is a decorative traffic light. Every gate defines pass/fail, timeout, and escalation path.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para maturity assessment y test strategy, HITL para quality gates y automation decisions.
-  - **desatendido**: Cero interrupciones. Framework completo con supuestos documentados.
+  - **desatendido**: Zero interruptions. Framework completo con supuestos documentados.
   - **supervisado**: Autónomo con checkpoint en gate criteria y automation architecture.
   - **paso-a-paso**: Confirma cada maturity score, test shape, gate criteria, y metric target.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -248,9 +248,9 @@ IF multiple teams → consumer-driven contract testing; shared test data contrac
 IF legacy with no tests → characterization tests first; NEVER refactor without tests
 ```
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Greenfield sin tests existentes | Smoke tests en critical paths primero (20-30 casos); crecer coverage organicamente a 70-80%; NO refactorizar sin tests previos |
 | Legacy migration sin coverage | Golden Master pattern para characterization tests antes de refactoring; reemplazo gradual; priorizar paths de mayor riesgo |
@@ -258,9 +258,9 @@ IF legacy with no tests → characterization tests first; NEVER refactor without
 | Equipo sin experiencia en automatizacion | Ramp-up de 4-6 semanas; comenzar con API-level; evitar UI frameworks inicialmente; pairing con automation engineer |
 | Regulacion estricta (banca, salud, PCI) | Agregar capa de compliance testing, data masking, verificacion de audit trail, pen testing mandatorio; documentar evidencia por gate |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Test shape driven by architecture (pyramid vs diamond) | Shape unica para todos los proyectos | La forma correcta depende de la arquitectura (monolito vs microservicios), no de la convencion; un diamond en monolito desperdicia recursos |
 | Shift-left con gates pre-commit | Testing solo en staging/pre-release | Cada defecto encontrado despues del merge cuesta 10-100x mas; pre-commit hooks y PR gates son inversion, no overhead |
@@ -323,8 +323,8 @@ graph TD
 | **Markdown** | `A-01_Quality_Engineering.md` | Framework completo con maturity assessment, test strategy, automation architecture, quality gates, metrics dashboard design y implementation plan. Diagramas Mermaid de pipeline stages y test shape. |
 | **XLSX** | `A-01_Quality_Maturity_Scorecard.xlsx` | Scorecard interactivo con assessment por dimension (0-100%), gap analysis, DORA benchmark comparison, y plan de mejora con quick wins y long-term improvements. |
 | **HTML** | `{fase}_Quality_Engineering_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Light-First Technical. Incluye maturity scorecard visual por dimension, gate criteria checklist interactivo, y dashboard de métricas leading/lagging. |
-| **DOCX** | `{fase}_quality_engineering_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de maturity scorecard, gate criteria y métricas leading/lagging con zebra striping. Encabezados y pies de página con branding MetodologIA. |
-| **PPTX** | `{fase}_quality_engineering_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Quality Maturity Assessment (6 dimensiones), Test Strategy Shape, Automation Architecture, Quality Gate Criteria, Metrics Dashboard, Implementation Plan. |
+| **DOCX** | `{fase}_quality_engineering_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de maturity scorecard, gate criteria y métricas leading/lagging con zebra striping. Encabezados y pies de página con branding MetodologIA. |
+| **PPTX** | `{fase}_quality_engineering_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Quality Maturity Assessment (6 dimensiones), Test Strategy Shape, Automation Architecture, Quality Gate Criteria, Metrics Dashboard, Implementation Plan. |
 
 ## Evaluacion
 

@@ -26,11 +26,11 @@
 
 ### HTML (`sample-output.html`)
 
-- **Design System MetodologIA v4:** Primary #6366F1, Dark #1A1A2E, Success #22D3EE
-- **Nunca usar verde** para estados de exito — siempre amarillo (#22D3EE)
+- **Design System MetodologIA v4:** Primary #122562, Dark #1F2833, Success #FFD700
+- **Nunca usar verde** para estados de exito — siempre amarillo (#FFD700)
 - **Layout dashboard:** Velocity cards (KPIs arriba), burndown chart (centro), risk signals (cards), Monte Carlo (barras), adjustment levers (cards), flow metrics (tabla)
 - **Mermaid renderizado:** Via CDN v10 (`<pre class="mermaid">`)
-- **Tipografia:** Inter (body), Clash Grotesk (display — via font stack fallback)
+- **Tipografia:** Inter (body), Poppins (display — via font stack fallback)
 - **Responsive:** Grid layout, adaptable a mobile
 - **Impresion:** CSS `@media print` optimizado
 

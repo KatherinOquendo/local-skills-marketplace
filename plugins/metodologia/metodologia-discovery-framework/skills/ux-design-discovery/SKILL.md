@@ -8,6 +8,8 @@ description: >
   design transformation roadmap. Use when the user asks to "evaluate design maturity", "assess UX capability",
   "audit design system", "usability assessment", "information architecture review", "design ops evaluation",
   "UX transformation plan", or mentions "design discovery", "UX readiness", "design governance".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,13 +23,13 @@ allowed-tools:
 
 Generates a 7-section UX/UI design discovery covering design maturity assessment, design system inventory, UX research capability, usability baseline, information architecture, design process governance, and a phased design transformation roadmap. Produces actionable findings with evidence-based scoring and prioritized recommendations.
 
-## Principio Rector
+## Grounding Guideline
 
-> *El diseno sin investigacion es decoracion. La investigacion sin implementacion es academia. Solo cuando diseno, investigacion y desarrollo convergen, la experiencia de usuario se convierte en ventaja competitiva.*
+> *Design without research is decoration. Research without implementation is academia. Only when design, research, and development converge does user experience become a competitive advantage.*
 
-1. **La madurez de diseno se mide, no se declara.** Cada nivel de madurez debe estar respaldado por evidencia observable: artefactos, procesos documentados, metricas de impacto. La autopercepcion del equipo es un dato, no un veredicto.
-2. **El design system es infraestructura, no decoracion.** Un sistema de diseno sin gobernanza, versionamiento y adopcion medible es una galeria de componentes. La consistencia visual es consecuencia de disciplina operativa.
-3. **La accesibilidad no es opcional, es un requisito no funcional.** WCAG no es un ideal aspiracional — es la linea base. Cada violacion de accesibilidad es deuda de diseno con impacto legal y de negocio.
+1. **Design maturity is measured, not declared.** Each maturity level must be backed by observable evidence: artifacts, documented processes, impact metrics. The team's self-perception is a data point, not a verdict.
+2. **The design system is infrastructure, not decoration.** A design system without governance, versioning, and measurable adoption is a component gallery. Visual consistency is a consequence of operational discipline.
+3. **Accessibility is not optional, it is a non-functional requirement.** WCAG is not an aspirational ideal — it is the baseline. Every accessibility violation is design debt with legal and business impact.
 
 ## Inputs
 
@@ -39,9 +41,9 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario y metricas, HITL para evaluacion de madurez y hallazgos de accesibilidad.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Analisis completo automatizado. Assumptions documented.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **paso-a-paso**: Confirms before cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — sections S1, S4, S7 only) | `tecnica` (full, default)
 
@@ -215,18 +217,18 @@ Phased plan with maturity targets per phase:
 
 Per phase: target maturity level, key activities, success metrics, dependencies, effort magnitude (designer-weeks, NOT prices).
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | No existe design system ni patrones implicitos documentables | Auditar UI patterns en produccion; catalogar patrones implicitos ad-hoc; recomendar design system strategy como primer entregable |
 | Madurez de diseno L1 (ad-hoc) en todas las dimensiones | Flag CRITICAL; recomendar proceso de diseno foundacional antes de invertir en sistema o herramientas; tools sin capacidad humana no generan valor |
 | Organizacion sin representacion de diseno en decisiones de producto | Escalar como issue organizacional; documentar impacto de decisiones sin input de diseno; esto no es un gap de skill sino de estructura |
 | Multi-brand con design systems conflictivos | Evaluar cada brand por separado; identificar tokens compartidos vs divergentes; recomendar capa de abstraccion si governance unificada es posible |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Usar modelo de 5 niveles de madurez (Ad-hoc a Innovative) por dimension | Evaluacion binaria (maduro / inmaduro) | Los 5 niveles permiten roadmap de transformacion progresivo; el modelo binario no captura donde invertir primero |
 | Incluir accessibility audit (WCAG) como seccion obligatoria | Tratar accesibilidad como nice-to-have | WCAG no es aspiracional, es linea base legal y etica; cada violacion Level A es deuda con impacto legal y de negocio |
@@ -300,7 +302,7 @@ gantt
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 **Formato HTML (para presentacion a liderazgo de producto):**
 
@@ -321,7 +323,7 @@ Footer: Attribution MetodologIA + fecha
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, madurez de diseño promedio (radar chart 5 dimensiones), design system health (adopción y cobertura), UX research capability, usability baseline (heurísticas Nielsen), hallazgos de accessibility (WCAG), transformation roadmap (3 fases con maturity targets y métricas de éxito).
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, madurez de diseño promedio (radar chart 5 dimensiones), design system health (adopción y cobertura), UX research capability, usability baseline (heurísticas Nielsen), hallazgos de accessibility (WCAG), transformation roadmap (3 fases con maturity targets y métricas de éxito).
 
 ## Evaluacion
 

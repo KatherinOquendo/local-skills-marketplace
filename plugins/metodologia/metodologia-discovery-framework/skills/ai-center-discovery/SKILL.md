@@ -10,6 +10,8 @@ description: >
   "AI pilots", "ML pipeline", "AI Center of Excellence", "LLM adoption", "generative AI strategy".
 argument-hint: "<project-or-client-name>"
 author: Javier Montano · Comunidad MetodologIA
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,15 +23,15 @@ allowed-tools:
 
 # AI Center Discovery — AI Readiness Assessment & Adoption Roadmap
 
-Genera un assessment de 8 secciones para servicios del AI Center: evaluacion de readiness con metodologia AI SCALE de MetodologIA, portafolio de use cases, evaluacion de data readiness, inventario de modelos, governance de AI, infraestructura, integracion con productos AI de MetodologIA, y roadmap de adopcion. Diseñado para maximizar la probabilidad de que los pilotos de AI lleguen a produccion y generen valor sostenible.
+Generates an 8-section assessment for AI Center services: readiness evaluation using the MetodologIA AI SCALE methodology, use case portfolio, data readiness evaluation, model inventory, AI governance, infrastructure, integration with MetodologIA AI products, and adoption roadmap. Designed to maximize the probability that AI pilots reach production and generate sustainable value.
 
-## Principio Rector
+## Grounding Guideline
 
-> *La IA sin estrategia es un juguete caro. La IA con estrategia pero sin gobernanza es un riesgo empresarial. Solo la IA con estrategia, gobernanza y adopcion medida transforma organizaciones.*
+> *AI without strategy is an expensive toy. AI with strategy but without governance is a business risk. Only AI with strategy, governance, and measured adoption transforms organizations.*
 
-1. **El 80% de los pilotos de AI nunca llegan a produccion.** Este assessment existe para que los pilotos del cliente esten en el 20% que si lo logran. Cada recomendacion incluye los factores que tipicamente causan fracaso y como mitigarlos.
-2. **Los datos son el activo, no el modelo.** Un modelo excelente con datos mediocres produce resultados mediocres. El assessment evalua data readiness con la misma rigurosidad que la capacidad de modelado.
-3. **AI responsable no es opcional — es prerequisito.** Bias, explicabilidad, privacidad y compliance no son consideraciones secundarias. Son criterios de go/no-go para cualquier use case de AI en produccion.
+1. **80% of AI pilots never reach production.** This assessment exists so the client's pilots are in the 20% that do. Each recommendation includes the factors that typically cause failure and how to mitigate them.
+2. **Data is the asset, not the model.** An excellent model with mediocre data produces mediocre results. The assessment evaluates data readiness with the same rigor as modeling capability.
+3. **Responsible AI is not optional — it is a prerequisite.** Bias, explainability, privacy, and compliance are not secondary considerations. They are go/no-go criteria for any AI use case in production.
 
 ## Inputs
 
@@ -41,9 +43,9 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario de modelos e infraestructura, HITL para evaluacion de governance y priorizacion de use cases.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Analisis completo automatizado. Assumptions documented.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **paso-a-paso**: Confirms before cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S2, S5, S8 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `Data-AI` (fixed for this skill)
@@ -323,24 +325,24 @@ Hoja de ruta de adopcion de AI en 3 fases.
 - [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
 - [ ] Cross-references entre secciones (data readiness S3 informa feasibility en S2)
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Organizacion sin experiencia en AI | Enfocar en educacion, use cases de bajo riesgo, y construccion de data foundations. No recomendar deep learning en dia 1. |
-| Multiples pilotos fallidos | Diagnosticar causas raiz (datos, expectativas, governance, talento). Recomendar enfoque diferente, no repetir patron de fracaso. |
-| Datos sensibles (salud, finanzas) | Elevar requisitos de governance, privacy by design, y compliance. Evaluar federated learning o differential privacy. |
-| Vendor lock-in con plataforma AI | Evaluar portabilidad de modelos, costo de migracion, y estrategia multi-cloud. Documentar exit cost. |
-| Shadow AI (uso no gobernado de GenAI) | Inventariar uso informal de AI generativa. Evaluar riesgos (data leakage, compliance). Proponer framework de AI governance que incluya GenAI. |
-| >50 use cases identificados | Screening rapido con impacto x feasibilidad. Scoring detallado solo para top-10. Evitar paralisis por analisis. |
+| Organization with no AI experience | Focus on education, low-risk use cases, and building data foundations. Do not recommend deep learning on day 1. |
+| Multiple failed pilots | Diagnose root causes (data, expectations, governance, talent). Recommend a different approach, do not repeat failure patterns. |
+| Sensitive data (healthcare, finance) | Elevate governance requirements, privacy by design, and compliance. Evaluate federated learning or differential privacy. |
+| Vendor lock-in with AI platform | Evaluate model portability, migration cost, and multi-cloud strategy. Document exit cost. |
+| Shadow AI (ungoverned GenAI usage) | Inventory informal generative AI usage. Evaluate risks (data leakage, compliance). Propose AI governance framework that includes GenAI. |
+| >50 use cases identified | Rapid screening with impact x feasibility. Detailed scoring only for top-10. Avoid analysis paralysis. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| AI SCALE como framework de madurez | CMMI for AI, Gartner AI Maturity | AI SCALE es nativo de MetodologIA, alineado con fases de adopcion (Selection-to-Expansion), y cubre governance como dimension explicita. |
-| 8 secciones como estructura de assessment | Assessment monolitico unico, framework de 3 secciones rapidas | 8 secciones permiten modularidad (variante ejecutiva usa 4 de 8) y cubren el ciclo completo desde strategy hasta roadmap. |
-| Priorizacion top-10 sobre portafolio completo | Evaluar todos los use cases con igual profundidad | Profundidad sobre amplitud. Scoring detallado de 50+ use cases diluye calidad. Top-10 permite analisis de data readiness y feasibility por caso. |
+| AI SCALE as maturity framework | CMMI for AI, Gartner AI Maturity | AI SCALE is native to MetodologIA, aligned with adoption phases (Selection-to-Expansion), and covers governance as an explicit dimension. |
+| 8 sections as assessment structure | Single monolithic assessment, 3-section rapid framework | 8 sections enable modularity (executive variant uses 4 of 8) and cover the complete cycle from strategy to roadmap. |
+| Top-10 prioritization over full portfolio | Evaluate all use cases with equal depth | Depth over breadth. Detailed scoring of 50+ use cases dilutes quality. Top-10 enables data readiness and feasibility analysis per case. |
 
 ## Knowledge Graph
 

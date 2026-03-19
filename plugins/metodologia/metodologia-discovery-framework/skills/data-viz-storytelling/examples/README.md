@@ -7,7 +7,7 @@ Sample outputs demonstrating the data-viz-storytelling skill at moat level.
 | File | Description |
 |------|-------------|
 | `sample-output.md` | Análisis visual narrativo de una arquitectura e-commerce: C4 con storytelling, secuencia de dashboard, y scoring visual — en Markdown con bloques Mermaid |
-| `sample-output.html` | Versión HTML con MetodologIA Design System (#6366F1 primary, #1A1A2E dark, #22D3EE success), Mermaid CDN v10, responsive y accesible |
+| `sample-output.html` | Versión HTML con MetodologIA Design System (#122562 primary, #1F2833 dark, #FFD700 success), Mermaid CDN v10, responsive y accesible |
 
 ## Usage
 
@@ -18,4 +18,4 @@ Sample outputs demonstrating the data-viz-storytelling skill at moat level.
 
 - El caso de ejemplo es una plataforma e-commerce ficticia ("TechMart") con problemas de acoplamiento, observabilidad y escalabilidad.
 - Cada diagrama Mermaid respeta los constraints: max 20 nodos, max 4 classDefs, IDs descriptivos, dirección TD/LR según tipo.
-- Los colores de success usan dorado (#22D3EE), nunca verde — regla mandatoria MetodologIA.
+- Los colores de success usan dorado (#FFD700), nunca verde — regla mandatoria MetodologIA.

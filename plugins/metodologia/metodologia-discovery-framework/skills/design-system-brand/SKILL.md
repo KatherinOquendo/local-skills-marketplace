@@ -25,7 +25,7 @@ Produces production-ready deliverables in 5 formats (HTML, DOCX, XLSX, PPTX, MD)
 
 ## TL;DR
 
-- Estetica: **Neo-Swiss Clean & Soft Explainer** — light off-white body, navy hero+footer, gold accents, Swiss 8px grid
+- Aesthetic: **Neo-Swiss Clean & Soft Explainer** — light off-white body, navy hero+footer, gold accents, Swiss 8px grid
 - Palette: Navy #122562, Gold #FFD700, Blue #137DC5, Dark #1F2833, Lavender #BBA0CC
 - Typography: Poppins (titles), Trebuchet MS (body), Futura/Century Gothic (notes)
 - 5 formatos de salida: HTML (self-contained), DOCX (python-docx), XLSX (openpyxl), PPTX (python-pptx), MD (markdown-excellence)
@@ -46,7 +46,7 @@ Read ${CLAUDE_SKILL_DIR}/../../references/neo-swiss-template.css
 Read ${CLAUDE_SKILL_DIR}/../../references/assets/logo-metodologia.svg
 ```
 
-## Principio Rector
+## Grounding Guideline
 
 **Un entregable sin identidad de marca es ruido visual. Un entregable con MetodologIA Neo-Swiss es una experiencia profesional que transmite autoridad, claridad y confianza.** Cada token, cada componente, cada pixel existe para comunicar que detras del documento hay metodo, no improvisacion.
 
@@ -167,7 +167,7 @@ Hero with pricing KPIs → Sticky TOC
   → Footer
 ```
 
-## Proceso
+## Process
 
 1. **Read brand-config** — Load `brand-config-neoswiss.json`
 2. **Identificar tipo** — Detectar tipo de deliverable (A/B/C/D) del contenido
@@ -295,7 +295,7 @@ slide_master = {
 6. Tables alineadas, codigo fenced
 7. Footer con autor, version, timestamp, tagline MetodologIA
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] `brand-config-neoswiss.json` was read before generation
 - [ ] Tokens coinciden 100% con Neo-Swiss catalog (0 hardcodes fuera de :root)
@@ -308,7 +308,7 @@ slide_master = {
 - [ ] Print-ready: @media print con page-breaks correctos (HTML)
 - [ ] Cada formato preserva 100% del contenido sin perdida
 
-## Supuestos y Limites
+## Assumptions and Limits
 
 - Google Fonts (Poppins) requiere conexion a internet en HTML; Trebuchet MS es system font
 - Mermaid diagrams en DOCX/PPTX se pre-renderizan como imagen o se describen textualmente

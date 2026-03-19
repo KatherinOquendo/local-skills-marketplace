@@ -8,6 +8,8 @@ description: >
   "design learning paths", "plan knowledge transfer", "evaluate mentoring program", "training gap analysis",
   "capability assessment", "upskilling plan", or mentions "training discovery", "mentoring readiness",
   "talent development", "MetodologIA University".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,13 +23,13 @@ allowed-tools:
 
 Generates a 6-section mentoring and training discovery covering capability assessment, learning path design, knowledge transfer planning, training delivery model, measurement framework, and a phased training roadmap. Produces actionable findings with gap analysis, delivery recommendations, and measurable success criteria.
 
-## Principio Rector
+## Grounding Guideline
 
-> *El conocimiento que no se transfiere se pierde. La capacitacion que no se mide es un acto de fe. Un programa de mentoring efectivo convierte la experiencia individual en capacidad organizacional.*
+> *Knowledge that is not transferred is lost. Training that is not measured is an act of faith. An effective mentoring program converts individual experience into organizational capability.*
 
-1. **La brecha de capacidad es un riesgo de negocio, no solo un tema de RRHH.** Cada skill gap no atendido se manifiesta como velocidad reducida, calidad inconsistente o dependencia critica de individuos. El assessment de capacidad es la primera linea de defensa contra el riesgo operativo.
-2. **El aprendizaje efectivo es contextual y progresivo.** No existe un modelo unico de capacitacion. La combinacion optima de bootcamp, mentoring, on-the-job training y certificacion depende del rol, la experiencia previa y el contexto organizacional.
-3. **Medir no es opcional — es la diferencia entre capacitacion y esperanza.** Sin metricas de adquisicion de conocimiento, tiempo a productividad y retencion, un programa de training es un gasto, no una inversion.
+1. **The capability gap is a business risk, not just an HR topic.** Every unaddressed skill gap manifests as reduced velocity, inconsistent quality, or critical dependency on individuals. Capability assessment is the first line of defense against operational risk.
+2. **Effective learning is contextual and progressive.** There is no one-size-fits-all training model. The optimal combination of bootcamp, mentoring, on-the-job training, and certification depends on the role, prior experience, and organizational context.
+3. **Measuring is not optional — it is the difference between training and hope.** Without metrics for knowledge acquisition, time to productivity, and retention, a training program is an expense, not an investment.
 
 ## Inputs
 
@@ -39,9 +41,9 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario de skills y gap analysis, HITL para diseno de learning paths y modelo de delivery.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Analisis completo automatizado. Assumptions documented.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **paso-a-paso**: Confirms before cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — sections S1, S5, S6 only) | `tecnica` (full, default)
 
@@ -199,18 +201,18 @@ Phased plan with certification milestones and success metrics:
 
 Per phase: dependencies on previous phase, risk factors, contingency if timeline compressed.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Equipo sin ninguna experiencia en el stack objetivo (gap foundational >80%) | Recomendar bootcamp intensivo como Phase 0 obligatoria; no iniciar delivery hasta alcanzar nivel Foundational; escalar si timeline no permite ramp-up |
 | Key person dependency (una persona concentra conocimiento critico en >3 areas) | Flag CRITICAL por bus factor; priorizar knowledge transfer inmediato via pairing/shadowing; documentar tribal knowledge antes de cualquier otra actividad |
 | Organizacion espera 100% billable time sin dedicacion a training | Documentar el riesgo de no invertir en capacitacion; proponer modelo 90/10 como minimo; escalar a sponsor si la expectativa no cambia |
 | Training needs abarcan dominios fuera de la expertise de MetodologIA | Identificar gaps que requieren proveedores externos; recomendar partnerships o certificaciones especificas; no pretender cubrir lo que no se domina |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Usar modelo de 5 niveles de proficiencia (Foundational a Expert) | Binario (sabe / no sabe) | Los 5 niveles permiten disenar learning paths progresivos y medir mejora incremental; el modelo binario no captura crecimiento |
 | Incluir measurement framework como seccion mandatoria (S5) | Training sin metricas de efectividad | Sin metricas de adquisicion, retencion y productividad, un programa de training es un gasto sin evidencia de retorno |
@@ -301,11 +303,11 @@ Hoja 6: Budget de Training (esfuerzo en trainer-days, NO precios)
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Mentoring_Training_Discovery_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_Mentoring_Training_Discovery_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

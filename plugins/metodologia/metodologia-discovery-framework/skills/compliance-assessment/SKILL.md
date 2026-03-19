@@ -21,13 +21,21 @@ allowed-tools:
 
 Compliance assessment identifies gaps between an organization's current practices and applicable regulatory or standards requirements. The skill produces compliance gap matrices, remediation roadmaps, and risk heat maps that enable informed prioritization of compliance investments.
 
+## Grounding Guideline
+
+> *Compliance without evidence is a statement of intentions. Compliance with evidence is a guarantee.*
+
+1. **Traceable evidence.** Every control must have verifiable evidence, not just declarative documentation.
+2. **Regulation as a design constraint.** Regulatory requirements are not added at the end — they are incorporated from the start.
+3. **The cost of non-compliance always exceeds the cost of compliance.** Fines, sanctions, and loss of trust are exponentially more expensive than compliance investment.
+
 ## TL;DR
 
-- Evalua el estado de cumplimiento contra marcos regulatorios aplicables (GDPR, SOX, PCI-DSS, HIPAA, ISO 27001)
-- Genera matriz de brechas con severidad, esfuerzo de remediacion y riesgo residual
-- Produce hoja de ruta de remediacion priorizada por impacto regulatorio y exposicion al riesgo
-- Mapea controles existentes contra requisitos normativos para identificar cobertura y vacios
-- Entrega heat map de riesgo regulatorio para comunicacion ejecutiva
+- Evaluates compliance status against applicable regulatory frameworks (GDPR, SOX, PCI-DSS, HIPAA, ISO 27001)
+- Generates gap matrix with severity, remediation effort, and residual risk
+- Produces remediation roadmap prioritized by regulatory impact and risk exposure
+- Maps existing controls against regulatory requirements to identify coverage and gaps
+- Delivers regulatory risk heat map for executive communication
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{MARCO}`: `GDPR` | `SOX` | `PCI-DSS` | `HIPAA` | `ISO-27001` | `NIST-CSF` | `multi` (default)
 
-## Entregables
+## Deliverables
 
-1. **Matriz de brechas de cumplimiento** — Control-by-control gap analysis against selected framework(s)
-2. **Hoja de ruta de remediacion** — Prioritized action plan with effort estimates, owners, and timelines
-3. **Heat map de riesgo regulatorio** — Visual risk assessment by domain and severity
-4. **Inventario de controles existentes** — Mapping of current controls to regulatory requirements
-5. **Informe ejecutivo de exposicion** — C-level summary of compliance posture and key risks
+1. **Compliance Gap Matrix** — Control-by-control gap analysis against selected framework(s)
+2. **Remediation Roadmap** — Prioritized action plan with effort estimates, owners, and timelines
+3. **Regulatory Risk Heat Map** — Visual risk assessment by domain and severity
+4. **Existing Controls Inventory** — Mapping of current controls to regulatory requirements
+5. **Executive Exposure Report** — C-level summary of compliance posture and key risks
 
-## Proceso
+## Process
 
-1. **Identificar marcos aplicables** — Determine which regulations and standards apply based on industry, geography, data types, and business model
-2. **Inventariar controles existentes** — Catalog current security controls, policies, procedures, and technical safeguards
-3. **Mapear controles a requisitos** — Map existing controls against each requirement of the applicable framework(s)
-4. **Evaluar brechas** — Identify gaps where controls are missing, partial, or ineffective; classify by severity
-5. **Calcular riesgo residual** — Assess likelihood and impact of non-compliance for each gap
-6. **Priorizar remediacion** — Rank remediation actions by regulatory exposure, effort, and business impact
-7. **Disenar hoja de ruta** — Build phased remediation plan with quick wins (0-30 days), medium-term (30-90 days), and strategic (90-365 days)
-8. **Generar heat map** — Produce visual risk heat map for executive communication
+1. **Identify applicable frameworks** — Determine which regulations and standards apply based on industry, geography, data types, and business model
+2. **Inventory existing controls** — Catalog current security controls, policies, procedures, and technical safeguards
+3. **Map controls to requirements** — Map existing controls against each requirement of the applicable framework(s)
+4. **Evaluate gaps** — Identify gaps where controls are missing, partial, or ineffective; classify by severity
+5. **Calculate residual risk** — Assess likelihood and impact of non-compliance for each gap
+6. **Prioritize remediation** — Rank remediation actions by regulatory exposure, effort, and business impact
+7. **Design roadmap** — Build phased remediation plan with quick wins (0-30 days), medium-term (30-90 days), and strategic (90-365 days)
+8. **Generate heat map** — Produce visual risk heat map for executive communication
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] All applicable regulatory frameworks identified and justified
 - [ ] Gap matrix covers 100% of framework requirements (not sampled)
@@ -69,26 +77,26 @@ The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **
 - [ ] No legal advice given — skill produces technical compliance assessment only
 - [ ] Cross-references to related security and architecture assessments
 
-## Supuestos y Limites
+## Assumptions and Limits
 
 - This is a technical compliance assessment, NOT legal advice
 - Assumes access to documentation of existing controls and policies
 - Does not replace formal certification audits (ISO, SOC2, PCI QSA)
 - Regulatory interpretations should be validated by legal counsel
 
-## Casos Borde
+## Edge Cases
 
-1. **Multiples marcos regulatorios superpuestos** — Cuando aplican GDPR + PCI-DSS + SOX simultaneamente, el skill genera una matriz de controles unificada que mapea requisitos compartidos para evitar duplicacion de esfuerzo.
-2. **Organizacion sin documentacion de controles** — Si no existen politicas ni procedimientos documentados, el skill genera un inventario basado en entrevistas/inferencia marcado con [SUPUESTO] y prioriza la documentacion como primer paso de remediacion.
-3. **Regulacion local no cubierta por marcos estandar** — Para normativas locales (ej: Ley 1581 Colombia, LGPD Brasil), el skill estructura la evaluacion con los mismos principios pero requiere input del usuario sobre requisitos especificos.
-4. **Startup en etapa temprana sin controles formales** — El skill adapta la evaluacion para identificar controles minimos viables y genera un roadmap pragmatico en lugar de una gap analysis exhaustiva.
+1. **Multiple overlapping regulatory frameworks** — When GDPR + PCI-DSS + SOX apply simultaneously, the skill generates a unified control matrix that maps shared requirements to avoid effort duplication.
+2. **Organization without control documentation** — If no policies or documented procedures exist, the skill generates an inventory based on interviews/inference tagged with [SUPUESTO] and prioritizes documentation as the first remediation step.
+3. **Local regulation not covered by standard frameworks** — For local regulations (e.g., Ley 1581 Colombia, LGPD Brazil), the skill structures the evaluation with the same principles but requires user input on specific requirements.
+4. **Early-stage startup without formal controls** — The skill adapts the evaluation to identify minimum viable controls and generates a pragmatic roadmap instead of an exhaustive gap analysis.
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-1. **Multi-framework default vs. framework unico** — Default multi porque la mayoria de organizaciones estan sujetas a multiples regulaciones; un solo framework crea falsa sensacion de completitud.
-2. **Gap analysis 100% vs. muestreo** — Se requiere cobertura 100% de requisitos del framework porque los auditores externos evaluan contra la totalidad; el muestreo es insuficiente para certificacion.
-3. **Heat map visual vs. tabla detallada** — Se producen ambos: heat map para comunicacion ejecutiva y tabla detallada para equipos de remediacion; el costo adicional se justifica por las audiencias diferentes.
-4. **Disclaimer legal obligatorio vs. opcional** — Siempre obligatorio; el skill produce evaluacion tecnica, nunca asesoria legal, y esto debe ser explicito para proteger al usuario.
+1. **Multi-framework default vs. single framework** — Default multi because most organizations are subject to multiple regulations; a single framework creates a false sense of completeness.
+2. **100% gap analysis vs. sampling** — 100% coverage of framework requirements is required because external auditors evaluate against the entirety; sampling is insufficient for certification.
+3. **Visual heat map vs. detailed table** — Both are produced: heat map for executive communication and detailed table for remediation teams; the additional cost is justified by the different audiences.
+4. **Mandatory legal disclaimer vs. optional** — Always mandatory; the skill produces technical evaluation, never legal advice, and this must be explicit to protect the user.
 
 ## Knowledge Graph
 
@@ -133,11 +141,11 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_compliance_gap-analysis_{sistema}_{WIP}.docx`
-- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

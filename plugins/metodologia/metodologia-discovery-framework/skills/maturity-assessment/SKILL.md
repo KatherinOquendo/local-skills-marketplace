@@ -7,14 +7,8 @@ description: >
   or evolution plan.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<organizacion-o-equipo> [dominios-a-evaluar]"
-version: 1.0.0
-tags:
-  - maturity
-  - cmmi
-  - capability
-  - assessment
-  - gap-analysis
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -30,13 +24,21 @@ allowed-tools:
 Evaluacion de madurez de capacidades usando modelos CMMI y custom, scoring de estado
 actual vs target, y generacion de roadmap de evolucion.
 
+## Grounding Guideline
+
+> *You cannot improve what has not been honestly diagnosed.*
+
+1. **Maturity is measured, not declared.** Optimistic self-assessments are the enemy of real progress.
+2. **Every level has its value.** Not every organization needs the maximum level — the goal is the right level for its objectives.
+3. **The gap is the opportunity.** The difference between the current and desired level is the improvement roadmap.
+
 ## TL;DR
 
-- Evalua madurez actual de capacidades clave contra modelo de referencia (CMMI o custom)
-- Genera heatmap visual de madurez por dominio y capacidad
-- Identifica gaps criticos entre estado actual y target con root cause
-- Disena plan de evolucion priorizado por impacto en negocio
-- Produce assessment reproducible con criterios explicitos por nivel
+- Assess current maturity of key capabilities against reference model (CMMI or custom)
+- Generate visual maturity heatmap per domain and capability
+- Identify critical gaps between current and target state with root cause
+- Design evolution plan prioritized by business impact
+- Produce reproducible assessment with explicit criteria per level
 
 ## Inputs
 
@@ -48,17 +50,17 @@ Parse `$1` como **nombre de la organizacion/equipo**, `$2` como **dominios a eva
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{MODELO}`: `cmmi` (default) | `custom` | `devops` | `data` | `agile`
 
-## Entregables
+## Deliverables
 
-1. **Maturity Heatmap** — Mapa visual de madurez por dominio (nivel 1-5)
-2. **Gap Analysis** — Comparacion current vs target con gaps priorizados
-3. **Plan de Evolucion** — Roadmap de mejora por trimestre con milestones
-4. **Assessment Report** — Documento detallado con evidencia por cada scoring
-5. **Quick Wins Catalog** — Mejoras de bajo esfuerzo y alto impacto inmediato
+1. **Maturity Heatmap** — Visual maturity map per domain (level 1-5)
+2. **Gap Analysis** — Current vs target comparison with prioritized gaps
+3. **Evolution Plan** — Improvement roadmap per quarter with milestones
+4. **Assessment Report** — Detailed document with evidence for each scoring
+5. **Quick Wins Catalog** — Low-effort, high-impact immediate improvements
 
-## Proceso
+## Process
 
-1. **Definicion de Modelo** — Seleccionar o adaptar modelo de madurez:
+1. **Model Definition** — Select or adapt maturity model:
    | Nivel | Nombre | Caracteristicas |
    |---|---|---|
    | 1 | Inicial | Ad-hoc, reactivo, dependiente de heroes |
@@ -66,18 +68,18 @@ Parse `$1` como **nombre de la organizacion/equipo**, `$2` como **dominios a eva
    | 3 | Definido | Estandarizado, documentado, proactivo |
    | 4 | Cuantitativamente Gestionado | Medido, predecible, basado en datos |
    | 5 | Optimizado | Mejora continua, innovacion sistematica |
-2. **Identificacion de Capacidades** — Definir capacidades a evaluar por dominio:
+2. **Capability Identification** — Define capabilities to assess per domain:
    - Desarrollo: CI/CD, testing, code review, architecture
    - Operaciones: monitoring, incident response, capacity planning
    - Datos: data quality, governance, analytics, ML ops
    - Personas: skills, cultura, onboarding, retention
    - Procesos: agile practices, delivery, estimation
-3. **Evaluacion por Capacidad** — Scoring 1-5 con evidencia explicita y justificacion
-4. **Gap Analysis** — Calcular delta current vs target, identificar root causes de gaps
-5. **Priorizacion** — Ordenar gaps por impacto en negocio x viabilidad de cierre
-6. **Plan de Evolucion** — Disenar roadmap con milestones trimestrales, metricas de progreso, y criterios de exito
+3. **Per-Capability Assessment** — Scoring 1-5 with explicit evidence and justification
+4. **Gap Analysis** — Calculate current vs target delta, identify root causes of gaps
+5. **Prioritization** — Order gaps by business impact x closure feasibility
+6. **Evolution Plan** — Design roadmap with quarterly milestones, progress metrics, and success criteria
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Modelo de madurez definido con criterios explicitos por nivel
 - [ ] Todas las capacidades evaluadas con evidencia trazable
@@ -87,14 +89,14 @@ Parse `$1` como **nombre de la organizacion/equipo**, `$2` como **dominios a eva
 - [ ] Quick wins identificados con impacto estimado
 - [ ] Assessment reproducible por evaluador independiente
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Scoring de madurez es cualitativo salvo que existan auditorias o metricas previas
 - El modelo de 5 niveles es una simplificacion; realidad organizacional tiene matices entre niveles
 - Evaluacion depende de la honestidad y representatividad de los informantes
 - No reemplaza auditorias formales CMMI — produce assessment orientativo para mejora interna
 
-## Casos Borde
+## Edge Cases
 
 | Escenario | Estrategia de Manejo |
 |---|---|
@@ -103,7 +105,7 @@ Parse `$1` como **nombre de la organizacion/equipo**, `$2` como **dominios a eva
 | Evaluacion politizada (stakeholders quieren inflar scores) | Exigir evidencia trazable por cada score; calibrar con assessment cruzado entre evaluadores |
 | Modelo CMMI no aplica al dominio (e.g., data science, design) | Adaptar modelo custom con niveles equivalentes; documentar mapeo entre modelo custom y CMMI |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Habilita | Restringe | Justificacion |
 |---|---|---|---|
@@ -157,11 +159,11 @@ graph TD
 
 **Formato 4 — DOCX (bajo demanda)**
 - Filename: `{fase}_Maturity_Assessment_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 **Formato 5 — PPTX (bajo demanda)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
 
 ## Evaluacion
 

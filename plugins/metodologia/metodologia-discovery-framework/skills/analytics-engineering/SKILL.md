@@ -21,9 +21,9 @@ allowed-tools:
 
 Analytics engineering defines how raw data is transformed into reliable, documented, and tested analytical models — source-to-target mapping, modeling patterns, transformation frameworks, testing, and documentation. This skill produces analytics engineering documentation that enables teams to build maintainable, trustworthy data transformation pipelines.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un modelo analítico sin tests es una opinión con formato de tabla.** Los tests son ciudadanos de primera clase — no un afterthought. La documentación es parte del modelo, no un artefacto separado. Incremental sobre full-refresh siempre que el volumen lo justifique. Cada modelo tiene grain explícito, owner identificado, y contract enforced en CI.
+**An analytical model without tests is an opinion formatted as a table.** Tests are first-class citizens — not an afterthought. Documentation is part of the model, not a separate artifact. Incremental over full-refresh whenever volume justifies it. Every model has explicit grain, identified owner, and contract enforced in CI.
 
 ## Inputs
 
@@ -32,7 +32,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para staging y naming conventions, HITL para modeling patterns y data contracts.
-  - **desatendido**: Cero interrupciones. Pipeline completo documentado automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Pipeline completo documentado automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en modeling pattern selection y testing strategy.
   - **paso-a-paso**: Confirma cada modelo, materialization, test y exposure.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -321,24 +321,24 @@ Before finalizing delivery, verify:
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Legacy Stored Procedures Migration | Mapear logica existente a dbt models, preservar business rules, validacion en paralelo. Esperar 20-30% de logica obsoleta o duplicada. |
-| Multi-Warehouse Environment | Modelos consumidos entre Snowflake, BigQuery y Redshift. Usar cross-database macros, abstraer SQL warehouse-specific, testear en cada plataforma. |
-| Real-Time Transformation Needs | dbt es batch-oriented. Para streaming, considerar Materialize, RisingWave, o SQLMesh con streaming. Arquitectura hibrida: batch marts enriquecidos por streaming aggregates. |
-| Massive Scale (10B+ Rows) | Incremental models mandatorio. Microbatch strategy, partition pruning y clustering criticos. Profile query plans antes y despues. |
-| Single Analytics Engineer | Skip intermediate layers inicialmente. Staging + marts. Agregar capas conforme crece la complejidad. Documentacion critica para bus-factor. |
+| Legacy Stored Procedures Migration | Map existing logic to dbt models, preserve business rules, parallel validation. Expect 20-30% of logic to be obsolete or duplicated. |
+| Multi-Warehouse Environment | Models consumed across Snowflake, BigQuery, and Redshift. Use cross-database macros, abstract warehouse-specific SQL, test on each platform. |
+| Real-Time Transformation Needs | dbt is batch-oriented. For streaming, consider Materialize, RisingWave, or SQLMesh with streaming. Hybrid architecture: batch marts enriched by streaming aggregates. |
+| Massive Scale (10B+ Rows) | Incremental models mandatory. Microbatch strategy, partition pruning, and clustering critical. Profile query plans before and after. |
+| Single Analytics Engineer | Skip intermediate layers initially. Staging + marts. Add layers as complexity grows. Documentation critical for bus-factor. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| dbt como framework de referencia | SQLMesh, Dataform, stored procedures | dbt tiene el ecosistema mas grande (10K+ contributors), rich testing framework, y es standard de facto para analytics engineering. El skill adapta a alternativas cuando se detectan. |
-| Star schema como patron default | One Big Table, Data Vault | Star schema balancea query performance, intuitividad para BI tools, y flexibilidad para multiples patrones de consumo. OBT se recomienda para single-use analytics. |
-| Testing pyramid con contracts en CI | Tests solo en produccion, validacion manual | Contracts en CI previenen breaking changes antes de merge. Testing solo en produccion detecta problemas tarde y con mayor blast radius. |
-| Naming conventions estrictas (stg_, fct_, dim_) | Naming libre por equipo | Prefijos estandar habilitan CI rules automaticas, lineage auto-detectada, y onboarding rapido. El costo es rigidez inicial. |
+| dbt as reference framework | SQLMesh, Dataform, stored procedures | dbt has the largest ecosystem (10K+ contributors), rich testing framework, and is the de facto standard for analytics engineering. The skill adapts to alternatives when detected. |
+| Star schema as default pattern | One Big Table, Data Vault | Star schema balances query performance, intuitiveness for BI tools, and flexibility for multiple consumption patterns. OBT is recommended for single-use analytics. |
+| Testing pyramid with contracts in CI | Tests only in production, manual validation | Contracts in CI prevent breaking changes before merge. Testing only in production detects problems late with larger blast radius. |
+| Strict naming conventions (stg_, fct_, dim_) | Free naming per team | Standard prefixes enable automated CI rules, auto-detected lineage, and rapid onboarding. The cost is initial rigidity. |
 
 ## Knowledge Graph
 
@@ -437,7 +437,7 @@ Sheet 5: Cost Attribution — model, warehouse, avg duration, estimated cost/run
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

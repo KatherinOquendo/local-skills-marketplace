@@ -21,15 +21,15 @@ allowed-tools:
 
 Security architecture defines how systems protect data, verify identity, enforce access, and maintain compliance across the entire technology stack. The skill produces comprehensive security designs covering threat modeling, zero trust implementation, identity management, data protection, application security pipelines, and compliance mapping.
 
-## Principio Rector
+## Grounding Guideline
 
-**La seguridad que depende de un perímetro ya fue comprometida.** Zero Trust no es un producto — es una filosofía de diseño. Threat modeling antes de diseñar, compliance como piso mínimo no techo máximo, y cada decisión de seguridad documentada antes de implementar.
+**Security that depends on a perimeter has already been compromised.** Zero Trust is not a product — it is a design philosophy. Threat modeling before designing, compliance as a minimum floor not a maximum ceiling, and every security decision documented before implementing.
 
-### Filosofía de Security Architecture
+### Security Architecture Philosophy
 
-1. **Zero Trust everywhere.** No hay red confiable, no hay usuario confiable, no hay servicio confiable. Cada request se autentica, autoriza y cifra — sin excepciones.
-2. **Threat modeling before design.** Modelar amenazas DESPUÉS del diseño es auditoría. Modelarlas ANTES es arquitectura. STRIDE/PASTA en la fase de diseño reduce 100x el costo de remediación.
-3. **Compliance is minimum bar, not maximum goal.** Pasar un audit no significa ser seguro. Los frameworks (SOC2, PCI-DSS, ISO 27001) definen el piso — la arquitectura de seguridad define el techo.
+1. **Zero Trust everywhere.** There is no trusted network, no trusted user, no trusted service. Every request is authenticated, authorized, and encrypted — no exceptions.
+2. **Threat modeling before design.** Modeling threats AFTER design is auditing. Modeling them BEFORE is architecture. STRIDE/PASTA in the design phase reduces remediation cost by 100x.
+3. **Compliance is minimum bar, not maximum goal.** Passing an audit does not mean being secure. Frameworks (SOC2, PCI-DSS, ISO 27001) define the floor — security architecture defines the ceiling.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or organization name as `$ARGUMENTS`. Parse `$1` as t
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para threat enumeration y control mapping, HITL para Zero Trust maturity y compliance scope decisions.
-  - **desatendido**: Cero interrupciones. Security architecture documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Security architecture documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en threat model review y IAM design.
   - **paso-a-paso**: Confirma cada threat, mitigation, encryption decision, y compliance mapping.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -360,7 +360,7 @@ Matriz de controles de seguridad: filas por framework regulatorio (SOC2, ISO2700
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_security_architecture_{cliente}_{WIP}.docx`
-- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del sistema y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Threat Model (STRIDE/PASTA), Zero Trust Design, IAM Architecture, Data Protection, AppSec Pipeline, Compliance Control Matrix.
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del sistema y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Threat Model (STRIDE/PASTA), Zero Trust Design, IAM Architecture, Data Protection, AppSec Pipeline, Compliance Control Matrix.
 
 ### HTML (bajo demanda)
 - Filename: `{fase}_security_architecture_{cliente}_{WIP}.html`
@@ -368,7 +368,7 @@ Matriz de controles de seguridad: filas por framework regulatorio (SOC2, ISO2700
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_security_architecture_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Threat Model (STRIDE/PASTA), Zero Trust Maturity Model, IAM Architecture, Data Protection Strategy, AppSec Pipeline, Compliance Control Matrix (SOC2/ISO27001/PCI-DSS/HIPAA/GDPR).
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Threat Model (STRIDE/PASTA), Zero Trust Maturity Model, IAM Architecture, Data Protection Strategy, AppSec Pipeline, Compliance Control Matrix (SOC2/ISO27001/PCI-DSS/HIPAA/GDPR).
 
 ## Evaluacion
 

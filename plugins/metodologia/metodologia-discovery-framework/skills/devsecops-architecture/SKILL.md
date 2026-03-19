@@ -17,21 +17,21 @@ allowed-tools:
   - Bash
 ---
 
-> **Alcance:** Este skill aplica a `{TIPO_SERVICIO}=SDA` y `{TIPO_SERVICIO}=Cloud`. Los pipelines CI/CD y la seguridad en el ciclo de desarrollo son inherentes a estas líneas de servicio. Para seguridad en otros contextos, consulte `security-architecture`.
+> **Scope:** This skill applies to `{TIPO_SERVICIO}=SDA` and `{TIPO_SERVICIO}=Cloud`. CI/CD pipelines and development lifecycle security are inherent to these service lines. For security in other contexts, see `security-architecture`.
 
 # DevSecOps Architecture: Delivery & Security Pipeline
 
 DevSecOps architecture designs how software is built, tested, secured, and released to production. It integrates security into every stage of the delivery pipeline, ensuring code quality, compliance, and supply chain integrity.
 
-## Principio Rector
+## Grounding Guideline
 
-**La seguridad que se agrega al final es la seguridad que se olvida.** DevSecOps integra seguridad en cada etapa del pipeline: desde el commit hasta producción. SAST antes de merge, SCA en cada build, DAST en staging, y runtime protection en producción. El pipeline es la última línea de defensa antes del cliente.
+**Security added at the end is security that gets forgotten.** DevSecOps integrates security into every pipeline stage: from commit to production. SAST before merge, SCA on every build, DAST in staging, and runtime protection in production. The pipeline is the last line of defense before the customer.
 
-### Filosofía DevSecOps
+### DevSecOps Philosophy
 
-1. **Shift-left, pero no solo-left.** La seguridad empieza en el IDE, pero no termina ahí. Cada stage del pipeline tiene su gate de seguridad.
-2. **Supply chain integrity.** SBOM, artifact signing, dependency scanning — la cadena de suministro de software es un vector de ataque. Se verifica, no se asume.
-3. **DORA metrics como North Star.** Deployment frequency, lead time, failure rate, MTTR — medir para mejorar, no para reportar.
+1. **Shift-left, but not only-left.** Security starts in the IDE but does not end there. Every pipeline stage has its own security gate.
+2. **Supply chain integrity.** SBOM, artifact signing, dependency scanning — the software supply chain is an attack vector. It is verified, not assumed.
+3. **DORA metrics as North Star.** Deployment frequency, lead time, failure rate, MTTR — measure to improve, not to report.
 
 ## Inputs
 
@@ -40,7 +40,7 @@ The user provides a system or pipeline name as `$ARGUMENTS`. Parse `$1` as the *
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para análisis de pipeline y security gates, HITL para decisiones de deployment strategy y compliance policies.
-  - **desatendido**: Cero interrupciones. Pipeline documentado automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Pipeline documentado automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en security gates, deployment strategy, y compliance automation.
   - **paso-a-paso**: Confirma cada stage, security gate, deployment strategy, y compliance policy.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -244,9 +244,9 @@ Security gates: non-negotiable vs. optional by risk classification.
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Sistema legacy sin pipeline | Construir pipeline incrementalmente: tests primero, luego automatizacion, luego gates; no intentar todo de una vez |
 | Sistema de alta compliance (financiero, salud) | Cada cambio requiere audit trail, aprobacion y evidencia; security gates mandatorios; automatizar coleccion de evidencia de compliance |
@@ -254,9 +254,9 @@ Security gates: non-negotiable vs. optional by risk classification.
 | Microservicios distribuidos (cientos de servicios) | Pipeline monolitico no escala; platform team provee template compartido; service teams customizar; contratos de integracion validados en pipeline |
 | Riesgo de compromiso de supply chain | Artefactos firmados, build environment inmutable, provenance attestation; verificar integridad end-to-end desde commit hasta produccion |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Seguridad integrada en cada stage del pipeline | Seguridad como gate final antes de produccion | La seguridad que se agrega al final es la que se olvida; shift-left con SAST, SCA y secrets scanning en cada etapa reduce costo de remediacion |
 | Supply chain integrity (SBOM + signing) obligatorio | Confiar en dependencias sin verificacion | La cadena de suministro de software es un vector de ataque creciente; verificar integridad es mas barato que remediar un compromiso |
@@ -319,9 +319,9 @@ graph TD
 |---|---|---|
 | **Markdown** | `A-05_DevSecOps_Architecture_Deep.md` | Documento completo con CI/CD pipeline, shift-left security, supply chain, release management, pipeline observability, compliance automation y risk matrix. Diagramas Mermaid de pipeline stages y security gates. |
 | **HTML** | `A-05_DevSecOps_Architecture_Deep.html` | Mismo contenido en HTML branded (Design System MetodologIA). Pipeline diagram interactivo, DORA metrics dashboard template, y compliance evidence tracker. |
-| **DOCX** | `{fase}_{entregable}_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría. |
+| **DOCX** | `{fase}_{entregable}_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría. |
 | **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por severidad/estado, auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: DORA Metrics Tracker, Security Gates Matrix, Pipeline Stage Checklist, Risk Matrix. |
-| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 30 slides técnico / 20 ejecutivo. Notas del orador con referencias de evidencia. Secciones: CI/CD Pipeline Overview, Shift-Left Security Gates, Supply Chain Integrity, Release Management, DORA Metrics Dashboard, Compliance Automation, Risk Matrix. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 30 slides técnico / 20 ejecutivo. Notas del orador con referencias de evidencia. Secciones: CI/CD Pipeline Overview, Shift-Left Security Gates, Supply Chain Integrity, Release Management, DORA Metrics Dashboard, Compliance Automation, Risk Matrix. |
 
 ## Evaluacion
 

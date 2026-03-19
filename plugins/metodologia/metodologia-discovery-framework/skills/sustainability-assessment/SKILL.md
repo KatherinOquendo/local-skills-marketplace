@@ -7,14 +7,8 @@ description: >
   architecture, or environmental impact of technology.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-u-organizacion> [scope-de-infraestructura]"
-version: 1.0.0
-tags:
-  - sustainability
-  - green-it
-  - carbon-footprint
-  - energy-efficiency
-  - esg
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -25,40 +19,48 @@ allowed-tools:
   - WebFetch
 ---
 
-# Evaluacion de Sostenibilidad
+# Sustainability Assessment
 
-Evaluacion de Green IT, estimacion de huella de carbono, analisis de eficiencia energetica
-y recomendaciones de patrones de arquitectura sostenible.
+Green IT evaluation, carbon footprint estimation, energy efficiency analysis,
+and sustainable architecture pattern recommendations.
+
+## Grounding Guideline
+
+> *Technological sustainability is not a nice-to-have — it is a long-term viability dimension.*
+
+1. **Green IT is measurable efficiency.** Every architectural decision has an energy cost and a quantifiable environmental impact.
+2. **Sustainability does not equal performance sacrifice.** Efficient architectures tend to be the most sustainable.
+3. **Impact transparency.** If the footprint is not measured, it cannot be reduced.
 
 ## TL;DR
 
-- Evalua impacto ambiental de infraestructura y arquitectura de software actual
-- Estima huella de carbono de compute, storage, networking y desarrollo
-- Identifica oportunidades de optimizacion energetica con impacto cuantificado
-- Recomienda patrones de arquitectura sostenible (right-sizing, serverless, edge computing)
-- Genera scorecard de sostenibilidad alineado con reportes ESG
+- Evaluates environmental impact of current infrastructure and software architecture
+- Estimates carbon footprint of compute, storage, networking, and development
+- Identifies energy optimization opportunities with quantified impact
+- Recommends sustainable architecture patterns (right-sizing, serverless, edge computing)
+- Generates sustainability scorecard aligned with ESG reports
 
 ## Inputs
 
-Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **scope de infraestructura**.
+Parse `$1` as **project/organization name**, `$2` as **infrastructure scope**.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **Sustainability Scorecard** — Evaluacion por dimension (compute, storage, networking, development)
-2. **Carbon Estimate** — Estimacion de huella de carbono con metodologia transparente
-3. **Green Architecture Recommendations** — Patrones sostenibles aplicables al contexto
-4. **Optimization Roadmap** — Plan de reduccion de impacto ambiental priorizado
-5. **ESG Alignment Report** — Mapeo de iniciativas contra requisitos ESG
+1. **Sustainability Scorecard** — Evaluation per dimension (compute, storage, networking, development)
+2. **Carbon Estimate** — Carbon footprint estimation with transparent methodology
+3. **Green Architecture Recommendations** — Sustainable patterns applicable to the context
+4. **Optimization Roadmap** — Prioritized environmental impact reduction plan
+5. **ESG Alignment Report** — Initiative mapping against ESG requirements
 
-## Proceso
+## Process
 
-1. **Inventario de Infraestructura** — Mapear recursos de compute, storage, networking con utilizacion actual
-2. **Estimacion de Carbon Footprint** — Calcular emisiones por categoria:
+1. **Infrastructure Inventory** — Map compute, storage, networking resources with current utilization
+2. **Carbon Footprint Estimation** — Calculate emissions per category:
    | Categoria | Factores | Fuente de Datos |
    |---|---|---|
    | Compute | CPU/GPU hours x PUE x carbon intensity | Cloud provider reports, billing |
@@ -66,21 +68,21 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **scope de infra
    | Networking | Data transfer x energy per GB | Traffic analysis |
    | Development | CI/CD pipeline runs, build compute | Pipeline metrics |
    | End user | Client-side compute, data transfer | Analytics data |
-3. **Analisis de Eficiencia** — Identificar desperdicio:
+3. **Efficiency Analysis** — Identify waste:
    - Over-provisioned resources (utilization <20%)
    - Idle resources (dev/staging environments 24/7)
-   - Redundant data copies y backups sin politica de retencion
-   - Pipelines ineficientes (builds largos, tests redundantes)
-4. **Patrones Sostenibles** — Recomendar segun contexto:
-   - Right-sizing y auto-scaling
-   - Serverless para workloads intermitentes
-   - Edge computing para reducir data transfer
-   - Region selection por carbon intensity del grid
-   - Efficient algorithms y data structures
-5. **Plan de Optimizacion** — Priorizar por reduccion de carbon x esfuerzo
-6. **Alineacion ESG** — Mapear iniciativas contra frameworks de reporte (GRI, SASB)
+   - Redundant data copies and backups without retention policy
+   - Inefficient pipelines (long builds, redundant tests)
+4. **Sustainable Patterns** — Recommend based on context:
+   - Right-sizing and auto-scaling
+   - Serverless for intermittent workloads
+   - Edge computing to reduce data transfer
+   - Region selection by grid carbon intensity
+   - Efficient algorithms and data structures
+5. **Optimization Plan** — Prioritize by carbon reduction x effort
+6. **ESG Alignment** — Map initiatives against reporting frameworks (GRI, SASB)
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Inventario de infraestructura completo con metricas de utilizacion
 - [ ] Estimacion de carbon footprint con metodologia documentada y fuentes citadas
@@ -90,14 +92,14 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **scope de infra
 - [ ] Alineacion con requisitos ESG si aplica
 - [ ] Disclaimer sobre precision de estimaciones (orden de magnitud)
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Estimaciones de carbon footprint son orden de magnitud, no mediciones precisas
 - Factores de emision dependen de la region y el proveedor de cloud; se usan promedios publicados
 - No reemplaza auditorias ambientales certificadas (ISO 14001)
 - Datos de utilizacion de infraestructura son estimados si no existe monitoring activo
 
-## Casos Borde
+## Edge Cases
 
 | Escenario | Estrategia de Manejo |
 |---|---|
@@ -106,7 +108,7 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **scope de infra
 | Organizacion sin objetivos ESG definidos | Generar baseline de carbon footprint como punto de partida; proponer objetivos de reduccion basados en benchmarks de industria |
 | Workloads de AI/ML con alto consumo de GPU | Evaluar por separado con factores de emision especificos para GPU; recomendar training scheduling en horas de baja carbon intensity |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Habilita | Restringe | Justificacion |
 |---|---|---|---|
@@ -157,15 +159,15 @@ graph TD
 
 **Formato 3 — DOCX (bajo demanda)**
 - Filename: `{fase}_sustainability_assessment_{cliente}_{WIP}.docx`
-- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Inventario de Infraestructura, Carbon Footprint Estimate, Análisis de Eficiencia, Patrones Sostenibles, Optimization Roadmap, ESG Alignment Report.
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Inventario de Infraestructura, Carbon Footprint Estimate, Análisis de Eficiencia, Patrones Sostenibles, Optimization Roadmap, ESG Alignment Report.
 
 **Formato 4 — PPTX (bajo demanda)**
 - Filename: `{fase}_sustainability_assessment_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo (sustainability scorecard), Carbon Footprint por categoría (gráfico), Top oportunidades de eficiencia, Green Architecture Recommendations, Optimization Roadmap (quick wins + estratégicos), ESG Alignment, próximos pasos.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo (sustainability scorecard), Carbon Footprint por categoría (gráfico), Top oportunidades de eficiencia, Green Architecture Recommendations, Optimization Roadmap (quick wins + estratégicos), ESG Alignment, próximos pasos.
 
 **Formato 5 — XLSX (bajo demanda)**
 - Filename: `{fase}_sustainability_assessment_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Infrastructure Inventory (recurso, tipo, región, utilizacion actual %, over-provisioned flag), Carbon Estimate (categoría, factor de emisión, unidad consumida, emisiones kgCO2e, fuente de dato), Efficiency Opportunities (recurso, tipo de desperdicio, reducción estimada %, impacto en carbon, prioridad), Green Architecture Patterns (patrón, aplicabilidad al contexto, reducción estimada, esfuerzo, trade-offs), Optimization Roadmap (iniciativa, horizonte, reducción kgCO2e, quick-win flag, owner). Conditional formatting por utilización (bajo/medio/alto) y nivel de prioridad de optimización. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Infrastructure Inventory (recurso, tipo, región, utilizacion actual %, over-provisioned flag), Carbon Estimate (categoría, factor de emisión, unidad consumida, emisiones kgCO2e, fuente de dato), Efficiency Opportunities (recurso, tipo de desperdicio, reducción estimada %, impacto en carbon, prioridad), Green Architecture Patterns (patrón, aplicabilidad al contexto, reducción estimada, esfuerzo, trade-offs), Optimization Roadmap (iniciativa, horizonte, reducción kgCO2e, quick-win flag, owner). Conditional formatting por utilización (bajo/medio/alto) y nivel de prioridad de optimización. Auto-filters en todas las hojas. Valores directos sin fórmulas.
 
 ## Evaluacion
 

@@ -21,7 +21,7 @@ Audit a MetodologIA HTML deliverable for Design System v4 compliance. Produce a 
 
 MetodologIA v4 uses yellow for positive states because it maintains warmth within the orange-black palette. Green introduces a cold tone.
 
-- Verify semantic colors: `--metodologia-positive` = #22D3EE (yellow), `--metodologia-critical` = #DC2626, `--metodologia-warning` = #D97706, `--metodologia-info` = #2563EB
+- Verify semantic colors: `--metodologia-positive` = #FFD700 (yellow), `--metodologia-critical` = #DC2626, `--metodologia-warning` = #D97706, `--metodologia-info` = #2563EB
 - Flag any green (#28a745, #22c55e, #10B981, #42D36F) used for success states
 - Check for hardcoded hex codes that should be CSS variables
 - Verify WCAG AA contrast (4.5:1 body text, 3:1 large text)
@@ -29,10 +29,10 @@ MetodologIA v4 uses yellow for positive states because it maintains warmth withi
 
 ### 2. Typography
 
-- Display headings (h1-h4): Clash Grotesk, weights 600-700
+- Display headings (h1-h4): Poppins, weights 600-700
 - Body text: Inter, weights 400-500
-- Font loading: Google Fonts for Inter, Fontshare API for Clash Grotesk
-- No reversed pairings (Inter for headings or Clash Grotesk for body)
+- Font loading: Google Fonts for Inter, Fontshare API for Poppins
+- No reversed pairings (Inter for headings or Poppins for body)
 
 ### 3. Structure
 

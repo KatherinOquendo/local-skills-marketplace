@@ -9,6 +9,8 @@ description: >
   "legacy system review", "technical health check".
 argument-hint: "<codebase-path-or-project-name>"
 author: Javier Montano · Comunidad MetodologIA
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -22,13 +24,13 @@ allowed-tools:
 
 Generates a 10-section current-state assessment for ANY MetodologIA service type (SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design). For software codebases (SDA), produces: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. For other service types, sections S1-S8 adapt to domain-specific dimensions while S0 (Executive Dashboard), S9 (Risk Register), and S10 (Recommendations) remain universal.
 
-## Principio Rector
+## Grounding Guideline
 
-> *No se puede trazar un camino hacia el futuro sin comprender con honestidad brutal dónde se está parado hoy.*
+> *You cannot chart a path to the future without understanding with brutal honesty where you stand today.*
 
-1. **Diagnóstico basado en evidencia, no en opinión.** Cada hallazgo debe estar respaldado por métricas extraídas del código, configuración o historial operativo. La intuición guía la exploración; la evidencia sustenta la conclusión.
-2. **El presente contiene las semillas del futuro.** Las decisiones arquitectónicas heredadas no son errores — son contexto. Comprender *por qué* se tomaron revela restricciones que cualquier transformación debe respetar o explícitamente romper.
-3. **La deuda técnica es deuda de conocimiento.** Cada atajo no documentado, cada patrón inconsistente, cada test ausente representa conocimiento que el equipo decidió no capturar. El análisis AS-IS restaura ese conocimiento antes de que se pierda.
+1. **Evidence-based diagnosis, not opinion.** Every finding must be backed by metrics extracted from code, configuration, or operational history. Intuition guides exploration; evidence supports the conclusion.
+2. **The present contains the seeds of the future.** Inherited architectural decisions are not mistakes — they are context. Understanding *why* they were made reveals constraints that any transformation must respect or explicitly break.
+3. **Technical debt is knowledge debt.** Every undocumented shortcut, every inconsistent pattern, every missing test represents knowledge the team chose not to capture. The AS-IS analysis restores that knowledge before it is lost.
 
 ## Inputs
 
@@ -40,9 +42,9 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para extracción de métricas y análisis de código, HITL para hallazgos de seguridad y decisiones de escalamiento.
-  - **desatendido**: Cero interrupciones. Análisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Análisis completo automatizado. Assumptions documented.
   - **supervisado**: Autónomo con reportes al completar cada sección del framework.
-  - **paso-a-paso**: Confirma antes de cada sección del análisis.
+  - **paso-a-paso**: Confirms before cada sección del análisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — sections S0, S5, S9, S10 only) | `técnica` (full, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
@@ -339,26 +341,26 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - C4 Container diagram: internal components and their relationships
 - Mindmap: technology stack overview
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Monorepo con multiples deployment units | Descomponer por deployment unit. Analizar coupling entre units. Metricas por servicio separado. |
-| No CI/CD configurado | Inferir de Dockerfiles, cloud configs, README scripts. Flag inference risk explicitamente. |
-| No test suite existente | Flag coverage como CRITICAL (0%). Extrapolar quality risk via complexity. Recomendar test buildout prioritario. |
-| Multiples lenguajes en codebase | Metricas por lenguaje separadas. +1 risk por lenguaje adicional por carga de integracion. |
-| Sistema >500K LOC | Analisis faseado: Tier 1 core domains, Tier 2 supporting. Executive summary + deep-dives priorizados. |
-| Framework EOL detectado | Escalar a CRITICAL risk. Documentar security exposure y upgrade path complexity. |
-| Vendor lock-in con dependencias propietarias | Flag dependencias propietarias con migration cost estimates y alternativas open-source. |
+| Monorepo with multiple deployment units | Decompose per deployment unit. Analyze coupling between units. Metrics per service separately. |
+| No CI/CD configured | Infer from Dockerfiles, cloud configs, README scripts. Flag inference risk explicitly. |
+| No existing test suite | Flag coverage as CRITICAL (0%). Extrapolate quality risk via complexity. Recommend priority test buildout. |
+| Multiple languages in codebase | Metrics per language separately. +1 risk per additional language for integration burden. |
+| System >500K LOC | Phased analysis: Tier 1 core domains, Tier 2 supporting. Executive summary + prioritized deep-dives. |
+| EOL framework detected | Escalate to CRITICAL risk. Document security exposure and upgrade path complexity. |
+| Vendor lock-in with proprietary dependencies | Flag proprietary dependencies with migration cost estimates and open-source alternatives. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| 10 secciones como framework universal | Framework de 5 secciones, assessment libre | 10 secciones cubren el espectro completo (exec, tech, arch, quality, debt, NFR, security, ops, risk, recommendations). Sections S0, S9, S10 son universales cross-service-type. |
-| Service-type variants para S1-S8 | Framework unico para todos los tipos de servicio | SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design tienen dimensiones de evaluacion fundamentalmente diferentes. Adaptar S1-S8 maximiza relevancia. |
-| Evidence-based diagnostico con tags | Opinion-based assessment | Tags [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO] garantizan trazabilidad. Cada hallazgo tiene backing verificable. |
-| Cross-section traceability (S10 to S0-S9) | Recomendaciones desconectadas de hallazgos | Toda recomendacion S10 referencia evidencia de secciones previas. Elimina recomendaciones sin fundamento. |
+| 10 sections as universal framework | 5-section framework, free-form assessment | 10 sections cover the full spectrum (exec, tech, arch, quality, debt, NFR, security, ops, risk, recommendations). Sections S0, S9, S10 are universal cross-service-type. |
+| Service-type variants for S1-S8 | Single framework for all service types | SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design have fundamentally different evaluation dimensions. Adapting S1-S8 maximizes relevance. |
+| Evidence-based diagnosis with tags | Opinion-based assessment | Tags [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO] guarantee traceability. Every finding has verifiable backing. |
+| Cross-section traceability (S10 to S0-S9) | Recommendations disconnected from findings | Every S10 recommendation references evidence from previous sections. Eliminates unfounded recommendations. |
 
 ## Knowledge Graph
 
@@ -457,7 +459,7 @@ HTML branded con Design System MetodologIA:
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

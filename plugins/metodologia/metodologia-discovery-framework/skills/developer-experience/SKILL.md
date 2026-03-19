@@ -7,14 +7,8 @@ description: >
   or cognitive load reduction.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-u-organizacion> [equipo-o-plataforma]"
-version: 1.0.0
-tags:
-  - developer-experience
-  - dx
-  - productivity
-  - toolchain
-  - inner-loop
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -30,13 +24,21 @@ allowed-tools:
 Assessment integral de la experiencia del desarrollador, optimizacion del inner loop,
 evaluacion de toolchain y analisis de friccion en onboarding.
 
+## Grounding Guideline
+
+> *Developer experience is not a luxury — it is a productivity multiplier.*
+
+1. **DX is measured, not assumed.** Surveys, cycle metrics, and friction logs reveal the reality that leads cannot see.
+2. **Every minute of friction multiplies by team size.** A process that wastes 5 minutes per dev per day costs 20 hours/month in a 50-person team.
+3. **Tools must serve the developer, not the other way around.** If the tool requires more work than it saves, it is the wrong tool.
+
 ## TL;DR
 
-- Evalua DX actual con metricas de inner loop (code-build-test-debug cycle time)
-- Identifica puntos de friccion en toolchain, procesos y cognitive load
-- Benchmarca contra estandares de industria (DORA, SPACE framework)
-- Prioriza mejoras por impacto en productividad y satisfaccion
-- Genera scorecard DX con improvement backlog accionable
+- Assess current DX with inner loop metrics (code-build-test-debug cycle time)
+- Identify friction points in toolchain, processes, and cognitive load
+- Benchmark against industry standards (DORA, SPACE framework)
+- Prioritize improvements by productivity and satisfaction impact
+- Generate DX scorecard with actionable improvement backlog
 
 ## Inputs
 
@@ -47,31 +49,31 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **equipo o plata
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **DX Scorecard** — Evaluacion cuantitativa por dimension (inner loop, toolchain, docs, onboarding, CI/CD)
-2. **Improvement Backlog** — Lista priorizada de mejoras con impacto estimado
-3. **Toolchain Map** — Mapa visual de herramientas actuales con gaps y redundancias
-4. **Friction Analysis** — Puntos de friccion identificados con root cause y solucion propuesta
-5. **Benchmark Report** — Comparacion contra estandares DORA/SPACE
+1. **DX Scorecard** — Quantitative assessment per dimension (inner loop, toolchain, docs, onboarding, CI/CD)
+2. **Improvement Backlog** — Prioritized list of improvements with estimated impact
+3. **Toolchain Map** — Visual map of current tools with gaps and redundancies
+4. **Friction Analysis** — Identified friction points with root cause and proposed solution
+5. **Benchmark Report** — Comparison against DORA/SPACE standards
 
-## Proceso
+## Process
 
-1. **Medicion de Inner Loop** — Evaluar tiempos de ciclo:
+1. **Inner Loop Measurement** — Assess cycle times:
    | Metrica | Excelente | Aceptable | Problema |
    |---|---|---|---|
    | Build time (local) | <30s | 30s-3min | >3min |
    | Test suite (unit) | <1min | 1-5min | >5min |
-   | Hot reload | <2s | 2-10s | >10s o inexistente |
+   | Hot reload | <2s | 2-10s | >10s or nonexistent |
    | PR to merge | <4h | 4-24h | >24h |
    | Deploy to staging | <15min | 15-60min | >60min |
-2. **Evaluacion de Toolchain** — Inventariar herramientas por categoria (IDE, VCS, CI/CD, observability, collaboration), detectar gaps y redundancias
-3. **Analisis de Cognitive Load** — Evaluar complejidad de setup local, numero de herramientas, context switching, documentacion disponible
-4. **Assessment de Onboarding** — Medir tiempo de primer commit productivo, gaps en documentacion, dependencia de conocimiento tribal
-5. **Benchmarking DORA/SPACE** — Comparar metricas clave contra percentiles de industria
-6. **Priorizacion de Mejoras** — Scoring por impacto en productividad x esfuerzo de implementacion
+2. **Toolchain Evaluation** — Inventory tools by category (IDE, VCS, CI/CD, observability, collaboration), detect gaps and redundancies
+3. **Cognitive Load Analysis** — Assess local setup complexity, number of tools, context switching, available documentation
+4. **Onboarding Assessment** — Measure time to first productive commit, documentation gaps, tribal knowledge dependency
+5. **DORA/SPACE Benchmarking** — Compare key metrics against industry percentiles
+6. **Improvement Prioritization** — Scoring by productivity impact x implementation effort
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Metricas de inner loop medidas o estimadas con evidencia
 - [ ] Toolchain completo mapeado con gaps identificados
@@ -81,14 +83,14 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **equipo o plata
 - [ ] Scorecard con scoring reproducible por dimension
 - [ ] Diagrama Mermaid del toolchain y flujo de desarrollo
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Metricas de inner loop son estimadas si no existen herramientas de medicion instaladas
 - Benchmarks DORA/SPACE son referenciales; la posicion exacta del equipo requiere medicion continua
 - No reemplaza encuestas de satisfaccion de desarrolladores — las complementa con datos objetivos
 - Evaluacion de cognitive load es cualitativa salvo que existan datos de context switching
 
-## Casos Borde
+## Edge Cases
 
 | Escenario | Estrategia de Manejo |
 |---|---|
@@ -97,7 +99,7 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **equipo o plata
 | Monorepo con +50 desarrolladores | Evaluar build times segmentados por modulo; friction de code ownership y merge conflicts como dimension adicional |
 | Equipo en transicion de tecnologia | Medir DX de stack actual y target por separado; plan de mejora enfocado en reducir dual-stack friction |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Habilita | Restringe | Justificacion |
 |---|---|---|---|
@@ -146,7 +148,7 @@ graph TD
 
 **Formato 3 — DOCX (circulación formal)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 **Formato 4 — XLSX (bajo demanda)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
@@ -154,7 +156,7 @@ graph TD
 
 **Formato 5 — PPTX (bajo demanda)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
 
 ## Evaluacion
 

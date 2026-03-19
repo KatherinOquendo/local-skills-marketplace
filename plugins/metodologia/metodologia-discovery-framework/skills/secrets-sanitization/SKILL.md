@@ -1,33 +1,46 @@
 ---
 name: secrets-sanitization
 description: Motor de sanitización y enmascaramiento de datos sensibles pre-LLM. Implementa Gate G0 de seguridad para interceptar credenciales antes de inyectarlas al contexto de Claude.
-author: Equipo MetodologIA
-version: 1.0.0
-license: MIT
-category: Calidad & Ops
-tags: [security, secrets, sanitization, G0, data-masking, pre-hook]
-allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<codebase-path>"
+model: opus
+context: fork
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # secrets-sanitization
 
-> Motor de sanitización y enmascaramiento de datos sensibles (Pre-LLM).
-> Gate G0: interceptar credenciales, tokens, y llaves privadas antes de que entren al context window de Claude.
+> Sensitive data sanitization and masking engine (Pre-LLM).
+> Gate G0: intercept credentials, tokens, and private keys before they enter Claude's context window.
+
+## Grounding Guideline
+
+> *An exposed secret is not a bug — it is a breach of trust that cannot be reversed.*
+
+1. **Gate G0: before everything.** No pipeline analysis should execute on code with visible credentials.
+2. **Reversible masking.** Placeholders must preserve the architectural context without exposing sensitive values.
+3. **Zero false negatives.** A false positive (masking something that is not a secret) is preferable to letting a real credential through.
 
 ---
 
 ## TL;DR
 
-Escanea el repositorio del cliente para detectar secretos (API keys, tokens, passwords, connection strings, private keys) y los enmascara con placeholders reversibles (`[MAO_MASKED_CREDENTIAL]`). Implementa Gate G0 como primera línea de defensa antes de G1.
+Scans the client repository to detect secrets (API keys, tokens, passwords, connection strings, private keys) and masks them with reversible placeholders (`[MAO_MASKED_CREDENTIAL]`). Implements Gate G0 as the first line of defense before G1.
 
 ---
 
 ## Core Responsibilities
 
-1. **Detección de secretos** — Escaneo regex de archivos fuente y configuración con 14 patrones (AWS, GitHub, JWT, Slack, Azure, Anthropic, OpenAI, Stripe, genéricos)
-2. **Enmascaramiento reversible** — Reemplazar valores sensibles con placeholders estandarizados manteniendo el contexto arquitectónico del código
-3. **Gate G0** — Validación obligatoria pre-pipeline que aborta `/mao:run-auto` y `/mao:run-deep` si detecta archivos sin enmascarar
-4. **Auditoría local** — Registro de hallazgos en `discovery/mao-secrets-audit.log` (gitignored, sin acceso del conductor)
+1. **Secret detection** — Regex scanning of source and configuration files with 14 patterns (AWS, GitHub, JWT, Slack, Azure, Anthropic, OpenAI, Stripe, generic)
+2. **Reversible masking** — Replace sensitive values with standardized placeholders while preserving the architectural context of the code
+3. **Gate G0** — Mandatory pre-pipeline validation that aborts `/mao:run-auto` and `/mao:run-deep` if unmasked files are detected
+4. **Local audit** — Finding registry in `discovery/mao-secrets-audit.log` (gitignored, no conductor access)
 
 ---
 
@@ -52,10 +65,10 @@ Escanea el repositorio del cliente para detectar secretos (API keys, tokens, pas
 | Formato | Especificación |
 |---------|---------------|
 | **Markdown** | Reporte de hallazgos con tabla de secretos detectados, clasificación por severidad, estado de enmascaramiento. Ghost menu + evidence tags. |
-| **HTML** | Self-contained con tokens canónicos MetodologIA (#6366F1, #0F172A). Tabla de hallazgos con badges de severidad. WCAG AA. |
-| **DOCX** | python-docx. Heading 1 = Montserrat 700 #6366F1. Tabla de hallazgos con colores por severidad. Header con logo MetodologIA. |
-| **XLSX** | openpyxl. Hoja "Secrets Audit" con columnas: ID, Tipo, Archivo, Línea, Severidad, Estado. Header indigo #6366F1. |
-| **PPTX** | python-pptx. Max 10 slides ejecutivo. Slide master indigo. Resumen de hallazgos + recomendaciones. Speaker notes con evidencia. |
+| **HTML** | Self-contained con tokens canónicos MetodologIA (#122562, #1F2833). Tabla de hallazgos con badges de severidad. WCAG AA. |
+| **DOCX** | python-docx. Heading 1 = Poppins 700 #122562. Tabla de hallazgos con colores por severidad. Header con logo MetodologIA. |
+| **XLSX** | openpyxl. Hoja "Secrets Audit" con columnas: ID, Tipo, Archivo, Línea, Severidad, Estado. Header navy #122562. |
+| **PPTX** | python-pptx. Max 10 slides ejecutivo. Slide master navy. Resumen de hallazgos + recomendaciones. Speaker notes con evidencia. |
 
 ---
 

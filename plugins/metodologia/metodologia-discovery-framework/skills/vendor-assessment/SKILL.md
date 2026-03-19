@@ -21,13 +21,21 @@ allowed-tools:
 
 Vendor assessment provides structured evaluation of technology vendors and platforms. The skill produces vendor scorecards, comparison matrices, and recommendation reports that support objective, defensible procurement decisions.
 
+## Grounding Guideline
+
+> *Choosing a vendor without structured evaluation is delegating your technological destiny to chance.*
+
+1. **Total Cost of Ownership, not license price.** Integration, maintenance, exit migration, and lock-in are real costs that rarely appear in the quote.
+2. **Evaluate capabilities, not promises.** Demos, PoCs, and verifiable references carry more weight than product roadmaps.
+3. **The best vendor is the one you can replace.** Excessive dependency is a risk, not a strategic relationship.
+
 ## TL;DR
 
-- Disena framework de evaluacion de vendors con criterios ponderados y scoring transparente
-- Genera matrices de comparacion multi-dimensional (funcional, tecnico, financiero, riesgo)
-- Calcula TCO (Total Cost of Ownership) a 3-5 anos incluyendo costos ocultos
-- Evalua riesgo contractual, lock-in tecnologico y viabilidad del vendor
-- Produce recomendacion fundamentada con analisis build-vs-buy cuando aplica
+- Designs vendor evaluation framework with weighted criteria and transparent scoring
+- Generates multi-dimensional comparison matrices (functional, technical, financial, risk)
+- Calculates TCO (Total Cost of Ownership) at 3-5 years including hidden costs
+- Evaluates contractual risk, technology lock-in, and vendor viability
+- Produces evidence-based recommendation with build-vs-buy analysis when applicable
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides a vendor evaluation context as `$ARGUMENTS`. Parse `$1` as the
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{TIPO_EVALUACION}`: `rfp` | `build-vs-buy` | `platform-selection` | `auto` (default)
 
-## Entregables
+## Deliverables
 
 1. **Vendor scorecard** — Weighted multi-criteria evaluation per vendor with normalized scores
-2. **Matriz de comparacion** — Side-by-side comparison across functional, technical, and commercial dimensions
-3. **Analisis TCO** — Total cost of ownership projection including licensing, implementation, operations, exit costs
-4. **Evaluacion de riesgo** — Vendor viability, lock-in risk, contractual risk, and mitigation strategies
-5. **Informe de recomendacion** — Final recommendation with rationale, trade-offs, and conditions
+2. **Comparison matrix** — Side-by-side comparison across functional, technical, and commercial dimensions
+3. **TCO analysis** — Total cost of ownership projection including licensing, implementation, operations, exit costs
+4. **Risk evaluation** — Vendor viability, lock-in risk, contractual risk, and mitigation strategies
+5. **Recommendation report** — Final recommendation with rationale, trade-offs, and conditions
 
-## Proceso
+## Process
 
-1. **Definir criterios de evaluacion** — Establish evaluation dimensions: functional fit, technical capability, financial, vendor viability, support, ecosystem
-2. **Ponderar criterios** — Assign weights based on business priorities; validate with stakeholders
-3. **Disenar RFP/RFI** — Structure information request covering must-have requirements, nice-to-haves, and deal-breakers
-4. **Recopilar respuestas** — Gather vendor responses, demos, references, and proof-of-concept results
-5. **Evaluar y puntuar** — Score each vendor against criteria using consistent 1-5 scale with evidence
-6. **Calcular TCO** — Project 3-5 year total cost including: licenses, implementation, training, customization, integration, operations, and exit/migration
-7. **Analizar riesgos** — Assess vendor financial health, market position, lock-in factors, contract terms, and data portability
-8. **Formular recomendacion** — Synthesize scores, TCO, and risk into defensible recommendation with conditions and negotiation leverage points
+1. **Define evaluation criteria** — Establish evaluation dimensions: functional fit, technical capability, financial, vendor viability, support, ecosystem
+2. **Weight criteria** — Assign weights based on business priorities; validate with stakeholders
+3. **Design RFP/RFI** — Structure information request covering must-have requirements, nice-to-haves, and deal-breakers
+4. **Collect responses** — Gather vendor responses, demos, references, and proof-of-concept results
+5. **Evaluate and score** — Score each vendor against criteria using consistent 1-5 scale with evidence
+6. **Calculate TCO** — Project 3-5 year total cost including: licenses, implementation, training, customization, integration, operations, and exit/migration
+7. **Analyze risks** — Assess vendor financial health, market position, lock-in factors, contract terms, and data portability
+8. **Formulate recommendation** — Synthesize scores, TCO, and risk into defensible recommendation with conditions and negotiation leverage points
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Evaluation criteria are weighted and weights are justified
 - [ ] All vendors scored using identical criteria and methodology
@@ -69,21 +77,21 @@ The user provides a vendor evaluation context as `$ARGUMENTS`. Parse `$1` as the
 - [ ] Recommendation includes conditions and negotiation points
 - [ ] Evidence tags applied: [DOC], [INFERENCIA], [SUPUESTO]
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Vendor evaluations based on publicly available information and provided documentation
 - TCO projections are estimates based on stated assumptions
 - Does not negotiate contracts — provides analysis to support negotiation
 - Market conditions and vendor positions may change post-assessment
 
-## Casos Borde
+## Edge Cases
 
 1. **Vendor unico en el mercado (monopolio de nicho)** — Cuando solo existe un proveedor viable, el skill pivota de evaluacion comparativa a analisis de riesgo de dependencia, negociacion de exit clauses y diseno de abstraction layers.
 2. **Build-vs-buy donde el equipo no tiene experiencia** — El skill incluye costo de adquisicion de conocimiento en el analisis build, ajustando TCO por curva de aprendizaje y riesgo de entrega, frecuentemente inclinando la balanza hacia buy.
 3. **Evaluacion con informacion asimetrica entre vendors** — Si un vendor provee documentacion detallada y otro no, el skill normaliza la evaluacion asignando score neutral (3/5) a criterios sin evidencia, marcados con [SUPUESTO].
 4. **Cambio de vendor en produccion (re-evaluacion)** — El skill agrega dimension de costo de migracion y riesgo de transicion al scorecard, calculando TCO diferencial vs. permanecer con el vendor actual.
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 1. **Scoring ponderado vs. ranking simple** — Scoring ponderado porque criterios no son igualmente importantes; el costo de definir pesos se justifica por la defensibilidad de la decision ante stakeholders.
 2. **TCO a 3 anos vs. 5 anos** — 3 anos como default porque proyecciones mas largas tienen alta incertidumbre en tecnologia; 5 anos disponible para infraestructura de larga vida.
@@ -133,11 +141,11 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, criterios de evaluación y pesos, scorecard comparativo por vendor (barras ponderadas), análisis TCO a 3-5 años (gráfico de costo acumulado), evaluación de riesgo y lock-in (semáforo), análisis build-vs-buy (cuando aplica), recomendación final con condiciones y puntos de negociación.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, criterios de evaluación y pesos, scorecard comparativo por vendor (barras ponderadas), análisis TCO a 3-5 años (gráfico de costo acumulado), evaluación de riesgo y lock-in (semáforo), análisis build-vs-buy (cuando aplica), recomendación final con condiciones y puntos de negociación.
 
 ## Evaluacion
 

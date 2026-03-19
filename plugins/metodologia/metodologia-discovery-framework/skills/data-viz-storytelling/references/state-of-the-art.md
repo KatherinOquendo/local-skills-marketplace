@@ -99,7 +99,7 @@ Tendencias, avances y dirección del ecosistema de visualización de datos narra
 **Estado:** Los design tokens (W3C DTCG spec) se extienden más allá de UI a visualización de datos. Equipos definen "chart tokens" — paletas semánticas para datos (primary series, secondary series, risk, success, neutral) que se resuelven contra el theme activo.
 
 **Impacto en el skill:**
-- El skill ya implementa chart tokens via classDefs de Mermaid (primary=#6366F1, risk=#DC3545, success=#22D3EE, neutral=#F8F9FA).
+- El skill ya implementa chart tokens via classDefs de Mermaid (primary=#122562, risk=#DC3545, success=#FFD700, neutral=#F8F9FA).
 - Oportunidad: formalizar estos como design tokens consumibles por otros skills (output-engineering, design-system) para consistencia transversal.
 - El principio "NEVER green for success" es un chart token semántico que evita confusión con "go/positive" en audiencias con daltonismo.
 

@@ -22,15 +22,15 @@ allowed-tools:
 
 # Staff Augmentation Discovery — Talent Gap Analysis & Staffing Roadmap
 
-Genera un análisis integral de necesidades de staff augmentation que cubre talent gap analysis, skills matrix profiling, team composition modeling, onboarding & ramp-up design, retention framework, y staffing roadmap. Diseñado para engagements donde el cliente necesita aumentar su capacidad con profesionales externos, ya sea nearshore, offshore, o on-site.
+Generates a comprehensive staff augmentation needs analysis covering talent gap analysis, skills matrix profiling, team composition modeling, onboarding & ramp-up design, retention framework, and staffing roadmap. Designed for engagements where the client needs to increase capacity with external professionals, whether nearshore, offshore, or on-site.
 
-## Principio Rector
+## Grounding Guideline
 
-> *El staff augmentation no es llenar sillas — es construir capacidad. Cada profesional añadido debe multiplicar, no solo sumar, la capacidad del equipo.*
+> *Staff augmentation is not filling seats — it is building capability. Every professional added must multiply, not just add to, the team's capacity.*
 
-1. **Capacidad sobre headcount.** El número de personas es una métrica vanidosa. Lo que importa es la capacidad de entrega: velocidad, calidad, y sostenibilidad. Un senior bien integrado aporta más que tres juniors sin onboarding.
-2. **Integración antes que incorporación.** Añadir talento sin plan de integración crea fricción, no productividad. El onboarding, mentoring, y acceso a herramientas determinan el time-to-productivity más que la experiencia previa.
-3. **Retención es la mejor estrategia de staffing.** El costo de reemplazar un profesional (recruiting + onboarding + ramp-up + knowledge loss) supera 3-6 meses de salario. Prevenir la rotación es más rentable que cubrirla.
+1. **Capability over headcount.** The number of people is a vanity metric. What matters is delivery capacity: speed, quality, and sustainability. A well-integrated senior contributes more than three juniors without onboarding.
+2. **Integration before incorporation.** Adding talent without an integration plan creates friction, not productivity. Onboarding, mentoring, and tool access determine time-to-productivity more than prior experience.
+3. **Retention is the best staffing strategy.** The cost of replacing a professional (recruiting + onboarding + ramp-up + knowledge loss) exceeds 3-6 months of salary. Preventing turnover is more profitable than covering it.
 
 ## Inputs
 
@@ -39,9 +39,9 @@ The user provides a project or client name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para análisis de gaps y skills matrix, HITL para decisiones de composición de equipo y roadmap.
-  - **desatendido**: Cero interrupciones. Análisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Análisis completo automatizado. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint al completar cada sección.
-  - **paso-a-paso**: Confirma antes de cada sección del análisis.
+  - **paso-a-paso**: Confirms before cada sección del análisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 + S3 + S6 only) | `técnica` (full 6 sections, default)
 
@@ -247,9 +247,9 @@ Definir core hours de overlap mínimo (4 horas). Ceremonias asíncronas para lo 
 **Ramp-down planning:**
 Cuando el engagement tiene fecha de finalización, planear la transferencia de conocimiento inversa (del equipo augmentado al equipo del cliente) con al menos 4 semanas de anticipación.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Cliente sin equipo base (greenfield team) | Tech Lead o Architect senior de MetodologIA establece cultura y estandares; onboarding se convierte en team building; incrementar ratio senior a 50% |
 | Rotacion alta en el equipo del cliente | Priorizar documentacion exhaustiva sobre conocimiento tribal; incluir knowledge management como responsabilidad explicita; buddy system reforzado |
@@ -257,9 +257,9 @@ Cuando el engagement tiene fecha de finalización, planear la transferencia de c
 | Multi-timezone distributed team | Definir core hours de overlap minimo (4 horas); ceremonias asincronas para lo que no requiere interaccion real-time; documentacion como ciudadano de primera clase |
 | Ramp-down planning con fecha de finalizacion | Planear transferencia de conocimiento inversa con al menos 4 semanas de anticipacion; documentar runbooks y decision logs antes del offboarding |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Capacidad de entrega sobre headcount | Medir exito por numero de personas incorporadas | El numero de personas es una metrica vanidosa; lo que importa es velocidad, calidad y sostenibilidad de entrega |
 | Integracion antes que incorporacion | Incorporar primero, integrar despues | Anadir talento sin plan de integracion crea friccion; onboarding, mentoring y acceso a herramientas determinan el time-to-productivity |
@@ -322,8 +322,8 @@ graph TD
 | **Markdown** | `Staff_Augmentation_Discovery_{project}.md` | Analisis completo de 6 secciones: talent gap, skills matrix, team composition, onboarding plan, retention framework y staffing roadmap con ramp-up curves. Diagramas Mermaid embebidos. |
 | **XLSX** | `Staff_Augmentation_Skills_Matrix_{project}.xlsx` | Skills matrix interactiva con proficiency levels por rol, heatmap de gaps current vs required, certificaciones requeridas vs deseables, y scoring de criticidad por perfil. |
 | **HTML** | `{fase}_staff_augmentation_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Incluye talent gap heatmap con criticidad por rol, team composition org chart visual y staffing roadmap con curvas de ramp-up. |
-| **DOCX** | `{fase}_staff_augmentation_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Talent Gap Analysis, Skills Matrix, Team Composition Model, Onboarding Plan, Retention Framework, Staffing Roadmap. |
-| **PPTX** | `{fase}_staff_augmentation_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo, Talent Gap Analysis (tabla de gaps con criticidad), Skills Matrix (heatmap), Team Composition (org chart visual), Onboarding & Ramp-Up timeline, Retention Framework (KPIs), Staffing Roadmap faseado, próximos pasos. |
+| **DOCX** | `{fase}_staff_augmentation_{cliente}_{WIP}.docx` | Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Talent Gap Analysis, Skills Matrix, Team Composition Model, Onboarding Plan, Retention Framework, Staffing Roadmap. |
+| **PPTX** | `{fase}_staff_augmentation_{cliente}_{WIP}.pptx` | Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo, Talent Gap Analysis (tabla de gaps con criticidad), Skills Matrix (heatmap), Team Composition (org chart visual), Onboarding & Ramp-Up timeline, Retention Framework (KPIs), Staffing Roadmap faseado, próximos pasos. |
 
 ## Evaluacion
 

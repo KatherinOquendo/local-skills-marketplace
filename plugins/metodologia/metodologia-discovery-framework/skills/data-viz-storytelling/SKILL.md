@@ -7,6 +7,8 @@ description: >
   visual hierarchy, dashboard narratives, and annotation strategy. Use when
   selecting chart types, designing diagram narratives, building visual sequences
   for presentations, or annotating data visualizations for maximum comprehension.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -19,7 +21,7 @@ allowed-tools:
 
 Designs visual narratives that transform data into comprehension through chart selection, Mermaid diagram metodologia-storytelling, annotation strategy, and dashboard sequencing. Owns the visual layer of data communication across all discovery deliverables.
 
-## Guiding Principle
+## Grounding Guideline
 
 **A visualization that requires explanation has failed.** The right diagram, with the right annotations, tells the story on its own. Text complements — it does not replace. Every visualization has ONE main message, and all visual design directs attention to that message.
 
@@ -86,10 +88,10 @@ GOOD: Diagram shows WHY this architecture matters
 ### Color Strategy (MetodologIA Brand)
 
 ```
-classDef primary fill:#6366F1,stroke:#1A1A2E,color:#fff    %% MetodologIA orange — key components
-classDef risk fill:#DC3545,stroke:#1A1A2E,color:#fff       %% Red — risk/problem areas
-classDef success fill:#22D3EE,stroke:#1A1A2E,color:#1A1A2E %% Gold — success (NEVER green)
-classDef neutral fill:#F8F9FA,stroke:#1A1A2E,color:#1A1A2E %% Light — supporting components
+classDef primary fill:#122562,stroke:#1F2833,color:#fff    %% MetodologIA orange — key components
+classDef risk fill:#DC3545,stroke:#1F2833,color:#fff       %% Red — risk/problem areas
+classDef success fill:#137DC5,stroke:#1F2833,color:#fff %% Gold — success (NEVER green)
+classDef neutral fill:#F8F9FA,stroke:#1F2833,color:#1F2833 %% Light — supporting components
 ```
 
 ## Annotation Strategy
@@ -173,7 +175,7 @@ Each visual builds the argument. No decorative slides.
 | Annotations are selective | Only key data points annotated |
 | Mermaid follows standards | ≤20 nodes, descriptive IDs, labeled edges |
 | Accessibility text present | Summary before every diagram |
-| Brand colors correct | Orange #6366F1, gold #22D3EE, NEVER green |
+| Brand colors correct | Navy #122562, gold #FFD700, NEVER green |
 | Visual sequence builds argument | Not standalone — each chart connects to next |
 
 ## Edge Cases
@@ -188,18 +190,18 @@ Each visual builds the argument. No decorative slides.
 - Mermaid is the primary diagramming tool. No external tools or image generation.
 - Follow Mermaid Diagramming Standard in CLAUDE.md as baseline.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Data has only 2 data points — insufficient for meaningful chart | Use a callout/highlight card instead of a chart; present the delta as a single comparison metric with context sentence |
 | Audience will consume deliverable in print (no Mermaid rendering) | Fall back to structured ASCII tables; add pre-rendered description paragraphs for every diagram; flag print limitation in document header |
 | Multiple conflicting metrics that cannot coexist in a single visualization | Split into separate visualizations with a narrative bridge explaining the conflict; never overlay contradictory data on the same axes |
 | Sensitive data that cannot appear in shared diagrams (PII, internal IPs, revenue) | Abstract to categories and percentages; use anonymized labels; add "[REDACTED]" tag where specifics are removed |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Mermaid as sole diagramming tool | External tools (draw.io, Lucidchart, D3.js) | Mermaid is text-based, version-controllable, and renders natively in GitHub/GitLab/Obsidian; external tools break the markdown-as-source-of-truth principle |
 | One message per visualization, no exceptions | Dense multi-message charts for space efficiency | Cognitive science shows single-message visuals are processed 40% faster; multi-message charts cause split attention and reduce retention |
@@ -244,9 +246,9 @@ graph TD
 - Filename: `{fase}_DataViz_{cliente}_{WIP}.html`
 - Estructura: HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye diagramas Mermaid renderizados vía CDN, anotaciones interactivas por chart y texto de accesibilidad. WCAG AA, responsive, print-ready.
 
-### DOCX (circulación formal)
+### DOCX (formal circulation)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con Metodología Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con Metodología Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`

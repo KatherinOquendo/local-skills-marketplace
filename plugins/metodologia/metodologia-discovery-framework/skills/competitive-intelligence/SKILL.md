@@ -7,14 +7,8 @@ description: >
   differentiation map, or market positioning.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-o-producto> [mercado-o-categoria]"
-version: 1.0.0
-tags:
-  - competitive-analysis
-  - build-vs-buy
-  - market-positioning
-  - differentiation
-  - strategy
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -30,13 +24,21 @@ allowed-tools:
 Analisis de landscape competitivo tecnico, evaluacion de diferenciacion tecnologica,
 analisis build-vs-buy y posicionamiento de mercado.
 
+## Grounding Guideline
+
+> *Competing without intelligence is reacting. Competing with intelligence is anticipating.*
+
+1. **Public data, private analysis.** The advantage is not in the information — it is in the interpretation and decision speed.
+2. **Benchmarking is not imitation.** Understanding the competitor serves to differentiate, not to copy.
+3. **Continuous surveillance, not a point-in-time snapshot.** The competitive landscape changes — a static evaluation expires in months.
+
 ## TL;DR
 
-- Mapea landscape competitivo tecnico con jugadores, soluciones y posicionamiento
-- Evalua diferenciacion tecnologica real vs percibida de cada opcion
-- Ejecuta analisis build-vs-buy estructurado con TCO a 3-5 anos
-- Identifica oportunidades de posicionamiento y ventaja competitiva
-- Genera matriz competitiva y recomendaciones estrategicas accionables
+- Maps technical competitive landscape with players, solutions, and positioning
+- Evaluates real vs perceived technological differentiation of each option
+- Executes structured build-vs-buy analysis with 3-5 year TCO
+- Identifies positioning opportunities and competitive advantage
+- Generates competitive matrix and actionable strategic recommendations
 
 ## Inputs
 
@@ -47,73 +49,73 @@ Parse `$1` como **nombre del proyecto/producto**, `$2` como **mercado o categori
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **Competitive Matrix** — Comparacion multi-dimensional de competidores/opciones
-2. **Differentiation Map** — Mapa de diferenciacion tecnologica real por dimension
-3. **Build vs Buy Analysis** — Analisis estructurado con TCO, time-to-market, riesgo
-4. **Strategic Recommendations** — Recomendaciones accionables con justificacion
-5. **Market Landscape Report** — Vision panoramica del mercado con tendencias
+1. **Competitive Matrix** — Multi-dimensional comparison of competitors/options
+2. **Differentiation Map** — Real technological differentiation map by dimension
+3. **Build vs Buy Analysis** — Structured analysis with TCO, time-to-market, risk
+4. **Strategic Recommendations** — Actionable recommendations with justification
+5. **Market Landscape Report** — Panoramic market vision with trends
 
-## Proceso
+## Process
 
-1. **Mapeo de Landscape** — Identificar jugadores relevantes por categoria:
-   | Categoria | Jugadores | Posicionamiento |
+1. **Landscape Mapping** — Identify relevant players by category:
+   | Category | Players | Positioning |
    |---|---|---|
-   | Lideres | Incumbents con market share | Premium, enterprise |
-   | Challengers | Disruptores con traccion | Value, innovacion |
-   | Nicho | Especialistas en segmento | Deep expertise |
-   | Open Source | Alternativas abiertas | Flexibilidad, costo |
-2. **Analisis de Diferenciacion** — Para cada opcion evaluar:
-   - Capacidades tecnicas (features, performance, scalability)
-   - Madurez (production readiness, ecosystem, community)
-   - Modelo de negocio (pricing, lock-in, portabilidad)
-   - Roadmap y vision (inversion en R&D, tendencia)
-3. **Build vs Buy Framework** — Evaluar con criterios estructurados:
-   | Factor | Build | Buy | Peso |
+   | Leaders | Incumbents with market share | Premium, enterprise |
+   | Challengers | Disruptors with traction | Value, innovation |
+   | Niche | Segment specialists | Deep expertise |
+   | Open Source | Open alternatives | Flexibility, cost |
+2. **Differentiation Analysis** — For each option evaluate:
+   - Technical capabilities (features, performance, scalability)
+   - Maturity (production readiness, ecosystem, community)
+   - Business model (pricing, lock-in, portability)
+   - Roadmap and vision (R&D investment, trends)
+3. **Build vs Buy Framework** — Evaluate with structured criteria:
+   | Factor | Build | Buy | Weight |
    |---|---|---|---|
-   | Time to market | Lento (6-18 meses) | Rapido (1-3 meses) | Alto |
-   | TCO 3 anos | Dev + maintenance | Licencia + integracion | Alto |
-   | Diferenciacion | Maxima si es core | Limitada | Medio |
-   | Riesgo tecnico | Alto (ejecucion) | Medio (vendor) | Alto |
-   | Flexibilidad | Total | Limitada por vendor | Medio |
-4. **Scoring Competitivo** — Puntuar cada opcion en dimensiones clave con pesos
-5. **Analisis de Tendencias** — Identificar hacia donde se mueve el mercado
-6. **Recomendaciones Estrategicas** — Decision justificada con plan de accion
+   | Time to market | Slow (6-18 months) | Fast (1-3 months) | High |
+   | TCO 3 years | Dev + maintenance | License + integration | High |
+   | Differentiation | Maximum if core | Limited | Medium |
+   | Technical risk | High (execution) | Medium (vendor) | High |
+   | Flexibility | Total | Limited by vendor | Medium |
+4. **Competitive Scoring** — Score each option on key dimensions with weights
+5. **Trend Analysis** — Identify where the market is moving
+6. **Strategic Recommendations** — Justified decision with action plan
 
-## Criterios de Calidad
+## Quality Criteria
 
-- [ ] Landscape completo con al menos 5 opciones evaluadas
-- [ ] Diferenciacion evaluada con evidencia tecnica, no marketing
-- [ ] Build vs buy con TCO estimado a 3+ anos
-- [ ] Scoring con criterios y pesos explicitos y justificados
-- [ ] Tendencias de mercado identificadas con fuentes
-- [ ] Recomendacion clara con justificacion multi-dimensional
-- [ ] Diagrama Mermaid de positioning map
+- [ ] Complete landscape with at least 5 options evaluated
+- [ ] Differentiation evaluated with technical evidence, not marketing
+- [ ] Build vs buy with estimated TCO at 3+ years
+- [ ] Scoring with explicit and justified criteria and weights
+- [ ] Market trends identified with sources
+- [ ] Clear recommendation with multi-dimensional justification
+- [ ] Mermaid diagram of positioning map
 
-## Supuestos y Limites
+## Assumptions and Limits
 
-- Informacion competitiva se basa en datos publicos, documentacion y conocimiento del equipo
-- No incluye ingenieria inversa ni acceso a informacion confidencial de competidores
-- TCO en analisis build-vs-buy son estimaciones direccionales, no cotizaciones formales
-- Tendencias de mercado reflejan el momento del analisis; requieren actualizacion periodica
+- Competitive information is based on public data, documentation, and team knowledge
+- Does not include reverse engineering or access to competitor confidential information
+- TCO in build-vs-buy analysis are directional estimates, not formal quotes
+- Market trends reflect the moment of analysis; require periodic updates
 
-## Casos Borde
+## Edge Cases
 
-| Escenario | Estrategia de Manejo |
+| Scenario | Handling Strategy |
 |---|---|
-| Mercado emergente sin competidores directos claros | Analizar competidores indirectos y sustitutos; mapear jobs-to-be-done que el usuario resuelve hoy sin solucion dedicada |
-| Competidor dominante con +80% market share | Evaluar estrategias de nicho y diferenciacion; analisis de disruption potential por flancos desatendidos |
-| Build vs buy con componente open source viable | Agregar tercera opcion "adopt + customize" al framework; evaluar TCO incluyendo costo de comunidad y contribucion |
-| Informacion publica insuficiente sobre competidores | Documentar gaps como [SUPUESTO]; triangular con job postings, GitHub activity, y conferencias del competidor |
+| Emerging market without clear direct competitors | Analyze indirect competitors and substitutes; map jobs-to-be-done that the user solves today without a dedicated solution |
+| Dominant competitor with +80% market share | Evaluate niche and differentiation strategies; disruption potential analysis through unattended flanks |
+| Build vs buy with viable open source component | Add third option "adopt + customize" to the framework; evaluate TCO including community and contribution cost |
+| Insufficient public information about competitors | Document gaps as [SUPUESTO]; triangulate with job postings, GitHub activity, and competitor conferences |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Habilita | Restringe | Justificacion |
+| Decision | Enables | Constrains | Justification |
 |---|---|---|---|
-| Matriz multi-dimensional con pesos explicitos | Comparacion objetiva y reproducible | Seleccion de criterios y pesos introduce sesgo | Transparencia de pesos permite que stakeholders ajusten segun su contexto |
-| TCO a 3 anos como horizonte default | Captura costos de mantenimiento y evolucion | Proyecciones a largo plazo tienen alta incertidumbre | 3 anos es el horizonte tipico de amortizacion de decisiones tecnologicas |
-| Separacion de capacidad tecnica vs madurez de mercado | Evita confundir feature completeness con viabilidad | Requiere dos evaluaciones independientes | Un producto con features superiores puede ser riesgoso si el vendor es inestable |
+| Multi-dimensional matrix with explicit weights | Objective and reproducible comparison | Selection of criteria and weights introduces bias | Weight transparency allows stakeholders to adjust according to their context |
+| 3-year TCO as default horizon | Captures maintenance and evolution costs | Long-term projections have high uncertainty | 3 years is the typical amortization horizon for technology decisions |
+| Separation of technical capability vs market maturity | Avoids confusing feature completeness with viability | Requires two independent evaluations | A product with superior features can be risky if the vendor is unstable |
 
 ## Knowledge Graph
 
@@ -162,7 +164,7 @@ graph TD
 
 **Formato 4 — DOCX (bajo demanda)**
 - Filename: `{fase}_Competitive_Intelligence_{project}_{WIP}.docx`
-- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 **Formato 5 — XLSX (bajo demanda)**
 - Filename: `{fase}_Competitive_Intelligence_{cliente}_{WIP}.xlsx`

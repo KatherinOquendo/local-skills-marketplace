@@ -21,13 +21,21 @@ allowed-tools:
 
 Incident management establishes structured response processes that minimize the impact of production incidents through clear severity classification, defined escalation paths, and blameless postmortem practices. The skill produces incident playbooks, severity matrices, and communication templates.
 
+## Grounding Guideline
+
+> *An incident without a postmortem is an incident that will repeat.*
+
+1. **Blame-free, not accountability-free.** Understand root causes without seeking blame, while assigning concrete improvement actions.
+2. **Detection time > resolution time.** Reducing MTTD has more impact than reducing MTTR.
+3. **Every incident is a resilience opportunity.** The best systems are built on the lessons from their failures.
+
 ## TL;DR
 
-- Define clasificacion de severidad (SEV1-SEV4) con criterios objetivos y tiempos de respuesta
-- Disena flujo de respuesta a incidentes con roles claros (IC, comunicador, solucionador)
-- Establece paths de escalamiento con contactos, tiempos maximos y criterios de escalada
-- Produce templates de postmortem blameless con analisis de causa raiz y action items
-- Crea templates de comunicacion para stakeholders internos y externos durante incidentes
+- Define severity classification (SEV1-SEV4) with objective criteria and response times
+- Design incident response flow with clear roles (IC, communicator, resolver)
+- Establish escalation paths with contacts, maximum times, and escalation criteria
+- Produce blameless postmortem templates with root cause analysis and action items
+- Create communication templates for internal and external stakeholders during incidents
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides an organization or service name as `$ARGUMENTS`. Parse `$1` as
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{MADUREZ}`: `inicial` | `definido` | `gestionado` | `auto` (default)
 
-## Entregables
+## Deliverables
 
-1. **Playbook de incidentes** — End-to-end incident response process with roles, phases, and decision trees
-2. **Matriz de severidad** — Severity classification (SEV1-SEV4) with objective criteria, response times, and escalation triggers
-3. **Templates de comunicacion** — Pre-built templates for internal updates, customer notifications, and status page messages
-4. **Template de postmortem** — Blameless postmortem structure with timeline, root cause analysis, impact assessment, and action items
-5. **Guia de on-call** — On-call rotation design, handoff procedures, and responder wellness guidelines
+1. **Incident Playbook** — End-to-end incident response process with roles, phases, and decision trees
+2. **Severity Matrix** — Severity classification (SEV1-SEV4) with objective criteria, response times, and escalation triggers
+3. **Communication Templates** — Pre-built templates for internal updates, customer notifications, and status page messages
+4. **Postmortem Template** — Blameless postmortem structure with timeline, root cause analysis, impact assessment, and action items
+5. **On-Call Guide** — On-call rotation design, handoff procedures, and responder wellness guidelines
 
-## Proceso
+## Process
 
-1. **Definir severidad** — Establish severity levels with objective criteria: user impact (% affected), revenue impact, data integrity, security breach
-2. **Disenar flujo de respuesta** — Map incident lifecycle: detection → triage → response → mitigation → resolution → postmortem
-3. **Asignar roles** — Define incident roles: Incident Commander (IC), Communications Lead, Technical Lead, Scribe
-4. **Crear escalamiento** — Build escalation matrix: who to contact per severity, maximum time at each level, automatic escalation triggers
-5. **Disenar comunicacion** — Create templates for each phase: initial detection, ongoing updates (every 30/60 min), resolution, and postmortem summary
-6. **Establecer postmortem** — Define postmortem trigger criteria, timeline format, 5-whys analysis, action item tracking, and blameless culture guidelines
-7. **Planificar on-call** — Design rotation schedule, compensation model, handoff procedures, and burnout prevention measures
-8. **Definir metricas** — Track: MTTD (detect), MTTA (acknowledge), MTTR (resolve), incident frequency, postmortem completion rate
+1. **Define severity** — Establish severity levels with objective criteria: user impact (% affected), revenue impact, data integrity, security breach
+2. **Design response flow** — Map incident lifecycle: detection → triage → response → mitigation → resolution → postmortem
+3. **Assign roles** — Define incident roles: Incident Commander (IC), Communications Lead, Technical Lead, Scribe
+4. **Create escalation** — Build escalation matrix: who to contact per severity, maximum time at each level, automatic escalation triggers
+5. **Design communication** — Create templates for each phase: initial detection, ongoing updates (every 30/60 min), resolution, and postmortem summary
+6. **Establish postmortem** — Define postmortem trigger criteria, timeline format, 5-whys analysis, action item tracking, and blameless culture guidelines
+7. **Plan on-call** — Design rotation schedule, compensation model, handoff procedures, and burnout prevention measures
+8. **Define metrics** — Track: MTTD (detect), MTTA (acknowledge), MTTR (resolve), incident frequency, postmortem completion rate
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Severity levels have objective, measurable criteria (not subjective judgment)
 - [ ] Response time targets defined per severity level (acknowledge, update, resolve)
@@ -69,21 +77,21 @@ The user provides an organization or service name as `$ARGUMENTS`. Parse `$1` as
 - [ ] On-call rotation considers team wellness and sustainable workload
 - [ ] Metrics defined for continuous improvement of incident response
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Assumes monitoring and alerting infrastructure exists to detect incidents
 - Incident management process effectiveness depends on regular practice (game days, drills)
 - Does not implement tooling — produces process and template artifacts
 - Blameless culture requires organizational commitment beyond documentation
 
-## Casos Borde
+## Edge Cases
 
 1. **Organizacion sin monitoreo previo** — Si no existe infraestructura de alerting, el skill prioriza deteccion manual y establece un plan de adopcion de observabilidad como prerequisito. Se genera un playbook interino basado en reportes de usuario.
 2. **Incidentes simultaneos (tormenta de alertas)** — Cuando multiples incidentes ocurren al mismo tiempo, el proceso define prioridad por impacto al negocio, asigna ICs separados y establece un meta-IC para coordinacion cruzada.
 3. **Equipo distribuido en multiples zonas horarias** — El modelo de on-call se adapta con rotaciones follow-the-sun, handoff asincronico documentado y tiempos de respuesta ajustados por zona horaria.
 4. **Cultura organizacional resistente al blameless** — Se incluye guia de facilitacion de postmortems con lenguaje prescrito, ejemplos de reframing y metricas de salud cultural para medir progreso.
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 1. **SEV1-SEV4 vs. escala de 3 niveles** — Se eligen 4 niveles porque 3 son insuficientes para distinguir entre degradacion parcial y falla total; 5+ generan confusion en la clasificacion rapida durante crisis.
 2. **Postmortem para todo SEV1-SEV2 vs. selectivo** — Se requiere postmortem obligatorio en SEV1-SEV2 para asegurar aprendizaje sistematico, aceptando el costo de tiempo; SEV3-SEV4 son opcionales por criterio del equipo.
@@ -137,7 +145,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
 
 ## Evaluacion
 

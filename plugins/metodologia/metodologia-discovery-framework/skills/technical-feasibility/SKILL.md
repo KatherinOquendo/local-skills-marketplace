@@ -8,6 +8,8 @@ description: >
   feasibility", "fact-check the scenario", "verify technical claims", "run feasibility analysis",
   "stress-test the approach", or mentions technical due diligence, feasibility study, risk validation,
   or "Phase 3b" verification work.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -24,17 +26,17 @@ Operates as a rigorous verification layer — the "red team" that stress-tests e
 assumption, and decision from the scenario analysis. Catches optimism bias, unfounded assumptions,
 and hidden blockers BEFORE they become costly surprises in execution.
 
-## Principio Rector
+## Grounding Guideline
 
-**No procedes por intuición. Procedes por evidencia.** Toda validación lleva origen explícito:
-`[CÓDIGO]`, `[CONFIG]`, `[DOC]`, `[BENCHMARK]`, `[VENDOR-DOC]`, o `[INFERENCIA]`.
-Si no hay evidencia, se declara como supuesto no validado y se escala. La feasibility no es un trámite — es la última línea de defensa antes de comprometer presupuesto y reputación en una transformación.
+**You do not proceed by intuition. You proceed by evidence.** Every validation carries an explicit origin:
+`[CODIGO]`, `[CONFIG]`, `[DOC]`, `[BENCHMARK]`, `[VENDOR-DOC]`, or `[INFERENCIA]`.
+If there is no evidence, it is declared as an unvalidated assumption and escalated. Feasibility is not a formality — it is the last line of defense before committing budget and reputation to a transformation.
 
-### Filosofía de Validación Técnica
+### Technical Validation Philosophy
 
-1. **Evidencia sobre optimismo.** Cada claim técnico se valida contra código, configuración o benchmark real. La inferencia es el último recurso — nunca el primero. El sesgo de confirmación es el enemigo principal del feasibility analysis.
-2. **Las 6 dimensiones son indivisibles.** Un proyecto técnicamente brillante que ignora capacidad organizacional o compliance regulatorio fracasa igual. La feasibility parcial es feasibility falsa.
-3. **Escalar es fortaleza, no debilidad.** Cuando la evidencia no alcanza para validar un claim, se declara UNVALIDATED y se recomienda spike/PoC. Inventar certeza donde no existe es la forma más cara de fallar.
+1. **Evidence over optimism.** Every technical claim is validated against code, configuration, or real benchmarks. Inference is the last resort — never the first. Confirmation bias is the main enemy of feasibility analysis.
+2. **The 6 dimensions are indivisible.** A technically brilliant project that ignores organizational capacity or regulatory compliance fails just the same. Partial feasibility is false feasibility.
+3. **Escalating is strength, not weakness.** When evidence is insufficient to validate a claim, it is declared UNVALIDATED and a spike/PoC is recommended. Fabricating certainty where none exists is the most expensive way to fail.
 
 ## Inputs
 
@@ -45,7 +47,7 @@ Recommended: codebase access, vendor documentation, benchmark data.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario de claims y análisis dimensional, HITL para veredicto de feasibility y recomendaciones de PoC.
-  - **desatendido**: Cero interrupciones. Veredicto automático. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Veredicto automático. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en veredicto antes de entrega.
   - **paso-a-paso**: Confirma cada claim, cada dimensión, y el veredicto final.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -214,18 +216,18 @@ Merge new risks discovered during feasibility analysis into the cumulative risk 
 | Scenario involves vendor product | Request vendor SLA/benchmarks — mark as [VENDOR-DOC] or [UNVALIDATED] |
 | Time pressure to skip | Deliver abbreviated S1+S5 (claims + verdict). Flag risk of skipping full analysis |
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Todos los claims son validados (ningun riesgo identificado) | Caso raro; documentar evidencia exhaustivamente; proceder con alta confianza; reducir contingencia en presupuesto |
 | Multiples claims refutados (>50% AT RISK o REFUTED) | Recomendar pivote a escenario alternativo de Phase 3; no proceder a Phase 4 sin escenario viable |
 | Sin acceso al codebase (solo documentacion) | Paper analysis unicamente; marcar todos los claims tecnicos como [INFERENCIA]; incrementar incertidumbre; recomendar spike con acceso a codigo como prerequisito |
 | Presion de tiempo para saltar feasibility | Entregar version abreviada S1+S5 (claims + veredicto); documentar explicitamente el riesgo de saltar analisis completo |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Evaluar 6 dimensiones de feasibility (tecnica, organizacional, timeline, financiera, regulatoria, operacional) | Solo feasibility tecnica | Un proyecto tecnicamente brillante que ignora capacidad organizacional o compliance regulatorio fracasa igual; la feasibility parcial es feasibility falsa |
 | Clasificar claims con 4 estados (VALIDATED, UNVALIDATED, AT RISK, REFUTED) | Binario (factible / no factible) | Los 4 estados permiten accion graduada: validados proceden, unvalidados necesitan spike, at risk necesitan mitigacion, refutados requieren alternativa |
@@ -318,7 +320,7 @@ Anexo: Cadena de Evidencia por Claim
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, resumen ejecutivo (veredicto), inventario de claims (semáforo), análisis 6D (radar chart), spikes y PoC prioritizados, bloqueadores y showstoppers, veredicto y recomendación, risk register actualizado.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, resumen ejecutivo (veredicto), inventario de claims (semáforo), análisis 6D (radar chart), spikes y PoC prioritizados, bloqueadores y showstoppers, veredicto y recomendación, risk register actualizado.
 
 ## Evaluacion
 

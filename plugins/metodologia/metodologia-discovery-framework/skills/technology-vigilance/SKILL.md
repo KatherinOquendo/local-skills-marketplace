@@ -10,6 +10,8 @@ description: >
   trends, preparing sector-specific tech intelligence, validating technology choices against current
   landscape, or when "vigilancia tecnológica", "tech watch", "Gartner", "Forrester", "tech radar",
   "Stanford HAI", "IEEE", or "tendencias tecnológicas" is mentioned.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -26,7 +28,7 @@ allowed-tools:
 
 Structured monitoring of the technology landscape to inform discovery decisions with up-to-date data on trends, maturity, adoption, and risks of proposed technologies.
 
-## Guiding Principle
+## Grounding Guideline
 
 **We do not propose technology based on what we know — we propose based on what the market shows.**
 
@@ -194,18 +196,18 @@ Opinions and frameworks from thought leaders relevant to the project:
 - quadrantChart: technology positioning (maturity x adoption)
 - timeline: signal detection timeline
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | All analyst sources are behind paywalls and no public summaries exist for the requested technology | Use Tier 2 (ThoughtWorks Radar, CNCF, GitHub Octoverse) and Tier 4 (thought leaders) as primary sources; flag all findings as [OPENSOURCE] or [REFERENT]; recommend client purchase analyst access for validation |
 | Technology is so new that no analyst firm has positioned it (pre-hype cycle) | Use academic sources (arXiv, IEEE, ACM) and GitHub trending; classify as "Emerging Signal — insufficient data for positioning"; recommend PoC-based validation |
 | Client's sector has no specialized analyst coverage (niche industry) | Map to the closest covered sector; document the mapping rationale; flag all sector-specific conclusions as [INFERENCIA] with the parent sector cited |
 | Conflicting signals across sources (e.g., Gartner says "Adopt", ThoughtWorks says "Hold") | Report both positions with full citation; analyze the disagreement (different evaluation criteria, different time horizons); recommend the client define their own evaluation weight set |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Require minimum 2 independent sources to classify a signal as "trend" | Accept single-source signals as trends | Single-source signals carry high bias risk; the 2-source minimum forces corroboration and filters noise from genuine shifts |
 | Include thought leader opinions as Tier 4 (lowest evidence weight) | Exclude individual opinions entirely | Thought leaders often signal shifts 12-18 months before analyst firms; their value is early detection, not confirmation |
@@ -249,7 +251,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_technology-vigilance_{cliente}_{WIP}.xlsx`
@@ -257,7 +259,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, contexto de vigilancia, señales detectadas (tabla con semáforo de urgencia), posicionamiento de tecnologías propuestas (quadrant chart), benchmark sectorial, thought leaders relevantes, recomendaciones priorizadas (MUST/SHOULD/COULD).
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, contexto de vigilancia, señales detectadas (tabla con semáforo de urgencia), posicionamiento de tecnologías propuestas (quadrant chart), benchmark sectorial, thought leaders relevantes, recomendaciones priorizadas (MUST/SHOULD/COULD).
 
 ## Evaluacion
 

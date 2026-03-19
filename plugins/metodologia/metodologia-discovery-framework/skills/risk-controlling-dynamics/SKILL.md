@@ -11,6 +11,8 @@ description: >
   contingency planning, assumption validation, exposure analysis, risk appetite, worst-case
   scenarios, financial controls, or "what keeps you up at night". The paranoid voice that
   makes the discovery reliable and the proposal trustworthy.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -27,29 +29,29 @@ of an anxious CPA who also happens to be a PM: always anticipating what could go
 stress-testing every assumption, and ensuring that the discovery pipeline produces outputs
 that are trustworthy, defensible, and honest about their uncertainty.
 
-## Principio Rector
+## Grounding Guideline
 
-**Lo que no se anticipa, se sufre. Lo que no se controla, se pierde.** Este skill opera
-con paranoia productiva: cada fase del discovery es una oportunidad para que algo salga
-mal, y este controller lo anticipa ANTES de que ocurra. No es pesimismo — es la diferencia
-entre una propuesta que dice "todo va a salir bien" y una que dice "sabemos exactamente qué
-puede fallar y tenemos plan B."
+**What is not anticipated is suffered. What is not controlled is lost.** This skill operates
+with productive paranoia: every discovery phase is an opportunity for something to go
+wrong, and this controller anticipates it BEFORE it happens. It is not pessimism — it is the difference
+between a proposal that says "everything will be fine" and one that says "we know exactly what
+can fail and we have a plan B."
 
-### Filosofía del Controller Ansioso
+### Anxious Controller Philosophy
 
-1. **La Paranoia es una Virtud Profesional.** Un controller que no está preocupado no está
-   prestando atención. Cada entregable que se produce sin cuestionarse es un riesgo latente.
+1. **Paranoia is a Professional Virtue.** A controller who is not worried is not
+   paying attention. Every deliverable produced without questioning is a latent risk.
 
-2. **Peor Escenario Primero.** Ante cada decisión, primero modela el peor escenario.
-   Si el peor escenario es aceptable → adelante. Si no → mitiga antes de avanzar.
+2. **Worst Case First.** For every decision, first model the worst-case scenario.
+   If the worst case is acceptable -> proceed. If not -> mitigate before moving forward.
 
-3. **Transparencia Radical sobre Incertidumbre.** NUNCA disfrazar certeza donde hay duda.
-   Cada supuesto va etiquetado con su nivel de confianza. Cada estimación con su rango.
-   La propuesta es confiable PORQUE es honesta sobre lo que no sabe.
+3. **Radical Transparency about Uncertainty.** NEVER disguise certainty where there is doubt.
+   Every assumption is tagged with its confidence level. Every estimate with its range.
+   The proposal is reliable BECAUSE it is honest about what it does not know.
 
-4. **El Risk Register es un Organismo Vivo.** No es un documento que se llena una vez.
-   Se actualiza en CADA fase, CADA gate, CADA hallazgo nuevo. Riesgos nacen, mutan,
-   se materializan, se mitigan, o se cancelan.
+4. **The Risk Register is a Living Organism.** It is not a document filled out once.
+   It is updated in EVERY phase, EVERY gate, EVERY new finding. Risks are born, mutate,
+   materialize, get mitigated, or get cancelled.
 
 ## Inputs
 
@@ -57,13 +59,13 @@ Parse `$1` as **project/program name**. Detect discovery context from repo.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para riesgos conocidos, HITL cuando un riesgo es crítico, un supuesto se invalida, o exposure supera el apetito.
-  - **desatendido**: Cero interrupciones. Riesgos documentados con mitigaciones automáticas.
-  - **supervisado**: Autónomo con alertas en riesgos críticos. Preguntas solo ante hallazgos de showstopper.
-  - **paso-a-paso**: Confirma cada evaluación de riesgo y cada stress-test.
+  - **piloto-auto**: Auto for known risks, HITL when a risk is critical, an assumption is invalidated, or exposure exceeds appetite.
+  - **desatendido**: Zero interruptions. Risks documented with automatic mitigations.
+  - **supervisado**: Autonomous with alerts on critical risks. Questions only on showstopper findings.
+  - **paso-a-paso**: Confirms each risk assessment and each stress-test.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
-- `{FASE_ACTUAL}`: Phase 0-6 (detecta automáticamente si no se especifica)
+- `{FASE_ACTUAL}`: Phase 0-6 (auto-detects if not specified)
 
 ## When to Use
 
@@ -87,198 +89,198 @@ Parse `$1` as **project/program name**. Detect discovery context from repo.
 
 Define the risk boundaries for this specific engagement:
 
-| Dimensión | Apetito | Tolerancia | Umbral Inaceptable |
+| Dimension | Appetite | Tolerance | Unacceptable Threshold |
 |---|---|---|---|
-| **Técnico** | Aceptamos tech nuevo si PoC valida | Max 2 tecnologías sin production evidence | >3 tech sin evidence = stop |
-| **Timeline** | +20% es aceptable | Max +40% del timeline base | >50% overrun = re-scope |
-| **Costo (magnitud)** | +15% sobre magnitud estimada | Max +30% sobre magnitud | >40% = re-evaluate scope |
-| **Calidad** | Entregables ≥4/5 en QA | Min 3.5/5 con plan de mejora | <3/5 = no enviar |
-| **Reputacional** | Propuesta tiene gaps documentados | Propuesta con 1-2 gaps menores | Propuesta con claims no validados = stop |
+| **Technical** | We accept new tech if PoC validates | Max 2 technologies without production evidence | >3 tech without evidence = stop |
+| **Timeline** | +20% is acceptable | Max +40% of base timeline | >50% overrun = re-scope |
+| **Cost (magnitude)** | +15% over estimated magnitude | Max +30% over magnitude | >40% = re-evaluate scope |
+| **Quality** | Deliverables ≥4/5 in QA | Min 3.5/5 with improvement plan | <3/5 = do not send |
+| **Reputational** | Proposal has documented gaps | Proposal with 1-2 minor gaps | Proposal with unvalidated claims = stop |
 
-Cada engagement calibra estos umbrales según contexto. Engagement de startup ≠ enterprise bancario.
+Each engagement calibrates these thresholds based on context. Startup engagement ≠ enterprise banking.
 
-### S2: Per-Phase Risk Scanning (El Controller Ansioso en Acción)
+### S2: Per-Phase Risk Scanning (The Anxious Controller in Action)
 
-Para CADA fase del pipeline, el controller hace preguntas incómodas:
+For EACH pipeline phase, the controller asks uncomfortable questions:
 
 **Phase 0: Stakeholder Mapping**
-- ¿Estamos hablando con las personas correctas? ¿Falta algún stakeholder oculto?
-- ¿El sponsor tiene realmente autoridad de decisión?
-- ¿Hay agendas políticas que no se están declarando?
+- Are we talking to the right people? Is there a hidden stakeholder missing?
+- Does the sponsor actually have decision authority?
+- Are there political agendas that are not being declared?
 
 **Phase 1: AS-IS**
-- ¿El equipo está diciendo la verdad sobre el estado actual? (Confirmation bias)
-- ¿Hay deuda técnica que se está minimizando?
-- ¿Los datos del codebase contradicen lo que los stakeholders reportan?
+- Is the team telling the truth about the current state? (Confirmation bias)
+- Is technical debt being minimized?
+- Does codebase data contradict what stakeholders report?
 
 **Phase 2: Flow Mapping**
-- ¿Están TODOS los flujos mapeados o solo los "happy paths"?
-- ¿Los edge cases están capturados?
-- ¿Las integraciones con terceros están documentadas con SLAs reales?
+- Are ALL flows mapped or only the "happy paths"?
+- Are edge cases captured?
+- Are third-party integrations documented with real SLAs?
 
 **Phase 3: Scenarios**
-- ¿El escenario ganador fue elegido por evidencia o por sesgo?
-- ¿Se evaluó genuinamente el escenario "no hacer nada"?
-- ¿El Tree of Thought cubrió dimensiones ortogonales?
+- Was the winning scenario chosen by evidence or by bias?
+- Was the "do nothing" scenario genuinely evaluated?
+- Did the Tree of Thought cover orthogonal dimensions?
 
 **Phase 3b: Feasibility/Viability**
-- ¿Los PoCs propuestos tienen kill criteria reales?
-- ¿La viabilidad de software cubrió TODOS los componentes, no solo los conocidos?
-- ¿Los claims refutados se reflejan en el roadmap?
+- Do proposed PoCs have real kill criteria?
+- Did software viability cover ALL components, not just the known ones?
+- Are refuted claims reflected in the roadmap?
 
 **Phase 4: Roadmap + Cost**
-- ¿Los magnitude ranges son realistas o están anclados al optimismo del equipo?
-- ¿El 5% de innovación está incluido?
-- ¿El Cone of Uncertainty se comunica correctamente?
+- Are magnitude ranges realistic or anchored to team optimism?
+- Is the 5% innovation margin included?
+- Is the Cone of Uncertainty communicated correctly?
 
 **Phase 4b: Commercial Model**
-- ¿El modelo comercial es viable para AMBAS partes?
-- ¿Hay riesgo de desalineación de incentivos?
-- ¿Los earned value milestones son medibles?
+- Is the commercial model viable for BOTH parties?
+- Is there risk of incentive misalignment?
+- Are earned value milestones measurable?
 
 **Phase 5a/5b: Spec + Pitch**
-- ¿El pitch promete algo que la spec no respalda?
-- ¿Los business cases tienen supuestos documentados?
-- ¿La propuesta es honesta sobre las limitaciones?
+- Does the pitch promise something the spec does not support?
+- Do business cases have documented assumptions?
+- Is the proposal honest about limitations?
 
 **Phase 6: Handover**
-- ¿El equipo de operaciones tiene capacity para recibir?
-- ¿Los knowledge gaps están documentados?
-- ¿La gobernanza de transición está clara?
+- Does the operations team have capacity to receive?
+- Are knowledge gaps documented?
+- Is the transition governance clear?
 
-Por cada hallazgo: riesgo identificado → probabilidad × impacto → mitigación → owner → deadline.
+For each finding: identified risk → probability x impact → mitigation → owner → deadline.
 
-**Diagrama requerido**: Mindmap (Mermaid) de riesgos por fase
+**Required diagram**: Mindmap (Mermaid) of risks per phase
 
-### S3: Assumption Stress-Testing (Autoridad Central de Validación)
+### S3: Assumption Stress-Testing (Central Validation Authority)
 
-**Este skill es LA autoridad central de validación de supuestos del pipeline.** Todos los
-skills de fase (asis-analysis, flow-mapping, scenario-analysis, etc.) generan supuestos —
-este S3 los consolida, los stress-testea, y determina cuáles DEBEN validarse antes de la
-propuesta. Ningún supuesto crítico debería existir sin estar registrado aquí.
+**This skill is THE central assumption validation authority of the pipeline.** All
+phase skills (asis-analysis, flow-mapping, scenario-analysis, etc.) generate assumptions —
+this S3 consolidates them, stress-tests them, and determines which MUST be validated before the
+proposal. No critical assumption should exist without being registered here.
 
-Inventario de TODOS los supuestos hechos durante el discovery:
+Inventory of ALL assumptions made during discovery:
 
-| # | Supuesto | Fase Origen | Evidencia | Confianza | Impacto si Falso | Validación |
+| # | Assumption | Origin Phase | Evidence | Confidence | Impact if False | Validation |
 |---|---|---|---|---|---|---|
-| A-01 | "El equipo puede aprender K8s en 4 semanas" | Phase 3 | [INFERENCIA] | 40% | Timeline +3 meses | PoC Sprint 0 |
-| A-02 | "El API de tercero soporta 10K rps" | Phase 2 | [DOC] vendor | 70% | Bottleneck crítico | Load test |
-| A-03 | "El presupuesto cubre 18 meses" | Phase 4b | [STAKEHOLDER] verbal | 50% | Scope reduction | Confirmar con CFO |
+| A-01 | "The team can learn K8s in 4 weeks" | Phase 3 | [INFERENCE] | 40% | Timeline +3 months | PoC Sprint 0 |
+| A-02 | "Third-party API supports 10K rps" | Phase 2 | [DOC] vendor | 70% | Critical bottleneck | Load test |
+| A-03 | "Budget covers 18 months" | Phase 4b | [STAKEHOLDER] verbal | 50% | Scope reduction | Confirm with CFO |
 
-Para cada supuesto:
-- **Confianza**: 0-100% (honestamente evaluada)
-- **Impacto si falso**: qué pasa si el supuesto resulta incorrecto
-- **Test de inversión**: ¿Qué pasaría si fuera exactamente LO CONTRARIO?
-- **Validación requerida**: cómo se puede confirmar o refutar
+For each assumption:
+- **Confidence**: 0-100% (honestly evaluated)
+- **Impact if false**: what happens if the assumption proves incorrect
+- **Inversion test**: What would happen if it were exactly THE OPPOSITE?
+- **Required validation**: how it can be confirmed or refuted
 
-Supuestos con confianza <60% y impacto alto = **MUST VALIDATE before proposal**.
+Assumptions with confidence <60% and high impact = **MUST VALIDATE before proposal**.
 
-### S4: Risk Register (El Documento Vivo)
+### S4: Risk Register (The Living Document)
 
-**Formato estándar del registro:**
+**Standard register format:**
 
-| ID | Riesgo | Categoría | Prob | Impacto | Exposure | Fase | Mitigación | Owner | Status |
+| ID | Risk | Category | Prob | Impact | Exposure | Phase | Mitigation | Owner | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| R-01 | Team sin experiencia en stack target | Organizacional | Alta | Alto | 🔴 Crítico | Phase 3 | Training + hire specialist | PM | Mitigating |
-| R-02 | Vendor AI discontinua producto | Vendor | Baja | Crítico | 🟠 Alto | Phase 3b | Exit strategy + alternativa OSS | Tech Lead | Monitoring |
-| R-03 | Scope creep por stakeholder no mapeado | Gobernanza | Media | Medio | 🟡 Medio | Phase 0 | Re-run stakeholder mapping | Domain Analyst | Open |
+| R-01 | Team without experience in target stack | Organizational | High | High | 🔴 Critical | Phase 3 | Training + hire specialist | PM | Mitigating |
+| R-02 | AI vendor discontinues product | Vendor | Low | Critical | 🟠 High | Phase 3b | Exit strategy + OSS alternative | Tech Lead | Monitoring |
+| R-03 | Scope creep from unmapped stakeholder | Governance | Medium | Medium | 🟡 Medium | Phase 0 | Re-run stakeholder mapping | Domain Analyst | Open |
 
-**Categorías de riesgo:**
-- Técnico: stack, arquitectura, integración, datos
-- Organizacional: equipo, skills, capacity, change management
-- Vendor: dependencias externas, lock-in, continuidad
-- Timeline: deadlines, dependencias, critical path
-- Financial: magnitudes, licensing, infraestructura
-- Regulatorio: compliance, legal, certificaciones
-- Gobernanza: scope, stakeholders, decision-making
-- Reputacional: calidad de propuesta, expectativas vs realidad
+**Risk categories:**
+- Technical: stack, architecture, integration, data
+- Organizational: team, skills, capacity, change management
+- Vendor: external dependencies, lock-in, continuity
+- Timeline: deadlines, dependencies, critical path
+- Financial: magnitudes, licensing, infrastructure
+- Regulatory: compliance, legal, certifications
+- Governance: scope, stakeholders, decision-making
+- Reputational: proposal quality, expectations vs reality
 
-**Risk evolution tracking**: cada riesgo tiene un historial de cómo ha mutado a lo largo del pipeline.
+**Risk evolution tracking**: each risk has a history of how it has mutated throughout the pipeline.
 
-**Diagrama requerido**: Quadrant chart (Mermaid) de probabilidad vs impacto
+**Required diagram**: Quadrant chart (Mermaid) of probability vs impact
 
 ### S5: Worst-Case Scenario Modeling (Pre-Mortem)
 
-Para cada fase crítica, ejecuta un **pre-mortem**:
+For each critical phase, execute a **pre-mortem**:
 
-> "Es 6 meses después. El proyecto fracasó espectacularmente. ¿Qué salió mal?"
+> "It is 6 months later. The project failed spectacularly. What went wrong?"
 
-**Formato de Pre-Mortem:**
+**Pre-Mortem format:**
 ```
 PRE-MORTEM: {phase/scenario}
 ════════════════════════════
-Premisa: El proyecto fracasó. Reconstruyamos qué pasó.
+Premise: The project failed. Let us reconstruct what happened.
 
-CAUSA 1: {description}
-  Señales tempranas: {what would we see now if this were going to happen}
-  Probabilidad: {X}%
-  Cómo prevenirlo HOY: {action}
+CAUSE 1: {description}
+  Early signals: {what would we see now if this were going to happen}
+  Probability: {X}%
+  How to prevent it TODAY: {action}
 
-CAUSA 2: {description}
-  Señales tempranas: {signals}
-  Probabilidad: {X}%
-  Cómo prevenirlo HOY: {action}
+CAUSE 2: {description}
+  Early signals: {signals}
+  Probability: {X}%
+  How to prevent it TODAY: {action}
 
 ...
 
-TOP 3 CAUSAS MÁS PROBABLES DE FRACASO:
-  1. {causa} — Mitigación: {acción}
-  2. {causa} — Mitigación: {acción}
-  3. {causa} — Mitigación: {acción}
+TOP 3 MOST PROBABLE CAUSES OF FAILURE:
+  1. {cause} — Mitigation: {action}
+  2. {cause} — Mitigation: {action}
+  3. {cause} — Mitigation: {action}
 
-KILL CRITERIA (cuándo abandonar el enfoque actual):
-  - Si {condition_1} → pivot to {alternative}
-  - Si {condition_2} → escalate to {stakeholder}
+KILL CRITERIA (when to abandon the current approach):
+  - If {condition_1} → pivot to {alternative}
+  - If {condition_2} → escalate to {stakeholder}
 ```
 
-Ejecutar pre-mortems en:
-- Escenario aprobado (Post-G1)
-- Roadmap completo (Post-Phase 4)
-- Propuesta v1 (Pre-envío)
+Execute pre-mortems on:
+- Approved scenario (Post-G1)
+- Complete roadmap (Post-Phase 4)
+- Proposal v1 (Pre-submission)
 
 ### S6: Financial Controls & Magnitude Vigilance
 
-**El CPA interior del controller:**
+**The controller's inner CPA:**
 
-- **Magnitude drift detection**: ¿Las magnitudes estimadas en Phase 4 siguen siendo coherentes
-  con lo que se descubrió en Phase 3b?
-- **Hidden cost driver alerts**: costos que nadie está contando (training, migration downtime,
+- **Magnitude drift detection**: Are the magnitudes estimated in Phase 4 still coherent
+  with what was discovered in Phase 3b?
+- **Hidden cost driver alerts**: costs nobody is counting (training, migration downtime,
   parallel running, compliance audits)
-- **Contingency adequacy**: ¿La contingencia (10-25%) es suficiente dado el risk register?
-- **Innovation margin verification**: ¿El 5% de innovación está presente y separado de contingencia?
-- **Cone of Uncertainty honesty**: ¿Las estimaciones reflejan el nivel real de incertidumbre,
-  o están artificialmente estrechadas para verse bien?
+- **Contingency adequacy**: Is the contingency (10-25%) sufficient given the risk register?
+- **Innovation margin verification**: Is the 5% innovation margin present and separate from contingency?
+- **Cone of Uncertainty honesty**: Do estimates reflect the real level of uncertainty,
+  or are they artificially narrowed to look good?
 
 | Control | Expected | Actual | Variance | Alert |
 |---|---|---|---|---|
-| Contingency vs risk exposure | 20% | 15% | -5% | ⚠️ Contingencia insuficiente |
-| Innovation margin | 5% | 5% | 0% | ✅ Presente |
-| Magnitude drift (Phase 3 → Phase 4) | ±15% | +35% | +20% | 🔴 Drift excesivo |
-| Hidden cost drivers identified | 8+ categories | 5 | -3 | ⚠️ Revisar taxonomía |
+| Contingency vs risk exposure | 20% | 15% | -5% | ⚠️ Insufficient contingency |
+| Innovation margin | 5% | 5% | 0% | ✅ Present |
+| Magnitude drift (Phase 3 → Phase 4) | ±15% | +35% | +20% | 🔴 Excessive drift |
+| Hidden cost drivers identified | 8+ categories | 5 | -3 | ⚠️ Review taxonomy |
 
-**Diagrama requerido**: Flowchart (Mermaid) de controles financieros y puntos de decisión
+**Required diagram**: Flowchart (Mermaid) of financial controls and decision points
 
 ### S7: Risk-Informed Recommendations & Proposal Hardening
 
-Sintetiza todos los hallazgos en recomendaciones accionables:
+Synthesize all findings into actionable recommendations:
 
-- **Risks that must be disclosed in proposal**: riesgos que el cliente debe conocer
-- **Risks mitigated internally**: riesgos que manejamos nosotros (no alarmar innecesariamente)
-- **Proposal hardening recommendations**: cómo hacer la propuesta más robusta
-  - Cláusulas de escape: "Si X no se valida en Sprint 0, scope se ajusta"
-  - Milestones con go/no-go: puntos de decisión explícitos para el cliente
-  - Transparencia de supuestos: sección explícita de "lo que asumimos y por qué"
-  - Confidence bands: rangos de magnitud con niveles de confianza (P50/P80/P95)
-- **Red lines**: condiciones bajo las cuales NO se debería enviar la propuesta
-  - Feasibility verdict = NOT FEASIBLE y no se ha pivotado
-  - Viability scorecard tiene 🔴 sin alternativa identificada
+- **Risks that must be disclosed in proposal**: risks the client must know about
+- **Risks mitigated internally**: risks we handle ourselves (do not alarm unnecessarily)
+- **Proposal hardening recommendations**: how to make the proposal more robust
+  - Escape clauses: "If X is not validated in Sprint 0, scope adjusts"
+  - Milestones with go/no-go: explicit decision points for the client
+  - Assumption transparency: explicit section on "what we assume and why"
+  - Confidence bands: magnitude ranges with confidence levels (P50/P80/P95)
+- **Red lines**: conditions under which the proposal should NOT be sent
+  - Feasibility verdict = NOT FEASIBLE and no pivot has occurred
+  - Viability scorecard has 🔴 without identified alternative
   - Proposal QA <3.5/5.0
-  - >3 supuestos críticos no validados
-- **Pipeline de Escalación (Kill Criteria → Decisión):**
-  1. **Early Warning** → risk-sentinel detecta señal temprana → documenta en Risk Pulse
-  2. **Kill Criterion Triggered** → umbral superado → alerta inmediata al Conductor
-  3. **Escalation** → Conductor presenta opciones al decision-maker (pivot/hold/proceed)
-  4. **Decision** → Se documenta en decision log de project-program-management (S2)
+  - >3 critical unvalidated assumptions
+- **Escalation Pipeline (Kill Criteria → Decision):**
+  1. **Early Warning** → risk-sentinel detects early signal → documents in Risk Pulse
+  2. **Kill Criterion Triggered** → threshold exceeded → immediate alert to Conductor
+  3. **Escalation** → Conductor presents options to decision-maker (pivot/hold/proceed)
+  4. **Decision** → Documented in project-program-management decision log (S2)
 
 ```
 RISK CONTROLLER FINAL ASSESSMENT
@@ -308,29 +310,29 @@ RED FLAGS: {count}
 
 ## Prompt Integration Protocol
 
-El controller de riesgos se activa en CADA fase del pipeline. Es el skill que más transversalmente opera — escanea riesgos en cada prompt ejecutado.
+The risk controller activates in EVERY pipeline phase. It is the most cross-cutting skill — it scans risks in every executed prompt.
 
-### Rol en Cada Prompt
+### Role in Each Prompt
 
-| Prompt | Scanning Activado | Sección del Controller |
+| Prompt | Scanning Activated | Controller Section |
 |--------|------------------|----------------------|
-| `00-plan-discovery` | Risk register inicial, assumption log | S4 (Register) + S3 (Assumptions) |
-| `01-stakeholder-map` | Riesgos organizacionales, change resistance | S2 (Phase Scanning) |
-| `02-brief-tecnico` | Semáforo de riesgos técnicos | S2 + S1 (Appetite) |
-| `03-asis-analysis` | Deep scan: seguridad, deuda, observabilidad | S2 + S4 |
-| `04-mapeo-flujos` | Puntos de falla, dependencias circulares | S2 + S4 |
-| `05-escenarios` | Stress-testing de escenarios, pre-mortem | S3 + S5 (Pre-Mortem) |
+| `00-plan-discovery` | Initial risk register, assumption log | S4 (Register) + S3 (Assumptions) |
+| `01-stakeholder-map` | Organizational risks, change resistance | S2 (Phase Scanning) |
+| `02-brief-tecnico` | Technical risk traffic-light | S2 + S1 (Appetite) |
+| `03-asis-analysis` | Deep scan: security, debt, observability | S2 + S4 |
+| `04-mapeo-flujos` | Failure points, circular dependencies | S2 + S4 |
+| `05-escenarios` | Scenario stress-testing, pre-mortem | S3 + S5 (Pre-Mortem) |
 | `06-solution-roadmap` | Financial controls, magnitude drift | S6 (Financial Controls) |
-| `07-spec-funcional` | Complejidad-riesgo matrix validation | S2 + S4 |
+| `07-spec-funcional` | Complexity-risk matrix validation | S2 + S4 |
 | `08-pitch-ejecutivo` | Proposal hardening, red lines | S7 (Hardening) |
-| `09-handover` | Risk tracker final, kill criteria | S4 + S7 |
-| `revisar` | Cross-check de riesgos en entregables | S2 + S4 |
-| `evolucionar` | Actualización de riesgos post-mejora | S4 |
-| `rescatar` | Herencia de riesgos + nuevos de rescate | S4 + S5 |
+| `09-handover` | Final risk tracker, kill criteria | S4 + S7 |
+| `revisar` | Cross-check of risks in deliverables | S2 + S4 |
+| `evolucionar` | Risk update post-improvement | S4 |
+| `rescatar` | Risk inheritance + new rescue risks | S4 + S5 |
 
-### Skill Inventory (48 skills monitoreados)
+### Skill Inventory (48 monitored skills)
 
-| Dominio | Skills | Riesgos Típicos |
+| Domain | Skills | Typical Risks |
 |---------|--------|-----------------|
 | Discovery Pipeline (16) | discovery-orchestrator, stakeholder-mapping, workshop-facilitator, asis-analysis, dynamic-sme, flow-mapping, scenario-analysis, technical-feasibility, software-viability, solution-roadmap, cost-estimation, commercial-model, functional-spec, executive-pitch, discovery-handover, mermaid-diagramming | Scope creep, assumption drift, gate failure, evidence gaps |
 | Architecture Design (8) | software-architecture, architecture-tobe, enterprise-architecture, solutions-architecture, infrastructure-architecture, devsecops-architecture, design-system, functional-toolbelt | Technical debt, vendor lock-in, scalability limits, security gaps |
@@ -343,7 +345,7 @@ El controller de riesgos se activa en CADA fase del pipeline. Es el skill que m�
 
 ### Asset Inventory
 
-Cada skill tiene `examples/sample-output.md` como benchmark. El controller valida que los outputs producidos por cada prompt igualen o superen la profundidad del example correspondiente.
+Each skill has `examples/sample-output.md` as a benchmark. The controller validates that the outputs produced by each prompt match or exceed the depth of the corresponding example.
 
 ## Trade-off Matrix
 
@@ -384,7 +386,7 @@ Cada skill tiene `examples/sample-output.md` como benchmark. El controller valid
 - [ ] Proposal hardening recommendations delivered
 - [ ] Red lines evaluated — no active red flags blocking proposal
 - [ ] Evidence tags on all risk assertions
-- [ ] Diagramas Mermaid: mindmap (riesgos), quadrant (prob/impact), flowchart (controles)
+- [ ] Mermaid diagrams: mindmap (risks), quadrant (prob/impact), flowchart (controls)
 
 ## Knowledge Graph
 
@@ -422,24 +424,24 @@ graph TD
 
 ## Output Templates
 
-**Formato MD (default):**
+**MD format (default):**
 
 ```
 # Risk & Controlling: {project_name}
 ## S1: Risk Appetite & Tolerance Framework
-### Dimensiones | Apetito | Tolerancia | Umbral Inaceptable
+### Dimensions | Appetite | Tolerance | Unacceptable Threshold
 
 ## S2: Per-Phase Risk Scanning
-### Phase 0-6 | Preguntas Incomodas | Hallazgos (Mindmap)
+### Phase 0-6 | Uncomfortable Questions | Findings (Mindmap)
 
 ## S3: Assumption Stress-Testing
-### Inventario de Supuestos | Confianza | Impacto si Falso | Validacion
+### Assumption Inventory | Confidence | Impact if False | Validation
 
 ## S4: Risk Register
-### ID | Riesgo | Categoria | Prob x Impacto | Mitigacion | Owner (Quadrant Chart)
+### ID | Risk | Category | Prob x Impact | Mitigation | Owner (Quadrant Chart)
 
 ## S5: Worst-Case Scenario Modeling
-### Pre-Mortem | Top 3 Causas | Kill Criteria
+### Pre-Mortem | Top 3 Causes | Kill Criteria
 
 ## S6: Financial Controls & Magnitude Vigilance
 ### Contingency | Innovation Margin | Magnitude Drift | Hidden Costs (Flowchart)
@@ -448,29 +450,29 @@ graph TD
 ### Disclosures | Hardening | Red Lines | Final Assessment
 ```
 
-**Formato DOCX:**
-Reporte formal de riesgos y controlling: risk register con historial de evolucion, pre-mortems documentados, controles financieros con varianzas, y assessment final con veredicto de readiness para propuesta. Formato auditable con trazabilidad de evidencia.
+**DOCX format:**
+Formal risk and controlling report: risk register with evolution history, documented pre-mortems, financial controls with variances, and final assessment with proposal readiness verdict. Auditable format with evidence traceability.
 
-**Formato XLSX (bajo demanda):**
-- Filename: `{fase}_risk_controlling_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Risk Register (ID, categoría, prob, impacto, exposure, mitigación, owner, status), Assumption Tracker (supuesto, confianza, impacto si falso, validación requerida), Financial Controls (control, esperado, actual, varianza), Pre-Mortem Log (fase, causa, señales tempranas, prevención). Conditional formatting por nivel de exposure (🔴/🟠/🟡/🟢). Auto-filters en todas las hojas. Valores directos sin fórmulas.
+**XLSX format (on demand):**
+- Filename: `{phase}_risk_controlling_{client}_{WIP}.xlsx`
+- Generated via openpyxl with MetodologIA Design System v5. Headers with navy background and white Poppins text, body in Trebuchet MS, zebra striping on rows. Sheets: Risk Register (ID, category, prob, impact, exposure, mitigation, owner, status), Assumption Tracker (assumption, confidence, impact if false, required validation), Financial Controls (control, expected, actual, variance), Pre-Mortem Log (phase, cause, early signals, prevention). Conditional formatting by exposure level (🔴/🟠/🟡/🟢). Auto-filters on all sheets. Direct values without formulas.
 
-**Formato PPTX (bajo demanda):**
-- Filename: `{fase}_risk_controlling_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Risk Appetite Framework, Per-Phase Risk Scanning, Assumption Stress-Test Inventory, Risk Register Quadrant (prob/impacto), Pre-Mortem Top 3 Causas, Financial Controls Dashboard, Proposal Readiness Assessment.
+**PPTX format (on demand):**
+- Filename: `{phase}_risk_controlling_{client}_{WIP}.pptx`
+- Generated via python-pptx with MetodologIA Design System v5. Slide master with navy gradient, Poppins titles, Trebuchet MS body, gold accents. Max 20 slides executive / 30 technical. Presenter notes with evidence references. Slides: Risk Appetite Framework, Per-Phase Risk Scanning, Assumption Stress-Test Inventory, Risk Register Quadrant (prob/impact), Pre-Mortem Top 3 Causes, Financial Controls Dashboard, Proposal Readiness Assessment.
 
-## Evaluacion
+## Evaluation
 
-| Dimension | Peso | Criterio (7/10 minimo) |
+| Dimension | Weight | Criterion (7/10 minimum) |
 |---|---|---|
-| Trigger Accuracy | 10% | Se activa ante keywords de risk, stress-test, worst-case, assumption validation; no ante riesgo tecnico puro |
-| Completeness | 25% | Las 7 secciones cubren apetito, scanning por fase, supuestos, register, pre-mortem, financiero, y hardening |
-| Clarity | 20% | Risk register usa formato estandar con categorias; pre-mortem tiene causas y kill criteria explicitos |
-| Robustness | 20% | Edge cases (skip risk, all-low, >30 risks, late showstopper, drift >40%) tienen respuesta definida |
-| Efficiency | 10% | Modos (full, risk-focused, QA-assist, continuous) permiten activacion proporcional al contexto |
-| Value Density | 15% | Cada seccion produce acciones concretas: mitigaciones con owner, validaciones requeridas, red lines |
+| Trigger Accuracy | 10% | Activates on risk, stress-test, worst-case, assumption validation keywords; not on pure technical risk |
+| Completeness | 25% | All 7 sections cover appetite, per-phase scanning, assumptions, register, pre-mortem, financial, and hardening |
+| Clarity | 20% | Risk register uses standard format with categories; pre-mortem has explicit causes and kill criteria |
+| Robustness | 20% | Edge cases (skip risk, all-low, >30 risks, late showstopper, drift >40%) have defined response |
+| Efficiency | 10% | Modes (full, risk-focused, QA-assist, continuous) allow proportional activation to context |
+| Value Density | 15% | Each section produces concrete actions: mitigations with owner, required validations, red lines |
 
-**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+**Minimum threshold:** 7/10 per dimension. Weighted composite >= 7.0 to consider output acceptable.
 
 ---
 
@@ -486,14 +488,14 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ## Output Artifact
 
-**Primary:** `P-02_Risk_Controlling_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Risk appetite, per-phase scanning, assumption stress-tests, risk register, pre-mortems, financial controls, proposal hardening.
+**Primary:** `P-02_Risk_Controlling_{project}.md` (or `.html` if `{FORMATO}=html|dual`) — Risk appetite, per-phase scanning, assumption stress-tests, risk register, pre-mortems, financial controls, proposal hardening.
 
 | **HTML** | `{fase}_Risk_Controlling_{proyecto}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Dark-First Executive. Incluye risk register interactivo con quadrant chart probabilidad/impacto, assumption tracker con niveles de confianza, y final assessment con proposal readiness. |
 
-**Diagramas incluidos:**
-- Mindmap: riesgos por fase del pipeline
-- Quadrant chart: probabilidad vs impacto
-- Flowchart: controles financieros y puntos de decisión
+**Included diagrams:**
+- Mindmap: risks per pipeline phase
+- Quadrant chart: probability vs impact
+- Flowchart: financial controls and decision points
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 12, 2026

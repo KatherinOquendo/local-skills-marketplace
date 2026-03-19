@@ -129,9 +129,9 @@ A "complete" deliverable passes all of these. Run through them as a final qualit
 
 ### Brand
 - Only brand colors + semantic colors used
-- Positive/success states use yellow (#22D3EE), never green
+- Positive/success states use yellow (#FFD700), never green
 - All text meets WCAG AA contrast (4.5:1 body, 3:1 large)
-- Clash Grotesk from Fontshare + Inter from Google Fonts
+- Poppins from Fontshare + Inter from Google Fonts
 - All CSS inline in `<style>` block
 
 ### Accessibility

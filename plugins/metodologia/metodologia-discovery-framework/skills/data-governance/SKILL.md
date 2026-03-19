@@ -22,9 +22,9 @@ allowed-tools:
 
 Data governance defines how data assets are discovered, owned, classified, retained, and protected across an organization. This skill produces governance frameworks that enable trust in data, regulatory compliance, and scalable self-serve data access.
 
-## Principio Rector
+## Grounding Guideline
 
-**Datos sin dueño son datos sin calidad.** El modelo de ownership se establece ANTES de catalogar. La clasificación determina la protección — no al revés. Privacy by design no es un afterthought sino el punto de partida de cada pipeline. Cada activo de datos tiene un dueño con nombre y apellido, un nivel de clasificación, y una política de retención vinculada a regulación específica.
+**Data without an owner is data without quality.** The ownership model is established BEFORE cataloging. Classification determines protection — not the other way around. Privacy by design is not an afterthought but the starting point of every pipeline. Every data asset has a named owner, a classification level, and a retention policy linked to specific regulation.
 
 ## Inputs
 
@@ -33,7 +33,7 @@ The user provides an organization or data domain as `$ARGUMENTS`. Parse `$1` as 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario y clasificación, HITL para ownership assignments y privacy decisions.
-  - **desatendido**: Cero interrupciones. Catálogo, clasificación y políticas generados automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Catálogo, clasificación y políticas generados automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en classification taxonomy y retention policies.
   - **paso-a-paso**: Confirma cada asset, clasificación, owner y política de retención.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -260,24 +260,24 @@ Applies governance as executable code in federated architectures.
 - Maturity model assessment is point-in-time; re-assess quarterly for accuracy
 - Cross-cloud governance assumes catalog tooling supports multi-cloud metadata federation
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Organizacion greenfield sin activos de datos | Iniciar con inventario de datos; asignar owners iniciales; definir clasificacion minima viable (3 tiers); evitar sobre-ingenieria de gobernanza para datos que aun no existen |
-| Industria altamente regulada (financiero, salud) | Multiples regulaciones superpuestas; mapear cada regulacion a elementos de datos especificos; documentar resolucion de conflictos retencion-vs-privacidad con legal counsel |
-| Transicion a data mesh | Modelos paralelos durante transicion; platform team codifica politicas como checks automatizados; dominios adoptan incrementalmente (Level 3 minimo antes de auto-gobernarse) |
-| Multi-cloud / hybrid data estate | Catalogo abstrae sobre ubicaciones cloud; lineage cross-cloud requiere integration adapters; clasificacion y retencion location-aware para data residency |
-| Fusiones y adquisiciones (M&A) | Priorizar descubrimiento de activos (inventariar ambos estates en 30 dias); harmonizar clasificacion y ownership; asignar owners interinos inmediatamente; 6-12 meses para integracion completa |
+| Greenfield organization without data assets | Start with data inventory; assign initial owners; define minimum viable classification (3 tiers); avoid over-engineering governance for data that does not yet exist |
+| Highly regulated industry (financial, healthcare) | Multiple overlapping regulations; map each regulation to specific data elements; document retention-vs-privacy conflict resolution with legal counsel |
+| Transition to data mesh | Parallel models during transition; platform team codifies policies as automated checks; domains adopt incrementally (Level 3 minimum before self-governing) |
+| Multi-cloud / hybrid data estate | Catalog abstracts over cloud locations; cross-cloud lineage requires integration adapters; location-aware classification and retention for data residency |
+| Mergers and acquisitions (M&A) | Prioritize asset discovery (inventory both estates in 30 days); harmonize classification and ownership; assign interim owners immediately; 6-12 months for full integration |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Ownership model establecido ANTES de catalogar | Catalogar primero, asignar owners despues | Datos sin dueno son datos sin calidad; el modelo de ownership determina quien es responsable de la clasificacion, retencion y calidad |
-| Clasificacion a nivel de columna (no solo tabla) | Clasificacion solo a nivel de tabla | GDPR Article 30 requiere granularidad a nivel de campo para PII; tabla-level no cumple y no permite masking selectivo |
-| Privacy by design integrado en pipelines | Privacy como retrofit post-implementacion | Retrofit es 5-10x mas costoso y deja ventanas de exposicion; privacy by design es el punto de partida de cada pipeline |
-| Gobernanza federada para organizaciones Level 4+ | Gobernanza centralizada para todos los niveles | La gobernanza centralizada no escala en organizaciones grandes; la federada habilita autonomia de dominio con estandares globales |
+| Ownership model established BEFORE cataloging | Catalog first, assign owners later | Data without an owner is data without quality; the ownership model determines who is responsible for classification, retention, and quality |
+| Column-level classification (not just table) | Table-level classification only | GDPR Article 30 requires field-level granularity for PII; table-level does not comply and does not allow selective masking |
+| Privacy by design integrated in pipelines | Privacy as post-implementation retrofit | Retrofit is 5-10x more expensive and leaves exposure windows; privacy by design is the starting point of every pipeline |
+| Federated governance for Level 4+ organizations | Centralized governance for all levels | Centralized governance does not scale in large organizations; federated enables domain autonomy with global standards |
 
 ## Knowledge Graph
 
@@ -335,8 +335,8 @@ graph TD
 | **Markdown** | `A-01_Data_Governance_Framework.md` | Framework completo con catalog design, ownership model, classification taxonomy, retention matrix, privacy compliance workflows y data mesh governance strategy. Diagramas Mermaid de ownership model y classification flow. |
 | **XLSX** | `A-01_Data_Governance_Matrix.xlsx` | Matriz interactiva con inventario de activos, clasificacion por columna, owners asignados, politicas de retencion por regulacion, y compliance status por dataset. |
 | **HTML** | `A-01_Data_Governance_Framework_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Light-First Technical, self-contained, WCAG AA, responsive. Incluye classification taxonomy visual, ownership RACI interactivo, y retention policy matrix filtrable por regulacion. |
-| **DOCX** | `{fase}_Data_Governance_Framework_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents. |
-| **PPTX** | `{fase}_Data_Governance_Framework_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia. |
+| **DOCX** | `{fase}_Data_Governance_Framework_{cliente}_{WIP}.docx` | Documento formal via python-docx (Design System MetodologIA v5). Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents. |
+| **PPTX** | `{fase}_Data_Governance_Framework_{cliente}_{WIP}.pptx` | Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia. |
 
 ## Evaluacion
 

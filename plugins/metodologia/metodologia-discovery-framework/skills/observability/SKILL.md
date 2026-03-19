@@ -21,15 +21,15 @@ allowed-tools:
 
 Observability architecture enables teams to understand system behavior from external outputs — logs, traces, and metrics. The skill produces comprehensive observability strategies covering the three pillars, alerting frameworks, and incident response integration that transform raw telemetry into actionable operational intelligence.
 
-## Principio Rector
+## Grounding Guideline
 
-**Si no se puede observar, no se puede operar. Si no se puede operar, no existe.** Los 3 pilares (logs, metrics, traces) son el mínimo, no el máximo. SLO-based alerting reemplaza threshold alerting, y la respuesta a incidentes empieza con observabilidad — no termina ahí.
+**If it cannot be observed, it cannot be operated. If it cannot be operated, it does not exist.** The 3 pillars (logs, metrics, traces) are the minimum, not the maximum. SLO-based alerting replaces threshold alerting, and incident response starts with observability — it does not end there.
 
-### Filosofía de Observability
+### Observability Philosophy
 
-1. **3 pillars are minimum.** Logs, métricas y traces son la base — no el techo. Exemplars conectan métricas con traces. Service maps conectan traces con topología. Sin las tres, hay monitoring — no observability.
-2. **SLO-based alerting > threshold alerting.** Alertar cuando CPU > 80% es ruido. Alertar cuando el error budget burn rate consume 14.4x en 1 hora es acción. Las alertas sirven al negocio, no a la infraestructura.
-3. **Incident response starts with observability.** Si el equipo no puede diagnosticar un incidente en <15 minutos con dashboards, traces y logs correlacionados, la arquitectura de observabilidad falló. Post-mortem retroalimenta la instrumentación.
+1. **3 pillars are minimum.** Logs, metrics, and traces are the foundation — not the ceiling. Exemplars connect metrics with traces. Service maps connect traces with topology. Without all three, there is monitoring — not observability.
+2. **SLO-based alerting > threshold alerting.** Alerting when CPU > 80% is noise. Alerting when the error budget burn rate consumes 14.4x in 1 hour is action. Alerts serve the business, not the infrastructure.
+3. **Incident response starts with observability.** If the team cannot diagnose an incident in <15 minutes with correlated dashboards, traces, and logs, the observability architecture has failed. Post-mortems feed back into instrumentation.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the *
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para instrumentation design y log architecture, HITL para SLO targets y alerting thresholds.
-  - **desatendido**: Cero interrupciones. Observability architecture documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Observability architecture documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en collector topology y alert rule design.
   - **paso-a-paso**: Confirma cada log standard, trace sampling strategy, metric naming, y alert rule.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -395,11 +395,11 @@ Matriz de controles de observabilidad: filas por servicio/componente, columnas p
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Observability_Architecture_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_Observability_Architecture_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

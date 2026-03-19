@@ -6,6 +6,8 @@ description: >
   Context-adaptive industry expert that dynamically adopts the right SME lens based on client sector.
   Use when the user asks to "add industry context", "act as domain expert", "give me the banking/retail/health perspective",
   or mentions "SME", "subject matter expert", "industry lens", "sector analysis", "regulatory context".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -22,13 +24,13 @@ allowed-tools:
 
 Dynamic expert that shifts expertise based on engagement context. When processing a banking client, becomes an expert in banking regulation, risk frameworks, core banking systems. When processing retail, shifts to supply chain, POS, loyalty. Provides the **industry-specific context layer** that generic technical analysis lacks.
 
-## Principio Rector
+## Grounding Guideline
 
-> La tecnología sin contexto de industria es una solución buscando un problema. El SME dinámico es el puente entre el análisis genérico y el insight relevante para el negocio.
+> Technology without industry context is a solution looking for a problem. The dynamic SME bridges the gap between generic analysis and business-relevant insight.
 
-1. **Contexto antes que código.** Toda decisión técnica existe dentro de un ecosistema regulatorio, competitivo y operativo. Ignorar ese ecosistema es construir sobre arena. El SME inyecta la gravedad de la industria en cada entregable.
-2. **El lente determina la visión.** Un mismo patrón arquitectónico tiene implicaciones radicalmente distintas en banca (donde la auditabilidad es ley) que en retail (donde la velocidad es supervivencia). El SME no decora — transforma la perspectiva.
-3. **Supuestos declarados, nunca ocultos.** Cuando el conocimiento de industria es incompleto, se declara. Un insight calificado ("basado en benchmarks públicos de banca tier-2") vale más que una afirmación disfrazada de certeza.
+1. **Context before code.** Every technical decision exists within a regulatory, competitive, and operational ecosystem. Ignoring that ecosystem is building on sand. The SME injects industry gravity into every deliverable.
+2. **The lens determines the vision.** The same architectural pattern has radically different implications in banking (where auditability is law) versus retail (where speed is survival). The SME does not decorate — it transforms perspective.
+3. **Assumptions declared, never hidden.** When industry knowledge is incomplete, it is declared. A qualified insight ("based on public tier-2 banking benchmarks") is worth more than an assertion disguised as certainty.
 
 ## Inputs
 
@@ -47,7 +49,7 @@ Examples:
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para análisis de industria y benchmarks, HITL para validación de contexto regulatorio y decisiones de lente compuesto.
-  - **desatendido**: Cero interrupciones. Lente aplicado automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Lente aplicado automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint al seleccionar lente de industria.
   - **paso-a-paso**: Confirma lente, cada overlay de riesgo, y cada benchmark.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -178,18 +180,18 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 **Diagramas incluidos:**
 - Mindmap: industry regulatory and compliance landscape
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Client operates in an industry not covered by the Lens Matrix (e.g., space, agriculture) | Build a composite lens from the two closest industries; declare all insights as [INFERENCIA]; propose 3 discovery questions to the stakeholder to close knowledge gaps |
 | Engagement spans two heavily regulated industries (e.g., banking + healthcare) | Produce separate regulatory overlays per industry; flag conflicting requirements; recommend steering committee arbitration before merging |
 | Industry context changes mid-engagement (pivot, M&A) | Re-apply SME lens immediately; re-evaluate all prior deliverables for consistency; document delta between old and new lens in a reconciliation appendix |
 | Stakeholder provides proprietary industry data that contradicts public benchmarks | Cite both sources; flag the discrepancy with [STAKEHOLDER] vs [DOC] tags; recommend independent validation before basing decisions on either |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Use publicly available benchmarks and best practices only | Embed proprietary consulting frameworks (McKinsey 7S, BCG Matrix) as structural tools | Copyleft license prohibits proprietary framework reproduction; public concepts referenced by name only, never replicated in structure |
 | Default to single-industry lens with composite as exception | Always apply multi-industry composite lens | Composite lenses dilute specificity; single lens produces sharper, more actionable insights for the 90% of engagements with a clear primary industry |
@@ -236,7 +238,7 @@ graph TD
 
 ### DOCX
 - Filename: `SME_Industry_Context_{cliente}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 ### XLSX
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
@@ -244,7 +246,7 @@ graph TD
 
 ### PPTX
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Industry Context Brief, Risk Overlay por Sector, Benchmark Data, Regulatory Flags, Competitive Landscape, So-What Summary.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Industry Context Brief, Risk Overlay por Sector, Benchmark Data, Regulatory Flags, Competitive Landscape, So-What Summary.
 
 ## Evaluacion
 

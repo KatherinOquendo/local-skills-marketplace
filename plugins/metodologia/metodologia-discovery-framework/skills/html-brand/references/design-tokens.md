@@ -300,15 +300,15 @@ window.addEventListener('scroll', () => {
 
 | Token legacy | Token Neo-Swiss |
 |-------------|-----------------|
-| `--metodologia-orange` (#6366F1) | `--navy` (#122562) or `--gold` (#FFD700) |
-| `--metodologia-positive` (#22D3EE) | `--positive` (#137DC5) |
+| `--metodologia-orange` (#122562) | `--navy` (#122562) or `--gold` (#FFD700) |
+| `--metodologia-positive` (#FFD700) | `--positive` (#137DC5) |
 | `--metodologia-black` (#000000) | `--navy` (#122562) |
-| `--metodologia-light` (#0F172A) | `--off-white` (#F8F9FC) |
-| `--font-display` (Clash Grotesk) | `--font-title` (Poppins) |
+| `--metodologia-light` (#1F2833) | `--off-white` (#F8F9FC) |
+| `--font-display` (Poppins) | `--font-title` (Poppins) |
 | `--font-body` (Inter) | `--font-body` (Trebuchet MS) |
 | `rgba(0,0,0,...)` shadows | `rgba(18,37,98,...)` shadows |
 | `--dark-surface` (#16213E) | `--white` (#FFFFFF) |
-| `#1A1A2E` body background | `#F8F9FC` body background |
+| `#1F2833` body background | `#F8F9FC` body background |
 
 ---
 

@@ -21,15 +21,15 @@ allowed-tools:
 
 Infrastructure architecture designs where and how software runs — compute resources, network topology, data storage, high availability, disaster recovery, identity management, and cost optimization. It answers: "How do we provide a platform for applications?"
 
-## Principio Rector
+## Grounding Guideline
 
-**La infraestructura invisible es la mejor infraestructura.** La plataforma existe para que las aplicaciones corran — no para ser admirada. Se diseña para reliability, cost-efficiency, y self-service. Si los desarrolladores necesitan pedir tickets para desplegar, la infra falló en su misión.
+**Invisible infrastructure is the best infrastructure.** The platform exists for applications to run — not to be admired. It is designed for reliability, cost-efficiency, and self-service. If developers need to file tickets to deploy, the infrastructure has failed its mission.
 
-### Filosofía de Infraestructura
+### Infrastructure Philosophy
 
-1. **Infrastructure as Code, siempre.** Si no está en código, no existe. Terraform, Pulumi, o CDK — nunca consolas manuales en producción.
-2. **HA/DR no es opcional.** Multi-AZ es el mínimo. RPO y RTO se definen ANTES del diseño, no después del primer incidente.
-3. **FinOps desde Day 1.** El costo de la nube no se controla al final — se diseña desde el principio. Reserved instances, right-sizing, y cost alerts son parte del diseño.
+1. **Infrastructure as Code, always.** If it is not in code, it does not exist. Terraform, Pulumi, or CDK — never manual consoles in production.
+2. **HA/DR is not optional.** Multi-AZ is the minimum. RPO and RTO are defined BEFORE the design, not after the first incident.
+3. **FinOps from Day 1.** Cloud cost is not controlled at the end — it is designed from the beginning. Reserved instances, right-sizing, and cost alerts are part of the design.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the *
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para análisis de infra y network design, HITL para decisiones de HA/DR y cost commitments.
-  - **desatendido**: Cero interrupciones. Infraestructura documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Infraestructura documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en network topology, compute strategy, y cost optimization.
   - **paso-a-paso**: Confirma cada VPC, subnet, compute choice, storage tier, y cost recommendation.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -218,9 +218,9 @@ Strategies for reducing cloud spend without sacrificing performance or reliabili
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Migracion on-premises a cloud | Periodo hibrido con coexistencia on-prem y cloud; strangler fig con VPN connectivity; migracion por fases con rollback por workload |
 | Multi-cloud (AWS + Azure + GCP) | Capa de abstraccion (Kubernetes) para portabilidad; tagging consistente cross-cloud; gobernanza multi-cloud centralizada |
@@ -228,9 +228,9 @@ Strategies for reducing cloud spend without sacrificing performance or reliabili
 | Escala extrema (millones de usuarios) | Infraestructura global con caching en cada nivel; spot instances para batch; cost optimization desde Day 1; capacidad de 10x-100x sin degradacion |
 | Startup con presupuesto limitado | Serverless donde sea posible; auto-scaling agresivo; spot instances; evitar reserved instances hasta que los patrones de uso sean predecibles |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Infrastructure as Code como unico metodo de provision | Consolas manuales o clickops | Lo que no esta en codigo no existe de forma reproducible; Terraform/Pulumi/CDK garantizan auditabilidad, reproducibilidad y rollback |
 | Multi-AZ como minimo para workloads criticos | Single-AZ con backup manual | El costo de downtime supera el costo de redundancia; multi-AZ es el baseline de disponibilidad enterprise |
@@ -294,8 +294,8 @@ graph TD
 | **Markdown** | `A-04_Infrastructure_Architecture_Deep.md` | Documento completo con Network Topology, Compute Strategy, Storage, HA/DR, IAM, Cloud Landing Zone y Cost Optimization. Diagramas Mermaid de VPC topology y dependency graph. |
 | **XLSX** | `A-04_Infrastructure_Cost_Model.xlsx` | Modelo de costos con drivers por servicio, comparativa managed vs self-managed, proyeccion de crecimiento a 12 meses, y recomendaciones de right-sizing. |
 | **HTML** | `A-04_Infrastructure_Architecture_Deep_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Light-First Technical. Incluye diagrama interactivo de topología VPC, tabla comparativa managed vs self-managed, y checklist de HA/DR con estado visual. |
-| **DOCX** | `A-04_Infrastructure_Architecture_{cliente}_{WIP}.docx` | Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados. |
-| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]). |
+| **DOCX** | `A-04_Infrastructure_Architecture_{cliente}_{WIP}.docx` | Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados. |
+| **PPTX** | `{fase}_{entregable}_{cliente}_{WIP}.pptx` | Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]). |
 
 ## Evaluacion
 

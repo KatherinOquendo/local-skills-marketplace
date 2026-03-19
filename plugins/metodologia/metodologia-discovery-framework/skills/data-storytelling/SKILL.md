@@ -7,6 +7,8 @@ description: >
   metrics-to-meaning conversion, comparison framing, and magnitude communication.
   Use when presenting scoring matrices, coverage metrics, performance data, cost
   estimates, or any quantitative finding that needs interpretation and context.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -19,7 +21,7 @@ allowed-tools:
 
 Transforms raw metrics, scores, and quantitative findings into meaningful narratives that drive understanding and action. Owns insight extraction, comparison framing, magnitude communication, and the bridge between numbers and decisions.
 
-## Guiding Principle
+## Grounding Guideline
 
 **A number without context is noise. A number with context, comparison, and consequence is an insight.** 92% test coverage means nothing until we know that the uncovered 8% concentrates the payment modules — exactly where risk is highest. Data metodologia-storytelling turns metrics into comprehension.
 
@@ -159,30 +161,30 @@ Each chart builds on the previous. No standalone charts.
 | Scoring patterns highlighted | Not just individual scores — the story across dimensions |
 | No naked numbers | Zero metrics without interpretation |
 
-## Supuestos y Limites
+## Assumptions and Limits
 
 - Las metricas de input ya estan calculadas; esta skill interpreta y contextualiza, no calcula.
 - NUNCA presentar metricas sin contexto y comparacion.
 - NUNCA usar valores monetarios para costos. Solo FTE-meses.
 - Esta skill posee **interpretacion de metricas y framing narrativo**. NO posee diseno de visualizacion (eso es data-viz-storytelling) ni arco narrativo general (eso es storytelling).
 
-## Casos Borde
+## Edge Cases
 
-| Caso Borde | Estrategia de Manejo |
+| Edge Case | Handling Strategy |
 |---|---|
-| No hay benchmarks sectoriales disponibles | Usar linea base interna (trimestre anterior, otro equipo, otro proyecto). Declarar explicitamente: "Sin benchmark sectorial disponible; se usa linea base interna Q1 como referencia [SUPUESTO]". Si tampoco hay baseline interno, usar frameworks estandar (DORA, SRE). |
-| Metricas contradictorias entre si | Presentar la contradiccion como hallazgo en si mismo. "La cobertura alta (92%) contradice la tasa de incidentes (8/mes), sugiriendo tests que no cubren escenarios reales [INFERENCIA]". La contradiccion ES la historia. |
-| Datos escasos (<10 data points) | Reconocer limitacion explicitamente: "Con [N] datos, la tendencia es indicativa, no concluyente". Usar intervalos de confianza. Recomendar periodo de recoleccion antes de conclusiones definitivas. |
-| Metricas que favorecen inaccion (todo en verde) | Buscar la historia debajo de la superficie: tendencias, velocidad de degradacion, costo de oportunidad. "Todo esta en verde hoy, pero la tendencia de los ultimos 3 trimestres muestra..." |
+| No industry benchmarks available | Use internal baseline (prior quarter, other team, other project). Declare explicitly: "No industry benchmark available; internal Q1 baseline used as reference [SUPUESTO]". If no internal baseline either, use standard frameworks (DORA, SRE). |
+| Contradictory metrics | Present the contradiction as a finding itself. "High coverage (92%) contradicts incident rate (8/month), suggesting tests that do not cover real scenarios [INFERENCIA]". The contradiction IS the story. |
+| Scarce data (<10 data points) | Acknowledge limitation explicitly: "With [N] data points, the trend is indicative, not conclusive". Use confidence intervals. Recommend collection period before definitive conclusions. |
+| Metrics that favor inaction (everything green) | Look for the story beneath the surface: trends, degradation velocity, opportunity cost. "Everything is green today, but the trend over the last 3 quarters shows..." |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Justificacion | Alternativa Descartada |
+| Decision | Justification | Discarded Alternative |
 |---|---|---|
-| Contexto antes que numero como regla | Un numero sin referencia es ruido. El lector no puede evaluar "92% cobertura" sin saber el target, el baseline, o el benchmark. | Numero primero: el lector forma juicio prematuro antes de tener marco de referencia. |
-| Comparacion obligatoria en toda metrica | Toda metrica necesita al menos una referencia: vs baseline, vs industria, vs target, vs trimestre anterior. Sin comparacion no hay insight. | Metrica aislada: informativa pero no accionable; el lector no sabe si es bueno o malo. |
-| Magnitudes tangibles sobre abstractas | "40 FTE-meses" no significa nada para un CEO. "Todo el equipo backend dedicado de enero a mayo sin hacer nada mas" genera comprension visceral. | Magnitudes abstractas: precisas pero no comunicativas para audiencia ejecutiva. |
-| Secuencia narrativa en dashboards (4 charts) | Cada chart construye sobre el anterior: estado -> tendencia -> benchmark -> camino. Sin secuencia, los charts son datos aislados. | Charts independientes: flexibles pero no construyen argumento acumulativo. |
+| Context before number as rule | A number without reference is noise. The reader cannot evaluate "92% coverage" without knowing the target, baseline, or benchmark. | Number first: the reader forms premature judgment before having a reference frame. |
+| Mandatory comparison in every metric | Every metric needs at least one reference: vs baseline, vs industry, vs target, vs prior quarter. Without comparison there is no insight. | Isolated metric: informative but not actionable; the reader does not know if it is good or bad. |
+| Tangible magnitudes over abstract | "40 FTE-months" means nothing to a CEO. "The entire backend team dedicated from January to May doing nothing else" generates visceral understanding. | Abstract magnitudes: precise but not communicative for executive audience. |
+| Narrative sequence in dashboards (4 charts) | Each chart builds on the previous: status -> trend -> benchmark -> path. Without sequence, charts are isolated data. | Independent charts: flexible but do not build cumulative argument. |
 
 ## Knowledge Graph
 
@@ -264,9 +266,9 @@ graph TD
 - Filename: `Data_Narrative_{project}_{dimension}_{WIP}.html`
 - Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye tarjetas de métricas con semáforo, tabla comparativa interactiva y callouts de insight. WCAG AA, responsive, print-ready.
 
-### Template 4: DOCX (circulación formal)
+### Template 4: DOCX (formal circulation)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 ### Template 5: XLSX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
@@ -274,7 +276,7 @@ graph TD
 
 ### Template 6: PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
 
 ### Template 2: Scoring Matrix Narrative (Markdown)
 

@@ -8,6 +8,8 @@ description: >
   Sprint 1 = onboarding. Produces burndown dashboards, velocity reports, and completion projections.
   Use when dimensioning execution effort, tracking delivery velocity, creating burndown projections,
   or when "burndown", "velocity", "sprints diarios", "1 feature por día", or "tracking de ejecución" is mentioned.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -22,7 +24,7 @@ allowed-tools:
 Instruments the MetodologIA productivity model (1 FTE = 1 shippable feature/day) into burndown dashboards,
 velocity tracking, and completion projections. Operates at daily sprint level per developer.
 
-## Guiding Principle
+## Grounding Guideline
 
 **What is not measured is not managed. What is not decomposed is not estimated.**
 
@@ -57,7 +59,7 @@ Optional: historical velocity data, complexity distribution, dependency map.
 ### S2: Burndown Chart (Mermaid)
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#6366F1'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#122562'}}}%%
 xychart-beta
     title "Burndown — {project}"
     x-axis ["D1", "D2", "D3", "D4", "D5", "D10", "D15", "D20", "D25", "D30"]
@@ -161,14 +163,14 @@ Team productivity (N devs):
 - [ ] Completion projection with confidence level
 - [ ] Risk signals defined with thresholds
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Todas las features deben estar descompuestas a <=3 SP antes de usar esta skill.
 - El modelo de productividad (1 FTE = 1 feature/dia) aplica desde Sprint 3. Sprints 1-2 tienen factores de ramp-up.
 - NUNCA usar el burndown como herramienta de presion. Es una herramienta de visibilidad.
 - NUNCA producir precios. Solo FTE-meses, magnitudes, cost drivers.
 
-## Casos Borde
+## Edge Cases
 
 | Caso Borde | Estrategia de Manejo |
 |---|---|
@@ -177,7 +179,7 @@ Team productivity (N devs):
 | Velocity real <50% del plan por mas de 5 dias consecutivos | Activar protocolo de escalacion: revisar impedimentos, dependencias bloqueantes, y complejidad subestimada. No asumir "el equipo se pondra al dia". Proponer scope adjustment o team adjustment inmediato. |
 | Proyecto con >50% de features con dependencias externas | El modelo de 1 feature/dia/dev no aplica directamente. Separar features independientes de dependientes. Proyectar solo independientes con burndown; dependientes van a risk register con SLA de resolucion. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Justificacion | Alternativa Descartada |
 |---|---|---|
@@ -276,11 +278,11 @@ graph TD
 
 ### Template 4: DOCX Report (bajo demanda)
 - Filename: `A-04_Execution_Burndown_{project}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 ### Template 5: PPTX Dashboard (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Team & Backlog Setup, Burndown Chart (plan vs actual), Velocity Dashboard por Sprint, Completion Projection, Risk Signals & Ajustes Recomendados.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Team & Backlog Setup, Burndown Chart (plan vs actual), Velocity Dashboard por Sprint, Completion Projection, Risk Signals & Ajustes Recomendados.
 
 ### Template 2: Velocity Report (XLSX-compatible Markdown)
 

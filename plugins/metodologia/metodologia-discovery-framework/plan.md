@@ -371,8 +371,8 @@ All deliverables, status messages, and user-facing text MUST be in Spanish
 ```
 
 #### 5.3 Skill Files (58 × SKILL.md) — MEDIUM effort
-Current state: English frontmatter + Spanish "Principio Rector" + mixed body.
-Action: Translate everything. Convert "Principio Rector" to "Guiding Principle" (keep philosophical content, translate to English).
+Current state: English frontmatter + Spanish "Grounding Guideline" + mixed body.
+Action: Translate everything. Convert "Grounding Guideline" to "Guiding Principle" (keep philosophical content, translate to English).
 
 #### 5.4 Prompts (58 × metaprompts.md + 58 × use-case-prompts.md = 116 files) — HIGH effort
 Current state: 100% Spanish.

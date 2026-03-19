@@ -22,15 +22,15 @@ allowed-tools:
 
 Testing strategy defines how quality is verified, automated, and measured across the software delivery lifecycle. The skill produces comprehensive test architectures covering shape selection, automation frameworks, contract testing, performance and chaos testing, test data management, and quality metrics that shift quality left while maintaining production confidence.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un test que no puede fallar no protege nada.** La estrategia de testing no se mide por el porcentaje de coverage — se mide por la confianza que genera para hacer deploy un viernes a las 5pm.
+**A test that cannot fail protects nothing.** Testing strategy is not measured by coverage percentage — it is measured by the confidence it generates to deploy on a Friday at 5pm.
 
-### Filosofía de Testing Strategy
+### Testing Strategy Philosophy
 
-1. **Test pyramid is a guide, not a rule.** La forma correcta (pyramid, trophy, honeycomb, diamond) depende de la arquitectura del sistema, no de un dogma de la industria.
-2. **Contract testing for microservices.** Si tienes N servicios con M consumidores, E2E entre todos es O(N*M). Contract testing reduce eso a O(N+M).
-3. **Test data management is architecture.** Datos compartidos entre tests = flakiness garantizada. Cada test crea, usa, y limpia sus propios datos.
+1. **Test pyramid is a guide, not a rule.** The right shape (pyramid, trophy, honeycomb, diamond) depends on the system architecture, not on an industry dogma.
+2. **Contract testing for microservices.** If you have N services with M consumers, E2E across all is O(N*M). Contract testing reduces that to O(N+M).
+3. **Test data management is architecture.** Shared data between tests = guaranteed flakiness. Each test creates, uses, and cleans up its own data.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para shape selection y tool matrix, HITL para contract testing decisions y chaos engineering scope.
-  - **desatendido**: Cero interrupciones. Estrategia completa con supuestos documentados.
+  - **desatendido**: Zero interruptions. Estrategia completa con supuestos documentados.
   - **supervisado**: Autónomo con checkpoint en pyramid design y contract testing setup.
   - **paso-a-paso**: Confirma cada test shape, framework selection, contract scope, y chaos plan.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -372,7 +372,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Montserrat para cuerpo, acentos gold.
+- Generado con python-docx, Design System MetodologIA v5. Portada con logo y metadata del proyecto, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping. Tipografía: Poppins para encabezados (navy), Trebuchet MS para cuerpo, acentos gold.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_testing-strategy_{cliente}_{WIP}.xlsx`
@@ -380,7 +380,7 @@ graph TD
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, test shape seleccionado con justificación, tool matrix por plataforma, contrato testing setup, performance & chaos plan, test data strategy, quality gates y métricas, roadmap de implementación.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos gold. Máx 20 slides versión ejecutiva / 30 versión técnica. Notas del orador con referencias de evidencia por slide. Slides sugeridos: portada, test shape seleccionado con justificación, tool matrix por plataforma, contrato testing setup, performance & chaos plan, test data strategy, quality gates y métricas, roadmap de implementación.
 
 ## Evaluacion
 

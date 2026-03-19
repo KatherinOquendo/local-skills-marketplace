@@ -21,15 +21,15 @@ allowed-tools:
 
 Designs future-state architecture enabling legacy system gradual retirement while maintaining zero data loss and regulatory compliance. Produces C4 L2 container diagram, 6+ ADRs, nightmare scenario mitigations, MVP component design, and phased Strangler Fig migration plan.
 
-## Principio Rector
+## Grounding Guideline
 
-**Diseñar el futuro sin entender el presente es ficción arquitectónica.** La arquitectura TO-BE se construye sobre evidencia del AS-IS, decisiones del escenario aprobado, y restricciones validadas en feasibility. Cada container, cada servicio, cada patrón tiene un WHY documentado en un ADR. No se diseña para impresionar — se diseña para migrar.
+**Designing the future without understanding the present is architectural fiction.** The TO-BE architecture is built on AS-IS evidence, approved scenario decisions, and constraints validated in feasibility. Every container, every service, every pattern has a WHY documented in an ADR. It is not designed to impress — it is designed to migrate.
 
-### Filosofía de Arquitectura Objetivo
+### Target Architecture Philosophy
 
-1. **Migración > revolución.** Strangler Fig, no big-bang. Cada fase de migración es independientemente reversible y valiosa.
-2. **Nightmare-first design.** Antes de celebrar el happy path, se modelan los 5 peores escenarios y se diseñan mitigaciones. Si no sobrevive el nightmare, no se construye.
-3. **El MVP prueba la arquitectura.** El primer componente desplegado valida patterns, performance, y operational readiness. Si el MVP falla, la arquitectura se ajusta antes de escalar.
+1. **Migration > revolution.** Strangler Fig, not big-bang. Each migration phase is independently reversible and valuable.
+2. **Nightmare-first design.** Before celebrating the happy path, the 5 worst scenarios are modeled and mitigations are designed. If it does not survive the nightmare, it is not built.
+3. **The MVP proves the architecture.** The first deployed component validates patterns, performance, and operational readiness. If the MVP fails, the architecture is adjusted before scaling.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para C4 y trade-offs, HITL para ADRs y nightmare scenarios.
-  - **desatendido**: Cero interrupciones. Arquitectura completa auto-generada.
+  - **desatendido**: Zero interruptions. Arquitectura completa auto-generada.
   - **supervisado**: Autónomo con checkpoint en ADRs y migration plan.
   - **paso-a-paso**: Confirma cada layer, cada ADR, cada nightmare, y la migration.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -313,25 +313,25 @@ Design the first deployable component (typically Authentication & Session Manage
 
 ---
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Cliente impone tecnologia especifica | Override la eleccion; documentar constraint en ADR relevante con trade-off analysis explicito. |
-| No cloud permitido | Reemplazar K8s con VM-based deployment (Terraform + Ansible) o on-prem K8s (OpenShift). Managed services por self-hosted. |
-| Equipo sin experiencia en microservicios | Iniciar con monolito + modular boundaries (DDD packages). Training phase +2-3 semanas. Flag riesgo elevado. |
-| Legacy system sin API | Sidecar critico. Wrap legacy via message queue o REST. Data extraction via CDC si schema accesible. |
-| Multiples legacy systems con schemas conflictivos | Federated data model; ACL por sistema mantiene separacion logica. EDW agrega para analytics. Consistencia eventual. |
-| Regulacion de data residency on-prem | Data layer on-prem, application layer en cloud. Encrypted tunnel (VPN/DX) entre capas. Documentar en ADRs de Zero Trust y Data Storage. |
+| Client mandates specific technology | Override the choice; document constraint in relevant ADR with explicit trade-off analysis. |
+| No cloud allowed | Replace K8s with VM-based deployment (Terraform + Ansible) or on-prem K8s (OpenShift). Managed services replaced by self-hosted. |
+| Team with no microservices experience | Start with monolith + modular boundaries (DDD packages). Training phase +2-3 weeks. Flag elevated risk. |
+| Legacy system without API | Sidecar becomes critical. Wrap legacy via message queue or REST. Data extraction via CDC if schema accessible. |
+| Multiple legacy systems with conflicting schemas | Federated data model; ACL per system maintains logical separation. EDW aggregates for analytics. Eventual consistency. |
+| On-prem data residency regulation | Data layer on-prem, application layer in cloud. Encrypted tunnel (VPN/DX) between layers. Document in Zero Trust and Data Storage ADRs. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Strangler Fig sobre Big-Bang | Migracion Big-Bang completa | Strangler Fig reduce riesgo con fases independientemente reversibles. Big-bang maximiza blast radius y no permite aprendizaje incremental. |
-| Nightmare-first design (5 escenarios) | Happy-path-first design | Si la arquitectura no sobrevive los peores escenarios, no se construye. Disenar para nightmares primero asegura resiliencia antes de optimizar el happy path. |
-| MVP valida arquitectura antes de escalar | Implementar todos los servicios en paralelo | El MVP prueba patterns, performance y operational readiness con un componente real. Si falla, la arquitectura se ajusta antes de multiplicar el error. |
-| Saga + Outbox sobre 2PC | Distributed 2PC transactions | 2PC tiene latencia prohibitiva y single point of failure (coordinator). Saga + Outbox es resiliente, idempotente, y auditable. |
+| Strangler Fig over Big-Bang | Full Big-Bang migration | Strangler Fig reduces risk with independently reversible phases. Big-bang maximizes blast radius and does not allow incremental learning. |
+| Nightmare-first design (5 scenarios) | Happy-path-first design | If the architecture does not survive the worst scenarios, it is not built. Designing for nightmares first ensures resilience before optimizing the happy path. |
+| MVP validates architecture before scaling | Implement all services in parallel | The MVP tests patterns, performance, and operational readiness with a real component. If it fails, the architecture is adjusted before multiplying the error. |
+| Saga + Outbox over 2PC | Distributed 2PC transactions | 2PC has prohibitive latency and single point of failure (coordinator). Saga + Outbox is resilient, idempotent, and auditable. |
 
 ## Knowledge Graph
 

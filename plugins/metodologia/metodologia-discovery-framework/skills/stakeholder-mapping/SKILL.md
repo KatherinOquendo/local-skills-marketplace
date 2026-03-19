@@ -7,6 +7,8 @@ description: >
   or mentions stakeholder analysis, power/interest grid, engagement strategy, or adoption curve.
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-or-initiative-name]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,15 +22,15 @@ allowed-tools:
 
 Stakeholder mapping identifies who matters for a project or transformation, how much influence and interest they hold, what communication they need, and how ready they are for change. Produces actionable stakeholder maps that prevent surprises, accelerate adoption, and align decision-making.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un mapa de stakeholders no es un organigrama bonito — es un radar de supervivencia política.** El éxito de cualquier iniciativa depende menos de la calidad técnica y más de quién la apoya, quién la bloquea y quién simplemente no sabe que existe. Mapear stakeholders es hacer visible lo invisible antes de que lo invisible te haga fracasar.
+**A stakeholder map is not a pretty org chart — it is a political survival radar.** The success of any initiative depends less on technical quality and more on who supports it, who blocks it, and who simply does not know it exists. Mapping stakeholders is making the invisible visible before the invisible makes you fail.
 
-### Filosofía de Mapeo de Stakeholders
+### Stakeholder Mapping Philosophy
 
-1. **El poder informal supera al formal.** Los organigramas muestran quién debería decidir; el mapeo revela quién realmente decide. Siempre investiga ambos.
-2. **El silencio es la señal más peligrosa.** Un stakeholder que no responde no es un stakeholder alineado — es un riesgo no cuantificado que requiere acción inmediata.
-3. **El mapa es un organismo vivo.** Las dinámicas de poder cambian con cada sprint, cada reorganización, cada éxito y cada fracaso. Un mapa estático es un mapa mentiroso.
+1. **Informal power surpasses formal power.** Org charts show who should decide; mapping reveals who actually decides. Always investigate both.
+2. **Silence is the most dangerous signal.** A stakeholder who does not respond is not an aligned stakeholder — it is an unquantified risk requiring immediate action.
+3. **The map is a living organism.** Power dynamics change with every sprint, every reorganization, every success, and every failure. A static map is a lying map.
 
 ## Inputs
 
@@ -45,9 +47,9 @@ Use detected org charts, project documents, and existing stakeholder lists to ta
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para identificación y categorización de stakeholders, HITL para validación de influencia y decisiones de escalamiento.
-  - **desatendido**: Cero interrupciones. Stakeholders inferidos de documentación disponible. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Stakeholders inferidos de documentación disponible. Assumptions documented.
   - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en conflictos de poder o ambigüedad de RACI.
-  - **paso-a-paso**: Confirma antes de cada categorización, asignación RACI y estrategia de engagement.
+  - **paso-a-paso**: Confirms before cada categorización, asignación RACI y estrategia de engagement.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -189,18 +191,18 @@ Tracks stakeholder sentiment and participation throughout the project lifecycle.
 
 **Stakeholder Fatigue:** Organization undergoing multiple simultaneous changes. Consolidate communications. Respect capacity limits. Show this initiative's unique value.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Organizacion altamente politizada donde el organigrama no refleja el poder real | Complementar con analisis de red informal (snowball method, decision trail analysis); tratar la matriz de influencia como documento confidencial |
 | Equipos remotos/distribuidos en multiples zonas horarias | Plan de comunicacion debe contemplar canales asincronos y sensibilidad cultural; adaptar enfoque de engagement (directo vs indirecto segun cultura) |
 | Fusion o reorganizacion en curso con landscape de stakeholders cambiante | Aumentar frecuencia de re-evaluacion; mapear stakeholders de ambas organizaciones; vigilar vacios de poder |
 | Fatiga de stakeholders por multiples cambios simultaneos | Consolidar comunicaciones; respetar limites de capacidad; demostrar valor unico de esta iniciativa vs las demas |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Mapeo individual para stakeholders de alto poder/interes | Mapeo por grupo/rol para todos los niveles | Los stakeholders clave requieren engagement personalizado; el mapeo por grupo pierde dinamicas individuales criticas |
 | RACI formal con un solo Accountable por decision | Decision rights informales basados en consenso | La ambiguedad en accountability es la causa principal de retrasos en decisiones; un solo A elimina la difusion de responsabilidad |
@@ -284,7 +286,7 @@ Anexo: Guia de Entrevistas de Descubrimiento
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_stakeholder_mapping_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo, Stakeholder Register, Influence-Interest Matrix (cuadrante visual), RACI por entregable clave, Plan de Comunicación, Change Readiness (adoption curve + arquetipos de resistencia), Champions y plan de activación, próximos pasos.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Resumen ejecutivo, Stakeholder Register, Influence-Interest Matrix (cuadrante visual), RACI por entregable clave, Plan de Comunicación, Change Readiness (adoption curve + arquetipos de resistencia), Champions y plan de activación, próximos pasos.
 
 ### HTML (bajo demanda)
 - Filename: `{fase}_stakeholder_mapping_{cliente}_{WIP}.html`

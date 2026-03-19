@@ -27,7 +27,7 @@
 
 - **Cuándo usar:** Demos a clientes, presentaciones internas, documentación formal.
 - **Ventajas:** Visualmente pulido, responsive, imprimible, MetodologIA-branded.
-- **Estándar:** Design System v4 — colores primario (#6366F1), oscuro (#1A1A2E), success (#22D3EE). Tipografía Inter. Sin verde para estados de éxito.
+- **Estándar:** Design System v4 — colores primario (#122562), oscuro (#1F2833), success (#FFD700). Tipografía Inter. Sin verde para estados de éxito.
 
 ---
 

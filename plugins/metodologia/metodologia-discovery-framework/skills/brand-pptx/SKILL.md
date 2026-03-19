@@ -22,6 +22,14 @@ allowed-tools:
 
 Generates production-ready PowerPoint presentations following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every deck uses navy backgrounds, gold accents, Poppins typography, and professional slide layouts optimized for executive and technical audiences.
 
+## Grounding Guideline
+
+> *A presentation without visual narrative is a text document with slides.*
+
+1. **Slide master as foundation.** All slides inherit from the branded master — never create blank slides.
+2. **Less text, more impact.** Each slide has one message — if it needs more than 6 lines of text, it needs a split.
+3. **Speaker notes as evidence.** The presenter notes contain the references, data, and assumptions that do not fit on the slide.
+
 ## CRITICAL: Before Generating ANY PPTX
 
 **ALWAYS read the brand config first:**

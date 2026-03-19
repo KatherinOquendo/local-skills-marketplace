@@ -7,15 +7,8 @@ description: >
   or audit readiness.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<organizacion> [scope-de-gobernanza]"
-version: 1.0.0
-tags:
-  - governance
-  - cobit
-  - itil
-  - policy
-  - audit
-  - compliance
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -31,13 +24,21 @@ allowed-tools:
 Diseno de framework de gobernanza de TI con alineacion a COBIT/ITIL,
 definicion de derechos de decision, catalogo de politicas y evaluacion de audit readiness.
 
+## Grounding Guideline
+
+> *Governance without enforcement is suggestion. Governance without flexibility is bureaucracy.*
+
+1. **Proportional governance.** Controls must be proportional to risk — not everything needs the same level of scrutiny.
+2. **Clear RACI, defined escalation.** If nobody knows who decides, nobody decides. If nobody knows how to escalate, everything gets escalated.
+3. **Automate the repeatable.** Manual controls degrade — automated ones persist.
+
 ## TL;DR
 
-- Evalua madurez de gobernanza actual contra frameworks de referencia (COBIT, ITIL)
-- Define estructura de decision rights con RACI matrix por dominio
-- Disena catalogo de politicas de TI con ciclo de vida y enforcement
-- Evalua readiness para auditorias internas y externas
-- Genera charter de gobernanza con modelo operativo completo
+- Assess current governance maturity against reference frameworks (COBIT, ITIL)
+- Define decision rights structure with RACI matrix per domain
+- Design IT policy catalog with lifecycle and enforcement
+- Assess readiness for internal and external audits
+- Generate governance charter with complete operating model
 
 ## Inputs
 
@@ -48,34 +49,34 @@ Parse `$1` como **nombre de la organizacion**, `$2` como **scope de gobernanza**
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **Charter de Gobernanza** — Principios, estructura, roles, cadencia de reuniones
-2. **RACI Matrix** — Derechos de decision por dominio y nivel organizacional
-3. **Catalogo de Politicas** — Inventario de politicas requeridas con prioridad y estado
-4. **Assessment de Audit Readiness** — Gaps contra requisitos de auditoria comunes
-5. **Modelo Operativo** — Procesos de gobernanza, escalation paths, metricas
+1. **Governance Charter** — Principles, structure, roles, meeting cadence
+2. **RACI Matrix** — Decision rights per domain and organizational level
+3. **Policy Catalog** — Inventory of required policies with priority and status
+4. **Audit Readiness Assessment** — Gaps against common audit requirements
+5. **Operating Model** — Governance processes, escalation paths, metrics
 
-## Proceso
+## Process
 
-1. **Assessment de Madurez** — Evaluar gobernanza actual contra dominios COBIT:
+1. **Maturity Assessment** — Assess current governance against COBIT domains:
    | Dominio | Descripcion | Nivel Actual | Nivel Target |
    |---|---|---|---|
    | APO (Align, Plan, Organize) | Estrategia y planificacion de TI | 1-5 | 1-5 |
    | BAI (Build, Acquire, Implement) | Gestion de cambios y proyectos | 1-5 | 1-5 |
    | DSS (Deliver, Service, Support) | Operaciones y soporte | 1-5 | 1-5 |
    | MEA (Monitor, Evaluate, Assess) | Monitoreo y compliance | 1-5 | 1-5 |
-2. **Definicion de Decision Rights** — Mapear decisiones clave a roles con RACI:
-   - Arquitectura: quien aprueba cambios arquitectonicos
-   - Seguridad: quien define y enforza politicas
-   - Data: quien gobierna calidad, acceso, retencion
-   - Inversiones: quien aprueba gasto en tecnologia
-3. **Diseno de Catalogo de Politicas** — Identificar politicas requeridas por dominio, priorizar, definir templates
-4. **Evaluacion de Audit Readiness** — Verificar evidencia, controles, trazabilidad contra estandares (ISO 27001, SOC 2, etc.)
-5. **Modelo Operativo** — Definir cadencia de gobernanza, comites, escalation, KPIs
-6. **Roadmap de Implementacion** — Plan de implementacion progresiva por trimestre
+2. **Decision Rights Definition** — Map key decisions to roles with RACI:
+   - Architecture: who approves architectural changes
+   - Security: who defines and enforces policies
+   - Data: who governs quality, access, retention
+   - Investments: who approves technology spend
+3. **Policy Catalog Design** — Identify required policies per domain, prioritize, define templates
+4. **Audit Readiness Assessment** — Verify evidence, controls, traceability against standards (ISO 27001, SOC 2, etc.)
+5. **Operating Model** — Define governance cadence, committees, escalation, KPIs
+6. **Implementation Roadmap** — Progressive implementation plan per quarter
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Assessment de madurez con scoring por dominio COBIT
 - [ ] RACI matrix completa para decisiones clave de TI
@@ -85,14 +86,14 @@ Parse `$1` como **nombre de la organizacion**, `$2` como **scope de gobernanza**
 - [ ] Roadmap de implementacion realista con quick wins
 - [ ] Diagrama Mermaid de estructura de gobernanza
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Asume sponsor ejecutivo con autoridad para definir decision rights
 - No reemplaza asesoria legal o de compliance — complementa con estructura operativa
 - Niveles de madurez COBIT son evaluaciones cualitativas salvo que existan auditorias previas
 - Politicas disenadas son templates; requieren revision legal antes de enforcement formal
 
-## Casos Borde
+## Edge Cases
 
 | Escenario | Estrategia de Manejo |
 |---|---|
@@ -101,7 +102,7 @@ Parse `$1` como **nombre de la organizacion**, `$2` como **scope de gobernanza**
 | Multiples marcos regulatorios simultaneos (SOC 2 + ISO 27001 + GDPR) | Mapear controles comunes (common controls framework) para evitar duplicacion de esfuerzo |
 | Resistencia organizacional a gobernanza formal | Enmarcar como enablement (acelerar decisiones) no como control; empezar con quick wins visibles |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Habilita | Restringe | Justificacion |
 |---|---|---|---|
@@ -155,11 +156,11 @@ graph TD
 
 **Formato 4 — DOCX (bajo demanda)**
 - Filename: `Governance_Framework_{org}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 **Formato 5 — PPTX (bajo demanda)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
 
 ## Evaluacion
 

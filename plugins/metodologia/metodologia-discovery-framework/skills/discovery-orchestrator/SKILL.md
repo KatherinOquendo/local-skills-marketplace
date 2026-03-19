@@ -8,6 +8,8 @@ description: >
   as the entry point for any discovery engagement — it coordinates all other skills.
 argument-hint: "<project_name> [full-pipeline|minimal|quick-reference] [codebase_path]"
 author: Javier Montano · Comunidad MetodologIA
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -43,17 +45,20 @@ Determines: skill variants activated, expert committee composition, input requir
 
 Always confirm detected service type with user before proceeding.
 
-## Principio Rector
+## Grounding Guideline
 
-**El discovery sin orquestación es un conjunto de análisis inconexos disfrazados de consultoría.** Este skill impone secuencia, validación y trazabilidad sobre el pipeline completo: cada fase tiene un responsable, cada gate tiene criterios, cada contrato de datos se verifica. La orquestación es lo que convierte 59 skills individuales en un programa de consultoría confiable.
+**Discovery without orchestration is a collection of disconnected analyses disguised as consulting.** This skill imposes sequence, validation, and traceability over the complete pipeline: every phase has an owner, every gate has criteria, every data contract is verified. Orchestration is what turns 59 individual skills into a reliable consulting program.
 
-### Filosofía de Orquestación
+### Orchestration Philosophy
 
-1. **Secuencia con propósito.** Cada fase existe porque la anterior la alimenta. Saltar fases no es eficiencia — es riesgo no gestionado.
-2. **Contratos, no confianza.** Los data contracts entre fases se verifican explícitamente. La confianza se construye con evidencia, no con supuestos.
-3. **El conductor no analiza.** Coordinación pura. Las opiniones técnicas son de los expertos. El conductor secuencia, valida y escala.
+1. **Sequence with purpose.** Each phase exists because the previous one feeds it. Skipping phases is not efficiency — it is unmanaged risk.
+2. **Contracts, not trust.** Data contracts between phases are explicitly verified. Trust is built with evidence, not assumptions.
+3. **The conductor does not analyze.** Pure coordination. Technical opinions belong to the experts. The conductor sequences, validates, and escalates.
 
-## Skill Catalog (59 skills across 9 domains)
+## Skill Catalog (111 skills across 11 domains)
+
+> Full catalog: `references/ontology/skills-catalog.md`
+> Below: core skills referenced by the orchestrator during pipeline execution.
 
 ### Discovery Pipeline (16 skills — core engagement flow)
 | Skill | Phase | Purpose |
@@ -218,18 +223,18 @@ Every deliverable supports two output formats controlled by `{FORMATO}`:
 - Full pipeline: 18-25 working days + 9-15 calendar days for gates
 - Phase 5a/5b can run in parallel after Gate 2; all other phases are sequential
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Sistema >500K LOC con >15 integraciones | Descomponer en subsistemas antes de Phase 2. Ejecutar un pipeline por subsistema. Consolidar en Phase 4 con roadmap unificado. Escalar timeline +50%. |
 | Gate falla repetidamente (2+ veces) sin progreso | Recomendar reduccion de scope o pivot de engagement. Escalar a executive sponsor. Documentar opciones: (a) scope reduction, (b) additional discovery time, (c) engagement pause. |
 | Stakeholders no disponibles durante discovery | Documentar todas las decisiones como supuestos con tag [SUPUESTO]. Programar sesion de validacion when available. Flag impacto en downstream phases. Nunca proceder sin documentar. |
 | Cambio de industria o contexto mid-engagement | Reactivar SME con nuevo lens. Re-evaluar deliverables previos para consistencia. Recalcular timeline. Confirmar con usuario antes de continuar. Documentar pivot en discovery plan. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Comite de 7 expertos (numero impar) sobre panel de 5 o 9 | Panel de 5 (menos cobertura) o 9 (overhead de coordinacion) | 7 cubre los dominios criticos (architecture, domain, implementation, delivery, quality, data, change) con numero impar para consensus. 5 sacrifica data o change; 9 agrega ruido. |
 | Gates con hard-stop obligatorio sobre gates advisory | Gates que solo generan warnings sin bloquear | Hard-stop previene que deliverables de baja calidad contaminen fases downstream. Advisory gates generan deuda tecnica acumulada que se descubre en Gate 3 cuando el costo de fix es maximo. |
@@ -285,7 +290,7 @@ graph TD
 
 **Formato DOCX (circulación formal):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 **Formato XLSX (tracking y control):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
@@ -293,7 +298,7 @@ graph TD
 
 **Formato PPTX (presentación ejecutiva):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Discovery Overview, Expert Committee, Phase Progress & Gate Status, Deliverable Manifest, Next Steps.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Discovery Overview, Expert Committee, Phase Progress & Gate Status, Deliverable Manifest, Next Steps.
 
 ## Evaluacion
 
@@ -810,41 +815,41 @@ El orquestador es el receptor primario de los 16 prompts NL-HP v3.0. Cada prompt
 | `intermedio` | discovery-orchestrator | asis→scenario→feasibility→roadmap→pitch→handover | G1+G2 |
 | `express` | discovery-orchestrator | asis→scenario→pitch | — |
 | `revisar` | project-program-management (S5) | risk-controlling-dynamics, discovery-orchestrator | — |
-| `evolucionar` | discovery-orchestrator | skill del entregable específico | — |
-| `rescatar` | discovery-orchestrator | skills según fases faltantes | según estado |
+| `evolucionar` | discovery-orchestrator | skill for the specific deliverable | — |
+| `rescatar` | discovery-orchestrator | skills per missing phases | per state |
 
-### Protocolo de Recepción de Prompt
+### Prompt Reception Protocol
 
-1. **Identificar prompt**: Detectar cuál de los 16 prompts se está ejecutando.
-2. **Activar skill primario**: Invocar el skill correspondiente con sus agentes.
-3. **Activar governance**: `project-program-management` (tracking) + `risk-controlling-dynamics` (scanning).
-4. **Verificar pre-requisitos**: Inputs de fases anteriores según Inter-Phase Data Contracts.
-5. **Ejecutar según MODO**: Respetar el modo de interacción declarado en el prompt.
-6. **Producir output**: Según Output Artifact del skill primario, en el FORMATO solicitado.
-7. **Registrar en governance**: Actualizar phase status en P-01 y risk register en P-02.
+1. **Identify prompt**: Detect which of the 16 prompts is being executed.
+2. **Activate primary skill**: Invoke the corresponding skill with its agents.
+3. **Activate governance**: `project-program-management` (tracking) + `risk-controlling-dynamics` (scanning).
+4. **Verify prerequisites**: Inputs from previous phases per Inter-Phase Data Contracts.
+5. **Execute per MODE**: Respect the interaction mode declared in the prompt.
+6. **Produce output**: Per the primary skill's Output Artifact, in the requested FORMAT.
+7. **Register in governance**: Update phase status in P-01 and risk register in P-02.
 
 ## Asset Inventory
 
-Cada skill produce outputs de referencia en su directorio `examples/`:
+Each skill produces reference outputs in its `examples/` directory:
 
-| Skill | Example Asset | Descripción |
+| Skill | Example Asset | Description |
 |-------|--------------|-------------|
-| asis-analysis | `examples/sample-output.md` | Análisis AS-IS 10 secciones — Acme Corp Banking |
-| stakeholder-mapping | `examples/sample-output.md` | Stakeholder map con RACI — Acme Corp Banking |
-| flow-mapping | `examples/sample-output.md` | Taxonomía DDD + 8 flujos E2E — Acme Corp Banking |
-| scenario-analysis | `examples/sample-output.md` | 3 escenarios ToT con scoring 6D — Acme Corp Banking |
-| technical-feasibility | `examples/sample-output.md` | Feasibility 6D con spikes — Acme Corp Banking |
-| software-viability | `examples/sample-output.md` | Viability forensics con scorecard — Acme Corp Banking |
-| solution-roadmap | `examples/sample-output.md` | Roadmap 5 fases con Monte Carlo — Acme Corp Banking |
+| asis-analysis | `examples/sample-output.md` | AS-IS analysis 10 sections — Acme Corp Banking |
+| stakeholder-mapping | `examples/sample-output.md` | Stakeholder map with RACI — Acme Corp Banking |
+| flow-mapping | `examples/sample-output.md` | DDD taxonomy + 8 E2E flows — Acme Corp Banking |
+| scenario-analysis | `examples/sample-output.md` | 3 ToT scenarios with 6D scoring — Acme Corp Banking |
+| technical-feasibility | `examples/sample-output.md` | 6D feasibility with spikes — Acme Corp Banking |
+| software-viability | `examples/sample-output.md` | Viability forensics with scorecard — Acme Corp Banking |
+| solution-roadmap | `examples/sample-output.md` | 5-phase roadmap with Monte Carlo — Acme Corp Banking |
 | cost-estimation | `examples/sample-output.md` | Cost drivers + magnitudes — Acme Corp Banking |
-| commercial-model | `examples/sample-output.md` | Modelo comercial con deal canvas — Acme Corp Banking |
-| functional-spec | `examples/sample-output.md` | Módulos + 8 UC + 6 BR — Acme Corp Banking |
+| commercial-model | `examples/sample-output.md` | Commercial model with deal canvas — Acme Corp Banking |
+| functional-spec | `examples/sample-output.md` | Modules + 8 UC + 6 BR — Acme Corp Banking |
 | executive-pitch | `examples/sample-output.md` | Business case C-level — Acme Corp Banking |
-| discovery-handover | `examples/sample-output.md` | Handover package con plan 90d — Acme Corp Banking |
+| discovery-handover | `examples/sample-output.md` | Handover package with 90d plan — Acme Corp Banking |
 | project-program-management | `examples/sample-output.md` | P-01 Governance dashboard — Acme Corp Banking |
 | risk-controlling-dynamics | `examples/sample-output.md` | P-02 Risk register + pre-mortem — Acme Corp Banking |
 
-**Uso**: Los examples/ sirven como benchmark de calidad. El output de cada prompt debe igualar o superar la profundidad y estructura del example correspondiente.
+**Usage**: The examples/ serve as quality benchmarks. Each prompt's output must match or exceed the depth and structure of the corresponding example.
 
 ## Trade-off Matrix
 
@@ -853,8 +858,8 @@ Cada skill produce outputs de referencia en su directorio `examples/`:
 | **Full Pipeline** (all phases + gates) | Maximum confidence, auditable, complete | 4-6 weeks, high investment | High-stakes engagements, execution commitment |
 | **Minimal Pipeline** (skip Phase 0, 2, 5a) | Faster delivery, lower cost | Less depth in stakeholder/flow analysis | Architecture direction only |
 | **Quick Reference** (3 phases only) | Rapid go/no-go decision | Insufficient for execution planning | Time-pressured decisions |
-| **Auto-gating** (desatendido mode) | Maximum throughput | Risk of missed blockers | Experienced teams, low-complexity systems |
-| **Full governance** (paso-a-paso mode) | Maximum control and learning | Slow, high interaction cost | First engagement with new client |
+| **Auto-gating** (unattended mode) | Maximum throughput | Risk of missed blockers | Experienced teams, low-complexity systems |
+| **Full governance** (step-by-step mode) | Maximum control and learning | Slow, high interaction cost | First engagement with new client |
 
 ## Edge Cases
 

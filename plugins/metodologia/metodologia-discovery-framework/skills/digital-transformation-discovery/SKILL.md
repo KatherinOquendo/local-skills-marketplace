@@ -24,13 +24,13 @@ allowed-tools:
 
 Genera un discovery integral a nivel de programa de transformación digital que cubre digital maturity assessment, service portfolio mapping, program architecture, change readiness, multi-service integration, program governance, y transformation roadmap. Diseñado para engagements complejos donde múltiples servicios MetodologIA convergen en un programa unificado de transformación.
 
-## Principio Rector
+## Grounding Guideline
 
-> *La transformación digital no es un proyecto — es un programa de programas. Sin visión holística, cada workstream optimiza su propio rincón mientras el todo se fragmenta.*
+> *Digital transformation is not a project — it is a program of programs. Without a holistic vision, each workstream optimizes its own corner while the whole fragments.*
 
-1. **Visión holística sobre optimización local.** Cada workstream (SDA, QA, Cloud, Data, RPA, Management) debe contribuir a objetivos de programa, no solo a métricas propias. La integración entre workstreams es donde se genera (o se destruye) el valor real.
-2. **Madurez antes que ambición.** El nivel de madurez digital de la organización determina qué transformaciones son viables. Saltar niveles de madurez genera iniciativas que la organización no puede absorber. Quick wins primero para construir momentum y credibilidad.
-3. **El cambio organizacional es el verdadero habilitador.** La tecnología es el medio, no el fin. Sin change readiness — sponsorship, comunicación, training, gestión de resistencias — la mejor tecnología se convierte en shelfware.
+1. **Holistic vision over local optimization.** Each workstream (SDA, QA, Cloud, Data, RPA, Management) must contribute to program objectives, not just its own metrics. Integration between workstreams is where real value is generated (or destroyed).
+2. **Maturity before ambition.** The organization's digital maturity level determines which transformations are viable. Skipping maturity levels produces initiatives the organization cannot absorb. Quick wins first to build momentum and credibility.
+3. **Organizational change is the true enabler.** Technology is the means, not the end. Without change readiness — sponsorship, communication, training, resistance management — the best technology becomes shelfware.
 
 ## Inputs
 
@@ -39,9 +39,9 @@ The user provides a program or client name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para maturity assessment y service mapping, HITL para program architecture decisions y governance model.
-  - **desatendido**: Cero interrupciones. Discovery completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Discovery completo automatizado. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint al completar cada sección.
-  - **paso-a-paso**: Confirma antes de cada sección del discovery.
+  - **paso-a-paso**: Confirms before cada sección del discovery.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 + S3 + S7 only) | `técnica` (full 7 sections, default)
 
@@ -336,18 +336,18 @@ Plan de transformación multi-año con sequencing de activación de servicios.
 - No ejecuta la transformación — produce el discovery y roadmap para su aprobación
 - El change readiness assessment es basado en entrevistas y documentacion — no es un organizational development engagement completo
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Organizacion con madurez digital nivel 1 (ad-hoc) y ambicion de transformacion completa | No intentar programa completo. Disenar Foundation-only (governance, cloud basics, un workstream piloto). Construir musculo de cambio en 6-12 meses antes de escalar. Quick wins obligatorios para generar credibilidad. |
 | Programa ya en marcha con workstreams descoordinados y sin governance unificado | Enfocarse en S5 (Integration Points) y S6 (Governance) primero. Establecer contracts entre workstreams existentes. No reiniciar — alinear y orquestar lo que ya existe. Assessment retroactivo de S1-S2. |
 | Budget limitado que no permite activar todos los workstreams recomendados | Disenar programa modular donde cada fase es auto-contenida y entrega valor independiente. Phase-gate funding permite avanzar solo si hay presupuesto. Priorizar P1 workstreams unicamente. |
 | Transformacion post-M&A con dos organizaciones de stacks y culturas diferentes | Assessment de madurez por organizacion separada. Priorizar integracion de datos y unified governance antes de transformacion. Domain model unificado gradual, no big-bang. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Phased activation (waves) como default sobre big-bang | Activacion simultanea de todos los workstreams | Big-bang requiere organizacion nivel 4+ de madurez. Phased permite aprendizaje iterativo, reduce riesgo de change fatigue, y habilita phase-gate funding. |
 | People-first sobre technology-first cuando resistencia al cambio es alta | Technology-first con adoption posterior | Sin change readiness, la mejor tecnologia se convierte en shelfware. La adopcion sostenible genera resultados duraderos vs. resultados tecnicos rapidos que se revierten. |
@@ -407,7 +407,7 @@ graph TD
 
 **Formato DOCX (circulación formal):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 **Formato XLSX (tracking y análisis):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`

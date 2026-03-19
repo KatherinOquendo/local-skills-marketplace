@@ -7,6 +7,8 @@ description: >
   Use when the user asks to "design adoption strategy", "plan change adoption", "communication plan", "training needs analysis",
   "resistance management", "adoption roadmap", "change communication", or mentions "post-implementation adoption",
   "user onboarding strategy", "technology adoption plan".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,7 +22,7 @@ allowed-tools:
 
 Designs a comprehensive adoption strategy: phased rollout plan, stakeholder communication strategy, training needs analysis and curriculum design, resistance management tactics, reinforcement mechanisms, and adoption KPIs with measurement cadence.
 
-## Guiding Principle
+## Grounding Guideline
 
 > *Adoption is not an event, it is a process. It does not end at go-live — it begins there. Every user who does not adopt represents an investment that does not return.*
 
@@ -214,18 +216,18 @@ Core KPIs: adoption rate, proficiency rate, utilization rate, satisfaction (NPS/
 - `Read ${CLAUDE_SKILL_DIR}/prompts/use-case-prompts.md` — Ready-to-use prompts
 - `Read ${CLAUDE_SKILL_DIR}/prompts/metaprompts.md` — Meta-strategies
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Adoption is mandatory (compliance-driven) with hard regulatory deadline | Replace incentive-based tactics with compliance deadline milestones; add legal language to communications; require training completion audit trail; build escalation path for non-compliance |
 | Global rollout across 5+ time zones and 3+ languages | Create localization matrix per region; adapt messaging for cultural context; use train-the-trainer cascade model; stagger rollout waves by region to absorb lessons learned |
 | Champion network cannot be established (no volunteers, no management mandate) | Fall back to "embedded support" model: assign super-users from existing team leads; reduce champion responsibilities to minimum viable (FAQ answering, issue escalation); escalate champion gap to sponsor |
 | Change fatigue detected — organization has 3+ concurrent transformation initiatives | Design a lighter-touch strategy that integrates into existing ceremonies (stand-ups, town halls); avoid "another initiative" framing; position as enhancement to current work, not additional burden |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Phase rollout as Pilot > Early Adopters > Majority > Laggards | Big-bang simultaneous rollout to all users | Phased rollout absorbs lessons from each wave, reduces blast radius of issues, and builds internal success stories that accelerate later waves |
 | Communication plan aligned to ADKAR stages (Awareness > Desire > Knowledge > Ability > Reinforcement) | Generic "launch announcement + training" approach | ADKAR-aligned messaging addresses the psychological progression of adoption; generic approaches often skip Desire (motivation) and Reinforcement (sustainability) |

@@ -7,14 +7,8 @@ description: >
   technical writing standards.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto-u-organizacion> [scope-de-documentacion]"
-version: 1.0.0
-tags:
-  - documentation
-  - doc-as-code
-  - knowledge-management
-  - governance
-  - content-strategy
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -30,13 +24,21 @@ allowed-tools:
 Diseno de estrategia doc-as-code, taxonomia de contenido, modelo de gobernanza
 y arquitectura de base de conocimiento para organizaciones de tecnologia.
 
+## Grounding Guideline
+
+> *Documentation that is not maintained is worse than no documentation — it generates false confidence.*
+
+1. **Docs as Code.** Documentation lives alongside code, is versioned with code, and is reviewed like code.
+2. **The best document is one that does not need to exist.** Self-describing code and ADRs reduce the need for narrative documentation.
+3. **Document decisions, not just states.** An ADR that explains the why is worth more than a diagram that shows the what.
+
 ## TL;DR
 
-- Evalua estado actual de documentacion y detecta gaps criticos
-- Disena taxonomia de documentacion alineada con Diataxis framework (tutorials, how-to, reference, explanation)
-- Define pipeline doc-as-code integrado con CI/CD existente
-- Establece modelo de gobernanza con roles, review cycles y metricas de salud
-- Produce mapa de documentacion completo con ownership y prioridades
+- Assess current documentation state and detect critical gaps
+- Design documentation taxonomy aligned with Diataxis framework (tutorials, how-to, reference, explanation)
+- Define doc-as-code pipeline integrated with existing CI/CD
+- Establish governance model with roles, review cycles, and health metrics
+- Produce complete documentation map with ownership and priorities
 
 ## Inputs
 
@@ -47,34 +49,34 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **scope de docum
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **Mapa de Documentacion** — Inventario de docs existentes, gaps, prioridades
-2. **Guia de Estilo** — Estandares de escritura, templates, convenciones
-3. **Modelo de Gobernanza** — Roles, review cycles, metricas de salud, escalation
-4. **Taxonomia de Contenido** — Clasificacion Diataxis adaptada al contexto
-5. **Pipeline Doc-as-Code** — Arquitectura tecnica de generacion, validacion y publicacion
+1. **Documentation Map** — Inventory of existing docs, gaps, priorities
+2. **Style Guide** — Writing standards, templates, conventions
+3. **Governance Model** — Roles, review cycles, health metrics, escalation
+4. **Content Taxonomy** — Diataxis classification adapted to context
+5. **Doc-as-Code Pipeline** — Technical architecture for generation, validation, and publishing
 
-## Proceso
+## Process
 
-1. **Auditoria de Estado Actual** — Inventariar documentacion existente, evaluar cobertura, frescura y accesibilidad
-2. **Analisis de Gaps** — Identificar documentacion faltante critica por audiencia:
+1. **Current State Audit** — Inventory existing documentation, assess coverage, freshness, and accessibility
+2. **Gap Analysis** — Identify critical missing documentation by audience:
    | Audiencia | Necesita | Formato Preferido |
    |---|---|---|
    | Developers | API refs, architecture decisions, runbooks | Markdown en repo |
    | Ops/SRE | Runbooks, troubleshooting, infra docs | Wiki + automation |
    | Product | Specs, user stories, release notes | Confluence/Notion |
    | Nuevos miembros | Onboarding guides, architecture overview | Structured tutorials |
-3. **Diseno de Taxonomia** — Aplicar Diataxis framework:
-   - Tutorials (learning-oriented): guias paso a paso para aprender
-   - How-to guides (task-oriented): recetas para resolver problemas
-   - Reference (information-oriented): descripcion tecnica precisa
-   - Explanation (understanding-oriented): discusion y contexto
-4. **Definicion de Guia de Estilo** — Templates, convenciones de naming, estructura de archivos, tone of voice
-5. **Pipeline Doc-as-Code** — Linting (markdownlint, vale), build (MkDocs, Docusaurus), deploy, link checking
-6. **Modelo de Gobernanza** — Ownership por area, review cadence, freshness metrics, retirement policy
+3. **Taxonomy Design** — Apply Diataxis framework:
+   - Tutorials (learning-oriented): step-by-step guides for learning
+   - How-to guides (task-oriented): recipes for solving problems
+   - Reference (information-oriented): precise technical description
+   - Explanation (understanding-oriented): discussion and context
+4. **Style Guide Definition** — Templates, naming conventions, file structure, tone of voice
+5. **Doc-as-Code Pipeline** — Linting (markdownlint, vale), build (MkDocs, Docusaurus), deploy, link checking
+6. **Governance Model** — Ownership by area, review cadence, freshness metrics, retirement policy
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Inventario completo de documentacion existente con scoring de frescura
 - [ ] Gaps criticos identificados y priorizados por impacto
@@ -84,14 +86,14 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **scope de docum
 - [ ] Modelo de gobernanza con roles, cadencia y metricas
 - [ ] Diagrama Mermaid de flujo de documentacion
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Asume acceso al repositorio y herramientas de documentacion existentes para auditoria
 - No produce la documentacion en si — disena la arquitectura, taxonomia y gobernanza para que el equipo la ejecute
 - Recomendaciones de tooling (MkDocs, Docusaurus, Vale) son sugerencias; la seleccion final depende del stack del equipo
 - Freshness scoring es estimado si no existe metadata de ultima actualizacion en los documentos
 
-## Casos Borde
+## Edge Cases
 
 | Escenario | Estrategia de Manejo |
 |---|---|
@@ -100,7 +102,7 @@ Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **scope de docum
 | Equipo que resiste escribir documentacion | Proponer docs-as-code integrado en PR workflow (templates obligatorios); minimizar friction con snippets y automation |
 | Documentacion regulada (compliance, auditoria) | Separar docs regulados de docs tecnicos; aplicar versionamiento estricto y approval workflow |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Habilita | Restringe | Justificacion |
 |---|---|---|---|
@@ -154,11 +156,11 @@ graph TD
 
 **Formato 4 — DOCX (circulación formal)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con Metodología Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con Metodología Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 **Formato 5 — PPTX (presentación ejecutiva)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Estado Actual de Documentación, Gap Analysis por Audiencia, Taxonomía Diataxis, Pipeline Doc-as-Code, Modelo de Gobernanza y Roadmap.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Estado Actual de Documentación, Gap Analysis por Audiencia, Taxonomía Diataxis, Pipeline Doc-as-Code, Modelo de Gobernanza y Roadmap.
 
 ## Evaluacion
 

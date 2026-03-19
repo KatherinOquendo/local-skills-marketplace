@@ -1,24 +1,37 @@
 ---
 name: rendering-engine
 description: Motor de renderizado automático para generación de diagramas (PNG) desde Mermaid y exportación de propuestas a PDF con branding MetodologIA.
-author: Equipo MetodologIA
-version: 1.0.0
-license: MIT
-category: Herramientas & DX
-tags: [rendering, mermaid, pdf, png, export, branding, diagrams]
-allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<source-file> [png|pdf|all]"
+model: opus
+context: fork
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # rendering-engine
 
-> Motor de renderizado automático: Mermaid → PNG, Markdown → PDF.
-> Branding estricto MetodologIA en todos los outputs visuales.
+> Automatic rendering engine: Mermaid -> PNG, Markdown -> PDF.
+> Strict MetodologIA branding in all visual outputs.
+
+## Grounding Guideline
+
+> *An invisible rendering engine is a successful rendering engine. The user sees the result, not the process.*
+
+1. **Brand fidelity in every pixel.** Every visual output must comply with Neo-Swiss v6 tokens without exception.
+2. **Self-containment.** Every generated artifact must be portable — no external dependencies, no broken links.
+3. **Formats as first-class citizens.** PNG, PDF, HTML, and Markdown deserve the same level of quality.
 
 ---
 
 ## TL;DR
 
-Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entregables completos a PDF profesional con branding MetodologIA. Los evidence tags `[CÓDIGO]`, `[DOC]`, etc. se renderizan como badges visuales en el documento final.
+Converts Mermaid code blocks into static PNG images and compiles complete deliverables to professional PDF with MetodologIA branding. Evidence tags `[CÓDIGO]`, `[DOC]`, etc. are rendered as visual badges in the final document.
 
 ---
 
@@ -26,7 +39,7 @@ Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entre
 
 1. **PNG Generation** — Detectar bloques ` ```mermaid ` en entregables, renderizar con Mermaid CLI a `discovery/assets/`
 2. **PDF Compilation** — Compilar markdown a PDF con Pandoc + wkhtmltopdf (o Typst como alternativa)
-3. **Branding Enforcement** — Paleta MetodologIA (#6366F1, #0F172A), tipografía Poppins/Montserrat
+3. **Branding Enforcement** — Paleta MetodologIA (#122562, #1F2833), tipografía Poppins/Trebuchet MS
 4. **Evidence Badges** — Tags de evidencia renderizados como badges HTML coloreados por tipo
 
 ---
@@ -53,9 +66,9 @@ Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entre
 |---------|---------------|
 | **Markdown** | Source de verdad — contiene bloques Mermaid originales + evidence tags en texto. |
 | **HTML** | Self-contained con CSS MetodologIA. Mermaid renderizado inline. Evidence tags como badges. WCAG AA. |
-| **DOCX** | python-docx. Poppins/Montserrat font. Imágenes PNG embebidas desde `discovery/assets/`. Header MetodologIA. |
+| **DOCX** | python-docx. Poppins/Trebuchet MS font. Imágenes PNG embebidas desde `discovery/assets/`. Header MetodologIA. |
 | **XLSX** | openpyxl. Hoja "Rendering Log" con columnas: Diagram ID, Source File, Output PNG, Status. |
-| **PPTX** | python-pptx. PNGs de diagramas como imágenes full-slide. Slide master indigo MetodologIA. |
+| **PPTX** | python-pptx. PNGs de diagramas como imágenes full-slide. Slide master navy MetodologIA. |
 
 ---
 
@@ -78,7 +91,7 @@ Convierte bloques de código Mermaid en imágenes PNG estáticas y compila entre
 
 ## Branding Rules (Inmutable)
 
-- **Primary**: #6366F1 (indigo) — headers, bordes, acentos
-- **Background**: #0F172A (dark) — fondo de tablas alternas, backgrounds
-- **Typography**: Poppins/Montserrat (pesos 300-700)
+- **Primary**: #122562 (navy) — headers, bordes, acentos
+- **Background**: #1F2833 (dark) — fondo de tablas alternas, backgrounds
+- **Typography**: Poppins/Trebuchet MS (pesos 300-700)
 - **Evidence badges**: Coloreados por tipo (CÓDIGO=green bg, CONFIG=blue bg, DOC=indigo bg, INFERENCIA=purple bg, SUPUESTO=red bg)

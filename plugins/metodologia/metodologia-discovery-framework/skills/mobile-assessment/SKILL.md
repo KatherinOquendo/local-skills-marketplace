@@ -21,16 +21,16 @@ allowed-tools:
 
 Mobile assessment evaluates an existing mobile application across six dimensions: runtime health, dependency security, platform compliance, code quality, user experience metrics, and remediation planning. This skill produces a comprehensive AS-IS assessment that identifies risks, quantifies technical debt, and prioritizes fixes.
 
-## Principio Rector
+## Grounding Guideline
 
-**Una app sin métricas de vitales es una app volando a ciegas.** Crash-free rate, ANR rate, cold start, y app size no son "nice-to-have" — son los signos vitales que determinan si la app sobrevive en los stores. Store compliance es non-negotiable: un rechazo de App Store puede costar semanas de revenue.
+**An app without vitals metrics is an app flying blind.** Crash-free rate, ANR rate, cold start, and app size are not "nice-to-have" — they are the vital signs that determine if the app survives in the stores. Store compliance is non-negotiable: an App Store rejection can cost weeks of revenue.
 
-### Filosofía de Assessment Mobile
+### Mobile Assessment Philosophy
 
-1. **Store compliance is non-negotiable.** Privacy manifests, target API levels, data safety declarations. Un gap de compliance es un riesgo de rechazo que bloquea releases.
-2. **Crash-free rate drives retention.** Cada crash es un usuario que potencialmente no vuelve. El umbral de Google Play (>1.09%) afecta visibilidad en el store.
-3. **Dependency health predicts maintenance cost.** Librerías abandonadas, CVEs sin parchar, y SDK bloat son deuda que se paga con intereses. Auditar dependencias es prevención.
-4. **Measure before you optimize.** Sin baseline no hay mejora verificable. Instrumentar primero, optimizar después.
+1. **Store compliance is non-negotiable.** Privacy manifests, target API levels, data safety declarations. A compliance gap is a rejection risk that blocks releases.
+2. **Crash-free rate drives retention.** Every crash is a user who potentially never returns. The Google Play threshold (>1.09%) affects store visibility.
+3. **Dependency health predicts maintenance cost.** Abandoned libraries, unpatched CVEs, and SDK bloat are debt paid with interest. Auditing dependencies is prevention.
+4. **Measure before you optimize.** Without a baseline there is no verifiable improvement. Instrument first, optimize after.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides an app name as `$ARGUMENTS`. Parse `$1` as the **app name** us
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para health profiling y dependency audit, HITL para severity classification y remediation priorities.
-  - **desatendido**: Cero interrupciones. Assessment completo automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Assessment completo automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en compliance findings y remediation roadmap.
   - **paso-a-paso**: Confirma cada health metric, dependency finding, compliance check, y remediation item.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -440,7 +440,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Mobile_Assessment_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_Mobile_Assessment_{cliente}_{WIP}.xlsx`
@@ -448,7 +448,7 @@ graph TD
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_Mobile_Assessment_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

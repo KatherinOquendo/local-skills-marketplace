@@ -7,6 +7,8 @@ description: >
   Use when structuring the overall narrative across deliverables, building scenario
   narratives, crafting transformation stories (current pain → decision → future state),
   or designing risk narratives and success reference stories.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -19,7 +21,7 @@ allowed-tools:
 
 Designs the narrative architecture that transforms raw analysis into compelling transformation stories. Owns story arcs across deliverables, scenario narratives, risk stories, and evidence-based transformation narratives.
 
-## Guiding Principle
+## Grounding Guideline
 
 **Data informs. Stories transform.** A technical finding is a data point. A finding wrapped in context, consequence, and a path to action is a story that moves people to act. Storytelling does not decorate data — it gives data the narrative structure so the reader remembers, understands, and acts.
 
@@ -48,7 +50,7 @@ Parse from `$ARGUMENTS`.
 03 AS-IS       → "La realidad técnica, sin adornos"      ← TENSIÓN MÁXIMA
 04 Flows       → "Así fluye (o no fluye) el valor"
 05 Scenarios   → "Tres futuros posibles"                  ← PUNTO DE DECISIÓN
-06 Roadmap     → "El camino elegido, paso a paso"
+06 Roadmap     → "El camino elegido, step by step"
 07 Spec        → "Lo que vamos a construir, exactamente"
 08 Pitch       → "Por qué actuar ahora"                   ← CALL TO ACTION
 09 Handover    → "Cómo empezar el lunes"                  ← RESOLUCIÓN
@@ -155,14 +157,14 @@ Narrative threads that must be consistent across ALL deliverables:
 | Tone calibrated | Executive ≠ technical ≠ mixed |
 | No orphan stories | Every narrative thread resolved by Pitch/Handover |
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Los hallazgos tecnicos ya existen como input; esta skill estructura la narrativa, no genera datos.
 - Las historias deben estar ancladas en evidencia. Especulacion debe llevar tag [SUPUESTO] explicito.
 - Esta skill posee **estructura narrativa y arcos de historia**. NO posee calidad de prosa (eso es copywriting) ni narrativas de visualizacion de datos (eso es data-storytelling).
 - El arco maestro cubre entregables 00-12. Si el discovery es parcial, adaptar el arco a los entregables disponibles.
 
-## Casos Borde
+## Edge Cases
 
 | Caso Borde | Estrategia de Manejo |
 |---|---|
@@ -171,7 +173,7 @@ Narrative threads that must be consistent across ALL deliverables:
 | Multiples streams de transformacion en paralelo | Tejer narrativas paralelas con punto de resolucion compartido. Usar tecnica de "callback" entre streams. Crear timeline visual que muestre convergencia. |
 | Audiencia hostil o esceptica al cambio | Liderar con datos incuestionables [CODIGO]. Evitar recomendaciones tempranas. Construir caso acumulativamente: evidencia 1 + 2 + 3 = conclusion inevitable. Incluir "devil's advocate" section. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Justificacion | Alternativa Descartada |
 |---|---|---|
@@ -299,17 +301,17 @@ graph TD
 ### Template 4: DOCX (bajo demanda)
 
 - Filename: `{fase}_storytelling_{cliente}_{WIP}.docx`
-- Generado con python-docx y MetodologIA Design System v5. Portada con tipo de historia y audiencia, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Arco Maestro (cross-deliverable), Narrativa de Transformación (3 actos), Narrativas de Escenario, Narrativas de Riesgo, Success Reference Stories.
+- Generado con python-docx y MetodologIA Design System v5. Portada con tipo de historia y audiencia, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Arco Maestro (cross-deliverable), Narrativa de Transformación (3 actos), Narrativas de Escenario, Narrativas de Riesgo, Success Reference Stories.
 
 ### Template 5: PPTX (bajo demanda)
 
 - Filename: `{fase}_storytelling_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Arco Maestro (00-12 timeline visual), Acto 1: Estado Actual (dolor cuantificado), Acto 2: Punto de Decisión (opciones y evidencia), Acto 3: Estado Futuro (visión y métricas objetivo), Narrativas de escenario (una por escenario relevante), Risk Narrative (consecuencias cuantificadas), Success Reference Story, próximos pasos.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Arco Maestro (00-12 timeline visual), Acto 1: Estado Actual (dolor cuantificado), Acto 2: Punto de Decisión (opciones y evidencia), Acto 3: Estado Futuro (visión y métricas objetivo), Narrativas de escenario (una por escenario relevante), Risk Narrative (consecuencias cuantificadas), Success Reference Story, próximos pasos.
 
 ### Template 6: XLSX (bajo demanda)
 
 - Filename: `{fase}_storytelling_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Narrative Arc (entregable 00-12, tensión introducida, resolución, estado del thread), Thread Tracker (thread narrativo, entregable de introducción, entregable de resolución, estado activo/resuelto/pendiente), Scenario Narratives (escenario, visión futura, beneficio cuantificado, costo FTE-meses, riesgo principal), Risk Narratives (riesgo, consecuencia cuantificada, cascada de impacto, punto de no retorno). Conditional formatting por estado de threads (activo/resuelto/pendiente) y audiencia. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Narrative Arc (entregable 00-12, tensión introducida, resolución, estado del thread), Thread Tracker (thread narrativo, entregable de introducción, entregable de resolución, estado activo/resuelto/pendiente), Scenario Narratives (escenario, visión futura, beneficio cuantificado, costo FTE-meses, riesgo principal), Risk Narratives (riesgo, consecuencia cuantificada, cascada de impacto, punto de no retorno). Conditional formatting por estado de threads (activo/resuelto/pendiente) y audiencia. Auto-filters en todas las hojas. Valores directos sin fórmulas.
 
 ## Evaluacion
 

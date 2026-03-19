@@ -22,6 +22,14 @@ allowed-tools:
 
 Generates production-ready Word documents following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every document uses navy-themed headers, gold accents, Poppins headings, Trebuchet MS body text, and branded cover pages.
 
+## Grounding Guideline
+
+> *A Word document without brand identity is a draft disguised as a deliverable.*
+
+1. **Brand config as single source.** Read brand-config-neoswiss.json BEFORE generating — never hardcode tokens.
+2. **Semantic structure.** Headings, styles, and TOC must be semantic so the document is navigable and accessible.
+3. **Professional portability.** The DOCX must open correctly in Word, LibreOffice, and Google Docs without visual degradation.
+
 ## CRITICAL: Before Generating ANY DOCX
 
 **ALWAYS read the brand config first:**

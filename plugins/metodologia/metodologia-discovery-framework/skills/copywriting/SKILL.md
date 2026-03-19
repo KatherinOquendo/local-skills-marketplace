@@ -7,6 +7,8 @@ description: >
   cost-of-inaction narratives, and compelling summaries. Use when generating executive
   summaries, pitch narratives, scenario value propositions, recommendation justifications,
   or any prose that must drive a decision.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -19,7 +21,7 @@ allowed-tools:
 
 Transforms technical findings into decision-driving prose. Owns value propositions, calls to action, cost-of-inaction narratives, executive summaries, and recommendation justifications across all discovery deliverables.
 
-## Guiding Principle
+## Grounding Guideline
 
 **The best copy does not convince — it reveals what the reader already knows but has not articulated.** A C-level executive knows they have technical debt. They do not need to be told. They need the cost of inaction quantified and a clear path shown with options. Copy transforms data into decisions.
 
@@ -120,31 +122,31 @@ Before delivery, every copy section must pass:
 | Zero filler phrases | No filler constructions, no "undoubtedly" |
 | Audience tone match | Calibrated per target audience |
 
-## Supuestos y Limites
+## Assumptions and Limits
 
 - El input contiene hallazgos tecnicos ya validados; esta skill transforma, no investiga.
 - El copy se produce en espanol (registro empresarial latinoamericano) salvo indicacion explicita.
 - NUNCA producir precios. Solo FTE-meses, magnitudes, cost drivers.
-- NUNCA usar verde (#00FF00) para exito. Usar gold (#22D3EE) en contexto MetodologIA.
+- NUNCA usar verde (#00FF00) para exito. Usar gold (#FFD700) en contexto MetodologIA.
 - Esta skill posee **calidad de prosa y persuasion**. NO posee arco narrativo entre entregables (eso es storytelling) ni visualizacion de datos (eso es data-storytelling).
 
-## Casos Borde
+## Edge Cases
 
-| Caso Borde | Estrategia de Manejo |
+| Edge Case | Handling Strategy |
 |---|---|
-| No hay datos cuantitativos disponibles | Usar evidencia cualitativa con tags [INFERENCIA] explicitos. Enmarcar como "basado en patrones observados en [N] archivos/modulos/entrevistas". Declarar limitacion en la primera linea del entregable. |
-| Multiples audiencias en el mismo documento | Aplicar progressive disclosure: headline ejecutivo + detalle tecnico expandible. Usar callouts diferenciados por audiencia. Nunca asumir un solo perfil de lector. |
-| Recomendacion controversial o con riesgo politico | Presentar todas las opciones con igual rigor. Recomendar con evidencia explicita. Documentar dissent en registro de riesgos. Incluir seccion "Consideraciones Alternativas" antes del CTA. |
-| El cliente solicita copy en idioma diferente al espanol | Producir en el idioma solicitado manteniendo la estructura y tecnicas. Documentar terminologia clave en ambos idiomas. Priorizar claridad sobre estilo literario. |
+| No quantitative data available | Use qualitative evidence with explicit [INFERENCIA] tags. Frame as "based on patterns observed in [N] files/modules/interviews". Declare limitation in the first line of the deliverable. |
+| Multiple audiences in the same document | Apply progressive disclosure: executive headline + expandable technical detail. Use differentiated callouts per audience. Never assume a single reader profile. |
+| Controversial recommendation or with political risk | Present all options with equal rigor. Recommend with explicit evidence. Document dissent in risk register. Include "Alternative Considerations" section before the CTA. |
+| Client requests copy in a language other than Spanish | Produce in the requested language maintaining structure and techniques. Document key terminology in both languages. Prioritize clarity over literary style. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Justificacion | Alternativa Descartada |
+| Decision | Justification | Discarded Alternative |
 |---|---|---|
-| Evidencia antes que afirmacion como regla absoluta | Credibilidad con audiencias ejecutivas requiere datos primero. Un C-level detecta copy sin sustento en segundos. | Afirmar y luego justificar: percibido como opinion no fundamentada. |
-| Opciones sobre mandatos (3 escenarios) | El decision-maker elige; el consultor recomienda con evidencia. Aumenta ownership de la decision. | Recomendacion unica: percibida como imposicion, genera resistencia. |
-| Conciseness radical sobre exhaustividad | Tiempo de atencion ejecutivo es limitado. Cada palabra debe aportar informacion o mover al lector. | Prosa exhaustiva: pierde la audiencia ejecutiva en el segundo parrafo. |
-| COI cuantificado sobre urgencia declarada | "El costo de inaccion es X FTE-meses/trimestre" es verificable y accionable. "Es urgente actuar" es opinion. | Urgencia declarada: no diferencia de cualquier otra recomendacion. |
+| Evidence before assertion as absolute rule | Credibility with executive audiences requires data first. A C-level detects unsupported copy in seconds. | Assert then justify: perceived as unfounded opinion. |
+| Options over mandates (3 scenarios) | The decision-maker chooses; the consultant recommends with evidence. Increases decision ownership. | Single recommendation: perceived as imposition, generates resistance. |
+| Radical conciseness over exhaustiveness | Executive attention time is limited. Every word must add information or move the reader. | Exhaustive prose: loses the executive audience in the second paragraph. |
+| Quantified COI over declared urgency | "The cost of inaction is X FTE-months/quarter" is verifiable and actionable. "It is urgent to act" is opinion. | Declared urgency: does not differentiate from any other recommendation. |
 
 ## Knowledge Graph
 
@@ -230,7 +232,7 @@ HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive
 ### Template 1c: Executive Summary (DOCX, bajo demanda)
 
 **Filename:** `{fase}_Executive_Summary_{project}_{WIP}.docx`
-Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 ### Template 1d: Executive Summary (XLSX, bajo demanda)
 
@@ -240,7 +242,7 @@ Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipograf
 ### Template 1e: Executive Summary (PPTX, bajo demanda)
 
 **Filename:** `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ### Template 2: Pitch Narrative (HTML)
 
@@ -254,7 +256,7 @@ Estructura HTML con secciones:
 - Solve: 3 escenarios con comparativa visual
 - CTA: accion recomendada con timeline y siguiente paso
 - Footer: atribucion MetodologIA + evidencia tags summary
-Estilo: colores MetodologIA (#6366F1 primary, #0F172A background)
+Estilo: colores MetodologIA (#122562 primary, #1F2833 background)
 ```
 
 ## Evaluacion
@@ -281,4 +283,4 @@ Estilo: colores MetodologIA (#6366F1 primary, #0F172A background)
 
 - This skill owns **prose quality and persuasion**. It does NOT own narrative arc across deliverables (that's editorial-director) or data visualization (that's metodologia-data-viz-storytelling).
 - NEVER produce prices. Only FTE-months, magnitudes, cost drivers.
-- NEVER use green (#00FF00) for success in any output. Use gold (#22D3EE).
+- NEVER use green (#00FF00) for success in any output. Use gold (#FFD700).

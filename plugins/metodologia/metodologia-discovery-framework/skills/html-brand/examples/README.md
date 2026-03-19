@@ -15,7 +15,7 @@ These examples demonstrate the full output of the `metodologia-html-brand` skill
 
 ## Key Components Demonstrated
 
-1. **Hero Section** — Black background, orange border, 3 KPIs, Clash Grotesk display font
+1. **Hero Section** — Black background, orange border, 3 KPIs, Poppins display font
 2. **Sticky TOC** — Horizontal scroll navigation with active section tracking
 3. **Numbered Sections** — 01-08 pattern with section headers
 4. **Data Tables** — Styled with brand tokens, max 8 visible rows

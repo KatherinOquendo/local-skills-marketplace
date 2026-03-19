@@ -80,7 +80,7 @@ ELSE IF component == "data visualization":
 #### Color Tokens
 ```
 IF status/semantic (critical/warning/positive/info):
-  Positive/Success → #22D3EE (yellow) NOT #42D36F (green)
+  Positive/Success → #FFD700 (yellow) NOT #42D36F (green)
   Warning → #D97706 (amber)
   Critical/Error → #DC2626 (red)
   Info → #2563EB (blue)
@@ -92,21 +92,21 @@ ELSE IF decorative (charts, data viz):
   Pink → #FE9CAB (charts only)
 
 ELSE IF neutral/brand:
-  Primary → #6366F1 (orange - accents, borders)
+  Primary → #122562 (orange - accents, borders)
   Text → #000000 (black)
-  Background → #FFFFFF (white) or #0F172A (light)
+  Background → #FFFFFF (white) or #1F2833 (light)
   Dark mode → #000000 (black bg, white text)
 
 ELSE IF severity indicator:
   Critical → #DC2626 (red bg, white text)
   High → #EA580C (orange bg, white text)
   Medium → #D97706 (amber bg, BLACK text for WCAG AA)
-  Low → #22D3EE (yellow bg, black text per v4)
+  Low → #FFD700 (yellow bg, black text per v4)
 ```
 
 #### Typography Tokens
 ```
-Headings → font-family: 'Clash Grotesk', 'Inter', sans-serif
+Headings → font-family: 'Poppins', 'Inter', sans-serif
   h1: clamp(2.5rem, 5vw, 4.2rem), font-weight: 700
   h2: 2.2rem, font-weight: 700
   h3: 1.8rem, font-weight: 700
@@ -295,7 +295,7 @@ Label: small, muted (0.875rem)
 </section>
 ```
 
-Number: 60×60px, black bg, orange text (#6366F1), zero-padded
+Number: 60×60px, black bg, orange text (#122562), zero-padded
 
 #### Pattern 10: Checklist
 ```html
@@ -309,7 +309,7 @@ Number: 60×60px, black bg, orange text (#6366F1), zero-padded
 </div>
 ```
 
-Check: orange (#6366F1)
+Check: orange (#122562)
 Cross: red (#DC2626)
 
 ---
@@ -411,9 +411,9 @@ Before outputting, verify:
 ```
 FOR the HTML snippet:
   ☐ All color values match canonical tokens (or rgba variants)
-  ☐ Severity low uses #22D3EE (yellow), not #42D36F (green)
-  ☐ All checkmarks use #6366F1 (orange)
-  ☐ Font families correct: Clash Grotesk (headings), Inter (body)
+  ☐ Severity low uses #FFD700 (yellow), not #42D36F (green)
+  ☐ All checkmarks use #122562 (orange)
+  ☐ Font families correct: Poppins (headings), Inter (body)
   ☐ Typography scale matches reference (h1, h2, h3, p, small)
   ☐ Spacing follows tokens (2rem, 1.5rem, 1rem gaps)
   ☐ Border radius correct: 6px (badges), 12px (callouts), 16px (cards)
@@ -483,7 +483,7 @@ Generate markdown with this structure:
 - [key]: [action]
 
 **Focus Management:**
-- Focus outline: 2px solid #6366F1
+- Focus outline: 2px solid #122562
 - Tab order: [logical sequence]
 
 **Semantic HTML:**
@@ -548,17 +548,17 @@ Use with `section-header` for section numbering:
 ## Key Rules for All Components
 
 1. **Always Check v4 Semantic Rule**:
-   - Success/positive = #22D3EE (yellow), NOT #42D36F (green)
-   - Checkmarks = #6366F1 (orange), NOT green
+   - Success/positive = #FFD700 (yellow), NOT #42D36F (green)
+   - Checkmarks = #122562 (orange), NOT green
    - Severity-medium = #D97706 background with #000000 (BLACK) text for WCAG AA
 
 2. **Color Hierarchy**:
-   - Primary/Brand: #6366F1 (orange)
+   - Primary/Brand: #122562 (orange)
    - Semantic states: yellow (success), amber (warning), red (critical), blue (info)
    - Decorative: green, teal, violet, pink for charts only
 
 3. **Typography**:
-   - Headings: Always Clash Grotesk
+   - Headings: Always Poppins
    - Body: Always Inter
    - Monospace: Always use proper monospace font
 
@@ -570,7 +570,7 @@ Use with `section-header` for section numbering:
 
 5. **Accessibility Always**:
    - Minimum contrast 4.5:1 for normal text, 3:1 for large text
-   - Focus visible: 2px solid #6366F1
+   - Focus visible: 2px solid #122562
    - Semantic HTML: proper tags, heading hierarchy
    - Skip links, ARIA attributes, alt text
 
@@ -605,7 +605,7 @@ Request: "Data flow diagram"
 → Generate: diagram-box with ASCII art, colored highlights
 
 Request: "Success state indicator"
-→ Generate: badge-yellow or sev-low with #22D3EE background
+→ Generate: badge-yellow or sev-low with #FFD700 background
 ```
 
 ---

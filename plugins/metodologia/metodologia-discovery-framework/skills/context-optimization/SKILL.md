@@ -1,18 +1,31 @@
 ---
 name: context-optimization
 description: Optimización del context window mediante lazy loading de agentes, pruning semántico del changelog y vectorización selectiva de la ontología.
-author: Equipo MetodologIA
-version: 1.0.0
-license: MIT
-category: Herramientas & DX
-tags: [context-window, lazy-loading, pruning, optimization, performance, token-efficiency]
-allowed-tools: [Read, Grep, Glob, Bash, Write, Edit]
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "[phase-number] [tipo-servicio]"
+model: opus
+context: fork
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # context-optimization
 
 > Optimización del context window y carga dinámica de skills/agentes.
 > Reduce consumo de tokens, mejora precisión en fases avanzadas del pipeline.
+
+## Grounding Guideline
+
+> *A saturated context window produces degraded responses. Context optimization is not optional — it is a quality prerequisite.*
+
+1. **Load what is needed, not what is available.** Lazy loading by phase and service type is the base strategy.
+2. **Compress without losing decisions.** Changelog pruning must preserve critical decisions and discard noise.
+3. **Measure before optimizing.** Without per-phase token usage metrics, optimization is blind.
 
 ---
 
@@ -51,10 +64,10 @@ Con múltiples agentes, 101+ skills y 20+ archivos de RAG-priming, el contexto s
 | Formato | Especificación |
 |---------|---------------|
 | **Markdown** | Reporte de optimización: tokens antes/después, agentes cargados vs total, changelog lines comprimidas. Ghost menu. |
-| **HTML** | Self-contained con tokens canónicos MetodologIA (#6366F1, #0F172A). Gráficas de uso de contexto. WCAG AA. |
-| **DOCX** | python-docx. Heading 1 = Montserrat 700 #6366F1. Tabla comparativa de contexto por fase. Header con logo MetodologIA. |
-| **XLSX** | openpyxl. Hojas: "Context Budget", "Agent Loading Matrix", "Pruning Log". Header indigo #6366F1. |
-| **PPTX** | python-pptx. Max 10 slides. Slide master indigo. Gráfica de optimización. Speaker notes con métricas. |
+| **HTML** | Self-contained con tokens canónicos MetodologIA (#122562, #1F2833). Gráficas de uso de contexto. WCAG AA. |
+| **DOCX** | python-docx. Heading 1 = Poppins 700 #122562. Tabla comparativa de contexto por fase. Header con logo MetodologIA. |
+| **XLSX** | openpyxl. Hojas: "Context Budget", "Agent Loading Matrix", "Pruning Log". Header navy #122562. |
+| **PPTX** | python-pptx. Max 10 slides. Slide master navy. Gráfica de optimización. Speaker notes con métricas. |
 
 ---
 

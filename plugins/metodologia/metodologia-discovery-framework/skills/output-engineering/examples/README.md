@@ -15,7 +15,7 @@ Sample outputs que demuestran el skill de Output Engineering a nivel MOAT: ghost
 ## Uso como Benchmark
 
 - `sample-output.md` es la referencia para producción markdown: estructura, callouts, evidence tags, disclaimer de costos, y trigger del ghost menu.
-- `sample-output.html` es la referencia para conversión HTML: brand compliance (#6366F1 primario, #1A1A2E oscuro, #22D3EE gold para positivo, nunca verde), accesibilidad WCAG AA, print styles, y Mermaid rendering.
+- `sample-output.html` es la referencia para conversión HTML: brand compliance (#122562 primario, #1F2833 oscuro, #FFD700 gold para positivo, nunca verde), accesibilidad WCAG AA, print styles, y Mermaid rendering.
 
 ## Validación de Content Integrity
 
@@ -34,4 +34,4 @@ El HTML preserva 100% del contenido del markdown fuente:
 
 - El HTML es self-contained (inline CSS, sin dependencias externas excepto fonts y Mermaid CDN).
 - Los formatos sugeridos en el ghost menu (HTML y PPTX resaltados) corresponden a la regla auto-suggest para Entregable 05.
-- Success/positive states usan gold (#22D3EE), nunca verde — compliance MetodologIA obligatorio.
+- Success/positive states usan gold (#FFD700), nunca verde — compliance MetodologIA obligatorio.

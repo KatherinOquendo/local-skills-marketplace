@@ -10,6 +10,8 @@ description: >
   "delivery excellence", "management consulting", "project governance", "ceremony health".
 argument-hint: "<pmo_docs_path> [full|executive]"
 author: Javier Montano · Comunidad MetodologIA
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -23,13 +25,13 @@ allowed-tools:
 
 Genera un assessment de 7 secciones para servicios de management y consultoria: evaluacion de madurez del PMO, fitness metodologico, capacidades del equipo, modelo de governance, baseline de performance de delivery, assessment de Factor WOW, y roadmap de transformacion. Diseñado para encontrar el punto exacto donde la disciplina metodologica se adapta al contexto organizacional sin perder rigor.
 
-## Principio Rector
+## Grounding Guideline
 
-> *La gestion sin metodologia es improvisacion. La metodologia sin contexto es dogma. El arte del management consulting es encontrar el punto exacto donde la disciplina metodologica se adapta al contexto organizacional sin perder rigor.*
+> *Management without methodology is improvisation. Methodology without context is dogma. The art of management consulting is finding the exact point where methodological discipline adapts to the organizational context without losing rigor.*
 
-1. **No existe una metodologia universalmente correcta.** Agile no es siempre la respuesta. Waterfall no es siempre el problema. El assessment evalua el fit entre metodologia y contexto (equipo, complejidad, stakeholders, regulacion) antes de recomendar cambios.
-2. **Las metricas sin contexto son peligrosas.** La velocidad de un equipo no se compara con la de otro. El cycle time de un proyecto regulado no se compara con el de un MVP. Cada metrica se interpreta dentro de su contexto operativo.
-3. **Factor WOW es el diferenciador.** Responsabilidad, Alta Iniciativa, Coordinacion Impecable, Anticipacion y Proactividad no son soft skills — son competencias medibles que separan delivery excelente de delivery aceptable.
+1. **There is no universally correct methodology.** Agile is not always the answer. Waterfall is not always the problem. The assessment evaluates the fit between methodology and context (team, complexity, stakeholders, regulation) before recommending changes.
+2. **Metrics without context are dangerous.** One team's velocity cannot be compared to another's. The cycle time of a regulated project cannot be compared to an MVP's. Every metric is interpreted within its operational context.
+3. **Factor WOW is the differentiator.** Responsibility, High Initiative, Impeccable Coordination, Anticipation, and Proactivity are not soft skills — they are measurable competencies that separate excellent delivery from acceptable delivery.
 
 ## Inputs
 
@@ -41,9 +43,9 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para analisis de metricas y herramientas, HITL para evaluacion de governance y Factor WOW.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Analisis completo automatizado. Assumptions documented.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **paso-a-paso**: Confirms before cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S5, S7 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `Management` (fixed for this skill)
@@ -304,18 +306,18 @@ Hoja de ruta de transformacion de management en 3 horizontes.
 - Integracion post-merger de culturas de gestion
 - Decisiones contractuales (Fixed Price vs T&M vs Staff Aug)
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Equipo sin metodologia formal — solo practicas emergentes no documentadas | Evaluar practicas emergentes via observacion de artefactos (Jira boards, meeting invites, release history). Documentar lo que funciona informalmente antes de formalizar. Score maximo de 2 sin evidencia documental. |
 | Multiples metodologias coexistiendo (Scrum + Waterfall + Kanban en diferentes equipos) | Mapear metodologia por equipo/proyecto. Evaluar coherencia y friccion entre modelos. Considerar Disciplined Agile como unificador. No forzar uniformidad si el contexto lo justifica. |
 | PMO percibido como burocracia que frena delivery | Evaluar valor agregado vs control puro. Medir lead time de procesos PMO. Recomendar PMO agil (servant-leadership model). Quick wins: eliminar reportes que nadie lee, simplificar approvals. |
 | Post-merger con dos culturas metodologicas incompatibles | Assessment separado por organizacion. Identificar practicas comunes como base. Modelo unificado gradual (12-18 meses). No imponer cultura de una empresa sobre otra. Governance compartido como primer paso. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Factor WOW como framework de evaluacion de competencias sobre frameworks genericos (SFIA, competency matrix) | SFIA 8 o competency matrix corporativa | Factor WOW (Responsabilidad, Alta Iniciativa, Coordinacion, Anticipacion, Proactividad) mide competencias especificas de delivery excellence que frameworks genericos no capturan. Alineado con cultura MetodologIA. |
 | Assessment basado en evidencia (min 2 evidencias por score) sobre self-assessment | Encuestas de auto-evaluacion del equipo | Self-assessment tiene bias de deseabilidad social (+1.5 puntos promedio). Evidencia verificable (artefactos, metricas, observacion) produce scores mas honestos y accionables. |
@@ -370,7 +372,7 @@ graph TD
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Management_Discovery_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold.
+- Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold.
 
 **Formato HTML (bajo demanda):**
 - Filename: `Management_Discovery_{project}_{WIP}.html`
@@ -378,7 +380,7 @@ graph TD
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
 
 ## Evaluacion
 

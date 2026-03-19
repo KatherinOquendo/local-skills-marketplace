@@ -8,6 +8,8 @@ description: >
   Use when the user asks to "write functional specs", "document use cases", "define business rules",
   "create requirements", "specification document", or mentions "Phase 5a", "functional specification",
   "MVP scope", "acceptance criteria", "casos de uso", "reglas de negocio".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -23,15 +25,15 @@ Generates detailed functional specifications: MVP modules, 8+ use cases with com
 
 > **Nota de universalidad:** Este skill genera especificaciones funcionales para CUALQUIER tipo de servicio MetodologIA. Para SDA produce especificaciones de software (módulos, casos de uso, modelos de datos). Para otros tipos de servicio, adapta la estructura a los entregables propios de cada línea.
 
-## Principio Rector
+## Grounding Guideline
 
-**Una especificación ambigua es una promesa de retrabajo.** La spec funcional es el contrato entre negocio y tecnología: cada use case define QUÉ hace el sistema, cada business rule define CÓMO decide, y cada criterio de aceptación define CUÁNDO está listo. Si no está en la spec, no se construye. Si está ambiguo en la spec, se construye mal.
+**An ambiguous specification is a promise of rework.** The functional spec is the contract between business and technology: each use case defines WHAT the system does, each business rule defines HOW it decides, and each acceptance criterion defines WHEN it is ready. If it is not in the spec, it is not built. If it is ambiguous in the spec, it is built wrong.
 
-### Filosofía de Especificación
+### Specification Philosophy
 
-1. **QUÉ, no CÓMO.** La spec describe comportamiento observable, no implementación. "El sistema valida la edad del cliente" — no "usar un IF/ELSE en el controller."
-2. **Cada regla tiene dueño.** Las business rules no validadas son bombas de tiempo. UNVALIDATED es un status, no un permiso para avanzar.
-3. **Scope explícito > scope exhaustivo.** Una lista clara de qué está IN y qué está OUT previene el 80% del scope creep.
+1. **WHAT, not HOW.** The spec describes observable behavior, not implementation. "The system validates the customer's age" — not "use an IF/ELSE in the controller."
+2. **Every rule has an owner.** Unvalidated business rules are ticking time bombs. UNVALIDATED is a status, not permission to proceed.
+3. **Explicit scope > exhaustive scope.** A clear list of what is IN and what is OUT prevents 80% of scope creep.
 
 ## Inputs
 
@@ -43,7 +45,7 @@ Parse from `$ARGUMENTS`. Use `actor-goal` for MVP speed; `cockburn` for critical
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario de módulos y use cases, HITL para validación de business rules y scope boundaries.
-  - **desatendido**: Cero interrupciones. Spec completa auto-generada. Reglas marcadas UNVALIDATED.
+  - **desatendido**: Zero interruptions. Spec completa auto-generada. Reglas marcadas UNVALIDATED.
   - **supervisado**: Autónomo con checkpoint en scope definition y business rules.
   - **paso-a-paso**: Confirma cada módulo, cada use case, y cada business rule.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -198,18 +200,18 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 
 Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Business rules discovered during spec writing contradict rules from a prior discovery phase | Flag the contradiction with [CONFLICT] tag; document both versions; escalate to business owner with 48-hour resolution SLA; block dependent use cases until resolved |
 | Service type is hybrid (e.g., SDA + Data-AI in the same engagement) | Produce separate module inventories per service type; use a shared data model section; flag cross-type dependencies explicitly in integration specs |
 | Stakeholder requests >12 MVP modules ("everything is critical") | Apply the 3x3 complexity/risk matrix to force prioritization; present the top-right quadrant (high complexity + high risk) as "Phase 2" candidates; escalate if stakeholder refuses to prioritize |
 | No business stakeholder available for the entire spec cycle | Mark ALL business rules as UNVALIDATED; produce the spec with [SUPUESTO] tags on every rule; add a mandatory validation sprint before development can start |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Default to Cockburn use case format for critical flows | Use actor-goal format universally for speed | Actor-goal format misses alternative/exception flows, which is where 70% of implementation bugs originate; Cockburn's rigor prevents downstream rework |
 | Require explicit scope boundaries (IN/OUT lists) | Allow implicit scope through use case coverage | Implicit scope invites scope creep; explicit IN/OUT lists create a contractual reference point between business and technology teams |
@@ -263,7 +265,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
 
 ## Evaluacion
 

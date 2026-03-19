@@ -23,5 +23,5 @@ Sample deliverables for the fictional **Acme Corp Digital Platform** data mesh s
 - **Data product specs:** Include SLAs (freshness, availability), quality dimensions, owner, consumers
 - **Phased roadmap:** Always phased (pilot → expansion → maturity), never big-bang
 - **Honest assessment:** Skill may recommend AGAINST data mesh when conditions are not met
-- **MetodologIA HTML branding:** Primary #6366F1, Dark #1A1A2E, Success #22D3EE (NEVER green for success states)
+- **MetodologIA HTML branding:** Primary #122562, Dark #1F2833, Success #FFD700 (NEVER green for success states)
 - **Diagrams:** Mermaid embedded (quadrant for readiness, flowchart for domain map, gantt for roadmap)

@@ -21,13 +21,21 @@ allowed-tools:
 
 Capacity planning projects future resource needs for infrastructure and teams, defining scaling triggers and optimization strategies. The skill produces capacity models, scaling playbooks, and bottleneck analyses that prevent both under-provisioning (outages) and over-provisioning (waste).
 
+## Grounding Guideline
+
+> *You cannot scale what you cannot measure. You cannot plan what you cannot project.*
+
+1. **Data before instinct.** Every capacity projection must start from real historical metrics, not optimistic estimates.
+2. **Over-provisioning is waste. Under-provisioning is failure.** The art of capacity planning is finding the right margin between cost and availability.
+3. **Capacity is not just infrastructure.** Teams, processes, and budget are capacity dimensions as critical as CPU and memory.
+
 ## TL;DR
 
-- Modela capacidad actual y proyecta demanda futura basada en metricas de crecimiento
-- Define triggers de escalamiento automatico y manual con umbrales claros
-- Identifica cuellos de botella en infraestructura, datos, y equipos humanos
-- Produce playbook de escalamiento con procedimientos paso a paso
-- Optimiza costos eliminando sobre-aprovisionamiento sin comprometer disponibilidad
+- Models current capacity and projects future demand based on growth metrics
+- Defines automatic and manual scaling triggers with clear thresholds
+- Identifies bottlenecks in infrastructure, data, and human teams
+- Produces scaling playbook with step-by-step procedures
+- Optimizes costs by eliminating over-provisioning without compromising availability
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides a system or team context as `$ARGUMENTS`. Parse `$1` as the **
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{HORIZONTE}`: `3m` | `6m` | `12m` (default) | `24m`
 
-## Entregables
+## Deliverables
 
-1. **Modelo de capacidad** — Current utilization baseline, growth projections, and headroom analysis per resource type
-2. **Playbook de escalamiento** — Step-by-step scaling procedures for each resource tier with triggers and validation
-3. **Analisis de cuellos de botella** — Identified bottlenecks with impact assessment and remediation options
-4. **Plan de optimizacion de costos** — Right-sizing recommendations, reserved capacity strategy, spot/preemptible usage
-5. **Dashboard de metricas** — Key capacity indicators, thresholds, and alerting rules
+1. **Capacity Model** — Current utilization baseline, growth projections, and headroom analysis per resource type
+2. **Scaling Playbook** — Step-by-step scaling procedures for each resource tier with triggers and validation
+3. **Bottleneck Analysis** — Identified bottlenecks with impact assessment and remediation options
+4. **Cost Optimization Plan** — Right-sizing recommendations, reserved capacity strategy, spot/preemptible usage
+5. **Metrics Dashboard** — Key capacity indicators, thresholds, and alerting rules
 
-## Proceso
+## Process
 
-1. **Establecer baseline** — Measure current utilization across compute, storage, network, database, and team capacity
-2. **Analizar patrones de demanda** — Identify peak/off-peak patterns, seasonal trends, and growth drivers
-3. **Proyectar demanda** — Forecast future demand using historical trends, business growth plans, and planned feature launches
-4. **Identificar cuellos de botella** — Find resources approaching limits; analyze cascading failure scenarios
-5. **Definir triggers de escalamiento** — Set autoscaling thresholds (CPU, memory, queue depth, latency) with hysteresis to prevent flapping
-6. **Disenar playbook** — Document scaling procedures: automated triggers, manual escalation, validation checks, rollback
-7. **Optimizar costos** — Recommend right-sizing, reserved instances, spot usage, and resource consolidation
-8. **Planificar capacidad de equipo** — Project team staffing needs based on delivery velocity and planned initiatives
+1. **Establish baseline** — Measure current utilization across compute, storage, network, database, and team capacity
+2. **Analyze demand patterns** — Identify peak/off-peak patterns, seasonal trends, and growth drivers
+3. **Project demand** — Forecast future demand using historical trends, business growth plans, and planned feature launches
+4. **Identify bottlenecks** — Find resources approaching limits; analyze cascading failure scenarios
+5. **Define scaling triggers** — Set autoscaling thresholds (CPU, memory, queue depth, latency) with hysteresis to prevent flapping
+6. **Design playbook** — Document scaling procedures: automated triggers, manual escalation, validation checks, rollback
+7. **Optimize costs** — Recommend right-sizing, reserved instances, spot usage, and resource consolidation
+8. **Plan team capacity** — Project team staffing needs based on delivery velocity and planned initiatives
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Baseline utilization measured with real data, not estimates
 - [ ] Growth projections documented with assumptions and confidence levels
@@ -69,26 +77,26 @@ The user provides a system or team context as `$ARGUMENTS`. Parse `$1` as the **
 - [ ] Team capacity considers hiring lead times and ramp-up periods
 - [ ] Evidence tags applied: [DOC], [CONFIG], [INFERENCIA], [SUPUESTO]
 
-## Supuestos y Limites
+## Assumptions and Limits
 
 - Accuracy depends on quality of historical utilization data
 - Growth projections are estimates based on stated business assumptions
 - Does not implement autoscaling — produces configuration recommendations
 - Team capacity models assume stable velocity (adjust for ramp-up, attrition)
 
-## Casos Borde
+## Edge Cases
 
-1. **Ausencia de datos historicos de utilizacion** — Si no hay metricas historicas, el skill genera un modelo basado en benchmarks de industria y proyecciones de negocio, marcado con [SUPUESTO], y define un plan de instrumentacion para obtener datos reales en 30 dias.
-2. **Patrones de demanda altamente estacionales** — Eventos como Black Friday o cierre fiscal crean picos de 10-50x sobre baseline; el modelo incluye proyecciones de pico con estrategia de pre-scaling y cooldown.
-3. **Restricciones de presupuesto rigidas** — Cuando el presupuesto no permite headroom optimo, el skill genera escenarios de riesgo (que falla primero) y propone optimizaciones de costo como reserved instances o spot para cargas tolerantes.
-4. **Equipos humanos con alta rotacion** — El modelo de capacidad de equipo ajusta velocity por curvas de ramp-up de nuevos miembros y factor de attrition historico.
+1. **Absence of historical utilization data** — If there are no historical metrics, the skill generates a model based on industry benchmarks and business projections, tagged with [SUPUESTO], and defines an instrumentation plan to obtain real data within 30 days.
+2. **Highly seasonal demand patterns** — Events like Black Friday or fiscal year-end create 10-50x spikes over baseline; the model includes peak projections with pre-scaling and cooldown strategy.
+3. **Rigid budget constraints** — When the budget does not allow optimal headroom, the skill generates risk scenarios (what fails first) and proposes cost optimizations like reserved instances or spot for tolerant workloads.
+4. **Human teams with high turnover** — The team capacity model adjusts velocity for ramp-up curves of new members and historical attrition factor.
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-1. **Horizonte 12 meses default vs. 6 meses** — 12 meses permite planificar presupuesto anual y ciclos de compra de infraestructura; horizontes mas largos pierden precision pero se ofrecen como opcion.
-2. **Hysteresis en triggers vs. umbrales simples** — Se requiere hysteresis para evitar flapping (escalar/desescalar repetidamente), aceptando mayor latencia en la respuesta a cambios de carga.
-3. **Modelo de capacidad unificado vs. por recurso** — Se modela por tipo de recurso (compute, storage, network, DB) porque cada uno tiene patrones de crecimiento y limites diferentes.
-4. **Capacidad de equipo como entregable vs. opcional** — Se incluye porque la capacidad humana es frecuentemente el cuello de botella real, aunque requiere inputs mas subjetivos que la infra.
+1. **12-month default horizon vs. 6 months** — 12 months enables annual budget planning and infrastructure procurement cycles; longer horizons lose precision but are offered as an option.
+2. **Hysteresis in triggers vs. simple thresholds** — Hysteresis is required to prevent flapping (scaling/descaling repeatedly), accepting higher latency in response to load changes.
+3. **Unified capacity model vs. per resource** — Modeling per resource type (compute, storage, network, DB) because each has different growth patterns and limits.
+4. **Team capacity as deliverable vs. optional** — Included because human capacity is frequently the real bottleneck, even though it requires more subjective inputs than infrastructure.
 
 ## Knowledge Graph
 
@@ -137,7 +145,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

@@ -9,6 +9,8 @@ description: >
   final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
 argument-hint: "<project-or-initiative-name>"
 author: Javier Montano · Comunidad MetodologIA
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -24,24 +26,24 @@ Translates technical scope into effort drivers, magnitude indicators, team compo
 risk-adjusted timeline ranges. Produces structured analysis of WHAT drives cost — not WHAT things cost.
 Every output carries explicit disclaimers separating cost identification from pricing decisions.
 
-## Principio Rector
+## Grounding Guideline
 
-**El costeo sin estructura es adivinación con formato de hoja de cálculo.** Este skill impone disciplina analítica sobre la estimación: cada driver se identifica, cada magnitud se triangula, cada supuesto se documenta. No producimos precios — producimos la base de conocimiento que hace posible tomar decisiones financieras informadas.
+**Costing without structure is guessing formatted as a spreadsheet.** This skill imposes analytical discipline on estimation: every driver is identified, every magnitude is triangulated, every assumption is documented. We do not produce prices — we produce the knowledge base that makes informed financial decisions possible.
 
-### Filosofía de Estimación
+### Estimation Philosophy
 
-1. **Drivers, no precios.** El valor de este skill no está en producir un número final — está en identificar TODO lo que compone ese número. Los drivers son la verdad; el precio es una decisión posterior.
+1. **Drivers, not prices.** The value of this skill is not in producing a final number — it is in identifying EVERYTHING that composes that number. Drivers are the truth; the price is a subsequent decision.
 
-2. **Triangulación obligatoria.** Un solo método de estimación es una opinión. Dos métodos son una hipótesis. Tres métodos convergentes son confianza. Siempre triangular.
+2. **Mandatory triangulation.** A single estimation method is an opinion. Two methods are a hypothesis. Three convergent methods are confidence. Always triangulate.
 
-3. **Incertidumbre explícita.** Rangos, no puntos. Escenarios, no certezas. El Cone of Uncertainty no es debilidad — es honestidad profesional que genera confianza.
+3. **Explicit uncertainty.** Ranges, not points. Scenarios, not certainties. The Cone of Uncertainty is not weakness — it is professional honesty that builds confidence.
 
 ## Regla Cardinal
 
 **NUNCA producir valores finales de costo, precio o tarifa.** Este skill identifica CONDUCTORES de
 costo, INDUCTORES de esfuerzo, y NOCIONES DE MAGNITUD.
 
-### Filosofía de Costeo
+### Costing Philosophy
 
 1. **Costear ≠ Cobrar ≠ Ingresos.** El costeo existe para entender qué cuestan las cosas — completamente
    desconectado de lo que se cobra. El revenue es una decisión comercial posterior e independiente.
@@ -91,9 +93,9 @@ Parse `$1` as **project/initiative name**. Detect project context from repo.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Automático para rutina, HITL para decisiones críticas (selección de magnitud, aprobación de escenarios). Reporta en milestones.
-  - **desatendido**: Cero interrupciones. Todo auto-resuelto.
+  - **desatendido**: Zero interruptions. Todo auto-resuelto.
   - **supervisado**: Autónomo con reportes en milestones. Preguntas solo ante ambigüedades genuinas.
-  - **paso-a-paso**: Confirma antes de cada sección.
+  - **paso-a-paso**: Confirms before cada sección.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 scope + S4 drivers + S6 magnitude) | `técnica` (full 7 sections, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
@@ -311,25 +313,25 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: taxonomía de cost drivers
 - Flowchart: árbol de decisión para escenarios de magnitud
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Cliente pide precio final | Redirigir: "Este analisis identifica drivers. El pricing es decision comercial separada." Producir drivers y magnitudes, nunca precios. |
-| Greenfield sin historia | Reference-class forecasting. Rangos mas amplios. Flag como alta incertidumbre (Cone of Uncertainty en fase concepto: 0.25x-4x). |
-| Legacy modernization | +30-50% buffer por complejidad no documentada. Parallel running como driver adicional. |
-| Multi-vendor engagement | +15-25% communication overhead driver. Coordination costs explicitos en taxonomia. |
-| Regulatory-heavy industry | Compliance driver: +20-40% testing effort. Auditoria y certificaciones como drivers separados. |
-| Scope muy ambiguo (pre-discovery) | Solo top-down analogous estimation. Rangos amplios con Cone of Uncertainty. Re-estimar post-discovery. |
+| Client asks for final price | Redirect: "This analysis identifies drivers. Pricing is a separate commercial decision." Produce drivers and magnitudes, never prices. |
+| Greenfield without history | Reference-class forecasting. Wider ranges. Flag as high uncertainty (Cone of Uncertainty in concept phase: 0.25x-4x). |
+| Legacy modernization | +30-50% buffer for undocumented complexity. Parallel running as additional driver. |
+| Multi-vendor engagement | +15-25% communication overhead driver. Coordination costs explicit in taxonomy. |
+| Regulatory-heavy industry | Compliance driver: +20-40% testing effort. Audits and certifications as separate drivers. |
+| Very ambiguous scope (pre-discovery) | Top-down analogous estimation only. Wide ranges with Cone of Uncertainty. Re-estimate post-discovery. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Drivers y magnitudes, NUNCA precios | Producir presupuesto final | Costear y cobrar son dominios separados. El skill produce la base de conocimiento (drivers, inductores, magnitudes). El pricing es decision comercial posterior con variables externas. |
-| Triangulacion obligatoria (3+ metodos) | Un solo metodo de estimacion | Un metodo es opinion. Dos son hipotesis. Tres convergentes son confianza. Divergencia >30% entre metodos es red flag que requiere investigacion. |
-| Margen de innovacion 5% separado de contingencia | Solo contingencia, sin margen de innovacion | El 5% de innovacion es inversion deliberada en excelencia y hospitalidad irracional. No es contingencia (que se calcula aparte por riesgo). |
-| Service-type specific sizing methods | COCOMO II para todo | COCOMO II aplica solo a SDA. QA, RPA, Cloud, Data-AI tienen unidades de sizing fundamentalmente diferentes (test cases, bots, workloads, pipelines). |
+| Drivers and magnitudes, NEVER prices | Produce final budget | Costing and charging are separate domains. The skill produces the knowledge base (drivers, inductors, magnitudes). Pricing is a subsequent commercial decision with external variables. |
+| Mandatory triangulation (3+ methods) | Single estimation method | One method is opinion. Two are hypothesis. Three convergent are confidence. >30% divergence between methods is a red flag requiring investigation. |
+| 5% innovation margin separate from contingency | Contingency only, no innovation margin | The 5% innovation is deliberate investment in excellence and irrational hospitality. It is not contingency (which is calculated separately by risk). |
+| Service-type specific sizing methods | COCOMO II for everything | COCOMO II applies only to SDA. QA, RPA, Cloud, Data-AI have fundamentally different sizing units (test cases, bots, workloads, pipelines). |
 
 ## Knowledge Graph
 
@@ -441,11 +443,11 @@ Sheet 7: Sensitivity Analysis — driver, impact on magnitude, risk level
 ```
 06_Cost_Drivers_{TIPO_SERVICIO}_{project}_{WIP}.docx
 ```
-Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

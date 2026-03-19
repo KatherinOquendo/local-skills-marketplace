@@ -8,6 +8,8 @@ description: >
   low-code adoption roadmap. Use when the user asks to "evaluate low-code platforms", "assess citizen developer readiness",
   "mini apps strategy", "Power Platform assessment", "low-code governance", "no-code evaluation",
   "automation apps discovery", or mentions "citizen development", "low-code adoption", "mini apps".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,13 +23,13 @@ allowed-tools:
 
 Generates a 6-section Mini Apps and Low-Code discovery covering citizen developer readiness, platform assessment, use case identification and prioritization, governance model, integration architecture, and a phased low-code adoption roadmap. Produces actionable findings with readiness scoring, platform comparison, and governed adoption strategy.
 
-## Principio Rector
+## Grounding Guideline
 
-> *El low-code democratiza la creacion, pero sin gobernanza convierte a la organizacion en un museo de aplicaciones abandonadas. La velocidad del desarrollo ciudadano solo tiene valor cuando se acompana de gobierno, seguridad y mantenibilidad.*
+> *Low-code democratizes creation, but without governance it turns the organization into a museum of abandoned applications. The speed of citizen development only has value when accompanied by governance, security, and maintainability.*
 
-1. **La democratizacion sin gobernanza es caos con interfaz grafica.** Habilitar a usuarios de negocio para crear aplicaciones sin un marco de gobierno produce shadow IT a escala. El Center of Excellence no es burocracia — es la infraestructura que hace sostenible la velocidad.
-2. **La plataforma correcta es la que se gobierna, no la que mas features tiene.** La evaluacion de plataformas low-code debe priorizar gobernanza empresarial, seguridad y mantenibilidad sobre capacidades tecnicas. Una plataforma ingobernable es una deuda organizacional.
-3. **Los quick wins son la puerta de entrada, no el destino.** Las primeras mini apps deben demostrar valor rapido Y buen gobierno. Si los pilotos ignoran seguridad y gobernanza, establecen precedentes toxicos que escalan con la adopcion.
+1. **Democratization without governance is chaos with a graphical interface.** Enabling business users to create applications without a governance framework produces shadow IT at scale. The Center of Excellence is not bureaucracy — it is the infrastructure that makes speed sustainable.
+2. **The right platform is the one that can be governed, not the one with the most features.** Low-code platform evaluation must prioritize enterprise governance, security, and maintainability over technical capabilities. An ungovernable platform is organizational debt.
+3. **Quick wins are the entry door, not the destination.** The first mini apps must demonstrate rapid value AND good governance. If pilots ignore security and governance, they set toxic precedents that scale with adoption.
 
 ## Inputs
 
@@ -39,9 +41,9 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario y evaluacion de plataformas, HITL para modelo de gobernanza y decisiones de arquitectura de integracion.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Analisis completo automatizado. Assumptions documented.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **paso-a-paso**: Confirms before cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — sections S1, S3, S6 only) | `tecnica` (full, default)
 
@@ -267,18 +269,18 @@ Per phase: prerequisites from previous phase, risk factors, rollback criteria if
 - [ ] Quick wins identified that demonstrate value AND governance simultaneously
 - [ ] Recommendations sequenced by dependency and organizational readiness
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Organizacion sin procesos manuales identificables | Realizar workshop de process discovery con stakeholders de negocio; mapear procesos basados en spreadsheets como punto de partida; flag como [SUPUESTO] |
 | Shadow IT extensivo con apps low-code no sancionadas | Inventariar apps existentes antes de recomendar plataforma; evaluar migracion vs consolidacion; establecer amnistia temporal para registrar apps no gobernadas |
 | Resistencia de IT a citizen development | Disenar modelo de co-creacion IT-negocio; comenzar con pilotos supervisados que demuestren gobernanza; escalar solo con evidencia de compliance |
 | Multiples plataformas low-code ya en uso | Evaluar consolidacion vs coexistencia; mapear bots y apps por plataforma; priorizar interoperabilidad sobre uniformidad si el costo de migracion es alto |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Gobernanza minima L2 antes de habilitar citizen development | Habilitar herramientas sin gobernanza previa | Sin guardrails, citizen development produce shadow IT a escala; los precedentes toxicos de pilotos sin gobernanza escalan con la adopcion |
 | Quick wins que demuestren valor Y gobernanza simultaneamente | Quick wins solo de valor sin gobernanza | Si los pilotos ignoran seguridad y gobernanza, establecen precedentes que son costosos de revertir cuando se escala |
@@ -340,7 +342,7 @@ graph TD
 | **Markdown** | `Mini_Apps_Discovery_{project}.md` | Assessment de 6 secciones: readiness scoring, platform comparison SUBSTANCIA/PROMESA/RIESGO/HUMO, use case prioritization con Impact x Complexity, governance model con CoE, integration architecture, y adoption roadmap faseado. Diagramas Mermaid embebidos. |
 | **PPTX** | `Mini_Apps_Discovery_{project}.pptx` | Presentacion ejecutiva con quadrant chart de priorizacion, timeline de adopcion, y readiness heatmap por departamento. Para alineacion con sponsors ejecutivos. |
 | **HTML** | `Mini_Apps_Discovery_{project}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Dark-First Executive. Incluye quadrant chart interactivo de priorizacion Impact x Complexity, readiness heatmap por departamento, y roadmap de adopcion faseado con hitos de gobernanza. |
-| **DOCX** | `{fase}_Mini_Apps_Discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Montserrat, acentos gold. |
+| **DOCX** | `{fase}_Mini_Apps_Discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada con logo y metadatos, TOC automatico, headers/footers con nombre del skill y numeracion, tablas zebra, titulos Poppins navy, cuerpo Trebuchet MS, acentos gold. |
 | **XLSX** | `{fase}_{entregable}_{cliente}_{WIP}.xlsx` | Generado con openpyxl bajo MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins blanca, formato condicional, auto-filtros activados, valores sin fórmulas. Hojas: Readiness Assessment, Platform Comparison, Use Case Prioritization, Governance Model, Integration Architecture, Adoption Roadmap. |
 
 ## Evaluacion

@@ -8,6 +8,8 @@ description: >
   "structure the deal", "identify value capture", "design pricing strategy", "explore
   commercial models", or mentions earned value, joint venture, revenue share, outcome-based,
   licensing model, or commercial structure.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -24,16 +26,16 @@ time-and-materials to explore value-based, outcome-based, and hybrid structures 
 incentives between delivery team and client. Produces model recommendations with trade-offs,
 NOT pricing — pricing is a separate commercial decision.
 
-## Principio Rector
+## Grounding Guideline
 
-**Este skill identifica MODELOS DE NEGOCIO y ESTRUCTURAS COMERCIALES — no produce precios,
-tarifas ni márgenes.** La decisión final de pricing es del área comercial con inputs de este análisis.
+**This skill identifies BUSINESS MODELS and COMMERCIAL STRUCTURES — it does not produce prices,
+rates, or margins.** The final pricing decision belongs to the commercial team with inputs from this analysis.
 
-### Filosofía Comercial
+### Commercial Philosophy
 
-1. **Modelo antes que precio.** La estructura comercial define la relación — el precio es un detalle posterior. Este skill diseña la estructura, no la tarifa.
-2. **Incentivos alineados = relación sostenible.** T&M puro desalinea: el proveedor gana cuando el proyecto se extiende. Los modelos híbridos crean skin-in-the-game.
-3. **Transparencia radical.** El cliente debe entender la estructura — no solo aceptarla. La confianza se construye con claridad, no con complejidad contractual.
+1. **Model before price.** The commercial structure defines the relationship — the price is a subsequent detail. This skill designs the structure, not the rate.
+2. **Aligned incentives = sustainable relationship.** Pure T&M misaligns: the provider profits when the project extends. Hybrid models create skin-in-the-game.
+3. **Radical transparency.** The client must understand the structure — not just accept it. Trust is built with clarity, not contractual complexity.
 
 ## Inputs
 
@@ -42,7 +44,7 @@ Parse `$1` as **project name**. Requires cost driver analysis (Phase 4) and scen
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para catálogo de modelos y análisis de fit, HITL para recomendación de modelo y deal canvas.
-  - **desatendido**: Cero interrupciones. Modelo recomendado automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Modelo recomendado automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en recomendación antes de deal canvas.
   - **paso-a-paso**: Confirma value map, cada modelo evaluado, y la estructura final.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -208,22 +210,22 @@ IP:
 | Regulatory constraints on pricing | Flag legal review required. Document compliant model options |
 | Client has bad vendor experience | Increase transparency mechanisms. Shorter gate intervals. More exit options |
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
-| Cliente insiste en T&M puro sin componente variable | Documentar riesgos de incentivos desalineados; proponer hibrido con componente variable minimo como alternativa; respetar decision si persiste |
-| No existen KPIs medibles para modelo outcome-based | Retroceder a milestone-based (M2); agregar definicion de KPIs como entregable de Sprint 0 para migrar a outcome-based en fases posteriores |
-| Engagement multi-vendor donde cada vendor tiene modelo diferente | Recomendar modelo independiente por vendor; agregar overhead de coordinacion al componente base; definir governance inter-vendor |
-| Cliente startup con presupuesto limitado y alto potencial | Explorar M5 usage-based o M4 JV con componente de equity; reducir barrera de entrada priorizando modelos que escalen con exito del cliente |
+| Client insists on pure T&M without variable component | Document risks of misaligned incentives; propose hybrid with minimum variable component as alternative; respect decision if they persist |
+| No measurable KPIs exist for outcome-based model | Fall back to milestone-based (M2); add KPI definition as Sprint 0 deliverable to migrate to outcome-based in later phases |
+| Multi-vendor engagement where each vendor has different model | Recommend independent model per vendor; add coordination overhead to base component; define inter-vendor governance |
+| Startup client with limited budget and high potential | Explore M5 usage-based or M4 JV with equity component; lower entry barrier by prioritizing models that scale with client success |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
-| Producir estructura y modelo, nunca precios ni tarifas | Incluir pricing recomendado en el analisis | El pricing es decision comercial que requiere contexto de mercado, margen, y negociacion; incluirlo en un skill de analisis crea compromisos prematuros |
-| Evaluar los 7 modelos contra el contexto antes de recomendar | Recomendar siempre hibrido (M7) como default | Cada contexto tiene un modelo optimo diferente; asumir hibrido siempre sub-optimiza para casos donde T&M o outcome-based puro es superior |
-| Incluir negotiation preparation (S6) como seccion del entregable | Limitarse a recomendacion de modelo sin preparacion de negociacion | El modelo sin preparacion de negociacion deja al equipo comercial sin herramientas para defender la estructura propuesta frente a objeciones |
+| Produce structure and model, never prices or rates | Include recommended pricing in the analysis | Pricing is a commercial decision requiring market context, margin, and negotiation; including it in an analysis skill creates premature commitments |
+| Evaluate all 7 models against context before recommending | Always recommend hybrid (M7) as default | Each context has a different optimal model; assuming hybrid always sub-optimizes for cases where pure T&M or outcome-based is superior |
+| Include negotiation preparation (S6) as deliverable section | Limit to model recommendation without negotiation preparation | The model without negotiation preparation leaves the commercial team without tools to defend the proposed structure against objections |
 
 ## Knowledge Graph
 
@@ -311,7 +313,7 @@ Slide 8: Proximos Pasos (secuencia de negociacion)
 
 **Formato DOCX (bajo demanda):**
 - Filename: `{fase}_Commercial_Model_{project}_{WIP}.docx`
-- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+- Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_Commercial_Model_{cliente}_{WIP}.xlsx`

@@ -27,17 +27,17 @@ Copy this `:root` block verbatim into every MetodologIA HTML document.
 ```css
 :root {
   /* BRAND CORE */
-  --metodologia-orange: #6366F1;
+  --metodologia-orange: #122562;
   --metodologia-orange-light: #818CF8;
   --metodologia-orange-dark: #4F46E5;
   --metodologia-orange-dim: rgba(255,126,8,.10);
   --metodologia-black: #000000;
   --metodologia-white: #FFFFFF;
-  --metodologia-light: #0F172A;
+  --metodologia-light: #1F2833;
   --metodologia-dark: #B8A894;
 
   /* SEMANTIC: POSITIVE (v4: YELLOW, NOT GREEN) */
-  --metodologia-positive: #22D3EE;
+  --metodologia-positive: #FFD700;
   --metodologia-positive-dim: rgba(255,215,0,.12);
   --metodologia-positive-border: rgba(255,215,0,.45);
   --metodologia-positive-text: #06B6D4;
@@ -62,7 +62,7 @@ Copy this `:root` block verbatim into every MetodologIA HTML document.
   --metodologia-teal: #06C8C8;
   --metodologia-violet: #9747FF;
   --metodologia-pink: #FE9CAB;
-  --metodologia-yellow: #22D3EE;
+  --metodologia-yellow: #FFD700;
 
   /* BACKGROUND TINTS */
   --metodologia-red-bg: rgba(220,38,38,0.06);
@@ -74,7 +74,7 @@ Copy this `:root` block verbatim into every MetodologIA HTML document.
   --metodologia-pink-bg: rgba(254,156,171,0.06);
 
   /* TYPOGRAPHY */
-  --font-display: 'Clash Grotesk', 'Inter', sans-serif;
+  --font-display: 'Poppins', 'Inter', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
   /* GRAYS */
@@ -114,10 +114,10 @@ Copy this `:root` block verbatim into every MetodologIA HTML document.
 
 | Element | Font | Size | Weight | Line Height | Color | Contrast Ratio |
 |---------|------|------|--------|-------------|-------|---|
-| h1 | Clash Grotesk | clamp(2.5rem, 5vw, 4.2rem) | 700 | 1.1 | var(--metodologia-white) on black | AA ✓ |
-| h2 | Clash Grotesk | 2.2rem | 700 | 1.2 | var(--metodologia-black) on light | AAA ✓ |
-| h3 | Clash Grotesk | 1.8rem | 700 | 1.2 | var(--metodologia-gray-900) on white | AAA ✓ |
-| h4 | Clash Grotesk | 1.4rem | 600 | 1.3 | var(--metodologia-gray-700) on white | AAA ✓ |
+| h1 | Poppins | clamp(2.5rem, 5vw, 4.2rem) | 700 | 1.1 | var(--metodologia-white) on black | AA ✓ |
+| h2 | Poppins | 2.2rem | 700 | 1.2 | var(--metodologia-black) on light | AAA ✓ |
+| h3 | Poppins | 1.8rem | 700 | 1.2 | var(--metodologia-gray-900) on white | AAA ✓ |
+| h4 | Poppins | 1.4rem | 600 | 1.3 | var(--metodologia-gray-700) on white | AAA ✓ |
 | Body | Inter | 1rem (16px) | 400 | 1.65 | var(--metodologia-gray-700) on white | AAA ✓ |
 | Small | Inter | 0.875rem | 400 | 1.5 | var(--metodologia-gray-500) on white | AA ✓ |
 | Badge | Inter | 0.7-0.75rem | 600 | — | Varies by type | AA+ ✓ |
@@ -131,7 +131,7 @@ Copy this `:root` block verbatim into every MetodologIA HTML document.
 @import url('https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap');
 
 /* Fallback stacks — if CDN fails, system fonts take over */
---font-display: 'Clash Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+--font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
 /* Font-display: swap ensures text visible while fonts load (FOUT instead of FOIT) */
@@ -142,7 +142,7 @@ Copy this `:root` block verbatim into every MetodologIA HTML document.
 ### Semantic States (for status, outcome, health indicators)
 | State | Primary | Dim Bg | Border | Text on Dim | WCAG Contrast |
 |-------|---------|--------|--------|-------------|---|
-| Positive | #22D3EE (yellow) | rgba(255,215,0,.12) | rgba(255,215,0,.45) | #06B6D4 | AA ✓ |
+| Positive | #FFD700 (yellow) | rgba(255,215,0,.12) | rgba(255,215,0,.45) | #06B6D4 | AA ✓ |
 | Warning | #D97706 (amber) | rgba(217,119,6,.08) | rgba(217,119,6,.3) | inherit | AA ✓ |
 | Critical | #DC2626 (red) | rgba(220,38,38,.07) | rgba(220,38,38,.25) | inherit | AA ✓ |
 | Info | #2563EB (blue) | rgba(37,99,235,.07) | rgba(37,99,235,.25) | inherit | AA ✓ |

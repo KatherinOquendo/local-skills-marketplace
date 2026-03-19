@@ -7,15 +7,8 @@ description: >
   planning.
 argument-hint: "<project-name> <technology-or-concept>"
 author: Javier Montaño · Comunidad MetodologIA
-version: 1.0.0
-tags:
-  - poc
-  - proof-of-concept
-  - prototype
-  - spike
-  - evaluation
-  - validation
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -26,63 +19,71 @@ allowed-tools:
   - WebFetch
 ---
 
-# Laboratorio de Pruebas de Concepto
+# Proof of Concept Lab
 
-Framework para diseno, ejecucion y evaluacion de pruebas de concepto (PoC),
-con definicion de criterios de exito y metodologia de evaluacion rigurosa.
+Framework for design, execution, and evaluation of proofs of concept (PoC),
+with success criteria definition and rigorous evaluation methodology.
+
+## Grounding Guideline
+
+> *A PoC without a hypothesis is a demo disguised as validation.*
+
+1. **Hypothesis before code.** Every PoC must answer a specific question — if there is no question, there is no PoC.
+2. **Explicit kill criteria.** Before starting, define what result kills the hypothesis. Without kill criteria, every PoC "succeeds."
+3. **Time-boxed and scope-boxed.** A PoC that extends indefinitely becomes a project without governance.
 
 ## TL;DR
 
-- Disena PoCs con hipotesis claras, criterios de exito medibles y kill criteria
-- Define alcance minimo viable para validar cada hipotesis con esfuerzo controlado
-- Establece metodologia de evaluacion objetiva y reproducible
-- Genera templates de charter, plan de pruebas y reporte de evaluacion
-- Previene PoC theater (demos que no validan nada real)
+- Designs PoCs with clear hypotheses, measurable success criteria, and kill criteria
+- Defines minimum viable scope to validate each hypothesis with controlled effort
+- Establishes objective and reproducible evaluation methodology
+- Generates charter templates, test plans, and evaluation reports
+- Prevents PoC theater (demos that validate nothing real)
 
 ## Inputs
 
-Parse `$1` como **nombre del proyecto**, `$2` como **tecnologia o concepto a validar**.
+Parse `$1` as **project name**, `$2` as **technology or concept to validate**.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **PoC Charter** — Hipotesis, alcance, criterios de exito, kill criteria, timeline, equipo
-2. **Test Plan** — Escenarios de prueba, datos requeridos, metricas a capturar
-3. **Evaluation Report Template** — Template para documentar resultados y veredicto
-4. **Risk Register** — Riesgos del PoC y mitigacion
-5. **Decision Framework** — Criterios para go/no-go post-PoC
+1. **PoC Charter** — Hypothesis, scope, success criteria, kill criteria, timeline, team
+2. **Test Plan** — Test scenarios, required data, metrics to capture
+3. **Evaluation Report Template** — Template to document results and verdict
+4. **Risk Register** — PoC risks and mitigation
+5. **Decision Framework** — Criteria for go/no-go post-PoC
 
-## Proceso
+## Process
 
-1. **Definicion de Hipotesis** — Formular hipotesis claras y falsificables:
-   - "La tecnologia X puede procesar Y transacciones/segundo con latencia <Z ms"
-   - "El modelo AI alcanza precision >X% en datos representativos del dominio"
-   - "La migracion de componente A a plataforma B se completa en <N sprints"
-2. **Diseno de PoC Charter**:
-   | Elemento | Descripcion |
+1. **Hypothesis Definition** — Formulate clear and falsifiable hypotheses:
+   - "Technology X can process Y transactions/second with latency <Z ms"
+   - "The AI model achieves precision >X% on representative domain data"
+   - "Migration of component A to platform B completes in <N sprints"
+2. **PoC Charter Design**:
+   | Element | Description |
    |---|---|
-   | Hipotesis | Que se quiere validar (falsificable) |
-   | Alcance | Scope minimo para validar la hipotesis |
-   | Success Criteria | Metricas cuantitativas para declarar exito |
-   | Kill Criteria | Condiciones para abortar temprano |
-   | Timeline | Timebox estricto (1-4 semanas) |
-   | Equipo | Roles y dedicacion requerida |
-   | Datos | Datos reales (no mock) representativos |
-   | Entorno | Infraestructura necesaria |
-3. **Plan de Pruebas** — Disenar escenarios que cubran happy path, edge cases y failure modes
-4. **Definicion de Metricas** — Especificar que se mide, como se mide, baseline de comparacion
-5. **Template de Evaluacion** — Estructura para documentar resultados objetivamente:
-   - Resultados cuantitativos vs criterios de exito
-   - Observaciones cualitativas
-   - Riesgos descubiertos
-   - Veredicto: GO / NO-GO / PIVOT
-6. **Decision Framework** — Arbol de decision post-PoC con opciones claras
+   | Hypothesis | What to validate (falsifiable) |
+   | Scope | Minimum scope to validate the hypothesis |
+   | Success Criteria | Quantitative metrics to declare success |
+   | Kill Criteria | Conditions for early abort |
+   | Timeline | Strict timebox (1-4 weeks) |
+   | Team | Roles and required dedication |
+   | Data | Real (not mock) representative data |
+   | Environment | Required infrastructure |
+3. **Test Plan** — Design scenarios covering happy path, edge cases, and failure modes
+4. **Metrics Definition** — Specify what is measured, how it is measured, comparison baseline
+5. **Evaluation Template** — Structure for documenting results objectively:
+   - Quantitative results vs. success criteria
+   - Qualitative observations
+   - Discovered risks
+   - Verdict: GO / NO-GO / PIVOT
+6. **Decision Framework** — Post-PoC decision tree with clear options
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Hipotesis formuladas como afirmaciones falsificables
 - [ ] Criterios de exito cuantitativos y medibles
@@ -102,14 +103,14 @@ Parse `$1` como **nombre del proyecto**, `$2` como **tecnologia o concepto a val
 | Sunk Cost | Se continua PoC fallido por inversion | Kill criteria claros y respetados |
 | Vendor Demo | Vendor ejecuta el PoC con su equipo | Equipo propio ejecuta con soporte |
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - El equipo tiene acceso a datos representativos (no sinteticos) para ejecutar la PoC.
 - El timebox de la PoC no excede 4 semanas; si requiere mas, considerar un MVP.
 - Esta skill NO produce codigo ni ejecuta la PoC; genera los artefactos de planificacion y evaluacion.
 - NUNCA incluir precios; solo magnitudes en FTE-meses y cost drivers.
 
-## Casos Borde
+## Edge Cases
 
 | Caso Borde | Estrategia de Manejo |
 |---|---|
@@ -118,7 +119,7 @@ Parse `$1` como **nombre del proyecto**, `$2` como **tecnologia o concepto a val
 | La PoC tiene exito parcial (algunos criterios pasan, otros no) | Aplicar decision framework con pesos por criterio. Documentar que paso, que no, y el gap. Proponer PIVOT: redefinir alcance de adopcion basado en los criterios exitosos. |
 | El timebox se agota sin resultados concluyentes | Evaluar si la causa es scope creep, impedimentos tecnicos, o hipotesis mal formulada. Documentar hallazgos parciales. Proponer extension acotada (max 1 semana) O pivote de hipotesis. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Justificacion | Alternativa Descartada |
 |---|---|---|
@@ -184,14 +185,14 @@ graph TD
 ```markdown
 # PoC Charter: {project}
 
-## Hipotesis
-{Afirmacion falsificable con metricas de exito}
+## Hypothesis
+{Falsifiable statement with success metrics}
 
-## Alcance
-{Scope minimo para validar la hipotesis}
+## Scope
+{Minimum scope to validate the hypothesis}
 
-## Criterios de Exito
-| Criterio | Metrica | Umbral | Metodo de Medicion |
+## Success Criteria
+| Criterion | Metric | Threshold | Measurement Method |
 |---|---|---|---|
 | ... | ... | ... | ... |
 
@@ -272,7 +273,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_poc_lab_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de hipótesis, criterios de éxito y kill criteria con zebra striping. Encabezados y pies de página con branding MetodologIA.
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de hipótesis, criterios de éxito y kill criteria con zebra striping. Encabezados y pies de página con branding MetodologIA.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_poc_lab_{cliente}_{WIP}.xlsx`
@@ -280,7 +281,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_poc_lab_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: PoC Charter, Hipótesis y criterios de éxito, Kill criteria, Timeline y equipo, Risk Register, Veredicto GO/NO-GO/PIVOT.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: PoC Charter, Hipótesis y criterios de éxito, Kill criteria, Timeline y equipo, Risk Register, Veredicto GO/NO-GO/PIVOT.
 
 ### Diagramas (Mermaid)
 - Flowchart: proceso de PoC (design -> execute -> evaluate -> decide)

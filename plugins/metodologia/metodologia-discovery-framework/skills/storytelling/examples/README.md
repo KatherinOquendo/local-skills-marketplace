@@ -7,7 +7,7 @@ Sample outputs demonstrating what the storytelling skill produces: a cross-deliv
 | File | Format | Description |
 |------|--------|-------------|
 | `sample-output.md` | Markdown | Primary artifact — Master narrative arc (00-14), transformation narrative (3 acts), scenario narratives (3 futures), risk narrative, success reference story, thread continuity map, and narrative techniques applied |
-| `sample-output.html` | HTML | Branded version (MetodologIA Design System: Primary #6366F1, Dark #1A1A2E, Success #22D3EE). Includes `<pre class="mermaid">` diagrams |
+| `sample-output.html` | HTML | Branded version (MetodologIA Design System: Primary #122562, Dark #1F2833, Success #FFD700). Includes `<pre class="mermaid">` diagrams |
 
 ## Format Selection Guide
 

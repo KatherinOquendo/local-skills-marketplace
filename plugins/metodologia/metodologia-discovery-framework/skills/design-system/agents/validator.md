@@ -6,15 +6,15 @@ This agent validates a generated HTML deliverable against the MetodologIA Design
 ## Canonical Token Reference
 
 ### Brand Core Colors (Must Match Exactly)
-- `--metodologia-orange`: #6366F1 (primary brand, accents, borders)
+- `--metodologia-orange`: #122562 (primary brand, accents, borders)
 - `--metodologia-orange-light`: #818CF8 (hover states)
 - `--metodologia-black`: #000000 (text, headings, hero bg)
 - `--metodologia-white`: #FFFFFF (text on dark, card backgrounds)
-- `--metodologia-light`: #0F172A (body background)
+- `--metodologia-light`: #1F2833 (body background)
 - `--metodologia-dark`: #B8A894 (muted text)
 
 ### Semantic Colors (Critical for v4)
-- `--metodologia-positive`: #22D3EE (YELLOW - success/checkmarks, NOT green)
+- `--metodologia-positive`: #FFD700 (YELLOW - success/checkmarks, NOT green)
 - `--metodologia-warning`: #D97706 (amber - warnings)
 - `--metodologia-critical`: #DC2626 (red - errors)
 - `--metodologia-info`: #2563EB (blue - information)
@@ -55,12 +55,12 @@ FOR each color value in the deliverable:
 ```
 
 **Specific checks:**
-- Body background: Must be #0F172A or rgba(239, 234, 228, 1)
+- Body background: Must be #1F2833 or rgba(239, 234, 228, 1)
 - Card backgrounds: Must be #FFFFFF
 - Dark cards: Must be #000000
 - Diagram boxes: Must be #0D0D15
-- Severity low badges: Must be #22D3EE (yellow), NOT #42D36F (green)
-- Checkmarks/success icons: Must be #6366F1 (orange), NOT #42D36F (green)
+- Severity low badges: Must be #FFD700 (yellow), NOT #42D36F (green)
+- Checkmarks/success icons: Must be #122562 (orange), NOT #42D36F (green)
 - Warning text: If on amber background, must be dark or use black
 
 ---
@@ -72,19 +72,19 @@ FOR each color value in the deliverable:
 ```
 FOR each "success" or "positive" state in the HTML:
   IF using .sev-low or .badge-yellow or positive indicator:
-    IF background-color is #22D3EE (yellow):
+    IF background-color is #FFD700 (yellow):
       PASS
     ELSE IF background-color is #42D36F (green):
       FLAG as "CRITICAL: v4 Rule Violation - Success state using green instead of yellow at [LINE_NUM]"
-      SUGGEST: Replace #42D36F with #22D3EE
+      SUGGEST: Replace #42D36F with #FFD700
     ELSE:
       FLAG as "ERROR: Positive state uses invalid color [COLOR]"
 
 FOR each checkmark or success icon:
-  IF color is #6366F1 (orange):
+  IF color is #122562 (orange):
     PASS
   ELSE IF color is #42D36F (green):
-    FLAG as "CRITICAL: Checkmark using green - must be orange (#6366F1) per v4 spec"
+    FLAG as "CRITICAL: Checkmark using green - must be orange (#122562) per v4 spec"
   ELSE:
     FLAG as "ERROR: Checkmark color invalid"
 
@@ -109,9 +109,9 @@ FIND element with class="hero":
     VERIFY background-color: #000000 (black)
       IF NOT: FLAG as "CRITICAL: Hero background not black at [LINE_NUM]"
 
-    VERIFY border-bottom: 8px solid #6366F1 (orange)
+    VERIFY border-bottom: 8px solid #122562 (orange)
       IF width != 8px: FLAG as "CRITICAL: Hero border-bottom width is [ACTUAL]px, must be 8px"
-      IF color != #6366F1: FLAG as "CRITICAL: Hero border-bottom color is [ACTUAL], must be #6366F1"
+      IF color != #122562: FLAG as "CRITICAL: Hero border-bottom color is [ACTUAL], must be #122562"
 
     FIND child element with class="hero-logo":
       VERIFY content contains "metodologia" and "<span>_</span>" or similar
@@ -192,13 +192,13 @@ FOR each element with class="section":
     FIND .section-number child:
       VERIFY dimensions: 60×60px (or width/height 60px)
       VERIFY background-color: #000000 (black)
-      VERIFY color: #6366F1 (orange text)
+      VERIFY color: #122562 (orange text)
       VERIFY font-weight: 700
       VERIFY content: 01, 02, 03, etc. (zero-padded)
         IF NOT zero-padded: FLAG as "WARNING: Section numbers not zero-padded"
 
     FIND .section-title (h2):
-      VERIFY font-family: Clash Grotesk
+      VERIFY font-family: Poppins
       VERIFY font-size: 2.2rem
       VERIFY font-weight: 700
       VERIFY color: #000000 (black)
@@ -216,9 +216,9 @@ FIND element: footer:
     VERIFY background-color: #000000 (black)
       IF NOT: FLAG as "CRITICAL: Footer background not black"
 
-    VERIFY border-top: 8px solid #6366F1 (orange)
+    VERIFY border-top: 8px solid #122562 (orange)
       IF width != 8px: FLAG as "CRITICAL: Footer border-top width is [ACTUAL]px, must be 8px"
-      IF color != #6366F1: FLAG as "CRITICAL: Footer border-top color is [ACTUAL], must be #6366F1"
+      IF color != #122562: FLAG as "CRITICAL: Footer border-top color is [ACTUAL], must be #122562"
 
     VERIFY color: #FFFFFF (white text)
       IF NOT: FLAG as "WARNING: Footer text not white"
@@ -231,7 +231,7 @@ FIND element: footer:
 
     FIND metodologia logo in footer:
       VERIFY contains "metodologia<span>_</span>" or similar
-      VERIFY span color: #6366F1 (orange underscore)
+      VERIFY span color: #122562 (orange underscore)
         IF NOT: FLAG as "WARNING: Footer logo underscore not orange"
 
     VERIFY layout: Two-row structure
@@ -257,8 +257,8 @@ VERIFY Google Fonts link in <head>:
   IF NOT: FLAG as "CRITICAL: Google Fonts link missing or incorrect at [LINE_NUM]"
 
 FOR each h1, h2, h3, h4:
-  VERIFY font-family includes "Clash Grotesk"
-    IF NOT: FLAG as "ERROR: Heading [TAG] not using Clash Grotesk"
+  VERIFY font-family includes "Poppins"
+    IF NOT: FLAG as "ERROR: Heading [TAG] not using Poppins"
 
 FOR each p, body text:
   VERIFY font-family includes "Inter"
@@ -307,7 +307,7 @@ SPECIFIC CHECKS:
     CALCULATE: 13.5 (PASSES AA)
     FLAG as "PASS: Severity-medium contrast valid"
 
-  Success/Yellow (#22D3EE) with black text:
+  Success/Yellow (#FFD700) with black text:
     CALCULATE: 19.56 (PASSES AA)
     FLAG as "PASS: Yellow success badge contrast valid"
 
@@ -342,7 +342,7 @@ VERIFY semantic HTML tags present:
 
 FOR each link and button:
   VERIFY :focus-visible outline present
-  VERIFY outline color: #6366F1 (orange)
+  VERIFY outline color: #122562 (orange)
   VERIFY outline width: 2px
     IF NOT: FLAG as "WARNING: Focus outline not properly styled"
 
@@ -394,7 +394,7 @@ FOR each element with class="card":
 
 FOR each card variant:
   .card-accent:
-    VERIFY border-top: 5px solid #6366F1
+    VERIFY border-top: 5px solid #122562
 
   .card-critical:
     VERIFY border-left: 7px solid #DC2626
@@ -421,7 +421,7 @@ FOR each card variant:
     VERIFY background: rgba(6,200,200,0.06)
 
   .card-highlight:
-    VERIFY border: 2px solid #6366F1
+    VERIFY border: 2px solid #122562
     VERIFY background contains subtle orange gradient
 
   .card-dark:
@@ -482,7 +482,7 @@ FOR each element with class="diagram-box":
 
   FIND .diagram-label:
     VERIFY present at top
-    VERIFY color: #6366F1 (orange) or light text color
+    VERIFY color: #122562 (orange) or light text color
     VERIFY font-weight: 600 or 700
 
   FIND <pre> inside:
@@ -490,7 +490,7 @@ FOR each element with class="diagram-box":
 
     FOR each colored highlight (class="hl-*"):
       VERIFY color matches token:
-        .hl-orange: #6366F1 ✓
+        .hl-orange: #122562 ✓
         .hl-green: #42D36F ✓
         .hl-blue: #2563EB ✓
         .hl-teal: #06C8C8 ✓
@@ -546,13 +546,13 @@ FOR each element with class="badge":
     IF NOT: FLAG as "WARNING: Badge font-weight not 600"
 
   FOR base .badge (no variant):
-    VERIFY background: #6366F1 (orange)
+    VERIFY background: #122562 (orange)
     VERIFY color: #FFFFFF (white)
 
   FOR .badge-outline:
     VERIFY background: transparent
-    VERIFY border: 1px solid #6366F1
-    VERIFY color: #6366F1
+    VERIFY border: 1px solid #122562
+    VERIFY color: #122562
 
   FOR .badge-teal:
     VERIFY background: #06C8C8
@@ -572,7 +572,7 @@ FOR each element with class="badge":
     VERIFY color: #FFFFFF (or black if needed for contrast)
 
   FOR .badge-yellow:
-    VERIFY background: #22D3EE
+    VERIFY background: #FFD700
     VERIFY color: #000000 (black for WCAG AA contrast)
 ```
 
@@ -597,7 +597,7 @@ FOR each element with class="sev-*":
     VERIFY color: #000000 (BLACK - critical for WCAG AA)
 
   FOR .sev-low:
-    VERIFY background: #22D3EE (YELLOW - v4 rule)
+    VERIFY background: #FFD700 (YELLOW - v4 rule)
     VERIFY color: #000000 (black for contrast)
 ```
 

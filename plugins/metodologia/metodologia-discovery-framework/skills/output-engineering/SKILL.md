@@ -7,6 +7,8 @@ description: >
   of truth into HTML, DOCX, PPTX, XLSX, and PDF outputs while preserving content
   integrity and Neo-Swiss brand compliance. Use when producing format conversions, managing
   the ghost menu workflow, or orchestrating multi-format delivery packages.
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,7 +22,7 @@ allowed-tools:
 
 Orchestrates the ghost menu system: markdown as source of truth, format conversion on demand, **Neo-Swiss brand compliance across all output formats**, and production quality control. Owns the .md to HTML | DOCX | PPTX | XLSX | PDF pipeline.
 
-## Guiding Principle
+## Grounding Guideline
 
 **Markdown is the source of truth. Everything else is a projection.** Content lives in markdown following the markdown-excellence standard. Each additional format is an optimization for a specific medium: HTML for digital presentation, DOCX for signatures and editing, PPTX for live presentation, XLSX for data analysis, PDF for archival. Conversion never loses content — it only adapts the form.
 

@@ -21,13 +21,21 @@ allowed-tools:
 
 Team topology designs organizational structures that optimize for fast flow of change while managing cognitive load. The skill produces team topology maps, interaction matrices, and evolution plans based on the Team Topologies framework (Skelton & Pais).
 
+## Grounding Guideline
+
+> *Software architecture reflects team architecture. Change one without changing the other and the system will resist.*
+
+1. **Conway's Law is not a suggestion — it is a law.** Teams produce designs that mirror their communication structure.
+2. **Cognitive load as a design constraint.** If a team cannot comprehend its entire domain, the domain is poorly partitioned.
+3. **Deliberate interactions.** Interaction modes between teams (collaboration, X-as-a-Service, facilitation) must be explicit and designed.
+
 ## TL;DR
 
-- Analiza la ley de Conway: como la estructura organizacional actual condiciona la arquitectura del software
-- Clasifica equipos en los 4 tipos fundamentales: stream-aligned, platform, enabling, complicated-subsystem
-- Evalua carga cognitiva por equipo para detectar sobrecarga y dependencias excesivas
-- Mapea modos de interaccion (colaboracion, X-as-a-service, facilitacion) con evolucion temporal
-- Produce plan de evolucion organizacional alineado con la arquitectura objetivo
+- Analyzes Conway's Law: how the current organizational structure conditions software architecture
+- Classifies teams into the 4 fundamental types: stream-aligned, platform, enabling, complicated-subsystem
+- Evaluates cognitive load per team to detect overload and excessive dependencies
+- Maps interaction modes (collaboration, X-as-a-service, facilitation) with temporal evolution
+- Produces organizational evolution plan aligned with target architecture
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides an organization or department name as `$ARGUMENTS`. Parse `$1`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{HORIZONTE}`: `6m` | `12m` (default) | `24m`
 
-## Entregables
+## Deliverables
 
-1. **Mapa de topologia de equipos** — Visual map of all teams classified by type with ownership boundaries
-2. **Matriz de interacciones** — Team-to-team interaction modes (collaboration, X-as-a-service, facilitating) with expected evolution
-3. **Plan de evolucion** — Phased plan to evolve from current to target topology with milestones and change management
-4. **Evaluacion de carga cognitiva** — Per-team cognitive load assessment with overload indicators and remediation
-5. **Analisis de Conway** — Mapping of current org structure to software architecture with misalignment identification
+1. **Team topology map** — Visual map of all teams classified by type with ownership boundaries
+2. **Interaction matrix** — Team-to-team interaction modes (collaboration, X-as-a-service, facilitating) with expected evolution
+3. **Evolution plan** — Phased plan to evolve from current to target topology with milestones and change management
+4. **Cognitive load assessment** — Per-team cognitive load assessment with overload indicators and remediation
+5. **Conway analysis** — Mapping of current org structure to software architecture with misalignment identification
 
-## Proceso
+## Process
 
-1. **Mapear estructura actual** — Document current teams, their responsibilities, sizes, and reporting lines
-2. **Analizar ley de Conway** — Map how current team boundaries reflect (or conflict with) the software architecture
-3. **Clasificar equipos** — Categorize each team: stream-aligned (business capability), platform (internal services), enabling (capability uplift), complicated-subsystem (deep expertise)
-4. **Evaluar carga cognitiva** — Assess each team's cognitive load: intrinsic (domain complexity), extraneous (tooling, process overhead), germane (learning, improvement)
-5. **Identificar anti-patrones** — Detect: teams too large (>9), too many dependencies, shared ownership, siloed knowledge, handoff chains
-6. **Disenar topologia objetivo** — Define target team structure aligned with desired architecture and value streams
-7. **Mapear interacciones** — Define interaction mode per team pair: collaboration (temporary, high-bandwidth), X-as-a-service (API-like, low-coupling), facilitating (enabling team helps others)
-8. **Planificar evolucion** — Create phased transition plan with organizational change management, communication, and success metrics
+1. **Map current structure** — Document current teams, their responsibilities, sizes, and reporting lines
+2. **Analyze Conway's Law** — Map how current team boundaries reflect (or conflict with) the software architecture
+3. **Classify teams** — Categorize each team: stream-aligned (business capability), platform (internal services), enabling (capability uplift), complicated-subsystem (deep expertise)
+4. **Evaluate cognitive load** — Assess each team's cognitive load: intrinsic (domain complexity), extraneous (tooling, process overhead), germane (learning, improvement)
+5. **Identify anti-patterns** — Detect: teams too large (>9), too many dependencies, shared ownership, siloed knowledge, handoff chains
+6. **Design target topology** — Define target team structure aligned with desired architecture and value streams
+7. **Map interactions** — Define interaction mode per team pair: collaboration (temporary, high-bandwidth), X-as-a-service (API-like, low-coupling), facilitating (enabling team helps others)
+8. **Plan evolution** — Create phased transition plan with organizational change management, communication, and success metrics
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] All teams classified into one of the 4 fundamental types
 - [ ] Cognitive load assessed per team with quantitative indicators (domains owned, services maintained)
@@ -69,21 +77,21 @@ The user provides an organization or department name as `$ARGUMENTS`. Parse `$1`
 - [ ] Dependencies between teams explicitly mapped and minimized
 - [ ] Change management considerations included in evolution plan
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Assumes leadership support for organizational restructuring
 - Team topology is a model — real organizations have nuances the model simplifies
 - Does not address HR, compensation, or formal reporting line changes
 - Effectiveness depends on alignment between architecture evolution and team evolution
 
-## Casos Borde
+## Edge Cases
 
 1. **Organizacion con estructura matricial rigida** — Cuando los reportes funcionales no pueden cambiar, el skill propone topologias virtuales (squads cross-funcionales) que operan dentro de la estructura formal, con mecanismos de alineacion dual.
 2. **Equipo unico responsable de todo (startup temprana)** — El skill no fuerza los 4 tipos; en su lugar identifica responsabilidades que deberian separarse primero y define triggers de division basados en carga cognitiva medible.
 3. **Fusion o adquisicion con equipos duplicados** — El skill mapea capacidades duplicadas, propone consolidacion basada en fortalezas complementarias y disena plan de transicion que minimiza perdida de conocimiento institucional.
 4. **Equipos distribuidos en multiples paises con diferencia cultural** — La matriz de interacciones se ajusta por zona horaria y cultura de comunicacion, priorizando X-as-a-service sobre colaboracion para minimizar dependencia de comunicacion sincrona.
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 1. **4 tipos de equipo vs. taxonomia libre** — Se usa el framework de Skelton & Pais porque provee vocabulario compartido y anti-patrones documentados; taxonomia libre genera ambiguedad organizacional.
 2. **Carga cognitiva como metrica principal vs. delivery velocity** — Carga cognitiva porque es la causa raiz; velocity baja es frecuentemente el sintoma de sobrecarga cognitiva, no de falta de capacidad.
@@ -129,7 +137,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_team-topology_{departamento}_{WIP}.docx`
-- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del departamento/organización y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Análisis Conway, Mapa de Topología de Equipos, Matriz de Interacciones, Evaluación de Carga Cognitiva, Plan de Evolución Organizacional.
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del departamento/organización y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Análisis Conway, Mapa de Topología de Equipos, Matriz de Interacciones, Evaluación de Carga Cognitiva, Plan de Evolución Organizacional.
 
 ### HTML (bajo demanda)
 - Filename: `org_team-topology_{departamento}_{WIP}.html`

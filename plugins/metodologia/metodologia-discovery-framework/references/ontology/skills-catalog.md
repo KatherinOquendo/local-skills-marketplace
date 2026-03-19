@@ -1,7 +1,7 @@
-# Catálogo de 108 Skills
+# Catálogo de 111 Skills
 
 > MAO Framework — Ontología viva
-> Referencia canónica de los 108 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
+> Referencia canónica de los 111 skills MOAT (Modernization-Oriented Acceleration Technology) organizados por 11 dominios.
 
 ---
 
@@ -11,16 +11,16 @@
 |---------|----------|-------------------|
 | Arquitectura | 14 | 2-6 (Brief a Reportes) |
 | Data & Analytics | 10 | 2-6 (Brief a Reportes) |
-| Análisis & Discovery | 12 | 0-4 (Plan a Flujos) |
+| Análisis & Discovery | 13 | 0-4 (Plan a Flujos) |
 | Cloud & Platform | 5 | 2-5 (ASIS a Roadmap) |
-| Calidad & Ops | 11 | 2-6 (ASIS a Reportes) |
+| Calidad & Ops | 12 | 2-6 (ASIS a Reportes) |
 | Gestión & Estrategia | 10 | 0-6 (Plan a Handover) |
 | Editorial & Comunicación | 9 | 5-6 (Pitch a Reportes) |
 | Cambio & Adopción | 5 | 4-6 (Escenarios a Handover) |
 | Innovación | 5 | 3-5 (ASIS a Roadmap) |
-| Herramientas & DX | 8 | Transversal |
+| Herramientas & DX | 14 | Transversal |
 | Service Discovery | 11 | 0-2 (Routing inicial) |
-| **Total** | **108** | |
+| **Total** | **111** | |
 
 ---
 
@@ -58,7 +58,7 @@
 | `data-viz-storytelling` | Visualización avanzada, dashboards narrativos | 5-6 |
 | `bi-analytics-discovery` | Discovery de capacidades BI y analytics | 0-2 |
 
-## 3. Análisis & Discovery (12 skills)
+## 3. Análisis & Discovery (13 skills)
 
 | Skill | Propósito | Fase |
 |-------|----------|------|
@@ -74,6 +74,7 @@
 | `maturity-assessment` | Evaluación de madurez, modelo de niveles | 3 |
 | `tech-debt-assessment` | Evaluación de deuda técnica, priorización | 3 |
 | `software-viability` | Viabilidad de software, ciclo de vida | 3-5 |
+| `technical-feasibility` | Feasibility multidimensional, análisis de viabilidad técnica | 3b |
 
 ## 4. Cloud & Platform (5 skills)
 
@@ -85,7 +86,7 @@
 | `disaster-recovery` | DR/BC strategy, RPO/RTO, failover | 3-5 |
 | `sustainability-assessment` | Sostenibilidad tecnológica, green IT | 3-5 |
 
-## 5. Calidad & Ops (10 skills)
+## 5. Calidad & Ops (12 skills)
 
 | Skill | Propósito | Fase |
 |-------|----------|------|
@@ -100,6 +101,7 @@
 | `vendor-assessment` | Evaluación de proveedores y herramientas | 3-5 |
 | `compliance-assessment` | Evaluación de compliance, regulaciones | 3-5 |
 | `discovery-retrospective` | Retrospectiva cuantitativa de engagement, métricas de evidencia | Transversal |
+| `secrets-sanitization` | Motor de sanitización de secretos pre-LLM, Gate G0 | Transversal |
 
 ## 6. Gestión & Estrategia (10 skills)
 
@@ -150,7 +152,7 @@
 | `roadmap-poc` | PoC como parte del roadmap | 6 |
 | `migration-playbook` | Playbook de migración, guía paso a paso | 6 |
 
-## 10. Herramientas & DX (6 skills)
+## 10. Herramientas & DX (14 skills)
 
 | Skill | Propósito | Fase |
 |-------|----------|------|
@@ -163,6 +165,12 @@
 | `mini-apps-discovery` | Discovery de mini-aplicaciones complementarias | 0-2 |
 | `client-browser-audit` | Auditoría visual de app del cliente via MCP Playwright | Transversal |
 | `cross-platform-convert` | Conversión de skills MOAT a formatos cross-platform | Transversal |
+| `brand-docx` | Producción DOCX con branding MetodologIA via python-docx | Transversal |
+| `brand-pptx` | Producción PPTX con branding MetodologIA via python-pptx | Transversal |
+| `brand-xlsx` | Producción XLSX con branding MetodologIA via openpyxl | Transversal |
+| `cli-init` | Inicialización de discovery desde CLI | Transversal |
+| `context-optimization` | Optimización de context window, lazy loading, pruning | Transversal |
+| `rendering-engine` | Motor de renderizado multi-formato | Transversal |
 
 ## 11. Service Discovery (11 skills)
 

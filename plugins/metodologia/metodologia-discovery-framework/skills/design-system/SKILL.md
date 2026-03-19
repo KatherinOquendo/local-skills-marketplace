@@ -7,6 +7,8 @@ description: >
   "brand config", "page template".
 argument-hint: "[action] [brand-config-path]"
 author: Javier Montano · Comunidad MetodologIA
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,15 +22,15 @@ allowed-tools:
 
 Foundation system for building styled HTML documents. All colors, typography, layout patterns, and component specs. **CRITICAL:** All brand tokens are configurable via `brand-config.json` — no hardcoded brand colors. Works for ANY brand.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un deliverable sin marca es un documento genérico. Un deliverable con marca es una experiencia profesional.** El design system convierte documentos técnicos en artefactos de marca que transmiten confianza, profesionalismo, y atención al detalle. Cada color, cada tipografía, cada espaciado tiene un propósito.
+**A deliverable without branding is a generic document. A deliverable with branding is a professional experience.** The design system converts technical documents into brand artifacts that convey confidence, professionalism, and attention to detail. Every color, every typeface, every spacing has a purpose.
 
-### Filosofía de Design System
+### Design System Philosophy
 
-1. **Tokens, no hardcode.** Todo configurable via brand-config.json. Cambiar de marca = cambiar un archivo, no reescribir CSS.
-2. **Consistencia > creatividad.** Dentro de un engagement, todos los deliverables se ven como parte del mismo sistema. Sin sorpresas visuales.
-3. **Responsive y accessible.** Print-ready layout, alto contraste para legibilidad, semántica HTML para screen readers.
+1. **Tokens, not hardcode.** Everything configurable via brand-config.json. Changing brand = changing one file, not rewriting CSS.
+2. **Consistency > creativity.** Within an engagement, all deliverables look like part of the same system. No visual surprises.
+3. **Responsive and accessible.** Print-ready layout, high contrast for readability, semantic HTML for screen readers.
 
 ## $ARGUMENTS
 
@@ -44,28 +46,28 @@ Examples:
 - If no brand-config.json exists → use neutral defaults (shown below)
 - If action missing → show available actions: template, apply, components, validate
 
-### Parámetros de Pipeline
+### Pipeline Parameters
 
-| Parámetro | Valores | Default | Efecto |
+| Parameter | Values | Default | Effect |
 |-----------|---------|---------|--------|
-| `MODO` | `piloto-auto`, `desatendido`, `supervisado`, `paso-a-paso` | `piloto-auto` | Nivel de intervención humana durante generación |
-| `FORMATO` | `html`, `markdown`, `dual` | `html` | Formato de salida del deliverable |
-| `VARIANTE` | `ejecutiva`, `técnica` | `técnica` | Ejecutiva (~40% contenido, visual-first) vs técnica (full token docs + snippets) |
+| `MODO` | `piloto-auto`, `desatendido`, `supervisado`, `paso-a-paso` | `piloto-auto` | Level of human intervention during generation |
+| `FORMATO` | `html`, `markdown`, `dual` | `html` | Deliverable output format |
+| `VARIANTE` | `ejecutiva`, `tecnica` | `tecnica` | Executive (~40% content, visual-first) vs technical (full token docs + snippets) |
 
-- `MODO=desatendido` → genera sin pausas, valida al final
-- `FORMATO=dual` → produce .html + .md con tokens documentados
-- `VARIANTE=ejecutiva` → solo component quick reference + brand config, sin CSS raw
+- `MODO=desatendido` → generates without pauses, validates at the end
+- `FORMATO=dual` → produces .html + .md with documented tokens
+- `VARIANTE=ejecutiva` → component quick reference + brand config only, no raw CSS
 
 ## Output Format Protocol
 
-| FORMATO | Estructura | Uso Principal |
+| FORMATO | Structure | Primary Use |
 |---------|-----------|---------------|
-| `html` | HTML completo con tokens inyectados en :root, componentes renderizados | Deliverables finales, presentaciones a cliente |
-| `markdown` | Token tables en MD, snippets en code blocks, sin HTML renderizado | Documentación interna, wikis, READMEs |
-| `dual` | Ambos archivos generados en paralelo | Cuando el consumidor necesita ambos formatos |
+| `html` | Full HTML with tokens injected in :root, rendered components | Final deliverables, client presentations |
+| `markdown` | Token tables in MD, snippets in code blocks, no rendered HTML | Internal documentation, wikis, READMEs |
+| `dual` | Both files generated in parallel | When the consumer needs both formats |
 
-- HTML siempre incluye Google Fonts link, print stylesheet, y skip-to-content
-- Markdown incluye front-matter YAML con metadata del brand-config
+- HTML always includes Google Fonts link, print stylesheet, and skip-to-content
+- Markdown includes front-matter YAML with brand-config metadata
 
 ## Brand Configuration Schema
 
@@ -129,7 +131,7 @@ These are universal and do NOT change per brand:
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--semantic-positive` | #22D3EE | Success state (yellow, not green — v4 rule) |
+| `--semantic-positive` | #137DC5 | Success state (yellow, not green — v4 rule) |
 | `--semantic-positive-dim` | rgba(255,215,0,0.12) | Positive background tint |
 | `--semantic-positive-border` | rgba(255,215,0,0.45) | Positive border |
 | `--semantic-positive-text` | #06B6D4 | Text on positive backgrounds |
@@ -148,7 +150,7 @@ These are universal and do NOT change per brand:
 | `--chart-teal` | #06C8C8 |
 | `--chart-violet` | #9747FF |
 | `--chart-pink` | #FE9CAB |
-| `--chart-yellow` | #22D3EE |
+| `--chart-yellow` | #FFD700 |
 
 ## Typography
 
@@ -258,12 +260,12 @@ For full component HTML snippets, read: `${CLAUDE_SKILL_DIR}/references/componen
 
 ## Trade-off Matrix
 
-| Dimension | Opción A | Opción B | Regla de Decisión |
+| Dimension | Option A | Option B | Decision Rule |
 |-----------|----------|----------|-------------------|
-| Tokens vs Inline | CSS custom properties (tokens) | Inline styles | Siempre tokens. Inline solo para overrides puntuales en email templates |
-| System fonts vs Web fonts | Rápido, sin dependencia CDN | Marca consistente, carga adicional | Web fonts para deliverables cliente; system fonts para uso interno |
-| Full component lib vs Minimal | 25+ componentes, flexible | 8-10 core, rápido de aprender | Full para engagement largo; minimal para one-shot deliverables |
-| Print-first vs Screen-first | Optimizado para PDF/impresión | Optimizado para pantalla interactiva | Screen-first por defecto; print-first si deliverable es para board/comité |
+| Tokens vs Inline | CSS custom properties (tokens) | Inline styles | Always tokens. Inline only for specific overrides in email templates |
+| System fonts vs Web fonts | Fast, no CDN dependency | Consistent branding, additional load | Web fonts for client deliverables; system fonts for internal use |
+| Full component lib vs Minimal | 25+ components, flexible | 8-10 core, quick to learn | Full for long engagements; minimal for one-shot deliverables |
+| Print-first vs Screen-first | Optimized for PDF/print | Optimized for interactive screen | Screen-first by default; print-first if deliverable is for board/committee |
 
 ## Assumptions & Limits
 
@@ -275,22 +277,22 @@ For full component HTML snippets, read: `${CLAUDE_SKILL_DIR}/references/componen
 - Mermaid diagrams render client-side via CDN; offline environments need pre-rendered SVGs
 - Design system assumes single-brand per engagement; multi-brand requires separate config files
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Brand primary extremadamente claro (#FFE0B2) que no pasa WCAG AA como texto | Auto-darken para texto usando HSL shift (-30% lightness). Usar brand-dark para borders y accents visibles. Validar contraste con herramienta automatizada antes de entregar. |
-| Documento bilingue (es + en) con diferentes longitudes de texto | Usar `lang` attribute por seccion. Layout flexible con min-width en cards. Testear que texto largo no rompe grid en ambos idiomas. |
-| Brand config con un solo color (sin secondary, sin light/dark variants) | Derivar primary-light (HSL +15% lightness) y primary-dark (HSL -15% lightness) programaticamente. Documentar colores derivados en el output para validacion del cliente. |
-| Entorno offline sin acceso a Google Fonts CDN | Fallback a system-ui, -apple-system, sans-serif. Documentar degradacion visual. Ofrecer alternativa con fonts embebidas en base64 si tamano < 500KB. |
+| Extremely light brand primary (#FFE0B2) that does not pass WCAG AA as text | Auto-darken for text using HSL shift (-30% lightness). Use brand-dark for borders and visible accents. Validate contrast with automated tool before delivery. |
+| Bilingual document (es + en) with different text lengths | Use `lang` attribute per section. Flexible layout with min-width on cards. Test that long text does not break grid in both languages. |
+| Brand config with a single color (no secondary, no light/dark variants) | Derive primary-light (HSL +15% lightness) and primary-dark (HSL -15% lightness) programmatically. Document derived colors in the output for client validation. |
+| Offline environment without Google Fonts CDN access | Fallback to system-ui, -apple-system, sans-serif. Document visual degradation. Offer alternative with base64-embedded fonts if size < 500KB. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| CSS custom properties (tokens) sobre inline styles | Inline styles para cada elemento | Tokens permiten cambio de marca con un solo archivo. Inline requiere reescribir todo el documento. Mantenibilidad > velocidad de generacion. |
-| Single-file HTML con CSS inline sobre CSS externo | CSS en archivo separado | Self-contained HTML garantiza portabilidad. El deliverable se abre en cualquier browser sin dependencias. Peso adicional (~20KB CSS) es aceptable vs. riesgo de archivo faltante. |
-| Yellow para success states sobre green convencional | Green (#22C55E) para estados positivos | Green introduce tono frio que choca con paleta calida MetodologIA (indigo/dark). Yellow mantiene coherencia de marca. Diferenciador visual vs. competidores. |
+| CSS custom properties (tokens) over inline styles | Inline styles for each element | Tokens allow brand change with a single file. Inline requires rewriting the entire document. Maintainability > generation speed. |
+| Single-file HTML with inline CSS over external CSS | CSS in separate file | Self-contained HTML guarantees portability. The deliverable opens in any browser without dependencies. Additional weight (~20KB CSS) is acceptable vs. risk of missing file. |
+| Yellow for success states over conventional green | Green (#22C55E) for positive states | Green introduces a cool tone that clashes with the warm MetodologIA palette (indigo/dark). Yellow maintains brand coherence. Visual differentiator vs. competitors. |
 
 ## Knowledge Graph
 
@@ -319,7 +321,7 @@ graph TD
 
 ## Output Templates
 
-**Formato MD (default):**
+**MD format (default):**
 ```
 # Design System: {brand_name}
 ## Token Reference
@@ -333,34 +335,34 @@ graph TD
 ## Validation Checklist
 ```
 
-**Formato HTML (primary):**
+**HTML format (primary):**
 - Filename: `D-01_Design_System_{project}_{WIP}.html`
-- Documento HTML self-contained con tokens inyectados en `:root`, branded (Design System MetodologIA v5). Incluye componentes renderizados con ejemplos interactivos, paleta de tokens visual y checklist de validación WCAG. Print stylesheet incluido, skip-to-content y WCAG AA compliance.
+- Self-contained HTML document with tokens injected in `:root`, branded (Design System MetodologIA v5). Includes rendered components with interactive examples, visual token palette, and WCAG validation checklist. Print stylesheet included, skip-to-content and WCAG AA compliance.
 
-**Formato DOCX (circulación formal):**
-- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+**DOCX format (formal circulation):**
+- Filename: `{phase}_{deliverable}_{client}_{WIP}.docx`
+- Generated via python-docx with MetodologIA Design System v5. Cover page with engagement metadata, auto-generated TOC, branded headers/footers. Tables with zebra striping, Poppins typography in headings (navy), Trebuchet MS in body, gold accents. For formal circulation and audit.
 
-**Formato XLSX (bajo demanda):**
-- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
-- Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por token type y estado de validación WCAG, auto-filters en todas las columnas, valores directos sin fórmulas.
+**XLSX format (on demand):**
+- Filename: `{phase}_{deliverable}_{client}_{WIP}.xlsx`
+- Via openpyxl with MetodologIA Design System v5. Headers with navy background and white Poppins typography, conditional formatting by token type and WCAG validation status, auto-filters on all columns, direct values without formulas.
 
-**Formato PPTX (bajo demanda):**
-- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+**PPTX format (on demand):**
+- Filename: `{phase}_{deliverable}_{client}_{WIP}.pptx`
+- Via python-pptx with MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Max 20 slides executive / 30 technical. Speaker notes with evidence references.
 
-## Evaluacion
+## Evaluation
 
-| Dimension | Peso | Criterio | Umbral Minimo |
+| Dimension | Weight | Criterion | Minimum Threshold |
 |---|---|---|---|
-| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de design system, tokens, brand config, styled HTML | 7/10 |
-| Completeness | 25% | Todos los tokens documentados, componentes con snippets, responsive y accessibility cubiertos | 7/10 |
-| Clarity | 20% | Mapping rules sin ambiguedad, cada token con uso definido, anti-patterns documentados | 7/10 |
-| Robustness | 20% | Edge cases de color, RTL, print, dark mode cubiertos con fallbacks funcionales | 7/10 |
-| Efficiency | 10% | Output generado sin tokens duplicados, CSS optimizado, single-file bajo 500KB | 7/10 |
-| Value Density | 15% | Cada componente entrega snippet listo para copiar, no solo descripcion teorica | 7/10 |
+| Trigger Accuracy | 10% | Skill activates correctly on mentions of design system, tokens, brand config, styled HTML | 7/10 |
+| Completeness | 25% | All tokens documented, components with snippets, responsive and accessibility covered | 7/10 |
+| Clarity | 20% | Mapping rules without ambiguity, each token with defined usage, anti-patterns documented | 7/10 |
+| Robustness | 20% | Color, RTL, print, dark mode edge cases covered with functional fallbacks | 7/10 |
+| Efficiency | 10% | Output generated without duplicate tokens, optimized CSS, single-file under 500KB | 7/10 |
+| Value Density | 15% | Each component delivers a copy-ready snippet, not just theoretical description | 7/10 |
 
-**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
+**Global minimum threshold:** 7/10. Deliverables below this require re-work before delivery.
 
 ## Edge Cases
 
@@ -397,12 +399,12 @@ Before delivering design system output:
 
 ## Output Artifact
 
-**Primary:** `D-01_Design_System_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Design tokens, component library, usage guidelines, accessibility standards.
+**Primary:** `D-01_Design_System_{project}.md` (or `.html` if `{FORMATO}=html|dual`) — Design tokens, component library, usage guidelines, accessibility standards.
 
-**Diagramas incluidos:**
+**Included diagrams:**
 - Component hierarchy diagram
 - Token inheritance flowchart
 - Responsive breakpoint matrix
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 12, 2026

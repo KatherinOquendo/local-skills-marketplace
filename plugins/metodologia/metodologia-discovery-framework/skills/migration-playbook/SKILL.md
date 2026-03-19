@@ -21,13 +21,21 @@ allowed-tools:
 
 Migration playbook provides detailed execution guidance for system migrations, covering strategy selection, data migration, cutover choreography, and rollback procedures. The skill produces migration playbooks, cutover checklists, and rollback plans that minimize risk during system transitions.
 
+## Grounding Guideline
+
+> *A migration without a playbook is a journey without a map — you will arrive somewhere, but probably not the right place.*
+
+1. **Migrating is transforming, not copying.** Lift-and-shift is the first step, not the destination. Every migration is an improvement opportunity.
+2. **Rollback before moving forward.** Plan the way back before taking the step forward.
+3. **Incremental migration > big-bang migration.** Service disruptions are minimized with controlled waves.
+
 ## TL;DR
 
-- Selecciona estrategia de migracion apropiada (strangler fig, parallel run, big bang) segun riesgo y contexto
-- Disena plan de migracion de datos con validacion, reconciliacion y rollback
-- Produce checklist de cutover con secuencia horaria, responsables y criterios go/no-go
-- Define procedimientos de rollback con puntos de decision y tiempos maximos
-- Establece metricas de exito post-migracion y periodo de estabilizacion
+- Select appropriate migration strategy (strangler fig, parallel run, big bang) based on risk and context
+- Design data migration plan with validation, reconciliation, and rollback
+- Produce cutover checklist with hourly sequence, owners, and go/no-go criteria
+- Define rollback procedures with decision points and maximum times
+- Establish post-migration success metrics and stabilization period
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides a migration context as `$ARGUMENTS`. Parse `$1` as the **migra
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{ESTRATEGIA}`: `strangler-fig` | `parallel-run` | `big-bang` | `phased` | `auto` (default)
 
-## Entregables
+## Deliverables
 
-1. **Playbook de migracion** — Comprehensive migration guide with strategy, phases, dependencies, and risk mitigation
-2. **Checklist de cutover** — Hour-by-hour cutover sequence with tasks, owners, validation checks, and go/no-go gates
-3. **Plan de rollback** — Detailed rollback procedures with decision points, time limits, and data recovery steps
-4. **Plan de migracion de datos** — Data extraction, transformation, loading, validation, and reconciliation procedures
-5. **Plan de estabilizacion** — Post-migration monitoring, issue triage, and hypercare period definition
+1. **Migration Playbook** — Comprehensive migration guide with strategy, phases, dependencies, and risk mitigation
+2. **Cutover Checklist** — Hour-by-hour cutover sequence with tasks, owners, validation checks, and go/no-go gates
+3. **Rollback Plan** — Detailed rollback procedures with decision points, time limits, and data recovery steps
+4. **Data Migration Plan** — Data extraction, transformation, loading, validation, and reconciliation procedures
+5. **Stabilization Plan** — Post-migration monitoring, issue triage, and hypercare period definition
 
-## Proceso
+## Process
 
-1. **Evaluar contexto de migracion** — Assess source/target systems, data volumes, integration dependencies, downtime tolerance, and team capability
-2. **Seleccionar estrategia** — Choose migration approach based on risk tolerance, downtime window, and system complexity
-3. **Disenar migracion de datos** — Plan ETL pipeline: extraction from source, transformation rules, loading into target, validation checksums
-4. **Planificar wave structure** — Group migration items into waves by risk and dependency; pilot wave first
-5. **Crear checklist de cutover** — Sequence all cutover activities: pre-cutover prep, DNS/traffic switch, validation, rollback window
-6. **Disenar rollback** — Define rollback triggers, procedures, maximum time-to-decision, and data reconciliation after rollback
-7. **Planificar comunicacion** — Stakeholder notifications: pre-migration, during cutover, post-migration, and incident escalation
-8. **Definir hypercare** — Establish post-migration monitoring period with enhanced support, issue SLAs, and stabilization criteria
+1. **Assess migration context** — Assess source/target systems, data volumes, integration dependencies, downtime tolerance, and team capability
+2. **Select strategy** — Choose migration approach based on risk tolerance, downtime window, and system complexity
+3. **Design data migration** — Plan ETL pipeline: extraction from source, transformation rules, loading into target, validation checksums
+4. **Plan wave structure** — Group migration items into waves by risk and dependency; pilot wave first
+5. **Create cutover checklist** — Sequence all cutover activities: pre-cutover prep, DNS/traffic switch, validation, rollback window
+6. **Design rollback** — Define rollback triggers, procedures, maximum time-to-decision, and data reconciliation after rollback
+7. **Plan communication** — Stakeholder notifications: pre-migration, during cutover, post-migration, and incident escalation
+8. **Define hypercare** — Establish post-migration monitoring period with enhanced support, issue SLAs, and stabilization criteria
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Migration strategy justified with risk-benefit analysis
 - [ ] Data migration includes validation and reconciliation procedures
@@ -69,21 +77,21 @@ The user provides a migration context as `$ARGUMENTS`. Parse `$1` as the **migra
 - [ ] Hypercare period defined with specific monitoring and support levels
 - [ ] Evidence tags applied: [DOC], [CONFIG], [INFERENCIA], [SUPUESTO]
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Assumes source and target systems are documented or accessible for analysis
 - Data migration timings are estimates until validated by dry-run
 - Does not implement migration — produces planning and execution artifacts
 - Rollback feasibility depends on data mutability during migration window
 
-## Casos Borde
+## Edge Cases
 
 1. **Migracion sin ventana de downtime permitida** — Cuando el negocio exige zero-downtime, el skill fuerza estrategia strangler fig o parallel run con sincronizacion bidireccional, descartando big bang.
 2. **Datos con dependencias circulares entre sistemas** — Si las entidades tienen foreign keys cruzadas, el plan de migracion de datos define orden topologico con registros placeholder y una fase de reconciliacion post-carga.
 3. **Rollback imposible por cambios destructivos** — Cuando la migracion incluye transformaciones irreversibles (ej: merge de tablas, cambio de schema), el skill disena forward-fix strategy en lugar de rollback clasico.
 4. **Equipo sin experiencia en migraciones** — El playbook incluye dry-run obligatorio con checklist simplificada y sesion de walkthrough antes del cutover real.
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 1. **Strangler fig default vs. big bang** — Strangler fig como recomendacion para sistemas complejos porque reduce riesgo, pero big bang se mantiene como opcion valida para sistemas simples con ventana de downtime.
 2. **Pilot wave obligatorio vs. opcional** — Obligatorio porque una wave piloto con el componente de menor riesgo valida el proceso completo antes de migrar sistemas criticos; el costo es 1-2 semanas adicionales.
@@ -137,7 +145,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_migration-playbook_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
+- Generado via python-pptx con MetodologIA Design System v5. Slide master navy gradient, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides variante ejecutiva / 30 variante tecnica. Speaker notes con referencias de evidencia [DOC]/[INFERENCIA]/[SUPUESTO].
 
 ## Evaluacion
 

@@ -1,6 +1,10 @@
 ---
 name: input-analysis
 description: "This skill should be used when the user's input is messy, vague, ambiguous, contains typos, spanglish, or abbreviations, or when you need to understand what the user really means before executing a complex task. Pre-processing layer that detects surface errors (dyslexia, haste, spelling, punctuation, syntax), performs root cause analysis (5 Whys), impact tracing (7 So-Whats), and intent gap analysis — reformulating into a precise, actionable prompt. Make sure to use this skill whenever the user writes in informal shorthand, voice-to-text produces garbled text, a message contains multiple questions that need decomposition, emotional undertones mask the real request, or when dangling references like 'that thing we discussed' need resolution — even if the user doesn't explicitly ask for input analysis."
+author: Javier Montano · Comunidad MetodologIA
+argument-hint: "<input-text-or-file-path>"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Grep
@@ -11,6 +15,14 @@ allowed-tools:
 # Input Analysis
 
 Pre-processing layer that captures what the user *meant*, not just what they *wrote*. Every human input may contain surface noise, intent gaps, or implicit context — this skill detects and resolves them before downstream skills execute.
+
+## Grounding Guideline
+
+> *Output quality never exceeds input quality. Processing garbage elegantly still produces elegant garbage.*
+
+1. **5 passes, not one.** Input analysis requires surface scan, root cause, impact trace, intent gap, and reformulation.
+2. **Detecting what is missing is as important as processing what is there.** Gaps in the input are risk signals for the pipeline.
+3. **The user's input is not the instruction — it is the raw material.** Transforming raw input into actionable instructions is this skill's value.
 
 ## Assumptions & Limits
 
@@ -93,15 +105,15 @@ Dig beneath the surface request to find the root need.
 
 **Protocol:**
 ```
-Usuario dice: "Necesito una presentación de los resultados Q4"
-¿Por qué 1? → El jefe pidió una revisión trimestral
-¿Por qué 2? → El equipo no cumplió objetivos, necesita realineamiento
-¿Por qué 3? → Pivote de estrategia a mitad del trimestre
-¿Por qué 4? → La planificación presupuestaria depende de ello
-¿Por qué 5? → Necesitan justificar inversión continua
+User says: "I need a presentation of Q4 results"
+Why 1? → The boss requested a quarterly review
+Why 2? → The team missed objectives, needs realignment
+Why 3? → Strategy pivot mid-quarter
+Why 4? → Budget planning depends on it
+Why 5? → They need to justify continued investment
 
-Necesidad raíz: Un caso persuasivo para inversión continua a pesar de incumplimientos Q4,
-               formateado como revisión trimestral.
+Root need: A persuasive case for continued investment despite Q4 misses,
+           formatted as a quarterly review.
 ```
 
 **Rules:**
@@ -154,12 +166,12 @@ Synthesize all passes into a high-quality prompt.
 
 **Reformulation template:**
 ```
-OBJETIVO: [Verbo de acción + resultado medible]
-CONTEXTO: [De 5 Porqués + 7 Entonces-qués]
-INTENCIÓN: [Del análisis de brechas Pase 4]
-RESTRICCIONES: [Explícitas + inferidas]
-OUTPUT ESPERADO: [Tipo de entregable, estructura, longitud]
-CALIBRACIÓN: [standard | premium | flagship]
+OBJECTIVE: [Action verb + measurable result]
+CONTEXT: [From 5 Whys + 7 So-Whats]
+INTENT: [From Pass 4 gap analysis]
+CONSTRAINTS: [Explicit + inferred]
+EXPECTED OUTPUT: [Deliverable type, structure, length]
+CALIBRATION: [standard | premium | flagship]
 ```
 
 ## Operational Modes
@@ -247,34 +259,34 @@ Before passing the reformulated prompt downstream, confirm:
 ## Output Format Protocol
 
 ```markdown
-## Análisis de Input
+## Input Analysis
 
-**Input original:** [raw text]
-**Confianza:** ALTA | MEDIA | BAJA
-**Pases ejecutados:** 1, 2, 3, 4, 5
+**Original input:** [raw text]
+**Confidence:** HIGH | MEDIUM | LOW
+**Passes executed:** 1, 2, 3, 4, 5
 
-### Correcciones de superficie
-| Original | Corregido | Tipo | Confianza |
+### Surface Corrections
+| Original | Corrected | Type | Confidence |
 |----------|-----------|------|-----------|
-| ncsito | necesito | Afán — vocales faltantes | ALTA |
+| ncsito | necesito | Haste — missing vowels | HIGH |
 
-### Causa raíz (5 Porqués)
+### Root Cause (5 Whys)
 [Chain with natural stop + open questions]
 
-### Impacto (7 Entonces-qués)
+### Impact (7 So-Whats)
 [Impact chain with calibration level]
 
-### Brechas de intención
-| Tipo | Explícito | Implícito | Brecha |
+### Intent Gaps
+| Type | Explicit | Implicit | Gap |
 |------|-----------|-----------|--------|
 
-### Prompt reformulado
-OBJETIVO: ...
-CONTEXTO: ...
-INTENCIÓN: ...
-RESTRICCIONES: ...
-OUTPUT ESPERADO: ...
-CALIBRACIÓN: [standard | premium | flagship]
+### Reformulated Prompt
+OBJECTIVE: ...
+CONTEXT: ...
+INTENT: ...
+CONSTRAINTS: ...
+EXPECTED OUTPUT: ...
+CALIBRATION: [standard | premium | flagship]
 ```
 
 ## Escalation Triggers

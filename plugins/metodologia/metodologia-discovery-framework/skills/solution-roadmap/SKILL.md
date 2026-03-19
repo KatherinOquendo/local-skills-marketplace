@@ -8,6 +8,8 @@ description: >
   "plan the transformation", "build an investment case", "team sizing",
   "risk-adjusted timeline", or mentions "Phase 4", "solution roadmap", "transformation plan",
   "phased execution", "PoC validation criteria", "kill criteria", "go/no-go gates".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,15 +23,15 @@ allowed-tools:
 
 Defines the complete transformation plan AFTER scenario approval but BEFORE PoC validation. Covers transformation vision, phased execution (Foundation > Build > Integrate > Optimize > Scale), investment horizon with TCO/ROI, team ramp-up curve, estimation pivot points with PoC validation, risk management with cascade failure analysis, and governance framework.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un roadmap sin gates es un plan de esperanza. Un roadmap sin pivot points es un plan de fantasía.** Este skill produce blueprints de transformación que sobreviven el contacto con la realidad: cada fase tiene criterios de go/no-go, cada estimación tiene pivot points con PoC de validación, y cada milestone tiene kill criteria. La diferencia entre un roadmap y una lista de deseos es la gobernanza.
+**A roadmap without gates is a plan of hope. A roadmap without pivot points is a plan of fantasy.** This skill produces transformation blueprints that survive contact with reality: every phase has go/no-go criteria, every estimate has pivot points with validation PoCs, and every milestone has kill criteria. The difference between a roadmap and a wish list is governance.
 
-### Filosofía de Transformación
+### Transformation Philosophy
 
-1. **Fases, no big-bang.** Cada fase es independientemente valiosa. Si el proyecto se detiene en Phase 2, lo construido en Phase 1 tiene valor por sí solo.
-2. **Estimaciones honestas.** Ranges con P50/P80/P95 — nunca un número exacto. El Cone of Uncertainty se respeta.
-3. **Kill criteria explícitos.** Cada fase tiene condiciones bajo las cuales se detiene, se re-planifica, o se pivotea. No hay "seguir adelante a toda costa."
+1. **Phases, not big-bang.** Each phase is independently valuable. If the project stops at Phase 2, what was built in Phase 1 has value on its own.
+2. **Honest estimates.** Ranges with P50/P80/P95 — never an exact number. The Cone of Uncertainty is respected.
+3. **Explicit kill criteria.** Each phase has conditions under which it stops, gets re-planned, or pivots. There is no "press on at all costs."
 
 ## Inputs
 
@@ -41,7 +43,7 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para construcción de fases y timeline, HITL para validación de gates y kill criteria.
-  - **desatendido**: Cero interrupciones. Roadmap completo auto-generado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Roadmap completo auto-generado. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en estructura de fases y antes del governance plan.
   - **paso-a-paso**: Confirma cada fase, cada gate, y cada pivot point.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -202,18 +204,18 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: pivot point decision tree
 - Flowchart: team ramp-up/ramp-down visualization
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Executive sponsor changes mid-transformation (Phase 2+) | Trigger a 2-week re-alignment sprint; present roadmap to new sponsor with original rationale; adjust governance cadence; document any scope/priority shifts as formal change requests |
 | PoC invalidates a foundational assumption in Phase 1 | Activate pivot decision framework; if minor (<4 weeks fix), execute Pivot A; if major, pause Phase 2 and present re-scoped roadmap to steering committee within 5 business days |
 | Client demands big-bang delivery despite phased recommendation | Document the risk differential (phased vs big-bang) with quantified failure probability; require steering committee sign-off on big-bang risk acceptance; add 30% contingency to timeline |
 | Key technology vendor announces end-of-life during Phase 2 | Activate vendor risk mitigation plan from Section 6; assess alternative vendors against Phase 3-5 requirements; present impact assessment to steering committee within 1 week |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | 5-phase incremental structure (Foundation > Build > Integrate > Optimize > Scale) | Big-bang delivery with single release | Each phase is independently valuable; if the project stops at Phase 2, delivered value is preserved; big-bang creates all-or-nothing risk |
 | Estimation ranges with P50/P80/P95 confidence intervals | Single-point estimates | Single-point estimates create false precision; the Cone of Uncertainty is a reality that ranges communicate honestly to stakeholders |
@@ -260,11 +262,11 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_solution_roadmap_{cliente}_{WIP}.docx`
-- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Montserrat, acentos dorados, tablas zebra. Secciones: Transformation Vision, 5-Phase Execution Plan (con gates go/no-go), Investment Horizon, Team Ramp-Up, Estimation Pivot Points, Risk Management, Governance Framework.
+- Generado con python-docx y MetodologIA Design System v5. Portada con nombre del proyecto y fecha, TOC automático, encabezados Poppins navy, cuerpo Trebuchet MS, acentos dorados, tablas zebra. Secciones: Transformation Vision, 5-Phase Execution Plan (con gates go/no-go), Investment Horizon, Team Ramp-Up, Estimation Pivot Points, Risk Management, Governance Framework.
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_solution_roadmap_{cliente}_{WIP}.pptx`
-- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Transformation Vision y north star metric, Resumen de 5 fases (tabla con gates), Investment Horizon (TCO/ROI), Team Ramp-Up curve, Estimation Pivot Points, Risk Timeline, Governance Plan, próximos pasos.
+- Generado con python-pptx y MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máximo 20 slides (ejecutiva). Speaker notes con referencias de evidencia. Slides: Portada, Transformation Vision y north star metric, Resumen de 5 fases (tabla con gates), Investment Horizon (TCO/ROI), Team Ramp-Up curve, Estimation Pivot Points, Risk Timeline, Governance Plan, próximos pasos.
 
 ### HTML (bajo demanda)
 - Filename: `06_Solution_Roadmap_{cliente}_{WIP}.html`

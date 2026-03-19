@@ -9,6 +9,8 @@ description: >
   "test factory design", "TMMi assessment", "QA transformation", "testing maturity evaluation",
   "PITT methodology", "QA team composition", "test automation assessment", "quality engineering assessment",
   or mentions "independent testing", "QA-as-a-Service", "test industrialization", "ISTQB".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,15 +22,15 @@ allowed-tools:
 
 # QA Service Discovery — Quality Maturity Assessment & Transformation Roadmap
 
-Genera un assessment de 7 secciones para servicios de QA: evaluacion de madurez de calidad (TMMi), analisis de cobertura de testing, evaluacion del landscape de herramientas, alineacion con metodologia PITT, modelado de composicion de equipo, diseno de test factory, y roadmap de transformacion de QA. Orientado a construir servicios de calidad que prevengan defectos, no solo los detecten.
+Generates a 7-section assessment for QA services: quality maturity evaluation (TMMi), testing coverage analysis, tool landscape evaluation, PITT methodology alignment, team composition modeling, test factory design, and QA transformation roadmap. Oriented toward building quality services that prevent defects, not just detect them.
 
-## Principio Rector
+## Grounding Guideline
 
-> *La calidad no se inspecciona al final — se construye desde el principio. Un servicio de QA que solo encuentra bugs es un servicio incompleto; el verdadero valor esta en prevenirlos.*
+> *Quality is not inspected at the end — it is built from the start. A QA service that only finds bugs is an incomplete service; the real value lies in preventing them.*
 
-1. **Shift-left no es un eslogan — es una estrategia medible.** Cada defecto encontrado en produccion costo 100x mas que uno encontrado en requerimientos. El assessment mide donde se encuentran los defectos en el ciclo de vida y cuanto se puede mover hacia la izquierda.
-2. **La automatizacion de tests sin estrategia es un costo, no una inversion.** Tests automatizados fragiles, lentos o irrelevantes consumen mas de lo que aportan. El assessment evalua no solo el ratio de automatizacion sino la calidad y mantenibilidad del suite automatizado.
-3. **El testing independiente (PITT) es un habilitador, no un obstaculo.** La separacion de responsabilidades entre desarrollo y QA no crea friction — crea accountability. El modelo PITT correctamente implementado acelera releases, no los frena.
+1. **Shift-left is not a slogan — it is a measurable strategy.** Every defect found in production costs 100x more than one found in requirements. The assessment measures where defects are found in the lifecycle and how far left they can be moved.
+2. **Test automation without strategy is a cost, not an investment.** Fragile, slow, or irrelevant automated tests consume more than they contribute. The assessment evaluates not only the automation ratio but the quality and maintainability of the automated suite.
+3. **Independent testing (PITT) is an enabler, not an obstacle.** The separation of responsibilities between development and QA does not create friction — it creates accountability. The PITT model correctly implemented accelerates releases, not slows them down.
 
 ## Inputs
 
@@ -39,10 +41,10 @@ Parse from `$ARGUMENTS`.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para analisis de cobertura y herramientas, HITL para evaluacion de madurez y decisiones de equipo.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
-  - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **piloto-auto**: Auto for coverage and tool analysis, HITL for maturity evaluation and team decisions.
+  - **desatendido**: Zero interruptions. Fully automated analysis. Assumptions documented.
+  - **supervisado**: Autonomous with reports upon completing each section.
+  - **paso-a-paso**: Confirms before each analysis section.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S2, S7 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `QA` (fixed for this skill)
@@ -50,77 +52,77 @@ Parse from `$ARGUMENTS`.
 ## Input Requirements
 
 **Mandatory:**
-- Documentacion de procesos de QA (test plans, test strategies)
-- Inventario de herramientas de testing actuales
-- Metricas de defectos (detection rate, escape rate, density)
-- Estructura del equipo de QA actual
+- QA process documentation (test plans, test strategies)
+- Current testing tool inventory
+- Defect metrics (detection rate, escape rate, density)
+- Current QA team structure
 
 **Recommended:**
-- Test automation suite (acceso a repositorio de tests)
+- Test automation suite (access to test repository)
 - CI/CD pipeline configuration
-- Historico de releases y defectos (12+ meses)
-- Resultados de auditorias de calidad previas
-- Certificaciones del equipo (ISTQB, etc.)
+- Release and defect history (12+ months)
+- Previous quality audit results
+- Team certifications (ISTQB, etc.)
 
 ## Assumptions & Limits
 
 **Assumptions:**
-- Existe un proceso de testing definido (aunque sea informal)
-- Hay acceso a metricas basicas de defectos
-- El equipo de QA es identificable (roles dedicados o compartidos)
-- La organizacion busca mejorar su capacidad de quality engineering
+- A defined testing process exists (even if informal)
+- Access to basic defect metrics is available
+- The QA team is identifiable (dedicated or shared roles)
+- The organization seeks to improve its quality engineering capability
 
 **Cannot do:**
-- Ejecutar tests en el ambiente del cliente (requiere acceso a infraestructura)
-- Evaluar performance de herramientas en uso (requiere benchmarking en vivo)
-- Realizar auditorias formales de certificacion TMMi (requiere assessor certificado)
-- Entrevistar individualmente a cada miembro del equipo
+- Execute tests in the client's environment (requires infrastructure access)
+- Evaluate performance of tools in use (requires live benchmarking)
+- Perform formal TMMi certification audits (requires certified assessor)
+- Individually interview each team member
 
 ## Workarounds When Inputs Missing
 
 | Missing Input | Impact | Workaround |
 |---|---|---|
-| No test plans | Cannot assess test strategy maturity | Inferir de codigo de tests y CI/CD config; flag como [INFERENCIA] |
-| No defect metrics | Cannot quantify quality baseline | Analisis de code quality como proxy; recomendar implementacion de metricas |
-| No tool inventory | Cannot evaluate tool landscape | Detectar de CI/CD pipelines y repositorios; flag como [INFERENCIA] |
-| No team structure | Cannot model composition | Inferir de commits, PR reviews, tool access; flag como [SUPUESTO] |
-| No automation suite | Cannot assess automation maturity | Flag como gap critico; recomendar estrategia de automatizacion |
+| No test plans | Cannot assess test strategy maturity | Infer from test code and CI/CD config; flag as [INFERENCE] |
+| No defect metrics | Cannot quantify quality baseline | Code quality analysis as proxy; recommend metrics implementation |
+| No tool inventory | Cannot evaluate tool landscape | Detect from CI/CD pipelines and repositories; flag as [INFERENCE] |
+| No team structure | Cannot model composition | Infer from commits, PR reviews, tool access; flag as [ASSUMPTION] |
+| No automation suite | Cannot assess automation maturity | Flag as critical gap; recommend automation strategy |
 
 ## Edge Cases
 
-- **No hay equipo de QA dedicado:** Evaluar testing como responsabilidad distribuida en desarrollo. Flag como riesgo y oportunidad.
-- **Solo testing manual:** Calcular costo de oportunidad. Priorizar automatizacion por riesgo de regresion.
-- **Multiples equipos de QA (por producto):** Evaluar consistencia entre equipos. Identificar oportunidades de estandarizacion.
-- **Outsourcing de QA existente:** Evaluar vendor actual vs MetodologIA. Analizar gaps y transicion.
-- **Regulacion especifica (pharma, fintech):** Elevar requisitos de documentacion, trazabilidad y validacion. Mapear compliance requirements.
-- **>500 test cases sin mantenimiento:** Flag deuda de tests. Evaluar relevancia vs costo de mantenimiento. Recomendar rationalizacion.
+- **No dedicated QA team:** Evaluate testing as distributed responsibility within development. Flag as risk and opportunity.
+- **Manual testing only:** Calculate opportunity cost. Prioritize automation by regression risk.
+- **Multiple QA teams (by product):** Evaluate consistency across teams. Identify standardization opportunities.
+- **Existing QA outsourcing:** Evaluate current vendor vs MetodologIA. Analyze gaps and transition.
+- **Specific regulation (pharma, fintech):** Elevate documentation, traceability, and validation requirements. Map compliance requirements.
+- **>500 unmaintained test cases:** Flag test debt. Evaluate relevance vs maintenance cost. Recommend rationalization.
 
 ## Trade-off Matrix
 
 | Decision | Enables | Constrains | When to Use |
 |---|---|---|---|
-| **Full 7-section analysis** | Maximum depth, complete transformation plan | 5-7 dias, alto consumo de tokens | QA transformation programs, test factory setup |
-| **Executive variant** (S1+S2+S7) | Quick maturity snapshot, decision-ready | No incluye herramientas, equipo ni factory design | Business case para QA investment |
-| **TMMi-focused** (S1 deep) | Certification roadmap | Menor profundidad en cobertura y herramientas | Organizaciones buscando certificacion TMMi |
-| **Automation-focused** (S2+S3 deep) | Automation strategy and tool selection | Menos contexto de madurez organizacional | Kick-off de programa de test automation |
+| **Full 7-section analysis** | Maximum depth, complete transformation plan | 5-7 days, high token consumption | QA transformation programs, test factory setup |
+| **Executive variant** (S1+S2+S7) | Quick maturity snapshot, decision-ready | Does not include tools, team, or factory design | Business case for QA investment |
+| **TMMi-focused** (S1 deep) | Certification roadmap | Less depth in coverage and tools | Organizations seeking TMMi certification |
+| **Automation-focused** (S2+S3 deep) | Automation strategy and tool selection | Less organizational maturity context | Test automation program kick-off |
 
 ## 7-Section Framework
 
 ### S1: Quality Maturity Model Assessment (TMMi)
 
-Evaluacion contra los 5 niveles de TMMi (Test Maturity Model integration).
+Assessment against the 5 TMMi (Test Maturity Model integration) levels.
 
-**Niveles TMMi:**
+**TMMi Levels:**
 
-| Nivel | Nombre | Caracteristicas |
+| Level | Name | Characteristics |
 |---|---|---|
-| L1 | Initial | Testing ad-hoc, no proceso definido, dependiente de individuos |
-| L2 | Managed | Testing planificado por proyecto, test plans basicos, defect tracking |
-| L3 | Defined | Proceso de testing organizacional, test design techniques, peer reviews |
-| L4 | Measured | Metricas de calidad cuantitativas, statistical process control, product quality evaluation |
-| L5 | Optimization | Mejora continua basada en datos, defect prevention, quality control |
+| L1 | Initial | Ad-hoc testing, no defined process, individual-dependent |
+| L2 | Managed | Testing planned per project, basic test plans, defect tracking |
+| L3 | Defined | Organizational testing process, test design techniques, peer reviews |
+| L4 | Measured | Quantitative quality metrics, statistical process control, product quality evaluation |
+| L5 | Optimization | Data-driven continuous improvement, defect prevention, quality control |
 
-**Assessment por area de proceso:**
+**Assessment per process area:**
 - Test Policy & Strategy
 - Test Planning
 - Test Monitoring & Control
@@ -129,15 +131,15 @@ Evaluacion contra los 5 niveles de TMMi (Test Maturity Model integration).
 - Non-functional Testing
 - Peer Reviews
 
-**Entregable:** Nivel actual con evidencia por area de proceso. Gap analysis hacia nivel objetivo.
+**Deliverable:** Current level with evidence per process area. Gap analysis toward target level.
 
 ### S2: Test Coverage Analysis
 
-Analisis de cobertura de testing por multiples dimensiones.
+Test coverage analysis across multiple dimensions.
 
-**Cobertura por tipo:**
+**Coverage by type:**
 
-| Tipo | Cobertura Actual | Target | Gap |
+| Type | Current Coverage | Target | Gap |
 |---|---|---|---|
 | Functional | ...% | ...% | ... |
 | Non-functional | ...% | ...% | ... |
@@ -145,30 +147,30 @@ Analisis de cobertura de testing por multiples dimensiones.
 | Performance | ...% | ...% | ... |
 | Security | ...% | ...% | ... |
 
-**Cobertura por capa:**
+**Coverage by layer:**
 
-| Capa | Tests | Automatizados | Manual | Ratio |
+| Layer | Tests | Automated | Manual | Ratio |
 |---|---|---|---|---|
 | Unit | ... | ... | ... | ...% |
 | Integration | ... | ... | ... | ...% |
 | API | ... | ... | ... | ...% |
 | E2E | ... | ... | ... | ...% |
 
-**Cobertura por nivel de riesgo:**
-- Critico: ...% cobertura
-- Alto: ...% cobertura
-- Medio: ...% cobertura
-- Bajo: ...% cobertura
+**Coverage by risk level:**
+- Critical: ...% coverage
+- High: ...% coverage
+- Medium: ...% coverage
+- Low: ...% coverage
 
-**Automation ratio:** % de tests automatizados vs total. Trend analysis si hay historico.
+**Automation ratio:** % of automated tests vs total. Trend analysis if historical data available.
 
 ### S3: Tool Landscape Assessment
 
-Evaluacion de herramientas actuales vs recomendadas.
+Evaluation of current vs recommended tools.
 
-**Categorias de herramientas:**
+**Tool categories:**
 
-| Categoria | Herramienta Actual | Madurez (1-5) | Adopcion (%) | Recomendacion |
+| Category | Current Tool | Maturity (1-5) | Adoption (%) | Recommendation |
 |---|---|---|---|---|
 | Test Management | ... | ... | ... | ... |
 | Automation Framework | ... | ... | ... | ... |
@@ -179,52 +181,52 @@ Evaluacion de herramientas actuales vs recomendadas.
 | Mobile Testing | ... | ... | ... | ... |
 | Accessibility Testing | ... | ... | ... | ... |
 
-**Criterios de evaluacion:**
-- Madurez del producto (estabilidad, roadmap, comunidad)
-- Integracion con stack existente
-- Curva de aprendizaje
-- Costo de propiedad (licencias, infraestructura, mantenimiento)
-- Soporte y ecosistema
+**Evaluation criteria:**
+- Product maturity (stability, roadmap, community)
+- Integration with existing stack
+- Learning curve
+- Total cost of ownership (licenses, infrastructure, maintenance)
+- Support and ecosystem
 
 ### S4: PITT Methodology Alignment
 
-Evaluacion de readiness para Equipos de Testing Independientes (PITT).
+Readiness evaluation for Independent Testing Teams (PITT).
 
-**Dimensiones de evaluacion:**
+**Evaluation dimensions:**
 
-| Dimension | Score (1-5) | Evidencia |
+| Dimension | Score (1-5) | Evidence |
 |---|---|---|
-| Separacion de concerns (dev vs QA) | ... | ... |
+| Separation of concerns (dev vs QA) | ... | ... |
 | Governance model | ... | ... |
 | Communication protocols | ... | ... |
 | Defect management process | ... | ... |
 | Test artifact independence | ... | ... |
 | Reporting & metrics | ... | ... |
 
-**Modelo de interaccion PITT:**
-- Punto de contacto entre equipos de desarrollo y testing
-- Flujo de comunicacion para requerimientos, defectos y releases
-- Escalation path para bloqueos
-- Cadencia de reporting y review
+**PITT interaction model:**
+- Contact point between development and testing teams
+- Communication flow for requirements, defects, and releases
+- Escalation path for blockers
+- Reporting and review cadence
 
-**Readiness score:** Promedio ponderado de dimensiones. >3.5 = ready for PITT. <3.5 = requiere preparacion previa.
+**Readiness score:** Weighted average of dimensions. >3.5 = ready for PITT. <3.5 = requires prior preparation.
 
 ### S5: QA Team Composition Model
 
-Modelado de perfiles necesarios y analisis de gaps.
+Profile modeling and gap analysis.
 
-**Perfiles requeridos:**
+**Required profiles:**
 
-| Perfil | Cantidad | Seniority | Certificaciones | Rol |
+| Profile | Quantity | Seniority | Certifications | Role |
 |---|---|---|---|---|
-| Test Analyst | ... | Jr/Mid/Sr | ISTQB FL/AL | Diseno y ejecucion de tests funcionales |
-| Automation Engineer | ... | Mid/Sr | ISTQB TAE | Desarrollo y mantenimiento de framework de automatizacion |
-| Performance Tester | ... | Sr | ISTQB Performance | Diseno y ejecucion de tests de performance |
-| Security Tester | ... | Sr | ISTQB Security/CEH | Testing de seguridad y vulnerability assessment |
-| Test Manager | ... | Sr/Lead | ISTQB TM-AL | Gestion del equipo, planning, reporting |
-| Quality Mobilizer | ... | Lead | Multiple | Transformacion de calidad, coaching, mejora continua |
+| Test Analyst | ... | Jr/Mid/Sr | ISTQB FL/AL | Functional test design and execution |
+| Automation Engineer | ... | Mid/Sr | ISTQB TAE | Automation framework development and maintenance |
+| Performance Tester | ... | Sr | ISTQB Performance | Performance test design and execution |
+| Security Tester | ... | Sr | ISTQB Security/CEH | Security testing and vulnerability assessment |
+| Test Manager | ... | Sr/Lead | ISTQB TM-AL | Team management, planning, reporting |
+| Quality Mobilizer | ... | Lead | Multiple | Quality transformation, coaching, continuous improvement |
 
-**Mapeo de certificaciones:**
+**Certification mapping:**
 - ISTQB Foundation Level (FL) — baseline para todos
 - ISTQB Advanced Level Test Analyst (AL-TA)
 - ISTQB Advanced Level Test Manager (AL-TM)
@@ -234,15 +236,15 @@ Modelado de perfiles necesarios y analisis de gaps.
 - ISTQB Performance Testing
 - ISTQB Security Testing
 
-**Modelo de allocation:** FTE distribution por tipo de testing y fase del proyecto.
+**Allocation model:** FTE distribution by testing type and project phase.
 
 ### S6: Test Factory Design
 
-Diseno del modelo de test factory para industrializacion del testing.
+Test factory model design for testing industrialization.
 
-**Componentes del Test Factory:**
+**Test Factory Components:**
 
-1. **Procesos estandarizados**
+1. **Standardized processes**
    - Test strategy template
    - Test plan template
    - Test case design standards
@@ -250,20 +252,20 @@ Diseno del modelo de test factory para industrializacion del testing.
    - Release qualification checklist
 
 2. **Governance**
-   - Quality gates por fase
+   - Quality gates per phase
    - Entry/exit criteria
    - Escalation matrix
-   - Review board (periodicidad, participantes, scope)
+   - Review board (frequency, participants, scope)
 
 3. **Metrics Dashboard**
    - Test execution progress
    - Defect density & trend
    - Automation ratio evolution
    - Test coverage by risk
-   - Escape rate (defectos en produccion post-release)
+   - Escape rate (defects in production post-release)
    - Cost of quality (prevention vs detection vs failure)
 
-4. **Frameworks estandarizados**
+4. **Standardized frameworks**
    - Automation framework architecture (Page Object, Screenplay, etc.)
    - Data management strategy (test data, environments)
    - Reporting templates
@@ -272,66 +274,66 @@ Diseno del modelo de test factory para industrializacion del testing.
    - Lessons learned repository
    - Reusable test assets
    - Best practices documentation
-   - Onboarding guide para nuevos testers
+   - Onboarding guide for new testers
 
-6. **Mejora continua**
-   - Retrospectivas de calidad (periodicidad)
+6. **Continuous improvement**
+   - Quality retrospectives (frequency)
    - Innovation time (exploratory testing, new tools evaluation)
-   - Benchmarking interno y externo
+   - Internal and external benchmarking
 
 ### S7: QA Transformation Roadmap
 
-Hoja de ruta de transformacion de QA en 3 horizontes.
+QA transformation roadmap across 3 horizons.
 
-**Horizonte 1 — Quick Wins (0-3 meses):**
-- Establecer metricas baseline
-- Implementar defect management process
-- Quick automation wins (smoke tests, regression critica)
-- Estandarizar test plans y templates
+**Horizon 1 — Quick Wins (0-3 months):**
+- Establish baseline metrics
+- Implement defect management process
+- Quick automation wins (smoke tests, critical regression)
+- Standardize test plans and templates
 
-**Horizonte 2 — Medium-term (3-9 meses):**
-- Implementar automation framework
+**Horizon 2 — Medium-term (3-9 months):**
+- Implement automation framework
 - Shift-left initiatives (unit test coaching, static analysis)
 - Performance testing baseline
-- Modelo PITT operativo
-- Training y certificacion ISTQB
+- Operational PITT model
+- ISTQB training and certification
 
-**Horizonte 3 — Strategic (9-18 meses):**
-- Test Factory operativo y maduro
-- TMMi nivel objetivo alcanzado
+**Horizon 3 — Strategic (9-18 months):**
+- Operational and mature Test Factory
+- Target TMMi level achieved
 - AI-augmented testing (test generation, visual testing, self-healing)
-- QA as enabler de continuous delivery
-- Quality engineering culture (calidad como responsabilidad de todos)
+- QA as continuous delivery enabler
+- Quality engineering culture (quality as everyone's responsibility)
 
-**Indicadores de magnitud de inversion (NOT prices):**
-- FTE-meses por horizonte
-- Licencias requeridas (cantidad, tipo)
-- Infraestructura de testing (ambientes, datos)
-- Capacitacion (horas-persona, certificaciones)
+**Investment magnitude indicators (NOT prices):**
+- FTE-months per horizon
+- Required licenses (quantity, type)
+- Testing infrastructure (environments, data)
+- Training (person-hours, certifications)
 
-> **Disclaimer obligatorio:** Las magnitudes presentadas son estimaciones basadas en drivers identificados. Los valores finales dependen de negociacion comercial, condiciones de mercado y contexto especifico del cliente.
+> **Mandatory disclaimer:** The magnitudes presented are estimates based on identified drivers. Final values depend on commercial negotiation, market conditions, and client-specific context.
 
 ## Escalation to Human Architect
 
-- Requisitos regulatorios especificos del sector (pharma validation, fintech compliance)
-- Conflictos organizacionales entre desarrollo y QA
-- Decisiones de outsourcing vs insourcing de QA
-- Evaluacion de herramientas con licenciamiento complejo
-- Integracion con procesos de seguridad corporativos
-- Transicion de vendor de QA existente
+- Sector-specific regulatory requirements (pharma validation, fintech compliance)
+- Organizational conflicts between development and QA
+- QA outsourcing vs insourcing decisions
+- Tool evaluation with complex licensing
+- Integration with corporate security processes
+- Transition from existing QA vendor
 
 ## Validation Gate
 
-- [ ] Nivel TMMi actual identificado con evidencia por area de proceso
-- [ ] Cobertura de testing analizada por tipo, capa y nivel de riesgo
-- [ ] Landscape de herramientas evaluado con scores de madurez y adopcion
-- [ ] Alineacion PITT evaluada con readiness score
-- [ ] Modelo de composicion de equipo con perfiles, certificaciones y allocation
-- [ ] Test factory disenado con procesos, governance, metricas y frameworks
-- [ ] Roadmap en 3 horizontes con milestones de madurez por fase
-- [ ] Magnitudes de inversion documentadas (NUNCA precios) con disclaimer
-- [ ] Evidencia tagueada con [CODIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]
-- [ ] Cross-references entre secciones (TMMi S1 informa roadmap S7)
+- [ ] Current TMMi level identified with evidence per process area
+- [ ] Test coverage analyzed by type, layer, and risk level
+- [ ] Tool landscape evaluated with maturity and adoption scores
+- [ ] PITT alignment evaluated with readiness score
+- [ ] Team composition model with profiles, certifications, and allocation
+- [ ] Test factory designed with processes, governance, metrics, and frameworks
+- [ ] 3-horizon roadmap with maturity milestones per phase
+- [ ] Investment magnitudes documented (NEVER prices) with disclaimer
+- [ ] Evidence tagged with [CODE], [CONFIG], [DOC], [INFERENCE], [ASSUMPTION]
+- [ ] Cross-references between sections (TMMi S1 informs roadmap S7)
 
 ## Knowledge Graph
 
@@ -369,66 +371,66 @@ graph TD
 
 ## Output Templates
 
-**Formato MD (default):**
+**MD format (default):**
 
 ```
 # QA Service Discovery: {project_name}
 ## S1: Quality Maturity Model Assessment (TMMi)
-### Nivel Actual | Assessment por Area de Proceso | Gap Analysis
+### Current Level | Assessment per Process Area | Gap Analysis
 
 ## S2: Test Coverage Analysis
-### Cobertura por Tipo | por Capa | por Nivel de Riesgo | Automation Ratio
+### Coverage by Type | by Layer | by Risk Level | Automation Ratio
 
 ## S3: Tool Landscape Assessment
-### Herramientas por Categoria | Madurez | Adopcion | Recomendaciones
+### Tools by Category | Maturity | Adoption | Recommendations
 
 ## S4: PITT Methodology Alignment
-### Dimensiones | Modelo de Interaccion | Readiness Score
+### Dimensions | Interaction Model | Readiness Score
 
 ## S5: QA Team Composition Model
-### Perfiles | Certificaciones ISTQB | Allocation
+### Profiles | ISTQB Certifications | Allocation
 
 ## S6: Test Factory Design
-### Procesos | Governance | Metrics Dashboard | Frameworks | Knowledge Base
+### Processes | Governance | Metrics Dashboard | Frameworks | Knowledge Base
 
 ## S7: QA Transformation Roadmap
 ### H1 Quick Wins (0-3m) | H2 Medium-term (3-9m) | H3 Strategic (9-18m)
 ```
 
-**Formato XLSX:**
-Dashboard de madurez QA en hoja de calculo: radar chart de TMMi por area de proceso, heatmap de cobertura por tipo y capa, matriz de herramientas con scoring, y roadmap de transformacion con milestones y dependencias.
+**XLSX format:**
+QA maturity dashboard in spreadsheet: TMMi radar chart by process area, coverage heatmap by type and layer, tool matrix with scoring, and transformation roadmap with milestones and dependencies.
 
-**Formato PPTX (bajo demanda):**
-- Filename: `{fase}_qa_service_discovery_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: TMMi Maturity Assessment, Test Coverage Heatmap, Tool Landscape, PITT Readiness Score, Team Composition Model, Test Factory Design, QA Transformation Roadmap (3 horizontes).
+**PPTX format (on demand):**
+- Filename: `{phase}_qa_service_discovery_{client}_{WIP}.pptx`
+- Generated via python-pptx with MetodologIA Design System v5. Slide master with navy gradient, Poppins titles, Trebuchet MS body, gold accents. Max 20 slides executive / 30 technical. Presenter notes with evidence references. Slides: TMMi Maturity Assessment, Test Coverage Heatmap, Tool Landscape, PITT Readiness Score, Team Composition Model, Test Factory Design, QA Transformation Roadmap (3 horizons).
 
-## Evaluacion
+## Evaluation
 
-| Dimension | Peso | Criterio (7/10 minimo) |
+| Dimension | Weight | Criterion (7/10 minimum) |
 |---|---|---|
-| Trigger Accuracy | 10% | Se activa ante keywords de QA maturity, TMMi, PITT, test factory, QA transformation; no ante testing tecnico |
-| Completeness | 25% | Las 7 secciones cubren madurez, cobertura, herramientas, PITT, equipo, factory, y roadmap con evidencia |
-| Clarity | 20% | Niveles TMMi, readiness scores, y horizontes de roadmap son autoexplicativos con criterios medibles |
-| Robustness | 20% | Edge cases (sin equipo QA, solo manual, multi-equipo, outsourcing, regulacion) tienen workarounds |
-| Efficiency | 10% | Variante ejecutiva (S1+S2+S7) entrega snapshot de madurez y roadmap sin overhead de 7 secciones |
-| Value Density | 15% | Cada seccion produce scores accionables, gaps cuantificados, y recomendaciones con magnitudes de inversion |
+| Trigger Accuracy | 10% | Activates on QA maturity, TMMi, PITT, test factory, QA transformation keywords; not on technical testing |
+| Completeness | 25% | All 7 sections cover maturity, coverage, tools, PITT, team, factory, and roadmap with evidence |
+| Clarity | 20% | TMMi levels, readiness scores, and roadmap horizons are self-explanatory with measurable criteria |
+| Robustness | 20% | Edge cases (no QA team, manual only, multi-team, outsourcing, regulation) have workarounds |
+| Efficiency | 10% | Executive variant (S1+S2+S7) delivers maturity snapshot and roadmap without 7-section overhead |
+| Value Density | 15% | Each section produces actionable scores, quantified gaps, and recommendations with investment magnitudes |
 
-**Umbral minimo:** 7/10 en cada dimension. Composite ponderado >= 7.0 para considerar el output aceptable.
+**Minimum threshold:** 7/10 per dimension. Weighted composite >= 7.0 to consider output acceptable.
 
 ---
 
 ## Output Artifact
 
-**Primary:** `QA_Service_Discovery_{project}.md` — Assessment completo de 7 secciones con evaluacion de madurez TMMi, analisis de cobertura, landscape de herramientas, alineacion PITT, composicion de equipo, diseno de test factory, y roadmap de transformacion de QA.
+**Primary:** `QA_Service_Discovery_{project}.md` — Complete 7-section assessment with TMMi maturity evaluation, coverage analysis, tool landscape, PITT alignment, team composition, test factory design, and QA transformation roadmap.
 
 | **HTML** | `{fase}_QA_Service_Discovery_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Light-First Technical. Incluye radar chart de madurez TMMi, heatmap de cobertura por capa, y roadmap de transformacion en 3 horizontes. |
-| **DOCX** | `{fase}_qa_service_discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de assessment TMMi, cobertura por capa y landscape de herramientas con zebra striping. Encabezados y pies de página con branding MetodologIA. |
+| **DOCX** | `{phase}_qa_service_discovery_{client}_{WIP}.docx` | Generated via python-docx with MetodologIA Design System v5. Cover page, auto-generated TOC, Poppins headings (navy), Trebuchet MS body, gold accents. TMMi assessment tables, coverage by layer and tool landscape with zebra striping. Branded headers and footers. |
 
-**Diagramas incluidos:**
-- Radar chart de madurez TMMi por area de proceso
-- Heatmap de cobertura por tipo y capa
-- Modelo de interaccion PITT (flowchart)
-- Roadmap de transformacion (gantt)
+**Included diagrams:**
+- TMMi maturity radar chart by process area
+- Coverage heatmap by type and layer
+- PITT interaction model (flowchart)
+- Transformation roadmap (gantt)
 
 ---
-**Autor:** Javier Montaño · Comunidad MetodologIA | **Ultima actualizacion:** 14 de marzo de 2026
+**Author:** Javier Montano · Comunidad MetodologIA | **Last updated:** March 14, 2026

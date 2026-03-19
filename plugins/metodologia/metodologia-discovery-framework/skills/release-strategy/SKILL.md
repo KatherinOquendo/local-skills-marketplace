@@ -7,14 +7,8 @@ description: >
   GitFlow, feature flags, or CI/CD pipeline strategy.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto> [sistema-o-plataforma]"
-version: 1.0.0
-tags:
-  - release-management
-  - deployment
-  - ci-cd
-  - devops
-  - rollback
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -25,54 +19,62 @@ allowed-tools:
   - WebFetch
 ---
 
-# Estrategia de Release
+# Release Strategy
 
-Diseno de estrategia de release management, patrones de despliegue y procedimientos
-de rollback alineados con la madurez del equipo y los requisitos del negocio.
+Design of release management strategy, deployment patterns, and rollback procedures
+aligned with team maturity and business requirements.
+
+## Grounding Guideline
+
+> *A release without strategy is a deploy with crossed fingers.*
+
+1. **Controlled risk.** Feature flags, canary releases, and blue-green deployments exist to reduce the blast radius.
+2. **Rollback as a first-class citizen.** If you cannot revert in minutes, you are not ready to deploy.
+3. **Post-release observability.** The first 30 minutes after deploy define success — metrics must be ready before the release.
 
 ## TL;DR
 
-- Evalua madurez actual de release management y CI/CD pipeline
-- Selecciona branching strategy optima (trunk-based, GitFlow, GitHub Flow) segun contexto
-- Define patrones de deployment (blue-green, canary, rolling, recreate) por servicio
-- Disena playbook de rollback con criterios de activacion automatica
-- Genera documento de estrategia completo con matriz de decision
+- Evaluates current release management and CI/CD pipeline maturity
+- Selects optimal branching strategy (trunk-based, GitFlow, GitHub Flow) based on context
+- Defines deployment patterns (blue-green, canary, rolling, recreate) per service
+- Designs rollback playbook with automatic activation criteria
+- Generates complete strategy document with decision matrix
 
 ## Inputs
 
-Parse `$1` como **nombre del proyecto**, `$2` como **sistema o plataforma objetivo**.
+Parse `$1` as **project name**, `$2` as **target system or platform**.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **Documento de Estrategia de Release** — Branching model, release cadence, versioning policy
-2. **Matriz de Deployment** — Patron de despliegue por servicio/componente con justificacion
-3. **Playbook de Rollback** — Procedimientos paso a paso con criterios de activacion
-4. **Pipeline Design** — Arquitectura de CI/CD pipeline con quality gates
-5. **Feature Flag Strategy** — Politica de feature flags, lifecycle, cleanup
+1. **Release Strategy Document** — Branching model, release cadence, versioning policy
+2. **Deployment Matrix** — Deployment pattern per service/component with justification
+3. **Rollback Playbook** — Step-by-step procedures with activation criteria
+4. **Pipeline Design** — CI/CD pipeline architecture with quality gates
+5. **Feature Flag Strategy** — Feature flag policy, lifecycle, cleanup
 
-## Proceso
+## Process
 
-1. **Assessment de Estado Actual** — Evaluar pipeline existente, branching model, frecuencia de releases, incident history
-2. **Seleccion de Branching Strategy**:
-   | Strategy | Mejor Para | Requiere |
+1. **Current State Assessment** — Evaluate existing pipeline, branching model, release frequency, incident history
+2. **Branching Strategy Selection**:
+   | Strategy | Best For | Requires |
    |---|---|---|
-   | Trunk-based | Equipos maduros, CD | Feature flags, test coverage alto |
-   | GitHub Flow | Equipos medianos | PR reviews, CI solido |
-   | GitFlow | Releases planificados | Disciplina de branches, QA dedicado |
-3. **Diseno de Deployment Patterns** — Para cada servicio:
-   - Blue-Green: zero-downtime, rollback instantaneo, requiere 2x infra
-   - Canary: progressive rollout, deteccion temprana, requiere observabilidad
-   - Rolling: eficiente en recursos, gradual, requiere backward compatibility
-4. **Definicion de Rollback** — Criterios automaticos (error rate >X%, latency >Yms), procedimiento manual, comunicacion
-5. **Quality Gates** — Definir gates en pipeline: lint, test, security scan, performance, approval
+   | Trunk-based | Mature teams, CD | Feature flags, high test coverage |
+   | GitHub Flow | Medium teams | PR reviews, solid CI |
+   | GitFlow | Planned releases | Branch discipline, dedicated QA |
+3. **Deployment Pattern Design** — For each service:
+   - Blue-Green: zero-downtime, instant rollback, requires 2x infra
+   - Canary: progressive rollout, early detection, requires observability
+   - Rolling: resource-efficient, gradual, requires backward compatibility
+4. **Rollback Definition** — Automatic criteria (error rate >X%, latency >Yms), manual procedure, communication
+5. **Quality Gates** — Define pipeline gates: lint, test, security scan, performance, approval
 6. **Feature Flag Policy** — Lifecycle (create, enable, monitor, cleanup), ownership, technical debt prevention
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] Branching strategy justificada con contexto del equipo y negocio
 - [ ] Patron de deployment definido por servicio con trade-offs documentados
@@ -82,14 +84,14 @@ Parse `$1` como **nombre del proyecto**, `$2` como **sistema o plataforma objeti
 - [ ] Metricas de release health definidas (DORA metrics como referencia)
 - [ ] Diagrama Mermaid del pipeline y flujo de release
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Asume que existe al menos un repositorio de codigo con versionamiento (Git)
 - No implementa pipelines — disena la estrategia y arquitectura para que el equipo la ejecute
 - Feature flag strategy requiere infraestructura de flags (LaunchDarkly, Unleash, custom); si no existe, se recomienda como prerequisito
 - Estimaciones de tiempo de pipeline son referenciales y dependen de infraestructura real
 
-## Casos Borde
+## Edge Cases
 
 | Escenario | Estrategia de Manejo |
 |---|---|
@@ -98,7 +100,7 @@ Parse `$1` como **nombre del proyecto**, `$2` como **sistema o plataforma objeti
 | Regulacion que exige aprobacion manual por release | Incorporar approval gate en pipeline sin eliminar automatizacion; documentar audit trail requerido |
 | Equipo de 2 personas sin capacidad para mantener branches | Recomendar trunk-based simplificado con feature flags basicos; evitar overhead de GitFlow |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 | Decision | Habilita | Restringe | Justificacion |
 |---|---|---|---|
@@ -143,7 +145,7 @@ graph TD
 
 **Formato 2 — DOCX (playbook operativo)**
 - Filename: `Release_Playbook_{project}_{WIP|Aprobado}.docx`
-- Estructura: Procedimientos paso a paso de deployment y rollback, checklist pre-release, contactos de escalation
+- Estructura: Procedimientos step by step de deployment y rollback, checklist pre-release, contactos de escalation
 - Optimizado para uso operativo por equipos de SRE/DevOps
 
 **Formato 3 — HTML (bajo demanda)**
@@ -156,7 +158,7 @@ graph TD
 
 **Formato 5 — PPTX (bajo demanda)**
 - Filename: `{fase}_release_strategy_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Montserrat, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Release Maturity Assessment, Branching Strategy, Deployment Patterns Matrix, Pipeline Design con Quality Gates, Rollback Playbook, Feature Flag Policy, DORA Metrics.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos en Poppins, cuerpo en Trebuchet MS, acentos en gold. Máx 20 slides ejecutivo / 30 técnico. Notas del presentador con referencias de evidencia. Slides: Release Maturity Assessment, Branching Strategy, Deployment Patterns Matrix, Pipeline Design con Quality Gates, Rollback Playbook, Feature Flag Policy, DORA Metrics.
 
 ## Evaluacion
 
@@ -164,7 +166,7 @@ graph TD
 |-----------|------|----------|
 | Trigger Accuracy | 10% | Activa triggers correctos ante keywords de release, deployment, CI/CD, rollback |
 | Completeness | 25% | Cubre branching, deployment patterns, rollback, pipeline, feature flags y metricas |
-| Clarity | 20% | Playbook de rollback es ejecutable paso a paso sin ambiguedad |
+| Clarity | 20% | Playbook de rollback es ejecutable step by step sin ambiguedad |
 | Robustness | 20% | Maneja legacy sin tests, microservicios interdependientes, regulacion estricta |
 | Efficiency | 10% | Pipeline design no incluye gates redundantes; proceso escala con variante ejecutiva |
 | Value Density | 15% | Cada patron de deployment tiene trade-offs documentados y criterios de seleccion |

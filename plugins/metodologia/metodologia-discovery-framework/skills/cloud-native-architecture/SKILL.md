@@ -21,16 +21,16 @@ allowed-tools:
 
 Cloud-native architecture designs applications to fully exploit cloud platforms -- containers, orchestration, service mesh, serverless, infrastructure as code, and cost-aware engineering. This skill produces architecture documentation guiding teams from cloud readiness assessment through production-grade deployment.
 
-## Principio Rector
+## Grounding Guideline
 
-**Cloud-native no es "mover a la nube" — es diseñar PARA la nube.** Contenedores por defecto, service mesh para observabilidad, serverless donde stateless, FinOps integral desde el día uno. El objetivo no es usar servicios cloud — es explotar las propiedades de la nube: elasticidad, resiliencia, observabilidad y optimización continua de costos.
+**Cloud-native is not "moving to the cloud" — it is designing FOR the cloud.** Containers by default, service mesh for observability, serverless where stateless, integral FinOps from day one. The goal is not to use cloud services — it is to exploit cloud properties: elasticity, resilience, observability, and continuous cost optimization.
 
-### Filosofía de Cloud-Native
+### Cloud-Native Philosophy
 
-1. **Containers by default.** Todo workload comienza como contenedor. Solo se desvía a serverless (stateless, event-driven) o VM (legacy sin refactor) con justificación explícita.
-2. **Service mesh para observabilidad.** mTLS, traffic management y distributed tracing no son opcionales — son infraestructura base para operar microservicios en producción.
-3. **Serverless where stateless.** Funciones serverless para procesamiento de eventos, transformaciones, y glue code. Nunca para lógica stateful o latencia crítica.
-4. **FinOps integral.** El costo es un atributo de calidad. Se mide, se asigna, se optimiza. OpenCost desde el día uno.
+1. **Containers by default.** Every workload starts as a container. Only deviates to serverless (stateless, event-driven) or VM (legacy without refactor) with explicit justification.
+2. **Service mesh for observability.** mTLS, traffic management, and distributed tracing are not optional — they are base infrastructure for operating microservices in production.
+3. **Serverless where stateless.** Serverless functions for event processing, transformations, and glue code. Never for stateful logic or latency-critical paths.
+4. **Integral FinOps.** Cost is a quality attribute. It is measured, allocated, optimized. OpenCost from day one.
 
 ## Inputs
 
@@ -39,7 +39,7 @@ The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the *
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para assessment y container strategy, HITL para decisiones mesh/serverless y FinOps targets.
-  - **desatendido**: Cero interrupciones. Arquitectura cloud-native documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura cloud-native documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en mesh adoption y multi-cloud decisions.
   - **paso-a-paso**: Confirma cada 12-factor assessment, container design, mesh config, y FinOps plan.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -345,24 +345,24 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Kubernetes manifest templates, Helm chart structure, service mesh configuration, cost allocation report, 12-factor compliance checklist.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Monolith containerization | Containerizar monolito primero (lift-and-shift a container), luego descomponer con strangler fig. No intentar containerizacion y descomposicion simultanea. |
-| Stateful workloads en Kubernetes | Usar operators (CloudNativePG para PostgreSQL, Strimzi para Kafka). Alternativa: managed services fuera de K8s. Evaluar operational burden vs portability. |
-| Serverless a escala (>10M invocations/month) | Modelar break-even point. Container alternative mas cost-effective a alto volumen. Reserved concurrency o Fargate pueden ser mejor opcion. |
-| Industrias reguladas | Service mesh mTLS puede ser mandatorio. Image provenance requerida (SLSA, Sigstore/cosign). Multi-cloud para data residency. |
-| Small team (<5 developers) | Full K8s + mesh probablemente over-engineered. Managed K8s, skip mesh, cloud-managed services. Revisitar al crecer el equipo. |
+| Monolith containerization | Containerize monolith first (lift-and-shift to container), then decompose with strangler fig. Do not attempt containerization and decomposition simultaneously. |
+| Stateful workloads on Kubernetes | Use operators (CloudNativePG for PostgreSQL, Strimzi for Kafka). Alternative: managed services outside K8s. Evaluate operational burden vs portability. |
+| Serverless at scale (>10M invocations/month) | Model break-even point. Container alternative more cost-effective at high volume. Reserved concurrency or Fargate may be better option. |
+| Regulated industries | Service mesh mTLS may be mandatory. Image provenance required (SLSA, Sigstore/cosign). Multi-cloud for data residency. |
+| Small team (<5 developers) | Full K8s + mesh probably over-engineered. Managed K8s, skip mesh, cloud-managed services. Revisit as team grows. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Containers by default como baseline | VMs como default, serverless-first | Containers balancean portabilidad, reproducibilidad, y ecosystem de tooling (K8s, Helm, ArgoCD). Serverless solo para stateless event-driven; VMs solo para legacy sin refactor. |
-| Gateway API sobre Ingress | Ingress-NGINX, custom load balancers | Gateway API es GA (v1.2+, CNCF standard), soporta multi-tenancy nativo, y reemplaza Ingress (NGINX retiring March 2026). |
-| Karpenter sobre Cluster Autoscaler (EKS) | Cluster Autoscaler, manual scaling | Karpenter provee 30-60s provisioning (vs 2-5min CA), mejor bin-packing, y native spot/OD mix. CA solo cuando Karpenter no disponible (AKS, on-prem). |
-| OpenCost como baseline FinOps | Solo cloud billing dashboards | OpenCost es CNCF Incubating, gratuito, Prometheus-native, y provee cost allocation a nivel namespace/pod. Cloud billing no tiene granularidad K8s. |
+| Containers by default as baseline | VMs as default, serverless-first | Containers balance portability, reproducibility, and tooling ecosystem (K8s, Helm, ArgoCD). Serverless only for stateless event-driven; VMs only for legacy without refactor. |
+| Gateway API over Ingress | Ingress-NGINX, custom load balancers | Gateway API is GA (v1.2+, CNCF standard), supports native multi-tenancy, and replaces Ingress (NGINX retiring March 2026). |
+| Karpenter over Cluster Autoscaler (EKS) | Cluster Autoscaler, manual scaling | Karpenter provides 30-60s provisioning (vs 2-5min CA), better bin-packing, and native spot/OD mix. CA only when Karpenter not available (AKS, on-prem). |
+| OpenCost as baseline FinOps | Cloud billing dashboards only | OpenCost is CNCF Incubating, free, Prometheus-native, and provides cost allocation at namespace/pod level. Cloud billing lacks K8s granularity. |
 
 ## Knowledge Graph
 
@@ -466,7 +466,7 @@ Appendix B: Helm Values per Environment
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Montserrat, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+- Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
 
 ## Evaluacion
 

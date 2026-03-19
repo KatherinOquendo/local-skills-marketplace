@@ -7,14 +7,8 @@ description: >
   or supply chain security.
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "<proyecto> [repositorio-o-sistema]"
-version: 1.0.0
-tags:
-  - dependencies
-  - security
-  - vulnerabilities
-  - license-compliance
-  - supply-chain
-  - moat
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -30,13 +24,21 @@ allowed-tools:
 Mapeo exhaustivo de dependencias de sistema y librerias, con evaluacion de vulnerabilidades,
 riesgo de upgrade y cumplimiento de licencias.
 
+## Grounding Guideline
+
+> *Invisible dependencies are the number one cause of cascading failures.*
+
+1. **Map before moving.** No transformation can be planned without a complete map of technical and organizational dependencies.
+2. **Dependency does not equal risk; unmanaged dependency equals risk.** The problem is not having dependencies — it is not knowing them.
+3. **Human dependencies are as critical as technical ones.** Knowledge concentrated in one person is a single point of failure dependency.
+
 ## TL;DR
 
-- Construye grafo completo de dependencias directas y transitivas del sistema
-- Identifica vulnerabilidades conocidas (CVEs) y evalua riesgo de supply chain
-- Analiza compatibilidad de licencias y riesgos de compliance
-- Evalua riesgo y esfuerzo de upgrades pendientes
-- Genera plan de upgrade priorizado con estrategia de mitigacion
+- Builds complete graph of direct and transitive system dependencies
+- Identifies known vulnerabilities (CVEs) and evaluates supply chain risk
+- Analyzes license compatibility and compliance risks
+- Evaluates risk and effort of pending upgrades
+- Generates prioritized upgrade plan with mitigation strategy
 
 ## Inputs
 
@@ -47,30 +49,30 @@ Parse `$1` como **nombre del proyecto**, `$2` como **repositorio o sistema a ana
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 
-## Entregables
+## Deliverables
 
-1. **Grafo de Dependencias** — Mapa visual de dependencias directas y transitivas (Mermaid)
-2. **Matriz de Riesgo** — Vulnerabilidades, mantenibilidad, bus factor por dependencia
-3. **Reporte de Licencias** — Inventario de licencias, compatibilidad, riesgos de compliance
-4. **Plan de Upgrade** — Priorizacion de upgrades con estimacion de esfuerzo y riesgo
-5. **Supply Chain Assessment** — Evaluacion de riesgo de cadena de suministro
+1. **Dependency Graph** — Visual map of direct and transitive dependencies (Mermaid)
+2. **Risk Matrix** — Vulnerabilities, maintainability, bus factor per dependency
+3. **License Report** — License inventory, compatibility, compliance risks
+4. **Upgrade Plan** — Prioritized upgrades with effort and risk estimation
+5. **Supply Chain Assessment** — Supply chain risk evaluation
 
-## Proceso
+## Process
 
-1. **Extraccion de Dependencias** — Parsear manifiestos (package.json, pom.xml, build.gradle, requirements.txt, go.mod, Cargo.toml, etc.) para construir arbol completo
-2. **Analisis de Profundidad** — Evaluar cada dependencia:
-   | Factor | Indicador Sano | Indicador Riesgo |
+1. **Dependency Extraction** — Parse manifests (package.json, pom.xml, build.gradle, requirements.txt, go.mod, Cargo.toml, etc.) to build complete tree
+2. **Depth Analysis** — Evaluate each dependency:
+   | Factor | Healthy Indicator | Risk Indicator |
    |---|---|---|
-   | Ultima actualizacion | <6 meses | >18 meses |
-   | Mantenedores activos | >3 | 1 (bus factor critico) |
-   | Vulnerabilidades abiertas | 0 criticas | Cualquier CVE critica |
-   | Versiones atrasadas | 0-1 major | >2 major versions |
-3. **Scan de Vulnerabilidades** — Cruzar dependencias contra bases de datos CVE, identificar severity y exploitability
-4. **Auditoria de Licencias** — Clasificar licencias (permissive, open-source, proprietary), detectar incompatibilidades
-5. **Evaluacion de Upgrade Risk** — Para cada upgrade pendiente: breaking changes, esfuerzo de migracion, dependencias afectadas
-6. **Generacion de Plan** — Priorizar upgrades por riesgo de seguridad, luego mantenibilidad, luego features
+   | Last update | <6 months | >18 months |
+   | Active maintainers | >3 | 1 (critical bus factor) |
+   | Open vulnerabilities | 0 critical | Any critical CVE |
+   | Versions behind | 0-1 major | >2 major versions |
+3. **Vulnerability Scan** — Cross-reference dependencies against CVE databases, identify severity and exploitability
+4. **License Audit** — Classify licenses (permissive, open-source, proprietary), detect incompatibilities
+5. **Upgrade Risk Evaluation** — For each pending upgrade: breaking changes, migration effort, affected dependencies
+6. **Plan Generation** — Prioritize upgrades by security risk, then maintainability, then features
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] 100% de dependencias directas inventariadas con version actual y latest
 - [ ] Dependencias transitivas mapeadas al menos 3 niveles de profundidad
@@ -80,30 +82,30 @@ Parse `$1` como **nombre del proyecto**, `$2` como **repositorio o sistema a ana
 - [ ] Supply chain risks identificados con mitigacion
 - [ ] Diagrama Mermaid del grafo de dependencias generado
 
-## Supuestos y Limites
+## Assumptions and Limits
 
-- Requiere acceso a manifiestos de dependencias (package.json, pom.xml, etc.) para analisis completo
-- Scan de CVEs depende de bases de datos publicas; vulnerabilidades zero-day no seran detectadas
-- Analisis de licencias no reemplaza revision legal formal — identifica riesgos para escalation
-- Dependencias transitivas mas alla de nivel 3 se reportan como resumen, no detalle individual
+- Requires access to dependency manifests (package.json, pom.xml, etc.) for complete analysis
+- CVE scanning depends on public databases; zero-day vulnerabilities will not be detected
+- License analysis does not replace formal legal review — it identifies risks for escalation
+- Transitive dependencies beyond level 3 are reported as summary, not individual detail
 
-## Casos Borde
+## Edge Cases
 
-| Escenario | Estrategia de Manejo |
+| Scenario | Handling Strategy |
 |---|---|
-| Monorepo con multiples lenguajes | Analizar cada manifiesto por separado, consolidar riesgos en matriz unificada con tag de lenguaje |
-| Dependencias internas (private registry) | Documentar como gap en inventario, evaluar con informacion disponible; recomendar audit interno |
-| Dependencia abandonada sin alternativa | Flag como riesgo critico; proponer fork, rewrite o encapsulacion para aislar impacto |
-| Licencia ambigua o custom | Flag para revision legal, no asumir compatibilidad; clasificar como riesgo alto hasta resolucion |
-| Circular dependencies entre modulos internos | Detectar y reportar ciclos; recomendar refactoring con dependency inversion como remediacion |
+| Monorepo with multiple languages | Analyze each manifest separately, consolidate risks in unified matrix with language tag |
+| Internal dependencies (private registry) | Document as gap in inventory, evaluate with available information; recommend internal audit |
+| Abandoned dependency without alternative | Flag as critical risk; propose fork, rewrite, or encapsulation to isolate impact |
+| Ambiguous or custom license | Flag for legal review, do not assume compatibility; classify as high risk until resolution |
+| Circular dependencies between internal modules | Detect and report cycles; recommend refactoring with dependency inversion as remediation |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Habilita | Restringe | Justificacion |
+| Decision | Enables | Constrains | Justification |
 |---|---|---|---|
-| Profundidad de 3 niveles para transitivas | Balance entre visibilidad y volumen de datos | Puede perder riesgos en niveles profundos | 90% de vulnerabilidades explotables estan en los primeros 3 niveles |
-| Priorizacion security-first en plan de upgrade | Remedia riesgos criticos primero | Puede posponer upgrades de features utiles | Vulnerabilidades criticas tienen impacto inmediato en produccion |
-| Scan automatizado + revision manual | Velocidad con precision | Requiere expertise para revisar falsos positivos | Herramientas automaticas generan ruido; revision manual filtra lo accionable |
+| 3-level depth for transitive dependencies | Balance between visibility and data volume | May miss risks at deeper levels | 90% of exploitable vulnerabilities are in the first 3 levels |
+| Security-first prioritization in upgrade plan | Remediates critical risks first | May postpone useful feature upgrades | Critical vulnerabilities have immediate production impact |
+| Automated scan + manual review | Speed with precision | Requires expertise to review false positives | Automated tools generate noise; manual review filters actionable items |
 
 ## Knowledge Graph
 
@@ -152,11 +154,11 @@ graph TD
 
 **Formato 4 — DOCX (circulación formal)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
-- Generado via python-docx con Metodología Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Montserrat en cuerpo, acentos dorados. Para circulación formal y auditoría.
+- Generado via python-docx con Metodología Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
 
 **Formato 5 — PPTX (bajo demanda)**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
 
 ## Evaluacion
 

@@ -7,6 +7,8 @@ description: >
   Use when the user asks to "assess change readiness", "evaluate organizational readiness", "change impact analysis",
   "resistance mapping", "ADKAR assessment", "readiness scorecard", or mentions "Phase 5b", "adoption risk",
   "organizational capacity for change".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,7 +22,7 @@ allowed-tools:
 
 Generates a structured organizational readiness evaluation: stakeholder impact analysis, ADKAR-based readiness scoring, resistance heat map, change capacity assessment, and prioritized intervention plan.
 
-## Guiding Principle
+## Grounding Guideline
 
 > *You cannot adopt what you do not understand, and you cannot understand what you have not diagnosed. Resistance to change is not the enemy — it is information.*
 
@@ -206,18 +208,18 @@ KPIs for tracking readiness over time: adoption rate, proficiency rate, utilizat
 - `Read ${CLAUDE_SKILL_DIR}/prompts/use-case-prompts.md` — Ready-to-use prompts
 - `Read ${CLAUDE_SKILL_DIR}/prompts/metaprompts.md` — Meta-strategies
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Organization undergoing simultaneous M&A and technology transformation | Produce dual-org ADKAR scorecards (acquiring + acquired entity); create a combined view with weighted averages; flag culture clash as a dedicated risk dimension |
 | ADKAR scores are uniformly low (<2) across all stakeholder groups | Escalate to executive sponsor immediately; recommend a "readiness sprint" (4-6 weeks) before proceeding with transformation; the organization is not ready to absorb the change |
 | Change readiness assessment requested but no stakeholder map exists | Infer stakeholder groups from org chart, project RACI, or solution roadmap team section; tag all groupings as [INFERENCIA]; recommend stakeholder mapping as a prerequisite |
 | Assessment reveals executive sponsor is the primary source of resistance | Document the finding with observable indicators only (not personal judgments); escalate to the next governance level; recommend executive coaching or sponsor replacement as intervention options |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Use ADKAR as the primary readiness framework | Kotter 8-Step or Lewin 3-Phase models | ADKAR provides per-dimension scoring at the individual/group level, enabling targeted interventions; Kotter and Lewin are organizational-level and harder to operationalize for specific barrier points |
 | Measure readiness at stakeholder-group level, not individual level | Individual-level assessment for every affected person | Individual assessment does not scale beyond 50 people; group-level patterns are sufficient for intervention design and respect assessment effort constraints |

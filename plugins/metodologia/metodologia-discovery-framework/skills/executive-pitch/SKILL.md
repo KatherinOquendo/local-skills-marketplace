@@ -7,6 +7,8 @@ description: >
   Use when the user asks to "create a pitch", "build a business case", "justify the investment",
   "present to executives", "ROI analysis", "executive summary", or mentions "C-level presentation",
   "budget approval", "NPV", "IRR", "payback period", "business case", "Phase 5b".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -20,15 +22,15 @@ allowed-tools:
 
 Generates C-level presentations with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models (NPV, IRR, payback), and decision frameworks. Uses Problem-Agitate-Solve (PAS) persuasion architecture.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un pitch sin números es una opinión. Un pitch sin urgencia es un informe.** El executive pitch transforma meses de análisis técnico en una narrativa de decisión que un C-level puede aprobar en 30 minutos. Cada slide, cada dato, cada visual tiene un solo propósito: que el decisor diga "sí" con confianza.
+**A pitch without numbers is an opinion. A pitch without urgency is a report.** The executive pitch transforms months of technical analysis into a decision narrative that a C-level can approve in 30 minutes. Every slide, every data point, every visual has a single purpose: for the decision-maker to say "yes" with confidence.
 
-### Filosofía de Persuasión Ejecutiva
+### Executive Persuasion Philosophy
 
-1. **Datos > opiniones.** Cada afirmación lleva un número. Cada número lleva una fuente o supuesto explícito. Sin números no hay credibilidad.
-2. **Costo de inacción > costo de acción.** El anchor no es el precio — es lo que pasa si NO se actúa. La urgencia no se declara, se demuestra con el burn rate de inacción.
-3. **Opciones, no mandatos.** 3 opciones con trade-offs claros. El decisor elige — el consultor recomienda con evidencia, no con presión.
+1. **Data > opinions.** Every assertion carries a number. Every number carries a source or explicit assumption. Without numbers there is no credibility.
+2. **Cost of inaction > cost of action.** The anchor is not the price — it is what happens if you do NOT act. Urgency is not declared; it is demonstrated with the inaction burn rate.
+3. **Options, not mandates.** 3 options with clear trade-offs. The decision-maker chooses — the consultant recommends with evidence, not pressure.
 
 ## Inputs
 
@@ -40,7 +42,7 @@ Parse from `$ARGUMENTS`. Adapts emphasis based on audience.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para construcción de narrativa y modelado financiero, HITL para validación de claims y call to action.
-  - **desatendido**: Cero interrupciones. Pitch completo auto-generado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Pitch completo auto-generado. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en financial model y call to action.
   - **paso-a-paso**: Confirma problem statement, cada value pillar, financial model, y call to action.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -179,18 +181,18 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Mindmap: 4 value pillars with key metrics
 - Gantt chart: investment timeline by phase
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | No financial data from prior phases available; all metrics must be estimated | Use industry benchmarks for all projections; tag every figure as [SUPUESTO]; add sensitivity analysis with wider variance bands (+/-30%) |
 | Decision-maker changes between pitch preparation and presentation (e.g., CFO replaced by CTO) | Re-run audience conditional logic; restructure lead section and emphasis; preserve financial model but shift narrative framing |
 | Client explicitly forbids ROI/NPV claims ("we don't trust projections") | Pivot to qualitative value narrative: risk reduction, capability uplift, competitive positioning; present cost as magnitude ranges only |
 | Budget is pre-approved but scope is contested among multiple sponsors | Skip financial justification sections; focus on scope alignment via 3-option comparison; add stakeholder concern mapping per option |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Use Problem-Agitate-Solve (PAS) as default persuasion architecture | AIDA (Attention-Interest-Desire-Action) or Minto Pyramid | PAS anchors on cost of inaction, which resonates strongest with C-level budget decisions; AIDA is better for marketing, Minto for analytical reports |
 | Always present 3 options (Do Nothing vs Alternative vs Recommended) | Present single recommended option | Multiple options give the decision-maker agency; single-option pitches feel prescriptive and trigger resistance in consensus-driven cultures |
@@ -240,7 +242,7 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `06_Pitch_Ejecutivo_{cliente}_{WIP}.docx`
-- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo MetodologIA Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`

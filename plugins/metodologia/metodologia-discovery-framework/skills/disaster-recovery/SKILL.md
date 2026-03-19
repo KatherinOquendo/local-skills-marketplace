@@ -21,13 +21,21 @@ allowed-tools:
 
 Disaster recovery planning ensures organizational resilience through defined recovery objectives, failover designs, and tested recovery procedures. The skill produces DR plans, recovery runbooks, and test schedules that minimize downtime and data loss during disruptive events.
 
+## Grounding Guideline
+
+> *A recovery plan that is never tested is a documented illusion.*
+
+1. **RPO and RTO are defined by the business, not by technology.** Recovery objectives stem from business needs; technology implements them.
+2. **Resilience is designed, not improvised.** Every critical component needs an explicit and tested failover plan.
+3. **Drill or fail.** A DR plan without regular simulations is paper — not protection.
+
 ## TL;DR
 
-- Define RPO (Recovery Point Objective) y RTO (Recovery Time Objective) por sistema y criticidad
-- Disena estrategias de failover (active-active, active-passive, pilot light, warm standby)
-- Produce runbooks de recuperacion paso a paso con roles, contactos y procedimientos
-- Establece calendario de pruebas DR (tabletop, failover parcial, failover completo)
-- Integra BCP (Business Continuity Plan) con analisis de impacto al negocio (BIA)
+- Define RPO (Recovery Point Objective) and RTO (Recovery Time Objective) per system and criticality
+- Design failover strategies (active-active, active-passive, pilot light, warm standby)
+- Produce step-by-step recovery runbooks with roles, contacts, and procedures
+- Establish DR test schedule (tabletop, partial failover, full failover)
+- Integrate BCP (Business Continuity Plan) with business impact analysis (BIA)
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides a system or organization context as `$ARGUMENTS`. Parse `$1` a
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{TIER}`: `mission-critical` | `business-critical` | `business-operational` | `all` (default)
 
-## Entregables
+## Deliverables
 
-1. **Plan de DR** — Comprehensive disaster recovery plan with scope, roles, communication tree, and recovery procedures
-2. **Runbook de recuperacion** — Step-by-step recovery procedures per system tier with validation checks
-3. **Calendario de pruebas** — DR test schedule with exercise types, scope, and success criteria
-4. **Analisis de impacto al negocio (BIA)** — Business impact analysis mapping systems to business processes with downtime cost
-5. **Matriz RPO/RTO** — Recovery objectives per system with current vs. target gaps
+1. **DR Plan** — Comprehensive disaster recovery plan with scope, roles, communication tree, and recovery procedures
+2. **Recovery Runbook** — Step-by-step recovery procedures per system tier with validation checks
+3. **Test Schedule** — DR test schedule with exercise types, scope, and success criteria
+4. **Business Impact Analysis (BIA)** — Business impact analysis mapping systems to business processes with downtime cost
+5. **RPO/RTO Matrix** — Recovery objectives per system with current vs. target gaps
 
-## Proceso
+## Process
 
-1. **Realizar BIA** — Identify critical business processes, map supporting systems, quantify downtime impact per hour/day
-2. **Clasificar sistemas por tier** — Assign criticality tiers: mission-critical (RPO<1h, RTO<1h), business-critical (RPO<4h, RTO<4h), operational (RPO<24h, RTO<24h)
-3. **Definir RPO/RTO** — Set recovery objectives per system based on business impact and cost tolerance
-4. **Disenar estrategia de failover** — Select failover pattern per tier: active-active, active-passive, pilot light, warm standby, cold standby
-5. **Disenar estrategia de backup** — Define backup frequency, retention, encryption, off-site storage, and restoration procedures
-6. **Crear runbooks** — Document step-by-step recovery procedures with roles, validation checks, and escalation paths
-7. **Establecer comunicacion de crisis** — Define communication tree, notification channels, stakeholder updates, and public communication templates
-8. **Planificar pruebas** — Schedule tabletop exercises (quarterly), partial failover (semi-annual), and full failover (annual)
+1. **Perform BIA** — Identify critical business processes, map supporting systems, quantify downtime impact per hour/day
+2. **Classify systems by tier** — Assign criticality tiers: mission-critical (RPO<1h, RTO<1h), business-critical (RPO<4h, RTO<4h), operational (RPO<24h, RTO<24h)
+3. **Define RPO/RTO** — Set recovery objectives per system based on business impact and cost tolerance
+4. **Design failover strategy** — Select failover pattern per tier: active-active, active-passive, pilot light, warm standby, cold standby
+5. **Design backup strategy** — Define backup frequency, retention, encryption, off-site storage, and restoration procedures
+6. **Create runbooks** — Document step-by-step recovery procedures with roles, validation checks, and escalation paths
+7. **Establish crisis communication** — Define communication tree, notification channels, stakeholder updates, and public communication templates
+8. **Plan tests** — Schedule tabletop exercises (quarterly), partial failover (semi-annual), and full failover (annual)
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] BIA covers all critical business processes with quantified downtime impact
 - [ ] RPO/RTO defined for every in-scope system with gap analysis (current vs. target)
@@ -69,21 +77,21 @@ The user provides a system or organization context as `$ARGUMENTS`. Parse `$1` a
 - [ ] Backup strategy includes encryption, off-site storage, and restoration validation
 - [ ] Evidence tags applied: [DOC], [CONFIG], [INFERENCIA], [SUPUESTO]
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Assumes infrastructure team can implement recommended failover patterns
 - RPO/RTO targets must be validated against budget — lower targets cost more
 - Does not implement DR infrastructure — produces plans and runbooks
 - Regulatory requirements (data residency, retention) may constrain DR design
 
-## Casos Borde
+## Edge Cases
 
 1. **Sistemas legacy sin APIs de backup** — Cuando los sistemas no soportan snapshots o replicacion nativa, el skill disena estrategias de backup a nivel de filesystem/DB dump con scripts de automatizacion y tiempos de recuperacion mas largos.
 2. **Restricciones de residencia de datos** — Si regulaciones exigen que los datos permanezcan en una region especifica, el plan de DR se limita a multi-AZ dentro de la misma region y documenta el riesgo residual de desastre regional.
 3. **Presupuesto insuficiente para active-active** — El skill genera escenarios con diferentes niveles de inversion (cold standby, warm standby, pilot light) con analisis de costo vs. RTO alcanzable para facilitar la decision.
 4. **DR nunca probado (deuda de pruebas)** — Se prioriza un plan de pruebas incremental: tabletop primero (semana 1), failover de componente no critico (mes 1), failover parcial (trimestre 1).
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 1. **4 tiers de criticidad vs. 2 (critico/no-critico)** — Se usan 3-4 tiers porque la dicotomia critico/no-critico genera sobre-inversion en sistemas operacionales y sub-inversion en business-critical.
 2. **Failover automatico vs. manual** — Se recomienda failover automatico solo para mission-critical con mecanismos probados; manual para el resto, porque failover automatico mal configurado puede causar mas dano que el incidente original.
@@ -137,7 +145,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: BIA Resumen Ejecutivo, Matriz RPO/RTO por Tier, Estrategia de Failover, Runbooks de Recuperación (resumen), Calendario de Pruebas DR.
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: BIA Resumen Ejecutivo, Matriz RPO/RTO por Tier, Estrategia de Failover, Runbooks de Recuperación (resumen), Calendario de Pruebas DR.
 
 ## Evaluacion
 

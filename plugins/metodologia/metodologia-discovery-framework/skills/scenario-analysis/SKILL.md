@@ -7,6 +7,8 @@ description: >
   Use when the user asks to "compare scenarios", "evaluate options", "run scenario analysis",
   "Tree of Thought", "which approach should we take", "compare architectures", or mentions
   "Phase 3", "strategic analysis", "trade-off analysis", "SWOT comparison".
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -30,21 +32,21 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para generación de escenarios y scoring, HITL para validación de pesos dimensionales y decisión final.
-  - **desatendido**: Cero interrupciones. Scoring y recomendación automáticos. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Scoring y recomendación automáticos. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en selección de escenarios y antes de recomendación final.
   - **paso-a-paso**: Confirma cada escenario, cada score dimensional, y la recomendación.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — scoring matrix + recommendation only) | `técnica` (full SWOT + risk register + implementation roadmap, default)
 
-## Principio Rector
+## Grounding Guideline
 
-**Elegir sin comparar es apostar. Comparar sin estructura es sesgo.** El Tree of Thought impone divergencia antes de convergencia: primero se generan todos los escenarios viables, luego se evalúan con rigor cuantitativo, y solo entonces se recomienda. El objetivo no es encontrar la respuesta "correcta" — es eliminar las equivocadas con evidencia.
+**Choosing without comparing is gambling. Comparing without structure is bias.** The Tree of Thought imposes divergence before convergence: first all viable scenarios are generated, then evaluated with quantitative rigor, and only then is a recommendation made. The goal is not to find the "correct" answer — it is to eliminate the wrong ones with evidence.
 
-### Filosofía de Análisis Estratégico
+### Strategic Analysis Philosophy
 
-1. **Divergencia obligatoria.** Mínimo 3 escenarios. El sesgo de confirmación favorece el escenario "obvio" — los alternativos lo desafían y lo fortalecen (o lo descalifican).
-2. **Scoring > opinión.** Cada dimensión se puntúa con rúbrica. Si no se puede puntuar, falta evidencia — no se infiere, se investiga.
-3. **Cambios de contexto, cambios de recomendación.** La lógica condicional de switching documenta bajo qué circunstancias la recomendación cambiaría. Ninguna recomendación es absoluta.
+1. **Mandatory divergence.** Minimum 3 scenarios. Confirmation bias favors the "obvious" scenario — alternatives challenge and strengthen it (or disqualify it).
+2. **Scoring > opinion.** Each dimension is scored with a rubric. If it cannot be scored, evidence is missing — do not infer, investigate.
+3. **Context changes, recommendation changes.** Conditional switching logic documents under what circumstances the recommendation would change. No recommendation is absolute.
 
 ## 6-Dimension Weighted Scoring
 
@@ -199,18 +201,18 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 - Flowchart: decision tree (Tree-of-Thought) with criteria at each node
 - Quadrant chart: scenario positioning (feasibility × impact)
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
 | Stakeholders insist on only 1 scenario ("we already know what we want") | Generate the requested scenario plus "Do Nothing" and one genuine alternative; present the comparison to demonstrate either the conviction is justified or alternatives have merit |
 | Scoring produces identical totals for 2+ scenarios (difference <0.2 points) | Declare a trade-off zone; run a sensitivity analysis with 3 different weight sets (risk-averse, balanced, aggressive); present which scenario wins under each weight profile |
 | A scenario scores highest overall but has a critical dimension score below 3 | Flag the critical weakness as a BLOCKER; add a mandatory spike/PoC to validate whether the weakness is resolvable; recommend the second-highest scenario as contingency |
 | Weight override requested but no justification provided | Reject the override until stakeholder documents the rationale; default weights are designed for balance and deviations require explicit reasoning |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
 | Minimum 3 scenarios mandatory, no exceptions | Allow 2-scenario comparisons for speed | Two scenarios create a false binary; the third scenario (even "Do Nothing") forces divergent thinking and prevents confirmation bias |
 | Use rubric-based quantitative scoring (1-10) with qualitative narrative | Qualitative-only comparison (pros/cons lists) | Qualitative comparisons are susceptible to anchoring and recency bias; quantitative scoring creates comparable, auditable decisions |
@@ -259,11 +261,11 @@ graph TD
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_escenarios_tot_{cliente}_{WIP}.docx`
-- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de scoring 6 dimensiones por escenario y risk register con zebra striping. Encabezados y pies de página con branding MetodologIA.
+- Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de scoring 6 dimensiones por escenario y risk register con zebra striping. Encabezados y pies de página con branding MetodologIA.
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_escenarios_tot_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Scoring Matrix (escenario, costo, time-to-value, riesgo operacional, alineación estratégica, regulatory fit, PoC speed, score ponderado, recomendación tier), SWOT por Escenario (escenario, fortalezas, debilidades, oportunidades, amenazas), Risk Register (ID, escenario, riesgo, impacto, probabilidad, score, mitigación, owner), Conditional Switching Logic (trigger, escenario beneficiado, cambio de recomendación). Conditional formatting por score y recommendation tier. Auto-filters en todas las hojas. Valores directos sin fórmulas.
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Scoring Matrix (escenario, costo, time-to-value, riesgo operacional, alineación estratégica, regulatory fit, PoC speed, score ponderado, recomendación tier), SWOT por Escenario (escenario, fortalezas, debilidades, oportunidades, amenazas), Risk Register (ID, escenario, riesgo, impacto, probabilidad, score, mitigación, owner), Conditional Switching Logic (trigger, escenario beneficiado, cambio de recomendación). Conditional formatting por score y recommendation tier. Auto-filters en todas las hojas. Valores directos sin fórmulas.
 
 ## Evaluacion
 

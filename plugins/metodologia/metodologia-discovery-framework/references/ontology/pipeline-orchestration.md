@@ -35,10 +35,10 @@ flowchart TD
     G3 --> R13[13 Revisión Negocio]
     G3 --> R14[14 Oportunidades IA]
 
-    style G1 fill:#22D3EE,stroke:#1A1A2E,color:#1A1A2E
-    style G15 fill:#22D3EE,stroke:#1A1A2E,color:#1A1A2E
-    style G2 fill:#22D3EE,stroke:#1A1A2E,color:#1A1A2E
-    style G3 fill:#22D3EE,stroke:#1A1A2E,color:#1A1A2E
+    style G1 fill:#FFD700,stroke:#122562,color:#122562
+    style G15 fill:#FFD700,stroke:#122562,color:#122562
+    style G2 fill:#FFD700,stroke:#122562,color:#122562
+    style G3 fill:#FFD700,stroke:#122562,color:#122562
 ```
 
 ---

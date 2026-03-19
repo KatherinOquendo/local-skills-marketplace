@@ -21,15 +21,15 @@ allowed-tools:
 
 Data science architecture defines how machine learning systems are structured end-to-end — from feature engineering through model training, serving, monitoring, and governance. This skill produces ML system documentation that enables teams to build reproducible, scalable, and responsible AI systems.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un modelo en un notebook no es un producto. Un modelo en producción con monitoring sí lo es.** La arquitectura de data science diseña el ciclo completo: desde feature engineering hasta model serving, monitoring de drift, y governance. MLOps no es DevOps para ML — es la disciplina que convierte experimentos en productos confiables.
+**A model in a notebook is not a product. A model in production with monitoring is.** Data science architecture designs the complete cycle: from feature engineering to model serving, drift monitoring, and governance. MLOps is not DevOps for ML — it is the discipline that converts experiments into reliable products.
 
-### Filosofía de ML Architecture
+### ML Architecture Philosophy
 
-1. **Reproducibilidad obligatoria.** Cada experimento, cada training run, cada feature pipeline debe ser reproducible. Si no se puede reproducir, no se puede confiar.
-2. **Monitoring > accuracy.** Un modelo con 95% accuracy que driftea sin detección es peor que uno con 85% monitoreado. Drift detection es día 1.
-3. **Feature store = single source of truth.** Features compartidas entre modelos, versionadas, con lineage. No re-inventar features por modelo.
+1. **Mandatory reproducibility.** Every experiment, every training run, every feature pipeline must be reproducible. If it cannot be reproduced, it cannot be trusted.
+2. **Monitoring > accuracy.** A model with 95% accuracy that drifts without detection is worse than one with 85% that is monitored. Drift detection is day 1.
+3. **Feature store = single source of truth.** Features shared between models, versioned, with lineage. Do not reinvent features per model.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para análisis de sistema ML y feature design, HITL para decisiones de serving y governance.
-  - **desatendido**: Cero interrupciones. Arquitectura ML documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura ML documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en feature store design y model serving decisions.
   - **paso-a-paso**: Confirma cada topology, feature pipeline, serving pattern, y governance policy.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -316,25 +316,25 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Model cards (.md), feature registry catalog, MLOps pipeline DAG diagram, bias audit report template.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Notebook-to-production migration | Refactor en codigo modular, agregar tests, containerizar, integrar con CI/CD. Path de adopcion incremental. Esperar resistencia del equipo. |
-| Multi-model systems (ensemble, pipeline, routing) | Dependency management entre modelos, versionado cross-model, cascade failure scenarios. Pinear model versions para reproducibilidad. |
-| Edge/on-device deployment | Constraints: model size <50MB, quantization (INT8/TFLite), OTA updates, offline capability. Fallback cuando no hay conectividad. |
-| Industrias reguladas (salud, finanzas) | Audit trail, explainability y bias detection mandatorios desde dia 1. Model cards, decision logging, human override no son opcionales. |
-| Cold start / no historical data | Feature stores y training pipelines asumen datos historicos. Bootstrapping con reglas, fallbacks rule-based, progressive learning con feedback loops. |
-| LLM/Foundation model integration | Prompt versioning, evaluation frameworks (human + automated), cost per inference tracking, guardrails para hallucination y toxicity, RAG pipeline si aplica. |
+| Notebook-to-production migration | Refactor into modular code, add tests, containerize, integrate with CI/CD. Incremental adoption path. Expect team resistance. |
+| Multi-model systems (ensemble, pipeline, routing) | Dependency management between models, cross-model versioning, cascade failure scenarios. Pin model versions for reproducibility. |
+| Edge/on-device deployment | Constraints: model size <50MB, quantization (INT8/TFLite), OTA updates, offline capability. Fallback when no connectivity. |
+| Regulated industries (healthcare, finance) | Audit trail, explainability, and bias detection mandatory from day 1. Model cards, decision logging, human override are not optional. |
+| Cold start / no historical data | Feature stores and training pipelines assume historical data. Bootstrapping with rules, rule-based fallbacks, progressive learning with feedback loops. |
+| LLM/Foundation model integration | Prompt versioning, evaluation frameworks (human + automated), cost per inference tracking, guardrails for hallucination and toxicity, RAG pipeline if applicable. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Feature store como single source of truth | Features calculados por modelo, duplicados entre equipos | Features compartidas, versionadas, con lineage previenen training-serving skew y eliminan re-trabajo. 3+ modelos compartiendo features justifica la inversion. |
-| Monitoring > accuracy como principio | Optimizar accuracy primero, monitoring despues | Un modelo con 95% accuracy que driftea sin deteccion es peor que 85% monitoreado. Drift detection es dia 1, no dia N. |
-| Responsible AI checklist mandatoria (7 items) | Governance opcional o post-launch | Model card, bias metrics, explainability, data audit, human override, audit trail, y compliance mapping son pre-requisitos de produccion, no nice-to-haves. |
-| MLflow para multi-cloud, W&B para research-heavy | Single experiment tracking tool para todos | MLflow (OSS, multi-cloud, broad integrations) para produccion. W&B (rich collaboration, sweep search) para equipos research-heavy. Diferentes equipos pueden usar diferentes tools. |
+| Feature store as single source of truth | Features calculated per model, duplicated between teams | Shared, versioned features with lineage prevent training-serving skew and eliminate re-work. 3+ models sharing features justifies the investment. |
+| Monitoring > accuracy as principle | Optimize accuracy first, monitoring later | A model with 95% accuracy that drifts without detection is worse than 85% monitored. Drift detection is day 1, not day N. |
+| Mandatory Responsible AI checklist (7 items) | Optional or post-launch governance | Model card, bias metrics, explainability, data audit, human override, audit trail, and compliance mapping are production prerequisites, not nice-to-haves. |
+| MLflow for multi-cloud, W&B for research-heavy | Single experiment tracking tool for everyone | MLflow (OSS, multi-cloud, broad integrations) for production. W&B (rich collaboration, sweep search) for research-heavy teams. Different teams can use different tools. |
 
 ## Knowledge Graph
 
@@ -448,7 +448,7 @@ Appendix C: GPU Cost Optimization Formulas
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_Data_Science_Architecture_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
 
 ## Evaluacion
 

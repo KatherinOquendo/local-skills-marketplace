@@ -75,7 +75,7 @@ Fuentes fundacionales, estándares de referencia y glosario para el skill de Out
 | OOXML (Office Open XML) | Especificación de formatos DOCX/PPTX/XLSX — estructura ZIP, XML interno | https://docs.microsoft.com/en-us/openspecs/office_standards |
 | PDF/A (ISO 19005) | Estándar de archivado PDF — fonts embebidos, sin dependencias externas | https://www.pdfa.org/ |
 | Reveal.js | Framework de presentaciones HTML que informa principios de narrativa visual PPTX | https://revealjs.com/ |
-| MetodologIA Brand Manual (interno) | Paleta oficial (#6366F1, #1A1A2E, #22D3EE), tipografía, uso de logo | Documentación interna Comunidad MetodologIA |
+| MetodologIA Brand Manual (interno) | Paleta oficial (#122562, #1F2833, #FFD700), tipografía, uso de logo | Documentación interna Comunidad MetodologIA |
 | markdown-lint (DavidAnson) | Reglas de linting para markdown-excellence standard | https://github.com/DavidAnson/markdownlint |
 | Puppeteer/Playwright | Herramientas de rendering headless para PDF generation desde HTML | https://playwright.dev/ |
 | Apache POI / python-pptx | Bibliotecas de generación programática PPTX/XLSX | https://python-pptx.readthedocs.io/ |
@@ -96,7 +96,7 @@ Fuentes fundacionales, estándares de referencia y glosario para el skill de Out
 | **Delivery Package** | Conjunto completo de formatos derivados de un mismo deliverable: .md + .html + .docx + .pptx + .xlsx + .pdf + README.md. Se genera cuando el usuario solicita `all`. |
 | **Format Specialist** | Agente del comité editorial especializado en producción multi-formato y brand compliance. Principal consumidor del skill output-engineering. |
 | **Auto-Suggest** | Regla que mapea cada tipo de deliverable a los formatos más útiles (ej: 05_Escenarios → HTML + PPTX). Sugiere pero nunca impone. |
-| **Semaphore Colors** | Sistema de indicadores visuales (verde/amarillo/rojo) que en el contexto MetodologIA usa gold (#22D3EE) para positivo, nunca verde. |
+| **Semaphore Colors** | Sistema de indicadores visuales (verde/amarillo/rojo) que en el contexto MetodologIA usa gold (#FFD700) para positivo, nunca verde. |
 | **Production-Ready** | Calidad de output que no requiere edición adicional. Si se genera un formato derivado, está listo para envío al cliente. |
 | **Content Parity** | Validación cuantitativa entre markdown y formato derivado: mismo número de secciones, filas de tabla, diagramas, y cifras financieras. |
 

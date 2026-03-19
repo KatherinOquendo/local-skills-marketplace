@@ -8,6 +8,9 @@ description: >
   "bot architecture design", "RPA platform comparison", "automation roadmap", "process mining analysis",
   "identify automation candidates", "RPA ROI analysis", or mentions "robotic process automation",
   "attended/unattended bots", "automation CoE", "process digitization".
+author: Javier Montano · Comunidad MetodologIA
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -19,15 +22,15 @@ allowed-tools:
 
 # RPA Discovery — Process Automation Assessment & Roadmap
 
-Genera un assessment de 7 secciones para iniciativas de RPA y automatizacion de procesos: inventario de procesos (BPMN), scoring de oportunidades de automatizacion, arquitectura de bots, evaluacion de plataformas, resultados de process mining, proyeccion de ROI, y hoja de ruta de automatizacion. Cada hallazgo respaldado por evidencia del landscape de procesos del cliente.
+Generates a 7-section assessment for RPA and process automation initiatives: process inventory (BPMN), automation opportunity scoring, bot architecture, platform evaluation, process mining results, ROI projection, and automation roadmap. Each finding backed by evidence from the client's process landscape.
 
-## Principio Rector
+## Grounding Guideline
 
-> *La automatizacion sin comprension del proceso es la forma mas rapida de escalar un problema. Primero se entiende, luego se optimiza, y solo entonces se automatiza.*
+> *Automation without process understanding is the fastest way to scale a problem. First understand, then optimize, and only then automate.*
 
-1. **Automatizar un proceso roto es amplificar el error.** Antes de considerar un bot, el proceso debe estar documentado, estabilizado y medido. La automatizacion es el ultimo paso, no el primero.
-2. **El scoring objetivo reemplaza la intuicion.** Cada proceso candidato se evalua con criterios cuantificables (datos estructurados, reglas estables, volumen, repetitividad, propension a error). La priorizacion emerge de los datos, no de la presion politica.
-3. **El ROI de RPA es un espejismo sin gobernanza.** Bots sin monitoreo, sin manejo de excepciones, sin actualizacion ante cambios del proceso subyacente generan deuda de automatizacion que erosiona el retorno inicial.
+1. **Automating a broken process is amplifying the error.** Before considering a bot, the process must be documented, stabilized, and measured. Automation is the last step, not the first.
+2. **Objective scoring replaces intuition.** Each candidate process is evaluated with quantifiable criteria (structured data, stable rules, volume, repetitiveness, error-proneness). Prioritization emerges from data, not political pressure.
+3. **RPA ROI is a mirage without governance.** Bots without monitoring, without exception handling, without updates when the underlying process changes generate automation debt that erodes the initial return.
 
 ## Inputs
 
@@ -39,9 +42,9 @@ Parse from `$ARGUMENTS`.
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para inventario de procesos y scoring, HITL para decisiones de plataforma y arquitectura de bots.
-  - **desatendido**: Cero interrupciones. Analisis completo automatizado. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Analisis completo automatizado. Assumptions documented.
   - **supervisado**: Autonomo con reportes al completar cada seccion.
-  - **paso-a-paso**: Confirma antes de cada seccion del analisis.
+  - **paso-a-paso**: Confirms before cada seccion del analisis.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1, S2, S6, S7 only) | `tecnica` (full, default)
 - `{TIPO_SERVICIO}`: `RPA` (fixed for this skill)
@@ -263,9 +266,9 @@ Hoja de ruta de automatizacion en 3 horizontes.
 - Integraciones con sistemas de terceros sin API documentada
 - Decisiones de licenciamiento que requieren negociacion con vendors
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
 | Proceso con >20 variantes | Agrupar variantes por decision points principales; analizar las 3 variantes de mayor volumen; recomendar simplificacion antes de automatizacion |
 | Aplicaciones legacy sin API | Evaluar viabilidad de automatizacion via UI; flag riesgo de fragilidad ante cambios de interfaz; considerar modernizacion previa como prerequisito |
@@ -273,9 +276,9 @@ Hoja de ruta de automatizacion en 3 horizontes.
 | >100 procesos candidatos | Screening rapido con criterios binarios (digital/no-digital, reglas claras/ambiguas); scoring detallado solo para top-30; el resto en backlog priorizado |
 | Procesos cross-funcionales entre departamentos | Mapear handoffs entre departamentos; evaluar impacto organizacional; considerar process orchestration sobre task automation simple |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
 | Entender y optimizar el proceso ANTES de automatizar | Automatizar el proceso tal como esta | Automatizar un proceso roto amplifica el error a velocidad de maquina; la optimizacion previa reduce variantes y excepciones |
 | Scoring cuantitativo con 5 criterios objetivos | Priorizacion por intuicion o presion politica | La priorizacion basada en datos (estructurados, reglas estables, volumen, repetitividad, error-proneness) elimina sesgos y produce ROI predecible |
@@ -338,8 +341,8 @@ graph TD
 | **Markdown** | `RPA_Discovery_{project}.md` | Assessment completo de 7 secciones: inventario BPMN, scoring de automatizacion, arquitectura de bots, evaluacion de plataforma, process mining, ROI y roadmap. Diagramas Mermaid embebidos. |
 | **PPTX** | `RPA_Discovery_{project}_Executive.pptx` | Presentacion ejecutiva con quadrant chart de scoring, arquitectura de bots simplificada, proyeccion de ROI por horizonte, y roadmap visual para alineacion con sponsors. |
 | **HTML** | `{fase}_rpa_discovery_{cliente}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Incluye scoring matrix interactivo con semáforo por proceso, automation roadmap timeline visual y ROI projection chart. |
-| **DOCX** | `{fase}_rpa_discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Montserrat, acentos en gold. Tablas de scoring de automatización, inventario de procesos y roadmap por horizonte con zebra striping. Encabezados y pies de página con branding MetodologIA. |
-| **XLSX** | `{fase}_rpa_discovery_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Montserrat, zebra striping en filas. Hojas: Process Inventory (ID, proceso, área, volumen/día, frecuencia, complejidad, FTE-hrs/mes, process owner), Automation Scoring (proceso, criterio 1-5, score total, clasificación, prioridad), Bot Architecture (proceso, tipo attended/unattended, orquestación, manejo excepciones), Platform Assessment (criterio, UiPath, AA, Power Automate, Blue Prism, recomendación), ROI Projection (proceso, tiempo ahorrado, volumen mensual, FTE liberados, driver de costo). Conditional formatting por score de automatización y veredicto de plataforma. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
+| **DOCX** | `{fase}_rpa_discovery_{cliente}_{WIP}.docx` | Generado via python-docx con MetodologIA Design System v5. Portada, TOC automático, encabezados en Poppins (navy), cuerpo en Trebuchet MS, acentos en gold. Tablas de scoring de automatización, inventario de procesos y roadmap por horizonte con zebra striping. Encabezados y pies de página con branding MetodologIA. |
+| **XLSX** | `{fase}_rpa_discovery_{cliente}_{WIP}.xlsx` | Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto Poppins blanco, cuerpo en Trebuchet MS, zebra striping en filas. Hojas: Process Inventory (ID, proceso, área, volumen/día, frecuencia, complejidad, FTE-hrs/mes, process owner), Automation Scoring (proceso, criterio 1-5, score total, clasificación, prioridad), Bot Architecture (proceso, tipo attended/unattended, orquestación, manejo excepciones), Platform Assessment (criterio, UiPath, AA, Power Automate, Blue Prism, recomendación), ROI Projection (proceso, tiempo ahorrado, volumen mensual, FTE liberados, driver de costo). Conditional formatting por score de automatización y veredicto de plataforma. Auto-filters en todas las hojas. Valores directos sin fórmulas. |
 
 ## Evaluacion
 

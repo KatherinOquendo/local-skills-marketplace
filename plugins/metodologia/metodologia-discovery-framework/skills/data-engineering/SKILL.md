@@ -21,15 +21,15 @@ allowed-tools:
 
 Data engineering architecture defines how data is ingested, orchestrated, stored, validated, and observed — the backbone infrastructure that feeds analytics, ML, and operational systems. This skill produces data engineering documentation that enables teams to build reliable, scalable, and cost-efficient data platforms.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un pipeline que no se puede observar no se puede confiar.** Data engineering diseña cómo los datos fluyen desde las fuentes hasta los consumidores — con calidad validada, lineage trazable, y SLAs medibles en cada paso. Los datos no "llegan" — se orquestan.
+**A pipeline that cannot be observed cannot be trusted.** Data engineering designs how data flows from sources to consumers — with validated quality, traceable lineage, and measurable SLAs at every step. Data does not "arrive" — it is orchestrated.
 
-### Filosofía de Data Engineering
+### Data Engineering Philosophy
 
-1. **Idempotency por diseño.** Cada pipeline puede re-ejecutarse sin duplicar datos. Si no es idempotente, no es production-ready.
-2. **Schema evolution, no schema revolution.** Los schemas cambian — backward/forward compatibility es obligatorio. Breaking changes son planificados, no sorpresas.
-3. **Data contracts entre equipos.** El productor define el contrato, el consumidor lo valida. Sin contratos, la calidad es responsabilidad de nadie.
+1. **Idempotency by design.** Every pipeline can be re-executed without duplicating data. If it is not idempotent, it is not production-ready.
+2. **Schema evolution, not schema revolution.** Schemas change — backward/forward compatibility is mandatory. Breaking changes are planned, not surprises.
+3. **Data contracts between teams.** The producer defines the contract, the consumer validates it. Without contracts, quality is no one's responsibility.
 
 ## Inputs
 
@@ -38,7 +38,7 @@ The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
   - **piloto-auto**: Auto para ingestion patterns y storage design, HITL para orchestration decisions y data contracts.
-  - **desatendido**: Cero interrupciones. Arquitectura de data platform documentada automáticamente. Supuestos documentados.
+  - **desatendido**: Zero interruptions. Arquitectura de data platform documentada automáticamente. Assumptions documented.
   - **supervisado**: Autónomo con checkpoint en storage architecture y quality framework.
   - **paso-a-paso**: Confirma cada ingestion pattern, DAG design, storage zone, y quality check.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
@@ -316,24 +316,24 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 **Secondary:** Source inventory catalog, DAG dependency diagram, storage zone map, pipeline runbook templates, cost attribution dashboard spec.
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Greenfield data platform | Managed connectors para quick wins, event-driven para nuevos sistemas, batch para legacy. Iceberg como table format para portabilidad futura. |
-| Legacy ETL migration (Informatica, SSIS, Talend) | Mapear jobs existentes a orchestration moderno. Documentar business logic no documentada. Validacion en paralelo antes de cutover. 20-30% logica obsoleta esperada. |
-| Multi-cloud data platform | Cross-cloud networking costs ($0.01-0.02/GB transfer). Iceberg para portabilidad de formato. Catalogo unificado (Polaris o similar). |
-| Real-time streaming a escala (millions events/sec) | Kafka/Kinesis con exactly-once semantics. Consumer group management. Dead-letter queues. Backpressure con bounded buffers y consumer lag como metrica principal. |
-| Compliance-heavy (GDPR, CCPA, HIPAA) | PII tagging en catalogo, right-to-delete pipelines (Iceberg row-level deletes), access logging a nivel record. Data classification mandatoria. |
+| Greenfield data platform | Managed connectors for quick wins, event-driven for new systems, batch for legacy. Iceberg as table format for future portability. |
+| Legacy ETL migration (Informatica, SSIS, Talend) | Map existing jobs to modern orchestration. Document undocumented business logic. Parallel validation before cutover. 20-30% obsolete logic expected. |
+| Multi-cloud data platform | Cross-cloud networking costs ($0.01-0.02/GB transfer). Iceberg for format portability. Unified catalog (Polaris or similar). |
+| Real-time streaming at scale (millions events/sec) | Kafka/Kinesis with exactly-once semantics. Consumer group management. Dead-letter queues. Backpressure with bounded buffers and consumer lag as primary metric. |
+| Compliance-heavy (GDPR, CCPA, HIPAA) | PII tagging in catalog, right-to-delete pipelines (Iceberg row-level deletes), record-level access logging. Mandatory data classification. |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Idempotency como propiedad foundacional | At-least-once sin deduplicacion | Pipeline replayable sin duplicar datos es el requisito base de confiabilidad. Sin idempotencia, re-ejecuciones corrompen datos. |
-| Lakehouse como baseline 2025-2026 | Pure data warehouse, pure data lake | Lakehouse (open table formats + catalog en object storage) unifica batch + streaming, provee ACID, y soporta multi-engine. Warehouse para equipos que priorizan simplicidad. |
-| Data contracts entre equipos (producer defines) | Schema-on-read sin contratos | Sin contratos, la calidad es responsabilidad de nadie. Producer publica schema + SLA + ownership; consumer registra dependencia; breaking changes requieren sign-off. |
-| Dagster para greenfield, Airflow para legacy | Unico orchestrador para todo | Dagster es asset-centric con typed data contracts (ideal para analytics/ML). Airflow tiene el ecosystem mas grande (ideal para operator-heavy workflows). Coexistencia via APIs. |
+| Idempotency as foundational property | At-least-once without deduplication | A replayable pipeline without duplicating data is the base reliability requirement. Without idempotency, re-executions corrupt data. |
+| Lakehouse as 2025-2026 baseline | Pure data warehouse, pure data lake | Lakehouse (open table formats + catalog on object storage) unifies batch + streaming, provides ACID, and supports multi-engine. Warehouse for teams that prioritize simplicity. |
+| Data contracts between teams (producer defines) | Schema-on-read without contracts | Without contracts, quality is no one's responsibility. Producer publishes schema + SLA + ownership; consumer registers dependency; breaking changes require sign-off. |
+| Dagster for greenfield, Airflow for legacy | Single orchestrator for everything | Dagster is asset-centric with typed data contracts (ideal for analytics/ML). Airflow has the largest ecosystem (ideal for operator-heavy workflows). Coexistence via APIs. |
 
 ## Knowledge Graph
 
@@ -442,14 +442,14 @@ Sheet 6: Cost Attribution — pipeline, compute type, avg duration, estimated co
 ```
 A-01_Data_Engineering_{project}_{WIP}.docx
 ```
-Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 **Formato PPTX (bajo demanda):**
 
 ```
 {fase}_Data_Engineering_{cliente}_{WIP}.pptx
 ```
-Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
 
 ## Evaluacion
 

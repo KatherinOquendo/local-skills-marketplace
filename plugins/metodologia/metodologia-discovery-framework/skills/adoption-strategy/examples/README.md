@@ -25,8 +25,8 @@
 
 ### HTML (`sample-output.html`)
 
-- **Design System MetodologIA:** Primary #6366F1, Dark #1A1A2E, Success #22D3EE
-- **Nunca usar verde** para estados de exito — siempre amarillo (#22D3EE)
+- **Design System MetodologIA:** Primary #122562, Dark #1F2833, Success #FFD700
+- **Nunca usar verde** para estados de exito — siempre amarillo (#FFD700)
 - **Mermaid renderizado:** Via CDN v10 (`<pre class="mermaid">`)
 - **Responsive:** Grid layout, tarjetas para champions e intervenciones
 - **Impresion:** CSS `@media print` optimizado para A4

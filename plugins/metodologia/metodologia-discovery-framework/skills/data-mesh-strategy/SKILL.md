@@ -8,6 +8,8 @@ description: >
   "federated data governance", "data mesh migration", or mentions "data decentralization",
   "data domain ownership", "data product thinking".
 argument-hint: "[path-to-data-architecture] [scope: full|readiness|pilot]"
+model: opus
+context: fork
 allowed-tools:
   - Read
   - Write
@@ -21,7 +23,7 @@ allowed-tools:
 
 Generates data mesh readiness assessment and adoption strategy based on Zhamak Dehghani's 4 foundational principles: domain ownership, data as a product, self-serve data platform, and federated computational governance. Produces readiness scorecard, domain decomposition map, data product catalog design, platform requirements, and phased adoption roadmap.
 
-## Guiding Principle
+## Grounding Guideline
 
 > *Data mesh is not a technical architecture — it is an organizational model for data. If the organization cannot decentralize decisions, it cannot decentralize data.*
 
@@ -153,23 +155,23 @@ Team structure changes needed. New roles (data product owner, domain data engine
 - S6 Roadmap → S7 Org Change (roadmap phases trigger org changes)
 - S7 Org Change → S1 Readiness (org changes improve readiness scores over time)
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |------|---------------------|
-| Modelo hibrido necesario (no todos los dominios estan listos) | Recomendar mesh para dominios maduros, centralizado para los demas; documentar condiciones de frontera y criterios de transicion |
-| Datos regulados (PII, PCI, HIPAA) cruzan dominios | Gobernanza federada debe incluir automatizacion de compliance; equipo central de compliance retiene poder de veto sobre data products sensibles |
-| No existe catalogo de datos como prerequisito | Establecer catalogo como paso previo obligatorio; no es posible implementar mesh sin visibilidad de lo que existe |
-| Monolito legacy como fuente principal de datos | Aplicar strangler pattern para extraccion de datos; CDC (Change Data Capture) como solucion interim mientras se desacopla |
+| Hybrid model needed (not all domains are ready) | Recommend mesh for mature domains, centralized for the rest; document boundary conditions and transition criteria |
+| Regulated data (PII, PCI, HIPAA) crosses domains | Federated governance must include compliance automation; central compliance team retains veto power over sensitive data products |
+| No data catalog exists as prerequisite | Establish catalog as mandatory prior step; implementing mesh without visibility of what exists is not possible |
+| Legacy monolith as primary data source | Apply strangler pattern for data extraction; CDC (Change Data Capture) as interim solution while decoupling |
 
-## Decisiones y Trade-offs
+## Decisions and Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |----------|----------------------|---------------|
-| Evaluar readiness con los 4 principios de Dehghani antes de proponer estrategia | Asumir que data mesh es la solucion correcta y disenar directamente | Data mesh no es adecuado para todas las organizaciones; la evaluacion de readiness previene inversiones en transformaciones que la organizacion no puede sostener |
-| Recomendar piloto de 1-2 dominios antes de adopcion completa | Big-bang migration de todos los dominios simultaneamente | El piloto reduce riesgo, genera aprendizaje, y construye evidencia interna; la migracion completa tiene tasa de fracaso alta |
-| Incluir cambio organizacional como seccion mandatoria (S7) | Tratar data mesh como decision puramente tecnica | Data mesh es un modelo organizacional, no una arquitectura tecnica; sin cambio organizacional, la implementacion falla independientemente de la tecnologia |
-| Recomendar against data mesh cuando readiness score <2 en >2 principios | Siempre recomendar data mesh cuando el cliente lo solicita | Recomendar una transformacion que la organizacion no puede absorber dania la credibilidad y desperdicia inversion del cliente |
+| Evaluate readiness with Dehghani's 4 principles before proposing strategy | Assume data mesh is the correct solution and design directly | Data mesh is not suitable for all organizations; readiness evaluation prevents investments in transformations the organization cannot sustain |
+| Recommend pilot of 1-2 domains before full adoption | Big-bang migration of all domains simultaneously | The pilot reduces risk, generates learning, and builds internal evidence; full migration has a high failure rate |
+| Include organizational change as mandatory section (S7) | Treat data mesh as a purely technical decision | Data mesh is an organizational model, not a technical architecture; without organizational change, implementation fails regardless of technology |
+| Recommend against data mesh when readiness score <2 in >2 principles | Always recommend data mesh when the client requests it | Recommending a transformation the organization cannot absorb damages credibility and wastes client investment |
 
 ## Knowledge Graph
 
@@ -265,7 +267,7 @@ Footer: Attribution MetodologIA + fecha
 ```
 {fase}_DataMesh_Strategy_{project}_{WIP}.docx
 ```
-Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Montserrat body, gold accents.
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_DataMesh_Strategy_{cliente}_{WIP}.xlsx`
@@ -273,7 +275,7 @@ Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_DataMesh_Strategy_{cliente}_{WIP}.pptx`
-- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Montserrat body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
+- Via python-pptx con MetodologIA Design System v5. Navy gradient slide master, Poppins titles, Trebuchet MS body, gold accents. Máx 20 slides ejecutivo / 30 técnico. Speaker notes con referencias de evidencia.
 
 ## Evaluacion
 

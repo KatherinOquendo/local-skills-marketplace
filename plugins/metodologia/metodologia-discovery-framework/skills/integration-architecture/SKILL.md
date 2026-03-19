@@ -21,13 +21,21 @@ allowed-tools:
 
 Integration architecture defines how systems communicate, share data, and maintain consistency across the enterprise landscape. The skill produces integration landscape maps, contract registries, and sequence diagrams that enable reliable, maintainable system connectivity.
 
+## Grounding Guideline
+
+> *Two systems that do not communicate correctly are worse than two systems that do not communicate at all.*
+
+1. **Explicit contracts.** Every integration needs a formal contract: schema, SLA, error handling, and versioning.
+2. **Minimum coupling, maximum cohesion.** The ideal integration transmits only what is necessary and does not expose internals.
+3. **End-to-end observability.** If you cannot trace a message from origin to destination, you cannot diagnose failures.
+
 ## TL;DR
 
-- Mapea el paisaje de integracion actual con todos los flujos de datos entre sistemas
-- Selecciona patrones de integracion apropiados (point-to-point, ESB, iPaaS, event mesh) por contexto
-- Define contratos de API con versionado, compatibilidad hacia atras y governance
-- Disena mapeo de datos entre sistemas con transformaciones y reglas de calidad
-- Produce diagramas de secuencia para flujos criticos de integracion
+- Map the current integration landscape with all data flows between systems
+- Select appropriate integration patterns (point-to-point, ESB, iPaaS, event mesh) per context
+- Define API contracts with versioning, backward compatibility, and governance
+- Design data mapping between systems with transformations and quality rules
+- Produce sequence diagrams for critical integration flows
 
 ## Inputs
 
@@ -39,26 +47,26 @@ The user provides a system or integration context as `$ARGUMENTS`. Parse `$1` as
 - `{VARIANTE}`: `ejecutiva` (~40%) | `tecnica` (full, default)
 - `{PATRON}`: `sync` | `async` | `event-driven` | `hybrid` | `auto` (default)
 
-## Entregables
+## Deliverables
 
-1. **Mapa de paisaje de integracion** — Visual inventory of all systems and their connections with protocol, frequency, and data volume
-2. **Registro de contratos de API** — Catalog of API contracts with versioning strategy, owners, and consumers
-3. **Diagramas de secuencia** — Detailed sequence diagrams for critical integration flows
-4. **Matriz de mapeo de datos** — Field-level data mapping between source and target systems with transformation rules
-5. **Guia de patrones de integracion** — Pattern selection rationale and implementation guidelines per integration point
+1. **Integration Landscape Map** — Visual inventory of all systems and their connections with protocol, frequency, and data volume
+2. **API Contract Registry** — Catalog of API contracts with versioning strategy, owners, and consumers
+3. **Sequence Diagrams** — Detailed sequence diagrams for critical integration flows
+4. **Data Mapping Matrix** — Field-level data mapping between source and target systems with transformation rules
+5. **Integration Pattern Guide** — Pattern selection rationale and implementation guidelines per integration point
 
-## Proceso
+## Process
 
-1. **Inventariar sistemas** — Catalog all systems in scope with their roles (source, target, orchestrator), technologies, and owners
-2. **Mapear flujos existentes** — Document current integration flows: protocol, frequency, volume, latency requirements, error handling
-3. **Clasificar integraciones** — Categorize each integration by pattern (request-reply, fire-and-forget, publish-subscribe, batch ETL)
-4. **Seleccionar patrones** — Choose integration pattern per connection based on coupling, latency, volume, and reliability requirements
-5. **Disenar contratos** — Define API contracts (OpenAPI, AsyncAPI, GraphQL schema) with versioning and backward compatibility strategy
-6. **Mapear datos** — Create field-level data mapping with transformation rules, default values, and validation constraints
-7. **Disenar error handling** — Define retry policies, circuit breakers, dead letter queues, and compensating transactions
-8. **Documentar flujos criticos** — Produce sequence diagrams for top-priority integration flows including happy path and error scenarios
+1. **Inventory systems** — Catalog all systems in scope with their roles (source, target, orchestrator), technologies, and owners
+2. **Map existing flows** — Document current integration flows: protocol, frequency, volume, latency requirements, error handling
+3. **Classify integrations** — Categorize each integration by pattern (request-reply, fire-and-forget, publish-subscribe, batch ETL)
+4. **Select patterns** — Choose integration pattern per connection based on coupling, latency, volume, and reliability requirements
+5. **Design contracts** — Define API contracts (OpenAPI, AsyncAPI, GraphQL schema) with versioning and backward compatibility strategy
+6. **Map data** — Create field-level data mapping with transformation rules, default values, and validation constraints
+7. **Design error handling** — Define retry policies, circuit breakers, dead letter queues, and compensating transactions
+8. **Document critical flows** — Produce sequence diagrams for top-priority integration flows including happy path and error scenarios
 
-## Criterios de Calidad
+## Quality Criteria
 
 - [ ] All systems in scope inventoried with ownership and technology stack
 - [ ] Integration patterns justified per connection (not one-size-fits-all)
@@ -69,21 +77,21 @@ The user provides a system or integration context as `$ARGUMENTS`. Parse `$1` as
 - [ ] Non-functional requirements addressed: latency, throughput, availability
 - [ ] Security requirements documented: authentication, authorization, encryption in transit
 
-## Supuestos y Limites
+## Assumptions & Limits
 
 - Assumes system inventory is available or can be constructed from documentation
 - Does not implement integrations — produces architecture and design artifacts
 - API contract details depend on access to system documentation or SME input
 - Performance characteristics are estimates until validated by load testing
 
-## Casos Borde
+## Edge Cases
 
 1. **Sistemas legacy con protocolos obsoletos (SOAP, FTP, ficheros planos)** — El skill disena adaptadores/wrappers que encapsulan protocolos legacy detras de interfaces modernas (REST/async), documentando la deuda tecnica y plan de modernizacion.
 2. **Integracion con terceros sin documentacion de API** — Cuando el proveedor no provee especificaciones, el skill genera contratos basados en ingenieria inversa del comportamiento observable, marcados con [INFERENCIA], y recomienda contract testing.
 3. **Volumen de datos que excede capacidad sincrona** — Para integraciones con millones de registros diarios, el skill automaticamente propone patrones async (event streaming, batch con CDC) en lugar de request-reply.
 4. **Ciclo de vida de APIs sin versionado existente** — Si los sistemas no tienen estrategia de versionado, el skill define politica de versionado (URL path, header, o semantic) y plan de adopcion retroactiva.
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
 1. **Patron por conexion vs. patron unico** — Se selecciona patron por conexion porque un enfoque unico (ej: todo async) genera sobre-ingenieria en integraciones simples y sub-ingenieria en las complejas.
 2. **OpenAPI + AsyncAPI vs. solo OpenAPI** — Se usan ambos estendares porque las arquitecturas modernas combinan sync y async; documentar solo sync deja flujos event-driven sin contrato formal.
@@ -129,7 +137,7 @@ graph TD
 
 ### DOCX
 - Filename: `arch_integration-landscape_{sistema}_{WIP}.docx`
-- Generado con python-docx bajo Metodología Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Montserrat (body), acentos dorados
+- Generado con python-docx bajo Metodología Design System v5: portada, TOC automático, encabezados/pies de página con marca, tablas zebra, tipografía Poppins (headings navy), Trebuchet MS (body), acentos dorados
 
 ### XLSX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
@@ -137,7 +145,7 @@ graph TD
 
 ### PPTX (bajo demanda)
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
+- Generado con python-pptx bajo MetodologIA Design System v5. Slide master con degradado navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides variante ejecutiva / 30 variante técnica. Notas de orador con referencias de evidencia ([CODIGO], [DOC], [INFERENCIA], [SUPUESTO]).
 
 ## Evaluacion
 

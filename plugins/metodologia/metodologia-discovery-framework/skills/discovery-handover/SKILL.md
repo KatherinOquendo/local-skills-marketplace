@@ -19,80 +19,80 @@ allowed-tools:
   - Bash
 ---
 
-# Discovery Handover — Phase 6: Transición a Ejecución
+# Discovery Handover — Phase 6: Transition to Execution
 
-Genera el paquete de transición operativa que traduce los entregables de descubrimiento (Fases 0-5) en artefactos de ejecución listos para Operaciones y/o Comercial.
+Generates the operational transition package that translates discovery deliverables (Phases 0-5) into execution-ready artifacts for Operations and/or Commercial teams.
 
-## Principio Rector
+## Grounding Guideline
 
-**Un discovery sin handover es un informe guardado en un cajón.** La transición de descubrimiento a ejecución es donde el valor se materializa o se pierde. Cada insight, cada riesgo, cada decisión del discovery debe traducirse en una acción operativa con owner, fecha, y criterio de éxito. El handover no es un resumen — es un plan de activación.
+**A discovery without a handover is a report filed in a drawer.** The transition from discovery to execution is where value materializes or is lost. Every insight, every risk, every discovery decision must translate into an operational action with an owner, date, and success criteria. The handover is not a summary — it is an activation plan.
 
-### Filosofía de Transición
+### Transition Philosophy
 
-1. **Continuidad > documentación.** El handover no es "entregar documentos" — es transferir entendimiento. Los roles cambian, el conocimiento se preserva.
-2. **Supuestos son deuda.** Cada supuesto no validado del discovery se hereda como riesgo en ejecución. El handover los hace explícitos con owners y deadlines.
-3. **El primer sprint es el más importante.** Sprint 0 valida si el plan sobrevive el contacto con la realidad. El handover diseña Sprint 0, no solo lo menciona.
+1. **Continuity > documentation.** The handover is not "delivering documents" — it is transferring understanding. Roles change; knowledge is preserved.
+2. **Assumptions are debt.** Every unvalidated assumption from discovery is inherited as execution risk. The handover makes them explicit with owners and deadlines.
+3. **The first sprint is the most important.** Sprint 0 validates whether the plan survives contact with reality. The handover designs Sprint 0, not just mentions it.
 
-## Inputs (Consumidos de Fases Anteriores)
+## Inputs (Consumed from Previous Phases)
 
-El handover REQUIERE que Gate 3 esté aprobado. Antes de generar, validar que existen:
+The handover REQUIRES Gate 3 to be approved. Before generating, validate that the following exist:
 
-| Fuente | Entregable Requerido | Archivo Esperado |
+| Source | Required Deliverable | Expected File |
 |--------|---------------------|------------------|
-| Phase 0 | Mapa de stakeholders + RACI | `01_Stakeholder_Map.html` |
-| Phase 1 | Análisis AS-IS (10 secciones) | `03_Analisis_AS-IS.html` |
-| Phase 2 | Mapeo de flujos + DDD | `04_Mapeo_Flujos.html` |
-| Phase 3 | Escenarios + scoring | `05_Escenarios_ToT.html` |
-| Phase 4 | Roadmap + costeo | `06_Solution_Roadmap.html` |
-| Phase 5a | Especificación funcional | `07_Especificacion_Funcional.html` |
-| Phase 5b | Pitch ejecutivo + financiero | `08_Pitch_Ejecutivo.html` |
+| Phase 0 | Stakeholder map + RACI | `01_Stakeholder_Map.html` |
+| Phase 1 | AS-IS analysis (10 sections) | `03_Analisis_AS-IS.html` |
+| Phase 2 | Flow mapping + DDD | `04_Mapeo_Flujos.html` |
+| Phase 3 | Scenarios + scoring | `05_Escenarios_ToT.html` |
+| Phase 4 | Roadmap + costing | `06_Solution_Roadmap.html` |
+| Phase 5a | Functional specification | `07_Especificacion_Funcional.html` |
+| Phase 5b | Executive pitch + financial | `08_Pitch_Ejecutivo.html` |
 
-Si algún entregable falta, DETENER y listar qué falta antes de proceder.
+If any deliverable is missing, STOP and list what is missing before proceeding.
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para compilación de entregables y plan de 90 días, HITL para validación de pricing y asignación de owners.
-  - **desatendido**: Cero interrupciones. Handover completo auto-generado. Owners marcados como {Asignar}.
-  - **supervisado**: Autónomo con checkpoint en paquete comercial y governance.
-  - **paso-a-paso**: Confirma cada sección del handover y cada asignación de owner.
+  - **piloto-auto**: Auto for deliverable compilation and 90-day plan, HITL for pricing validation and owner assignment.
+  - **desatendido**: Zero interruptions. Full handover auto-generated. Owners marked as {Assign}.
+  - **supervisado**: Autonomous with checkpoint at commercial package and governance.
+  - **paso-a-paso**: Confirms each handover section and each owner assignment.
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
-- `{VARIANTE}`: `ejecutiva` (~40% — S1 resumen + S2 comercial + S6 tracker) | `técnica` (full 8 sections, default)
+- `{VARIANTE}`: `ejecutiva` (~40% — S1 summary + S2 commercial + S6 tracker) | `tecnica` (full 8 sections, default)
 
-## Destinatarios del Handover
+## Handover Recipients
 
-El skill debe preguntar al usuario cuál es el receptor primario:
+The skill must ask the user which is the primary recipient:
 
-| Receptor | Enfoque del Paquete |
+| Recipient | Package Focus |
 |----------|-------------------|
-| **Operaciones** | Checklist de readiness, kickoff Phase 1, governance, riesgos operativos |
-| **Comercial** | Propuesta comercial derivada del pitch, pricing, narrativa de venta |
-| **Ambos** | Paquete completo (default) |
+| **Operations** | Readiness checklist, Phase 1 kickoff, governance, operational risks |
+| **Commercial** | Commercial proposal derived from pitch, pricing, sales narrative |
+| **Both** | Full package (default) |
 
-## S1: Resumen Ejecutivo de Transición
+## S1: Executive Transition Summary
 
-Sintetizar en máximo 1 página:
-- **Estado del descubrimiento**: Fases completadas, gates aprobados, fecha de cierre
-- **Escenario aprobado**: Nombre + score final del escenario seleccionado (de Phase 3)
-- **Inversión aprobada**: Rango presupuestal + timeline (de Phase 4/5b)
-- **Próximos pasos inmediatos**: 3-5 acciones con owner y deadline (primeras 2 semanas)
-- **Riesgos críticos activos**: Top 3 riesgos heredados del discovery con status
+Synthesize in 1 page maximum:
+- **Discovery status**: Phases completed, gates approved, closing date
+- **Approved scenario**: Name + final score of the selected scenario (from Phase 3)
+- **Approved investment**: Budget range + timeline (from Phase 4/5b)
+- **Immediate next steps**: 3-5 actions with owner and deadline (first 2 weeks)
+- **Active critical risks**: Top 3 risks inherited from discovery with status
 
-## S2: Paquete de Activación Comercial
+## S2: Commercial Activation Package
 
-Derivar del `08_Pitch_Ejecutivo.html`:
+Derive from `08_Pitch_Ejecutivo.html`:
 
-### 2.1 Narrativa de Propuesta
-- **Contexto del cliente**: Pain points cuantificados (de Problem Statement)
-- **Propuesta de valor**: 4 pilares (Cost Reduction, Revenue, Risk, Modernization)
-- **Diferenciadores**: Por qué nosotros vs. alternativas (de Approach Comparison)
-- **Modelo financiero simplificado**: NPV, IRR, payback en formato ejecutivo
+### 2.1 Proposal Narrative
+- **Client context**: Quantified pain points (from Problem Statement)
+- **Value proposition**: 4 pillars (Cost Reduction, Revenue, Risk, Modernization)
+- **Differentiators**: Why us vs. alternatives (from Approach Comparison)
+- **Simplified financial model**: NPV, IRR, payback in executive format
 
-### 2.2 Estructura de Pricing
+### 2.2 Pricing Structure
 ```
 ┌─────────────────────────────────────────────────────┐
-│ ESTRUCTURA DE PRICING                               │
+│ PRICING STRUCTURE                                    │
 ├─────────────────┬──────────┬────────┬───────────────┤
-│ Fase            │ Duración │ Equipo │ Inversión     │
+│ Phase           │ Duration │ Team   │ Investment    │
 ├─────────────────┼──────────┼────────┼───────────────┤
 │ Foundation      │ X meses  │ N FTE  │ $XXX,XXX      │
 │ Build           │ X meses  │ N FTE  │ $XXX,XXX      │
@@ -101,223 +101,223 @@ Derivar del `08_Pitch_Ejecutivo.html`:
 │ Scale           │ X meses  │ N FTE  │ $XXX,XXX      │
 ├─────────────────┼──────────┼────────┼───────────────┤
 │ TOTAL           │ XX meses │        │ $X,XXX,XXX    │
-│ Contingencia    │          │        │ XX%           │
+│ Contingency     │          │        │ XX%           │
 └─────────────────┴──────────┴────────┴───────────────┘
 ```
 
-### 2.3 Condiciones Comerciales
-- Modelo de facturación: por fase / mensual / hitos
-- Gates de inversión: puntos de go/no-go por fase
-- Kill criteria: condiciones de salida anticipada
-- SLAs propuestos: tiempos de respuesta, calidad, gobernanza
+### 2.3 Commercial Terms
+- Billing model: per phase / monthly / milestones
+- Investment gates: go/no-go decision points per phase
+- Kill criteria: early exit conditions
+- Proposed SLAs: response times, quality, governance
 
-### 2.4 Cronograma de Cierre Comercial
-| Semana | Actividad | Responsable | Entregable |
+### 2.4 Commercial Close Schedule
+| Week | Activity | Responsible | Deliverable |
 |--------|-----------|-------------|------------|
-| 1 | Revisión propuesta con sponsor | Comercial | Propuesta v1 |
-| 2 | Negociación términos | Comercial + Legal | Term sheet |
-| 3 | Aprobación interna | Steering | SOW firmado |
-| 4 | Kick-off operativo | Operaciones | Plan Phase 1 |
+| 1 | Proposal review with sponsor | Commercial | Proposal v1 |
+| 2 | Terms negotiation | Commercial + Legal | Term sheet |
+| 3 | Internal approval | Steering | Signed SOW |
+| 4 | Operational kick-off | Operations | Phase 1 Plan |
 
-## S3: Checklist de Readiness Operacional
+## S3: Operational Readiness Checklist
 
-Mapear los 9+ prerrequisitos del roadmap (Phase 4) a tareas operativas:
+Map the 9+ prerequisites from the roadmap (Phase 4) to operational tasks:
 
-### 3.1 Equipo
-| Rol | Cantidad | Status | Owner de Contratación | Fecha Límite |
+### 3.1 Team
+| Role | Quantity | Status | Hiring Owner | Deadline |
 |-----|----------|--------|----------------------|-------------|
-| {Rol de Phase 4} | N | Pendiente/Listo | {Nombre} | {Fecha} |
+| {Role from Phase 4} | N | Pending/Ready | {Name} | {Date} |
 
-### 3.2 Infraestructura
-| Componente | Especificación | Status | Owner | Fecha Límite |
+### 3.2 Infrastructure
+| Component | Specification | Status | Owner | Deadline |
 |-----------|----------------|--------|-------|-------------|
-| {De AS-IS + Roadmap} | {Specs} | Pendiente/Listo | {Nombre} | {Fecha} |
+| {From AS-IS + Roadmap} | {Specs} | Pending/Ready | {Name} | {Date} |
 
-### 3.3 Accesos y Permisos
-- Repositorios de código fuente
-- Ambientes (dev, staging, prod)
-- Herramientas de CI/CD
-- Acceso a datos y APIs
-- VPN / acceso remoto
+### 3.3 Access & Permissions
+- Source code repositories
+- Environments (dev, staging, prod)
+- CI/CD tools
+- Data and API access
+- VPN / remote access
 
-### 3.4 Documentación Base
-- [ ] Roadmap aprobado compartido con equipo de ejecución
-- [ ] Especificación funcional accesible al equipo técnico
-- [ ] Riesgos y mitigaciones asignados a owners operativos
-- [ ] RACI de ejecución (diferente al RACI de discovery) definido
-- [ ] Canales de comunicación establecidos (Slack, JIRA, Confluence)
+### 3.4 Base Documentation
+- [ ] Approved roadmap shared with execution team
+- [ ] Functional specification accessible to technical team
+- [ ] Risks and mitigations assigned to operational owners
+- [ ] Execution RACI (different from discovery RACI) defined
+- [ ] Communication channels established (Slack, JIRA, Confluence)
 
-## S4: Plan de Kickoff — Primeros 90 Días
+## S4: Kickoff Plan — First 90 Days
 
-Derivar de Phase 1 (Foundation) del `06_Solution_Roadmap.html`:
+Derive from Phase 1 (Foundation) of `06_Solution_Roadmap.html`:
 
-### 4.1 Sprint 0 (Semanas 1-2): Setup
-| Día | Actividad | Responsable | Output |
+### 4.1 Sprint 0 (Weeks 1-2): Setup
+| Day | Activity | Responsible | Output |
 |-----|-----------|-------------|--------|
-| 1-2 | Onboarding equipo técnico | Delivery Manager | Equipo operativo |
-| 3-4 | Setup ambientes dev/staging | Tech Lead | Ambientes listos |
-| 5 | Workshop de arquitectura objetivo | Architect | Decisiones técnicas |
-| 6-7 | Configuración CI/CD pipeline | DevOps | Pipeline base |
-| 8-10 | Primer spike técnico (mayor riesgo) | Dev Team | PoC validado/invalidado |
+| 1-2 | Technical team onboarding | Delivery Manager | Operational team |
+| 3-4 | Dev/staging environment setup | Tech Lead | Environments ready |
+| 5 | Target architecture workshop | Architect | Technical decisions |
+| 6-7 | CI/CD pipeline configuration | DevOps | Base pipeline |
+| 8-10 | First technical spike (highest risk) | Dev Team | PoC validated/invalidated |
 
-### 4.2 Sprint 1-3 (Semanas 3-8): Foundation Execution
-- Módulo MVP #1 (mayor valor / menor riesgo de la matriz 3x3)
-- Implementar 2-3 use cases core (de Phase 5a)
-- Validar 2+ business rules críticas (severity CRITICAL)
-- First deployment a staging
-- Retrospectiva + ajuste de velocidad
+### 4.2 Sprint 1-3 (Weeks 3-8): Foundation Execution
+- MVP Module #1 (highest value / lowest risk from 3x3 matrix)
+- Implement 2-3 core use cases (from Phase 5a)
+- Validate 2+ critical business rules (severity CRITICAL)
+- First deployment to staging
+- Retrospective + velocity adjustment
 
-### 4.3 Sprint 4-6 (Semanas 9-14): Foundation Completion
-- Módulos MVP restantes
-- Integration testing contra sistemas identificados en Phase 2
-- Performance baseline vs. NFRs del AS-IS
-- Gate de Foundation: evaluación go/no-go para Phase Build
+### 4.3 Sprint 4-6 (Weeks 9-14): Foundation Completion
+- Remaining MVP modules
+- Integration testing against systems identified in Phase 2
+- Performance baseline vs. AS-IS NFRs
+- Foundation gate: go/no-go evaluation for Build Phase
 
-### 4.4 Métricas de Seguimiento (Primeros 90 Días)
-| Métrica | Target | Fuente | Frecuencia |
+### 4.4 Follow-up Metrics (First 90 Days)
+| Metric | Target | Source | Frequency |
 |---------|--------|--------|-----------|
-| Velocidad del equipo | Estabilizar en Sprint 3 | JIRA/Linear | Semanal |
-| Defectos críticos | 0 en producción | Bug tracker | Diario |
-| Cobertura de tests | >80% unit, >70% integration | CI pipeline | Por PR |
-| Budget burn rate | ≤110% del plan | Finance | Quincenal |
-| Riesgo materializado | 0 de top-3 | Risk register | Semanal |
+| Team velocity | Stabilize by Sprint 3 | JIRA/Linear | Weekly |
+| Critical defects | 0 in production | Bug tracker | Daily |
+| Test coverage | >80% unit, >70% integration | CI pipeline | Per PR |
+| Budget burn rate | ≤110% of plan | Finance | Biweekly |
+| Materialized risk | 0 of top-3 | Risk register | Weekly |
 
-## S5: Protocolo de Transición de Gobernanza
+## S5: Governance Transition Protocol
 
-### 5.1 De Discovery Governance → Execution Governance
+### 5.1 From Discovery Governance to Execution Governance
 
-| Rol Discovery | Transiciona a | Nuevo Responsable |
+| Discovery Role | Transitions to | New Responsible |
 |---------------|--------------|-------------------|
-| Discovery Conductor | PMO Lead / Scrum Master | {Asignar} |
-| Technical Architect | Solution Architect (ejecución) | {Mismo o nuevo} |
-| Domain Analyst | Product Owner / BA | {Asignar} |
-| Quality Guardian | QA Lead | {Asignar} |
-| Delivery Manager | Project Manager / Engineering Manager | {Mismo o nuevo} |
-| Data Strategist | Data Architect (ejecución) | {Mismo o nuevo} |
-| Change Catalyst | Change Manager | {Asignar} |
+| Discovery Conductor | PMO Lead / Scrum Master | {Assign} |
+| Technical Architect | Solution Architect (execution) | {Same or new} |
+| Domain Analyst | Product Owner / BA | {Assign} |
+| Quality Guardian | QA Lead | {Assign} |
+| Delivery Manager | Project Manager / Engineering Manager | {Same or new} |
+| Data Strategist | Data Architect (execution) | {Same or new} |
+| Change Catalyst | Change Manager | {Assign} |
 
-### 5.2 Estructura de Reuniones (Ejecución)
-| Ceremonia | Frecuencia | Participantes | Propósito |
+### 5.2 Meeting Structure (Execution)
+| Ceremony | Frequency | Participants | Purpose |
 |-----------|-----------|---------------|-----------|
-| Standup | Diario | Dev team | Impedimentos + progreso |
-| Sprint Planning | Quincenal | PO + Dev team | Scope del sprint |
-| Sprint Review | Quincenal | Stakeholders + Dev | Demo + feedback |
-| Retrospectiva | Quincenal | Dev team | Mejora continua |
-| Steering Committee | Mensual | Sponsors + PMO | Go/no-go, budget, riesgos |
-| Architecture Review | Quincenal | Architects | Decisiones técnicas |
+| Standup | Daily | Dev team | Impediments + progress |
+| Sprint Planning | Biweekly | PO + Dev team | Sprint scope |
+| Sprint Review | Biweekly | Stakeholders + Dev | Demo + feedback |
+| Retrospective | Biweekly | Dev team | Continuous improvement |
+| Steering Committee | Monthly | Sponsors + PMO | Go/no-go, budget, risks |
+| Architecture Review | Biweekly | Architects | Technical decisions |
 
 ### 5.3 Escalation Path
 ```
-Nivel 1: Dev Team → Tech Lead (resolución < 4h)
-Nivel 2: Tech Lead → PM / PO (resolución < 24h)
-Nivel 3: PM → Steering Committee (resolución < 1 semana)
-Nivel 4: Steering → Executive Sponsor (decisiones de scope/budget/timeline)
+Level 1: Dev Team → Tech Lead (resolution < 4h)
+Level 2: Tech Lead → PM / PO (resolution < 24h)
+Level 3: PM → Steering Committee (resolution < 1 week)
+Level 4: Steering → Executive Sponsor (scope/budget/timeline decisions)
 ```
 
-## S6: Tracker de Validación de Supuestos y Riesgos
+## S6: Assumptions & Risks Validation Tracker
 
-Operacionalizar los pivot points del Phase 4:
+Operationalize the pivot points from Phase 4:
 
-### 6.1 Supuestos Críticos (de Phase 4 Estimation Pivots)
-| # | Supuesto | Validación Propuesta | Deadline | Owner | Status |
+### 6.1 Critical Assumptions (from Phase 4 Estimation Pivots)
+| # | Assumption | Proposed Validation | Deadline | Owner | Status |
 |---|----------|---------------------|----------|-------|--------|
-| 1 | {Del roadmap} | {PoC / spike / vendor eval} | Semana X | {Nombre} | Pendiente |
+| 1 | {From roadmap} | {PoC / spike / vendor eval} | Week X | {Name} | Pending |
 | 2 | ... | ... | ... | ... | ... |
 
-**Regla**: Si un supuesto se invalida, activar el conditional switching logic del Phase 3 (escenario alternativo).
+**Rule**: If an assumption is invalidated, activate the conditional switching logic from Phase 3 (alternative scenario).
 
-### 6.2 Riesgos Heredados (de Phase 4 Risk Register)
-| # | Riesgo | Probabilidad | Impacto | Mitigación | Early Warning | Owner |
+### 6.2 Inherited Risks (from Phase 4 Risk Register)
+| # | Risk | Probability | Impact | Mitigation | Early Warning | Owner |
 |---|--------|-------------|---------|-----------|---------------|-------|
-| 1 | {Del risk register} | Alta/Media/Baja | Alto/Medio/Bajo | {Acción} | {Indicador} | {Nombre} |
+| 1 | {From risk register} | High/Medium/Low | High/Medium/Low | {Action} | {Indicator} | {Name} |
 
-**Regla**: Revisar en cada Steering Committee. Si early warning se activa, ejecutar mitigación inmediata.
+**Rule**: Review at each Steering Committee. If early warning triggers, execute immediate mitigation.
 
-### 6.3 Kill Criteria (de Phase 4 Governance)
-| Condición | Threshold | Acción | Decision Maker |
+### 6.3 Kill Criteria (from Phase 4 Governance)
+| Condition | Threshold | Action | Decision Maker |
 |-----------|-----------|--------|---------------|
-| Budget overrun | >130% del plan | Pause + re-scope | Executive Sponsor |
-| Timeline overrun | >150% de Foundation | Re-evaluate approach | Steering Committee |
-| Quality failure | >3 defectos críticos en producción | Stop + quality sprint | QA Lead + PM |
+| Budget overrun | >130% of plan | Pause + re-scope | Executive Sponsor |
+| Timeline overrun | >150% of Foundation | Re-evaluate approach | Steering Committee |
+| Quality failure | >3 critical defects in production | Stop + quality sprint | QA Lead + PM |
 | Team attrition | >40% turnover | Pause + re-staff | HR + PM |
 
-## S7: Matriz de Transición de Stakeholders
+## S7: Stakeholder Transition Matrix
 
-Transformar el mapa de stakeholders de Phase 0 en roles de ejecución:
+Transform the Phase 0 stakeholder map into execution roles:
 
-| Stakeholder | Rol Discovery (Phase 0) | Rol Ejecución | Engagement Shift | Comunicación |
+| Stakeholder | Discovery Role (Phase 0) | Execution Role | Engagement Shift | Communication |
 |-------------|------------------------|---------------|-----------------|-------------|
-| {Nombre} | Sponsor | Executive Sponsor | Mensual steering | Dashboard + report |
-| {Nombre} | Champion | Product Owner | Diario/semanal | Sprint reviews |
-| {Nombre} | Informado | Consumidor | Por release | Release notes |
-| {Nombre} | Resistente | Early adopter target | Post-MVP | Training + soporte |
+| {Name} | Sponsor | Executive Sponsor | Monthly steering | Dashboard + report |
+| {Name} | Champion | Product Owner | Daily/weekly | Sprint reviews |
+| {Name} | Informed | Consumer | Per release | Release notes |
+| {Name} | Resistant | Early adopter target | Post-MVP | Training + support |
 
-## S8: Entregable Final
+## S8: Final Deliverable
 
-### Archivo Output
-`09_Handover_Operaciones_{project}.md` (o `.html` si `{FORMATO}=html|dual`)
+### Output File
+`09_Handover_Operaciones_{project}.md` (or `.html` if `{FORMATO}=html|dual`)
 
-### Estructura del Documento
-Producir un documento con las 8 secciones anteriores, usando el sistema de diseño de la marca (READ `references/handover-templates.md` para la estructura HTML cuando `{FORMATO}=html|dual`).
+### Document Structure
+Produce a document with the 8 previous sections, using the brand design system (READ `references/handover-templates.md` for the HTML structure when `{FORMATO}=html|dual`).
 
 ## Validation Gate
 
-- [ ] Todas las tablas tienen datos reales (no placeholders genéricos)
-- [ ] Owners asignados a todas las tareas operativas
-- [ ] Fechas absolutas (no "Semana X" sino "2026-04-15")
-- [ ] Riesgos heredados tienen early warning indicators
-- [ ] Kill criteria definidos con thresholds numéricos
-- [ ] Estructura de pricing completa (si receptor = Comercial o Ambos)
-- [ ] Plan de 90 días alineado con Phase 1 (Foundation) del roadmap
-- [ ] RACI de ejecución es diferente al RACI de discovery
-- [ ] Escalation path documentado
-- [ ] Ceremonia structure definida
+- [ ] All tables contain real data (no generic placeholders)
+- [ ] Owners assigned to all operational tasks
+- [ ] Absolute dates (not "Week X" but "2026-04-15")
+- [ ] Inherited risks have early warning indicators
+- [ ] Kill criteria defined with numeric thresholds
+- [ ] Pricing structure complete (if recipient = Commercial or Both)
+- [ ] 90-day plan aligned with Phase 1 (Foundation) of roadmap
+- [ ] Execution RACI is different from discovery RACI
+- [ ] Escalation path documented
+- [ ] Ceremony structure defined
 
 ## Trade-off Matrix
 
-| Dimensión | Opción A | Opción B | Regla de Decisión |
+| Dimension | Option A | Option B | Decision Rule |
 |-----------|----------|----------|-------------------|
-| Alcance del handover | Solo Operaciones | Comercial + Operaciones | Ambos si el deal no está cerrado; solo Ops si ya está firmado |
-| Nivel de detalle 90 días | Sprint-level | Week-level | Sprint-level para equipos ágiles; week-level para waterfall |
-| Governance | Ligera (standup + steering) | Completa (todas las ceremonias) | Completa si equipo > 5; ligera si ≤ 5 |
-| Financial tracking | Mensual | Quincenal | Quincenal si budget > $500K; mensual si menor |
-| Stakeholder transition | Mapeo 1:1 | Taller de transición | Taller si > 10 stakeholders; mapeo si ≤ 10 |
+| Handover scope | Operations only | Commercial + Operations | Both if deal is not closed; Ops only if already signed |
+| 90-day detail level | Sprint-level | Week-level | Sprint-level for agile teams; week-level for waterfall |
+| Governance | Lightweight (standup + steering) | Full (all ceremonies) | Full if team > 5; lightweight if ≤ 5 |
+| Financial tracking | Monthly | Biweekly | Biweekly if budget > $500K; monthly if smaller |
+| Stakeholder transition | 1:1 mapping | Transition workshop | Workshop if > 10 stakeholders; mapping if ≤ 10 |
 
 ## Edge Cases
 
-| Escenario | Respuesta |
+| Scenario | Response |
 |-----------|----------|
-| Gate 3 no aprobado | NO generar handover. Listar gaps. |
-| Solo se ejecutó Quick Reference (Phases 1→3→5b) | Handover simplificado: solo S1 + S2 + S6. Sin 90-day plan. |
-| Minimal Pipeline (sin Phase 0 ni 5a) | Omitir S7 (no hay stakeholder map). S4 simplificado sin use cases. |
-| Cliente quiere solo propuesta comercial | Generar solo S1 + S2. Marcar S3-S7 como "pendiente post-cierre". |
-| Equipo de ejecución es diferente al de discovery | Incluir sesión de knowledge transfer (2-4 horas) en Sprint 0. |
-| Multi-vendor execution | Agregar sección de vendor coordination en S5 Governance. |
+| Gate 3 not approved | DO NOT generate handover. List gaps. |
+| Only Quick Reference executed (Phases 1→3→5b) | Simplified handover: S1 + S2 + S6 only. No 90-day plan. |
+| Minimal Pipeline (no Phase 0 or 5a) | Omit S7 (no stakeholder map). Simplified S4 without use cases. |
+| Client wants commercial proposal only | Generate S1 + S2 only. Mark S3-S7 as "pending post-close". |
+| Execution team is different from discovery | Include knowledge transfer session (2-4 hours) in Sprint 0. |
+| Multi-vendor execution | Add vendor coordination section in S5 Governance. |
 
 ## Assumptions & Limits
 
-- Este skill NO negocia términos comerciales — solo estructura la propuesta
-- Los precios y márgenes deben ser validados por el área comercial antes de enviar al cliente
-- El plan de 90 días es una guía — el equipo de ejecución debe ajustar en Sprint 0
-- Los roles de transición son sugerencias — el receptor final asigna los nombres reales
-- Este skill asume que el discovery se ejecuto con el framework MetodologIA completo
+- This skill does NOT negotiate commercial terms — it only structures the proposal
+- Prices and margins must be validated by the commercial area before sending to the client
+- The 90-day plan is a guide — the execution team must adjust during Sprint 0
+- Transition roles are suggestions — the final recipient assigns the actual names
+- This skill assumes the discovery was executed with the full MetodologIA framework
 
-## Casos Borde
+## Edge Cases
 
-| Caso | Estrategia de Manejo |
+| Case | Handling Strategy |
 |---|---|
-| Gate 3 no aprobado pero el cliente necesita propuesta comercial urgente | NO generar handover completo. Generar solo S1 + S2 con disclaimer explicito de que el discovery no esta cerrado. Listar gaps pendientes como condiciones para activacion. |
-| Equipo de ejecucion completamente diferente al equipo de discovery | Incluir sesion obligatoria de knowledge transfer (2-4 horas) en Sprint 0. Documentar decisiones de arquitectura con ADRs. Grabar walkthrough de entregables clave. |
-| Multi-vendor execution con 3+ proveedores en el programa | Agregar seccion de vendor coordination en S5 Governance. Definir integration contracts entre vendors. Establecer single point of contact por vendor. Escalation path cross-vendor. |
-| Solo se ejecuto Quick Reference (Phases 1-3-5b) sin phases intermedias | Handover simplificado: solo S1 + S2 + S6. Sin plan de 90 dias (no hay roadmap detallado). Marcar S3-S5, S7 como pendientes post-cierre comercial. |
+| Gate 3 not approved but client needs urgent commercial proposal | DO NOT generate full handover. Generate S1 + S2 only with explicit disclaimer that discovery is not closed. List pending gaps as activation conditions. |
+| Execution team completely different from discovery team | Include mandatory knowledge transfer session (2-4 hours) in Sprint 0. Document architecture decisions with ADRs. Record walkthrough of key deliverables. |
+| Multi-vendor execution with 3+ vendors in the program | Add vendor coordination section in S5 Governance. Define integration contracts between vendors. Establish single point of contact per vendor. Cross-vendor escalation path. |
+| Only Quick Reference executed (Phases 1-3-5b) without intermediate phases | Simplified handover: S1 + S2 + S6 only. No 90-day plan (no detailed roadmap). Mark S3-S5, S7 as pending post-commercial close. |
 
-## Decisiones y Trade-offs
+## Decisions & Trade-offs
 
-| Decision | Alternativa Descartada | Justificacion |
+| Decision | Discarded Alternative | Justification |
 |---|---|---|
-| Sprint 0 de 2 semanas como buffer obligatorio antes de ejecucion | Arrancar Sprint 1 directamente post-handover | Sprint 0 valida si el plan sobrevive el contacto con la realidad. Sin setup de ambientes, onboarding y spike tecnico, Sprint 1 fracasa por impedimentos evitables. |
-| Governance completa (todas las ceremonias) para equipos >5 personas | Governance ligera (solo standup + steering) | Equipos >5 necesitan estructura para coordinacion. Sin retrospectivas ni sprint reviews, el feedback loop se rompe y los problemas se acumulan silenciosamente. |
-| Phase-gate funding sobre presupuesto completo aprobado upfront | Aprobacion de presupuesto total del programa desde el inicio | Phase-gate reduce riesgo financiero del cliente. Kill criteria en cada gate permiten salida controlada. Presupuesto upfront genera compromiso sin validacion de resultados. |
+| 2-week Sprint 0 as mandatory buffer before execution | Start Sprint 1 directly post-handover | Sprint 0 validates whether the plan survives contact with reality. Without environment setup, onboarding and technical spike, Sprint 1 fails due to avoidable impediments. |
+| Full governance (all ceremonies) for teams >5 people | Lightweight governance (standup + steering only) | Teams >5 need structure for coordination. Without retrospectives or sprint reviews, the feedback loop breaks and problems accumulate silently. |
+| Phase-gate funding over full budget approved upfront | Full program budget approval from the start | Phase-gate reduces client financial risk. Kill criteria at each gate allow controlled exit. Upfront budget creates commitment without results validation. |
 
 ## Knowledge Graph
 
@@ -348,50 +348,50 @@ graph TD
 
 ## Output Templates
 
-**Formato MD (default):**
+**MD format (default):**
 ```
-# Handover Operaciones: {project_name}
-## S1: Resumen Ejecutivo de Transicion
-  - Estado del descubrimiento, escenario aprobado, inversion
-## S2: Paquete de Activacion Comercial
-  - Narrativa, pricing structure, condiciones, cronograma cierre
-## S3: Checklist de Readiness Operacional
-  - Equipo, infraestructura, accesos, documentacion
-## S4: Plan de Kickoff — Primeros 90 Dias
-  - Sprint 0, Sprints 1-3, Sprints 4-6, metricas
+# Operations Handover: {project_name}
+## S1: Executive Transition Summary
+  - Discovery status, approved scenario, investment
+## S2: Commercial Activation Package
+  - Narrative, pricing structure, terms, close schedule
+## S3: Operational Readiness Checklist
+  - Team, infrastructure, access, documentation
+## S4: Kickoff Plan — First 90 Days
+  - Sprint 0, Sprints 1-3, Sprints 4-6, metrics
 ## S5-S8: [remaining sections]
 ```
 
-**Formato DOCX (secondary):**
-- Documento formal con branding para firma del cliente
-- Tabla de contenidos auto-generada
-- Secciones con headers numerados y firmas de aprobacion
-- Anexo: cronograma de cierre comercial como tabla editable
+**DOCX format (secondary):**
+- Formal document with branding for client signature
+- Auto-generated table of contents
+- Sections with numbered headers and approval signatures
+- Annex: commercial close schedule as editable table
 
-**Formato HTML (bajo demanda):**
+**HTML format (on demand):**
 - Filename: `09_Handover_Operaciones_{project}_{WIP}.html`
-- Estructura: HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye Gantt de plan de 90 días (Mermaid CDN), checklist de readiness operacional interactivo y tracker de supuestos con semáforo. WCAG AA, responsive, print-ready.
+- Structure: Self-contained branded HTML (Design System MetodologIA v5). Dark-First Executive. Includes 90-day plan Gantt (Mermaid CDN), interactive operational readiness checklist, and assumption tracker with traffic-light indicators. WCAG AA, responsive, print-ready.
 
-**Formato XLSX (bajo demanda):**
-- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
-- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por estado (Pendiente/En Progreso/Listo), auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Operational Readiness Checklist, 90-Day Kickoff Plan (sprint por sprint), Assumption & Risk Tracker, Stakeholder Transition Matrix.
+**XLSX format (on demand):**
+- Filename: `{phase}_{deliverable}_{client}_{WIP}.xlsx`
+- Generated via openpyxl with MetodologIA Design System v5. Headers with navy background and white Poppins text, conditional formatting by status (Pending/In Progress/Ready), auto-filters on all columns, calculated values (no formulas). Sheets: Operational Readiness Checklist, 90-Day Kickoff Plan (sprint by sprint), Assumption & Risk Tracker, Stakeholder Transition Matrix.
 
-**Formato PPTX (bajo demanda):**
-- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Montserrat, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Resumen Ejecutivo de Transición, Paquete de Activación Comercial, Checklist de Readiness Operacional, Plan de Kickoff 90 Días, Governance y Escalation, Tracker de Riesgos y Supuestos.
+**PPTX format (on demand):**
+- Filename: `{phase}_{deliverable}_{client}_{WIP}.pptx`
+- Generated via python-pptx with MetodologIA Design System v5. Slide master with navy gradient, Poppins titles, Trebuchet MS body, gold accents. Max 20 slides executive / 30 technical. Speaker notes with evidence references. Sections: Executive Transition Summary, Commercial Activation Package, Operational Readiness Checklist, 90-Day Kickoff Plan, Governance & Escalation, Risks & Assumptions Tracker.
 
-## Evaluacion
+## Evaluation
 
-| Dimension | Peso | Criterio | Umbral Minimo |
+| Dimension | Weight | Criterion | Minimum Threshold |
 |---|---|---|---|
-| Trigger Accuracy | 10% | El skill se activa correctamente ante menciones de handover, transicion, kickoff, cierre de discovery | 7/10 |
-| Completeness | 25% | Las 8 secciones cubren transicion ejecutiva, comercial, operacional, governance, y tracking | 7/10 |
-| Clarity | 20% | Owners asignados a todas las tareas. Fechas absolutas. RACI de ejecucion diferenciado del de discovery. | 7/10 |
-| Robustness | 20% | Kill criteria con thresholds numericos. Early warning indicators para riesgos heredados. Rollback path documentado. | 7/10 |
-| Efficiency | 10% | Output proporcional al receptor (Ops, Comercial, Ambos). Sin seccion redundante con deliverables previos. | 7/10 |
-| Value Density | 15% | Plan de 90 dias con actividades dia-a-dia en Sprint 0. Metricas de seguimiento con targets concretos. | 7/10 |
+| Trigger Accuracy | 10% | Skill activates correctly on mentions of handover, transition, kickoff, discovery close-out | 7/10 |
+| Completeness | 25% | All 8 sections cover executive transition, commercial, operational, governance, and tracking | 7/10 |
+| Clarity | 20% | Owners assigned to all tasks. Absolute dates. Execution RACI differentiated from discovery RACI. | 7/10 |
+| Robustness | 20% | Kill criteria with numeric thresholds. Early warning indicators for inherited risks. Rollback path documented. | 7/10 |
+| Efficiency | 10% | Output proportional to recipient (Ops, Commercial, Both). No redundant sections with previous deliverables. | 7/10 |
+| Value Density | 15% | 90-day plan with day-by-day activities in Sprint 0. Follow-up metrics with concrete targets. | 7/10 |
 
-**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
+**Global minimum threshold:** 7/10. Deliverables below this require re-work before delivery.
 
 ## Output Format Protocol
 
@@ -405,12 +405,12 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ## Output Artifact
 
-**Primary:** `09_Handover_Operaciones_{project}.md` (o `.html` si `{FORMATO}=html|dual`) — Executive transition summary, commercial activation package, operational readiness checklist, 90-day kickoff plan, governance transition, assumption tracker, stakeholder transition matrix.
+**Primary:** `09_Handover_Operaciones_{project}.md` (or `.html` if `{FORMATO}=html|dual`) — Executive transition summary, commercial activation package, operational readiness checklist, 90-day kickoff plan, governance transition, assumption tracker, stakeholder transition matrix.
 
-**Diagramas incluidos:**
+**Included diagrams:**
 - Flowchart: governance and escalation flow
 - Gantt chart: 90-day plan (first month week-by-week)
 - State diagram: discovery-to-execution transition lifecycle
 
 ---
-**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+**Author:** Javier Montano | **Last updated:** March 12, 2026
