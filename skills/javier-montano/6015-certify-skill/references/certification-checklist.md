@@ -88,9 +88,27 @@ Score each 1-10. When x-ray-skill's `references/quality-rubric.md` is available,
 
 **Scoring requirement:** Each score needs a one-sentence justification with evidence. "Clarity: 8" is not a finding. "Clarity: 8 — all terms defined in Glossary, zero ambiguous pronouns" is a finding.
 
+## Phase 5: MOAT Validation (extends CERTIFIED)
+
+A skill that passes CERTIFIED must also pass these 5 checks to achieve MOAT status. All checks are deterministic.
+
+| # | Check | Command | Pass Criteria | Severity if Fail |
+|---|-------|---------|---------------|-----------------|
+| M1 | evals/evals.json exists | `ls {path}/evals/evals.json` | File exists | BLOCKER — no automated quality assurance |
+| M1b | >= 5 distinct evals | Parse evals.json, count entries | >= 5 entries with distinct `name` fields | BLOCKER — insufficient coverage |
+| M2 | False-positive eval | Grep for `"false_positive"` or eval named `*false*` or `*negative*` | >= 1 match | WARNING — no guard against over-triggering |
+| M2b | Edge-case eval | Grep for `"edge_case"` or eval named `*edge*` or `*boundary*` | >= 1 match | WARNING — no edge coverage |
+| M3 | References substantive | For each file in references/: `wc -l` and `grep -c 'TBD\|TODO\|placeholder'` | All files >= 20 lines AND zero TBD/TODO/placeholder | BLOCKER — broken progressive disclosure |
+| M4 | Template A compliance | Grep for required sections: "## Usage" or "## When to Activate", "## Validation Gate" or "## Quality Gate" | Both present | BLOCKER — skill doesn't follow current standard |
+| M4b | No Template B markers | `grep -c '## The Physics\|## The Protocol\|## TL;DR' SKILL.md` | 0 matches | BLOCKER — deprecated template |
+| M5 | Evidence tag coverage | Count `[EXPLICIT]\|[INFERRED]\|[OPEN]` occurrences / count factual sentences | >= 80% (for Standard/Orchestrator tiers); >= 50% (for Utility tier) | WARNING — ungrounded claims |
+
+**Phase 5 skip rule:** If Phase 1-4 result in BLOCKED, skip Phase 5. MOAT requires passing CERTIFIED first.
+
 ## Certification Formula
 
 ```
+MOAT:          CERTIFIED + all M1-M5 pass (zero BLOCKER failures in Phase 5)
 CERTIFIED:     All dimensions >= 7/10 AND average >= 8.0/10 AND all S1-S9 pass
 CONDITIONAL:   Average >= 8.0 BUT 1-2 dimensions at 6/10 OR 1-2 structural failures
 BLOCKED:       Any dimension < 6/10 OR 3+ structural failures OR S1 fails

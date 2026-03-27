@@ -168,5 +168,35 @@ BLOCKED:     Any dimension < 6/10 OR 3+ gate failures OR no SKILL.md
 
 **Edge case in scoring:** A skill with one dimension at 6 and average at 8.5 is CONDITIONAL — the single weak dimension needs attention but doesn't block usage. A skill with average 7.9 but all dimensions >= 7 is also CONDITIONAL — close but the aggregate quality isn't there yet.
 
+## MOAT Extension Checks (M1-M5)
+
+Beyond the 10-criterion rubric and 13-point gate, MOAT certification adds 5 deterministic checks. These extend CERTIFIED — a skill must pass CERTIFIED before MOAT checks apply.
+
+| # | Check | Detection | Pass | Fail Severity |
+|---|-------|-----------|------|---------------|
+| M1 | Evals exist with >= 5 tests | `ls evals/evals.json` + count entries | File exists, >= 5 entries | BLOCKER |
+| M2 | False-positive + edge-case evals | Grep eval names/tags | >= 1 false-positive, >= 1 edge-case | WARNING |
+| M3 | References substantive | `wc -l` each file in references/, grep TBD/TODO | All >= 20 lines, zero placeholders | BLOCKER |
+| M4 | Template A compliance | Grep for "## Usage" or "## When to Activate" + "## Validation Gate" | Both present, no "## The Physics"/"## The Protocol" | BLOCKER |
+| M5 | Evidence tag coverage | Count [EXPLICIT]/[INFERRED]/[OPEN] vs factual sentences | >= 80% (Standard/Orchestrator), >= 50% (Utility) | WARNING |
+
+### MOAT Formula
+
+```
+MOAT = CERTIFIED (all dims >= 7, avg >= 8, 13/13 gate, S1-S9 pass)
+     + M1 pass + M2 pass + M3 pass + M4 pass + M5 pass
+     + zero BLOCKER failures in M-checks
+```
+
+### Complexity Tier Determination
+
+The required asset set depends on the skill's inherent complexity:
+
+| Tier | Signal | Required for MOAT | Evidence Tag Threshold |
+|------|--------|------------------|----------------------|
+| Utility (< 150 lines, single concern) | Simple lookup, formatting, translation | SKILL.md + evals/ | >= 50% |
+| Standard (150-400 lines, multi-step) | Analysis, design, workflow | SKILL.md + evals/ + references/ + prompts/ | >= 80% |
+| Orchestrator (400+ lines, delegates) | Pipeline, multi-agent coordination | SKILL.md + evals/ + references/ + agents/ + prompts/ + examples/ | >= 80% |
+
 ---
-**Author:** Javier Montano | **Last updated:** March 18, 2026
+**Author:** Javier Montano | **Last updated:** March 27, 2026

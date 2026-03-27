@@ -131,17 +131,32 @@ For each dimension, provide:
 
 **Scoring discipline:** A score without evidence is invalid. "Clarity: 8" is not a finding. "Clarity: 8 — all terms defined in Glossary section, zero ambiguous pronouns found" is a finding.
 
-### Phase 5: Produce Report
+### Phase 5: MOAT Validation (deterministic)
+
+If Phases 1-4 result in CERTIFIED, run 5 additional deterministic checks from `references/certification-checklist.md` Phase 5:
+
+| Check | Pass Criteria |
+|-------|---------------|
+| M1: evals/evals.json exists with >= 5 tests | File present, >= 5 distinct entries |
+| M2: false-positive + edge-case evals | >= 1 of each type in evals.json |
+| M3: references/ files substantive | All >= 20 lines, zero TBD/TODO/placeholder |
+| M4: Template A structure | "## Usage" or "## When to Activate" + "## Validation Gate" present; no Template B markers |
+| M5: evidence tag coverage | [EXPLICIT]/[INFERRED]/[OPEN] on >= 80% factual claims (>= 50% for Utility tier) |
+
+Skip Phase 5 if the skill is CONDITIONAL or BLOCKED — MOAT requires CERTIFIED as a prerequisite.
+
+### Phase 6: Produce Report
 
 Use the Certification Report Template from `references/certification-checklist.md`. Apply the certification formula:
 
 | Level | Formula | Recommendation |
 |-------|---------|---------------|
-| **CERTIFIED** | All dimensions >= 7, average >= 8, all structural pass | "Ship it. Meets production standards." |
+| **MOAT** | CERTIFIED + all M1-M5 pass | "Ship it. Production-quality with full quality assurance." |
+| **CERTIFIED** | All dimensions >= 7, average >= 8, all structural pass | "Passes quality. Upgrade to MOAT: add {missing M-checks}." |
 | **CONDITIONAL** | Average >= 8 but 1-2 dims at 6, or 1-2 structural failures | "Fix {N} blockers, re-certify. Effort: {estimate}." |
 | **BLOCKED** | Any dim < 6, or 3+ structural failures, or no SKILL.md | "Run `/surgeon-skill {path}`. {N} foundational issues." |
 
-**Certification is deterministic for structural checks, judgment-based for rubric.** If two certifications of the same unchanged skill produce different verdicts, the structural results should be identical — only rubric scores may vary by 1 point on subjective dimensions (density, simplicity, value).
+**Certification is deterministic for structural checks and MOAT M-checks, judgment-based for rubric.** If two certifications of the same unchanged skill produce different verdicts, the structural and MOAT results should be identical — only rubric scores may vary by 1 point on subjective dimensions (density, simplicity, value).
 
 ## Assumptions & Limits
 
@@ -200,6 +215,7 @@ Before delivering the certification report:
 - [ ] All 18 content checks (F1-4, B1-9, W1-5) have a result
 - [ ] Systemic checks completed or N/A (with reason) for single-file skills
 - [ ] All 10 rubric dimensions have a numeric score + one-sentence justification with evidence
+- [ ] MOAT checks M1-M5 evaluated (or skipped if not CERTIFIED)
 - [ ] Certification level matches the formula exactly (not assigned by feel)
 - [ ] Every FAIL or BLOCKED item has a specific fix with estimated effort
 - [ ] Report follows the template from references/certification-checklist.md
@@ -212,4 +228,4 @@ Before delivering the certification report:
 | `references/certification-checklist.md` | Complete checklist: 9 structural checks with commands, 18 content checks with criteria, 5 systemic checks with methods, 10 rubric scoring summaries, certification formula, report template | Always — this IS the certification engine |
 
 ---
-**Author:** Javier Montano | **Last updated:** March 18, 2026
+**Author:** Javier Montano | **Last updated:** March 27, 2026

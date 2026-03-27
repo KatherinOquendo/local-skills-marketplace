@@ -146,5 +146,52 @@ For multi-file skills. Single-file skills are automatically coherent.
 | Discriminating assertions | An assertion should fail if the skill degrades | "Output is not empty" — passes for any non-blank response |
 | Named evals | `name` field describes what's being tested | `id: 1` without a name — unclear what failed |
 
+## MOAT Requirements
+
+A gold standard skill must also meet MOAT criteria to be considered production-quality. MOAT extends the CERTIFIED formula with 5 additional deterministic checks.
+
+### MOAT Formula
+
+```
+MOAT = CERTIFIED (all rubric dims >= 7, avg >= 8, S1-S9 pass, 13/13 gate)
+     + M1: evals/evals.json with >= 5 distinct test prompts
+     + M2: >= 1 false-positive eval + >= 1 edge-case eval
+     + M3: All references/ files >= 20 lines, no TBD/TODO/placeholder
+     + M4: Template A structure (deprecated: Template B Physics/Protocol)
+     + M5: Evidence tags [EXPLICIT]/[INFERRED]/[OPEN] on >= 80% factual claims
+```
+
+### Template A (Only Accepted Template)
+
+Template B (Physics/Protocol/TL;DR) is **DEPRECATED** and must be migrated. All SKILL.md files must follow this structure:
+
+1. YAML Frontmatter (name, description 3rd person with 3-5 triggers, allowed-tools)
+2. Title + Value Proposition (1-2 sentences)
+3. Usage / When to Activate (2+ invocation examples)
+4. Before {Action} / Progressive Disclosure (if references/ exists)
+5. Core Process (tables > bullets, code blocks for templates)
+6. Assumptions & Limits (3+ specific limits with handling)
+7. Edge Cases (3+ with scenario + detection + handling)
+8. Good vs Bad Example (1+ side-by-side with reasoning)
+9. Validation Gate (5+ testable checkboxes)
+10. Reference Files table (if references/ exists)
+
+### Complexity Tiers
+
+| Tier | Criteria | Required for MOAT | Recommended |
+|------|----------|------------------|------------|
+| Utility (< 150 lines) | Single concern | SKILL.md + evals/ | references/ |
+| Standard (150-400 lines) | Multi-step | SKILL.md + evals/ + references/ + prompts/ | agents/, examples/ |
+| Orchestrator (400+ lines) | Delegates to sub-skills | SKILL.md + evals/ + references/ + agents/ + prompts/ + examples/ | scripts/ |
+
+### Evidence Tags
+
+All factual claims must carry one of:
+- `[EXPLICIT]` — Direct fact or specification
+- `[INFERRED]` — Derived conclusion from evidence
+- `[OPEN]` — Unknown, to be validated
+
+Coverage target: >= 80% for Standard/Orchestrator, >= 50% for Utility tier.
+
 ---
-**Author:** Javier Montano | **Last updated:** March 18, 2026
+**Author:** Javier Montano | **Last updated:** March 27, 2026
