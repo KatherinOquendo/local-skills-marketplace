@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMAD Project Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-alt: #232636;
+    --border: #2e3247;
+    --text: #e4e6ef;
+    --text-muted: #8b8fa3;
+    --accent: #6c63ff;
+    --accent-light: #8b84ff;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --phase-done: var(--success);
+    --phase-active: var(--accent);
+    --phase-pending: var(--border);
+    --radius: 8px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 24px; min-height: 100vh; }
+  .dashboard { max-width: 960px; margin: 0 auto; }
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .header h1 { font-size: 24px; font-weight: 600; }
+  .header .version { color: var(--text-muted); font-size: 13px; background: var(--surface); padding: 4px 10px; border-radius: 12px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .card-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+  .full-width { grid-column: 1 / -1; }
+
+  /* Phase indicator */
+  .phases { display: flex; align-items: center; gap: 0; }
+  .phase { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; }
+  .phase-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; z-index: 1; }
+  .phase-dot.done { background: var(--phase-done); color: #fff; }
+  .phase-dot.active { background: var(--phase-active); color: #fff; box-shadow: 0 0 0 4px rgba(108,99,255,0.25); }
+  .phase-dot.pending { background: var(--phase-pending); color: var(--text-muted); }
+  .phase-label { font-size: 11px; color: var(--text-muted); margin-top: 6px; text-align: center; }
+  .phase-connector { position: absolute; top: 18px; left: 50%; width: 100%; height: 2px; z-index: 0; }
+  .phase-connector.done { background: var(--phase-done); }
+  .phase-connector.active { background: linear-gradient(90deg, var(--phase-done), var(--phase-active)); }
+  .phase-connector.pending { background: var(--phase-pending); }
+  .phase:last-child .phase-connector { display: none; }
+
+  /* Artifact checklist */
+  .artifact-list { list-style: none; }
+  .artifact-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+  .artifact-list li:last-child { border-bottom: none; }
+  .artifact-icon { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  .artifact-icon.exists { background: var(--success); color: #fff; }
+  .artifact-icon.missing { background: var(--border); color: var(--text-muted); }
+  .artifact-name { flex: 1; }
+  .artifact-path { color: var(--text-muted); font-size: 12px; font-family: monospace; }
+
+  /* Gate status */
+  .gate-status { display: flex; align-items: center; gap: 12px; }
+  .gate-badge { padding: 6px 14px; border-radius: 16px; font-size: 13px; font-weight: 600; }
+  .gate-badge.passed { background: rgba(34,197,94,0.15); color: var(--success); }
+  .gate-badge.failed { background: rgba(239,68,68,0.15); color: var(--danger); }
+  .gate-badge.pending { background: rgba(245,158,11,0.15); color: var(--warning); }
+  .gate-badge.not-started { background: var(--surface-alt); color: var(--text-muted); }
+  .gate-detail { color: var(--text-muted); font-size: 13px; }
+
+  /* Sprint summary */
+  .sprint-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .sprint-goal { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; }
+  .story-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .story-row:last-child { border-bottom: none; }
+  .story-id { font-family: monospace; color: var(--accent-light); font-size: 12px; width: 80px; flex-shrink: 0; }
+  .story-title { flex: 1; }
+  .story-pts { color: var(--text-muted); font-size: 12px; width: 30px; text-align: center; }
+  .status-pill { padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .status-pill.done { background: rgba(34,197,94,0.15); color: var(--success); }
+  .status-pill.in-progress { background: rgba(59,130,246,0.15); color: var(--info); }
+  .status-pill.todo { background: var(--surface-alt); color: var(--text-muted); }
+  .status-pill.blocked { background: rgba(239,68,68,0.15); color: var(--danger); }
+
+  /* Metrics bar */
+  .metrics { display: flex; gap: 24px; margin-top: 16px; }
+  .metric { text-align: center; }
+  .metric-value { font-size: 22px; font-weight: 700; }
+  .metric-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .progress-bar { height: 6px; background: var(--border); border-radius: 3px; margin-top: 16px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--success), var(--accent)); border-radius: 3px; transition: width 0.4s ease; }
+
+  .footer { text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .metrics { flex-wrap: wrap; gap: 16px; } }
+</style>
+</head>
+<body>
+<div class="dashboard" id="app"></div>
+<script>
+// ============================================================
+// PROJECT DATA — Edit this object or generate it with
+// export_project_report.py
+// ============================================================
+const PROJECT = {
+  name: "TaskFlow",
+  version: "0.1.0",
+  currentPhase: 4,
+  phases: [
+    { number: 1, label: "Analysis",       status: "done" },
+    { number: 2, label: "Planning",       status: "done" },
+    { number: 3, label: "Solutioning",    status: "done" },
+    { number: 4, label: "Implementation", status: "active" }
+  ],
+  artifacts: [
+    { name: "Project Context",   path: "project-context.md",             exists: true  },
+    { name: "Product Brief",     path: "product-brief.md",               exists: true  },
+    { name: "PRD",               path: "prd.md",                         exists: true  },
+    { name: "Architecture",      path: "architecture.md",                exists: true  },
+    { name: "Epic: Auth",        path: "epics/epic-001-auth.md",         exists: true  },
+    { name: "Epic: Projects",    path: "epics/epic-002-projects.md",     exists: false },
+    { name: "Epic: Tasks",       path: "epics/epic-003-tasks.md",        exists: false },
+    { name: "Story: Login",      path: "stories/story-001-login.md",     exists: true  },
+    { name: "Story: Signup",     path: "stories/story-002-signup.md",    exists: true  },
+    { name: "Sprint Status",     path: "sprint-status.yaml",             exists: true  }
+  ],
+  gate: {
+    status: "passed",
+    passedChecks: 12,
+    totalChecks: 13,
+    note: "1 item deferred: load testing scheduled for Sprint 2"
+  },
+  sprint: {
+    number: 1,
+    goal: "Core authentication and project setup",
+    status: "Active",
+    stories: [
+      { id: "STORY-001", title: "User login with email/password",  points: 3, status: "done" },
+      { id: "STORY-002", title: "User signup with onboarding flow", points: 5, status: "in-progress" },
+      { id: "STORY-003", title: "Team invitation and management",  points: 3, status: "todo" }
+    ],
+    totalPoints: 11,
+    completedPoints: 3,
+    velocity: 3
+  }
+};
+
+// ============================================================
+// RENDER
+// ============================================================
+function render(data) {
+  const app = document.getElementById("app");
+  const artifactsDone = data.artifacts.filter(a => a.exists).length;
+  const artifactsTotal = data.artifacts.length;
+  const sprintPct = data.sprint.totalPoints > 0
+    ? Math.round((data.sprint.completedPoints / data.sprint.totalPoints) * 100) : 0;
+
+  app.innerHTML = `
+    <div class="header">
+      <h1>${esc(data.name)} Dashboard</h1>
+      <span class="version">v${esc(data.version)}</span>
+    </div>
+
+    <div class="card full-width" style="margin-bottom:16px">
+      <div class="card-title">Phase Progress</div>
+      <div class="phases">
+        ${data.phases.map((p, i) => `
+          <div class="phase">
+            ${i < data.phases.length - 1 ? `<div class="phase-connector ${connectorClass(p, data.phases[i+1])}"></div>` : ''}
+            <div class="phase-dot ${p.status}">${p.number}</div>
+            <div class="phase-label">${esc(p.label)}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Artifacts (${artifactsDone}/${artifactsTotal})</div>
+        <ul class="artifact-list">
+          ${data.artifacts.map(a => `
+            <li>
+              <span class="artifact-icon ${a.exists ? 'exists' : 'missing'}">${a.exists ? '&#10003;' : '&mdash;'}</span>
+              <span class="artifact-name">${esc(a.name)}</span>
+              <span class="artifact-path">${esc(a.path)}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Implementation Readiness Gate</div>
+        <div class="gate-status">
+          <span class="gate-badge ${data.gate.status}">${gateLabel(data.gate.status)}</span>
+          <span class="gate-detail">${data.gate.passedChecks}/${data.gate.totalChecks} checks</span>
+        </div>
+        ${data.gate.note ? `<p style="color:var(--text-muted);font-size:13px;margin-top:12px">${esc(data.gate.note)}</p>` : ''}
+
+        <div style="margin-top:24px">
+          <div class="card-title">Sprint ${data.sprint.number} Velocity</div>
+          <div class="metrics">
+            <div class="metric"><div class="metric-value">${data.sprint.completedPoints}</div><div class="metric-label">Done</div></div>
+            <div class="metric"><div class="metric-value">${data.sprint.totalPoints - data.sprint.completedPoints}</div><div class="metric-label">Remaining</div></div>
+            <div class="metric"><div class="metric-value">${data.sprint.totalPoints}</div><div class="metric-label">Total</div></div>
+            <div class="metric"><div class="metric-value">${data.sprint.velocity}</div><div class="metric-label">Velocity</div></div>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${sprintPct}%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card full-width">
+      <div class="sprint-header">
+        <div class="card-title" style="margin-bottom:0">Sprint ${data.sprint.number}</div>
+        <span class="status-pill ${data.sprint.status.toLowerCase().replace(' ','-')}">${esc(data.sprint.status)}</span>
+      </div>
+      <div class="sprint-goal">${esc(data.sprint.goal)}</div>
+      ${data.sprint.stories.map(s => `
+        <div class="story-row">
+          <span class="story-id">${esc(s.id)}</span>
+          <span class="story-title">${esc(s.title)}</span>
+          <span class="story-pts">${s.points}pt</span>
+          <span class="status-pill ${s.status}">${statusLabel(s.status)}</span>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="footer">BMAD Project Dashboard &middot; Generated from project artifacts &middot; Edit PROJECT data at top of file</div>
+  `;
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function connectorClass(curr, next) {
+  if (curr.status === 'done' && next.status === 'done') return 'done';
+  if (curr.status === 'done' && next.status === 'active') return 'active';
+  return 'pending';
+}
+function gateLabel(s) {
+  return { passed: 'Passed', failed: 'Failed', pending: 'In Review', 'not-started': 'Not Started' }[s] || s;
+}
+function statusLabel(s) {
+  return { done: 'Done', 'in-progress': 'In Progress', todo: 'To Do', blocked: 'Blocked' }[s] || s;
+}
+
+render(PROJECT);
+</script>
+</body>
+</html>

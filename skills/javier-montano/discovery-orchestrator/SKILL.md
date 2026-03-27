@@ -1,17 +1,13 @@
 ---
-name: sofka-discovery-orchestrator
-argument-hint: "<project-name> [codebase-path]"
+name: metodologia-discovery-orchestrator
 description: >
-  This skill should be used when the user asks to "run a discovery",
-  "orchestrate the pipeline", "start a consulting engagement", "coordinate
-  the dream team", "plan a discovery session", "manage discovery inputs",
-  or mentions discovery orchestration, phase sequencing, quality gates, data
-  contracts, expert committee, dream team, or consulting pipeline. It is the
-  single entry point for every discovery engagement, coordinating 48 specialized
-  skills across 8 pipeline phases with quality gates and expert committees. Use
-  this skill whenever a consulting discovery or multi-phase assessment is needed,
-  even if they don't explicitly ask for "discovery orchestrator".
-argument-hint: "<project-name> [codebase-path]"
+  This skill should be used when the user asks to "run a discovery", "orchestrate the pipeline",
+  "start a consulting engagement", "coordinate the dream team", "plan a discovery session",
+  "manage discovery inputs", or mentions discovery orchestration, phase sequencing, quality gates,
+  data contracts, expert committee, dream team, or consulting pipeline. Always use this skill
+  as the entry point for any discovery engagement — it coordinates all other skills.
+argument-hint: "<project_name> [full-pipeline|minimal|quick-reference] [codebase_path]"
+author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
 allowed-tools:
@@ -24,21 +20,45 @@ allowed-tools:
   - WebFetch
 ---
 
-# Sofka Discovery Orchestrator
+# MetodologIA Discovery Orchestrator
 
-The single entry point for every Sofka discovery engagement. Coordinates 48 specialized skills across 8 pipeline phases (0-6 + 3b) and 8 domains, assembles and manages a 7-expert dream team + impartial conductor, enforces 3 quality gates, manages inter-phase data contracts, and maintains a living discovery plan with input tracking. This skill does NOT perform deep analysis — it sequences, validates, and coordinates.
+The single entry point for every MetodologIA discovery engagement. Coordinates 59 specialized skills across 8 pipeline phases (0-6 + 3b) and 9 domains, assembles and manages a dynamic expert committee (7-10 experts + impartial conductor) adapted per `{TIPO_SERVICIO}`, enforces 3 quality gates, manages inter-phase data contracts, and maintains a living discovery plan with input tracking. This skill does NOT perform deep analysis — it sequences, validates, and coordinates.
 
-## Principio Rector
 
-**El discovery sin orquestación es un conjunto de análisis inconexos disfrazados de consultoría.** Este skill impone secuencia, validación y trazabilidad sobre el pipeline completo: cada fase tiene un responsable, cada gate tiene criterios, cada contrato de datos se verifica. La orquestación es lo que convierte 48 skills individuales en un programa de consultoría confiable.
+## Service Type Parameter
 
-### Filosofía de Orquestación
+`{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design` | `Digital-Transformation` | `Multi-Service`
 
-1. **Secuencia con propósito.** Cada fase existe porque la anterior la alimenta. Saltar fases no es eficiencia — es riesgo no gestionado.
-2. **Contratos, no confianza.** Los data contracts entre fases se verifican explícitamente. La confianza se construye con evidencia, no con supuestos.
-3. **El conductor no analiza.** Coordinación pura. Las opiniones técnicas son de los expertos. El conductor secuencia, valida y escala.
+Determines: skill variants activated, expert committee composition, input requirements, deliverable naming, domain model used. See `references/service-type-matrix.md` for detection rules and routing logic.
 
-## Skill Catalog (48 skills across 8 domains)
+### Auto-Detection Rules (Priority Order)
+1. Explicit parameter in command invocation
+2. User states service type in prompt
+3. Codebase detected → SDA
+4. Process/BPMN artifacts detected → RPA
+5. Test artifacts dominant → QA
+6. Data pipelines/models detected → Data-AI
+7. Cloud infrastructure configs dominant → Cloud
+8. Design assets dominant → UX-Design
+9. Multiple service indicators → Multi-Service
+10. Default → SDA (backward compatible)
+
+Always confirm detected service type with user before proceeding.
+
+## Grounding Guideline
+
+**Discovery without orchestration is a collection of disconnected analyses disguised as consulting.** This skill imposes sequence, validation, and traceability over the complete pipeline: every phase has an owner, every gate has criteria, every data contract is verified. Orchestration is what turns 59 individual skills into a reliable consulting program.
+
+### Orchestration Philosophy
+
+1. **Sequence with purpose.** Each phase exists because the previous one feeds it. Skipping phases is not efficiency — it is unmanaged risk.
+2. **Contracts, not trust.** Data contracts between phases are explicitly verified. Trust is built with evidence, not assumptions.
+3. **The conductor does not analyze.** Pure coordination. Technical opinions belong to the experts. The conductor sequences, validates, and escalates.
+
+## Skill Catalog (111 skills across 11 domains)
+
+> Full catalog: `references/ontology/skills-catalog.md`
+> Below: core skills referenced by the orchestrator during pipeline execution.
 
 ### Discovery Pipeline (16 skills — core engagement flow)
 | Skill | Phase | Purpose |
@@ -120,6 +140,22 @@ The single entry point for every Sofka discovery engagement. Coordinates 48 spec
 | ux-writing | Microcopy, readability, content standards |
 | roadmap-poc | PoC/MVP sprint planning, kickoff protocol |
 
+
+### Service Discovery (11 skills — universal service coverage)
+| Skill | Purpose |
+|-------|---------|
+| rpa-discovery | Process landscape, automation scoring, bot architecture |
+| qa-service-discovery | TMMi assessment, test factory, QA CoE design |
+| ai-center-discovery | AI readiness (AI SCALE), use case portfolio, model governance |
+| management-discovery | PMO maturity, methodology fitness, Factor WOW |
+| staff-augmentation-discovery | Talent gap, skills matrix, staffing model |
+| digital-transformation-discovery | Digital maturity, multi-service program design |
+| cloud-service-discovery | Cloud readiness, DORA metrics, FinOps |
+| bi-analytics-discovery | Data maturity (DCAM), BI landscape, self-service |
+| ux-design-discovery | Design maturity, design system, UX research capability |
+| mentoring-training-discovery | Capability assessment, learning paths, knowledge transfer |
+| mini-apps-discovery | Citizen developer readiness, low-code platform assessment |
+
 ## Output Format Protocol
 
 Every deliverable supports two output formats controlled by `{FORMATO}`:
@@ -186,6 +222,96 @@ Every deliverable supports two output formats controlled by `{FORMATO}`:
 - Each phase skill owns its own quality; the orchestrator validates against acceptance criteria
 - Full pipeline: 18-25 working days + 9-15 calendar days for gates
 - Phase 5a/5b can run in parallel after Gate 2; all other phases are sequential
+
+## Edge Cases
+
+| Case | Handling Strategy |
+|---|---|
+| Sistema >500K LOC con >15 integraciones | Descomponer en subsistemas antes de Phase 2. Ejecutar un pipeline por subsistema. Consolidar en Phase 4 con roadmap unificado. Escalar timeline +50%. |
+| Gate falla repetidamente (2+ veces) sin progreso | Recomendar reduccion de scope o pivot de engagement. Escalar a executive sponsor. Documentar opciones: (a) scope reduction, (b) additional discovery time, (c) engagement pause. |
+| Stakeholders no disponibles durante discovery | Documentar todas las decisiones como supuestos con tag [SUPUESTO]. Programar sesion de validacion when available. Flag impacto en downstream phases. Nunca proceder sin documentar. |
+| Cambio de industria o contexto mid-engagement | Reactivar SME con nuevo lens. Re-evaluar deliverables previos para consistencia. Recalcular timeline. Confirmar con usuario antes de continuar. Documentar pivot en discovery plan. |
+
+## Decisions & Trade-offs
+
+| Decision | Discarded Alternative | Justification |
+|---|---|---|
+| Comite de 7 expertos (numero impar) sobre panel de 5 o 9 | Panel de 5 (menos cobertura) o 9 (overhead de coordinacion) | 7 cubre los dominios criticos (architecture, domain, implementation, delivery, quality, data, change) con numero impar para consensus. 5 sacrifica data o change; 9 agrega ruido. |
+| Gates con hard-stop obligatorio sobre gates advisory | Gates que solo generan warnings sin bloquear | Hard-stop previene que deliverables de baja calidad contaminen fases downstream. Advisory gates generan deuda tecnica acumulada que se descubre en Gate 3 cuando el costo de fix es maximo. |
+| Data contracts explicitos entre fases sobre paso implicito de informacion | Cada fase lee lo que necesita sin contrato formal | Contratos explicitos aseguran que cada transicion tiene datos verificables. Sin contratos, fases downstream reciben datos incompletos y generan supuestos no documentados. |
+
+## Knowledge Graph
+
+```mermaid
+graph TD
+    subgraph Core
+        DO[discovery-orchestrator]
+    end
+    subgraph Inputs
+        PRJ[Project Name & Context] --> DO
+        SRC[Source Code / Artifacts] --> DO
+        STK[Stakeholder Access] --> DO
+    end
+    subgraph Outputs
+        DO --> PLAN[Discovery Plan 00]
+        DO --> DEL[10 Deliverables 01-09 + P-01 + P-02]
+        DO --> STATUS[Pipeline Status Reports]
+    end
+    subgraph Related Skills
+        DO -.-> ASIS[asis-analysis]
+        DO -.-> SCEN[scenario-analysis]
+        DO -.-> ROAD[solution-roadmap]
+        DO -.-> HAND[discovery-handover]
+        DO -.-> PPM[project-program-management]
+        DO -.-> RCD[risk-controlling-dynamics]
+    end
+```
+
+## Output Templates
+
+**Formato MD (default):**
+```
+# Discovery Pipeline: {project_name}
+## Discovery Plan
+  - Engagement context, phase schedule, input registry
+## Expert Committee Declaration
+  - 7 experts + conductor + governance roles
+## Phase Status Reports
+  - Per-phase: acceptance criteria, assumptions, risks
+## Gate Evaluations
+  - G1, G2, G3 criteria with pass/fail evidence
+## Deliverable Manifest
+  - 10+ files with status and cross-references
+```
+
+**Formato HTML (secondary):**
+- Filename: `00_Discovery_Pipeline_{project}_{WIP}.html`
+- Dashboard HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye phase cards con progress indicators, gate scorecards con pass/fail visual y expert allocation matrix interactiva. WCAG AA, responsive, print-ready.
+
+**Formato DOCX (circulación formal):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.docx`
+- Generado via python-docx con MetodologIA Design System v5. Portada con metadata del engagement, TOC automático, encabezados/pies de página con marca. Tablas con zebra striping, tipografía Poppins en headings (navy), Trebuchet MS en cuerpo, acentos dorados. Para circulación formal y auditoría.
+
+**Formato XLSX (tracking y control):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.xlsx`
+- Generado via openpyxl con MetodologIA Design System v5. Encabezados con fondo navy y texto blanco Poppins, formato condicional por estado de fase/gate (Pass/Fail/Pending), auto-filtros en todas las columnas, valores calculados (sin fórmulas). Hojas: Discovery Plan & Phase Schedule, Input Registry, Expert Committee Allocation, Gate Evaluation Scorecards, Deliverable Manifest.
+
+**Formato PPTX (presentación ejecutiva):**
+- Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
+- Generado via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, títulos Poppins, cuerpo Trebuchet MS, acentos dorados. Máx 20 slides ejecutivo / 30 técnico. Notas del orador con referencias de evidencia. Secciones: Discovery Overview, Expert Committee, Phase Progress & Gate Status, Deliverable Manifest, Next Steps.
+
+## Evaluacion
+
+| Dimension | Peso | Criterio | Umbral Minimo |
+|---|---|---|---|
+| Trigger Accuracy | 10% | El skill se activa como entry point para cualquier discovery engagement, detecta servicio tipo correctamente | 7/10 |
+| Completeness | 25% | Pipeline completo ejecutado segun variante. Todas las fases con deliverables. Gates evaluados. Contracts verificados. | 7/10 |
+| Clarity | 20% | Discovery plan claro con schedule, inputs, assumptions. Status reports sin ambiguedad. Expert roles definidos. | 7/10 |
+| Robustness | 20% | Error recovery funcional. Gate rejections con opciones. Input missing con workarounds documentados. | 7/10 |
+| Efficiency | 10% | Variante correcta seleccionada. Sin fases redundantes. Parallel execution donde posible (5a+5b). | 7/10 |
+| Value Density | 15% | Cada status report entrega insights accionables. Deliverable manifest completo. Cross-references consistentes. | 7/10 |
+
+**Umbral minimo global:** 7/10. Deliverables por debajo requieren re-work antes de entrega.
 
 ## Usage
 
@@ -300,17 +426,22 @@ Generated: [date] | Variant: [full/minimal/quick] | Estimated: [timeline]
 
 ### Step 3: Validate Minimum Viable Inputs
 
-Before starting Phase 1, verify:
+Before starting Phase 1, verify service-type-appropriate inputs:
 
-| Input | Required For | Workaround if Missing |
-|-------|-------------|----------------------|
-| Source code | Phase 1 | Cannot proceed; request access |
-| Build config | Phase 1 | Infer from package files; flag as assumption |
-| Deployment config | Phase 1 | Infer from Dockerfiles/CI; flag as assumption |
-| Stakeholder list | Phase 0 | Skip Phase 0; start at Phase 1 with assumptions |
-| Industry sector | All phases | Ask once: "What industry is the client in?" |
+| Service Type | Required Inputs | Workaround if Missing |
+|-------------|----------------|----------------------|
+| SDA | Source code, build config, deployment config | Cannot proceed without source code |
+| QA | Test artifacts, QA tools, CI/CD access | Interview-based; flag as assumption |
+| Management | Methodology docs, team structure, governance | Workshop-based discovery |
+| RPA | Process documentation, BPMN, system access | Process mining or interviews |
+| Data-AI | Data catalog, pipeline configs, model inventory | Data profiling; flag gaps |
+| Cloud | Infra inventory, cloud console, deployment configs | Cloud assessment tools |
+| SAS | Org charts, role descriptions, skills inventory | HR interviews; flag gaps |
+| UX-Design | Design assets, research artifacts, brand guidelines | Heuristic evaluation |
+| Digital-Transformation | Executive strategy, org structure | Stakeholder workshops |
+| Multi-Service | Varies by included services | Composite validation |
 
-If source code is unavailable: halt and request. All other inputs have workarounds.
+**SDA only:** If source code is unavailable, halt and request. All other service types can proceed without source code using appropriate workarounds.
 
 ### Step 4: Activate Industry Lens
 
@@ -684,41 +815,41 @@ El orquestador es el receptor primario de los 16 prompts NL-HP v3.0. Cada prompt
 | `intermedio` | discovery-orchestrator | asis→scenario→feasibility→roadmap→pitch→handover | G1+G2 |
 | `express` | discovery-orchestrator | asis→scenario→pitch | — |
 | `revisar` | project-program-management (S5) | risk-controlling-dynamics, discovery-orchestrator | — |
-| `evolucionar` | discovery-orchestrator | skill del entregable específico | — |
-| `rescatar` | discovery-orchestrator | skills según fases faltantes | según estado |
+| `evolucionar` | discovery-orchestrator | skill for the specific deliverable | — |
+| `rescatar` | discovery-orchestrator | skills per missing phases | per state |
 
-### Protocolo de Recepción de Prompt
+### Prompt Reception Protocol
 
-1. **Identificar prompt**: Detectar cuál de los 16 prompts se está ejecutando.
-2. **Activar skill primario**: Invocar el skill correspondiente con sus agentes.
-3. **Activar governance**: `project-program-management` (tracking) + `risk-controlling-dynamics` (scanning).
-4. **Verificar pre-requisitos**: Inputs de fases anteriores según Inter-Phase Data Contracts.
-5. **Ejecutar según MODO**: Respetar el modo de interacción declarado en el prompt.
-6. **Producir output**: Según Output Artifact del skill primario, en el FORMATO solicitado.
-7. **Registrar en governance**: Actualizar phase status en P-01 y risk register en P-02.
+1. **Identify prompt**: Detect which of the 16 prompts is being executed.
+2. **Activate primary skill**: Invoke the corresponding skill with its agents.
+3. **Activate governance**: `project-program-management` (tracking) + `risk-controlling-dynamics` (scanning).
+4. **Verify prerequisites**: Inputs from previous phases per Inter-Phase Data Contracts.
+5. **Execute per MODE**: Respect the interaction mode declared in the prompt.
+6. **Produce output**: Per the primary skill's Output Artifact, in the requested FORMAT.
+7. **Register in governance**: Update phase status in P-01 and risk register in P-02.
 
 ## Asset Inventory
 
-Cada skill produce outputs de referencia en su directorio `examples/`:
+Each skill produces reference outputs in its `examples/` directory:
 
-| Skill | Example Asset | Descripción |
+| Skill | Example Asset | Description |
 |-------|--------------|-------------|
-| asis-analysis | `examples/sample-output.md` | Análisis AS-IS 10 secciones — Acme Corp Banking |
-| stakeholder-mapping | `examples/sample-output.md` | Stakeholder map con RACI — Acme Corp Banking |
-| flow-mapping | `examples/sample-output.md` | Taxonomía DDD + 8 flujos E2E — Acme Corp Banking |
-| scenario-analysis | `examples/sample-output.md` | 3 escenarios ToT con scoring 6D — Acme Corp Banking |
-| technical-feasibility | `examples/sample-output.md` | Feasibility 6D con spikes — Acme Corp Banking |
-| software-viability | `examples/sample-output.md` | Viability forensics con scorecard — Acme Corp Banking |
-| solution-roadmap | `examples/sample-output.md` | Roadmap 5 fases con Monte Carlo — Acme Corp Banking |
+| asis-analysis | `examples/sample-output.md` | AS-IS analysis 10 sections — Acme Corp Banking |
+| stakeholder-mapping | `examples/sample-output.md` | Stakeholder map with RACI — Acme Corp Banking |
+| flow-mapping | `examples/sample-output.md` | DDD taxonomy + 8 E2E flows — Acme Corp Banking |
+| scenario-analysis | `examples/sample-output.md` | 3 ToT scenarios with 6D scoring — Acme Corp Banking |
+| technical-feasibility | `examples/sample-output.md` | 6D feasibility with spikes — Acme Corp Banking |
+| software-viability | `examples/sample-output.md` | Viability forensics with scorecard — Acme Corp Banking |
+| solution-roadmap | `examples/sample-output.md` | 5-phase roadmap with Monte Carlo — Acme Corp Banking |
 | cost-estimation | `examples/sample-output.md` | Cost drivers + magnitudes — Acme Corp Banking |
-| commercial-model | `examples/sample-output.md` | Modelo comercial con deal canvas — Acme Corp Banking |
-| functional-spec | `examples/sample-output.md` | Módulos + 8 UC + 6 BR — Acme Corp Banking |
+| commercial-model | `examples/sample-output.md` | Commercial model with deal canvas — Acme Corp Banking |
+| functional-spec | `examples/sample-output.md` | Modules + 8 UC + 6 BR — Acme Corp Banking |
 | executive-pitch | `examples/sample-output.md` | Business case C-level — Acme Corp Banking |
-| discovery-handover | `examples/sample-output.md` | Handover package con plan 90d — Acme Corp Banking |
+| discovery-handover | `examples/sample-output.md` | Handover package with 90d plan — Acme Corp Banking |
 | project-program-management | `examples/sample-output.md` | P-01 Governance dashboard — Acme Corp Banking |
 | risk-controlling-dynamics | `examples/sample-output.md` | P-02 Risk register + pre-mortem — Acme Corp Banking |
 
-**Uso**: Los examples/ sirven como benchmark de calidad. El output de cada prompt debe igualar o superar la profundidad y estructura del example correspondiente.
+**Usage**: The examples/ serve as quality benchmarks. Each prompt's output must match or exceed the depth and structure of the corresponding example.
 
 ## Trade-off Matrix
 
@@ -727,8 +858,8 @@ Cada skill produce outputs de referencia en su directorio `examples/`:
 | **Full Pipeline** (all phases + gates) | Maximum confidence, auditable, complete | 4-6 weeks, high investment | High-stakes engagements, execution commitment |
 | **Minimal Pipeline** (skip Phase 0, 2, 5a) | Faster delivery, lower cost | Less depth in stakeholder/flow analysis | Architecture direction only |
 | **Quick Reference** (3 phases only) | Rapid go/no-go decision | Insufficient for execution planning | Time-pressured decisions |
-| **Auto-gating** (desatendido mode) | Maximum throughput | Risk of missed blockers | Experienced teams, low-complexity systems |
-| **Full governance** (paso-a-paso mode) | Maximum control and learning | Slow, high interaction cost | First engagement with new client |
+| **Auto-gating** (unattended mode) | Maximum throughput | Risk of missed blockers | Experienced teams, low-complexity systems |
+| **Full governance** (step-by-step mode) | Maximum control and learning | Slow, high interaction cost | First engagement with new client |
 
 ## Edge Cases
 
@@ -769,4 +900,4 @@ Cada skill produce outputs de referencia en su directorio `examples/`:
 - Expert allocation matrix
 
 ---
-**Author:** Javier Montano | **Last updated:** March 18, 2026
+**Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026

@@ -1,0 +1,31 @@
+---
+name: metrics-instrumentation
+author: JM Labs (Javier Montaño)
+version: 1.0.0
+description: >
+  Code-level metrics, custom dimensions, event parameter design.
+  Trigger: "metrics instrumentation"
+allowed-tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
+---
+# Metrics Instrumentation
+> "Method over hacks."
+## TL;DR
+Code-level metrics, custom dimensions, event parameter design.
+## Procedure
+### Step 1: Discover
+- Gather context and requirements
+### Step 2: Analyze
+- Evaluate options per Constitution XIII/XIV
+### Step 3: Execute
+- Implement with evidence tags
+### Step 4: Validate
+- Verify quality criteria met
+## Quality Criteria
+- [ ] Evidence tags applied
+- [ ] Constitution-compliant
+- [ ] Actionable output

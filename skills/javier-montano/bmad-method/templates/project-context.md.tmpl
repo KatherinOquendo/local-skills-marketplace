@@ -1,0 +1,140 @@
+---
+project-name: "{{ project_name }}"
+<!-- REQUIRED --> <!-- VALIDATION: must be unique across the organization's BMAD projects -->
+version: "{{ version | default: '0.1.0' }}"
+<!-- REQUIRED --> <!-- VALIDATION: must follow semver (X.Y.Z) -->
+team-size: {{ team_size }}
+<!-- REQUIRED --> <!-- VALIDATION: integer >= 1 -->
+created: "{{ created_date }}"
+<!-- REQUIRED --> <!-- VALIDATION: ISO 8601 date (YYYY-MM-DD) -->
+last-updated: "{{ last_updated_date }}"
+<!-- REQUIRED -->
+---
+
+# {{ project_name }} — Project Context
+
+<!-- This is the project constitution. Every workflow step, agent persona, and
+     planning artifact references this file. If it is incomplete, downstream
+     phases will produce low-quality output. -->
+<!-- ANTI-PATTERN: Do not list aspirational conventions you wish the team followed.
+     Document what the team actually does. Update this file when conventions change. -->
+
+## Vision
+
+<!-- REQUIRED -->
+<!-- VALIDATION: 1-3 sentences maximum. Must be concrete enough that two people
+     independently reading it would agree on what "done" looks like. -->
+<!-- ANTI-PATTERN: Avoid vague statements like "build a great product." State the
+     measurable outcome, e.g., "reduce onboarding time from 3 weeks to 10 minutes." -->
+
+{{ project_vision }}
+
+## Problem Statement
+
+<!-- REQUIRED -->
+<!-- VALIDATION: Must identify WHO feels the pain, WHAT the pain is, and WHY
+     existing solutions fail. Max 2 paragraphs. -->
+
+{{ problem_statement }}
+
+## Tech Stack
+
+<!-- REQUIRED — at minimum Frontend, Backend, and Database rows must be filled. -->
+<!-- VALIDATION: every row must have a Rationale explaining WHY this technology
+     was chosen over alternatives. "Industry standard" is not sufficient. -->
+<!-- ANTI-PATTERN: Do not list technologies you plan to evaluate. Only list
+     confirmed choices. Use the ADR process for pending decisions. -->
+<!-- Edge case: If there is no separate backend (e.g., static site), remove the
+     Backend row and note "N/A — static frontend" in its place. -->
+
+| Layer        | Technology           | Version   | Rationale                         |
+|-------------|----------------------|-----------|-----------------------------------|
+| Frontend    | {{ fe_framework }}   | {{ ver }} | {{ rationale }}                   |
+| Backend     | {{ be_framework }}   | {{ ver }} | {{ rationale }}                   |
+| Database    | {{ database }}       | {{ ver }} | {{ rationale }}                   |
+| Auth        | {{ auth_provider }}  | {{ ver }} | {{ rationale }}                   |
+| Hosting     | {{ hosting }}        | —         | {{ rationale }}                   |
+| CI/CD       | {{ ci_cd }}          | —         | {{ rationale }}                   |
+| Monitoring  | {{ monitoring }}     | —         | {{ rationale }}                   |
+
+## Constraints
+
+<!-- REQUIRED — every project has constraints. If you genuinely have none in a
+     category, write "None identified" rather than leaving it blank. -->
+<!-- VALIDATION: Each constraint should be specific and measurable. "Limited budget"
+     is too vague; "$0 infrastructure during MVP (free tiers only)" is actionable. -->
+
+- **Budget**: {{ budget_constraint }}
+<!-- REQUIRED -->
+- **Timeline**: {{ timeline_constraint }}
+<!-- REQUIRED --> <!-- VALIDATION: include start date, end date, and any hard milestones -->
+- **Regulatory**: {{ regulatory_constraint }}
+<!-- OPTIONAL — write "None identified" if not applicable -->
+- **Technical**: {{ technical_constraint }}
+<!-- OPTIONAL -->
+- **Staffing**: {{ staffing_constraint }}
+<!-- REQUIRED --> <!-- VALIDATION: must match the team-size in frontmatter -->
+
+## Conventions
+
+### Code Style
+
+- Language standard: {{ language_standard }}
+- Linter config: {{ linter_config }}
+- Formatter: {{ formatter }}
+
+### Git Workflow
+
+- Branching model: {{ branching_model }}
+- Commit convention: {{ commit_convention }}
+- PR review policy: {{ pr_review_policy }}
+
+### Naming Conventions
+
+- Files: {{ file_naming }}
+- Components: {{ component_naming }}
+- Database entities: {{ db_naming }}
+- API endpoints: {{ api_naming }}
+
+### Testing Strategy
+
+- Unit test minimum coverage: {{ unit_coverage }}%
+- Integration tests: {{ integration_tests }}
+- E2E tests: {{ e2e_tests }}
+
+## Team
+
+| Role              | Name               | Contact              | Responsibility                   |
+|------------------|--------------------|----------------------|----------------------------------|
+| Product Owner    | {{ po_name }}      | {{ po_contact }}     | Requirements, prioritization     |
+| Tech Lead        | {{ tl_name }}      | {{ tl_contact }}     | Architecture, code quality       |
+| Developer        | {{ dev_name }}     | {{ dev_contact }}    | {{ dev_responsibility }}         |
+| Designer         | {{ des_name }}     | {{ des_contact }}    | UX/UI design                     |
+| QA               | {{ qa_name }}      | {{ qa_contact }}     | Testing, quality assurance       |
+
+## Links
+
+| Resource          | URL                              |
+|------------------|----------------------------------|
+| Repository       | {{ repo_url }}                   |
+| Project Board    | {{ board_url }}                  |
+| Design Files     | {{ design_url }}                 |
+| CI/CD Dashboard  | {{ ci_url }}                     |
+| Staging          | {{ staging_url }}                |
+| Production       | {{ production_url }}             |
+| Documentation    | {{ docs_url }}                   |
+
+---
+
+## Completion Checklist
+
+- [ ] All REQUIRED fields are filled with project-specific values (no placeholders)
+- [ ] Vision is concrete and measurable (not aspirational fluff)
+- [ ] Tech Stack has a rationale for every technology choice
+- [ ] Constraints are specific and measurable
+- [ ] Conventions reflect actual team practices, not aspirational ones
+- [ ] Team table matches the team-size in frontmatter
+- [ ] All Links URLs are valid and accessible
+- [ ] This file has been reviewed by the Tech Lead and Product Owner
+
+<!-- Keep this file up to date. It is the single source of truth for project context. -->

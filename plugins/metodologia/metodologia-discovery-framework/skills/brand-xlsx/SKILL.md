@@ -1,173 +1,271 @@
 ---
-name: metodologia-brand-xlsx
+name: brand-xlsx
 description: >
-  Generates branded XLSX (Excel) spreadsheets using the MetodologIA Neo-Swiss
-  Design System v6. Uses openpyxl to create professional spreadsheets with navy
-  headers, gold accent rows, and semantic conditional formatting. Use when the user
-  requests a spreadsheet, XLSX output, or when the ghost menu routes to XLSX.
-argument-hint: "[source-file.md] [output_path.xlsx]"
-author: Javier Montano · Comunidad MetodologIA
+  This skill should be used when the user asks to "generate a branded spreadsheet",
+  "create an Excel file with brand colors", "build an XLSX report",
+  "apply brand styling to a spreadsheet", or mentions openpyxl or brand tokens.
+  It generates brand-compliant Excel spreadsheets (.xlsx) using openpyxl with
+  configurable color fills, typography, layout patterns, KPI boxes, and footers.
+  Use this skill whenever the user needs any styled or branded Excel output,
+  even if they don't explicitly ask for "brand-xlsx".
+argument-hint: "<sheet-title> [brand-config-path]"
 model: opus
 context: fork
 allowed-tools:
   - Read
+  - Grep
+  - Glob
   - Write
   - Edit
-  - Glob
-  - Grep
   - Bash
 ---
 
-# MetodologIA Brand XLSX — Neo-Swiss Spreadsheet Generator
+# Brand XLSX — Spreadsheet Generator
 
-Generates production-ready Excel spreadsheets following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every spreadsheet uses navy header fills, gold accent rows, Poppins header text, Trebuchet MS body text, and semantic conditional formatting.
+Generate brand-compliant Excel spreadsheets (.xlsx) using openpyxl. Reads brand tokens from config and applies consistent colors, typography, layout patterns.
 
-## Grounding Guideline
+## Prerequisites
 
-> *A spreadsheet without structure is a data dump disguised as analysis.*
+- openpyxl installed (`pip install openpyxl`)
+- Brand config file (optional; neutral defaults without one)
 
-1. **Branded header, clean data.** The first visual impression matters — MetodologIA colors in headers, well-formatted data below.
-2. **Every sheet has a purpose.** One sheet = one concept. Workbooks with a single giant sheet are ungovernable.
-3. **Documented formulas.** Calculated cells must have comments explaining the logic — the sheet must be readable without the author.
+## Brand Configuration
 
-## CRITICAL: Before Generating ANY XLSX
+Search for config:
+1. Path passed as argument
+2. `./brand-config.json`
+3. `~/.claude/brand-config.json`
 
-**ALWAYS read the brand config first:**
+### Config Fields Used
 
+```json
+{
+  "brand": { "name": "", "wordmark": "", "tagline": "" },
+  "colors": {
+    "primary": "#FF7E08",
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "background": "#EFEAE4",
+    "muted": "#B8A894",
+    "primarySoft": "#FFF0E0"
+  },
+  "decorative": ["#42D36F", "#06C8C8", "#9747FF", "#FE9CAB"],
+  "xlsx": { "year": "2026", "domain": "yourbrand.com" }
+}
 ```
-Read ${CLAUDE_SKILL_DIR}/../../references/brand-config-neoswiss.json
-```
 
-Extract the `xlsx` section for all fill colors, font specs, and formatting rules.
-
-## Neo-Swiss XLSX Tokens
-
-All values sourced from `brand-config-neoswiss.json`:
-
-| Element | Fill | Font Color | Font Family | Size |
-|---------|------|-----------|-------------|------|
-| Header | #122562 (Navy) | #FFFFFF (White) | Poppins | 11pt |
-| Accent Row | #FFD700 (Gold) | #122562 (Navy) | Poppins | 11pt |
-| Body | — | #1F2833 (Dark) | Trebuchet MS | 10pt |
-| Zebra Light | #F8F9FC | #1F2833 (Dark) | Trebuchet MS | 10pt |
-| Zebra Dark | #FFFFFF | #1F2833 (Dark) | Trebuchet MS | 10pt |
-| Positive | #137DC5 fill | #FFFFFF (White) | Bold | — |
-| Warning | #D97706 fill | #FFFFFF (White) | Bold | — |
-| Critical | #DC2626 fill | #FFFFFF (White) | Bold | — |
-| Border | #E8EAF0 (Light gray) | — | — | — |
-
-## Sheet Structure
-
-1. **Sheet "Resumen"** — KPIs, metricas clave, dashboard-ready summary
-2. **Sheet "Datos"** — Main data table with auto-filters
-3. **Sheet "Analisis"** — Scoring matrices, evaluation grids
-4. **Additional sheets** — As needed per domain
-
-## openpyxl Implementation Template
+## Color Fills
 
 ```python
-from openpyxl import Workbook
-from openpyxl.styles import (
-    PatternFill, Font, Border, Side, Alignment, NamedStyle
-)
-import json
+from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
 
-# Load brand config
-with open('references/brand-config-neoswiss.json') as f:
-    config = json.load(f)
-
-xlsx_config = config['xlsx']
-
-wb = Workbook()
-
-# Define Neo-Swiss styles
-header_fill = PatternFill(start_color='122562', end_color='122562', fill_type='solid')
-header_font = Font(color='FFFFFF', name='Poppins', bold=True, size=11)
-header_alignment = Alignment(horizontal='left', vertical='center', wrap_text=True)
-
-gold_fill = PatternFill(start_color='FFD700', end_color='FFD700', fill_type='solid')
-gold_font = Font(color='122562', name='Poppins', bold=True, size=11)
-
-body_font = Font(color='1F2833', name='Trebuchet MS', size=10)
-zebra_fill = PatternFill(start_color='F8F9FC', end_color='F8F9FC', fill_type='solid')
-
-positive_fill = PatternFill(start_color='137DC5', end_color='137DC5', fill_type='solid')
-positive_font = Font(color='FFFFFF', bold=True)
-
-warning_fill = PatternFill(start_color='D97706', end_color='D97706', fill_type='solid')
-warning_font = Font(color='FFFFFF', bold=True)
-
-critical_fill = PatternFill(start_color='DC2626', end_color='DC2626', fill_type='solid')
-critical_font = Font(color='FFFFFF', bold=True)
-
-thin_border = Border(
-    bottom=Side(style='thin', color='E8EAF0')
-)
-
-# Create summary sheet
-ws = wb.active
-ws.title = 'Resumen'
-
-# Apply header row
-for col_idx, header in enumerate(['Dimension', 'Valor', 'Estado'], 1):
-    cell = ws.cell(row=1, column=col_idx, value=header)
-    cell.fill = header_fill
-    cell.font = header_font
-    cell.alignment = header_alignment
-
-# Apply body rows with zebra striping
-for row_idx in range(2, 20):
-    for col_idx in range(1, 4):
-        cell = ws.cell(row=row_idx, column=col_idx)
-        cell.font = body_font
-        cell.border = thin_border
-        if row_idx % 2 == 0:
-            cell.fill = zebra_fill
-
-# Auto-filter
-ws.auto_filter.ref = ws.dimensions
-
-# Column widths
-ws.column_dimensions['A'].width = 30
-ws.column_dimensions['B'].width = 20
-ws.column_dimensions['C'].width = 15
-
-# Freeze header row
-ws.freeze_panes = 'A2'
-
-wb.save('output.xlsx')
+def load_fills(config):
+    c = config.get("colors", {})
+    return {
+        "primary":    PatternFill("solid", fgColor=c.get("primary", "2563EB").lstrip("#")),
+        "black":      PatternFill("solid", fgColor=c.get("black", "000000").lstrip("#")),
+        "background": PatternFill("solid", fgColor=c.get("background", "F8FAFC").lstrip("#")),
+        "white":      PatternFill("solid", fgColor=c.get("white", "FFFFFF").lstrip("#")),
+        "muted":      PatternFill("solid", fgColor=c.get("muted", "94A3B8").lstrip("#")),
+        "soft":       PatternFill("solid", fgColor=c.get("primarySoft", "EFF6FF").lstrip("#")),
+    }
 ```
 
-## Conditional Formatting Rules
+## Typography
 
-| Condition | Cell Fill | Font |
-|-----------|----------|------|
-| Value contains "Alto" or "High" or score >= 8 | Blue #137DC5 | White bold |
-| Value contains "Medio" or "Medium" or score 5-7 | Amber #D97706 | White bold |
-| Value contains "Bajo" or "Low" or "Critico" or score < 5 | Red #DC2626 | White bold |
-| Gold accent row (totals, highlights) | Gold #FFD700 | Navy #122562 bold |
+Brand display fonts are typically unavailable in Excel. Use system fallbacks:
 
-## Best Practices
+```python
+def load_fonts(config):
+    c = config.get("colors", {})
+    primary = c.get("primary", "2563EB").lstrip("#")
+    return {
+        "title":  lambda size=18: Font(name="Calibri", bold=True, size=size, color="000000"),
+        "header": lambda: Font(name="Calibri", bold=True, size=10, color=primary),
+        "body":   lambda: Font(name="Calibri", bold=False, size=10, color="000000"),
+        "muted":  lambda: Font(name="Calibri", bold=False, size=8, color=c.get("muted","94A3B8").lstrip("#")),
+    }
+```
 
-1. **Values only** — NO formulas (formula-free for portability)
-2. **Auto-filters** on every data table
-3. **Freeze panes** on header row
-4. **Column widths** auto-fit or manual minimum
-5. **Summary sheet first**, detail sheets after
-6. **Pivot-compatible** structure (flat tables)
-7. **No merged cells** in data ranges (breaks sorting/filtering)
+## Sheet Layout Pattern
+
+```
+Row 1:   Title bar      primary fill, bold dark text, height 36
+Row 2:   Subtitle       dark fill, small primary-color text, height 18
+Row 3:   Spacer
+Row 4+:  Section label  primary fill, white text
+Row 5+:  Column headers dark fill, primary-color bold text
+Row 6+:  Data rows      alternating white / background
+Last:    Footer         dark fill, muted text
+```
+
+Tab color: always set to primary color.
+
+## Core Functions
+
+### Sheet Setup
+```python
+def setup_sheet(ws, title, subtitle="", config={}):
+    fills = load_fills(config)
+    fonts = load_fonts(config)
+    primary = config.get("colors",{}).get("primary","2563EB").lstrip("#")
+
+    ws.sheet_properties.tabColor = primary
+    ws.row_dimensions[1].height = 36
+    ws.merge_cells('A1:J1')
+    c = ws['A1']
+    c.value = title
+    c.font = fonts["title"]()
+    c.fill = fills["primary"]
+    c.alignment = Alignment(horizontal="left", vertical="center", indent=2)
+
+    if subtitle:
+        ws.row_dimensions[2].height = 18
+        ws.merge_cells('A2:J2')
+        c2 = ws['A2']
+        c2.value = subtitle
+        c2.font = Font(name="Calibri", size=9, color=primary)
+        c2.fill = fills["black"]
+        c2.alignment = Alignment(horizontal="left", vertical="center", indent=2)
+```
+
+### Column Headers
+```python
+def add_headers(ws, row, headers, style="dark", config={}):
+    fills = load_fills(config)
+    primary = config.get("colors",{}).get("primary","2563EB").lstrip("#")
+
+    fill = fills["black"] if style == "dark" else fills["primary"]
+    color = primary if style == "dark" else "000000"
+    ws.row_dimensions[row].height = 26
+    for i, label in enumerate(headers, 1):
+        c = ws.cell(row=row, column=i, value=label)
+        c.font = Font(name="Calibri", bold=True, size=10, color=color)
+        c.fill = fill
+        c.alignment = Alignment(horizontal="left", vertical="center", indent=1)
+        c.border = Border(bottom=Side(style="medium", color=primary))
+```
+
+### Data Rows
+```python
+def add_data(ws, start_row, data, config={}):
+    fills = load_fills(config)
+    fonts = load_fonts(config)
+    muted = config.get("colors",{}).get("muted","94A3B8").lstrip("#")
+
+    for i, row_data in enumerate(data):
+        fill = fills["white"] if i % 2 == 0 else fills["background"]
+        ws.row_dimensions[start_row + i].height = 20
+        for j, value in enumerate(row_data, 1):
+            c = ws.cell(row=start_row + i, column=j, value=value)
+            c.font = fonts["body"]()
+            c.fill = fill
+            c.alignment = Alignment(horizontal="left", vertical="center", indent=1)
+            c.border = Border(bottom=Side(style="hair", color=muted))
+```
+
+### Section Divider
+```python
+def add_section(ws, row, label, col_span=10, config={}):
+    fills = load_fills(config)
+    ws.row_dimensions[row].height = 22
+    ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=col_span)
+    c = ws.cell(row=row, column=1, value=f"  {label}")
+    c.font = Font(name="Calibri", bold=True, size=10, color="FFFFFF")
+    c.fill = fills["primary"]
+    c.alignment = Alignment(horizontal="left", vertical="center")
+```
+
+### KPI Box
+```python
+def add_kpi(ws, row, col, label, value, unit="", config={}):
+    fills = load_fills(config)
+    primary = config.get("colors",{}).get("primary","2563EB").lstrip("#")
+
+    ws.row_dimensions[row].height = 16
+    lc = ws.cell(row=row, column=col, value=label)
+    lc.font = Font(name="Calibri", bold=True, size=8, color=primary)
+    lc.fill = fills["black"]
+    lc.alignment = Alignment(horizontal="center", vertical="center")
+
+    ws.row_dimensions[row + 1].height = 34
+    vc = ws.cell(row=row + 1, column=col, value=f"{value}{unit}")
+    vc.font = Font(name="Calibri", bold=True, size=22, color="000000")
+    vc.fill = fills["primary"]
+    vc.alignment = Alignment(horizontal="center", vertical="center")
+```
+
+### Footer
+```python
+def add_footer(ws, row, col_span=10, config={}):
+    fills = load_fills(config)
+    fonts = load_fonts(config)
+    brand = config.get("brand", {})
+    xlsx_cfg = config.get("xlsx", {})
+    year = xlsx_cfg.get("year", "2026")
+    domain = xlsx_cfg.get("domain", "")
+    wordmark = brand.get("wordmark", brand.get("name", ""))
+    tagline = brand.get("tagline", "")
+
+    ws.row_dimensions[row].height = 16
+    ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=col_span)
+    parts = [p for p in [wordmark, tagline, year, domain] if p]
+    c = ws.cell(row=row, column=1, value="  " + "  |  ".join(parts))
+    c.font = fonts["muted"]()
+    c.fill = fills["black"]
+    c.alignment = Alignment(horizontal="left", vertical="center")
+```
+
+### Auto Column Width
+```python
+def auto_fit(ws, min_w=10, max_w=50):
+    from openpyxl.utils import get_column_letter
+    for col in ws.columns:
+        letter = get_column_letter(col[0].column)
+        max_len = max((len(str(c.value)) for c in col if c.value), default=0)
+        ws.column_dimensions[letter].width = max(min_w, min(max_w, max_len + 4))
+```
+
+## Approved Color Combinations
+
+| Use Case | Fill | Font Color |
+|----------|------|-----------|
+| Sheet title | Primary | Black |
+| Column headers | Black | Primary |
+| Alt headers | Primary | Black |
+| Section dividers | Primary | White |
+| KPI label | Black | Primary |
+| KPI value | Primary | Black |
+| Even rows | White | Black |
+| Odd rows | Background | Black |
+| Footer | Black | Muted |
+
+## Assumptions & Limits
+
+- Brand display fonts unavailable in Excel; Calibri Bold used as universal fallback
+- openpyxl handles .xlsx only (not .xls)
+- Conditional formatting uses openpyxl rules; complex formulas may need manual adjustment
+- Charts use openpyxl chart module; brand decorative colors applied to series
+
+## Edge Cases
+
+- **No brand config:** Use neutral blue palette with Calibri
+- **Wide data (> 10 columns):** Freeze panes at header row + first column
+- **Large datasets (> 1000 rows):** Use openpyxl write-only mode for performance
+- **Multiple sheets:** Apply setup_sheet to each; consistent tab colors
+- **Print layout:** Set print area, page orientation, header/footer for printing
 
 ## Validation Gate
 
-- [ ] `brand-config-neoswiss.json` read before generation
-- [ ] Header row has Navy fill (#122562) with white Poppins text
-- [ ] Body text is Trebuchet MS 10pt Dark (#1F2833)
-- [ ] Zebra striping uses Off-white (#F8F9FC)
-- [ ] Borders use Light gray (#E8EAF0)
-- [ ] Conditional formatting uses Blue/Amber/Red (NOT green for positive)
-- [ ] Auto-filters enabled
-- [ ] Freeze panes on header row
-- [ ] NO #6366F1, NO #22D3EE, NO #0A122A, NO Inter font
+- [ ] Brand config loaded (or defaults applied)
+- [ ] Tab color set to primary
+- [ ] Title bar uses primary fill
+- [ ] Column headers use dark fill with primary text (or inverse)
+- [ ] Data rows alternate white / background
+- [ ] Footer present with wordmark + tagline + year
+- [ ] No default Excel blue/grey styles remaining
+- [ ] Sheet names are meaningful (not "Sheet1")
+- [ ] Column widths auto-fitted
 
 ---
-**Autor:** Javier Montano · Comunidad MetodologIA | **Version:** 1.0.0 Neo-Swiss
+**Author:** Javier Montano | **Last updated:** March 18, 2026

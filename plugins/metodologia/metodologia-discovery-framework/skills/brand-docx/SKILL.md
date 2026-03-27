@@ -1,179 +1,281 @@
 ---
-name: metodologia-brand-docx
+name: brand-docx
 description: >
-  Generates branded DOCX (Word) documents using the MetodologIA Neo-Swiss
-  Design System v6. Uses python-docx to create professional documents with navy
-  headers, gold accents, Poppins headings, and Trebuchet MS body text. Use when
-  the user requests a Word document, DOCX output, or when the ghost menu routes to DOCX.
-argument-hint: "[source-file.md] [output_path.docx]"
-author: Javier Montano · Comunidad MetodologIA
+  This skill should be used when the user asks to "generate a Word document",
+  "create a branded DOCX", "build a proposal in Word format",
+  "make a brand-compliant report", or "produce a cover page",
+  or mentions python-docx, Word templates, or DOCX generation.
+  It generates brand-compliant Word documents using python-docx with configurable
+  brand tokens for colors, fonts, cover pages, headers, callouts, tables, and footers.
+  Use this skill whenever the user needs a .docx file with branded styling,
+  even if they don't explicitly ask for "brand DOCX".
+argument-hint: "<document-type> <title> [brand-config-path]"
 model: opus
 context: fork
 allowed-tools:
   - Read
+  - Grep
+  - Glob
   - Write
   - Edit
-  - Glob
-  - Grep
   - Bash
 ---
 
-# MetodologIA Brand DOCX — Neo-Swiss Document Generator
+# Brand DOCX — Word Document Generator
 
-Generates production-ready Word documents following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every document uses navy-themed headers, gold accents, Poppins headings, Trebuchet MS body text, and branded cover pages.
+Generate brand-compliant Word documents (.docx) using python-docx. Reads brand tokens from config and applies colors, typography, layout patterns, and structural elements.
 
-## Grounding Guideline
+## Prerequisites
 
-> *A Word document without brand identity is a draft disguised as a deliverable.*
+- python-docx installed (`pip install python-docx`)
+- Brand config file (optional; uses neutral defaults without one)
 
-1. **Brand config as single source.** Read brand-config-neoswiss.json BEFORE generating — never hardcode tokens.
-2. **Semantic structure.** Headings, styles, and TOC must be semantic so the document is navigable and accessible.
-3. **Professional portability.** The DOCX must open correctly in Word, LibreOffice, and Google Docs without visual degradation.
+## Brand Configuration
 
-## CRITICAL: Before Generating ANY DOCX
+Search for config:
+1. Path passed as argument
+2. `./brand-config.json`
+3. `~/.claude/brand-config.json`
 
-**ALWAYS read the brand config first:**
+### Config Fields Used
 
+```json
+{
+  "brand": { "name": "", "wordmark": "", "wordmarkAccent": "", "tagline": "", "positioning": "" },
+  "colors": { "primary": "#FF7E08", "black": "#000000", "white": "#FFFFFF", "background": "#EFEAE4", "muted": "#B8A894" },
+  "decorative": ["#42D36F", "#06C8C8", "#9747FF", "#FE9CAB"],
+  "typography": { "display": "Clash Grotesk", "displayFallback": "Calibri", "body": "Inter", "bodyFallback": "Calibri" },
+  "docx": { "year": "2026", "confidential": true }
+}
 ```
-Read ${CLAUDE_SKILL_DIR}/../../references/brand-config-neoswiss.json
-```
 
-Extract the `docx` section for all heading styles, table specs, and cover page design.
-
-## Neo-Swiss DOCX Tokens
-
-All values sourced from `brand-config-neoswiss.json`:
-
-| Element | Font | Size | Color | Bold |
-|---------|------|------|-------|------|
-| Heading 1 | Poppins | 24pt | #122562 (Navy) | Yes |
-| Heading 2 | Poppins | 18pt | #137DC5 (Blue) | Yes |
-| Heading 3 | Poppins | 14pt | #122562 (Navy) | Yes |
-| Body | Trebuchet MS | 11pt | #1F2833 (Dark) | No |
-| Note / Caption | Century Gothic | 9pt | #808080 (Gray) | No |
-| Table Header | Poppins | 10pt | #FFFFFF on #122562 | Yes |
-| Table Accent | — | — | #122562 on #FFD700 | — |
-| Footer | Century Gothic | 8pt | #808080 | No |
-
-### Cover Page
-- **Background**: Navy (#122562)
-- **Title**: White, Poppins 36pt, bold
-- **Subtitle**: Off-white (#F8F9FC), Trebuchet MS 18pt
-- **Accent bar**: Gold (#FFD700) horizontal rule
-- **Logo**: MetodologIA (described or embedded)
-- **Date, version, confidentiality**
-
-## Document Structure
-
-1. **Cover Page** — Navy bg, white title, gold accent, logo
-2. **Table of Contents** — Auto-generated from heading hierarchy
-3. **Headers** — Logo left, document title right
-4. **Content Sections** — Heading styles branded, evidence tags preserved
-5. **Tables** — Navy header fills, zebra stripes (#F8F9FC), gold accent rows
-6. **Footers** — Page X of Y, MetodologIA tagline, document ID
-
-## python-docx Implementation Template
+## Color Palette (python-docx)
 
 ```python
-from docx import Document
-from docx.shared import Pt, Inches, RGBColor, Cm
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.oxml.ns import qn
-import json
+from docx.shared import RGBColor
 
-# Load brand config
-with open('references/brand-config-neoswiss.json') as f:
-    config = json.load(f)
-
-docx_config = config['docx']
-
-doc = Document()
-
-# Set default font
-style = doc.styles['Normal']
-font = style.font
-font.name = 'Trebuchet MS'
-font.size = Pt(11)
-font.color.rgb = RGBColor(0x1F, 0x28, 0x33)
-
-# Configure Heading 1
-h1_style = doc.styles['Heading 1']
-h1_font = h1_style.font
-h1_font.name = 'Poppins'
-h1_font.size = Pt(24)
-h1_font.color.rgb = RGBColor(0x12, 0x25, 0x62)
-h1_font.bold = True
-
-# Configure Heading 2
-h2_style = doc.styles['Heading 2']
-h2_font = h2_style.font
-h2_font.name = 'Poppins'
-h2_font.size = Pt(18)
-h2_font.color.rgb = RGBColor(0x13, 0x7D, 0xC5)
-h2_font.bold = True
-
-# Configure Heading 3
-h3_style = doc.styles['Heading 3']
-h3_font = h3_style.font
-h3_font.name = 'Poppins'
-h3_font.size = Pt(14)
-h3_font.color.rgb = RGBColor(0x12, 0x25, 0x62)
-h3_font.bold = True
-
-# Table with branded header
-table = doc.add_table(rows=1, cols=3)
-hdr = table.rows[0]
-for cell in hdr.cells:
-    # Navy background
-    shading = cell._element.get_or_add_tcPr()
-    shading_elm = shading.makeelement(qn('w:shd'), {
-        qn('w:fill'): '122562',
-        qn('w:val'): 'clear'
-    })
-    shading.append(shading_elm)
-    # White text
-    for paragraph in cell.paragraphs:
-        for run in paragraph.runs:
-            run.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-            run.font.name = 'Poppins'
-            run.font.bold = True
-            run.font.size = Pt(10)
-
-doc.save('output.docx')
+def load_brand_colors(config):
+    """Load colors from brand config, with defaults."""
+    c = config.get("colors", {})
+    return {
+        "primary":    RGBColor.from_string(c.get("primary", "2563EB").lstrip("#")),
+        "black":      RGBColor.from_string(c.get("black", "000000").lstrip("#")),
+        "white":      RGBColor.from_string(c.get("white", "FFFFFF").lstrip("#")),
+        "background": RGBColor.from_string(c.get("background", "F8FAFC").lstrip("#")),
+        "muted":      RGBColor.from_string(c.get("muted", "94A3B8").lstrip("#")),
+    }
 ```
 
-## Table Styles
+## Typography
 
-| Row Type | Background | Font Color | Font |
-|----------|-----------|------------|------|
-| Header | #122562 (Navy) | #FFFFFF (White) | Poppins 10pt Bold |
-| Accent | #FFD700 (Gold) | #122562 (Navy) | Poppins 10pt Bold |
-| Body odd | #FFFFFF (White) | #1F2833 (Dark) | Trebuchet MS 10pt |
-| Body even | #F8F9FC (Off-white) | #1F2833 (Dark) | Trebuchet MS 10pt |
-| Positive | — | #137DC5 (Blue) | Bold |
-| Warning | — | #D97706 (Amber) | Bold |
-| Critical | — | #DC2626 (Red) | Bold |
+Brand display font with system fallback:
 
-## Evidence Tags in DOCX
+```python
+from docx.shared import Pt
 
-Preserve evidence tags as inline formatted text:
-- `[DOC]` — Blue (#137DC5) bold
-- `[STAKEHOLDER]` — Navy (#122562) bold
-- `[INFERENCIA]` — Lavender (#BBA0CC) bold
-- `[SUPUESTO]` — Amber (#D97706) bold
-- `[CODIGO]` — Gray (#808080) bold
+def get_fonts(config):
+    t = config.get("typography", {})
+    return {
+        "display": t.get("display", "Calibri"),
+        "displayFallback": t.get("displayFallback", "Calibri"),
+        "body": t.get("body", "Calibri"),
+        "bodyFallback": t.get("bodyFallback", "Calibri"),
+    }
+
+def style_heading(run, fonts, colors, level=1):
+    sizes = {1: 32, 2: 24, 3: 18, 4: 14}
+    run.font.name = fonts["display"]
+    run.font.size = Pt(sizes.get(level, 16))
+    run.font.bold = True
+    run.font.color.rgb = colors["black"]
+
+def style_body(run, fonts, colors):
+    run.font.name = fonts["body"]
+    run.font.size = Pt(10)
+    run.font.color.rgb = colors["black"]
+
+def style_label(run, fonts, colors):
+    run.font.name = fonts["body"]
+    run.font.size = Pt(8)
+    run.font.color.rgb = colors["primary"]
+    run.font.bold = True
+```
+
+## Page Setup
+
+```python
+from docx.shared import Inches, Cm
+
+def setup_page(doc):
+    section = doc.sections[0]
+    section.page_width = Inches(8.27)   # A4
+    section.page_height = Inches(11.69)
+    section.top_margin = Cm(2.5)
+    section.bottom_margin = Cm(2.5)
+    section.left_margin = Cm(2.8)
+    section.right_margin = Cm(2.8)
+```
+
+## Document Components
+
+### Cover Page
+```python
+def add_cover(doc, title, subtitle="", doc_type="", config={}):
+    fonts = get_fonts(config)
+    colors = load_brand_colors(config)
+    brand = config.get("brand", {})
+
+    # Wordmark
+    logo_p = doc.add_paragraph()
+    logo_run = logo_p.add_run(brand.get("wordmark", brand.get("name", "")))
+    logo_run.font.name = fonts["display"]
+    logo_run.font.size = Pt(20)
+    logo_run.font.bold = True
+    logo_run.font.color.rgb = colors["black"]
+    if brand.get("wordmarkAccent"):
+        accent = logo_p.add_run(brand["wordmarkAccent"])
+        accent.font.name = fonts["display"]
+        accent.font.size = Pt(20)
+        accent.font.bold = True
+        accent.font.color.rgb = colors["primary"]
+
+    doc.add_paragraph()  # spacing
+
+    if doc_type:
+        lp = doc.add_paragraph()
+        lr = lp.add_run(doc_type.upper())
+        style_label(lr, fonts, colors)
+
+    tp = doc.add_paragraph()
+    tr = tp.add_run(title)
+    style_heading(tr, fonts, colors, level=1)
+
+    if subtitle:
+        sp = doc.add_paragraph()
+        sr = sp.add_run(subtitle)
+        sr.font.name = fonts["body"]
+        sr.font.size = Pt(14)
+        sr.font.color.rgb = colors["muted"]
+
+    # Tagline
+    if brand.get("tagline"):
+        doc.add_paragraph()
+        tag_p = doc.add_paragraph()
+        tag_r = tag_p.add_run(brand["tagline"])
+        tag_r.font.name = fonts["display"]
+        tag_r.font.size = Pt(14)
+        tag_r.font.bold = True
+        tag_r.font.color.rgb = colors["primary"]
+
+    doc.add_page_break()
+```
+
+### Section Header (with primary-color underline)
+```python
+def add_section_header(doc, title, label="", config={}):
+    fonts = get_fonts(config)
+    colors = load_brand_colors(config)
+    primary_hex = config.get("colors", {}).get("primary", "2563EB").lstrip("#")
+
+    if label:
+        lp = doc.add_paragraph()
+        lr = lp.add_run(label)
+        style_label(lr, fonts, colors)
+
+    h = doc.add_paragraph()
+    hr = h.add_run(title)
+    style_heading(hr, fonts, colors, level=2)
+
+    # Primary-color underline via bottom border
+    from docx.oxml.ns import qn
+    from docx.oxml import OxmlElement
+    pPr = h._p.get_or_add_pPr()
+    pBdr = OxmlElement('w:pBdr')
+    bottom = OxmlElement('w:bottom')
+    bottom.set(qn('w:val'), 'single')
+    bottom.set(qn('w:sz'), '6')
+    bottom.set(qn('w:space'), '4')
+    bottom.set(qn('w:color'), primary_hex)
+    pBdr.append(bottom)
+    pPr.append(pBdr)
+```
+
+### Callout Box
+```python
+def add_callout(doc, text, variant="primary", config={}):
+    colors_map = {
+        "primary": (config.get("colors",{}).get("primary","2563EB").lstrip("#"), "000000"),
+        "dark":    ("000000", "FFFFFF"),
+        "light":   (config.get("colors",{}).get("background","F8FAFC").lstrip("#"), "000000"),
+    }
+    bg, fg = colors_map.get(variant, colors_map["primary"])
+    # Implementation: 1-cell table with background fill
+    # (same pattern as original, using bg/fg from config)
+```
+
+### Data Table
+```python
+def add_data_table(doc, headers, rows, config={}):
+    """Table with primary-color header row, alternating row backgrounds."""
+    colors = config.get("colors", {})
+    primary = colors.get("primary", "2563EB").lstrip("#")
+    bg_alt = colors.get("background", "F8FAFC").lstrip("#")
+    # Header: primary bg, white text
+    # Data: alternating white / background color
+```
+
+### Header & Footer
+```python
+def add_header_footer(doc, title="", config={}):
+    brand = config.get("brand", {})
+    docx_cfg = config.get("docx", {})
+    year = docx_cfg.get("year", "2026")
+    # Header: wordmark left, doc title right
+    # Footer: confidential label + year + page number
+```
+
+## Document Types
+
+| Type | Cover | Accent | Header Style |
+|------|-------|--------|-------------|
+| Proposal | Background color | Primary | Display H1 |
+| Technical report | White | Primary | Display H1 |
+| Case study | Dark | Primary | White headline |
+| Internal memo | White | Primary left border | Compact |
+| Event materials | Decorative color | Primary/White | Bold display |
+
+## Writing Tone
+
+- Direct: lead with key message
+- Confident but humble
+- Action-oriented: active verbs
+- Human-centered: connect to human impact
+- Integrate tagline in section closings
+
+## Assumptions & Limits
+
+- Brand display font may not be installed on all systems; fallback font always specified
+- python-docx does not support all Word features (e.g., advanced shapes, SmartArt)
+- Colors are applied via XML manipulation for backgrounds; some features require OxmlElement
+- A4 default; Letter available by changing page dimensions
+
+## Edge Cases
+
+- **Font not installed:** Fallback to Calibri/Arial automatically
+- **Long tables (> 20 rows):** Split across pages; repeat header row
+- **Multi-language:** Set paragraph language attribute for spell-check
+- **Landscape sections:** Add new section with `WD_ORIENT.LANDSCAPE`
 
 ## Validation Gate
 
-- [ ] `brand-config-neoswiss.json` read before generation
-- [ ] Heading 1 is Poppins 24pt Navy #122562
-- [ ] Heading 2 is Poppins 18pt Blue #137DC5
-- [ ] Body is Trebuchet MS 11pt Dark #1F2833
-- [ ] Table headers have Navy fill with white text
-- [ ] Cover page has Navy bg with gold accent
-- [ ] Footer includes MetodologIA tagline
-- [ ] NO Inter, NO Clash Grotesk, NO Montserrat fonts
-- [ ] NO #6366F1, NO #22D3EE, NO #0A122A colors
+- [ ] Brand config loaded (or defaults applied)
+- [ ] All colors from config (no hardcoded values)
+- [ ] Typography uses configured fonts with fallbacks
+- [ ] Cover page has wordmark, title, tagline
+- [ ] Section headers have primary-color underline
+- [ ] Tables have branded header row
+- [ ] Header shows wordmark; footer shows year + confidential
+- [ ] Page margins are generous (brand breathing room)
 
 ---
-**Autor:** Javier Montano · Comunidad MetodologIA | **Version:** 1.0.0 Neo-Swiss
+**Author:** Javier Montano | **Last updated:** March 18, 2026

@@ -1,0 +1,104 @@
+---
+stepNumber: {{ step_number }}
+stepName: "{{ step_name }}"
+agent: "{{ agent_id }}"
+inputs:
+  - "{{ input_1 }}"
+  - "{{ input_2 }}"
+outputs:
+  - "{{ output_1 }}"
+  - "{{ output_2 }}"
+stepsCompleted: {{ steps_completed }}       # How many steps are done before this one
+currentStep: {{ current_step_number }}
+nextStep: "{{ next_step_file }}"            # e.g., "step-03-review.md" or "DONE"
+---
+
+# Step {{ step_number }}: {{ step_name }}
+
+## Step Goal
+
+<!-- REQUIRED -->
+<!-- VALIDATION: Must be a single, measurable outcome statement. Start with a verb.
+     Example: "Produce a validated PRD.md with all FRs having acceptance criteria." -->
+<!-- ANTI-PATTERN: Do not combine multiple goals. One step = one goal. -->
+
+{{ step_goal }}
+
+## Execution Rules
+
+<!-- Hard constraints the agent must follow during this step. -->
+
+1. {{ execution_rule_1 }}
+2. {{ execution_rule_2 }}
+3. {{ execution_rule_3 }}
+
+### Context from Previous Steps
+
+<!-- What information carries over from earlier steps? -->
+
+- From Step {{ prev_step_number }}: {{ prev_step_output }}
+
+## Instructions
+
+<!-- Numbered, actionable instructions the agent must follow in order. -->
+
+1. {{ instruction_1 }}
+
+2. {{ instruction_2 }}
+
+3. {{ instruction_3 }}
+
+4. {{ instruction_4 }}
+
+5. {{ instruction_5 }}
+
+<!-- Add more instructions as needed. Keep each instruction atomic and verifiable. -->
+
+### Decision Points
+
+<!-- If the agent encounters ambiguity, these rules apply. -->
+
+| Condition                      | Action                              |
+|-------------------------------|-------------------------------------|
+| {{ condition_1 }}             | {{ action_1 }}                      |
+| {{ condition_2 }}             | {{ action_2 }}                      |
+| Unclear requirement           | HALT and request clarification      |
+
+## Success Metrics
+
+<!-- How do we verify this step was executed correctly? -->
+
+- [ ] {{ success_metric_1 }}
+- [ ] {{ success_metric_2 }}
+- [ ] {{ success_metric_3 }}
+
+### Output Validation
+
+| Output               | Validation Rule                      | Pass/Fail  |
+|---------------------|--------------------------------------|-----------|
+| {{ output_1 }}      | {{ validation_rule_1 }}              | {{ P/F }} |
+| {{ output_2 }}      | {{ validation_rule_2 }}              | {{ P/F }} |
+
+## HALT Conditions
+
+<!-- If ANY of these are true, STOP execution and escalate. -->
+
+> **HALT**: Do not proceed to the next step if any of these conditions exist:
+>
+> - {{ halt_condition_1 }}
+> - {{ halt_condition_2 }}
+> - {{ halt_condition_3 }}
+> - Any success metric above is marked FAIL
+
+**On HALT**: Notify {{ escalation_contact }} with the halt reason and all context gathered so far.
+
+---
+
+## Completion Checklist
+
+- [ ] Step goal has been achieved (output artifact exists and is valid)
+- [ ] All success metrics above are marked PASS
+- [ ] All outputs have been validated per the Output Validation table
+- [ ] No HALT conditions are active
+
+**Next step**: `{{ next_step_file }}`

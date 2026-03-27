@@ -1,0 +1,71 @@
+---
+name: data-strategy
+author: JM Labs (Javier Montaño)
+version: 1.0.0
+description: >
+  Designs data architecture, governance frameworks, quality standards, and
+  pipeline strategies. Covers data modeling, cataloging, lineage tracking,
+  and analytics enablement.
+  Trigger: "data architecture", "data governance", "data quality", "data pipeline", "data strategy"
+allowed-tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
+---
+
+# Data Strategy
+
+> "Data is the new oil? No: Data is the new soil." — David McCandless
+
+## TL;DR
+
+Designs comprehensive data strategies covering architecture, governance, quality, and pipeline design to enable analytics, AI, and operational excellence. Use this skill when building data platforms, establishing data governance, or when data quality issues are impacting business decisions.
+
+## Procedure
+
+### Step 1: Discover
+- Inventory existing data sources, stores, and consumers
+- Assess current data quality: completeness, accuracy, timeliness, consistency
+- Identify data stakeholders: producers, consumers, stewards, regulators
+- Map current data flows and transformation pipelines
+
+### Step 2: Analyze
+- Classify data by sensitivity (public, internal, confidential, restricted)
+- Identify data domains and ownership using data mesh principles
+- Evaluate pipeline patterns: batch vs. streaming, ETL vs. ELT
+- Assess gaps: missing data, quality issues, accessibility barriers
+
+### Step 3: Execute
+- Design a data architecture blueprint (medallion architecture or domain-oriented)
+- Define data governance framework: ownership, stewardship, quality SLAs
+- Create data quality rules and monitoring dashboards
+- Design pipeline architecture with lineage tracking and observability
+- Document a data catalog structure with metadata standards
+
+### Step 4: Validate
+- Verify data architecture supports both operational and analytical workloads
+- Confirm governance roles are assigned and understood
+- Check that quality rules are automated and monitored, not manual
+- Validate compliance with data protection regulations (GDPR, CCPA)
+
+## Quality Criteria
+
+- [ ] Data inventory covers all sources with ownership assigned
+- [ ] Governance framework defines roles, policies, and escalation
+- [ ] Quality rules are measurable and automated
+- [ ] Pipeline design includes error handling, retry, and dead-letter queues
+- [ ] Evidence tags applied to all claims
+
+## Anti-Patterns
+
+- Data lake without governance becoming a data swamp
+- ETL pipelines without lineage tracking or error monitoring
+- Treating data quality as a one-time cleanup instead of continuous process
+
+## Related Skills
+
+- `database-design` — physical data modeling and schema design
+- `compliance-assessment` — data protection regulatory requirements
+- `event-architecture` — event-driven data pipeline patterns

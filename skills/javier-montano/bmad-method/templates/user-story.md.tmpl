@@ -1,0 +1,126 @@
+---
+story-id: "{{ story_id }}"
+<!-- REQUIRED --> <!-- VALIDATION: must match STORY-NNN pattern; must be unique -->
+epic-ref: "{{ epic_id }}"
+<!-- REQUIRED --> <!-- VALIDATION: must reference an existing EPIC-NNN -->
+title: "{{ story_title }}"
+<!-- REQUIRED --> <!-- VALIDATION: max 100 chars; should summarize the user action -->
+status: "{{ status }}"
+<!-- REQUIRED --> <!-- VALIDATION: one of Backlog | Ready | In Progress | Review | Done -->
+points: {{ story_points }}
+<!-- REQUIRED --> <!-- VALIDATION: Fibonacci value (1, 2, 3, 5, 8, 13); prefer <= 8 -->
+priority: "{{ priority }}"
+<!-- REQUIRED --> <!-- VALIDATION: one of Critical | High | Medium | Low -->
+assigned-to: "{{ assignee }}"
+<!-- OPTIONAL — can be "unassigned" until sprint planning -->
+sprint: "{{ sprint_number }}"
+<!-- OPTIONAL — set during sprint planning -->
+dependencies:
+  - "{{ dependency_story_id }}"
+<!-- OPTIONAL — empty array [] if no dependencies -->
+acceptance-criteria-count: {{ ac_count }}
+<!-- REQUIRED --> <!-- VALIDATION: must match the actual number of AC sections below -->
+---
+
+# {{ story_id }}: {{ story_title }}
+
+## User Story
+
+**As a** {{ persona }},
+**I want** {{ action }},
+**So that** {{ benefit }}.
+
+## Acceptance Criteria
+
+<!-- REQUIRED — minimum 1 AC per story. -->
+<!-- VALIDATION: Each AC must use Given/When/Then format. Each must be independently
+     testable with an automated test. -->
+<!-- ANTI-PATTERN: Avoid vague ACs like "system works correctly." Every AC must
+     have a clear PASS/FAIL determination. -->
+<!-- Edge case: For infrastructure or DevOps stories where Given/When/Then is awkward,
+     use a checklist format with measurable criteria instead. -->
+
+### AC-1: {{ ac_1_title }}
+
+- **Given** {{ given_state }}
+- **When** {{ when_action }}
+- **Then** {{ then_outcome }}
+
+### AC-2: {{ ac_2_title }}
+
+- **Given** {{ given_state }}
+- **When** {{ when_action }}
+- **Then** {{ then_outcome }}
+
+### AC-3: {{ ac_3_title }}
+
+- **Given** {{ given_state }}
+- **When** {{ when_action }}
+- **Then** {{ then_outcome }}
+
+<!-- Add more ACs as needed. Each should be independently testable. -->
+
+## Technical Notes
+
+<!-- Implementation guidance, architecture references, or technical considerations. -->
+
+- {{ technical_note_1 }}
+- {{ technical_note_2 }}
+- {{ technical_note_3 }}
+
+### Affected Components
+
+| Component            | Change Type        | Notes                     |
+|---------------------|--------------------|---------------------------|
+| {{ component }}     | {{ new/modify }}   | {{ notes }}               |
+
+### API Changes
+
+{{ api_changes_description }}
+
+### Database Changes
+
+{{ database_changes_description }}
+
+## Dependencies
+
+| Dependency           | Type             | Status       | Blocking?   |
+|---------------------|------------------|-------------|-------------|
+| {{ dependency }}    | {{ type }}       | {{ status }} | {{ yes/no }} |
+
+## Definition of Done
+
+- [ ] All acceptance criteria pass
+- [ ] Code reviewed and approved
+- [ ] Unit tests written and passing (>= {{ min_coverage }}% coverage)
+- [ ] Integration tests passing
+- [ ] No new linter warnings or errors
+- [ ] Documentation updated (if applicable)
+- [ ] Deployed to staging and verified
+- [ ] Product owner sign-off
+
+## Tasks
+
+<!-- Break the story into implementation tasks if helpful. -->
+
+| Task                          | Estimate  | Assigned To    | Status    |
+|------------------------------|-----------|----------------|-----------|
+| {{ task_description }}       | {{ hrs }} | {{ assignee }} | {{ status }} |
+| {{ task_description }}       | {{ hrs }} | {{ assignee }} | {{ status }} |
+
+---
+
+### Notes
+
+{{ additional_notes }}
+
+## Completion Checklist
+
+- [ ] Story ID is unique and follows STORY-NNN pattern
+- [ ] epic-ref points to an existing epic
+- [ ] User Story follows "As a / I want / So that" format
+- [ ] Every AC uses Given/When/Then format and is independently testable
+- [ ] acceptance-criteria-count matches actual number of ACs
+- [ ] Points are assigned (Fibonacci: 1, 2, 3, 5, 8, 13)
+- [ ] If points > 8, consider splitting the story
+- [ ] All dependencies reference existing story IDs

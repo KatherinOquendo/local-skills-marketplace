@@ -1,0 +1,81 @@
+# Sprint Status Tracker
+# Update this file daily during standup. Single source of truth for sprint progress.
+
+sprint:
+  number: 1
+  start_date: "2025-03-18"
+  end_date: "2025-03-28"
+  goal: "Core authentication and project setup — users can sign up, log in, and create their first project"
+  status: "Active"
+
+stories:
+  - id: "STORY-001"
+    title: "User login with email/password"
+    status: "Done"
+    points: 3
+    assigned_to: "Alex Chen"
+    branch: "feature/STORY-001-user-login"
+    notes: "Completed day 3. Clerk integration clean. Webhook sync working."
+
+  - id: "STORY-002"
+    title: "User signup with onboarding flow"
+    status: "In Progress"
+    points: 5
+    assigned_to: "Jordan Rivera"
+    branch: "feature/STORY-002-signup-onboarding"
+    notes: "Signup page done. Onboarding UI in progress. Backend procedures ready."
+
+  - id: "STORY-003"
+    title: "Team invitation and member management"
+    status: "To Do"
+    points: 3
+    assigned_to: "Alex Chen"
+    branch: ""
+    notes: "Blocked until STORY-002 onboarding flow is merged."
+
+metrics:
+  total_points: 11
+  completed_points: 3
+  in_progress_points: 5
+  velocity: 3  # First sprint — no historical data, using completed so far
+  burndown:
+    - day: 1
+      remaining: 11
+    - day: 2
+      remaining: 11
+    - day: 3
+      remaining: 8
+    - day: 4
+      remaining: 8
+    - day: 5
+      remaining: 8
+    - day: 6
+      remaining: 8
+
+blockers: []
+
+daily_notes:
+  - date: "2025-03-18"
+    summary: "Sprint 1 kickoff. Clerk account created. Prisma schema finalized."
+    decisions: "Using Clerk hosted components instead of custom UI — saves 1-2 days."
+
+  - date: "2025-03-20"
+    summary: "STORY-001 login flow complete and deployed to staging. Starting signup."
+    decisions: "Password requirements configured in Clerk dashboard, not custom validation."
+
+  - date: "2025-03-24"
+    summary: "Signup page working. Onboarding page UI in progress. Backend API ready."
+    decisions: "Will add welcome toast using shadcn/ui Sonner component."
+
+# --- LESSONS LEARNED ---
+# This sprint-status.yaml demonstrates:
+# 1. Daily notes capture DECISIONS, not just status updates
+# 2. Burndown shows realistic progress (days 1-2 had no points completed)
+# 3. STORY-003 notes explain WHY it is blocked (dependency on STORY-002)
+# 4. Velocity is conservative (3 pts) for a first sprint — this establishes baseline
+# 5. The sprint goal is value-oriented ("users can sign up, log in, and create")
+#
+# DECISIONS MADE:
+# - Sprint length of 10 working days (2 weeks) for a 2-person team
+# - All 3 auth stories in Sprint 1 to establish the foundation
+# - Conservative velocity baseline (3 pts completed at day 6 of 10)

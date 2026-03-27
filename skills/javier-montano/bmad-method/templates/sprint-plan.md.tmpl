@@ -1,0 +1,114 @@
+---
+sprint-number: {{ sprint_number }}
+start-date: "{{ start_date }}"
+end-date: "{{ end_date }}"
+goal: "{{ sprint_goal }}"
+capacity: {{ capacity_points }}
+committed-points: {{ committed_points }}
+---
+
+# Sprint {{ sprint_number }} Plan
+
+## Sprint Goal
+
+<!-- REQUIRED -->
+<!-- VALIDATION: single sentence, value-oriented (what users get), not task-oriented
+     (what the team does). Max 150 chars. -->
+<!-- ANTI-PATTERN: "Implement stories STORY-001 through STORY-005" is a task list,
+     not a goal. Instead: "Users can sign up, create a project, and add their first task." -->
+
+{{ sprint_goal }}
+
+## Capacity
+
+| Team Member         | Available Days | Capacity (pts) | Notes                    |
+|--------------------|----------------|----------------|--------------------------|
+| {{ member_1 }}     | {{ days_1 }}   | {{ pts_1 }}    | {{ notes_1 }}            |
+| {{ member_2 }}     | {{ days_2 }}   | {{ pts_2 }}    | {{ notes_2 }}            |
+| {{ member_3 }}     | {{ days_3 }}   | {{ pts_3 }}    | {{ notes_3 }}            |
+| **Total**          | **{{ total_days }}** | **{{ total_pts }}** |                   |
+
+### Capacity Adjustments
+
+- Holidays / PTO: {{ pto_notes }}
+- Carry-over work: {{ carryover_notes }}
+- Buffer ({{ buffer_percent }}%): {{ buffer_points }} pts reserved
+
+**Available capacity**: {{ available_points }} pts
+
+## Selected Stories
+
+| Priority | Story ID         | Title                          | Points | Assigned To     | Epic Ref     |
+|----------|-----------------|--------------------------------|--------|-----------------|-------------|
+| 1        | {{ story_id_1 }} | {{ story_title_1 }}           | {{ pts }} | {{ assignee }} | {{ epic }}  |
+| 2        | {{ story_id_2 }} | {{ story_title_2 }}           | {{ pts }} | {{ assignee }} | {{ epic }}  |
+| 3        | {{ story_id_3 }} | {{ story_title_3 }}           | {{ pts }} | {{ assignee }} | {{ epic }}  |
+| 4        | {{ story_id_4 }} | {{ story_title_4 }}           | {{ pts }} | {{ assignee }} | {{ epic }}  |
+| 5        | {{ story_id_5 }} | {{ story_title_5 }}           | {{ pts }} | {{ assignee }} | {{ epic }}  |
+
+**Total committed**: {{ committed_points }} / {{ available_points }} pts
+
+### Stretch Goals
+
+<!-- Stories to pull in if the team finishes early. Not committed. -->
+
+| Story ID         | Title                          | Points |
+|-----------------|--------------------------------|--------|
+| {{ story_id }}  | {{ story_title }}              | {{ pts }} |
+
+## Risks
+
+| Risk                          | Probability | Impact   | Mitigation                       |
+|-------------------------------|-------------|----------|----------------------------------|
+| {{ risk_1 }}                 | {{ H/M/L }} | {{ H/M/L }} | {{ mitigation_1 }}            |
+| {{ risk_2 }}                 | {{ H/M/L }} | {{ H/M/L }} | {{ mitigation_2 }}            |
+
+## Dependencies
+
+| Dependency                    | Owner            | Needed By      | Status       |
+|------------------------------|------------------|---------------|-------------|
+| {{ dependency_1 }}           | {{ owner_1 }}    | {{ date_1 }}  | {{ status }} |
+| {{ dependency_2 }}           | {{ owner_2 }}    | {{ date_2 }}  | {{ status }} |
+
+## Definition of Done (Sprint Level)
+
+- [ ] All committed stories meet their individual Definition of Done
+- [ ] No critical or high-severity bugs introduced
+- [ ] Staging environment passes smoke tests
+- [ ] Sprint demo prepared and delivered
+- [ ] Sprint retrospective scheduled
+- [ ] Sprint status YAML updated and closed
+
+## Sprint Boundaries
+
+<!-- Explicitly state what is NOT in this sprint to manage expectations. -->
+
+### In Scope
+
+- {{ in_scope_1 }}
+- {{ in_scope_2 }}
+
+### Out of Scope
+
+- {{ out_of_scope_1 }}
+- {{ out_of_scope_2 }}
+
+### Assumptions
+
+- {{ assumption_1 }}
+- {{ assumption_2 }}
+
+---
+
+## Completion Checklist
+
+- [ ] Sprint goal is a single value-oriented statement
+- [ ] Capacity is calculated with buffer factored in
+- [ ] committed_points does not exceed available_points
+- [ ] All selected stories have complete acceptance criteria
+- [ ] No unresolved dependencies among selected stories
+- [ ] Risks are identified with mitigation plans
+- [ ] Sprint boundaries (in scope / out of scope) are documented
+- [ ] Plan has been approved by the team
+
+**Approved by**: {{ approver }} on {{ approval_date }}

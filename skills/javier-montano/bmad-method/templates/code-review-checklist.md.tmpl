@@ -1,0 +1,139 @@
+---
+review-id: "{{ review_id }}"
+story-ref: "{{ story_id }}"
+pr-url: "{{ pr_url }}"
+author: "{{ pr_author }}"
+reviewer: "{{ reviewer }}"
+date: "{{ review_date }}"
+decision: "{{ decision }}"         # Approve | Request Changes | Reject
+---
+
+# Code Review: {{ story_id }}
+
+**PR**: {{ pr_url }}
+**Author**: {{ pr_author }}
+**Reviewer**: {{ reviewer }}
+**Date**: {{ review_date }}
+
+---
+
+## 1. Story Reference
+
+<!-- REQUIRED — all four fields must be filled -->
+<!-- VALIDATION: Story ID must match an existing story file -->
+- **Story ID**: {{ story_id }}
+- **Story Title**: {{ story_title }}
+- **Epic**: {{ epic_ref }}
+- **Sprint**: {{ sprint_number }}
+
+## 2. Functional Review
+
+<!-- Does the code fulfill the acceptance criteria? -->
+
+| AC   | Description                          | Met?  | Notes                    |
+|------|--------------------------------------|-------|--------------------------|
+| AC-1 | {{ ac_1_description }}              | {{ Y/N }} | {{ notes }}          |
+| AC-2 | {{ ac_2_description }}              | {{ Y/N }} | {{ notes }}          |
+| AC-3 | {{ ac_3_description }}              | {{ Y/N }} | {{ notes }}          |
+
+- [ ] All acceptance criteria are satisfied
+- [ ] Edge cases are handled
+- [ ] Error states produce meaningful feedback
+- [ ] Feature works as described in the story
+
+## 3. Code Quality
+
+- [ ] Naming is clear and consistent (variables, functions, classes)
+- [ ] Code follows project conventions (see project-context.md)
+- [ ] No unnecessary complexity or over-engineering
+- [ ] DRY — no significant code duplication
+- [ ] Functions/methods are focused (single responsibility)
+- [ ] No dead code, commented-out blocks, or TODOs without tickets
+- [ ] File structure is logical and consistent
+- [ ] Design patterns are applied correctly
+
+**Notes**: {{ code_quality_notes }}
+
+## 4. Tests
+
+- [ ] Unit tests cover new/changed functionality
+- [ ] Test coverage meets threshold (>= {{ coverage_target }}%)
+- [ ] Edge cases and error paths are tested
+- [ ] Tests are readable and well-named
+- [ ] No flaky or timing-dependent tests
+- [ ] Integration tests updated (if applicable)
+- [ ] All tests pass in CI
+
+**Coverage**: {{ actual_coverage }}%
+**Notes**: {{ test_notes }}
+
+## 5. Security
+
+- [ ] No SQL injection vulnerabilities
+- [ ] No XSS vulnerabilities
+- [ ] Input validation is present and sufficient
+- [ ] Authentication checks are in place
+- [ ] Authorization checks are in place
+- [ ] Sensitive data is not logged or exposed
+- [ ] Secrets are not hardcoded
+- [ ] Dependencies have no known critical CVEs
+
+**Notes**: {{ security_notes }}
+
+## 6. Performance
+
+- [ ] Database queries are efficient (no N+1, proper indexes)
+- [ ] Caching is used where appropriate
+- [ ] No memory leaks or unbounded growth
+- [ ] Pagination is used for list endpoints
+- [ ] No blocking operations in hot paths
+- [ ] Bundle size impact is acceptable (frontend)
+
+**Notes**: {{ performance_notes }}
+
+## 7. Documentation
+
+- [ ] Code comments explain "why" (not "what")
+- [ ] API documentation is updated (if applicable)
+- [ ] README or setup docs updated (if applicable)
+- [ ] Breaking changes are documented
+- [ ] Migration steps are documented (if applicable)
+
+**Notes**: {{ documentation_notes }}
+
+## 8. Final Decision
+
+### Summary
+
+{{ review_summary }}
+
+### Decision: **{{ decision }}**
+
+<!-- Approve | Request Changes | Reject -->
+
+### Required Changes (if applicable)
+
+1. {{ required_change_1 }}
+2. {{ required_change_2 }}
+3. {{ required_change_3 }}
+
+### Suggestions (non-blocking)
+
+1. {{ suggestion_1 }}
+2. {{ suggestion_2 }}
+
+## Completion Checklist
+
+- [ ] All acceptance criteria have been individually verified (Section 2)
+- [ ] Code quality checklist is fully evaluated (Section 3)
+- [ ] Test coverage meets the project threshold (Section 4)
+- [ ] Security checklist is fully evaluated (Section 5)
+- [ ] Performance checklist is fully evaluated (Section 6)
+- [ ] Decision is one of: Approve | Request Changes | Reject
+- [ ] Required changes (if any) are specific and actionable
+- [ ] PR URL in frontmatter is valid
+
+---
+
+**Reviewer**: {{ reviewer }}
+**Date**: {{ review_date }}

@@ -3,32 +3,62 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Run discovery-orchestrator on this repository and produce a full assessment report",
-      "expected_output": "Structured report with evidence-tagged findings, prioritized recommendations, and next steps",
-      "assertions": [
-        {"text": "Output contains evidence tags [HECHO], [INFERENCIA], or [SUPUESTO]", "type": "contains"},
-        {"text": "Output contains a TL;DR or Executive Summary section", "type": "contains"},
-        {"text": "Output contains prioritized recommendations (P0/P1/P2)", "type": "contains"}
+      "name": "full_pipeline_init",
+      "prompt": "Run a full discovery for Acme Banking Core System",
+      "expected_output": "success",
+      "expectations": [
+        "Declares expert committee with 7 members plus conductor",
+        "Generates living discovery plan with input registry",
+        "Activates industry SME lens for banking",
+        "Sequences all phases with data contracts"
       ]
     },
     {
       "id": 2,
-      "prompt": "Quick discovery-orchestrator health check — focus on critical issues only, 1-page max",
-      "expected_output": "Concise 1-page summary with top 3 critical findings and immediate actions",
-      "assertions": [
-        {"text": "Output is concise (under 100 lines)", "type": "length"},
-        {"text": "Output identifies at least 1 critical finding", "type": "contains"},
-        {"text": "Output provides actionable next steps", "type": "contains"}
+      "name": "quick_reference_variant",
+      "prompt": "We need a quick go/no-go assessment for RetailCo POS system",
+      "expected_output": "success",
+      "expectations": [
+        "Selects quick reference variant (Phases 1, 3, 5b only)",
+        "Skips phases 0, 2, 4, 5a appropriately",
+        "Estimates 1-2 week timeline",
+        "Still activates expert committee with reduced allocation"
       ]
     },
     {
       "id": 3,
-      "prompt": "Compare current discovery-orchestrator state against industry best practices and identify gaps",
-      "expected_output": "Gap analysis with current vs target state, remediation roadmap",
-      "assertions": [
-        {"text": "Output contains gap analysis or comparison", "type": "contains"},
-        {"text": "Output references industry standards or best practices", "type": "contains"},
-        {"text": "Output provides improvement roadmap or remediation plan", "type": "contains"}
+      "name": "gate_enforcement",
+      "prompt": "Phase 3 scenarios are ready. Evaluate Gate 1 for scenario approval",
+      "expected_output": "success",
+      "expectations": [
+        "Checks all 6 Gate 1 criteria with evidence",
+        "Requires steering committee sign-off",
+        "Blocks progression if criteria not met",
+        "Presents options on gate failure"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "missing_input_handling",
+      "prompt": "Start the discovery but we don't have source code access yet",
+      "expected_output": "success",
+      "expectations": [
+        "Halts pipeline and requests source code access",
+        "Identifies source code as non-negotiable input",
+        "Suggests workarounds for other missing inputs",
+        "Updates input registry with missing items"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "status_reporting",
+      "prompt": "What is the current status of our discovery pipeline?",
+      "expected_output": "success",
+      "expectations": [
+        "Presents pipeline status with phase progress",
+        "Shows active experts and their assignments",
+        "Lists open assumptions and risks",
+        "Estimates remaining timeline and next gate"
       ]
     }
   ]

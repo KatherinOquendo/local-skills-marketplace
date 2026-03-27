@@ -1,0 +1,214 @@
+---
+project: "{{ project_name }}"
+date: "{{ assessment_date }}"
+assessor: "{{ assessor_name }}"
+overall-result: "{{ result }}"      # GO | NO-GO | CONDITIONAL
+prd-ref: "{{ prd_reference }}"
+architecture-ref: "{{ architecture_reference }}"
+---
+
+# Implementation Readiness Assessment
+
+**Project**: {{ project_name }}
+**Date**: {{ assessment_date }}
+**Assessor**: {{ assessor_name }}
+
+---
+
+## Gate Checklist
+
+<!-- REQUIRED — all 13 gates must be evaluated. No gate may be skipped. -->
+<!-- VALIDATION: Status must be one of PASS, WARN, or FAIL. Evidence must cite
+     a specific artifact and section (e.g., "PRD.md Section 4, FR-001 through FR-010"). -->
+<!-- ANTI-PATTERN: Do not mark a gate PASS without citing evidence. "Assumed complete"
+     is not evidence — it is a FAIL. -->
+
+### 1. Product Requirements Completeness
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_1 }}
+- **Notes**: {{ notes_1 }}
+- [ ] PRD is approved and versioned
+- [ ] All functional requirements have acceptance criteria
+- [ ] Non-functional requirements are measurable
+- [ ] Success metrics are defined with baselines
+
+### 2. Architecture Approval
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_2 }}
+- **Notes**: {{ notes_2 }}
+- [ ] Architecture document is approved
+- [ ] ADRs are documented for key decisions
+- [ ] C4 diagrams are current
+- [ ] Tech stack is finalized
+
+### 3. Epic and Story Breakdown
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_3 }}
+- **Notes**: {{ notes_3 }}
+- [ ] All epics are defined with acceptance criteria
+- [ ] Stories are written in proper format (persona/action/benefit)
+- [ ] Stories have Given/When/Then acceptance criteria
+- [ ] Story point estimates are complete
+
+### 4. Dependency Resolution
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_4 }}
+- **Notes**: {{ notes_4 }}
+- [ ] All external dependencies identified
+- [ ] Internal dependencies mapped between stories
+- [ ] Third-party API access confirmed
+- [ ] No unresolved blocking dependencies
+
+### 5. Environment Readiness
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_5 }}
+- **Notes**: {{ notes_5 }}
+- [ ] Development environment setup documented
+- [ ] CI/CD pipeline configured
+- [ ] Staging environment available
+- [ ] Database provisioned
+
+### 6. Security Review
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_6 }}
+- **Notes**: {{ notes_6 }}
+- [ ] Authentication strategy defined
+- [ ] Authorization model documented
+- [ ] Data protection requirements met
+- [ ] Threat model reviewed
+
+### 7. Data Model Validation
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_7 }}
+- **Notes**: {{ notes_7 }}
+- [ ] Entity relationships documented
+- [ ] Migration strategy defined
+- [ ] Data seeding plan in place
+- [ ] Backup and recovery plan documented
+
+### 8. API Contract Definition
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_8 }}
+- **Notes**: {{ notes_8 }}
+- [ ] API endpoints documented
+- [ ] Request/response schemas defined
+- [ ] Error handling conventions established
+- [ ] Versioning strategy in place
+
+### 9. Testing Strategy
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_9 }}
+- **Notes**: {{ notes_9 }}
+- [ ] Test plan documented
+- [ ] Coverage targets defined
+- [ ] Testing tools selected and configured
+- [ ] Test data strategy defined
+
+### 10. Team Readiness
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_10 }}
+- **Notes**: {{ notes_10 }}
+- [ ] Team members assigned to roles
+- [ ] Skill gaps identified and addressed
+- [ ] Communication channels established
+- [ ] Onboarding materials ready (if new members)
+
+### 11. Risk Assessment
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_11 }}
+- **Notes**: {{ notes_11 }}
+- [ ] Risk register is current
+- [ ] Mitigation plans exist for high-impact risks
+- [ ] Contingency plans documented
+- [ ] Risk owners assigned
+
+### 12. Sprint Planning Readiness
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_12 }}
+- **Notes**: {{ notes_12 }}
+- [ ] Backlog is groomed and prioritized
+- [ ] Sprint 1 stories are ready (meet Definition of Ready)
+- [ ] Velocity baseline established (or estimated for new teams)
+- [ ] Sprint cadence agreed upon
+
+### 13. Stakeholder Alignment
+
+- **Status**: {{ PASS | WARN | FAIL }}
+- **Evidence**: {{ evidence_13 }}
+- **Notes**: {{ notes_13 }}
+- [ ] Key stakeholders have signed off on scope
+- [ ] Communication plan in place
+- [ ] Demo/review schedule agreed
+- [ ] Escalation path defined
+
+---
+
+## Summary
+
+| #  | Gate                              | Status   |
+|----|-----------------------------------|----------|
+| 1  | Product Requirements Completeness | {{ status }} |
+| 2  | Architecture Approval             | {{ status }} |
+| 3  | Epic and Story Breakdown          | {{ status }} |
+| 4  | Dependency Resolution             | {{ status }} |
+| 5  | Environment Readiness             | {{ status }} |
+| 6  | Security Review                   | {{ status }} |
+| 7  | Data Model Validation             | {{ status }} |
+| 8  | API Contract Definition           | {{ status }} |
+| 9  | Testing Strategy                  | {{ status }} |
+| 10 | Team Readiness                    | {{ status }} |
+| 11 | Risk Assessment                   | {{ status }} |
+| 12 | Sprint Planning Readiness         | {{ status }} |
+| 13 | Stakeholder Alignment             | {{ status }} |
+
+**PASS**: {{ pass_count }} / 13
+**WARN**: {{ warn_count }} / 13
+**FAIL**: {{ fail_count }} / 13
+
+## Overall Result: **{{ GO | NO-GO | CONDITIONAL }}**
+
+<!-- GO: All gates PASS (WARN acceptable if mitigated)
+     CONDITIONAL: Some WARN gates with documented mitigation plans
+     NO-GO: Any FAIL gate blocks implementation start -->
+
+## Recommendation
+
+{{ recommendation }}
+
+## Conditions (if CONDITIONAL)
+
+<!-- List what must be resolved before implementation begins. -->
+
+1. {{ condition_1 }} — Owner: {{ owner_1 }}, Deadline: {{ deadline_1 }}
+2. {{ condition_2 }} — Owner: {{ owner_2 }}, Deadline: {{ deadline_2 }}
+
+## Sign-off
+
+| Role              | Name               | Decision        | Date         |
+|------------------|--------------------|-----------------|-------------|
+| Product Owner    | {{ po_name }}      | {{ decision }}  | {{ date }}  |
+| Tech Lead        | {{ tl_name }}      | {{ decision }}  | {{ date }}  |
+| Architect        | {{ arch_name }}    | {{ decision }}  | {{ date }}  |
+| {{ role }}       | {{ name }}         | {{ decision }}  | {{ date }}  |
+
+## Completion Checklist
+
+- [ ] All 13 gates have been evaluated with Status and Evidence
+- [ ] No gate has "assumed" or blank evidence
+- [ ] Overall result is explicitly stated (GO / NO-GO / CONDITIONAL)
+- [ ] If CONDITIONAL: conditions have owners and deadlines
+- [ ] If NO-GO: recommendation identifies which phase to return to
+- [ ] Sign-off table has at least Product Owner and Tech Lead entries
+- [ ] PASS count + WARN count + FAIL count = 13

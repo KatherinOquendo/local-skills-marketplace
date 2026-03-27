@@ -1,0 +1,8 @@
+# DOCX Template — Ssh Deployment
+## Structure
+- Title: "Ssh Deployment Report"
+- Section 1: Executive Summary
+- Section 2: Findings / Deliverables
+- Section 3: Recommendations
+- Footer: "MetodologIA — {{date}}"
+## Formatting: Poppins headings, Montserrat body, JetBrains Mono code

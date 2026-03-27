@@ -1,76 +1,108 @@
-# Design System — Sample Output
+---
+title: Design System Token Configuration
+brand: Acme Corp
+format: markdown
+variante: tecnica
+date: 2026-03-12
+---
 
-## Context
+# Design System — Acme Corp
 
-A technical leadership practice needs a consistent design system for all
-deliverables: architecture assessments, roadmaps, and executive summaries.
+Token configuration and component reference for the Acme Corp engagement.
 
-## Output
+## 1. Brand Token Configuration
 
-### Token Definitions
+Source: `brand-config.json`
 
-#### Color Palette
+| Token | Value | CSS Variable |
+|-------|-------|-------------|
+| Primary | `#3B82F6` | `var(--brand-primary)` |
+| Primary Light | `#60A5FA` | `var(--brand-primary-light)` |
+| Primary Dark | `#2563EB` | `var(--brand-primary-dark)` |
+| Primary Dim | `rgba(59,130,246,0.10)` | `var(--brand-primary-dim)` |
+| Black | `#000000` | `var(--brand-black)` |
+| White | `#FFFFFF` | `var(--brand-white)` |
+| Background | `#F5F5F5` | `var(--brand-background)` |
+| Muted | `#9CA3AF` | `var(--brand-muted)` |
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--color-primary` | #2563EB | Headings, primary actions, links |
-| `--color-secondary` | #64748B | Body text, secondary information |
-| `--color-accent` | #F59E0B | Highlights, callouts, attention markers |
-| `--color-danger` | #DC2626 | Critical findings, high-risk indicators |
-| `--color-success` | #16A34A | Positive metrics, completed items |
-| `--color-surface` | #F8FAFC | Card backgrounds, section containers |
-| `--color-border` | #E2E8F0 | Dividers, table borders, card edges |
-| `--color-text` | #1E293B | Primary body text |
-| `--color-text-muted` | #94A3B8 | Captions, metadata, footnotes |
+### Font Stack
 
-#### Typography Scale
+| Role | Family | Google Fonts URL |
+|------|--------|-----------------|
+| Display | `'Inter', system-ui, sans-serif` | `https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap` |
+| Body | `'Inter', system-ui, sans-serif` | (same) |
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--font-family` | Inter, system-ui, sans-serif | All text |
-| `--font-mono` | JetBrains Mono, monospace | Code blocks, technical references |
-| `--text-h1` | 2rem / 700 | Document title |
-| `--text-h2` | 1.5rem / 600 | Section headings |
-| `--text-h3` | 1.25rem / 600 | Subsection headings |
-| `--text-body` | 1rem / 400 | Body text |
-| `--text-small` | 0.875rem / 400 | Captions, metadata |
+## 2. Semantic Colors (Universal)
 
-#### Spacing Scale
+These never change per brand:
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | 0.25rem | Inline element gaps |
-| `--space-sm` | 0.5rem | Tight component padding |
-| `--space-md` | 1rem | Standard component padding |
-| `--space-lg` | 1.5rem | Section margins |
-| `--space-xl` | 2rem | Major section separators |
-| `--space-2xl` | 3rem | Page-level spacing |
+| State | Color | Dim | Border | Text |
+|-------|-------|-----|--------|------|
+| Positive | `#22D3EE` | `rgba(255,215,0,0.12)` | `rgba(255,215,0,0.45)` | `#06B6D4` |
+| Warning | `#D97706` | `rgba(217,119,6,0.08)` | — | — |
+| Critical | `#DC2626` | `rgba(220,38,38,0.07)` | — | — |
+| Info | `#2563EB` | `rgba(37,99,235,0.07)` | — | — |
 
-### Component: Finding Card
+## 3. Sample Styled Section — Architecture Overview
+
+> **Section Header Pattern:** 60x60px black box with brand-primary number
+
+### 01 — Current State Assessment
+
+The current architecture presents three critical findings:
+
+**Finding 1: Monolithic coupling**
+- Severity: `critical` — Red left border, red tint background
+- Impact: Deployment frequency limited to 1x/month
+- Recommendation: Decompose into 3 bounded contexts
+
+**Finding 2: Missing observability**
+- Severity: `high` — Orange left border
+- Impact: MTTR averages 4 hours due to blind spots
+- Recommendation: Implement distributed tracing
+
+**Finding 3: Manual scaling**
+- Severity: `medium` — Amber left border, BLACK text (WCAG AA)
+- Impact: Peak traffic causes 30% error rate
+- Recommendation: Auto-scaling policies on compute tier
+
+### Component Usage in This Section
 
 ```
-┌─────────────────────────────────────────────┐
-│ [BADGE: severity]  Finding ID               │
-│                                             │
-│ Finding Title (--text-h3)                   │
-│                                             │
-│ Description text (--text-body)              │
-│                                             │
-│ ┌─────────────────────────────────────────┐ │
-│ │ Evidence block (--color-surface bg)     │ │
-│ │ [CODE] source reference                 │ │
-│ └─────────────────────────────────────────┘ │
-│                                             │
-│ Recommendation (--text-body)                │
-│ Effort estimate (--text-small, --color-muted│
-└─────────────────────────────────────────────┘
+card-critical  → Finding 1 (monolithic coupling)
+card-warning   → Finding 3 (manual scaling)
+callout-info   → Architecture recommendation callout
+badge          → Severity labels
+badge-outline  → Impact category tags
 ```
 
-### Page Template: Executive Summary
+## 4. Mermaid Diagram Integration
 
-1. **TL;DR Block** — 3-5 sentences, `--color-surface` background, `--space-lg` padding.
-2. **Key Metrics Row** — 3-4 metric cards in a horizontal layout.
-3. **Findings Summary** — Table with severity badges, one-line descriptions, and impact.
-4. **Recommendation** — Numbered list with effort estimates.
-5. **Next Steps** — Call to action with timeline.
-6. **Ghost Menu** — Floating navigation to detailed sections.
+Architecture diagrams use Mermaid with brand-primary theming:
+
+```mermaid
+graph TD
+    A[Client App] -->|REST API| B[API Gateway]
+    B --> C[Auth Service]
+    B --> D[Order Service]
+    B --> E[Inventory Service]
+    D --> F[(Order DB)]
+    E --> G[(Inventory DB)]
+
+    style A fill:#3B82F6,color:#FFFFFF
+    style B fill:#000000,color:#FFFFFF
+    style C fill:#F5F5F5,stroke:#3B82F6
+    style D fill:#F5F5F5,stroke:#3B82F6
+    style E fill:#F5F5F5,stroke:#3B82F6
+```
+
+> **Note:** Mermaid node colors use brand tokens. `fill:#3B82F6` maps to `var(--brand-primary)`. In production HTML, these are injected from brand-config.json.
+
+## 5. Validation Checklist
+
+- [x] All colors reference CSS custom properties (no hex in components)
+- [x] Semantic colors: positive=yellow, not green
+- [x] Hero border: 8px solid brand-primary
+- [x] WCAG AA contrast verified (severity-medium uses black text)
+- [x] Font fallbacks: system-ui, sans-serif
+- [x] Responsive: 3 breakpoints configured

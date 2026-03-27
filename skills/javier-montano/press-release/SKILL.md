@@ -1,0 +1,31 @@
+---
+name: press-release
+author: JM Labs (Javier Montaño)
+version: 1.0.0
+description: >
+  Inverted pyramid, quotes, boilerplate, distribution strategy.
+  Trigger: "press release"
+allowed-tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
+---
+# Press Release
+> "Method over hacks."
+## TL;DR
+Inverted pyramid, quotes, boilerplate, distribution strategy.
+## Procedure
+### Step 1: Discover
+- Gather context and requirements
+### Step 2: Analyze
+- Evaluate options per Constitution XIII/XIV
+### Step 3: Execute
+- Implement with evidence tags
+### Step 4: Validate
+- Verify quality criteria met
+## Quality Criteria
+- [ ] Evidence tags applied
+- [ ] Constitution-compliant
+- [ ] Actionable output

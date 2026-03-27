@@ -1,0 +1,89 @@
+# Sprint Status Tracker
+# Update this file daily during standup. Single source of truth for sprint progress.
+# VALIDATION: sprint.number must be a positive integer
+# VALIDATION: sprint.status must be one of Planning | Active | Review | Closed
+# VALIDATION: story status must be one of To Do | In Progress | In Review | Done | Blocked
+# ANTI-PATTERN: Do not update this file retroactively. Each daily_notes entry
+# should be written on the day it describes.
+# Edge case: If a story is removed mid-sprint, keep it in the file with
+# status "Removed" and a note explaining why — do not delete it.
+
+sprint:
+  number: {{ sprint_number }}
+  start_date: "{{ start_date }}"        # YYYY-MM-DD
+  end_date: "{{ end_date }}"            # YYYY-MM-DD
+  goal: "{{ sprint_goal }}"
+  status: "{{ status }}"                # Planning | Active | Review | Closed
+
+stories:
+  - id: "{{ story_id_1 }}"
+    title: "{{ story_title_1 }}"
+    status: "{{ status }}"              # To Do | In Progress | In Review | Done | Blocked
+    points: {{ points_1 }}
+    assigned_to: "{{ assignee_1 }}"
+    branch: "{{ branch_name_1 }}"       # e.g., feature/STORY-001-user-login
+    notes: "{{ notes_1 }}"
+
+  - id: "{{ story_id_2 }}"
+    title: "{{ story_title_2 }}"
+    status: "{{ status }}"
+    points: {{ points_2 }}
+    assigned_to: "{{ assignee_2 }}"
+    branch: "{{ branch_name_2 }}"
+    notes: "{{ notes_2 }}"
+
+  - id: "{{ story_id_3 }}"
+    title: "{{ story_title_3 }}"
+    status: "{{ status }}"
+    points: {{ points_3 }}
+    assigned_to: "{{ assignee_3 }}"
+    branch: "{{ branch_name_3 }}"
+    notes: "{{ notes_3 }}"
+
+  # Add more stories as needed
+
+metrics:
+  total_points: {{ total_points }}
+  completed_points: {{ completed_points }}
+  in_progress_points: {{ in_progress_points }}
+  velocity: {{ velocity }}               # Rolling average from last 3 sprints
+  burndown:
+    - day: 1
+      remaining: {{ remaining_day_1 }}
+    - day: 2
+      remaining: {{ remaining_day_2 }}
+    - day: 3
+      remaining: {{ remaining_day_3 }}
+    - day: 4
+      remaining: {{ remaining_day_4 }}
+    - day: 5
+      remaining: {{ remaining_day_5 }}
+    # Extend for sprint length (typically 5 or 10 working days)
+
+blockers:
+  - id: "BLOCK-{{ blocker_number }}"
+    story_ref: "{{ blocked_story_id }}"
+    description: "{{ blocker_description }}"
+    raised_date: "{{ raised_date }}"
+    owner: "{{ blocker_owner }}"
+    status: "{{ status }}"              # Open | Resolved
+    resolution: "{{ resolution }}"
+    resolved_date: "{{ resolved_date }}"
+
+  # Add more blockers as needed
+
+daily_notes:
+  - date: "{{ standup_date }}"
+    summary: "{{ daily_summary }}"
+    decisions: "{{ decisions_made }}"
+
+  # Add daily entries during standup
+
+# Completion Checklist:
+# - [ ] Sprint number is sequential (no gaps)
+# - [ ] Sprint goal is a single value-oriented statement
+# - [ ] All stories have valid status values
+# - [ ] total_points equals sum of individual story points
+# - [ ] completed_points equals sum of Done story points
+# - [ ] Burndown has one entry per working day
+# - [ ] All blockers have owners assigned

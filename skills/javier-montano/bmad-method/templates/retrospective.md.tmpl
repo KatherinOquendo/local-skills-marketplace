@@ -1,0 +1,117 @@
+---
+sprint-number: {{ sprint_number }}
+sprint-goal: "{{ sprint_goal }}"
+start-date: "{{ start_date }}"
+end-date: "{{ end_date }}"
+facilitator: "{{ facilitator }}"
+participants:
+  - "{{ participant_1 }}"
+  - "{{ participant_2 }}"
+  - "{{ participant_3 }}"
+date: "{{ retro_date }}"
+---
+
+# Sprint {{ sprint_number }} Retrospective
+
+## Sprint Reference
+
+- **Sprint**: {{ sprint_number }}
+- **Goal**: {{ sprint_goal }}
+- **Dates**: {{ start_date }} to {{ end_date }}
+- **Facilitator**: {{ facilitator }}
+
+## Metrics
+
+| Metric                | Value           | Previous Sprint | Trend  |
+|----------------------|-----------------|-----------------|--------|
+| Velocity             | {{ velocity }}  | {{ prev_vel }}  | {{ trend_emoji }} |
+| Completion Rate      | {{ completion_rate }}% | {{ prev_rate }}% | {{ trend_emoji }} |
+| Stories Committed    | {{ committed }} | {{ prev_committed }} | —  |
+| Stories Completed    | {{ completed }} | {{ prev_completed }} | —  |
+| Carry-over Stories   | {{ carryover }} | {{ prev_carryover }} | {{ trend_emoji }} |
+| Bugs Found           | {{ bugs }}      | {{ prev_bugs }} | {{ trend_emoji }} |
+| Blockers Encountered | {{ blockers }}  | {{ prev_blockers }} | {{ trend_emoji }} |
+
+<!-- Trend: up-arrow for improvement, down-arrow for decline, dash for stable -->
+
+## What Went Well
+
+<!-- REQUIRED — minimum 2 items -->
+<!-- VALIDATION: Each item must be specific and attributable. "Things went well"
+     is not valid. "TDD caught 3 integration bugs before review" is valid. -->
+<!-- ANTI-PATTERN: Do not list generic positives like "good teamwork." Cite
+     specific practices, tools, or decisions that produced measurable results. -->
+
+1. {{ went_well_1 }}
+2. {{ went_well_2 }}
+3. {{ went_well_3 }}
+
+## What Didn't Go Well
+
+<!-- Problems encountered. Focus on process, not blame. -->
+
+1. {{ didnt_go_well_1 }}
+2. {{ didnt_go_well_2 }}
+3. {{ didnt_go_well_3 }}
+
+## What to Change
+
+<!-- Concrete changes the team agrees to try next sprint. -->
+
+1. {{ change_1 }}
+2. {{ change_2 }}
+3. {{ change_3 }}
+
+## Action Items
+
+| #  | Description                          | Owner            | Deadline       | Success Criteria              |
+|----|--------------------------------------|------------------|---------------|-------------------------------|
+| 1  | {{ action_description_1 }}          | {{ owner_1 }}    | {{ deadline_1 }} | {{ success_criteria_1 }}   |
+| 2  | {{ action_description_2 }}          | {{ owner_2 }}    | {{ deadline_2 }} | {{ success_criteria_2 }}   |
+| 3  | {{ action_description_3 }}          | {{ owner_3 }}    | {{ deadline_3 }} | {{ success_criteria_3 }}   |
+
+## Velocity Trend
+
+<!-- Track velocity over the last several sprints to spot patterns. -->
+
+| Sprint | Committed | Completed | Velocity | Notes                    |
+|--------|-----------|-----------|----------|--------------------------|
+| {{ sprint_number - 4 }} | {{ c }} | {{ d }} | {{ v }} | {{ notes }}       |
+| {{ sprint_number - 3 }} | {{ c }} | {{ d }} | {{ v }} | {{ notes }}       |
+| {{ sprint_number - 2 }} | {{ c }} | {{ d }} | {{ v }} | {{ notes }}       |
+| {{ sprint_number - 1 }} | {{ c }} | {{ d }} | {{ v }} | {{ notes }}       |
+| **{{ sprint_number }}** | **{{ c }}** | **{{ d }}** | **{{ v }}** | **Current** |
+
+## Previous Action Items Review
+
+<!-- Review action items from the last retrospective. Were they completed? -->
+
+| Action Item                        | Owner          | Status         | Outcome / Notes            |
+|-----------------------------------|----------------|----------------|----------------------------|
+| {{ prev_action_1 }}              | {{ owner }}    | {{ Done/Open }} | {{ outcome_1 }}           |
+| {{ prev_action_2 }}              | {{ owner }}    | {{ Done/Open }} | {{ outcome_2 }}           |
+
+## Team Satisfaction
+
+<!-- Optional: quick team pulse check. -->
+
+| Team Member         | Rating (1-5) | One-word Feeling    |
+|--------------------|-------------|---------------------|
+| {{ member_1 }}     | {{ rating }} | {{ feeling }}       |
+| {{ member_2 }}     | {{ rating }} | {{ feeling }}       |
+| {{ member_3 }}     | {{ rating }} | {{ feeling }}       |
+
+**Average satisfaction**: {{ average_rating }} / 5
+
+---
+
+## Completion Checklist
+
+- [ ] All three feedback categories have at least 2 specific items each
+- [ ] Every "What to Change" item has a corresponding Action Item
+- [ ] Every Action Item has an owner and a deadline
+- [ ] Previous retro actions are reviewed (if applicable)
+- [ ] Velocity trend table is updated with this sprint's data
+- [ ] Team satisfaction survey is completed (if applicable)
+
+**Next retrospective**: Sprint {{ sprint_number + 1 }}, {{ next_retro_date }}

@@ -1,0 +1,110 @@
+# BMAD Agent Definition
+# This template defines an AI agent's persona, behavior, and capabilities.
+# Fill in the {{ }} placeholders to create a new agent.
+# ANTI-PATTERN: Do not create agents with overlapping responsibilities.
+# Each agent must have a clear, non-overlapping mandate.
+
+metadata:
+  id: "{{ agent_id }}"                    # REQUIRED — kebab-case, e.g., bmad-analyst
+  # VALIDATION: must be unique across all agents; must match [a-z0-9-]+ pattern
+  name: "{{ agent_display_name }}"        # REQUIRED — e.g., "Business Analyst Agent"
+  icon: "{{ agent_icon }}"               # OPTIONAL — single emoji
+  module: "{{ module_name }}"             # REQUIRED — e.g., planning, development, review
+  version: "{{ version | default: '1.0.0' }}"  # REQUIRED — semver
+  description: "{{ agent_description }}"  # REQUIRED — max 200 chars
+
+persona:
+  role: "{{ agent_role }}"
+  # e.g., "Senior Business Analyst", "Solutions Architect", "QA Engineer"
+
+  identity: |
+    {{ agent_identity_paragraph }}
+    # Describe WHO this agent is: background, expertise, mindset.
+    # Write in first person. Be specific about domain knowledge.
+
+  communication_style:
+    tone: "{{ tone }}"                    # e.g., professional, collaborative, direct
+    verbosity: "{{ verbosity }}"          # concise | balanced | detailed
+    format_preference: "{{ format }}"     # markdown | yaml | structured | conversational
+    # Additional style notes:
+    # {{ style_notes }}
+
+  principles:
+    - "{{ principle_1 }}"
+    # e.g., "Always validate assumptions with evidence"
+    - "{{ principle_2 }}"
+    # e.g., "Prefer simplicity over complexity"
+    - "{{ principle_3 }}"
+    # e.g., "Never proceed without clear acceptance criteria"
+    - "{{ principle_4 }}"
+
+  expertise:
+    - "{{ expertise_area_1 }}"
+    - "{{ expertise_area_2 }}"
+    - "{{ expertise_area_3 }}"
+
+  constraints:
+    - "{{ constraint_1 }}"
+    # e.g., "Do not make technology choices without architect approval"
+    - "{{ constraint_2 }}"
+
+menu:
+  # Commands this agent responds to in conversational mode.
+  - command: "{{ command_1 }}"
+    description: "{{ command_1_description }}"
+    # e.g., command: "analyze", description: "Analyze a business requirement"
+  - command: "{{ command_2 }}"
+    description: "{{ command_2_description }}"
+  - command: "{{ command_3 }}"
+    description: "{{ command_3_description }}"
+  - command: "help"
+    description: "Show available commands and agent capabilities"
+
+prompts:
+  # Reusable prompt templates this agent can invoke.
+  system: |
+    You are {{ agent_display_name }}, a {{ agent_role }}.
+    {{ agent_identity_paragraph }}
+
+    Your principles:
+    {% for principle in persona.principles %}
+    - {{ principle }}
+    {% endfor %}
+
+    Communication style: {{ persona.communication_style.tone }},
+    {{ persona.communication_style.verbosity }}.
+
+  # Task-specific prompts
+  {{ prompt_name_1 }}:
+    description: "{{ prompt_1_description }}"
+    template: |
+      {{ prompt_1_template }}
+
+  {{ prompt_name_2 }}:
+    description: "{{ prompt_2_description }}"
+    template: |
+      {{ prompt_2_template }}
+
+# Workflow integrations — which workflows can invoke this agent
+workflows:
+  - "{{ workflow_1 }}"
+  - "{{ workflow_2 }}"
+
+# Agent handoff rules — when to pass control to another agent
+handoff:
+  - condition: "{{ handoff_condition_1 }}"
+    target_agent: "{{ target_agent_id_1 }}"
+    context_keys:
+      - "{{ context_key_1 }}"
+  - condition: "{{ handoff_condition_2 }}"
+    target_agent: "{{ target_agent_id_2 }}"
+    context_keys:
+      - "{{ context_key_2 }}"
+
+# Completion Checklist:
+# - [ ] Agent ID is unique and follows kebab-case convention
+# - [ ] Identity paragraph is written in first person with specific expertise
+# - [ ] At least 3 principles are defined
+# - [ ] Menu commands have unique triggers that do not conflict with other agents
+# - [ ] Handoff conditions reference valid target agent IDs
+# - [ ] Workflows referenced in menu section exist as files

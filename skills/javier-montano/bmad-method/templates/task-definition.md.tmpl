@@ -1,0 +1,99 @@
+---
+task-id: "{{ task_id }}"               # e.g., TASK-001
+story-ref: "{{ story_id }}"            # e.g., STORY-001
+type: "{{ task_type }}"                # dev | test | devops | design | research | documentation
+status: "{{ status }}"                 # To Do | In Progress | In Review | Done | Blocked
+assigned-to: "{{ assignee }}"
+estimated-hours: {{ estimated_hours }}
+actual-hours: {{ actual_hours }}
+branch: "{{ branch_name }}"
+---
+
+# {{ task_id }}: {{ task_title }}
+
+## Description
+
+<!-- REQUIRED -->
+<!-- VALIDATION: Specific enough that a team member with no prior context on this
+     story could pick it up and complete it. If a task requires reading another
+     document to understand, link to that document. -->
+<!-- ANTI-PATTERN: Do not create tasks that combine multiple unrelated changes.
+     Each task should touch one concern (one API endpoint, one UI component, etc.). -->
+
+{{ task_description }}
+
+### Context
+
+- **Story**: {{ story_id }} — {{ story_title }}
+- **Epic**: {{ epic_id }}
+- **Sprint**: {{ sprint_number }}
+
+## Steps
+
+<!-- Ordered list of concrete actions to complete this task. -->
+
+1. {{ step_1 }}
+
+2. {{ step_2 }}
+
+3. {{ step_3 }}
+
+4. {{ step_4 }}
+
+5. {{ step_5 }}
+
+<!-- Add more steps as needed. Each should be small and verifiable. -->
+
+## Acceptance Criteria
+
+<!-- When is this task considered done? -->
+
+- [ ] {{ task_ac_1 }}
+- [ ] {{ task_ac_2 }}
+- [ ] {{ task_ac_3 }}
+
+## Technical Notes
+
+<!-- Implementation hints, references, or constraints. -->
+
+- {{ technical_note_1 }}
+- {{ technical_note_2 }}
+
+### Files to Modify
+
+| File Path                        | Change Description                    |
+|---------------------------------|---------------------------------------|
+| {{ file_path_1 }}              | {{ change_description_1 }}            |
+| {{ file_path_2 }}              | {{ change_description_2 }}            |
+
+### Reference Material
+
+- {{ reference_1 }}
+- {{ reference_2 }}
+
+## Estimated Effort
+
+- **Estimate**: {{ estimated_hours }} hours
+- **Complexity**: {{ Low | Medium | High }}
+- **Risk**: {{ Low | Medium | High }}
+
+## Dependencies
+
+| Dependency           | Type             | Status       | Blocking?   |
+|---------------------|------------------|-------------|-------------|
+| {{ dependency }}    | {{ type }}       | {{ status }} | {{ yes/no }} |
+
+---
+
+### Notes
+
+{{ additional_notes }}
+
+## Completion Checklist
+
+- [ ] Task ID is unique and follows TASK-NNN pattern
+- [ ] story-ref points to an existing story
+- [ ] All acceptance criteria are independently verifiable
+- [ ] Steps are ordered and each is small enough to verify
+- [ ] Files to Modify table lists all affected files
+- [ ] Estimated effort has been provided with complexity and risk levels

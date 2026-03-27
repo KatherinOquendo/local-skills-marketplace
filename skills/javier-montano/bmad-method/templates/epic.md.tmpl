@@ -1,0 +1,115 @@
+---
+epic-id: "{{ epic_id }}"
+<!-- REQUIRED --> <!-- VALIDATION: must match EPIC-NNN pattern; must be unique -->
+title: "{{ epic_title }}"
+<!-- REQUIRED --> <!-- VALIDATION: max 80 chars; descriptive of the feature area -->
+status: "{{ status }}"
+<!-- REQUIRED --> <!-- VALIDATION: one of Backlog | Ready | In Progress | Done -->
+priority: "{{ priority }}"
+<!-- REQUIRED --> <!-- VALIDATION: one of Critical | High | Medium | Low -->
+prd-refs:
+  - "{{ fr_id_1 }}"
+  - "{{ fr_id_2 }}"
+<!-- REQUIRED --> <!-- VALIDATION: at least 1 FR reference; each must match FR-NNN in the PRD -->
+story-count: {{ story_count }}
+<!-- REQUIRED --> <!-- VALIDATION: must match actual number of stories listed below -->
+estimated-points: {{ estimated_points }}
+<!-- REQUIRED --> <!-- VALIDATION: must equal sum of story points -->
+dependencies:
+  - "{{ dependency_epic_id }}"
+<!-- OPTIONAL — leave as empty array [] if no dependencies -->
+---
+
+# {{ epic_id }}: {{ epic_title }}
+
+## Description
+
+<!-- What is this epic about? Provide enough context so any team member
+     can understand the scope without reading the full PRD. -->
+
+{{ epic_description }}
+
+## Business Value
+
+<!-- Why does this epic matter? What outcome does it drive? -->
+
+{{ business_value }}
+
+### Key Results
+
+- {{ key_result_1 }}
+- {{ key_result_2 }}
+- {{ key_result_3 }}
+
+## Acceptance Criteria
+
+<!-- High-level criteria that must be true for the epic to be considered done. -->
+
+- [ ] {{ epic_ac_1 }}
+- [ ] {{ epic_ac_2 }}
+- [ ] {{ epic_ac_3 }}
+- [ ] {{ epic_ac_4 }}
+
+## Story List
+
+<!-- Each story should have its own story file. Reference by ID here. -->
+
+| Story ID       | Title                           | Points | Priority | Status    |
+|---------------|---------------------------------|--------|----------|-----------|
+| {{ story_id }} | {{ story_title }}              | {{ pts }} | {{ pri }} | {{ status }} |
+| {{ story_id }} | {{ story_title }}              | {{ pts }} | {{ pri }} | {{ status }} |
+| {{ story_id }} | {{ story_title }}              | {{ pts }} | {{ pri }} | {{ status }} |
+| {{ story_id }} | {{ story_title }}              | {{ pts }} | {{ pri }} | {{ status }} |
+
+### Story Sequencing
+
+<!-- Recommended order of implementation. Note any hard dependencies. -->
+
+1. {{ story_id }} — {{ reason_for_order }}
+2. {{ story_id }} — {{ reason_for_order }}
+3. {{ story_id }} — {{ reason_for_order }}
+
+## Dependencies
+
+### Internal Dependencies
+
+| Dependency           | Type             | Status       | Impact if Delayed        |
+|---------------------|------------------|-------------|--------------------------|
+| {{ dependency }}    | {{ type }}       | {{ status }} | {{ impact }}             |
+
+### External Dependencies
+
+| Dependency           | Owner            | Expected By  | Risk Level               |
+|---------------------|------------------|-------------|--------------------------|
+| {{ dependency }}    | {{ owner }}      | {{ date }}   | {{ risk }}               |
+
+## Notes
+
+<!-- Design decisions, open questions, technical spikes, or anything
+     the team should be aware of. -->
+
+- {{ note_1 }}
+- {{ note_2 }}
+
+### Open Questions
+
+- [ ] {{ question_1 }}
+- [ ] {{ question_2 }}
+
+---
+
+### Change Log
+
+| Date         | Author          | Changes                    |
+|-------------|-----------------|----------------------------|
+| {{ date }}  | {{ author }}    | Epic created               |
+
+## Completion Checklist
+
+- [ ] Epic ID is unique and follows EPIC-NNN pattern
+- [ ] At least one FR from the PRD is referenced in prd-refs
+- [ ] story-count matches the actual number of rows in the Story List table
+- [ ] estimated-points equals the sum of individual story points
+- [ ] All stories have their own story files created
+- [ ] Story sequencing accounts for all dependency constraints
+- [ ] All open questions have owners assigned to resolve them

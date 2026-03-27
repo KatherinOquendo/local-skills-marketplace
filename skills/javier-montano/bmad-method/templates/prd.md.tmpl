@@ -1,0 +1,190 @@
+---
+title: "{{ prd_title }}"
+<!-- REQUIRED --> <!-- VALIDATION: must be unique; include the product name -->
+version: "{{ version | default: '0.1.0' }}"
+<!-- REQUIRED --> <!-- VALIDATION: semver format -->
+status: "{{ status }}"  # Draft | In Review | Approved | Deprecated
+<!-- REQUIRED --> <!-- VALIDATION: must be one of the four allowed values -->
+author: "{{ author }}"
+<!-- REQUIRED -->
+date: "{{ date }}"
+<!-- REQUIRED --> <!-- VALIDATION: ISO 8601 -->
+product-brief-ref: "{{ product_brief_ref }}"
+<!-- REQUIRED --> <!-- VALIDATION: must point to an existing product-brief file -->
+stakeholders:
+  - "{{ stakeholder_1 }}"
+  - "{{ stakeholder_2 }}"
+<!-- REQUIRED --> <!-- VALIDATION: at least 1 stakeholder -->
+success-metrics:
+  - "{{ metric_1 }}"
+  - "{{ metric_2 }}"
+<!-- REQUIRED --> <!-- VALIDATION: at least 1 metric in SMART format -->
+---
+
+# {{ prd_title }}
+
+## 1. Executive Summary
+
+<!-- REQUIRED -->
+<!-- VALIDATION: 2-3 paragraphs max. Must reference the product brief and state
+     the core problem, target user, and proposed solution. -->
+<!-- ANTI-PATTERN: Do not copy the product brief verbatim. Summarize and add
+     the "requirements lens" — what we need to build, not just what we want. -->
+
+{{ executive_summary }}
+
+## 2. Problem Statement
+
+<!-- What specific problem does this product solve? Include data if available. -->
+
+{{ problem_statement }}
+
+### Current State
+
+{{ current_state_description }}
+
+### Desired State
+
+{{ desired_state_description }}
+
+## 3. User Personas
+
+<!-- REQUIRED — minimum 1 persona. If only 1 persona exists, remove the Persona 2
+     section rather than leaving it as a placeholder. -->
+<!-- ANTI-PATTERN: Do not create fictional personas that don't map to real user
+     research or stakeholder interviews. Tag each persona with its evidence source. -->
+<!-- Edge case: If there is genuinely only one type of user, document that
+     explicitly: "Single persona — all users share the same profile." -->
+
+### Persona 1: {{ persona_1_name }}
+
+- **Role**: {{ persona_1_role }}
+<!-- REQUIRED -->
+- **Goals**: {{ persona_1_goals }}
+<!-- REQUIRED --> <!-- VALIDATION: specific and actionable, not "be productive" -->
+- **Pain Points**: {{ persona_1_pain_points }}
+<!-- REQUIRED -->
+- **Tech Proficiency**: {{ persona_1_tech_level }}
+<!-- REQUIRED --> <!-- VALIDATION: Low | Medium | High — affects UX decisions -->
+
+### Persona 2: {{ persona_2_name }}
+
+- **Role**: {{ persona_2_role }}
+- **Goals**: {{ persona_2_goals }}
+- **Pain Points**: {{ persona_2_pain_points }}
+- **Tech Proficiency**: {{ persona_2_tech_level }}
+
+<!-- Add more personas as needed. Remove unused persona sections. -->
+
+## 4. Functional Requirements
+
+<!-- REQUIRED -->
+<!-- VALIDATION: Every FR must have a unique ID matching FR-NNN pattern,
+     a MoSCoW priority, at least one persona reference, and acceptance criteria
+     in the detailed section below. -->
+<!-- ANTI-PATTERN: Do not create FR IDs out of sequence (e.g., FR-001, FR-005, FR-010).
+     Gaps in numbering cause confusion about whether requirements were deleted. -->
+
+| ID      | Requirement                        | Priority   | Persona       | Notes            |
+|---------|-----------------------------------|------------|---------------|------------------|
+| FR-001  | {{ requirement_description }}     | {{ MoSCoW }} | {{ persona }} | {{ notes }}      |
+| FR-002  | {{ requirement_description }}     | {{ MoSCoW }} | {{ persona }} | {{ notes }}      |
+| FR-003  | {{ requirement_description }}     | {{ MoSCoW }} | {{ persona }} | {{ notes }}      |
+
+<!-- MoSCoW: Must Have | Should Have | Could Have | Won't Have (this time) -->
+<!-- VALIDATION: At least one "Must Have" FR is required for a valid PRD. -->
+
+### FR-001: {{ requirement_title }}
+
+{{ detailed_requirement_description }}
+
+**Acceptance Criteria:**
+- [ ] {{ criterion_1 }}
+- [ ] {{ criterion_2 }}
+- [ ] {{ criterion_3 }}
+
+### FR-002: {{ requirement_title }}
+
+{{ detailed_requirement_description }}
+
+**Acceptance Criteria:**
+- [ ] {{ criterion_1 }}
+- [ ] {{ criterion_2 }}
+
+<!-- Repeat for each functional requirement -->
+
+## 5. Non-Functional Requirements
+
+<!-- REQUIRED — at minimum Performance, Security, and Accessibility must be present. -->
+<!-- VALIDATION: Each NFR target must be measurable (a number, a standard, or a
+     pass/fail criterion). "Fast" is not a target; "< 200ms P95" is. -->
+<!-- Edge case: If NFRs are truly not applicable (e.g., an internal CLI tool has
+     no accessibility requirements), document the exemption with justification. -->
+
+| ID       | Category       | Requirement                          | Target             |
+|----------|---------------|--------------------------------------|-------------------|
+| NFR-001  | Performance   | {{ nfr_description }}                | {{ target }}      |
+| NFR-002  | Security      | {{ nfr_description }}                | {{ target }}      |
+| NFR-003  | Scalability   | {{ nfr_description }}                | {{ target }}      |
+| NFR-004  | Availability  | {{ nfr_description }}                | {{ target }}      |
+| NFR-005  | Accessibility | {{ nfr_description }}                | {{ target }}      |
+
+## 6. Success Metrics
+
+| Metric                  | Current Baseline | Target      | Measurement Method        |
+|------------------------|------------------|-------------|--------------------------|
+| {{ metric_name }}      | {{ baseline }}   | {{ target }} | {{ how_measured }}       |
+| {{ metric_name }}      | {{ baseline }}   | {{ target }} | {{ how_measured }}       |
+
+## 7. Dependencies
+
+| Dependency              | Type          | Owner              | Status       | Risk Level  |
+|------------------------|---------------|--------------------|-------------|-------------|
+| {{ dependency_name }}  | {{ type }}    | {{ owner }}        | {{ status }} | {{ risk }}  |
+
+<!-- Type: External API | Internal Service | Third Party | Team | Data -->
+
+## 8. Risks
+
+| ID     | Risk                          | Probability | Impact   | Mitigation                      |
+|--------|-------------------------------|-------------|----------|--------------------------------|
+| R-001  | {{ risk_description }}        | {{ H/M/L }} | {{ H/M/L }} | {{ mitigation_plan }}       |
+| R-002  | {{ risk_description }}        | {{ H/M/L }} | {{ H/M/L }} | {{ mitigation_plan }}       |
+
+## 9. Out of Scope
+
+<!-- Explicitly list what this PRD does NOT cover to prevent scope creep. -->
+
+- {{ out_of_scope_item_1 }}
+- {{ out_of_scope_item_2 }}
+- {{ out_of_scope_item_3 }}
+
+## 10. Appendices
+
+### A. Glossary
+
+| Term              | Definition                         |
+|-------------------|------------------------------------|
+| {{ term }}        | {{ definition }}                   |
+
+### B. References
+
+- {{ reference_1 }}
+- {{ reference_2 }}
+
+### C. Change Log
+
+| Date         | Version | Author          | Changes                    |
+|-------------|---------|-----------------|----------------------------|
+| {{ date }}  | 0.1.0   | {{ author }}    | Initial draft              |
+
+## Completion Checklist
+
+- [ ] All REQUIRED fields are filled (no `{{ }}` placeholders remain)
+- [ ] Every FR has a unique ID (FR-NNN), MoSCoW priority, and acceptance criteria
+- [ ] NFRs cover at minimum: Performance, Security, Accessibility
+- [ ] At least one success metric is in SMART format
+- [ ] product-brief-ref points to an existing file
+- [ ] Cross-references are valid (persona names match Section 3)
+- [ ] Out of Scope section explicitly lists excluded features
+- [ ] PRD has been reviewed by at least one stakeholder

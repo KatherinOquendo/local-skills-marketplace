@@ -1,0 +1,41 @@
+{
+  "plugin": "scriba",
+  "plugin_path": "plugins/javier-montano/scriba",
+  "generated": "2026-03-27T14:26:18Z",
+  "canonical_sources": {
+    "javier-montano": "skills/javier-montano",
+    "metodologia": "skills/metodologia"
+  },
+  "total_skills": 24,
+  "inherited_count": 0,
+  "plugin_only_count": 24,
+  "inherited_skills": [
+
+  ],
+  "plugin_only_skills": [
+    "adapt-dua",
+    "amplify-draft",
+    "audit-consistency",
+    "auto-calibrate",
+    "auto-prime",
+    "evolve-guide",
+    "evolve-unit",
+    "export-docx",
+    "export-html-ebook",
+    "fix-terminology",
+    "generate-book-express",
+    "generate-digital-resources",
+    "generate-matrix",
+    "generate-rubric",
+    "generate-teacher-guide",
+    "generate-unit",
+    "improve-accessibility",
+    "repair-alignment",
+    "repair-progression",
+    "repair-style",
+    "review-pedagogical",
+    "review-style",
+    "validate-comprehensibility",
+    "verify-coverage"
+  ]
+}

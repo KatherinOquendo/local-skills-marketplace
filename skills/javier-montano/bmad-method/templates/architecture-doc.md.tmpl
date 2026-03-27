@@ -1,0 +1,238 @@
+---
+title: "{{ architecture_title }}"
+version: "{{ version | default: '0.1.0' }}"
+status: "{{ status }}"  # Draft | In Review | Approved | Deprecated
+prd-ref: "{{ prd_reference }}"
+architect: "{{ architect_name }}"
+date: "{{ date }}"
+tech-stack:
+  frontend: "{{ frontend_tech }}"
+  backend: "{{ backend_tech }}"
+  database: "{{ database_tech }}"
+  infrastructure: "{{ infrastructure_tech }}"
+adrs:
+  - "{{ adr_001_ref }}"
+  - "{{ adr_002_ref }}"
+---
+
+# {{ architecture_title }}
+
+## 1. System Overview
+
+<!-- REQUIRED -->
+<!-- VALIDATION: Must reference the PRD (via prd-ref in frontmatter) and explain
+     how the architecture addresses the top-level requirements. -->
+<!-- ANTI-PATTERN: Do not describe the architecture in terms of technologies only.
+     Lead with capabilities and responsibilities, then mention the technology. -->
+
+{{ system_overview }}
+
+### Key Design Goals
+
+- **{{ goal_1_name }}**: {{ goal_1_description }}
+- **{{ goal_2_name }}**: {{ goal_2_description }}
+- **{{ goal_3_name }}**: {{ goal_3_description }}
+
+### Architecture Style
+
+{{ architecture_style }}
+<!-- e.g., Monolith, Microservices, Event-Driven, Serverless, Modular Monolith -->
+
+## 2. Component Diagram (C4 Level 2)
+
+<!-- Container-level view showing major building blocks and their interactions. -->
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    {{ system_name }}                      │
+│                                                          │
+│  ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │ {{ comp_1 }} │───▶│ {{ comp_2 }} │───▶│ {{ comp_3 }}│ │
+│  │ {{ tech_1 }} │    │ {{ tech_2 }} │    │ {{ tech_3 }}│ │
+│  └──────────────┘    └──────────────┘    └────────────┘ │
+│         │                    │                           │
+│         ▼                    ▼                           │
+│  ┌──────────────┐    ┌──────────────┐                   │
+│  │ {{ comp_4 }} │    │ {{ comp_5 }} │                   │
+│  │ {{ tech_4 }} │    │ {{ tech_5 }} │                   │
+│  └──────────────┘    └──────────────┘                   │
+└─────────────────────────────────────────────────────────┘
+```
+
+<!-- Replace with a Mermaid diagram or image reference for richer detail:
+```mermaid
+graph TD
+  A[{{ comp_1 }}] --> B[{{ comp_2 }}]
+  B --> C[{{ comp_3 }}]
+```
+-->
+
+### Component Descriptions
+
+| Component        | Technology        | Responsibility                         | Interfaces          |
+|-----------------|-------------------|----------------------------------------|--------------------|
+| {{ comp_1 }}   | {{ tech_1 }}      | {{ responsibility_1 }}                 | {{ interfaces_1 }} |
+| {{ comp_2 }}   | {{ tech_2 }}      | {{ responsibility_2 }}                 | {{ interfaces_2 }} |
+| {{ comp_3 }}   | {{ tech_3 }}      | {{ responsibility_3 }}                 | {{ interfaces_3 }} |
+
+## 3. Technology Stack
+
+| Layer            | Technology         | Version    | Purpose                           |
+|-----------------|--------------------|------------|-----------------------------------|
+| Frontend        | {{ fe_tech }}      | {{ ver }}  | {{ purpose }}                     |
+| API Gateway     | {{ gw_tech }}      | {{ ver }}  | {{ purpose }}                     |
+| Backend         | {{ be_tech }}      | {{ ver }}  | {{ purpose }}                     |
+| Database        | {{ db_tech }}      | {{ ver }}  | {{ purpose }}                     |
+| Cache           | {{ cache_tech }}   | {{ ver }}  | {{ purpose }}                     |
+| Message Queue   | {{ mq_tech }}      | {{ ver }}  | {{ purpose }}                     |
+| Search          | {{ search_tech }}  | {{ ver }}  | {{ purpose }}                     |
+| Storage         | {{ storage_tech }} | {{ ver }}  | {{ purpose }}                     |
+
+## 4. Data Model
+
+### Entity Relationship Overview
+
+<!-- REQUIRED -->
+<!-- VALIDATION: Every entity referenced in API Design (Section 5) must appear here.
+     Each entity must list its primary key and foreign key relationships. -->
+<!-- ANTI-PATTERN: Do not define entities without specifying indexes. Missing indexes
+     are the #1 cause of FAIL on the Implementation Readiness Gate (check 7). -->
+
+| Entity            | Key Fields                              | Relationships                   |
+|------------------|-----------------------------------------|---------------------------------|
+| {{ entity_1 }}   | {{ fields_1 }}                          | {{ relationships_1 }}           |
+| {{ entity_2 }}   | {{ fields_2 }}                          | {{ relationships_2 }}           |
+| {{ entity_3 }}   | {{ fields_3 }}                          | {{ relationships_3 }}           |
+
+### Data Flow
+
+{{ data_flow_description }}
+
+### Data Storage Strategy
+
+- **Primary store**: {{ primary_store }}
+- **Caching layer**: {{ caching_strategy }}
+- **Backup policy**: {{ backup_policy }}
+- **Data retention**: {{ data_retention }}
+
+## 5. API Design
+
+### API Style
+
+{{ api_style }}
+<!-- e.g., REST, GraphQL, gRPC, Event-driven -->
+
+### Key Endpoints
+
+| Method  | Endpoint                  | Description                  | Auth Required |
+|---------|--------------------------|------------------------------|---------------|
+| GET     | {{ endpoint_1 }}         | {{ description_1 }}          | {{ yes/no }}  |
+| POST    | {{ endpoint_2 }}         | {{ description_2 }}          | {{ yes/no }}  |
+| PUT     | {{ endpoint_3 }}         | {{ description_3 }}          | {{ yes/no }}  |
+| DELETE  | {{ endpoint_4 }}         | {{ description_4 }}          | {{ yes/no }}  |
+
+### API Versioning Strategy
+
+{{ versioning_strategy }}
+
+### Error Handling
+
+{{ error_handling_strategy }}
+
+## 6. Security Architecture
+
+### Authentication
+
+{{ authentication_strategy }}
+
+### Authorization
+
+{{ authorization_strategy }}
+
+### Data Protection
+
+- **Encryption at rest**: {{ encryption_at_rest }}
+- **Encryption in transit**: {{ encryption_in_transit }}
+- **PII handling**: {{ pii_handling }}
+- **Secrets management**: {{ secrets_management }}
+
+### Security Controls
+
+| Control               | Implementation                       | Status       |
+|----------------------|--------------------------------------|-------------|
+| {{ control_1 }}     | {{ implementation_1 }}               | {{ status }} |
+| {{ control_2 }}     | {{ implementation_2 }}               | {{ status }} |
+
+## 7. Deployment Architecture
+
+### Environment Strategy
+
+| Environment  | Purpose              | URL                       | Auto-deploy  |
+|-------------|----------------------|---------------------------|-------------|
+| Development | Dev testing          | {{ dev_url }}             | {{ yes/no }} |
+| Staging     | Pre-prod validation  | {{ staging_url }}         | {{ yes/no }} |
+| Production  | Live                 | {{ prod_url }}            | {{ yes/no }} |
+
+### Infrastructure Diagram
+
+```
+{{ infrastructure_diagram }}
+```
+
+### CI/CD Pipeline
+
+1. {{ pipeline_step_1 }}
+2. {{ pipeline_step_2 }}
+3. {{ pipeline_step_3 }}
+4. {{ pipeline_step_4 }}
+
+## 8. Performance Strategy
+
+### Performance Targets
+
+| Metric               | Target              | Measurement               |
+|---------------------|---------------------|--------------------------|
+| Page load (P95)     | {{ target }}         | {{ tool }}               |
+| API response (P95)  | {{ target }}         | {{ tool }}               |
+| Throughput          | {{ target }}         | {{ tool }}               |
+| Error rate          | {{ target }}         | {{ tool }}               |
+
+### Optimization Strategies
+
+- {{ optimization_1 }}
+- {{ optimization_2 }}
+- {{ optimization_3 }}
+
+### Scaling Strategy
+
+{{ scaling_strategy }}
+
+## 9. ADR Index
+
+<!-- Architecture Decision Records — link to individual ADR files. -->
+
+| ADR ID   | Title                            | Status     | Date         |
+|----------|----------------------------------|-----------|-------------|
+| ADR-001  | {{ adr_title_1 }}               | {{ status }} | {{ date }} |
+| ADR-002  | {{ adr_title_2 }}               | {{ status }} | {{ date }} |
+
+<!-- ADR Format: Context, Decision, Consequences. Store in /docs/adrs/ -->
+
+---
+
+### Change Log
+
+| Date         | Version | Author          | Changes                    |
+|-------------|---------|-----------------|----------------------------|
+| {{ date }}  | 0.1.0   | {{ architect }} | Initial architecture draft |
+
+## Completion Checklist
+
+- [ ] prd-ref in frontmatter points to the correct PRD file
+- [ ] Component diagram is present and shows all major components
+- [ ] Data model defines all entities with primary keys and relationships
+- [ ] API design documents all user-facing endpoints with auth requirements
+- [ ] Security architecture addresses authentication, authorization, and encryption
+- [ ] At least 2 ADRs are referenced in the ADR Index
+- [ ] Every NFR from the PRD maps to an architectural element
+- [ ] Deployment architecture includes CI/CD pipeline steps

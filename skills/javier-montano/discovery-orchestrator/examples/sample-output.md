@@ -213,4 +213,4 @@ The Dynamic SME has been activated with the Banking/Financial Services lens for 
 
 ---
 
-**Autor:** Javier Montano | **Generado por:** sofka-discovery-orchestrator v6.0
+**Autor:** Javier Montano | **Generado por:** metodologia-discovery-orchestrator v6.0

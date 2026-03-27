@@ -1,0 +1,111 @@
+---
+workflow-name: "{{ workflow_name }}"
+phase: "{{ phase }}"               # planning | architecture | development | review | deployment
+agents:
+  - "{{ agent_id_1 }}"
+  - "{{ agent_id_2 }}"
+steps-count: {{ steps_count }}
+required: {{ required }}            # true | false — is this workflow mandatory?
+version: "{{ version | default: '1.0.0' }}"
+---
+
+# Workflow: {{ workflow_name }}
+
+## Description
+
+<!-- REQUIRED -->
+<!-- VALIDATION: Must state the trigger condition (when to use this workflow)
+     and the exit condition (when this workflow is done). -->
+<!-- ANTI-PATTERN: Do not create workflows with more than 7 steps. If you need
+     more, split into sub-workflows. -->
+
+{{ workflow_description }}
+
+## Prerequisites
+
+<!-- What must be true before this workflow can begin? -->
+
+- [ ] {{ prerequisite_1 }}
+- [ ] {{ prerequisite_2 }}
+- [ ] {{ prerequisite_3 }}
+
+### Required Inputs
+
+| Input                | Source                    | Format          | Required |
+|---------------------|---------------------------|-----------------|----------|
+| {{ input_1 }}       | {{ source_1 }}            | {{ format_1 }}  | Yes      |
+| {{ input_2 }}       | {{ source_2 }}            | {{ format_2 }}  | {{ y/n }} |
+
+## Steps
+
+<!-- Each step references a sharded step file for detailed instructions.
+     Steps are executed in order unless marked as parallel. -->
+
+### Step 1: {{ step_1_name }}
+
+- **Agent**: {{ agent_id }}
+- **Step file**: `steps/{{ step_1_file }}`
+- **Inputs**: {{ step_1_inputs }}
+- **Outputs**: {{ step_1_outputs }}
+- **Estimated duration**: {{ step_1_duration }}
+
+### Step 2: {{ step_2_name }}
+
+- **Agent**: {{ agent_id }}
+- **Step file**: `steps/{{ step_2_file }}`
+- **Inputs**: {{ step_2_inputs }}
+- **Outputs**: {{ step_2_outputs }}
+- **Estimated duration**: {{ step_2_duration }}
+
+### Step 3: {{ step_3_name }}
+
+- **Agent**: {{ agent_id }}
+- **Step file**: `steps/{{ step_3_file }}`
+- **Inputs**: {{ step_3_inputs }}
+- **Outputs**: {{ step_3_outputs }}
+- **Estimated duration**: {{ step_3_duration }}
+
+<!-- Add more steps as needed. Reference step files for full instructions. -->
+
+## Outputs
+
+<!-- What artifacts does this workflow produce? -->
+
+| Output               | Format           | Destination                  | Owner           |
+|---------------------|------------------|------------------------------|-----------------|
+| {{ output_1 }}      | {{ format_1 }}   | {{ destination_1 }}          | {{ owner_1 }}   |
+| {{ output_2 }}      | {{ format_2 }}   | {{ destination_2 }}          | {{ owner_2 }}   |
+
+## Completion Criteria
+
+<!-- All of these must be true for the workflow to be marked complete. -->
+
+- [ ] {{ completion_criterion_1 }}
+- [ ] {{ completion_criterion_2 }}
+- [ ] {{ completion_criterion_3 }}
+- [ ] All step files report SUCCESS
+- [ ] Output artifacts are stored in the correct locations
+
+## Error Handling
+
+<!-- What happens when a step fails? -->
+
+| Failure Scenario          | Action                          | Escalation To       |
+|--------------------------|---------------------------------|---------------------|
+| {{ failure_1 }}          | {{ action_1 }}                  | {{ escalation_1 }}  |
+| {{ failure_2 }}          | {{ action_2 }}                  | {{ escalation_2 }}  |
+
+---
+
+### Notes
+
+{{ additional_notes }}
+
+## Completion Checklist
+
+- [ ] All REQUIRED fields are filled (no `{{ }}` placeholders remain)
+- [ ] Every step references an existing step file
+- [ ] Step inputs/outputs form a connected chain (output of step N is input of step N+1)
+- [ ] All agents referenced in steps are defined agent files
+- [ ] Completion criteria are measurable (not subjective)
+- [ ] Error handling table covers at least 2 failure scenarios
