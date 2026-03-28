@@ -1,0 +1,98 @@
+[
+  {
+    "id": "eval-001-bash-blocklist-blocks-dangerous",
+    "type": "happy-path",
+    "description": "PreToolUse hook blocks a Bash command matching the destructive-rm blocklist pattern",
+    "input": "Implement a PreToolUse hook for Bash that blocks 'rm -rf /' and similar destructive commands. Show the hook script and settings.json configuration.",
+    "expected_output_contains": [
+      "PreToolUse",
+      "validate-bash",
+      "BLOCKLIST",
+      "exit(2)",
+      "rm",
+      "settings.json",
+      "matcher"
+    ],
+    "expected_behavior": "Generates a validate-bash.py hook with blocklist patterns including destructive rm, registers it in settings.json with matcher 'Bash', and demonstrates exit code 2 for blocked commands.",
+    "tags": ["bash", "blocklist", "pretooluse", "happy-path"]
+  },
+  {
+    "id": "eval-002-file-access-project-root",
+    "type": "happy-path",
+    "description": "File access hook restricts Read/Write/Edit to project root directory and blocks sensitive files",
+    "input": "Set up file access controls so the agent can only read and write files inside the project directory, and cannot access .env files, SSH keys, or AWS credentials.",
+    "expected_output_contains": [
+      "validate-file-access",
+      "PROJECT_ROOT",
+      "realpath",
+      ".env",
+      "id_rsa",
+      ".aws",
+      "startswith"
+    ],
+    "expected_behavior": "Generates validate-file-access.py with project root boundary check using os.path.realpath, blocked patterns for .env/.ssh/.aws, and symlink resolution to prevent escapes.",
+    "tags": ["file-access", "path-validation", "pretooluse", "happy-path"]
+  },
+  {
+    "id": "eval-003-gateway-auth-telegram",
+    "type": "happy-path",
+    "description": "Gateway authentication verifies Telegram chat_id against allowlist before passing message to agent",
+    "input": "My OpenClaw has a Telegram gateway. I want only my personal Telegram account (chat_id 987654321) to be able to send messages to the agent. Block everyone else.",
+    "expected_output_contains": [
+      "allowed_chat_ids",
+      "987654321",
+      "reject_unknown",
+      "gateway-auth",
+      "rate_limit"
+    ],
+    "expected_behavior": "Generates gateway-auth configuration with the user's chat_id in the allowlist, reject_unknown set to true, rate limiting configured, and logging for rejected senders.",
+    "tags": ["gateway", "telegram", "authentication", "happy-path"]
+  },
+  {
+    "id": "eval-004-audit-logging-all-tools",
+    "type": "happy-path",
+    "description": "PostToolUse audit hook logs every tool invocation with structured JSONL entries",
+    "input": "I need an audit trail of every tool the agent uses. Set up logging that captures what tool was called, what input it received, and when.",
+    "expected_output_contains": [
+      "PostToolUse",
+      "audit-log",
+      "JSONL",
+      "timestamp",
+      "tool_name",
+      "input_summary"
+    ],
+    "expected_behavior": "Generates audit-log.py as a PostToolUse hook with no matcher (catches all tools), writes structured JSONL with timestamp/tool/input_summary, and always exits 0.",
+    "tags": ["audit", "logging", "posttooluse", "happy-path"]
+  },
+  {
+    "id": "eval-005-false-positive-legitimate-rm",
+    "type": "false-positive",
+    "description": "Blocklist incorrectly blocks a legitimate rm command for cleaning build artifacts in a safe directory",
+    "input": "My hook is blocking 'rm -rf ./dist/' which is a safe build cleanup command. How do I handle false positives without weakening the blocklist?",
+    "expected_output_contains": [
+      "false positive",
+      "exception",
+      "allowlist",
+      "TOOL_AUTH_MODE",
+      "audit-only"
+    ],
+    "expected_behavior": "Explains that the pattern 'rm -rf /' matches paths starting with '/' and recommends: (a) refining the regex to only match absolute root paths, (b) adding a path-based exception for known-safe directories like ./dist, (c) using audit-only mode to verify the fix before enforcing. Does NOT recommend removing the blocklist entry entirely.",
+    "tags": ["false-positive", "blocklist", "exception-handling"]
+  },
+  {
+    "id": "eval-006-new-tool-no-hook-coverage",
+    "type": "edge-case",
+    "description": "User adds a new MCP tool to allowed-tools but forgets to create a corresponding PreToolUse hook",
+    "input": "I just added a new MCP server for database access to my .mcp.json. What do I need to do for tool authorization? I already have hooks for Bash and file access.",
+    "expected_output_contains": [
+      "PreToolUse",
+      "matcher",
+      "MCP",
+      "scope",
+      "allowed_tools",
+      "catch-all"
+    ],
+    "expected_behavior": "Warns that the new MCP tools have no hook coverage and will execute without validation. Recommends: (1) add MCP scope restrictions in .mcp.json config, (2) create a PreToolUse hook with matcher for the MCP tools, (3) add a catch-all hook matcher '.*' that logs unmatched tool calls, (4) define which MCP tools should be in the allowlist vs blocked.",
+    "tags": ["edge-case", "mcp", "new-tool", "coverage-gap"]
+  }
+]

@@ -6,7 +6,7 @@
     "javier-montano": "skills/javier-montano",
     "metodologia": "skills/metodologia"
   },
-  "total_skills": 111,
+  "total_skills": 115,
   "inherited_count": 73,
   "plugin_only_count": 38,
   "inherited_skills": [
@@ -82,7 +82,11 @@
     {"name": "user-representative", "source": "self", "overlay": null, "note": "this plugin is the canonical source"},
     {"name": "ux-writing", "source": "self", "overlay": null, "note": "this plugin is the canonical source"},
     {"name": "workshop-design", "source": "self", "overlay": null, "note": "this plugin is the canonical source"},
-    {"name": "workshop-facilitator", "source": "self", "overlay": null, "note": "this plugin is the canonical source"}
+    {"name": "workshop-facilitator", "source": "self", "overlay": null, "note": "this plugin is the canonical source"},
+    {"name": "open-claude-security", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
+    {"name": "openclaw-isolation", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
+    {"name": "openclaw-tool-auth", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
+    {"name": "openclaw-personal-deploy", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null}
   ],
   "plugin_only_skills": [
     "accessibility-audit",

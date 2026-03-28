@@ -1,0 +1,90 @@
+{
+  "skill_name": "openclaw-isolation",
+  "description": "Evaluates Docker container isolation, network sandboxing, and resource limits for secure OpenClaw deployments",
+  "evals": [
+    {
+      "id": 1,
+      "name": "basic-docker-isolation",
+      "prompt": "Set up Docker isolation for my OpenClaw project called 'acme-agent' in personal mode",
+      "expected_output": "Hardened Dockerfile with multi-stage build, non-root user, pinned base image; docker-compose.yml with security_opt, cap_drop ALL, read_only, mem_limit, cpus, pids_limit; internal network with ports bound to 127.0.0.1",
+      "files": [],
+      "expectations": [
+        "Generates multi-stage Dockerfile with non-root user (UID 1001)",
+        "Produces docker-compose.yml with no-new-privileges and cap_drop ALL",
+        "Sets mem_limit to 1024m and cpus to 1.0 for personal mode",
+        "Creates internal bridge network with internal: true",
+        "Binds ports to 127.0.0.1 only"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "network-egress-allowlist",
+      "prompt": "My OpenClaw agent needs to call the Claude API and GitHub API. Set up network isolation with egress controls for project 'dev-assistant'",
+      "expected_output": "Internal Docker network plus egress proxy configuration with Squid allowlist for anthropic.com and github.com; iptables rules or proxy-based filtering; agent container on internal-only network routing through proxy",
+      "files": [],
+      "expectations": [
+        "Creates internal network for the agent container",
+        "Configures egress proxy (Squid or equivalent) with domain allowlist",
+        "Allowlist includes anthropic.com and github.com",
+        "Agent container has HTTP_PROXY/HTTPS_PROXY environment variables",
+        "Agent container is NOT on the egress network directly"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "team-deployment-isolation",
+      "prompt": "Containerize our team OpenClaw deployment 'platform-agents' with --team mode. We have 3 agent roles that need inter-container communication but restricted internet access",
+      "expected_output": "Multi-container docker-compose.yml with team-mode resource limits (2GB RAM, 2 CPUs, 200 PIDs per container), shared internal network for inter-container communication, egress filtering, per-container security hardening",
+      "files": [],
+      "expectations": [
+        "Applies team-mode resource limits: 2048m memory, 2.0 CPUs, 200 PIDs",
+        "Creates shared internal network for inter-container communication",
+        "Each container has security_opt, cap_drop, read_only",
+        "Egress rules or proxy documented for controlled internet access",
+        "Separate service definitions for each agent role"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "audit-existing-compose",
+      "prompt": "Audit this docker-compose.yml for my OpenClaw deployment and harden it:\n\nversion: '3.9'\nservices:\n  agent:\n    image: node:latest\n    privileged: true\n    volumes:\n      - /var/run/docker.sock:/var/run/docker.sock\n      - /home/user:/host-home\n    ports:\n      - '3000:3000'\n    environment:\n      - API_KEY=sk-ant-12345",
+      "expected_output": "Security audit report identifying all issues: unpinned image, privileged mode, Docker socket mount, home directory mount, port on 0.0.0.0, inline secret; hardened replacement with all issues resolved",
+      "files": [],
+      "expectations": [
+        "Flags node:latest as unpinned and bloated",
+        "Flags privileged: true as critical vulnerability",
+        "Flags Docker socket mount as critical",
+        "Flags home directory mount as sensitive path exposure",
+        "Flags port binding to 0.0.0.0 and inline API_KEY",
+        "Produces hardened replacement with all issues resolved"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "false-positive-general-docker",
+      "prompt": "Help me create a Docker container for my Node.js web application with Express and MongoDB",
+      "expected_output": "This is a general Docker request, not an OpenClaw/agent isolation request. Should suggest general Docker best practices or redirect to appropriate skill, not invoke the full OpenClaw isolation workflow",
+      "files": [],
+      "expectations": [
+        "Recognizes this is NOT an OpenClaw or agent isolation request",
+        "Does not apply the full 4-section OpenClaw isolation process",
+        "May offer general Docker guidance or redirect to a more appropriate skill",
+        "Does not generate egress proxy or agent-specific network isolation"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "edge-case-wsl2-windows",
+      "prompt": "I'm on Windows 11 with WSL2 and Docker Desktop. Set up container isolation for my personal OpenClaw project 'win-agent'. My project is at C:\\Users\\me\\projects\\openclaw",
+      "expected_output": "Standard isolation configuration adapted for WSL2: warns about Windows path bind mount performance, recommends Linux filesystem paths, notes iptables rules apply inside WSL2 VM, adjusts .wslconfig memory guidance, generates compose with WSL2-compatible paths",
+      "files": [],
+      "expectations": [
+        "Detects WSL2 environment and applies WSL2-specific guidance",
+        "Warns about /mnt/c/ bind mount performance degradation",
+        "Recommends copying project to Linux filesystem (~/projects/)",
+        "Notes iptables rules must be set inside WSL2 VM",
+        "Generates valid docker-compose.yml with all hardening applied"
+      ]
+    }
+  ]
+}
