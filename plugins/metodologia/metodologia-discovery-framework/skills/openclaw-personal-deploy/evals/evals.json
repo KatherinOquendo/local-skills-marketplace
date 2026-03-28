@@ -1,0 +1,88 @@
+{
+  "skill_name": "openclaw-personal-deploy",
+  "description": "Evaluates the skill's ability to deploy secure, isolated OpenClaw instances for personal use across different platforms and configurations",
+  "evals": [
+    {
+      "id": 1,
+      "name": "personal-deploy-telegram",
+      "prompt": "Deploy OpenClaw for personal use — my-bot telegram",
+      "expected_output": "Complete project scaffold with Telegram adapter, Docker isolation, hardened settings.json, pre/post tool-use hooks, CLAUDE.md with deny-by-default policy, and verification checks",
+      "files": [],
+      "expectations": [
+        "Scaffolds project directory with all required files",
+        "Creates Dockerfile with multi-stage build and non-root user",
+        "Generates docker-compose.yml with security_opt, cap_drop, read_only",
+        "Produces settings.json with minimal allowed-tools and hook registrations",
+        "Creates .env.example with all required environment variables documented"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "personal-deploy-http",
+      "prompt": "Set up a secure personal AI assistant with HTTP gateway called home-agent",
+      "expected_output": "Complete deployment with HTTP adapter, port 3000 bound to 127.0.0.1 only, all security hardening defaults applied",
+      "files": [],
+      "expectations": [
+        "Recognizes natural language trigger for personal deployment",
+        "Creates HTTP adapter exposing port on localhost only",
+        "Generates Docker network with internal:true",
+        "Includes API key authentication for HTTP endpoints",
+        "Produces verification script that tests the deployment"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "personal-deploy-slack",
+      "prompt": "Create my own Claude agent on Slack — work-assistant slack",
+      "expected_output": "Complete deployment with Slack adapter, SLACK_BOT_TOKEN and SLACK_SIGNING_SECRET in .env.example, all security artifacts generated",
+      "files": [],
+      "expectations": [
+        "Creates Slack-specific adapter configuration",
+        "Includes Slack-specific env vars in .env.example",
+        "Generates workspace-based sender allowlist",
+        "Produces all security artifacts matching the kit workflow",
+        "Passes the built-in verification script"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "personal-deploy-minimal-input",
+      "prompt": "Deploy isolated OpenClaw",
+      "expected_output": "Applies defaults (project: my-openclaw, platform: telegram), generates full deployment with all security controls",
+      "files": [],
+      "expectations": [
+        "Activates with minimal input using sensible defaults",
+        "Creates complete project structure without requiring additional input",
+        "Applies all security defaults from the hardening checklist",
+        "Generates Docker isolation with maximum restrictions",
+        "Produces audit logging hooks"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "false-positive-wifi-security",
+      "prompt": "How do I secure my home WiFi network and set up a firewall?",
+      "expected_output": "Skill should NOT activate — this is about network security, not OpenClaw agent deployment",
+      "files": [],
+      "expectations": [
+        "Does not scaffold a project or generate deployment files",
+        "Does not reference OpenClaw, Docker, or agent configuration",
+        "Recognizes this as a network security question outside skill scope"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "edge-no-docker-available",
+      "prompt": "Deploy OpenClaw for personal use but I don't have Docker installed",
+      "expected_output": "Detects missing Docker in prerequisites, warns about reduced isolation, falls back to non-Docker deployment with OS-level restrictions and security warnings",
+      "files": [],
+      "expectations": [
+        "Checks for Docker availability in prerequisites phase",
+        "Warns prominently about reduced isolation guarantees",
+        "Falls back to process-level isolation with hook-based security",
+        "Adds extra PreToolUse restrictions to compensate for missing container",
+        "Documents accepted risk in the deployment configuration"
+      ]
+    }
+  ]
+}

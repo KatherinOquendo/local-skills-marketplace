@@ -1,0 +1,116 @@
+{
+  "skill_name": "open-claude-security",
+  "description": "Evaluates the skill's ability to design secure Claude Code architectures covering threat modeling, injection defense, permission design, MCP security, multi-agent isolation, and audit trails",
+  "evals": [
+    {
+      "id": 1,
+      "name": "full-security-architecture",
+      "prompt": "Design a secure Claude Code architecture for our engineering team at Acme Corp. We have 15 developers, 3 MCP servers, and use hooks for CI integration.",
+      "expected_output": "Complete 6-section security architecture: threat model with STRIDE per extension point, CLAUDE.md injection defenses, role-based permission model, MCP transport security with vetting checklist, hook security and multi-agent isolation strategy, and audit trail with compliance mapping",
+      "files": [],
+      "expectations": [
+        "Produces STRIDE threat analysis covering all 7 Claude Code extension points",
+        "Includes role-based permission templates with specific allowed-tools sets",
+        "Evaluates each MCP server against the vetting checklist",
+        "Documents hook security controls including shell injection prevention",
+        "Maps audit controls to at least one compliance framework (SOC2 or ISO27001)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "mcp-security-audit",
+      "prompt": "Audit the security of our MCP server configuration. We have a remote analytics API over HTTP and a local PostgreSQL stdio server.",
+      "expected_output": "Focused S4 MCP security analysis evaluating transport encryption, authentication, scope management, and data flow for both configured servers",
+      "files": [],
+      "expectations": [
+        "Identifies HTTP transport requires TLS 1.3 encryption",
+        "Flags any hardcoded credentials in MCP configuration",
+        "Evaluates scope (local vs project) implications for each server",
+        "Assesses data classification for what flows to the remote analytics API",
+        "Produces MCP vetting checklist results for both servers"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "healthcare-hardening",
+      "prompt": "Harden our Claude Code settings.json for a regulated healthcare project handling PHI data. We need HIPAA compliance.",
+      "expected_output": "Restrictive permission model with healthcare-specific controls, PHI data flow restrictions, compliance mapping to HIPAA requirements, and hardening checklist application",
+      "files": [],
+      "expectations": [
+        "Sets minimal allowed-tools excluding Bash or restricting Bash scope",
+        "Prohibits remote MCP servers that could receive PHI",
+        "Maps controls to specific HIPAA safeguard requirements",
+        "Includes data exfiltration prevention for PHI",
+        "Applies hardening checklist with healthcare-specific additions"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "claude-md-injection-review",
+      "prompt": "Review our CLAUDE.md files for potential injection vulnerabilities. We have CLAUDE.md at root, in docs/, and in tests/ subdirectories.",
+      "expected_output": "Injection vulnerability assessment scanning all CLAUDE.md locations for Unicode tricks, social engineering phrases, scope override attempts, and hidden instructions",
+      "files": [],
+      "expectations": [
+        "Enumerates all CLAUDE.md files across the repository",
+        "Scans for non-printable/zero-width Unicode characters",
+        "Checks for instruction override patterns (ignore previous, system message claims)",
+        "Evaluates scope precedence implications of subdirectory CLAUDE.md files",
+        "Produces findings with evidence tags on each vulnerability"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "multi-agent-isolation",
+      "prompt": "Design an isolation strategy for our multi-agent Claude Code workflow. We have a code-review agent, a test-writer agent, and a deployment agent sharing the same repository.",
+      "expected_output": "Agent isolation design covering context fork security, per-agent permission boundaries, shared vs isolated MCP access, and inter-agent communication controls",
+      "files": [],
+      "expectations": [
+        "Defines separate allowed-tools sets per agent role",
+        "Addresses context fork inheritance risk (parent state leaking to child)",
+        "Specifies which MCP servers each agent can access",
+        "Prevents recursive agent spawning with depth controls",
+        "Documents inter-agent data flow boundaries"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "false-positive-react-setup",
+      "prompt": "How do I set up a React project with TypeScript and Tailwind CSS?",
+      "expected_output": "Skill should NOT activate. This is a frontend scaffolding request with no Claude Code security context.",
+      "files": [],
+      "expectations": [
+        "Does not produce a security architecture or threat model",
+        "Does not reference Claude Code configuration or MCP servers",
+        "Recognizes this as a frontend development question outside skill scope"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "edge-greenfield-no-config",
+      "prompt": "We just started using Claude Code and have no configuration files yet. Help us set up a secure environment from scratch.",
+      "expected_output": "Generates security-first configuration templates from scratch, applying the hardening checklist as the foundation rather than auditing existing config",
+      "files": [],
+      "expectations": [
+        "Handles gracefully when no .claude/, CLAUDE.md, or .mcp.json exist",
+        "Generates template settings.json with secure defaults",
+        "Creates CLAUDE.md template with security-aware instructions",
+        "Applies Phase 2 hardening directly instead of starting with Phase 1 audit",
+        "Includes team governance setup for ongoing security"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "edge-open-source-untrusted-contributors",
+      "prompt": "Our open-source project has CLAUDE.md and .mcp.json checked into the repo. Anyone can submit PRs. How do we secure this?",
+      "expected_output": "Open-source threat model addressing untrusted contributors, with CLAUDE.md PR review gates, .gitignore for local settings, MCP config separation, and contributor security guidelines",
+      "files": [],
+      "expectations": [
+        "Identifies untrusted contributor as primary threat actor",
+        "Recommends CLAUDE.md changes require same review rigor as code changes",
+        "Suggests .claude/settings.local.json in .gitignore for sensitive config",
+        "Separates public MCP config from private credentials",
+        "Produces contributor security guidelines document outline"
+      ]
+    }
+  ]
+}

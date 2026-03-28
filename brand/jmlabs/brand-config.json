@@ -1,0 +1,159 @@
+{
+  "brand": "JM Labs",
+  "version": "1.0",
+  "description": "JM Labs corporate brand tokens — Single Source of Truth for all HTML, CSS, DOCX, PPTX, XLSX outputs",
+  "updated": "2026-03-27",
+  "author": "Javier Montaño",
+
+  "colors": {
+    "navy":      { "hex": "#122562", "use": "Primary brand, hero backgrounds, sidebar, section numbers, table headers" },
+    "gold":      { "hex": "#FFD700", "use": "Accent, CTA, highlights, borders, metric numbers, gold text" },
+    "blue":      { "hex": "#137DC5", "use": "Secondary action, links, source chips, positive/success — NUNCA verde" },
+    "dark":      { "hex": "#1F2833", "use": "Body text (light mode), headings (dark mode secondary)" },
+    "lilac":     { "hex": "#BBA0CC", "use": "Decorative, inference chips, tertiary accents" },
+    "bg_dark":   { "hex": "#0B1120", "use": "Dark mode page background" },
+    "bg_dark_alt":{ "hex": "#111B30", "use": "Dark mode card / panel background" },
+    "bg_light":  { "hex": "#FAFBFC", "use": "Light mode page background" },
+    "bg_light_alt":{ "hex": "#F1F3F5", "use": "Light mode card background" },
+    "green":     { "hex": "#10B981", "use": "Success state (dark mode)" },
+    "red":       { "hex": "#EF4444", "use": "Error / danger state (dark mode)" }
+  },
+
+  "forbidden_colors": [
+    "#6366F1", "#22D3EE", "#1A1A2E", "#0F172A", "#0A122A",
+    "#22C55E", "#16A34A",
+    "Note: NEVER use generic indigo, cyan, or green as brand accents"
+  ],
+
+  "typography": {
+    "heading": {
+      "font": "Poppins",
+      "source": "Google Fonts",
+      "weights": [600, 700, 800, 900],
+      "use": "All headings h1–h4, brand name, metric numbers, badges"
+    },
+    "body": {
+      "font": "Inter",
+      "fallback": "Montserrat, system-ui, sans-serif",
+      "source": "Google Fonts",
+      "weights": [400, 500, 600, 700, 800],
+      "use": "Body text, paragraphs, captions"
+    },
+    "code": {
+      "font": "monospace",
+      "use": "Code blocks, CLI commands, evidence tags"
+    }
+  },
+
+  "google_fonts_url": "https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap",
+
+  "defaults": {
+    "mode": "dark",
+    "language": "es",
+    "bilingual": true,
+    "print_friendly": true
+  },
+
+  "css_variables": {
+    "dark": {
+      "--navy":   "#122562",
+      "--gold":   "#FFD700",
+      "--blue":   "#137DC5",
+      "--dark":   "#1F2833",
+      "--lilac":  "#BBA0CC",
+      "--bg":     "#0B1120",
+      "--bg-alt": "#111B30",
+      "--card":   "rgba(255,255,255,.04)",
+      "--card-b": "rgba(255,255,255,.08)",
+      "--text":   "#D1D5DB",
+      "--text-s": "#9CA3AF",
+      "--text-m": "#6B7280",
+      "--heading":"#F9FAFB",
+      "--green":  "#10B981",
+      "--red":    "#EF4444",
+      "--divider":"rgba(255,255,255,.06)"
+    },
+    "light": {
+      "--bg":     "#FAFBFC",
+      "--bg-alt": "#F1F3F5",
+      "--card":   "#FFFFFF",
+      "--card-b": "#E5E7EB",
+      "--text":   "#374151",
+      "--text-s": "#6B7280",
+      "--text-m": "#9CA3AF",
+      "--heading":"#111827",
+      "--green":  "#059669",
+      "--red":    "#DC2626",
+      "--divider":"#E5E7EB"
+    }
+  },
+
+  "components": {
+    "card":         { "class": ".c", "border-radius": ".75rem", "hover": "gold border glow" },
+    "bridge":       { "class": ".bridge", "border-left": "3px solid gold", "use": "Data/evidence callout cards" },
+    "metric":       { "class": ".mv/.ml", "use": "Large hero numbers with small labels" },
+    "cta_primary":  { "class": ".cta", "bg": "linear-gradient(135deg,#FFD700,#FFA000)", "color": "#000" },
+    "cta_secondary":{ "class": ".cta-outline", "border": "1px solid var(--card-b)" },
+    "source_chip":  { "class": ".src", "color": "blue", "use": "Inline evidence citations [WEF 2026]" },
+    "tooltip":      { "class": ".pop[data-tip]", "use": "Hover tooltip for glossary terms" },
+    "slide":        { "class": ".slide", "min-height": "100vh", "use": "Full-page document sections" },
+    "sidebar_nav":  { "class": ".sidenav", "position": "fixed right", "use": "Hover-expand section navigation" },
+    "toc_link":     { "class": ".toc a", "use": "Table of contents with numbered circles" }
+  },
+
+  "grids": {
+    "g2": "1fr → 1fr 1fr (≥640px)",
+    "g3": "1fr → 1fr 1fr 1fr (≥768px)",
+    "g4": "1fr 1fr → repeat(4,1fr) (≥768px)",
+    "g5": "2fr → repeat(5,1fr) (≥768px)"
+  },
+
+  "bilingual_system": {
+    "default_lang": "es",
+    "toggle": "html[lang] attribute",
+    "pattern": "[data-l='es'] / [data-l='en']",
+    "css": "html[lang='en'] [data-l='es']{display:none;} html[lang='en'] [data-l='en']{display:inline;}",
+    "js": "function toggleLang(){ const h=document.documentElement; h.lang = h.lang==='es'?'en':'es'; }"
+  },
+
+  "document_types": {
+    "corporate_deck": {
+      "sections": ["Cover", "TL;DR", "TOC", "Problem", "Solution", "Model", "Traction", "Team", "CTA", "Next Steps"],
+      "slide_nav": true,
+      "bilingual": true,
+      "skill": "jmlabs-corporate-doc"
+    },
+    "partnership_prospectus": {
+      "extends": "corporate_deck",
+      "extra_sections": ["Partnership Terms", "Entry Fee", "Equity Model"],
+      "skill": "jmlabs-corporate-doc --type=partnership"
+    },
+    "executive_brief": {
+      "sections": ["TL;DR", "Context", "Problem", "Solution", "Ask", "Next Steps"],
+      "slide_nav": false,
+      "bilingual": true,
+      "skill": "jmlabs-corporate-doc --type=brief"
+    },
+    "technical_report": {
+      "sections": ["Executive Summary", "AS-IS", "Findings", "Recommendations", "Roadmap", "Appendix"],
+      "slide_nav": true,
+      "bilingual": false,
+      "skill": "jmlabs-corporate-doc --type=report"
+    }
+  },
+
+  "logo": {
+    "svg_inline": "<svg viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='36' height='36' rx='10' fill='#122562'/><path d='M10 12h3v12h-3V12zm6 0h3v8h-3v-8zm0 10h3v2h-3v-2zm6-10h3v6h-3v-6zm0 8h3v4h-3v-4z' fill='white'/><circle cx='18' cy='8' r='2' fill='#FFD700'/></svg>",
+    "description": "3 vertical bars (M shape) + gold dot — represents the 3 pillars of JM Labs"
+  },
+
+  "skills": {
+    "html_output":      "jmlabs-corporate-doc",
+    "bilingual":        "bilingual-doc",
+    "docx":             "brand-docx",
+    "xlsx":             "brand-xlsx",
+    "orchestrator":     "output-engineering"
+  },
+
+  "orchestration_rule": "ALWAYS load brand-config.json BEFORE generating any branded document. The brand style IMPOSES the document format — bilingual-doc is always orchestrated by jmlabs-corporate-doc."
+}

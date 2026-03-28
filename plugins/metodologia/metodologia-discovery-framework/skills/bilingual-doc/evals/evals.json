@@ -1,0 +1,70 @@
+{
+  "skill_name": "bilingual-doc",
+  "skill_number": "2062",
+  "evals": [
+    {
+      "id": "add-bilingual-to-existing",
+      "type": "happy",
+      "prompt": "Agrega soporte bilingüe ES/EN a este documento HTML [proporciona HTML en español]. Necesito un toggle para cambiar idioma.",
+      "expected_behaviors": [
+        "Añade html[lang='es'] al root element",
+        "Envuelve todos los textos visibles en [data-l='es'] y añade versiones [data-l='en']",
+        "Añade toggle button al nav",
+        "Incluye toggleLang() JavaScript",
+        "Textos desnudos solo para números, símbolos, marcas"
+      ]
+    },
+    {
+      "id": "orchestrated-by-corporate-doc",
+      "type": "happy",
+      "prompt": "[Invocado por jmlabs-corporate-doc] Generar sección bilingual para el deck de partnerships.",
+      "expected_behaviors": [
+        "Asume que brand-config.json ya fue cargado por el orquestador",
+        "Produce markup [data-l] listo para insertar",
+        "No repite carga del brand config",
+        "Entrega patrones de markup, no documento completo"
+      ]
+    },
+    {
+      "id": "complex-block-content",
+      "type": "happy",
+      "prompt": "Esta sección tiene estructuras HTML muy diferentes en español e inglés. Implementa el patrón bilingüe correcto.",
+      "expected_behaviors": [
+        "Usa data-lb (block) en lugar de data-l (inline) para estructuras complejas",
+        "Cada idioma tiene su propio árbol DOM completo",
+        "No intenta hacer data-l inline en elementos con markup complejo diferente"
+      ]
+    },
+    {
+      "id": "lang-persistence",
+      "type": "happy",
+      "prompt": "El usuario quiere que el idioma se recuerde entre visitas al documento.",
+      "expected_behaviors": [
+        "Usa localStorage.setItem/getItem para persistir lang",
+        "Restaura idioma al cargar con IIFE",
+        "Toggle actualiza localStorage además del html[lang]"
+      ]
+    },
+    {
+      "id": "false-positive-markdown",
+      "type": "false_positive",
+      "prompt": "Traduce este SKILL.md al inglés.",
+      "expected_behaviors": [
+        "NO activa bilingual-doc",
+        "Produce traducción directa del contenido markdown",
+        "No inserta [data-l] ni HTML — es un archivo markdown"
+      ]
+    },
+    {
+      "id": "edge-rtl-language",
+      "type": "edge",
+      "prompt": "Necesito agregar árabe además del español e inglés.",
+      "expected_behaviors": [
+        "Advierte que el sistema actual soporta ES/EN y que AR requiere dir='rtl'",
+        "Propone extensión del patrón con data-l='ar' + CSS adicional",
+        "No rompe el sistema existente ES/EN",
+        "Marca como [OPEN] el soporte RTL"
+      ]
+    }
+  ]
+}

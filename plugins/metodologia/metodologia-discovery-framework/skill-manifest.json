@@ -6,8 +6,8 @@
     "javier-montano": "skills/javier-montano",
     "metodologia": "skills/metodologia"
   },
-  "total_skills": 115,
-  "inherited_count": 73,
+  "total_skills": 117,
+  "inherited_count": 75,
   "plugin_only_count": 38,
   "inherited_skills": [
     {"name": "analytics-engineering", "source": "self", "overlay": null, "note": "this plugin is the canonical source"},
@@ -86,7 +86,9 @@
     {"name": "open-claude-security", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
     {"name": "openclaw-isolation", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
     {"name": "openclaw-tool-auth", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
-    {"name": "openclaw-personal-deploy", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null}
+    {"name": "openclaw-personal-deploy", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
+    {"name": "jmlabs-corporate-doc", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null},
+    {"name": "bilingual-doc", "source": "canonical", "canonical_owner": "javier-montano", "overlay": null}
   ],
   "plugin_only_skills": [
     "accessibility-audit",

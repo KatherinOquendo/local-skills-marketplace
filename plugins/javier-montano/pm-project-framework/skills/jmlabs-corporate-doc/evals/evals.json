@@ -1,0 +1,102 @@
+{
+  "skill_name": "jmlabs-corporate-doc",
+  "skill_number": "2061",
+  "evals": [
+    {
+      "id": "investor-deck-full",
+      "type": "happy",
+      "prompt": "Crea un investor deck completo para JM Labs — partnership prospectus para presentar a un socio potencial en Miami. JM Labs tiene 557 skills MOAT, 3 ecosistemas (SA/PM/MAO), y busca un socio local para llevar MetodologIA a LATAM.",
+      "expected_behaviors": [
+        "Lee brand/jmlabs/brand-config.json antes de generar",
+        "Activa bilingual-doc para ES/EN toggle",
+        "Produce HTML self-contained con CSS embebido",
+        "Incluye: Cover + TL;DR + Problem + Solution + Model + Traction + Team + CTA",
+        "Sidebar nav con todos los IDs de secciones",
+        "Colores solo del palette JM Labs (navy/gold/blue)",
+        "Métricas en .mv/.ml pattern",
+        "Evidence chips .src en claims factuales"
+      ]
+    },
+    {
+      "id": "make-brand-friendly",
+      "type": "happy",
+      "prompt": "Hazlo brand friendly [proporciona HTML genérico sin brand]. Adapta este documento al estilo visual de JM Labs.",
+      "expected_behaviors": [
+        "Detecta 'brand friendly' como trigger de jmlabs-corporate-doc",
+        "Lee brand-config.json",
+        "Reemplaza colores con tokens JM Labs",
+        "Aplica Poppins para headings, Inter para body",
+        "Añade dark mode, sidebar nav, bilingual toggle",
+        "Mantiene el contenido original"
+      ]
+    },
+    {
+      "id": "executive-brief",
+      "type": "happy",
+      "prompt": "Crea un executive brief de 1 página para presentar el JM Labs Canonical Skill Registry a un CTO. Máximo 6 slides.",
+      "expected_behaviors": [
+        "Usa --type=brief (max 6 slides, no sidebar nav)",
+        "TL;DR en primeras 3 bullets",
+        "Cover + Context + Problem + Solution + Ask + Next Steps",
+        "Print-optimized",
+        "Bilingüe"
+      ]
+    },
+    {
+      "id": "technical-report",
+      "type": "happy",
+      "prompt": "Genera un reporte técnico del OpenClaw Security Kit — AS-IS, hallazgos de seguridad y recomendaciones.",
+      "expected_behaviors": [
+        "Usa --type=report con secciones técnicas",
+        "Evidence chips obligatorios en claims de seguridad",
+        "Sidebar nav presente",
+        "Print-friendly (puede no ser bilingüe)",
+        "No usa verde como color de éxito en modo claro (usa azul)"
+      ]
+    },
+    {
+      "id": "commercial-proposal",
+      "type": "happy",
+      "prompt": "Crea una propuesta comercial branded para un proyecto de discovery de 3 meses con cliente Acme Corp.",
+      "expected_behaviors": [
+        "Usa --type=proposal",
+        "Cover con branding JM Labs (no MetodologIA)",
+        "Timeline en formato visual",
+        "Investment section (sin precios específicos — solo FTE-meses)",
+        "CTA con email de contacto"
+      ]
+    },
+    {
+      "id": "false-positive-internal-doc",
+      "type": "false_positive",
+      "prompt": "Escribe un README para el skill de security-architecture en el repositorio.",
+      "expected_behaviors": [
+        "NO activa jmlabs-corporate-doc",
+        "Este es un documento interno de repositorio, no un documento corporativo de presentación",
+        "Produce markdown plano"
+      ]
+    },
+    {
+      "id": "edge-no-content",
+      "type": "edge",
+      "prompt": "Crea un corporate deck de JM Labs pero no tengo el contenido todavía.",
+      "expected_behaviors": [
+        "Genera template con placeholders {TITULO}, {DESCRIPCION}, {KPI1} bien marcados",
+        "Estructura completa con todas las secciones",
+        "Marca contenido como [OPEN] en comentarios HTML",
+        "Entrega documento funcional con placeholder content"
+      ]
+    },
+    {
+      "id": "edge-light-mode-print",
+      "type": "edge",
+      "prompt": "Necesito el deck para imprimir en papel, no para pantalla digital.",
+      "expected_behaviors": [
+        "Cambia default a modo light (class='light' en body, no 'dark' en html)",
+        "Ajusta print styles para @media print",
+        "Reduce dark backgrounds a blancos",
+        "Mantiene colores de brand (navy texto, gold accents) que funcionan en papel"
+      ]
+    }
+  ]
+}
