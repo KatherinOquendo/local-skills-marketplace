@@ -1,11 +1,11 @@
 ---
 name: sofka-testing-strategy
-argument-hint: "<project-or-system-name>"
-description: >
-  Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management.
+argument-hint: "project-or-system-name"
+description: 
+  Test strategy design — pyramid, automation, E2E, contract testing, shift-left, test data management. [EXPLICIT]
   Use when the user asks to "design test strategy", "build test automation", "implement contract testing",
-  "manage test data", "define quality gates", or mentions test pyramid, Pact, Playwright, Cypress, coverage targets, flaky tests, chaos engineering.
-argument-hint: "<project-or-system-name>"
+  "manage test data", "define quality gates", or mentions test pyramid, Pact, Playwright, Cypress, coverage targets, flaky tests, chaos engineering. [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Testing Strategy: Quality Assurance Architecture & Automation Design
 
-Testing strategy defines how quality is verified, automated, and measured across the software delivery lifecycle. The skill produces comprehensive test architectures covering shape selection, automation frameworks, contract testing, performance and chaos testing, test data management, and quality metrics that shift quality left while maintaining production confidence.
+Testing strategy defines how quality is verified, automated, and measured across the software delivery lifecycle. The skill produces comprehensive test architectures covering shape selection, automation frameworks, contract testing, performance and chaos testing, test data management, and quality metrics that shift quality left while maintaining production confidence. [EXPLICIT]
 
 ## Principio Rector
 
@@ -27,20 +27,20 @@ Testing strategy defines how quality is verified, automated, and measured across
 
 ### Filosofía de Testing Strategy
 
-1. **Test pyramid is a guide, not a rule.** La forma correcta (pyramid, trophy, honeycomb, diamond) depende de la arquitectura del sistema, no de un dogma de la industria.
-2. **Contract testing for microservices.** Si tienes N servicios con M consumidores, E2E entre todos es O(N*M). Contract testing reduce eso a O(N+M).
-3. **Test data management is architecture.** Datos compartidos entre tests = flakiness garantizada. Cada test crea, usa, y limpia sus propios datos.
+1. **Test pyramid is a guide, not a rule.** La forma correcta (pyramid, trophy, honeycomb, diamond) depende de la arquitectura del sistema, no de un dogma de la industria. [EXPLICIT]
+2. **Contract testing for microservices.** Si tienes N servicios con M consumidores, E2E entre todos es O(N*M). Contract testing reduce eso a O(N+M). [EXPLICIT]
+3. **Test data management is architecture.** Datos compartidos entre tests = flakiness garantizada. Cada test crea, usa, y limpia sus propios datos. [EXPLICIT]
 
 ## Inputs
 
-The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **project/system name** used throughout all output artifacts.
+The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **project/system name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para shape selection y tool matrix, HITL para contract testing decisions y chaos engineering scope.
-  - **desatendido**: Cero interrupciones. Estrategia completa con supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en pyramid design y contract testing setup.
-  - **paso-a-paso**: Confirma cada test shape, framework selection, contract scope, y chaos plan.
+  - **piloto-auto**: Auto para shape selection y tool matrix, HITL para contract testing decisions y chaos engineering scope. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Estrategia completa con supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en pyramid design y contract testing setup. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada test shape, framework selection, contract scope, y chaos plan. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 pyramid + S3 contracts + S6 metrics) | `técnica` (full 6 sections, default)
 
@@ -50,7 +50,7 @@ Before generating strategy, detect the codebase context:
 !find . -name "*.test.*" -o -name "*.spec.*" -o -name "*test*" -type d -o -name "jest*" -o -name "pytest*" -o -name "cypress*" | head -20
 ```
 
-Use detected testing frameworks, languages, and existing test structure to tailor recommendations.
+Use detected testing frameworks, languages, and existing test structure to tailor recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -83,7 +83,7 @@ Read ${CLAUDE_SKILL_DIR}/references/testing-patterns.md
 
 ### S1: Test Shape Selection & Pyramid Design
 
-Define the test architecture shape with ratio targets and ROI-based prioritization.
+Define the test architecture shape with ratio targets and ROI-based prioritization. [EXPLICIT]
 
 **Shape selection decision matrix:**
 
@@ -110,7 +110,7 @@ Define the test architecture shape with ratio targets and ROI-based prioritizati
 
 ### S2: Test Automation Framework
 
-Design the automation infrastructure including tool selection, patterns, and execution strategy.
+Design the automation infrastructure including tool selection, patterns, and execution strategy. [EXPLICIT]
 
 **Tool selection matrix:**
 
@@ -133,7 +133,7 @@ Design the automation infrastructure including tool selection, patterns, and exe
 
 ### S3: Contract & API Testing
 
-Ensure service interfaces remain compatible through consumer-driven contracts and schema validation.
+Ensure service interfaces remain compatible through consumer-driven contracts and schema validation. [EXPLICIT]
 
 **Produce:**
 - Consumer-driven contracts: consumers define expected interactions; providers verify compatibility
@@ -155,7 +155,7 @@ Ensure service interfaces remain compatible through consumer-driven contracts an
 
 ### S4: Performance & Chaos Testing
 
-Integrate performance validation and failure injection into the testing lifecycle.
+Integrate performance validation and failure injection into the testing lifecycle. [EXPLICIT]
 
 **Produce:**
 - Load testing in CI for critical paths (every release candidate, not every build)
@@ -174,11 +174,11 @@ Integrate performance validation and failure injection into the testing lifecycl
 | 3 - Production | Canary chaos with automatic rollback | Production canary |
 | 4 - Advanced | Continuous chaos, GameDays, cross-team | Production |
 
-Tools: Chaos Monkey, Litmus, Gremlin, or custom fault injection. Require automatic rollback if safety thresholds exceeded.
+Tools: Chaos Monkey, Litmus, Gremlin, or custom fault injection. Require automatic rollback if safety thresholds exceeded. [EXPLICIT]
 
 ### S5: Test Data Management
 
-Design strategies for creating, managing, and cleaning test data across environments.
+Design strategies for creating, managing, and cleaning test data across environments. [EXPLICIT]
 
 **Produce:**
 - Synthetic data generation: factories producing realistic fake data (Faker, custom generators)
@@ -199,7 +199,7 @@ Design strategies for creating, managing, and cleaning test data across environm
 
 ### S6: Advanced Techniques & Quality Metrics
 
-Incorporate modern testing approaches and define measurable quality indicators.
+Incorporate modern testing approaches and define measurable quality indicators. [EXPLICIT]
 
 **Property-based testing:** Define properties that must hold for *all* inputs instead of hand-writing examples (e.g., "encode then decode returns original"). Generate hundreds of random inputs; shrink failures to minimal reproducible cases. Particularly effective for parsers, serializers, algorithms, and state machines.
 
@@ -219,7 +219,7 @@ Incorporate modern testing approaches and define measurable quality indicators.
 | JS/TS/.NET | Stryker | >80% on critical paths | Nightly |
 | Python | mutmut | >80% on critical paths | Nightly |
 
-Run on CI nightly, not per-commit (too slow). Focus on critical business logic modules, not the entire codebase.
+Run on CI nightly, not per-commit (too slow). Focus on critical business logic modules, not the entire codebase. [EXPLICIT]
 
 **Visual regression testing:** Capture screenshots of UI components/pages, compare against baselines pixel-by-pixel or perceptually.
 
@@ -274,19 +274,19 @@ Run on CI nightly, not per-commit (too slow). Focus on critical business logic m
 ## Edge Cases
 
 **Greenfield Project:**
-Start with unit test framework from day one. Add integration tests as external dependencies emerge. Defer E2E until user journeys stabilize. Establish conventions early.
+Start with unit test framework from day one. Add integration tests as external dependencies emerge. Defer E2E until user journeys stabilize. Establish conventions early. [EXPLICIT]
 
 **Legacy System with No Tests:**
-Start with characterization tests (capture current behavior). Add integration tests around critical paths. Introduce unit tests for new code only. Do not attempt 80% coverage retroactively.
+Start with characterization tests (capture current behavior). Add integration tests around critical paths. Introduce unit tests for new code only. Do not attempt 80% coverage retroactively. [EXPLICIT]
 
 **Microservices with Many Consumers:**
-Contract testing is essential. Set up Pact Broker or schema registry. Establish can-i-deploy gates. Each team owns their consumer tests.
+Contract testing is essential. Set up Pact Broker or schema registry. Establish can-i-deploy gates. Each team owns their consumer tests. [EXPLICIT]
 
 **Monorepo with Multiple Teams:**
-Use test impact analysis: detect changed modules, run only related tests. Shared test utilities in a common package. Team-owned suites with cross-team integration tests.
+Use test impact analysis: detect changed modules, run only related tests. Shared test utilities in a common package. Team-owned suites with cross-team integration tests. [EXPLICIT]
 
 **Regulated Environment:**
-Test evidence is a compliance artifact. Document test plans, link tests to requirements, archive results. Maintain a traceability matrix: requirement --> test case --> execution result.
+Test evidence is a compliance artifact. Document test plans, link tests to requirements, archive results. Maintain a traceability matrix: requirement --> test case --> execution result. [EXPLICIT]
 
 ---
 
@@ -320,7 +320,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

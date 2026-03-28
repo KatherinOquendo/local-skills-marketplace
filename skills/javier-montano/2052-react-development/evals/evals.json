@@ -1,0 +1,9 @@
+[
+  {"id": "react-development-happy-path", "type": "happy_path", "input": "Run react development on this project", "expected_behavior": "Skill activates and produces the expected react development output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "react-development-explicit-trigger", "type": "happy_path", "input": "Apply react development analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the react development workflow", "tags": ["trigger", "recognition"]},
+  {"id": "react-development-with-context", "type": "happy_path", "input": "Apply react development to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive react development analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "react-development-minimal-input", "type": "happy_path", "input": "Quick react development", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "react-development-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to react development", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "react-development-edge-empty-input", "type": "edge_case", "input": "Run react development but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "react-development-edge-conflicting", "type": "edge_case", "input": "Apply react development but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

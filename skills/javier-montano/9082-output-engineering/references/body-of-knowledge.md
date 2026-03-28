@@ -62,7 +62,7 @@ Fuentes fundacionales, estándares de referencia y glosario para el skill de Out
 
 ### 10. Mermaid.js Documentation (Knut Sveidqvist, 2014–presente)
 
-- **Relevancia:** Sistema de diagramación basado en texto usado en todos los deliverables. El skill debe garantizar que los diagramas Mermaid sobrevivan la conversión a cada formato.
+- **Relevancia:** Sistema de diagramación basado en texto usado en Todos los deliverables. El skill debe garantizar que los diagramas Mermaid sobrevivan la conversión a cada formato.
 - **Aporte clave:** Sintaxis declarativa para flowcharts, sequence diagrams, Gantt, C4, etc. Rendering via CDN en HTML, pre-rendering para formatos estáticos.
 - **Referencia:** Mermaid. *Mermaid Documentation*. https://mermaid.js.org/
 
@@ -87,9 +87,9 @@ Fuentes fundacionales, estándares de referencia y glosario para el skill de Out
 | Término | Definición |
 |---------|-----------|
 | **Ghost Menu** | Menú contextual que aparece automáticamente tras la aprobación editorial de un deliverable markdown. Ofrece conversión a formatos derivados sin ser intrusivo — el usuario decide, el sistema no auto-convierte. |
-| **Source of Truth** | El archivo markdown original que contiene todo el contenido del deliverable. Es el master del cual se derivan todos los formatos. Nunca se modifica como resultado de una conversión. |
+| **Source of Truth** | El archivo markdown original que contiene Todo el contenido del deliverable. Es el master del cual se derivan Todos los formatos. Nunca se modifica como resultado de una conversión. |
 | **Format Pipeline** | Cadena de transformación que convierte markdown a un formato específico (.md → HTML, .md → DOCX, etc.) aplicando optimizaciones propias del medio destino. |
-| **Content Integrity** | Propiedad que garantiza que todo el contenido del markdown fuente está presente y sin alteración en el formato derivado: secciones, tablas, números, diagramas, referencias. |
+| **Content Integrity** | Propiedad que garantiza que Todo el contenido del markdown fuente está presente y sin alteración en el formato derivado: secciones, tablas, números, diagramas, referencias. |
 | **Brand Compliance** | Adherencia a los 7 elementos del MetodologIA Design System: color primario, color oscuro, color éxito (gold, nunca verde), logo, footer, tipografía, disclaimer. |
 | **markdown-excellence** | Estándar de calidad para markdown: TL;DR, prosa densa, tablas con semáforos, diagramas Mermaid, callouts, footnotes, cross-references. |
 | **Editorial Review** | Proceso de validación que precede al ghost menu. El comité editorial (editorial-director, content-strategist, format-specialist) revisa y aprueba el markdown antes de ofrecer conversión. |

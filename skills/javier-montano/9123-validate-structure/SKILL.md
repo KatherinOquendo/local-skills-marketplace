@@ -13,7 +13,7 @@ allowed-tools:
 
 > "A plugin that does not follow the spec is not a plugin -- it is a folder with aspirations."
 
-Validates that a Claude Code plugin's directory tree conforms to the official specification. Detects missing directories, misplaced files, naming violations, path traversal risks, and script permission issues.
+Validates that a Claude Code plugin's directory tree conforms to the official specification. Detects missing directories, misplaced files, naming violations, path traversal risks, and script permission issues. [EXPLICIT]
 
 ---
 
@@ -96,27 +96,35 @@ Validates that a Claude Code plugin's directory tree conforms to the official sp
 
 **Bad finding:**
 ```
-Missing skills directory.
+Missing skills directory. [EXPLICIT]
 ```
-Missing: no severity, no path, no spec reference.
+Missing: no severity, no path, no spec reference. [EXPLICIT]
 
 **Good finding:**
 ```
 WARNING | skills/ | Directory absent. Plugin description implies skill-based functionality but no skills/ directory exists. | Official spec: optional
 ```
-Includes: severity, path, context explaining why it matters, spec reference.
+Includes: severity, path, context explaining why it matters, spec reference. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Reporting a missing optional directory as CRITICAL.
-2. Failing to check inside skill subdirectories for SKILL.md.
-3. Ignoring dotfiles (`.gitkeep`, `.DS_Store`) -- these should be INFO, not errors.
-4. Checking naming conventions on files outside the plugin tree.
+1. Reporting a missing optional directory as CRITICAL. [EXPLICIT]
+2. Failing to check inside skill subdirectories for SKILL.md. [EXPLICIT]
+3. Ignoring dotfiles (`.gitkeep`, `.DS_Store`) -- these should be INFO, not errors. [EXPLICIT]
+4. Checking naming conventions on files outside the plugin tree. [EXPLICIT]
 
 ## Edge Cases
 
-1. Plugin with zero skills but valid structure (commands-only plugin) -- valid, INFO note.
-2. Nested skill directories (skills/group/skill-name/) -- not spec-compliant, CRITICAL.
-3. Symlinks in the plugin tree -- report as WARNING, do not follow.
-4. Empty directories (created but no content) -- WARNING for skills/, INFO for others.
-5. Mixed case in `.claude-plugin` directory name -- CRITICAL on case-sensitive filesystems.
+1. Plugin with zero skills but valid structure (commands-only plugin) -- valid, INFO note. [EXPLICIT]
+2. Nested skill directories (skills/group/skill-name/) -- not spec-compliant, CRITICAL. [EXPLICIT]
+3. Symlinks in the plugin tree -- report as WARNING, do not follow. [EXPLICIT]
+4. Empty directories (created but no content) -- WARNING for skills/, INFO for others. [EXPLICIT]
+5. Mixed case in `.claude-plugin` directory name -- CRITICAL on case-sensitive filesystems. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/validate-structure" — Run the full validate structure workflow
+- "validate structure on this project" — Apply to current context
+

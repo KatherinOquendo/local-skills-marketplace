@@ -1,0 +1,9 @@
+[
+  {"id": "audit-security-happy-path", "type": "happy_path", "input": "Run audit security on this project", "expected_behavior": "Skill activates and produces the expected audit security output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "audit-security-explicit-trigger", "type": "happy_path", "input": "Apply audit security analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the audit security workflow", "tags": ["trigger", "recognition"]},
+  {"id": "audit-security-with-context", "type": "happy_path", "input": "Apply audit security to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive audit security analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "audit-security-minimal-input", "type": "happy_path", "input": "Quick audit security", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "audit-security-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to audit security", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "audit-security-edge-empty-input", "type": "edge_case", "input": "Run audit security but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "audit-security-edge-conflicting", "type": "edge_case", "input": "Apply audit security but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

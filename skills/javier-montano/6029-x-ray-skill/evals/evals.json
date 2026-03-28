@@ -1,0 +1,9 @@
+[
+  {"id": "x-ray-skill-happy-path", "type": "happy_path", "input": "Run x ray skill on this project", "expected_behavior": "Skill activates and produces the expected x ray skill output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "x-ray-skill-explicit-trigger", "type": "happy_path", "input": "Apply x ray skill analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the x ray skill workflow", "tags": ["trigger", "recognition"]},
+  {"id": "x-ray-skill-with-context", "type": "happy_path", "input": "Apply x ray skill to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive x ray skill analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "x-ray-skill-minimal-input", "type": "happy_path", "input": "Quick x ray skill", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "x-ray-skill-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to x ray skill", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "x-ray-skill-edge-empty-input", "type": "edge_case", "input": "Run x ray skill but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "x-ray-skill-edge-conflicting", "type": "edge_case", "input": "Apply x ray skill but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

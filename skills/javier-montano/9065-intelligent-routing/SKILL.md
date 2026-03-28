@@ -3,7 +3,7 @@ name: intelligent-routing
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Match user intent to the best domain for Lead agent selection using BM25 + semantic similarity.
+  Match user intent to the best domain for Lead agent selection using BM25 + semantic similarity. [EXPLICIT]
   Trigger: "intelligent routing"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Match user intent to the best domain for Lead agent selection using BM25 + semantic similarity. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md.
+Match user intent to the best domain for Lead agent selection using BM25 + semantic similarity. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md. [EXPLICIT]
 
 ## Procedure
 
@@ -49,3 +49,25 @@ Match user intent to the best domain for Lead agent selection using BM25 + seman
 ## Related Skills
 
 - See PRISTINO.md for full orchestration protocol
+
+## Usage
+
+Example invocations:
+
+- "/intelligent-routing" — Run the full intelligent routing workflow
+- "intelligent routing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

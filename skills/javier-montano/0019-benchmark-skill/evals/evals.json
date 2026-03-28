@@ -1,0 +1,9 @@
+[
+  {"id": "benchmark-skill-happy-path", "type": "happy_path", "input": "Run benchmark skill on this project", "expected_behavior": "Skill activates and produces the expected benchmark skill output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "benchmark-skill-explicit-trigger", "type": "happy_path", "input": "Apply benchmark skill analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the benchmark skill workflow", "tags": ["trigger", "recognition"]},
+  {"id": "benchmark-skill-with-context", "type": "happy_path", "input": "Apply benchmark skill to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive benchmark skill analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "benchmark-skill-minimal-input", "type": "happy_path", "input": "Quick benchmark skill", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "benchmark-skill-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to benchmark skill", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "benchmark-skill-edge-empty-input", "type": "edge_case", "input": "Run benchmark skill but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "benchmark-skill-edge-conflicting", "type": "edge_case", "input": "Apply benchmark skill but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

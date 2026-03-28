@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Install and configure Firebase Extensions for common tasks — Stripe payments,
-  Algolia search, image resizing, and translation services.
+  Algolia search, image resizing, and translation services. [EXPLICIT]
   Trigger: "firebase extension", "stripe extension", "algolia extension", "resize images"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the selection, installation, and configuration of Firebase Extensions — pre-built solutions for common tasks like Stripe payments, Algolia search indexing, image resizing, email sending, and text translation. Use when a well-maintained extension can replace custom Cloud Function code.
+Guides the selection, installation, and configuration of Firebase Extensions — pre-built solutions for common tasks like Stripe payments, Algolia search indexing, image resizing, email sending, and text translation. Use when a well-maintained extension can replace custom Cloud Function code. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the selection, installation, and configuration of Firebase Extensions —
 
 - `payment-integration` — Stripe extension handles subscription lifecycle
 - `image-optimization` — Resize Images extension for automatic thumbnails
+
+## Usage
+
+Example invocations:
+
+- "/firebase-extensions" — Run the full firebase extensions workflow
+- "firebase extensions on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -1,0 +1,9 @@
+[
+  {"id": "test-strategy-happy-path", "type": "happy_path", "input": "Run test strategy on this project", "expected_behavior": "Skill activates and produces the expected test strategy output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "test-strategy-explicit-trigger", "type": "happy_path", "input": "Apply test strategy analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the test strategy workflow", "tags": ["trigger", "recognition"]},
+  {"id": "test-strategy-with-context", "type": "happy_path", "input": "Apply test strategy to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive test strategy analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "test-strategy-minimal-input", "type": "happy_path", "input": "Quick test strategy", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "test-strategy-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to test strategy", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "test-strategy-edge-empty-input", "type": "edge_case", "input": "Run test strategy but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "test-strategy-edge-conflicting", "type": "edge_case", "input": "Apply test strategy but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Optimize images for web performance using modern formats (WebP, AVIF),
-  responsive srcset, lazy loading, and CDN delivery strategies.
+  responsive srcset, lazy loading, and CDN delivery strategies. [EXPLICIT]
   Trigger: "image optimization", "WebP", "AVIF", "lazy loading", "srcset"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides comprehensive image optimization for web performance — converting to modern formats (WebP, AVIF), implementing responsive images with srcset and sizes, adding lazy loading, and configuring CDN delivery with caching. Use when images are the bottleneck in your page load performance (they usually are).
+Guides comprehensive image optimization for web performance — converting to modern formats (WebP, AVIF), implementing responsive images with srcset and sizes, adding lazy loading, and configuring CDN delivery with caching. Use when images are the bottleneck in your page load performance (they usually are). [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides comprehensive image optimization for web performance — converting to mo
 
 - `performance-testing` — measuring the impact of image optimization
 - `build-optimization` — integrating image processing into the build pipeline
+
+## Usage
+
+Example invocations:
+
+- "/image-optimization" — Run the full image optimization workflow
+- "image optimization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

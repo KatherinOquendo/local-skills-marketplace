@@ -1,16 +1,16 @@
 ---
 name: surgeon-skill
-description: >
+description: 
   This skill should be used when the user asks to "improve a skill",
   "fix this skill", "upgrade skill quality", "apply improvements",
-  "make this skill production-ready", or "elevate this skill".
+  "make this skill production-ready", or "elevate this skill". [EXPLICIT]
   Reads a skill directory, identifies the highest-impact improvements,
   and applies them systematically — preserving 100% of domain content
   while upgrading structural infrastructure, instructional quality,
   and developer experience. Use this skill whenever someone has an
   x-ray-skill report and wants to act on it, or when they point to a
-  skill directory and say "make it better".
-argument-hint: "<path-to-skill-directory>"
+  skill directory and say "make it better". [EXPLICIT]
+argument-hint: "path-to-skill-directory"
 model: opus
 context: fork
 allowed-tools:
@@ -25,9 +25,9 @@ model: opus
 
 # Skill Surgeon
 
-Precision improvements for Claude Code skills. Identifies fixes prioritized by impact, applies each with snapshot verification, and produces a changelog — so domain content is never lost and every change is justified.
+Precision improvements for Claude Code skills. Identifies fixes prioritized by impact, applies each with snapshot verification, and produces a changelog — so domain content is never lost and every change is justified. [EXPLICIT]
 
-Part of the Skill Quality Suite: x-ray-skill → **surgeon-skill** → certify-skill (+ trigger-skill, benchmark-skill, assembly-skill). Each skill is standalone. Use assembly-skill to run the full pipeline in one command.
+Part of the Skill Quality Suite: x-ray-skill → **surgeon-skill** → certify-skill (+ trigger-skill, benchmark-skill, assembly-skill). Each skill is standalone. Use assembly-skill to run the full pipeline in one command. [EXPLICIT]
 
 ## Usage
 
@@ -36,7 +36,7 @@ Part of the Skill Quality Suite: x-ray-skill → **surgeon-skill** → certify-s
 /surgeon-skill ./my-skill
 ```
 
-Parse the argument as the path to a skill directory containing SKILL.md. If an x-ray-skill report exists in the conversation, use its scorecard to prioritize. Otherwise, run an internal diagnostic first.
+Parse the argument as the path to a skill directory containing SKILL.md. If an x-ray-skill report exists in the conversation, use its scorecard to prioritize. Otherwise, run an internal diagnostic first. [EXPLICIT]
 
 ## The Improvement Process
 
@@ -46,11 +46,11 @@ Parse the argument as the path to a skill directory containing SKILL.md. If an x
 
 **If no report:** Perform a quick assessment:
 
-1. Read SKILL.md completely. Record line count.
-2. `Glob <path>/**/*` — list all files, note directory structure.
-3. Parse frontmatter — check name (kebab-case?), description (3rd person? triggers?), allowed-tools.
-4. Scan for missing gold-standard components: references/, evals/, progressive disclosure section, Good vs Bad example, Validation Gate.
-5. Estimate current rubric score: below 6 (BLOCKED), 6-7 (needs work), 7-8 (polish), 8+ (minor tweaks).
+1. Read SKILL.md completely. Record line count. [EXPLICIT]
+2. `Glob <path>/**/*` — list all files, note directory structure. [EXPLICIT]
+3. Parse frontmatter — check name (kebab-case?), description (3rd person? triggers?), allowed-tools. [EXPLICIT]
+4. Scan for missing gold-standard components: references/, evals/, progressive disclosure section, Good vs Bad example, Validation Gate. [EXPLICIT]
+5. Estimate current rubric score: below 6 (BLOCKED), 6-7 (needs work), 7-8 (polish), 8+ (minor tweaks). [EXPLICIT]
 
 **Decision: scope of intervention.** The assessment determines how many layers to apply:
 - Score < 6: Focus on Layer A only — structural fixes unblock everything else
@@ -73,7 +73,7 @@ Read `references/improvement-patterns.md` for the complete pattern library (15 p
 Present the plan before executing:
 
 ```
-Plan: {N} interventions across {M} layers.
+Plan: {N} interventions across {M} layers. [EXPLICIT]
 Layer A: {A1: fix description triggers, A3: add Before Analysis section}
 Layer B: {B1: add Good vs Bad example, B4: add Failure Modes table}
 Layer C: {C1: deduplicate workflow}
@@ -145,7 +145,7 @@ Structured changelog documenting every change:
 
 ## Content Preservation Protocol
 
-The surgeon-skill's inviolable constraint. Every other design decision is negotiable; this one is not.
+The surgeon-skill's inviolable constraint. Every other design decision is negotiable; this one is not. [EXPLICIT]
 
 | Rule | Meaning | Test |
 |------|---------|------|
@@ -192,7 +192,7 @@ The surgeon-skill's inviolable constraint. Every other design decision is negoti
 ```
 Applied B2 (caps→reasoning). Changed 12 lines. (No snapshot, no verification, no changelog.)
 ```
-No evidence of content preservation. No justification. No traceability.
+No evidence of content preservation. No justification. No traceability. [EXPLICIT]
 
 **Good intervention:**
 ```
@@ -200,8 +200,8 @@ Snapshot: Read SKILL.md lines 49-50. Content: "ALWAYS preserve intent. NEVER cha
 Applied B2: Replaced with "Preserve intent when correcting. Surface corrections change spelling,
 not meaning — a wrong correction is worse than leaving the typo."
 Verified: Same two concepts (intent preservation, meaning preservation) present. Added reasoning
-(wrong correction > leaving typo) derived from the original "NEVER change meaning" imperative.
-Justification: LLMs respond better to reasoning than to commands.
+(wrong correction > leaving typo) derived from the original "NEVER change meaning" imperative. [EXPLICIT]
+Justification: LLMs respond better to reasoning than to commands. [EXPLICIT]
 ```
 
 ## Validation Gate

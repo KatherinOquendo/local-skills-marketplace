@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Models business processes using BPMN 2.0, value stream mapping, and capability
   mapping. Identifies waste, handoff friction, and automation opportunities
-  in organizational workflows.
+  in organizational workflows. [EXPLICIT]
   Trigger: "BPMN", "value stream", "capability map", "business process"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Models business processes using BPMN 2.0 notation, value stream maps, and capability maps to identify waste, bottlenecks, and automation opportunities. Use this skill when digitizing manual processes, optimizing existing workflows, or establishing a shared understanding of how the business operates.
+Models business processes using BPMN 2.0 notation, value stream maps, and capability maps to identify waste, bottlenecks, and automation opportunities. Use this skill when digitizing manual processes, optimizing existing workflows, or establishing a shared understanding of how the business operates. [EXPLICIT]
 
 ## Procedure
 
@@ -67,3 +67,25 @@ Models business processes using BPMN 2.0 notation, value stream maps, and capabi
 - `flow-mapping` — lighter-weight process visualization
 - `workshop-design` — facilitating process discovery sessions
 - `domain-driven-design` — aligning processes with domain boundaries
+
+## Usage
+
+Example invocations:
+
+- "/business-process-modeling" — Run the full business process modeling workflow
+- "business process modeling on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

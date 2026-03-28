@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Execute pre-deployment validation with environment variable checks, build
-  verification, rollback planning, and post-deploy monitoring.
+  verification, rollback planning, and post-deploy monitoring. [EXPLICIT]
   Trigger: "deployment checklist", "pre-deploy", "go live", "launch checklist"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Provides a comprehensive pre-deployment and post-deployment validation checklist — environment variable verification, build integrity checks, rollback planning, monitoring setup, and go-live procedures. Use before any production deployment to ensure nothing critical is missed.
+Provides a comprehensive pre-deployment and post-deployment validation checklist — environment variable verification, build integrity checks, rollback planning, monitoring setup, and go-live procedures. Use before any production deployment to ensure nothing critical is missed. [EXPLICIT]
 
 ## Procedure
 
@@ -78,3 +78,25 @@ Provides a comprehensive pre-deployment and post-deployment validation checklist
 
 - `firebase-deployment` — Firebase-specific deployment procedures
 - `github-actions-ci` — automated deployment pipeline execution
+
+## Usage
+
+Example invocations:
+
+- "/deployment-checklist" — Run the full deployment checklist workflow
+- "deployment checklist on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

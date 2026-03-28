@@ -1,12 +1,12 @@
 ---
 name: metodologia-copywriting
 author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<audience: ceo|cto|cfo|board|mixed> <context: pitch|scenario|roadmap|summary|recommendation>"
-description: >
+argument-hint: "audience: ceo|cto|cfo|board|mixed context: pitch|scenario|roadmap|summary|recommendation"
+description: 
   Persuasive writing for executive audiences — value propositions, calls to action,
   cost-of-inaction narratives, and compelling summaries. Use when generating executive
   summaries, pitch narratives, scenario value propositions, recommendation justifications,
-  or any prose that must drive a decision.
+  or any prose that must drive a decision. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Copywriting — Persuasive Executive Communication
 
-Transforms technical findings into decision-driving prose. Owns value propositions, calls to action, cost-of-inaction narratives, executive summaries, and recommendation justifications across all discovery deliverables.
+Transforms technical findings into decision-driving prose. Owns value propositions, calls to action, cost-of-inaction narratives, executive summaries, and recommendation justifications across all discovery deliverables. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,17 +27,17 @@ Transforms technical findings into decision-driving prose. Owns value propositio
 
 ### Persuasion Philosophy
 
-1. **Evidence before assertion.** Never "we believe that" — always "the data shows that." Every claim carries a number, a source, or an explicit assumption.
+1. **Evidence before assertion.** Never "we believe that" — always "the data shows that." Every claim carries a number, a source, or an explicit assumption. [EXPLICIT]
 2. **Demonstrated urgency, not declared.** Not "it is urgent to act." Instead "the cost of inaction is X FTE-months/quarter, equivalent to..."
-3. **Options, not mandates.** The decision-maker chooses. The consultant recommends with evidence and trade-offs.
-4. **Radical conciseness.** Every word must earn its place. If a sentence does not add information or move the reader, it is eliminated.
+3. **Options, not mandates.** The decision-maker chooses. The consultant recommends with evidence and trade-offs. [EXPLICIT]
+4. **Radical conciseness.** Every word must earn its place. If a sentence does not add information or move the reader, it is eliminated. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Target audience: `ceo`, `cto`, `cfo`, `board`, `mixed` (default: `mixed`)
 - `$2` — Deliverable context: `pitch`, `scenario`, `roadmap`, `summary`, `recommendation` (default: `summary`)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 ## Techniques Arsenal
 
@@ -57,7 +57,7 @@ Example:
 ```
 Pattern: [Quantified current state] → [Trend if no action] → [Cumulative impact] → [Point of no return]
 
-Framing: "Each quarter without action costs [X] and accumulates [Y] of additional technical debt.
+Framing: "Each quarter without action costs [X] and accumulates [Y] of additional technical debt. [EXPLICIT]
           In [Z] months, the remediation cost exceeds the transformation cost."
 ```
 
@@ -227,22 +227,22 @@ graph TD
 
 **Filename:** `Executive_Summary_{project}_{WIP|Aprobado}.html`
 
-HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye headline hero con metricas de impacto, COI projection visual, y comparativa de escenarios con CTA destacado. WCAG AA, responsive.
+HTML self-contained branded (Design System MetodologIA v5). Dark-First Executive. Incluye headline hero con metricas de impacto, COI projection visual, y comparativa de escenarios con CTA destacado. WCAG AA, responsive. [EXPLICIT]
 
 ### Template 1c: Executive Summary (DOCX, bajo demanda)
 
 **Filename:** `{fase}_Executive_Summary_{project}_{WIP}.docx`
-Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents. [EXPLICIT]
 
 ### Template 1d: Executive Summary (XLSX, bajo demanda)
 
 **Filename:** `{fase}_Executive_Summary_{cliente}_{WIP}.xlsx`
-Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por escenario y prioridad, auto-filters en todas las columnas, valores directos sin fórmulas.
+Via openpyxl con MetodologIA Design System v5. Headers con fondo navy y tipografía Poppins en blanco, conditional formatting por escenario y prioridad, auto-filters en todas las columnas, valores directos sin fórmulas. [EXPLICIT]
 
 ### Template 1e: Executive Summary (PPTX, bajo demanda)
 
 **Filename:** `{fase}_{entregable}_{cliente}_{WIP}.pptx`
-Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level.
+Via python-pptx con MetodologIA Design System v5. Slide master con gradiente navy, titulos Poppins, cuerpo Trebuchet MS, acentos gold. Max 20 slides (ejecutiva) / 30 slides (tecnica). Speaker notes con referencias de evidencia. Para comites directivos y presentaciones C-level. [EXPLICIT]
 
 ### Template 2: Pitch Narrative (HTML)
 
@@ -284,3 +284,11 @@ Estilo: colores MetodologIA (#122562 primary, #1F2833 background)
 - This skill owns **prose quality and persuasion**. It does NOT own narrative arc across deliverables (that's editorial-director) or data visualization (that's metodologia-data-viz-storytelling).
 - NEVER produce prices. Only FTE-months, magnitudes, cost drivers.
 - NEVER use green (#00FF00) for success in any output. Use gold (#FFD700).
+
+## Usage
+
+Example invocations:
+
+- "/copywriting" — Run the full copywriting workflow
+- "copywriting on this project" — Apply to current context
+

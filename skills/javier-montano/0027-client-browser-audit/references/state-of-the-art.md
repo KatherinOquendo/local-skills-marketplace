@@ -14,7 +14,7 @@ La conformidad WCAG 2.2 se vuelve mandatoria para herramientas PM, especialmente
 
 ## Tendencia 4: Validacion Cross-Platform de Dashboards
 
-Organizaciones validan que dashboards de proyecto rendericen correctamente en multiples dispositivos (desktop, tablet, mobile) para asegurar experiencia consistente independientemente del metodo de acceso. BrowserStack y Playwright multi-device testing se adoptan como parte del proceso de deployment de dashboards. [PLAN]
+Organizaciones validan que dashboards de proyecto rendericen correctamente en multiples dispositivos (desktop, tablet, mobile) para asegurar experiencia consistente independientemente del meTodo de acceso. BrowserStack y Playwright multi-device testing se adoptan como parte del proceso de deployment de dashboards. [PLAN]
 
 ## Tendencia 5: Monitoreo de Integridad de Datos en Tiempo Real
 

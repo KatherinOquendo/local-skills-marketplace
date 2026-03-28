@@ -217,7 +217,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 ## Using These Templates
 
 1. **Copy template structure** into HTML document
-2. **Replace bracketed placeholders** with actual test counts, coverage percentages, and project names
+2. **Replace bracketed templates** with actual test counts, coverage percentages, and project names
 3. **Apply status colors** based on quality gate thresholds (pass/fail/needs attention)
 4. **Compose templates** into full report: pyramid, coverage, contract status, execution summary, quality dashboard
 5. **Link to CI/CD dashboards** for real-time data alongside documented strategy

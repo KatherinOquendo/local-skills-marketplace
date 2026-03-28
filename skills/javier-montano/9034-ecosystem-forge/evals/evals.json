@@ -1,65 +1,9 @@
-{
-  "skill_name": "ecosystem-forge",
-  "evals": [
-    {
-      "id": 1,
-      "name": "bootstrap_ecosystem",
-      "prompt": "Bootstrap a governance ecosystem for our API development domain",
-      "expected_output": "success",
-      "expectations": [
-        "Creates rules, skills, and workflows in dependency order",
-        "Names all artifacts before creating them using kebab-case",
-        "Follows governance-first pattern for regulated domain",
-        "Runs integration checklist after creation"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "audit_existing",
-      "prompt": "Audit our existing skill ecosystem for consistency issues",
-      "expected_output": "success",
-      "expectations": [
-        "Checks naming consistency across all artifacts",
-        "Verifies reference integrity with no dangling references",
-        "Identifies orphan artifacts not referenced by others",
-        "Reports rule conflicts if any exist"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "repair_ecosystem",
-      "prompt": "Repair broken cross-references in our workflow ecosystem",
-      "expected_output": "success",
-      "expectations": [
-        "Identifies broken cross-references between artifacts",
-        "Fixes naming inconsistencies",
-        "Verifies all workflow prerequisites are satisfiable",
-        "Reports changes made with before/after comparison"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "single_artifact_redirect",
-      "prompt": "Create a complete system but I only need one new skill",
-      "expected_output": "success",
-      "expectations": [
-        "Detects that fewer than 3 artifacts are needed",
-        "Redirects to appropriate individual forge (skill-creator)",
-        "Explains minimum threshold for ecosystem-forge",
-        "Does not over-engineer a single-artifact request"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "workflow_first_pattern",
-      "prompt": "Create a coordinated system of skills, rules, and workflows for our CI/CD automation",
-      "expected_output": "success",
-      "expectations": [
-        "Selects workflow-first pattern for process automation",
-        "Maps manual process into workflow steps",
-        "Creates supporting skills for specialized steps",
-        "Derives rules from invariants discovered during mapping"
-      ]
-    }
-  ]
-}
+[
+  {"id": "ecosystem-forge-happy-path", "type": "happy_path", "input": "Run ecosystem forge on this project", "expected_behavior": "Skill activates and produces the expected ecosystem forge output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "ecosystem-forge-explicit-trigger", "type": "happy_path", "input": "Apply ecosystem forge analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the ecosystem forge workflow", "tags": ["trigger", "recognition"]},
+  {"id": "ecosystem-forge-with-context", "type": "happy_path", "input": "Apply ecosystem forge to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive ecosystem forge analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "ecosystem-forge-minimal-input", "type": "happy_path", "input": "Quick ecosystem forge", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "ecosystem-forge-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to ecosystem forge", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "ecosystem-forge-edge-empty-input", "type": "edge_case", "input": "Run ecosystem forge but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "ecosystem-forge-edge-conflicting", "type": "edge_case", "input": "Apply ecosystem forge but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

@@ -1,0 +1,9 @@
+[
+  {"id": "socratic-debate-happy-path", "type": "happy_path", "input": "Run socratic debate on this project", "expected_behavior": "Skill activates and produces the expected socratic debate output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "socratic-debate-explicit-trigger", "type": "happy_path", "input": "Apply socratic debate analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the socratic debate workflow", "tags": ["trigger", "recognition"]},
+  {"id": "socratic-debate-with-context", "type": "happy_path", "input": "Apply socratic debate to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive socratic debate analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "socratic-debate-minimal-input", "type": "happy_path", "input": "Quick socratic debate", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "socratic-debate-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to socratic debate", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "socratic-debate-edge-empty-input", "type": "edge_case", "input": "Run socratic debate but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "socratic-debate-edge-conflicting", "type": "edge_case", "input": "Apply socratic debate but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

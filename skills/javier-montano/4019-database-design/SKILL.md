@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Designs database schemas, indexing strategies, and data models for relational
-  and NoSQL databases with special focus on Firestore document modeling.
-  Covers normalization, denormalization trade-offs, and query optimization.
+  and NoSQL databases with special focus on Firestore document modeling. [EXPLICIT]
+  Covers normalization, denormalization trade-offs, and query optimization. [EXPLICIT]
   Trigger: "database", "schema", "Firestore", "data model", "indexing"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs database schemas and data models for relational (PostgreSQL, MySQL) and NoSQL (Firestore, MongoDB) databases with indexing strategies, normalization/denormalization trade-offs, and query optimization. Use this skill when modeling a new data domain, migrating databases, or optimizing query performance.
+Designs database schemas and data models for relational (PostgreSQL, MySQL) and NoSQL (Firestore, MongoDB) databases with indexing strategies, normalization/denormalization trade-offs, and query optimization. Use this skill when modeling a new data domain, migrating databases, or optimizing query performance. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Designs database schemas and data models for relational (PostgreSQL, MySQL) and 
 - `domain-driven-design` — domain model drives database entities
 - `api-design` — API resources often map to database entities
 - `caching-strategy` — caching compensates for database limitations
+
+## Usage
+
+Example invocations:
+
+- "/database-design" — Run the full database design workflow
+- "database design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -96,7 +96,7 @@
 - **Pro-open-source (Grafana stack):** Sin vendor lock-in, costo predecible (infra only), full control, OTel-native. "El costo de Datadog a escala puede ser mas alto que un equipo de plataforma."
 - **Posicion del skill:** Para <20 servicios sin equipo de plataforma: managed. Para equipos con platform engineering capacity: Grafana stack. Siempre OTel SDK para portabilidad — el backend se puede cambiar sin re-instrumentar.
 
-### 3.3 ¿SLO-based Alerting es Realista para Todos?
+### 3.3 ¿SLO-based Alerting es Realista para TBDs?
 
 - **Pro-SLO alerting:** Reduce noise drasticamente (>80% de alertas eliminadas). Alinea operaciones con impacto de negocio. El modelo de Google SRE esta probado a escala.
 - **Critica:** Requiere madurez organizacional para definir SLOs. Muchos equipos no saben cual es su SLO. "No puedes alertar sobre un SLO que no has definido." La transicion de threshold alerting a SLO alerting toma 3-6 meses.

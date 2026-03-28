@@ -136,7 +136,7 @@ Every section justifies its existence.
 | 4 | Multiple sections that don't affect behavior. Template-driven structure. |
 | 1 | Mostly boilerplate. Structure without substance. |
 
-**Detection:** For each section: "If this didn't exist, would the skill produce worse output?" Sections that exist only because a template required them (empty edge cases, placeholder validation) are zero-value. Sections whose content appears elsewhere are negative-value (duplication cost > information value).
+**Detection:** For each section: "If this didn't exist, would the skill produce worse output?" Sections that exist only because a template required them (empty edge cases, template validation) are zero-value. Sections whose content appears elsewhere are negative-value (duplication cost > information value).
 
 ## 13-Point Meta-Validation Gate
 
@@ -151,7 +151,7 @@ Binary pass/fail. All 13 must pass for CERTIFIED.
 | 5 | SKILL.md under 500 lines | `wc -l SKILL.md` <= 500 | Monolithic 800-line SKILL.md without references/ |
 | 6 | 1+ Good vs Bad example | Grep for "Good" and "Bad" near each other | Missing — most common single failure |
 | 7 | Validation gate with 5+ criteria | Count `- [ ]` checkboxes | 3 vague checkboxes or missing entirely |
-| 8 | Assumptions & Limits section, specific | Section exists + has >3 specific limits | Section header with "TBD" or boilerplate |
+| 8 | Assumptions & Limits section, specific | Section exists + has >3 specific limits | Section header with "pending" or boilerplate |
 | 9 | Edge Cases with 3+ scenarios | Count bold items in Edge Cases section | 1-2 edge cases or none |
 | 10 | All referenced files exist | Grep paths → `ls` each | Broken reference to renamed/deleted file |
 | 11 | Progressive disclosure mechanism | "Before" section or ref-loading instructions | References/ exists but SKILL.md never says when to load |
@@ -176,7 +176,7 @@ Beyond the 10-criterion rubric and 13-point gate, MOAT certification adds 5 dete
 |---|-------|-----------|------|---------------|
 | M1 | Evals exist with >= 5 tests | `ls evals/evals.json` + count entries | File exists, >= 5 entries | BLOCKER |
 | M2 | False-positive + edge-case evals | Grep eval names/tags | >= 1 false-positive, >= 1 edge-case | WARNING |
-| M3 | References substantive | `wc -l` each file in references/, grep TBD/TODO | All >= 20 lines, zero placeholders | BLOCKER |
+| M3 | References substantive | `wc -l` each file in references/, grep pending/Todo | All >= 20 lines, zero templates | BLOCKER |
 | M4 | Template A compliance | Grep for "## Usage" or "## When to Activate" + "## Validation Gate" | Both present, no "## The Physics"/"## The Protocol" | BLOCKER |
 | M5 | Evidence tag coverage | Count [EXPLICIT]/[INFERRED]/[OPEN] vs factual sentences | >= 80% (Standard/Orchestrator), >= 50% (Utility) | WARNING |
 

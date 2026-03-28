@@ -3,7 +3,7 @@ name: vendor-evaluation
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Vendor scoring, TCO analysis, lock-in assessment, exit strategy.
+  Vendor scoring, TCO analysis, lock-in assessment, exit strategy. [EXPLICIT]
   Trigger: "vendor evaluation"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Vendor Evaluation
 > "Method over hacks."
 ## TL;DR
-Vendor scoring, TCO analysis, lock-in assessment, exit strategy.
+Vendor scoring, TCO analysis, lock-in assessment, exit strategy. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Vendor scoring, TCO analysis, lock-in assessment, exit strategy.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/vendor-evaluation" — Run the full vendor evaluation workflow
+- "vendor evaluation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

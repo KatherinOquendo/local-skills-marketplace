@@ -1,6 +1,6 @@
 ---
 name: benchmark-skill
-description: >
+description: 
   This skill should be used when the user asks to "compare skill versions",
   "benchmark this skill", "what improved", "diff these skills",
   "measure skill improvement", or "before and after analysis". Compares
@@ -8,8 +8,8 @@ description: >
   or one skill against another — and produces a dimension-by-dimension
   delta report with quantified improvement. Use this skill whenever
   someone needs proof that an improvement actually improved something,
-  or to compare a skill against a reference standard.
-argument-hint: "<path-a> <path-b> | <path> --against-standard"
+  or to compare a skill against a reference standard. [EXPLICIT]
+argument-hint: "path-a path-b | path --against-standard"
 allowed-tools:
   - Read
   - Glob
@@ -21,9 +21,9 @@ context: fork
 
 # Skill Benchmark
 
-Quantified comparison between two skill states. Measures improvement dimension by dimension, identifies regressions, and produces evidence that changes actually made things better — or exposes that they didn't.
+Quantified comparison between two skill states. Measures improvement dimension by dimension, identifies regressions, and produces evidence that changes actually made things better — or exposes that they didn't. [EXPLICIT]
 
-Without measurement, improvement is anecdotal. This skill turns "I think it's better" into "Clarity improved from 6 to 9, but density dropped from 8 to 7 due to added filler in section X."
+Without measurement, improvement is anecdotal. This skill turns "I think it's better" into "Clarity improved from 6 to 9, but density dropped from 8 to 7 due to added filler in section X." [EXPLICIT]
 
 ## Usage
 
@@ -43,7 +43,7 @@ Without measurement, improvement is anecdotal. This skill turns "I think it's be
 
 ### Step 1: Inventory Both States
 
-For each skill state (A and B, or skill and standard):
+For each skill state (A and B, or skill and standard): [EXPLICIT]
 
 | Attribute | State A | State B | Delta |
 |-----------|---------|---------|-------|
@@ -57,7 +57,7 @@ For each skill state (A and B, or skill and standard):
 
 ### Step 2: Score Both States
 
-Apply the 10-criterion rubric from x-ray-skill's `references/quality-rubric.md` to both states independently. Produce parallel scorecards.
+Apply the 10-criterion rubric from x-ray-skill's `references/quality-rubric.md` to both states independently. Produce parallel scorecards. [EXPLICIT]
 
 **Scoring consistency:** Use the same evidence standards for both states. If you give State A a 7 on clarity because of 2 ambiguous pronouns, State B with 1 ambiguous pronoun should score higher — don't use different scales.
 
@@ -77,7 +77,7 @@ Apply the 10-criterion rubric from x-ray-skill's `references/quality-rubric.md` 
 
 ### Step 3: Run Gate on Both States
 
-Apply the 13-point meta-validation gate to both:
+Apply the 13-point meta-validation gate to both: [EXPLICIT]
 
 | # | Checkpoint | State A | State B | Changed? |
 |---|-----------|---------|---------|----------|
@@ -85,11 +85,11 @@ Apply the 13-point meta-validation gate to both:
 
 ### Step 4: Identify Regressions
 
-A regression is any dimension where State B scores lower than State A, or any gate checkpoint that passed in A but fails in B.
+A regression is any dimension where State B scores lower than State A, or any gate checkpoint that passed in A but fails in B. [EXPLICIT]
 
 **Regressions are the most important finding.** Improvements are expected (that's the point of making changes). Regressions are unexpected — they indicate unintended consequences.
 
-For each regression:
+For each regression: [EXPLICIT]
 - **Which dimension or checkpoint regressed**
 - **What specific change caused the regression** (trace to a file diff)
 - **How severe** (1-point drop vs 3-point drop)
@@ -97,17 +97,17 @@ For each regression:
 
 ### Step 5: Identify Key Improvements
 
-For each dimension that improved by 2+ points:
+For each dimension that improved by 2+ points: [EXPLICIT]
 - **What specific change drove the improvement** (trace to file/section)
 - **Whether the improvement is genuine or inflationary** (adding a "Good vs Bad" section earns the points; adding filler does not)
 
 ### Step 6: Net Assessment
 
 ```
-IMPROVED:    More dimensions improved than regressed, average increased, no gate regressions
-LATERAL:     Similar average, trade-offs balance (gained depth, lost density)
-REGRESSED:   More dimensions regressed than improved, or gate regressions
-TRANSFORMED: Fundamental structural change — scores aren't directly comparable (e.g., single-file → multi-file)
+IMPROVED:    More dimensions improved than regressed, average increased, no gate regressions [EXPLICIT]
+LATERAL:     Similar average, trade-offs balance (gained depth, lost density) [EXPLICIT]
+REGRESSED:   More dimensions regressed than improved, or gate regressions [EXPLICIT]
+TRANSFORMED: Fundamental structural change — scores aren't directly comparable (e.g., single-file → multi-file) [EXPLICIT]
 ```
 
 ### Step 7: Produce Benchmark Report
@@ -180,23 +180,23 @@ TRANSFORMED: Fundamental structural change — scores aren't directly comparable
 
 **Bad:**
 ```
-State A: 7.2/10. State B: 8.1/10. Improvement: +0.9. Good job.
+State A: 7.2/10. State B: 8.1/10. Improvement: +0.9. Good job. [EXPLICIT]
 ```
-No dimension breakdown. No regression detection. No evidence.
+No dimension breakdown. No regression detection. No evidence. [EXPLICIT]
 
 **Good:**
 ```
-Net: IMPROVED (+0.9 average, 0 regressions, 3 gate fixes)
-Key improvements: Depth 5→8 (added failure modes + 4 edge cases),
-                  Clarity 6→9 (added glossary, eliminated ambiguous pronouns).
-Key trade-off: Density 9→8 (added content increased value but reduced compression).
-Regressions: None.
-Gate: 10/13 → 13/13 (fixed: Good vs Bad example, 2 missing edge cases).
+Net: IMPROVED (+0.9 average, 0 regressions, 3 gate fixes) [EXPLICIT]
+Key improvements: Depth 5→8 (added failure modes + 4 edge cases), [EXPLICIT]
+                  Clarity 6→9 (added glossary, eliminated ambiguous pronouns). [EXPLICIT]
+Key trade-off: Density 9→8 (added content increased value but reduced compression). [EXPLICIT]
+Regressions: None. [EXPLICIT]
+Gate: 10/13 → 13/13 (fixed: Good vs Bad example, 2 missing edge cases). [EXPLICIT]
 ```
 
 ## Validation Gate
 
-Before delivering the benchmark report:
+Before delivering the benchmark report: [EXPLICIT]
 
 - [ ] Both states were scored with consistent criteria (same rubric, same evidence standards)
 - [ ] Every dimension has a score for both states with key driver identified

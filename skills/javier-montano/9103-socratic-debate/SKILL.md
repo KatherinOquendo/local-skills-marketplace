@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Structured Socratic debate for resolving ambiguities, trade-offs, and low-confidence
   decisions. Produces auditable thesis-antithesis-synthesis records with constitutional
-  principle alignment.
+  principle alignment. [EXPLICIT]
   Trigger: "debate", "ambiguity", "resolve conflict", "low confidence", "Socratic"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Formal mechanism for resolving ambiguities that have divergent implementation consequences. Runs a structured thesis → antithesis → counter-evidence → synthesis cycle, examines each option against constitutional principles, eliminates by contradiction, and produces a single answer with full rationale. Records debates in `.specify/debates/` for auditability. Use when confidence < 0.95, requirements are ambiguous, or trade-offs have no obvious winner.
+Formal mechanism for resolving ambiguities that have divergent implementation consequences. Runs a structured thesis → antithesis → counter-evidence → synthesis cycle, examines each option against constitutional principles, eliminates by contradiction, and produces a single answer with full rationale. Records debates in `.specify/debates/` for auditability. Use when confidence < 0.95, requirements are ambiguous, or trade-offs have no obvious winner. [EXPLICIT]
 
 ## Procedure
 
@@ -91,3 +91,25 @@ Formal mechanism for resolving ambiguities that have divergent implementation co
 - `scenario-analysis` — Multi-scenario comparison with scoring
 - `requirements-engineering` — When the ambiguity is in requirements, not solutions
 - `integrity-chain-validation` — Debates may reveal integrity chain gaps
+
+## Usage
+
+Example invocations:
+
+- "/socratic-debate" — Run the full socratic debate workflow
+- "socratic debate on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

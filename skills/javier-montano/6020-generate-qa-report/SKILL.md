@@ -3,8 +3,8 @@ name: generate-qa-report
 author: JM Labs (Javier Montaño)
 description: >
   Generates a comprehensive QA report in Markdown combining findings from all validation
-  and audit skills, with executive summary, categorized findings, and prioritized recommendations.
-  Trigger: generate QA report, full report, plugin report, qa summary.
+  and audit skills, with executive summary, categorized findings, and prioritized recommendations. [EXPLICIT]
+  Trigger: generate QA report, full report, plugin report, qa summary. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -17,7 +17,7 @@ allowed-tools:
 
 > "What gets measured gets managed; what gets reported gets improved."
 
-Aggregates findings from all 7 validation and audit skills into a single comprehensive Markdown report. Includes a 3-line TL;DR, categorized findings by dimension, summary statistics, and a Top 5 prioritized recommendations list.
+Aggregates findings from all 7 validation and audit skills into a single comprehensive Markdown report. Includes a 3-line TL;DR, categorized findings by dimension, summary statistics, and a Top 5 prioritized recommendations list. [EXPLICIT]
 
 ---
 
@@ -63,15 +63,15 @@ Aggregates findings from all 7 validation and audit skills into a single compreh
    - File path and line number (when applicable)
    - Specific recommendation for resolution
 
-6. **Build Summary Statistics table** -- columns: Category, Critical, Warning, Info, Status (PASS/WARN/FAIL).
+6. **Build Summary Statistics table** -- columns: Category, Critical, Warning, Info, Status (PASS/WARN/FAIL). [EXPLICIT]
 
 7. **Write Top 5 Recommendations** -- prioritized by impact:
    - Rank by: CRITICAL findings first, then by number of files affected, then by ease of fix
    - Each recommendation: what to do, why it matters, estimated effort (trivial/moderate/significant)
 
-8. **Include Content Quality Scorecard** -- if `audit-content-quality` results are available, embed the per-skill scorecard table and the plugin average score.
+8. **Include Content Quality Scorecard** -- if `audit-content-quality` results are available, embed the per-skill scorecard table and the plugin average score. [EXPLICIT]
 
-9. **Save the report** -- write the file as `{plugin-name}_qa-report_{YYYY-MM-DD}.md` in the current working directory. Confirm the file path to the user.
+9. **Save the report** -- write the file as `{plugin-name}_qa-report_{YYYY-MM-DD}.md` in the current working directory. Confirm the file path to the user. [EXPLICIT]
 
 ## Quality Criteria
 
@@ -98,29 +98,37 @@ Aggregates findings from all 7 validation and audit skills into a single compreh
 - Bad structure
 - Security issue
 ```
-Missing: no severity, no file paths, no categorization, no recommendations.
+Missing: no severity, no file paths, no categorization, no recommendations. [EXPLICIT]
 
 **Good report excerpt:**
 ```
 ## Structure
-[WARNING] | skills/ | Directory absent. Plugin description implies skill-based functionality. | Add skills/ directory with at least one SKILL.md.
+[WARNING] | skills/ | Directory absent. Plugin description implies skill-based functionality. | Add skills/ directory with at least one SKILL.md. [EXPLICIT]
 
 ## Security
-[CRITICAL] | hooks/post-install.sh:7 | Hardcoded API key matching `sk-proj-*` pattern. | Remove the key, rotate immediately, use environment variables.
+[CRITICAL] | hooks/post-install.sh:7 | Hardcoded API key matching `sk-proj-*` pattern. | Remove the key, rotate immediately, use environment variables. [EXPLICIT]
 ```
-Includes: severity icon, file path with line, description, actionable recommendation, proper categorization.
+Includes: severity icon, file path with line, description, actionable recommendation, proper categorization. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Wall of text** -- dumping raw findings without categorization, severity icons, or structure.
-2. **Missing cross-references** -- reporting a finding without the file path and line number, making it unfindable.
-3. **Recommendations without rationale** -- saying "fix this" without explaining the impact or risk.
-4. **Duplicate findings** -- the same issue reported under multiple categories without deduplication.
-5. **Stale data** -- generating a report from outdated validation results without noting when those results were produced.
+1. **Wall of text** -- dumping raw findings without categorization, severity icons, or structure. [EXPLICIT]
+2. **Missing cross-references** -- reporting a finding without the file path and line number, making it unfindable. [EXPLICIT]
+3. **Recommendations without rationale** -- saying "fix this" without explaining the impact or risk. [EXPLICIT]
+4. **Duplicate findings** -- the same issue reported under multiple categories without deduplication. [EXPLICIT]
+5. **Stale data** -- generating a report from outdated validation results without noting when those results were produced. [EXPLICIT]
 
 ## Edge Cases
 
-1. **No findings at all** -- generate a clean report with all categories showing PASS and a congratulatory TL;DR. Do not skip report generation.
-2. **Only one validation skill was run** -- generate a partial report clearly labeled as incomplete, listing which dimensions were not evaluated.
-3. **Very large plugin (100+ findings)** -- still include every finding but add a "Critical Findings Summary" section at the top listing only CRITICAL items for quick triage.
-4. **Plugin with no version in plugin.json** -- use "unknown" as the version and flag it as an INFO finding.
+1. **No findings at all** -- generate a clean report with all categories showing PASS and a congratulatory TL;DR. Do not skip report generation. [EXPLICIT]
+2. **Only one validation skill was run** -- generate a partial report clearly labeled as incomplete, listing which dimensions were not evaluated. [EXPLICIT]
+3. **Very large plugin (100+ findings)** -- still include every finding but add a "Critical Findings Summary" section at the top listing only CRITICAL items for quick triage. [EXPLICIT]
+4. **Plugin with no version in plugin.json** -- use "unknown" as the version and flag it as an INFO finding. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/generate-qa-report" — Run the full generate qa report workflow
+- "generate qa report on this project" — Apply to current context
+

@@ -3,9 +3,9 @@ name: metodologia-sector-intelligence
 author: Javier Montaño · Comunidad MetodologIA
 description: >
   Industry/sector intelligence analysis — context-adaptive expert that provides sector-specific insights,
-  regulatory context, benchmarks, and risk overlays. Replaces former dynamic-sme.
+  regulatory context, benchmarks, and risk overlays. Replaces former dynamic-sme. [EXPLICIT]
   Use when the user asks to "add industry context", "analyze sector", "give me the banking/retail/health perspective",
-  or mentions "sector intelligence", "industry analysis", "industry lens", "sector analysis", "regulatory context".
+  or mentions "sector intelligence", "industry analysis", "industry lens", "sector analysis", "regulatory context". [EXPLICIT]
 argument-hint: "[industry] [phase/task] [depth]"
 model: opus
 context: fork
@@ -23,15 +23,15 @@ allowed-tools:
 
 ## Purpose
 
-Industry/sector intelligence analysis — dynamic expert that shifts expertise based on engagement context. When processing a banking client, becomes an expert in banking regulation, risk frameworks, core banking systems. When processing retail, shifts to supply chain, POS, loyalty. Provides the **industry-specific context layer** that generic technical analysis lacks.
+Industry/sector intelligence analysis — dynamic expert that shifts expertise based on engagement context. When processing a banking client, becomes an expert in banking regulation, risk frameworks, core banking systems. When processing retail, shifts to supply chain, POS, loyalty. Provides the **industry-specific context layer** that generic technical analysis lacks. [EXPLICIT]
 
 ## Grounding Guideline
 
 > Technology without industry context is a solution searching for a problem. The dynamic SME is the bridge between generic analysis and business-relevant insight.
 
-1. **Context before code.** Every technical decision exists within a regulatory, competitive, and operational ecosystem. Ignoring that ecosystem is building on sand. The SME injects the gravity of the industry into every deliverable.
-2. **The lens determines the vision.** The same architectural pattern has radically different implications in banking (where auditability is law) versus retail (where speed is survival). The SME does not decorate — it transforms the perspective.
-3. **Declared assumptions, never hidden.** When industry knowledge is incomplete, it is declared. A qualified insight ("based on public benchmarks for tier-2 banking") is worth more than an assertion disguised as certainty.
+1. **Context before code.** Every technical decision exists within a regulatory, competitive, and operational ecosystem. Ignoring that ecosystem is building on sand. The SME injects the gravity of the industry into every deliverable. [EXPLICIT]
+2. **The lens determines the vision.** The same architectural pattern has radically different implications in banking (where auditability is law) versus retail (where speed is survival). The SME does not decorate — it transforms the perspective. [EXPLICIT]
+3. **Declared assumptions, never hidden.** When industry knowledge is incomplete, it is declared. A qualified insight ("based on public benchmarks for tier-2 banking") is worth more than an assertion disguised as certainty. [EXPLICIT]
 
 ## Inputs
 
@@ -49,10 +49,10 @@ Examples:
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto for industry analysis and benchmarks, HITL for regulatory context validation and compound lens decisions.
-  - **desatendido**: Zero interruptions. Lens applied automatically. Assumptions documented.
-  - **supervisado**: Autonomous with checkpoint when selecting industry lens.
-  - **paso-a-paso**: Confirms lens, each risk overlay, and each benchmark.
+  - **piloto-auto**: Auto for industry analysis and benchmarks, HITL for regulatory context validation and compound lens decisions. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Lens applied automatically. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autonomous with checkpoint when selecting industry lens. [EXPLICIT]
+  - **paso-a-paso**: Confirms lens, each risk overlay, and each benchmark. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — context brief + risk overlay only) | `técnica` (full, default)
 - `{MODO_OPERACIONAL}`: `integral` (default, full sector intelligence with all delivery sections) | `regulatorio` (regulatory landscape profiling, compliance framework mapping, data sovereignty, audit trail mandates, certification requirements, gap assessment) | `benchmarks` (industry KPI benchmarks, peer cohort comparison, technology adoption curves, competitive positioning, improvement targets)
@@ -320,7 +320,7 @@ Before delivering any SME output, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - Mindmap: industry-specific regulatory and compliance landscape
@@ -348,6 +348,14 @@ Formerly separate sub-agents (`regulatory-scanner`, `benchmark-analyst`) are now
 | `regulatorio` | Regulatory landscape profiling, compliance framework mapping (SOC 2, ISO 27001, PCI-DSS, HIPAA, GDPR), data sovereignty requirements, audit trail mandates, certification timelines, gap assessment | Regulated industries (banking, healthcare, government) or compliance-driven architecture decisions |
 | `benchmarks` | Industry KPI benchmarks, peer cohort definition and comparison, technology adoption curve positioning, competitive landscape analysis, improvement targets with effort estimates | Anchoring recommendations to industry reality, justifying investment with peer comparison |
 
-Invoke with `{MODO_OPERACIONAL}=regulatorio` or `{MODO_OPERACIONAL}=benchmarks`.
+Invoke with `{MODO_OPERACIONAL}=regulatorio` or `{MODO_OPERACIONAL}=benchmarks`. [EXPLICIT]
 
 ---
+
+## Usage
+
+Example invocations:
+
+- "/sector-intelligence" — Run the full sector intelligence workflow
+- "sector intelligence on this project" — Apply to current context
+

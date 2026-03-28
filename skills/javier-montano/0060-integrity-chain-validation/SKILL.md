@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Validate the Intent Integrity Chain end-to-end: Intent → RQL → Plan → ADR → Spec →
   Tests → Code. Produces traceability matrix, identifies broken links, flags orphaned
-  code without requirements.
+  code without requirements. [EXPLICIT]
   Trigger: "validate chain", "traceability", "integrity check", "orphaned code", "governance audit"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Validates the complete governance chain (Intent → RQL → Plan → ADR → Spec → Tests → Code) for a feature or the entire project. Produces a traceability matrix showing each requirement's chain status. Flags broken links (missing documents, orphaned code, tests without requirements) with severity. Essential for Constitution compliance and quality gate G1.
+Validates the complete governance chain (Intent → RQL → Plan → ADR → Spec → Tests → Code) for a feature or the entire project. Produces a traceability matrix showing each requirement's chain status. Flags broken links (missing documents, orphaned code, tests without requirements) with severity. Essential for Constitution compliance and quality gate G1. [EXPLICIT]
 
 ## Procedure
 
@@ -94,3 +94,25 @@ Validates the complete governance chain (Intent → RQL → Plan → ADR → Spe
 - `test-strategy` — Ensuring tests exist for the chain
 - `discovery-orchestration` — Generating plan files as part of the chain
 - `socratic-debate` — Resolving ambiguities found during chain validation
+
+## Usage
+
+Example invocations:
+
+- "/integrity-chain-validation" — Run the full integrity chain validation workflow
+- "integrity chain validation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

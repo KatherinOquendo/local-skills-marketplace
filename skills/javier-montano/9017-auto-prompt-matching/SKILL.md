@@ -3,7 +3,7 @@ name: auto-prompt-matching
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Fuzzy-match user intent to best skill/prompt from PRISTINO-INDEX.md. Confidence scoring and routing.
+  Fuzzy-match user intent to best skill/prompt from PRISTINO-INDEX.md. Confidence scoring and routing. [EXPLICIT]
   Trigger: "auto prompt matching"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Fuzzy-match user intent to best skill/prompt from PRISTINO-INDEX.md. Confidence scoring and routing. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md.
+Fuzzy-match user intent to best skill/prompt from PRISTINO-INDEX.md. Confidence scoring and routing. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md. [EXPLICIT]
 
 ## Procedure
 
@@ -49,3 +49,25 @@ Fuzzy-match user intent to best skill/prompt from PRISTINO-INDEX.md. Confidence 
 ## Related Skills
 
 - See PRISTINO.md for full orchestration protocol
+
+## Usage
+
+Example invocations:
+
+- "/auto-prompt-matching" — Run the full auto prompt matching workflow
+- "auto prompt matching on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

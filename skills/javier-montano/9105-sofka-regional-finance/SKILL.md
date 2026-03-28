@@ -1,7 +1,7 @@
 ---
 name: sofka-regional-finance
 author: JM Labs (Javier Montano)
-description: >
+description: 
   Regional finance and accounting standards skill covering Colombia (NIIF/DIAN/CTC),
   Ecuador (SRI/USD dollarization), Mexico (SAT/CFDI), United States (GAAP/ASC 606),
   Spain (AEAT/SII), and pan-Americas considerations. Use whenever the user mentions
@@ -10,10 +10,10 @@ description: >
   withholding taxes, or labor cost structures for IT services companies operating across
   these regions. Essential for SAP localization configuration and fit-to-standard financial
   workshops. Also trigger when discussing cost-vs-sale segregation, Activity Type cost
-  rates, margin visibility, arm's length pricing, or any cross-border billing.
+  rates, margin visibility, arm's length pricing, or any cross-border billing. [EXPLICIT]
   Trigger: CTC calculation, transfer pricing, intercompany billing, tax compliance,
-  e-invoicing, SAP localization, withholding taxes, Activity Type rates, margin visibility.
-argument-hint: "<country-or-topic> [--scenario domestic|intercompany|shared-services]"
+  e-invoicing, SAP localization, withholding taxes, Activity Type rates, margin visibility. [EXPLICIT]
+argument-hint: "country-or-topic [--scenario domestic|intercompany|shared-services]"
 model: opus
 context: fork
 allowed-tools:
@@ -32,9 +32,9 @@ allowed-tools:
 
 ## Purpose
 
-Provide financial regulatory guidance for IT services companies operating across Colombia, Ecuador, Mexico, United States, and Spain. Covers accounting standards (NIIF/IFRS, US GAAP), tax compliance, electronic invoicing, transfer pricing, CTC calculation, intercompany billing, and SAP localization.
+Provide financial regulatory guidance for IT services companies operating across Colombia, Ecuador, Mexico, United States, and Spain. Covers accounting standards (NIIF/IFRS, US GAAP), tax compliance, electronic invoicing, transfer pricing, CTC calculation, intercompany billing, and SAP localization. [EXPLICIT]
 
-This skill resolves the common IT services problem of blended rates — segregating CTC-based internal cost from client-facing sales price — enabling real margin visibility in SAP CO.
+This skill resolves the common IT services problem of blended rates — segregating CTC-based internal cost from client-facing sales price — enabling real margin visibility in SAP CO. [EXPLICIT]
 
 ## When to Use
 
@@ -117,14 +117,14 @@ Productive Hours = Standard Hours - Vacations - Holidays - Sick - Training
 | US | 173 (40h/wk) | 155-165 | ~25-35% |
 | Spain | 160 (40h/wk) | 140-152 | ~35-40% |
 
-The payroll factor varies significantly because social security structure differs per country. Colombia's is highest due to combined health+pension+ARL+prestaciones. Ecuador is lowest because of simpler IESS structure.
+The payroll factor varies significantly because social security structure differs per country. Colombia's is highest due to combined health+pension+ARL+prestaciones. Ecuador is lowest because of simpler IESS structure. [EXPLICIT]
 
 ---
 
 ## Cost-Sale Segregation
 
 ### The Problem
-IT services companies often use a single blended rate per resource that mixes internal cost with client price. This makes real margin invisible and creates key-person risk when only one person knows the cost formula.
+IT services companies often use a single blended rate per resource that mixes internal cost with client price. This makes real margin invisible and creates key-person risk when only one person knows the cost formula. [EXPLICIT]
 
 ### Resolution: 3 Layers
 
@@ -146,7 +146,7 @@ Activity Types map skill levels to separate Cost Rate and Sales Price:
 | Semi-Senior | Executes with minimal supervision | 30-45% |
 | Junior | Developing, requires guidance | 25-40% |
 
-Functional role (DevOps, QA, Frontend, etc.) is NOT an Activity Type dimension — it maps to employee qualifications in personnel master.
+Functional role (DevOps, QA, Frontend, etc.) is NOT an Activity Type dimension — it maps to employee qualifications in personnel master. [EXPLICIT]
 
 > For specific rate ranges and full AT table: `references/tax-and-invoicing-matrix.md`
 
@@ -155,7 +155,7 @@ Functional role (DevOps, QA, Frontend, etc.) is NOT an Activity Type dimension �
 ## Intercompany Scenarios
 
 ### Scenario 1: Domestic (No IC)
-Resource works for a domestic client. Billed by local entity. No intercompany. CTC from local formula.
+Resource works for a domestic client. Billed by local entity. No intercompany. CTC from local formula. [EXPLICIT]
 
 ### Scenario 2: Cross-Border Service Delivery
 ```
@@ -169,7 +169,7 @@ Resource works for a domestic client. Billed by local entity. No intercompany. C
 ```
 
 ### Scenario 3: Shared Services
-Central services (HR, Finance, IT) allocated to all entities. Cost-Plus 5-8%. Allocation key: headcount or revenue.
+Central services (HR, Finance, IT) allocated to all entities. Cost-Plus 5-8%. Allocation key: headcount or revenue. [EXPLICIT]
 
 ---
 
@@ -241,18 +241,24 @@ File: `XX_Analisis_Financiero_Regional_Deep.html`
 
 ## Anti-Patterns
 
-1. **Using a single blended rate** — Always segregate CTC Cost Rate from Sales Price. The entire skill exists to prevent this.
-2. **Hardcoding tax rates without dates** — Tax rates change. Every rate must include "Last verified: YYYY" and a verification note.
-3. **Generic "check treaty" for withholding** — Always identify the specific DTA and applicable articles for the country pair.
+1. **Using a single blended rate** — Always segregate CTC Cost Rate from Sales Price. The entire skill exists to prevent this. [EXPLICIT]
+2. **Hardcoding tax rates without dates** — Tax rates change. Every rate must include "Last verified: YYYY" and a verification note. [EXPLICIT]
+3. **Generic "check treaty" for withholding** — Always identify the specific DTA and applicable articles for the country pair. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Volume-based pricing** — Some contracts have tiered rates by headcount per profile/month. SAP pricing conditions must support tiered rates, not flat.
-2. **Salary threshold affecting payroll factor** — In Colombia, SENA/ICBF exemptions depend on salary vs SMLMV threshold. CTC calculation must branch.
-3. **Dollarized economies** — Ecuador uses USD natively. IC with COP-denominated entities requires FX but not at the Ecuador entity level.
+1. **Volume-based pricing** — Some contracts have tiered rates by headcount per profile/month. SAP pricing conditions must support tiered rates, not flat. [EXPLICIT]
+2. **Salary threshold affecting payroll factor** — In Colombia, SENA/ICBF exemptions depend on salary vs SMLMV threshold. CTC calculation must branch. [EXPLICIT]
+3. **Dollarized economies** — Ecuador uses USD natively. IC with COP-denominated entities requires FX but not at the Ecuador entity level. [EXPLICIT]
 
 ## Cross-References
 
 - **sofka-sap-implementation**: Module configuration (CO Activity Types, SD pricing, FI Company Codes)
 - **sofka-bpmn-process-analysis**: Intercompany billing process flows
 - **analisis-horizontal-financiero**: Financial statement analysis with IT Services benchmarks
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

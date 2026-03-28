@@ -1,60 +1,60 @@
----
-name: brand-docx
-description: >
-  This skill should be used when the user asks to "generate a Word document",
-  "create a branded DOCX", "build a proposal in Word format",
-  "make a brand-compliant report", or "produce a cover page",
-  or mentions python-docx, Word templates, or DOCX generation.
-  It generates brand-compliant Word documents using python-docx with configurable
-  brand tokens for colors, fonts, cover pages, headers, callouts, tables, and footers.
-  Use this skill whenever the user needs a .docx file with branded styling,
-  even if they don't explicitly ask for "brand DOCX".
-argument-hint: "<document-type> <title> [brand-config-path]"
-model: opus
-context: fork
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Write
-  - Edit
-  - Bash
----
-
-# Brand DOCX — Word Document Generator
-
-Generate brand-compliant Word documents (.docx) using python-docx. Reads brand tokens from config and applies colors, typography, layout patterns, and structural elements.
-
-## Prerequisites
-
-- python-docx installed (`pip install python-docx`)
-- Brand config file (optional; uses neutral defaults without one)
-
-## Brand Configuration
-
-Search for config:
-1. Path passed as argument
-2. `./brand-config.json`
-3. `~/.claude/brand-config.json`
-
-### Config Fields Used
-
-```json
-{
-  "brand": { "name": "", "wordmark": "", "wordmarkAccent": "", "tagline": "", "positioning": "" },
-  "colors": { "primary": "#FF7E08", "black": "#000000", "white": "#FFFFFF", "background": "#EFEAE4", "muted": "#B8A894" },
-  "decorative": ["#42D36F", "#06C8C8", "#9747FF", "#FE9CAB"],
-  "typography": { "display": "Clash Grotesk", "displayFallback": "Calibri", "body": "Inter", "bodyFallback": "Calibri" },
-  "docx": { "year": "2026", "confidential": true }
-}
-```
-
-## Color Palette (python-docx)
-
-```python
-from docx.shared import RGBColor
-
-def load_brand_colors(config):
+--- [EXPLICIT]
+name: brand-docx [EXPLICIT]
+description:  [EXPLICIT]
+  This skill should be used when the user asks to "generate a Word document", [EXPLICIT]
+  "create a branded DOCX", "build a proposal in Word format", [EXPLICIT]
+  "make a brand-compliant report", or "produce a cover page", [EXPLICIT]
+  or mentions python-docx, Word templates, or DOCX generation. [EXPLICIT]
+  It generates brand-compliant Word documents using python-docx with configurable [EXPLICIT]
+  brand tokens for colors, fonts, cover pages, headers, callouts, tables, and footers. [EXPLICIT]
+  Use this skill whenever the user needs a .docx file with branded styling, [EXPLICIT]
+  even if they don't explicitly ask for "brand DOCX". [EXPLICIT]
+argument-hint: "document-type title [brand-config-path]" [EXPLICIT]
+model: opus [EXPLICIT]
+context: fork [EXPLICIT]
+allowed-tools: [EXPLICIT]
+  - Read [EXPLICIT]
+  - Grep [EXPLICIT]
+  - Glob [EXPLICIT]
+  - Write [EXPLICIT]
+  - Edit [EXPLICIT]
+  - Bash [EXPLICIT]
+--- [EXPLICIT]
+ [EXPLICIT]
+# Brand DOCX — Word Document Generator [EXPLICIT]
+ [EXPLICIT]
+Generate brand-compliant Word documents (.docx) using python-docx. Reads brand tokens from config and applies colors, typography, layout patterns, and structural elements. [EXPLICIT]
+ [EXPLICIT]
+## Prerequisites [EXPLICIT]
+ [EXPLICIT]
+- python-docx installed (`pip install python-docx`) [EXPLICIT]
+- Brand config file (optional; uses neutral defaults without one) [EXPLICIT]
+ [EXPLICIT]
+## Brand Configuration [EXPLICIT]
+ [EXPLICIT]
+Search for config: [EXPLICIT]
+1. Path passed as argument [EXPLICIT]
+2. `./brand-config.json` [EXPLICIT]
+3. `~/.claude/brand-config.json` [EXPLICIT]
+ [EXPLICIT]
+### Config Fields Used [EXPLICIT]
+ [EXPLICIT]
+```json [EXPLICIT]
+{ [EXPLICIT]
+  "brand": { "name": "", "wordmark": "", "wordmarkAccent": "", "tagline": "", "positioning": "" }, [EXPLICIT]
+  "colors": { "primary": "#FF7E08", "black": "#000000", "white": "#FFFFFF", "background": "#EFEAE4", "muted": "#B8A894" }, [EXPLICIT]
+  "decorative": ["#42D36F", "#06C8C8", "#9747FF", "#FE9CAB"], [EXPLICIT]
+  "typography": { "display": "Clash Grotesk", "displayFallback": "Calibri", "body": "Inter", "bodyFallback": "Calibri" }, [EXPLICIT]
+  "docx": { "year": "2026", "confidential": true } [EXPLICIT]
+} [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+## Color Palette (python-docx) [EXPLICIT]
+ [EXPLICIT]
+```python [EXPLICIT]
+from docx.shared import RGBColor [EXPLICIT]
+ [EXPLICIT]
+def load_brand_colors(config): [EXPLICIT]
     """Load colors from brand config, with defaults."""
     c = config.get("colors", {})
     return {
@@ -68,7 +68,7 @@ def load_brand_colors(config):
 
 ## Typography
 
-Brand display font with system fallback:
+Brand display font with system fallback: [EXPLICIT]
 
 ```python
 from docx.shared import Pt
@@ -279,3 +279,11 @@ def add_header_footer(doc, title="", config={}):
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/brand-docx" — Run the full brand docx workflow
+- "brand docx on this project" — Apply to current context
+

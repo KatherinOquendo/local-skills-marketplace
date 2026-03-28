@@ -3,7 +3,7 @@ name: input-tolerance
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Normalize imperfect input: typos, voice, dyslexia, multilingual, multimodal. Extract intent from noise.
+  Normalize imperfect input: typos, voice, dyslexia, multilingual, multimodal. Extract intent from noise. [EXPLICIT]
   Trigger: "input tolerance"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Normalize imperfect input: typos, voice, dyslexia, multilingual, multimodal. Extract intent from noise. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md.
+Normalize imperfect input: typos, voice, dyslexia, multilingual, multimodal. Extract intent from noise. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md. [EXPLICIT]
 
 ## Procedure
 
@@ -49,3 +49,25 @@ Normalize imperfect input: typos, voice, dyslexia, multilingual, multimodal. Ext
 ## Related Skills
 
 - See PRISTINO.md for full orchestration protocol
+
+## Usage
+
+Example invocations:
+
+- "/input-tolerance" — Run the full input tolerance workflow
+- "input tolerance on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

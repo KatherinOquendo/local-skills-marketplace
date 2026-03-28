@@ -1,11 +1,11 @@
 ---
 name: task-engine
-description: >
+description: 
   Meta-cognitive reasoning engine that decomposes complex problems using the DSVSR protocol
-  (Decompose-Solve-Verify-Synthesize-Reflect) with explicit confidence calibration.
+  (Decompose-Solve-Verify-Synthesize-Reflect) with explicit confidence calibration. [EXPLICIT]
   Use when the user asks to "break down this problem", "analyze with confidence scores",
-  "decompose and verify", "run DSVSR", or "reason through this step by step".
-argument-hint: "<problem description> [--target 0.95] [--fast]"
+  "decompose and verify", "run DSVSR", or "reason through this step by step". [EXPLICIT]
+argument-hint: "problem description [--target 0.95] [--fast]"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Task Engine
 
-Decompose, solve with confidence, verify, synthesize, and reflect — until the answer earns its confidence score.
+Decompose, solve with confidence, verify, synthesize, and reflect — until the answer earns its confidence score. [EXPLICIT]
 
 ## When to Activate
 
@@ -41,13 +41,13 @@ Problem → DECOMPOSE → SOLVE → VERIFY → SYNTHESIZE → REFLECT → Answer
 
 ### 1. DECOMPOSE
 
-Break the problem into independent, atomic sub-problems.
+Break the problem into independent, atomic sub-problems. [EXPLICIT]
 
-1. Strip noise — identify the core question.
-2. List components needing separate answers.
-3. Map dependencies (which block others?).
-4. Order by dependency chain (foundations first).
-5. Tag each by domain (technical, strategic, creative, factual).
+1. Strip noise — identify the core question. [EXPLICIT]
+2. List components needing separate answers. [EXPLICIT]
+3. Map dependencies (which block others?). [EXPLICIT]
+4. Order by dependency chain (foundations first). [EXPLICIT]
+5. Tag each by domain (technical, strategic, creative, factual). [EXPLICIT]
 
 Output format:
 ```
@@ -61,7 +61,7 @@ Sub-problems identified: [N]
 
 ### 2. SOLVE
 
-Answer each sub-problem with explicit confidence scoring.
+Answer each sub-problem with explicit confidence scoring. [EXPLICIT]
 
 | Score | Meaning | Evidence Required |
 |-------|---------|-------------------|
@@ -95,17 +95,17 @@ Cross-check every sub-answer against four dimensions:
 
 **Bias signals to watch:** Anchoring (first answer feels "obviously right"), confirmation (only supporting evidence found), availability (overweighting recent examples), authority (accepting a framework because it's popular, not because it fits).
 
-After verification, update confidence scores. If scores don't change, verification was superficial.
+After verification, update confidence scores. If scores don't change, verification was superficial. [EXPLICIT]
 
 ### 4. SYNTHESIZE
 
-Combine verified sub-answers into a coherent response.
+Combine verified sub-answers into a coherent response. [EXPLICIT]
 
-1. Start with highest-confidence sub-answers (foundation).
-2. Layer moderate-confidence answers with caveats.
-3. Resolve conflicts: identify source of tension between contradicting sub-answers.
-4. Mark clearly: **certainty** vs **hypothesis**.
-5. Compute global confidence: `Global = sum(sub_confidence * sub_importance) / sum(sub_importance)`.
+1. Start with highest-confidence sub-answers (foundation). [EXPLICIT]
+2. Layer moderate-confidence answers with caveats. [EXPLICIT]
+3. Resolve conflicts: identify source of tension between contradicting sub-answers. [EXPLICIT]
+4. Mark clearly: **certainty** vs **hypothesis**. [EXPLICIT]
+5. Compute global confidence: `Global = sum(sub_confidence * sub_importance) / sum(sub_importance)`. [EXPLICIT]
 
 **Conflict resolution priority:** Verified facts > Logical deductions > Expert consensus > Reasonable inference > Flagged speculation.
 
@@ -113,11 +113,11 @@ Combine verified sub-answers into a coherent response.
 
 If global confidence < target (default 0.95):
 
-1. Identify the weakest sub-problem.
+1. Identify the weakest sub-problem. [EXPLICIT]
 2. Diagnose: data gap, logic gap, or expertise gap?
-3. If retrievable — gather info and retry that sub-problem.
-4. If not retrievable — deliver with explicit uncertainty flagged.
-5. If fundamentally unknowable — state this clearly.
+3. If retrievable — gather info and retry that sub-problem. [EXPLICIT]
+4. If not retrievable — deliver with explicit uncertainty flagged. [EXPLICIT]
+5. If fundamentally unknowable — state this clearly. [EXPLICIT]
 
 **Reflection questions:** What is the single biggest weakness? If I'm wrong, what's the most likely cause? What would a disagreeing expert say? Is there a simpler explanation I'm overlooking?
 
@@ -137,7 +137,7 @@ Information gaps: [what was NOT available that would improve confidence]
 
 ## Fast Path
 
-Skip DSVSR when the question has fewer than 2 complexity signals. Answer directly with clarity and relevant caveats.
+Skip DSVSR when the question has fewer than 2 complexity signals. Answer directly with clarity and relevant caveats. [EXPLICIT]
 
 **Complexity signals:** Multi-domain, 50+ words, high ambiguity, high stakes, multiple dependencies.
 
@@ -152,7 +152,7 @@ Route specialized sub-problems to domain experts:
 | Data analysis | data-analysis subagent |
 | General knowledge | handle inline |
 
-Each delegate returns: answer + confidence + evidence. Task-engine aggregates.
+Each delegate returns: answer + confidence + evidence. Task-engine aggregates. [EXPLICIT]
 
 ## Confidence Metadata Output
 
@@ -180,7 +180,7 @@ REASONING METADATA:
 [input-analyst] → [task-engine] → [excellence-loop] → User
 ```
 
-Higher input quality from input-analyst raises baseline confidence, reducing DSVSR iterations.
+Higher input quality from input-analyst raises baseline confidence, reducing DSVSR iterations. [EXPLICIT]
 
 ## Assumptions & Limits
 

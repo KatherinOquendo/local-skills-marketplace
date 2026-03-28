@@ -1,5 +1,5 @@
 # MetodologIA Design System — Neo-Swiss Token Reference
-> Fuente de verdad unica para tokens CSS en todos los entregables HTML de MetodologIA.
+> Fuente de verdad unica para tokens CSS en Todos los entregables HTML de MetodologIA.
 > Estetica: Neo-Swiss Clean & Soft Explainer
 > Version: v6.0 Neo-Swiss
 > Actualizado: 2026-03-17
@@ -16,7 +16,7 @@ If there is a conflict, `brand-config-neoswiss.json` wins.
 
 ## Token `:root` canonico
 
-Copiar este bloque exacto en todo HTML generado por el plugin:
+Copiar este bloque exacto en Todo HTML generado por el plugin:
 
 ```css
 :root {

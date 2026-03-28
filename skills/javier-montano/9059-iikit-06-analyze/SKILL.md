@@ -10,7 +10,7 @@ metadata:
 
 # Intent Integrity Kit Analyze
 
-Non-destructive cross-artifact consistency analysis across spec.md, plan.md, and tasks.md.
+Non-destructive cross-artifact consistency analysis across spec.md, plan.md, and tasks.md. [EXPLICIT]
 
 ## Operating Constraints
 
@@ -23,11 +23,11 @@ Non-destructive cross-artifact consistency analysis across spec.md, plan.md, and
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty).
+You **MUST** consider the user input before proceeding (if not empty). [EXPLICIT]
 
 ## Constitution Loading
 
-Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (basic mode — ERROR if missing). Extract principle names and normative statements.
+Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (basic mode — ERROR if missing). Extract principle names and normative statements. [EXPLICIT]
 
 ## Prerequisites Check
 
@@ -47,19 +47,19 @@ Load constitution per [constitution-loading.md](../iikit-core/references/constit
 
 ### 0. Pre-Analysis: Generate QA Plan
 
-Before analysis, regenerate the QA Plan to ensure cross-feature quality data is current:
+Before analysis, regenerate the QA Plan to ensure cross-feature quality data is current: [EXPLICIT]
 ```bash
 node "$CLAUDE_PLUGIN_ROOT/scripts/sdd-qa-plan.js" .
 ```
-This updates `QA-PLAN.md` and `.specify/qa-plan.json` with latest DoD status, AC coverage, and gate state. The analysis then uses this data for cross-artifact validation.
+This updates `QA-PLAN.md` and `.specify/qa-plan.json` with latest DoD status, AC coverage, and gate state. The analysis then uses this data for cross-artifact validation. [EXPLICIT]
 
 ### 1. Load Artifacts (Progressive)
 
-From spec.md: overview, requirements, user stories, edge cases.
-From plan.md: architecture, data model refs, phases, constraints.
-From tasks.md: task IDs, descriptions, phases, [P] markers, file paths.
-From qa/acceptance-criteria.md: SC-XXX checkable items (if exists).
-From qa/test-coverage.md: FR→TS traceability matrix (if exists).
+From spec.md: overview, requirements, user stories, edge cases. [EXPLICIT]
+From plan.md: architecture, data model refs, phases, constraints. [EXPLICIT]
+From tasks.md: task IDs, descriptions, phases, [P] markers, file paths. [EXPLICIT]
+From qa/acceptance-criteria.md: SC-XXX checkable items (if exists). [EXPLICIT]
+From qa/test-coverage.md: FR→TS traceability matrix (if exists). [EXPLICIT]
 
 ### 2. Build Semantic Models
 
@@ -87,7 +87,7 @@ From qa/test-coverage.md: FR→TS traceability matrix (if exists).
 **G2. Prose Range Detection**: Scan tasks.md for patterns like "TS-XXX through TS-XXX" or "TS-XXX to TS-XXX". Flag as MEDIUM finding: "Prose range detected — intermediate IDs not traceable. Use explicit comma-separated list."
 
 **H. Feature File Traceability** (when `FEATURE_DIR/tests/features/` exists):
-Parse all `.feature` files in `tests/features/` and extract Gherkin tags:
+Parse all `.feature` files in `tests/features/` and extract Gherkin tags: [EXPLICIT]
 - `@FR-XXX` — functional requirement references
 - `@SC-XXX` — success criteria references
 - `@US-XXX` — user story references
@@ -101,7 +101,7 @@ Parse all `.feature` files in `tests/features/` and extract Gherkin tags:
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/verify-steps.sh --json "FEATURE_DIR/tests/features" "FEATURE_DIR/plan.md"
 ```
-If status is BLOCKED, report undefined steps as findings (severity: HIGH). If DEGRADED, note in report but do not flag as finding.
+If status is BLOCKED, report undefined steps as findings (severity: HIGH). If DEGRADED, note in report but do not flag as finding. [EXPLICIT]
 
 ### 4. Severity
 
@@ -112,7 +112,7 @@ If status is BLOCKED, report undefined steps as findings (severity: HIGH). If DE
 
 ### 5. Analysis Report
 
-Output to console AND write to `FEATURE_DIR/analysis.md`:
+Output to console AND write to `FEATURE_DIR/analysis.md`: [EXPLICIT]
 
 ```markdown
 ## Specification Analysis Report
@@ -136,7 +136,7 @@ Output to console AND write to `FEATURE_DIR/analysis.md`:
 
 ### 5b. Score History
 
-After computing **Metrics** in step 5, persist the health score:
+After computing **Metrics** in step 5, persist the health score: [EXPLICIT]
 
 1. **Compute health score**: `score = 100 - (critical*20 + high*5 + medium*2 + low*0.5)`, floored at 0, rounded to nearest integer.
 2. **Read** `.specify/score-history.json`. If the file does not exist, initialize with `{}`.
@@ -159,7 +159,7 @@ After computing **Metrics** in step 5, persist the health score:
 
 ### 7. Offer Remediation
 
-Ask: "Suggest concrete remediation edits for the top N issues?" Do NOT apply automatically.
+Ask: "Suggest concrete remediation edits for the top N issues?" Do NOT apply automatically. [EXPLICIT]
 
 ## Operating Principles
 
@@ -177,20 +177,20 @@ git commit -m "analyze: <feature-short-name> consistency report"
 
 ## Dashboard Refresh
 
-Regenerate the dashboard so the pipeline reflects the analysis results:
+Regenerate the dashboard so the pipeline reflects the analysis results: [EXPLICIT]
 
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/generate-dashboard-safe.sh
 ```
 
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1`
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1` [EXPLICIT]
 
 ## Next Steps
 
-Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 06 --json`
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 06 -Json`
+Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 06 --json` [EXPLICIT]
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 06 -Json` [EXPLICIT]
 
-Parse the JSON and present:
+Parse the JSON and present: [EXPLICIT]
 1. If `clear_after` is true: suggest `/clear` before proceeding
 2. If CRITICAL issues were found: suggest resolving them, then re-run `/iikit-06-analyze`
 3. If no CRITICAL: present `next_step` as the primary recommendation
@@ -200,10 +200,40 @@ Parse the JSON and present:
 
 Format:
 ```
-Analysis complete!
+Analysis complete! [EXPLICIT]
 [- CRITICAL issues found: resolve, then re-run /iikit-06-analyze]
-Next: [/clear → ] <next_step> (model: <tier>)
+Next: [/clear → ] <next_step> (model: <tier>) [EXPLICIT]
 [- <alt_step> — <reason> (model: <tier>)]
 
 - Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path)
 ```
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/iikit-06-analyze" — Run the full iikit 06 analyze workflow
+- "iikit 06 analyze on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

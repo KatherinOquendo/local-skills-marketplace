@@ -1,0 +1,9 @@
+[
+  {"id": "firebase-auth-happy-path", "type": "happy_path", "input": "Run firebase auth on this project", "expected_behavior": "Skill activates and produces the expected firebase auth output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "firebase-auth-explicit-trigger", "type": "happy_path", "input": "Apply firebase auth analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the firebase auth workflow", "tags": ["trigger", "recognition"]},
+  {"id": "firebase-auth-with-context", "type": "happy_path", "input": "Apply firebase auth to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive firebase auth analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "firebase-auth-minimal-input", "type": "happy_path", "input": "Quick firebase auth", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "firebase-auth-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to firebase auth", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "firebase-auth-edge-empty-input", "type": "edge_case", "input": "Run firebase auth but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "firebase-auth-edge-conflicting", "type": "edge_case", "input": "Apply firebase auth but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

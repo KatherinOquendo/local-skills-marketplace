@@ -1,13 +1,13 @@
 ---
 name: metodologia-asis-analysis
-description: >
-  Universal current-state assessment producing 10-section analysis for ANY MetodologIA service type.
+description: 
+  Universal current-state assessment producing 10-section analysis for ANY MetodologIA service type. [EXPLICIT]
   Use when the user asks to "analyze the codebase", "assess current architecture", "run AS-IS analysis",
   "technical audit", "evaluate tech debt", "code quality assessment", "assess current state",
   "service assessment", "QA maturity", "PMO assessment", "RPA readiness", "data maturity",
   "cloud readiness", "design maturity", "talent gap analysis", or mentions "Phase 1", "current state",
-  "legacy system review", "technical health check".
-argument-hint: "<codebase-path-or-project-name>"
+  "legacy system review", "technical health check". [EXPLICIT]
+argument-hint: "codebase-path-or-project-name"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
@@ -22,29 +22,29 @@ allowed-tools:
 
 # AS-IS Analysis — Universal Current-State Assessment
 
-Generates a 10-section current-state assessment for ANY MetodologIA service type (SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design). For software codebases (SDA), produces: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. For other service types, sections S1-S8 adapt to domain-specific dimensions while S0 (Executive Dashboard), S9 (Risk Register), and S10 (Recommendations) remain universal.
+Generates a 10-section current-state assessment for ANY MetodologIA service type (SDA, QA, Management, RPA, Data-AI, Cloud, SAS, UX-Design). For software codebases (SDA), produces: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. For other service types, sections S1-S8 adapt to domain-specific dimensions while S0 (Executive Dashboard), S9 (Risk Register), and S10 (Recommendations) remain universal. [EXPLICIT]
 
 ## Grounding Guideline
 
 > *You cannot chart a path to the future without understanding with brutal honesty where you stand today.*
 
-1. **Evidence-based diagnosis, not opinion.** Every finding must be backed by metrics extracted from code, configuration, or operational history. Intuition guides exploration; evidence supports the conclusion.
-2. **The present contains the seeds of the future.** Inherited architectural decisions are not mistakes — they are context. Understanding *why* they were made reveals constraints that any transformation must respect or explicitly break.
-3. **Technical debt is knowledge debt.** Every undocumented shortcut, every inconsistent pattern, every missing test represents knowledge the team chose not to capture. The AS-IS analysis restores that knowledge before it is lost.
+1. **Evidence-based diagnosis, not opinion.** Every finding must be backed by metrics extracted from code, configuration, or operational history. Intuition guides exploration; evidence supports the conclusion. [EXPLICIT]
+2. **The present contains the seeds of the future.** Inherited architectural decisions are not mistakes — they are context. Understanding *why* they were made reveals constraints that any transformation must respect or explicitly break. [EXPLICIT]
+3. **Technical debt is knowledge debt.** Every undocumented shortcut, every inconsistent pattern, every missing test represents knowledge the team chose not to capture. The AS-IS analysis restores that knowledge before it is lost. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Path to codebase root (default: current working directory)
 - `$2` — Analysis depth: `full` (default), `executive` (sections 0,5,9,10 only)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para extracción de métricas y análisis de código, HITL para hallazgos de seguridad y decisiones de escalamiento.
-  - **desatendido**: Zero interruptions. Análisis completo automatizado. Assumptions documented.
-  - **supervisado**: Autónomo con reportes al completar cada sección del framework.
-  - **paso-a-paso**: Confirms before cada sección del análisis.
+  - **piloto-auto**: Auto para extracción de métricas y análisis de código, HITL para hallazgos de seguridad y decisiones de escalamiento. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Análisis completo automatizado. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes al completar cada sección del framework. [EXPLICIT]
+  - **paso-a-paso**: Confirms before cada sección del análisis. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — sections S0, S5, S9, S10 only) | `técnica` (full, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
@@ -87,7 +87,7 @@ find . -name "Dockerfile" -o -name "*.yaml" -path "*/k8s/*" -o -name "docker-com
 find . -name "*.yaml" -path "*/swagger/*" -o -name "openapi*" -o -name "*.proto" | head -10
 ```
 
-Use detected languages, build tools, and infrastructure to scope each section.
+Use detected languages, build tools, and infrastructure to scope each section. [EXPLICIT]
 
 ## Input Requirements
 
@@ -159,22 +159,22 @@ Use detected languages, build tools, and infrastructure to scope each section.
 ## 10-Section Framework
 
 ### S0: Executive Dashboard
-System snapshot: LOC, modules, integrations, team size, years in production, tech stack summary, development status, maintenance cost estimate. Health score (1-10) with color-coded indicators.
+System snapshot: LOC, modules, integrations, team size, years in production, tech stack summary, development status, maintenance cost estimate. Health score (1-10) with color-coded indicators. [EXPLICIT]
 
 ### S1: Technology Inventory
-Per layer: Backend, Frontend, Data, Infrastructure, Development. Dependency tree table with EOL status. Flag deprecated dependencies. Version currency score per component.
+Per layer: Backend, Frontend, Data, Infrastructure, Development. Dependency tree table with EOL status. Flag deprecated dependencies. Version currency score per component. [EXPLICIT]
 
 ### S2: Code Organization
-Module decomposition, coupling analysis (afferent/efferent), layering assessment, cyclomatic complexity distribution, anti-patterns (god classes, circular dependencies, duplication). Package cohesion metrics.
+Module decomposition, coupling analysis (afferent/efferent), layering assessment, cyclomatic complexity distribution, anti-patterns (god classes, circular dependencies, duplication). Package cohesion metrics. [EXPLICIT]
 
 ### S3: Architecture (C4 Model)
-Level 1 (Context): system as black box with external actors. Level 2 (Containers): major services, databases, data flows. Pattern catalog with quality assessment. Architecture fitness functions where applicable.
+Level 1 (Context): system as black box with external actors. Level 2 (Containers): major services, databases, data flows. Pattern catalog with quality assessment. Architecture fitness functions where applicable. [EXPLICIT]
 
 ### S4: Code Quality Metrics
-Complexity distribution (p50, p95), duplication %, test coverage by layer, dependency depth, code smells by type. Dashboard with severity-coded cards. Trend analysis if git history available.
+Complexity distribution (p50, p95), duplication %, test coverage by layer, dependency depth, code smells by type. Dashboard with severity-coded cards. Trend analysis if git history available. [EXPLICIT]
 
 ### S5: Technical Debt Inventory
-Per item: description, category (7 types: design, code, test, build, documentation, infrastructure, dependency), severity, technical impact, business impact, remediation pathway, prioritization score (impact x cost-to-fix).
+Per item: description, category (7 types: design, code, test, build, documentation, infrastructure, dependency), severity, technical impact, business impact, remediation pathway, prioritization score (impact x cost-to-fix). [EXPLICIT]
 
 **Conditional logic:**
 - IF debt >30% of codebase OR average CC >15: flag CRITICAL, recommend refactoring before features
@@ -183,19 +183,19 @@ Per item: description, category (7 types: design, code, test, build, documentati
 - IF >10 circular dependencies: architectural refactor required
 
 ### S6: NFR Heatmap
-7x5 matrix: performance, security, maintainability, scalability, reliability, usability, interoperability. Scored 1-10 with evidence. Gap analysis against targets. Priority ranking by business impact.
+7x5 matrix: performance, security, maintainability, scalability, reliability, usability, interoperability. Scored 1-10 with evidence. Gap analysis against targets. Priority ranking by business impact. [EXPLICIT]
 
 ### S7: Security Assessment
-Authentication, authorization, encryption, data protection, known CVEs (SBOM analysis), compliance gaps. Severity-rated findings with remediation recommendations. OWASP Top 10 mapping where applicable.
+Authentication, authorization, encryption, data protection, known CVEs (SBOM analysis), compliance gaps. Severity-rated findings with remediation recommendations. OWASP Top 10 mapping where applicable. [EXPLICIT]
 
 ### S8: Operational Model
-Deployment model, monitoring/observability, incident response (MTTR), release management, capacity management. Operational readiness scorecard. DevOps maturity assessment (DORA metrics if available).
+Deployment model, monitoring/observability, incident response (MTTR), release management, capacity management. Operational readiness scorecard. DevOps maturity assessment (DORA metrics if available). [EXPLICIT]
 
 ### S9: Risk Register
-Top-10 risks: probability x impact matrix. Per risk: category, score, current mitigations, recommended improvements, owner, status. Risk velocity indicator (growing/stable/shrinking).
+Top-10 risks: probability x impact matrix. Per risk: category, score, current mitigations, recommended improvements, owner, status. Risk velocity indicator (growing/stable/shrinking). [EXPLICIT]
 
 ### S10: Recommendations
-Top 5-10 findings with root cause + business impact. Quick wins (under 5 eng-days). Strategic roadmap (immediate/short/medium/long-term). Refactor vs rewrite vs replace decision tree per major component.
+Top 5-10 findings with root cause + business impact. Quick wins (under 5 eng-days). Strategic roadmap (immediate/short/medium/long-term). Refactor vs rewrite vs replace decision tree per major component. [EXPLICIT]
 
 ## Service-Type Variant Sections (S1-S8)
 
@@ -334,7 +334,7 @@ Every recommendation in S10 must reference evidence from S0-S9:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - C4 Context diagram: system boundaries and external actors
@@ -476,3 +476,11 @@ HTML branded con Design System MetodologIA:
 
 ---
 **Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026
+
+## Usage
+
+Example invocations:
+
+- "/asis-analysis" — Run the full asis analysis workflow
+- "asis analysis on this project" — Apply to current context
+

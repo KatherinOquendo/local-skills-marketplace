@@ -13,7 +13,7 @@ allowed-tools:
 
 > "A prompt hook on SessionStart is a silent bomb -- it fires without context and the plugin fails with no error message."
 
-This is the most critical validation skill in the PQA framework. An incorrectly configured hooks.json can cause silent failures, runtime errors, or security vulnerabilities. The type-event compatibility matrix below is the single most important reference in this plugin.
+This is the most critical validation skill in the PQA framework. An incorrectly configured hooks.json can cause silent failures, runtime errors, or security vulnerabilities. The type-event compatibility matrix below is the single most important reference in this plugin. [EXPLICIT]
 
 > Canonical source of truth: plugin-level `references/official-hook-spec.md` and skill-local `references/hook-compatibility-matrix.md`
 
@@ -67,7 +67,7 @@ This is the most critical validation skill in the PQA framework. An incorrectly 
 ### Step 3 -- Validate Event Names
 
 - Each key inside `"hooks"` must be one of the 22 recognized events (case-sensitive):
-  `SessionStart`, `UserPromptSubmit`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PostToolUseFailure`, `Notification`, `SubagentStart`, `SubagentStop`, `Stop`, `StopFailure`, `TeammateIdle`, `TaskCompleted`, `InstructionsLoaded`, `ConfigChange`, `WorktreeCreate`, `WorktreeRemove`, `PreCompact`, `PostCompact`, `Elicitation`, `ElicitationResult`, `SessionEnd`.
+  `SessionStart`, `UserPromptSubmit`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, `PostToolUseFailure`, `Notification`, `SubagentStart`, `SubagentStop`, `Stop`, `StopFailure`, `TeammateIdle`, `TaskCompleted`, `InstructionsLoaded`, `ConfigChange`, `WorktreeCreate`, `WorktreeRemove`, `PreCompact`, `PostCompact`, `Elicitation`, `ElicitationResult`, `SessionEnd`. [EXPLICIT]
 - Report `WARNING` for any unrecognized event name.
 - Check for common misspellings: `sessionStart` (wrong case), `PreTool` (truncated), `PostToolFailure` (missing "Use"), `SubagentToolUse` (not a real event). Suggest the correct name.
 
@@ -133,32 +133,40 @@ This is the most critical validation skill in the PQA framework. An incorrectly 
 
 **Bad validation report:**
 ```
-Hook on SessionStart is invalid.
+Hook on SessionStart is invalid. [EXPLICIT]
 ```
-Missing: no type mentioned, no explanation of WHY, no remediation suggestion.
+Missing: no type mentioned, no explanation of WHY, no remediation suggestion. [EXPLICIT]
 
 **Good validation report:**
 ```
 CRITICAL | SessionStart | prompt | type:prompt requires ToolUseContext --
 SessionStart does not provide it. Change type to "command" or move to a
-ToolUseContext event (PreToolUse, PostToolUse, PermissionRequest).
+ToolUseContext event (PreToolUse, PostToolUse, PermissionRequest). [EXPLICIT]
 ```
-Includes: severity, event, type, explanation of the failure mechanism, two specific remediation paths.
+Includes: severity, event, type, explanation of the failure mechanism, two specific remediation paths. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Treating all hook types as interchangeable across events.
-2. Accepting `type:intercept` as valid -- this type does not exist.
-3. Not checking that command-type hooks reference actual executable files.
-4. Reporting prompt-on-PreToolUse as a problem (it is explicitly SAFE).
-5. Confusing `PostToolUse` (ToolUseContext, SAFE for prompt/agent) with `PostToolUseFailure` (no ToolUseContext, UNSAFE).
+1. Treating all hook types as interchangeable across events. [EXPLICIT]
+2. Accepting `type:intercept` as valid -- this type does not exist. [EXPLICIT]
+3. Not checking that command-type hooks reference actual executable files. [EXPLICIT]
+4. Reporting prompt-on-PreToolUse as a problem (it is explicitly SAFE). [EXPLICIT]
+5. Confusing `PostToolUse` (ToolUseContext, SAFE for prompt/agent) with `PostToolUseFailure` (no ToolUseContext, UNSAFE). [EXPLICIT]
 
 ## Edge Cases
 
-1. hooks.json exists but is an empty object `{}` -- valid, INFO.
-2. Hook with both `"command"` and `"prompt"` fields -- CRITICAL (ambiguous type).
-3. Event with empty hooks array `[]` -- valid but useless, WARNING (dead config).
-4. `hooks/` directory exists but no hooks.json inside -- WARNING (incomplete setup).
-5. Command referencing a script outside the plugin tree -- CRITICAL (portability violation).
-6. hooks.json contains JSON with `//` comments -- CRITICAL with specific guidance.
-7. Event name with wrong case (e.g., `sessionstart`) -- WARNING with suggested correction.
+1. hooks.json exists but is an empty object `{}` -- valid, INFO. [EXPLICIT]
+2. Hook with both `"command"` and `"prompt"` fields -- CRITICAL (ambiguous type). [EXPLICIT]
+3. Event with empty hooks array `[]` -- valid but useless, WARNING (dead config). [EXPLICIT]
+4. `hooks/` directory exists but no hooks.json inside -- WARNING (incomplete setup). [EXPLICIT]
+5. Command referencing a script outside the plugin tree -- CRITICAL (portability violation). [EXPLICIT]
+6. hooks.json contains JSON with `//` comments -- CRITICAL with specific guidance. [EXPLICIT]
+7. Event name with wrong case (e.g., `sessionstart`) -- WARNING with suggested correction. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/validate-hooks" — Run the full validate hooks workflow
+- "validate hooks on this project" — Apply to current context
+

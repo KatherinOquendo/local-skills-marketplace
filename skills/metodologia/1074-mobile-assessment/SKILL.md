@@ -1,11 +1,11 @@
 ---
 name: metodologia-mobile-assessment
-argument-hint: "<app-name>"
+argument-hint: "app-name"
 author: Javier Montaño · Comunidad MetodologIA
-description: >
-  AS-IS assessment for mobile apps -- performance, compliance, dependency health, UX metrics.
+description: 
+  AS-IS assessment for mobile apps -- performance, compliance, dependency health, UX metrics. [EXPLICIT]
   Use when the user asks to "assess the mobile app", "audit app health", "review app dependencies",
-  "check app store compliance", "measure app performance", or mentions crash rate, ANR, app size, cold start time, or mobile tech debt.
+  "check app store compliance", "measure app performance", or mentions crash rate, ANR, app size, cold start time, or mobile tech debt. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Mobile Assessment: App Health, Compliance & Remediation
 
-Mobile assessment evaluates an existing mobile application across six dimensions: runtime health, dependency security, platform compliance, code quality, user experience metrics, and remediation planning. This skill produces a comprehensive AS-IS assessment that identifies risks, quantifies technical debt, and prioritizes fixes.
+Mobile assessment evaluates an existing mobile application across six dimensions: runtime health, dependency security, platform compliance, code quality, user experience metrics, and remediation planning. This skill produces a comprehensive AS-IS assessment that identifies risks, quantifies technical debt, and prioritizes fixes. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,34 +27,34 @@ Mobile assessment evaluates an existing mobile application across six dimensions
 
 ### Mobile Assessment Philosophy
 
-1. **Store compliance is non-negotiable.** Privacy manifests, target API levels, data safety declarations. A compliance gap is a rejection risk that blocks releases.
-2. **Crash-free rate drives retention.** Every crash is a user who potentially never returns. The Google Play threshold (>1.09%) affects store visibility.
-3. **Dependency health predicts maintenance cost.** Abandoned libraries, unpatched CVEs, and SDK bloat are debt paid with interest. Auditing dependencies is prevention.
-4. **Measure before you optimize.** Without a baseline there is no verifiable improvement. Instrument first, optimize after.
+1. **Store compliance is non-negotiable.** Privacy manifests, target API levels, data safety declarations. A compliance gap is a rejection risk that blocks releases. [EXPLICIT]
+2. **Crash-free rate drives retention.** Every crash is a user who potentially never returns. The Google Play threshold (>1.09%) affects store visibility. [EXPLICIT]
+3. **Dependency health predicts maintenance cost.** Abandoned libraries, unpatched CVEs, and SDK bloat are debt paid with interest. Auditing dependencies is prevention. [EXPLICIT]
+4. **Measure before you optimize.** Without a baseline there is no verifiable improvement. Instrument first, optimize after. [EXPLICIT]
 
 ## Inputs
 
-The user provides an app name as `$ARGUMENTS`. Parse `$1` as the **app name** used throughout all output artifacts.
+The user provides an app name as `$ARGUMENTS`. Parse `$1` as the **app name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para health profiling y dependency audit, HITL para severity classification y remediation priorities.
-  - **desatendido**: Zero interruptions. Assessment completo automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en compliance findings y remediation roadmap.
-  - **paso-a-paso**: Confirma cada health metric, dependency finding, compliance check, y remediation item.
+  - **piloto-auto**: Auto para health profiling y dependency audit, HITL para severity classification y remediation priorities. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Assessment completo automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en compliance findings y remediation roadmap. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada health metric, dependency finding, compliance check, y remediation item. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 health profile + S3 compliance + S6 remediation) | `técnica` (full 6 sections, default)
 
-Before generating assessment, detect the mobile project context:
+Before generating assessment, detect the mobile project context: [EXPLICIT]
 
 ```
 !find . -name "pubspec.yaml" -o -name "package.json" -o -name "*.xcodeproj" -type d -o -name "build.gradle*" -o -name "Podfile" -o -name "*.swift" -o -name "*.kt" | head -20
 ```
 
-If reference materials exist, load them:
+If reference materials exist, load them: [EXPLICIT]
 
 ```
-Read ${CLAUDE_SKILL_DIR}/references/mobile-assessment-benchmarks.md
+Read ${CLAUDE_SKILL_DIR}/references/mobile-assessment-benchmarks.md [EXPLICIT]
 ```
 
 ---
@@ -183,7 +183,7 @@ Read ${CLAUDE_SKILL_DIR}/references/mobile-assessment-benchmarks.md
 
 **iOS Privacy Manifest (PrivacyInfo.xcprivacy) -- MANDATORY:**
 
-Every app and third-party SDK must include `PrivacyInfo.xcprivacy` declaring:
+Every app and third-party SDK must include `PrivacyInfo.xcprivacy` declaring: [EXPLICIT]
 
 | Element | Description | Enforcement |
 |---|---|---|
@@ -356,7 +356,7 @@ Every app and third-party SDK must include `PrivacyInfo.xcprivacy` declaring:
 
 ## Validation Gate
 
-Before finalizing delivery, verify:
+Before finalizing delivery, verify: [EXPLICIT]
 
 - [ ] Crash rate and ANR rate measured against Google Play vitals thresholds
 - [ ] App size measured against budget table (initial <30MB, with resources <150MB)
@@ -473,7 +473,7 @@ graph TD
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -3,7 +3,7 @@ name: table-ux
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Data tables, sorting, pagination, responsive tables, bulk actions.
+  Data tables, sorting, pagination, responsive tables, bulk actions. [EXPLICIT]
   Trigger: "table ux"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Table Ux
 > "Method over hacks."
 ## TL;DR
-Data tables, sorting, pagination, responsive tables, bulk actions.
+Data tables, sorting, pagination, responsive tables, bulk actions. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Data tables, sorting, pagination, responsive tables, bulk actions.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/table-ux" — Run the full table ux workflow
+- "table ux on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

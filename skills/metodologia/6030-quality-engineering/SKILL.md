@@ -1,12 +1,12 @@
 ---
 name: metodologia-quality-engineering
 author: Javier Montano · Comunidad MetodologIA
-argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
-description: >
-  Strategic quality engineering framework covering test strategy, automation architecture, quality gates, metrics, and shift-left practices.
+argument-hint: "system-or-project-name [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
+description: 
+  Strategic quality engineering framework covering test strategy, automation architecture, quality gates, metrics, and shift-left practices. [EXPLICIT]
   Use when the user asks to "design test strategy", "plan quality gates", "set up test automation",
   "assess quality maturity", "define quality metrics", or mentions "test pyramid", "shift-left",
-  "CI/CD quality", "automation architecture", "quality engineering".
+  "CI/CD quality", "automation architecture", "quality engineering". [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,7 +20,7 @@ allowed-tools:
 
 # Quality Engineering: Strategic Quality Architecture & Shift-Left Practices
 
-Strategic quality engineering framework. Designs the system — QA teams execute it. For architects, engineering leads, and quality strategists who define *how* quality works.
+Strategic quality engineering framework. Designs the system — QA teams execute it. For architects, engineering leads, and quality strategists who define *how* quality works. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -28,20 +28,20 @@ Strategic quality engineering framework. Designs the system — QA teams execute
 
 ### Quality Engineering Philosophy
 
-1. **Test strategy shapes > test counts.** The pyramid, the trophy, and the diamond are guides, not dogmas. The right shape depends on the architecture, not on convention.
-2. **Shift-left quality.** Every defect found after merge costs 10-100x more. Pre-commit hooks, PR gates, and developer-owned tests are investment, not overhead.
-3. **Quality gates in pipeline.** A gate without measurable criteria is a decorative traffic light. Every gate defines pass/fail, timeout, and escalation path.
+1. **Test strategy shapes > test counts.** The pyramid, the trophy, and the diamond are guides, not dogmas. The right shape depends on the architecture, not on convention. [EXPLICIT]
+2. **Shift-left quality.** Every defect found after merge costs 10-100x more. Pre-commit hooks, PR gates, and developer-owned tests are investment, not overhead. [EXPLICIT]
+3. **Quality gates in pipeline.** A gate without measurable criteria is a decorative traffic light. Every gate defines pass/fail, timeout, and escalation path. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para maturity assessment y test strategy, HITL para quality gates y automation decisions.
-  - **desatendido**: Zero interruptions. Framework completo con supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en gate criteria y automation architecture.
-  - **paso-a-paso**: Confirma cada maturity score, test shape, gate criteria, y metric target.
+  - **piloto-auto**: Auto para maturity assessment y test strategy, HITL para quality gates y automation decisions. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Framework completo con supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en gate criteria y automation architecture. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada maturity score, test shape, gate criteria, y metric target. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 maturity + S4 gates + S5 metrics) | `técnica` (full 6 sections, default)
 
@@ -51,7 +51,7 @@ Before generating framework, detect the codebase context:
 !find . -name "*.test.*" -o -name "*.spec.*" -o -name "*test*" -type d -o -name "jest*" -o -name "pytest*" | head -20
 ```
 
-Use detected testing frameworks, languages, and existing test structure to tailor recommendations.
+Use detected testing frameworks, languages, and existing test structure to tailor recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -135,7 +135,7 @@ For framework recommendations by language and automation patterns (Page Object, 
 
 ### Framework Selection Criteria
 
-Evaluate: language alignment, team skills, community support, maintenance cost, scalability, reporting, cost (OSS vs commercial).
+Evaluate: language alignment, team skills, community support, maintenance cost, scalability, reporting, cost (OSS vs commercial). [EXPLICIT]
 
 ### CI/CD Pipeline Stages
 
@@ -195,7 +195,7 @@ For detailed pipeline YAML examples and report/dashboard architecture, read: `${
 
 ### Dashboard Design
 
-4 panels: Test Health (pass/fail, execution time, flaky list, coverage trend), Quality Metrics (DORA, incidents, escaped defects), Automation Coverage (by type and team), SLA Compliance (build stability, PR pass rate, deploy success).
+4 panels: Test Health (pass/fail, execution time, flaky list, coverage trend), Quality Metrics (DORA, incidents, escaped defects), Automation Coverage (by type and team), SLA Compliance (build stability, PR pass rate, deploy success). [EXPLICIT]
 
 ### S6: Implementation Plan
 
@@ -366,7 +366,7 @@ Before delivering quality engineering output:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

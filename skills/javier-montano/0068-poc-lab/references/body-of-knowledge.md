@@ -14,8 +14,8 @@
 | **Pilot** | Validar operación a escala limitada | 1-3 meses | Métricas de rendimiento |
 | **Prototype** | Demostrar funcionalidad | 2-6 semanas | Artefacto funcional |
 
-### 1.2 Método Científico Aplicado a PM
-Un PoC sigue el método científico adaptado [DOC]:
+### 1.2 MéTodo Científico Aplicado a PM
+Un PoC sigue el méTodo científico adaptado [DOC]:
 1. **Hipótesis** — Pregunta falsifiable que el PoC responderá
 2. **Diseño experimental** — Variables controladas, grupo de control si aplica
 3. **Ejecución** — Time-boxed con recolección de datos

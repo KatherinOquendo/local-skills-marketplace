@@ -1,0 +1,9 @@
+[
+  {"id": "seo-content-happy-path", "type": "happy_path", "input": "Run seo content on this project", "expected_behavior": "Skill activates and produces the expected seo content output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "seo-content-explicit-trigger", "type": "happy_path", "input": "Apply seo content analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the seo content workflow", "tags": ["trigger", "recognition"]},
+  {"id": "seo-content-with-context", "type": "happy_path", "input": "Apply seo content to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive seo content analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "seo-content-minimal-input", "type": "happy_path", "input": "Quick seo content", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "seo-content-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to seo content", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "seo-content-edge-empty-input", "type": "edge_case", "input": "Run seo content but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "seo-content-edge-conflicting", "type": "edge_case", "input": "Apply seo content but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

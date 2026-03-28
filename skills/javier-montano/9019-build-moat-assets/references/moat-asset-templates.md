@@ -78,7 +78,7 @@ Prompt files contain metaprompts or prompt templates the skill uses internally.
 ## {Prompt Name}
 
 ```
-{The prompt text, with {placeholders} for variable content.}
+{The prompt text, with {templates} for variable content.}
 ```
 
 ## {Another Prompt Name}
@@ -115,8 +115,8 @@ set -euo pipefail
 
 Asset files are templates, boilerplates, or static files used during build operations.
 
-- **Markdown templates**: Use `{placeholder}` syntax for variable content.
-- **JSON templates**: Use string values like `"{placeholder}"` for variable fields.
+- **Markdown templates**: Use `{template}` syntax for variable content.
+- **JSON templates**: Use string values like `"{template}"` for variable fields.
 - **Other files**: Include a header comment explaining the template's purpose.
 
 **Naming**: `{subject}-template.{ext}` -- e.g., `skill-template.md`, `plugin-json-template.json`.

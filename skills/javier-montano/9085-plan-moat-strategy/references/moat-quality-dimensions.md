@@ -14,7 +14,7 @@ MOAT = Materials, Ontology, Assets, Templates. Each skill's supporting assets ar
 
 | Score | Criteria |
 |-------|----------|
-| 25 | All subdirectories present per MOAT depth. Every file has substantive content (30+ lines). No placeholder files. |
+| 25 | All subdirectories present per MOAT depth. Every file has substantive content (30+ lines). No template files. |
 | 20 | All subdirectories present. Most files are substantive. 1-2 thin files (under 20 lines). |
 | 15 | One expected subdirectory missing. Content is adequate but not thorough. |
 | 10 | Multiple subdirectories missing. Content is skeletal. |

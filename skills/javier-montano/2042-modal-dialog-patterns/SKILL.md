@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implement accessible modal and dialog patterns using the HTML dialog element,
-  focus trapping, keyboard navigation, and ARIA attributes.
+  focus trapping, keyboard navigation, and ARIA attributes. [EXPLICIT]
   Trigger: "modal", "dialog", "popup", "focus trap", "overlay"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the implementation of accessible modal dialogs using the native `<dialog>` element with proper focus management, keyboard interaction, scroll locking, and ARIA semantics. Use when building confirmation dialogs, forms in overlays, lightboxes, or any content that requires user attention before proceeding.
+Guides the implementation of accessible modal dialogs using the native `<dialog>` element with proper focus management, keyboard interaction, scroll locking, and ARIA semantics. Use when building confirmation dialogs, forms in overlays, lightboxes, or any content that requires user attention before proceeding. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides the implementation of accessible modal dialogs using the native `<dialog>
 
 - `accessibility-testing` — modal dialogs are common a11y failure points
 - `navigation-patterns` — mobile navigation often uses dialog/drawer patterns
+
+## Usage
+
+Example invocations:
+
+- "/modal-dialog-patterns" — Run the full modal dialog patterns workflow
+- "modal dialog patterns on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

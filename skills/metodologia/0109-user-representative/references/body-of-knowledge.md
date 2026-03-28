@@ -36,7 +36,7 @@
   3. *Recognition rather than recall* → D2: no forzar al lector a recordar terminos definidos 20 paginas atras
   4. *Aesthetic and minimalist design* → D2: cada seccion sin informacion relevante es ruido que aumenta carga cognitiva
   5. *Help and documentation* → D1: glosarios, notas al pie, acronimos expandidos
-- **Uso en el skill:** D1 (Comprehension) y D2 (Cognitive Load) se evaluan aplicando estas heuristicas a la estructura y contenido del deliverable. La evaluacion heuristica es el metodo primario del skill.
+- **Uso en el skill:** D1 (Comprehension) y D2 (Cognitive Load) se evaluan aplicando estas heuristicas a la estructura y contenido del deliverable. La evaluacion heuristica es el meTodo primario del skill.
 - **Fuente:** Nielsen, J. (1994). "10 Usability Heuristics for User Interface Design". nngroup.com. Actualizado 2024.
 - **Complemento:** Nielsen, J. & Budiu, R. (2022). *Mobile Usability*. New Riders.
 
@@ -107,7 +107,7 @@
 
 ### Just Enough Research — Erika Hall (A Book Apart, 2nd Edition, 2019)
 - **Relevancia:** Guia practica de investigacion de usuarios enfocada en obtener insights accionables con esfuerzo proporcional. Argumenta que la investigacion no necesita ser exhaustiva para ser valiosa — necesita ser suficiente.
-- **Uso en el skill:** El skill aplica "just enough" user research al deliverable: no reescribe todo, propone micro-ajustes accionables (Top 5). La evaluacion es proporcional al impacto esperado.
+- **Uso en el skill:** El skill aplica "just enough" user research al deliverable: no reescribe pending, propone micro-ajustes accionables (Top 5). La evaluacion es proporcional al impacto esperado.
 - **Fuente:** Hall, E. (2019). *Just Enough Research*, 2nd Ed. A Book Apart.
 
 ### Mapping Experiences — Jim Kalbach (O'Reilly, 2nd Edition, 2021)
@@ -161,7 +161,7 @@
 |---|---|
 | **Carga cognitiva** | Esfuerzo mental requerido para procesar informacion. Excederla causa abandono o mala comprension |
 | **Heuristica de usabilidad** | Principio general de usabilidad usado para evaluar interfaces o documentos sin test formal |
-| **Evaluacion heuristica** | Metodo de inspeccion donde un evaluador examina un producto contra heuristicas reconocidas |
+| **Evaluacion heuristica** | MeTodo de inspeccion donde un evaluador examina un producto contra heuristicas reconocidas |
 | **Persona** | Representacion ficticia pero basada en datos de un usuario tipo, con objetivos, comportamientos y limitaciones |
 | **Journey map** | Visualizacion de la experiencia del usuario a traves de pasos, touchpoints, emociones y pain points |
 | **Pain point** | Momento de friccion o frustracion en la experiencia del usuario que reduce satisfaccion o bloquea progreso |

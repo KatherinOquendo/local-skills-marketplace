@@ -1,7 +1,7 @@
 ---
 name: sofka-discovery-handover
-argument-hint: "<discovery-directory>"
-description: >
+argument-hint: "discovery-directory"
+description: 
   This skill should be used when the user asks to "create handover",
   "transition to operations", "prepare delivery handoff", "activate commercial
   proposal", "hand off discovery", "prepare operations package", or "close
@@ -11,8 +11,8 @@ description: >
   artifacts including commercial activation, governance transfer, and Phase 1
   kickoff plan. Use this skill whenever a discovery engagement is closing or
   needs to be handed to operations, even if they don't explicitly ask for
-  "discovery handover".
-argument-hint: "<discovery-directory>"
+  "discovery handover". [EXPLICIT]
+argument-hint: "discovery-directory"
 model: opus
 context: fork
 allowed-tools:
@@ -26,7 +26,7 @@ allowed-tools:
 
 # Discovery Handover — Phase 6: Transición a Ejecución
 
-Genera el paquete de transición operativa que traduce los entregables de descubrimiento (Fases 0-5) en artefactos de ejecución listos para Operaciones y/o Comercial.
+Genera el paquete de transición operativa que traduce los entregables de descubrimiento (Fases 0-5) en artefactos de ejecución listos para Operaciones y/o Comercial. [EXPLICIT]
 
 ## Principio Rector
 
@@ -34,9 +34,9 @@ Genera el paquete de transición operativa que traduce los entregables de descub
 
 ### Filosofía de Transición
 
-1. **Continuidad > documentación.** El handover no es "entregar documentos" — es transferir entendimiento. Los roles cambian, el conocimiento se preserva.
-2. **Supuestos son deuda.** Cada supuesto no validado del discovery se hereda como riesgo en ejecución. El handover los hace explícitos con owners y deadlines.
-3. **El primer sprint es el más importante.** Sprint 0 valida si el plan sobrevive el contacto con la realidad. El handover diseña Sprint 0, no solo lo menciona.
+1. **Continuidad > documentación.** El handover no es "entregar documentos" — es transferir entendimiento. Los roles cambian, el conocimiento se preserva. [EXPLICIT]
+2. **Supuestos son deuda.** Cada supuesto no validado del discovery se hereda como riesgo en ejecución. El handover los hace explícitos con owners y deadlines. [EXPLICIT]
+3. **El primer sprint es el más importante.** Sprint 0 valida si el plan sobrevive el contacto con la realidad. El handover diseña Sprint 0, no solo lo menciona. [EXPLICIT]
 
 ## Inputs (Consumidos de Fases Anteriores)
 
@@ -52,14 +52,14 @@ El handover REQUIERE que Gate 3 esté aprobado. Antes de generar, validar que ex
 | Phase 5a | Especificación funcional | `07_Especificacion_Funcional.html` |
 | Phase 5b | Pitch ejecutivo + financiero | `08_Pitch_Ejecutivo.html` |
 
-Si algún entregable falta, DETENER y listar qué falta antes de proceder.
+Si algún entregable falta, DETENER y listar qué falta antes de proceder. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para compilación de entregables y plan de 90 días, HITL para validación de pricing y asignación de owners.
-  - **desatendido**: Cero interrupciones. Handover completo auto-generado. Owners marcados como {Asignar}.
-  - **supervisado**: Autónomo con checkpoint en paquete comercial y governance.
-  - **paso-a-paso**: Confirma cada sección del handover y cada asignación de owner.
+  - **piloto-auto**: Auto para compilación de entregables y plan de 90 días, HITL para validación de pricing y asignación de owners. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Handover completo auto-generado. Owners marcados como {Asignar}. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en paquete comercial y governance. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada sección del handover y cada asignación de owner. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 resumen + S2 comercial + S6 tracker) | `técnica` (full 8 sections, default)
 
@@ -263,7 +263,7 @@ Transformar el mapa de stakeholders de Phase 0 en roles de ejecución:
 `09_Handover_Operaciones_{project}.md` (o `.html` si `{FORMATO}=html|dual`)
 
 ### Estructura del Documento
-Producir un documento con las 8 secciones anteriores, usando el sistema de diseño de la marca (READ `references/handover-templates.md` para la estructura HTML cuando `{FORMATO}=html|dual`).
+Producir un documento con las 8 secciones anteriores, usando el sistema de diseño de la marca (READ `references/handover-templates.md` para la estructura HTML cuando `{FORMATO}=html|dual`). [EXPLICIT]
 
 ## Validation Gate
 
@@ -315,7 +315,7 @@ Producir un documento con las 8 secciones anteriores, usando el sistema de dise�
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 
@@ -328,3 +328,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/discovery-handover" — Run the full discovery handover workflow
+- "discovery handover on this project" — Apply to current context
+

@@ -3,7 +3,7 @@ name: api-documentation
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  API documentation: OpenAPI/Swagger spec generation, endpoint docs, request/response examples, authentication docs. Complements api-design.
+  API documentation: OpenAPI/Swagger spec generation, endpoint docs, request/response examples, authentication docs. Complements api-design. [EXPLICIT]
   Trigger: "API docs", "OpenAPI", "Swagger", "endpoint documentation", "API reference"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Generates API documentation from code or specs: OpenAPI 3.0 specification files, Swagger UI setup, endpoint reference with request/response examples, authentication documentation, and error code catalog. Complements api-design with developer-facing docs.
+Generates API documentation from code or specs: OpenAPI 3.0 specification files, Swagger UI setup, endpoint reference with request/response examples, authentication documentation, and error code catalog. Complements api-design with developer-facing docs. [EXPLICIT]
 
 ## Procedure
 
@@ -55,3 +55,25 @@ Generates API documentation from code or specs: OpenAPI 3.0 specification files,
 - `api-design` — API contract design
 - `rest-api-development` — REST implementation
 - `cloud-functions` — Firebase Functions API docs
+
+## Usage
+
+Example invocations:
+
+- "/api-documentation" — Run the full api documentation workflow
+- "api documentation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

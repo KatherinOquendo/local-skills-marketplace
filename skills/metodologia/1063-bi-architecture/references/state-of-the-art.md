@@ -89,7 +89,7 @@
 ## 3. Debates Abiertos
 
 ### 3.1 Single BI Tool vs Best-of-Breed
-- **Debate:** ¿Una organizacion debe estandarizar en una sola herramienta BI (e.g., Power BI para todo) o usar la mejor herramienta para cada caso (Tableau para exploration, Power BI para operational, Grafana para monitoring)?
+- **Debate:** ¿Una organizacion debe estandarizar en una sola herramienta BI (e.g., Power BI para pending) o usar la mejor herramienta para cada caso (Tableau para exploration, Power BI para operational, Grafana para monitoring)?
 - **Estado 2026:** El 60% de organizaciones enterprise tienen 2+ BI tools. La single-tool strategy cubre el 80% de los casos pero deja gaps (real-time, embedded, data science). El costo de multi-tool incluye multiples licencias, training, y governance fragmentada.
 - **Posicion del skill:** S6 recomienda single platform como default. Multi-tool solo cuando hay casos de uso que la herramienta principal no puede cubrir (real-time, embedded) y el costo de oportunidad justifica la complejidad.
 
@@ -99,7 +99,7 @@
 - **Posicion del skill:** S3 diseña para los tres formatos. Dashboards para executive/department, data apps para operational, AI chat para exploration. El semantic layer (S2) es comun a los tres.
 
 ### 3.3 Centralized vs Federated BI Governance
-- **Debate:** ¿El equipo central de datos gobierna TODO el contenido BI (dashboards, metricas, acceso) o los departamentos tienen autonomia para crear y gobernar su propio contenido?
+- **Debate:** ¿El equipo central de datos gobierna Todo el contenido BI (dashboards, metricas, acceso) o los departamentos tienen autonomia para crear y gobernar su propio contenido?
 - **Estado 2026:** El modelo emergente es "governed self-service": el equipo central gobierna S2 (semantic layer) y certifica L1-L2 dashboards. Los departamentos crean L3-L4 contenido con guardrails (templates, naming, quality checks). La certificacion distingue "trusted" vs "exploratory" contenido.
 - **Posicion del skill:** S6 recomienda governance centralizada para semantic layer y L1-L2 dashboards. Governance descentralizada (con guardrails) para L3-L4. Quarterly audit para limpiar dashboard sprawl.
 

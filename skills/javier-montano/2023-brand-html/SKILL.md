@@ -1,15 +1,15 @@
 ---
 name: brand-html
-description: >
+description: 
   This skill should be used when the user asks to "generate branded HTML",
   "create a landing page", "build a brand-compliant web page",
   "produce a styled HTML report", or "design a responsive page",
-  or mentions brand tokens, CSS variables, or HTML generation.
+  or mentions brand tokens, CSS variables, or HTML generation. [EXPLICIT]
   It generates brand-compliant HTML/CSS by reading brand tokens from config
-  and applying colors, fonts, spacing, component templates, and responsive patterns.
+  and applying colors, fonts, spacing, component templates, and responsive patterns. [EXPLICIT]
   Use this skill whenever the user needs a self-contained branded web page,
-  even if they don't explicitly ask for "brand HTML".
-argument-hint: "<page-type> [brand-config-path]"
+  even if they don't explicitly ask for "brand HTML". [EXPLICIT]
+argument-hint: "page-type [brand-config-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -23,16 +23,16 @@ allowed-tools:
 
 # Brand HTML / Web Generation
 
-Generate brand-compliant HTML/CSS for any brand. Reads brand tokens (colors, fonts, spacing) from a config file and produces self-contained, accessible, responsive web pages.
+Generate brand-compliant HTML/CSS for any brand. Reads brand tokens (colors, fonts, spacing) from a config file and produces self-contained, accessible, responsive web pages. [EXPLICIT]
 
 ## Brand Configuration
 
-Search for brand config:
+Search for brand config: [EXPLICIT]
 1. Path passed as argument
 2. `./brand-config.json` in working directory
 3. `~/.claude/brand-config.json`
 
-Config schema: see `design-system` skill for full schema. Key fields used here:
+Config schema: see `design-system` skill for full schema. Key fields used here: [EXPLICIT]
 
 ```json
 {
@@ -47,7 +47,7 @@ Config schema: see `design-system` skill for full schema. Key fields used here:
 
 ## Color System
 
-Define as CSS variables from config:
+Define as CSS variables from config: [EXPLICIT]
 
 ```css
 :root {
@@ -118,19 +118,19 @@ body, p, span, label { font-family: var(--font-body); }
 ## Component Templates
 
 ### Hero (Dark)
-Black bg, primary-color accent on key headline word, CTA button in primary color, positioning label above headline.
+Black bg, primary-color accent on key headline word, CTA button in primary color, positioning label above headline. [EXPLICIT]
 
 ### Hero (Primary Color)
-Primary bg, dark text, white accent on key phrase, wordmark at bottom.
+Primary bg, dark text, white accent on key phrase, wordmark at bottom. [EXPLICIT]
 
 ### Card (Light)
-White bg, rounded corners, shadow, heading in display font, body in body font. Optional tag chip in corner.
+White bg, rounded corners, shadow, heading in display font, body in body font. Optional tag chip in corner. [EXPLICIT]
 
 ### Stat Block
-Primary-color left border (4px), large number in display font, label in body font.
+Primary-color left border (4px), large number in display font, label in body font. [EXPLICIT]
 
 ### Navigation
-Flex row: wordmark left, links center, CTA button right in primary color.
+Flex row: wordmark left, links center, CTA button right in primary color. [EXPLICIT]
 
 ## Approved Color Combinations
 
@@ -168,3 +168,11 @@ Flex row: wordmark left, links center, CTA button right in primary color.
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/brand-html" — Run the full brand html workflow
+- "brand html on this project" — Apply to current context
+

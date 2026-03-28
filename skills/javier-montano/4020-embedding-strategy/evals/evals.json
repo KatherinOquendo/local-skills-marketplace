@@ -1,0 +1,9 @@
+[
+  {"id": "embedding-strategy-happy-path", "type": "happy_path", "input": "Run embedding strategy on this project", "expected_behavior": "Skill activates and produces the expected embedding strategy output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "embedding-strategy-explicit-trigger", "type": "happy_path", "input": "Apply embedding strategy analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the embedding strategy workflow", "tags": ["trigger", "recognition"]},
+  {"id": "embedding-strategy-with-context", "type": "happy_path", "input": "Apply embedding strategy to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive embedding strategy analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "embedding-strategy-minimal-input", "type": "happy_path", "input": "Quick embedding strategy", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "embedding-strategy-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to embedding strategy", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "embedding-strategy-edge-empty-input", "type": "edge_case", "input": "Run embedding strategy but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "embedding-strategy-edge-conflicting", "type": "edge_case", "input": "Apply embedding strategy but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

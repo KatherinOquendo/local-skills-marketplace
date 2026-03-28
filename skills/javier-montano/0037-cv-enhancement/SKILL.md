@@ -3,7 +3,7 @@ name: cv-enhancement
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  CV and resume improvement. Analyze structure, identify gaps, rewrite with impact-driven language. Output: branded HTML CV.
+  CV and resume improvement. Analyze structure, identify gaps, rewrite with impact-driven language. Output: branded HTML CV. [EXPLICIT]
   Trigger: "improve CV", "resume", "career profile", "CV enhancement", "professional profile"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-CV and resume improvement. Analyze structure, identify gaps, rewrite with impact-driven language. Output: branded HTML CV. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html).
+CV and resume improvement. Analyze structure, identify gaps, rewrite with impact-driven language. Output: branded HTML CV. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html). [EXPLICIT]
 
 ## Procedure
 
@@ -66,3 +66,25 @@ CV and resume improvement. Analyze structure, identify gaps, rewrite with impact
 
 - branded-html-output — Base skill for all HTML generation
 - guardrails-management — Check user guardrails before generating
+
+## Usage
+
+Example invocations:
+
+- "/cv-enhancement" — Run the full cv enhancement workflow
+- "cv enhancement on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

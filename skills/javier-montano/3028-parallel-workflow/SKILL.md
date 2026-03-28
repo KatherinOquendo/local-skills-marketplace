@@ -3,9 +3,9 @@ name: parallel-workflow
 author: JM Labs (Javier Montaño)
 version: 2.0.0
 description: >
-  Sequential-first execution with controlled parallelism. WIP limit: 3 agents max.
-  Parallel only when plan has [PARALLEL-OK] tags, zero dependencies, forward-only.
-  Git worktrees, contract-first integration, atomic mergeable units.
+  Sequential-first execution with controlled parallelism. WIP limit: 3 agents max. [EXPLICIT]
+  Parallel only when plan has [PARALLEL-OK] tags, zero dependencies, forward-only. [EXPLICIT]
+  Git worktrees, contract-first integration, atomic mergeable units. [EXPLICIT]
   Trigger: "parallel work", "worktree", "concurrent development", "sequential first", "WIP limit"
 allowed-tools:
   - Read
@@ -117,3 +117,25 @@ If ANY check fails → **fall back to sequential execution**
 - `api-design` — Defines API contracts for integration points
 - `component-architecture` — Defines component interfaces for UI integration
 - `github-actions-ci` — CI pipeline that validates merged result
+
+## Usage
+
+Example invocations:
+
+- "/parallel-workflow" — Run the full parallel workflow workflow
+- "parallel workflow on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

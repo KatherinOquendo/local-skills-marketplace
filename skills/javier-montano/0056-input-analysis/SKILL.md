@@ -5,7 +5,7 @@ description: >
   "review project brief", "parse RFP content", or mentions input processing, document analysis,
   requirement extraction, project brief analysis. Triggers on: analyzes project input documents,
   extracts structured requirements from briefs, detects contradictions in source documents,
-  normalizes project inputs for planning, produces input completeness scorecard.
+  normalizes project inputs for planning, produces input completeness scorecard. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -21,7 +21,7 @@ allowed-tools:
 **TL;DR**: Analyzes project input documents (briefs, RFPs, SOWs, emails, meeting notes) to extract structured requirements, constraints, assumptions, stakeholders, and key decisions. Produces a normalized input digest that feeds the project charter and planning phases.
 
 ## Principio Rector
-La calidad del proyecto es proporcional a la calidad de sus inputs. Documentos ambiguos, contradictorios o incompletos son la causa raíz de la mayoría de los fracasos en proyectos. Este skill transforma información no estructurada en insumos normalizados y verificables, identificando gaps antes de que se conviertan en riesgos.
+La calidad del proyecto es proporcional a la calidad de sus inputs. Documentos ambiguos, contradictorios o incompletos son la causa raíz de la mayoría de los fracasos en proyectos. Este skill transforma información no estructurada en insumos normalizados y verificables, identificando gaps antes de que se conviertan en riesgos. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes input documents are available in readable format (Markdown, PDF, DOCX, or plain text) [SUPUESTO]
@@ -76,11 +76,11 @@ La calidad del proyecto es proporcional a la calidad de sus inputs. Documentos a
 8. **Normalize output** — Produce structured input digest in standard format
 
 ## Edge Cases
-1. **Input documents contradict each other on scope** — Document both versions side-by-side; tag as critical gap; generate specific clarification questions for stakeholder review.
-2. **Single-page brief with minimal information** — Extract what exists; produce gap analysis showing missing fields (budget, timeline, stakeholders, constraints); flag completeness score below 40%.
-3. **Input documents older than 6 months** — Tag all extracted data as [SUPUESTO] pending reconfirmation; generate revalidation questionnaire for stakeholders.
-4. **Technical jargon or domain-specific terminology** — Create glossary of extracted terms; flag terms requiring domain expert validation.
-5. **Multiple versions of same document** — Use latest version as primary; document delta between versions; flag scope changes.
+1. **Input documents contradict each other on scope** — Document both versions side-by-side; tag as critical gap; generate specific clarification questions for stakeholder review. [EXPLICIT]
+2. **Single-page brief with minimal information** — Extract what exists; produce gap analysis showing missing fields (budget, timeline, stakeholders, constraints); flag completeness score below 40%. [EXPLICIT]
+3. **Input documents older than 6 months** — Tag all extracted data as [SUPUESTO] pending reconfirmation; generate revalidation questionnaire for stakeholders. [EXPLICIT]
+4. **Technical jargon or domain-specific terminology** — Create glossary of extracted terms; flag terms requiring domain expert validation. [EXPLICIT]
+5. **Multiple versions of same document** — Use latest version as primary; document delta between versions; flag scope changes. [EXPLICIT]
 
 ## Example: Good vs Bad
 
@@ -94,7 +94,7 @@ La calidad del proyecto es proporcional a la calidad de sus inputs. Documentos a
 | Completeness score | 72% — sufficient for charter draft with noted gaps [METRIC] |
 
 **Bad Input Analysis:**
-"The project is about digital transformation for the client." — No structured extraction, no gap analysis, no contradiction detection, no completeness scoring. Planning proceeds on incomplete understanding.
+"The project is about digital transformation for the client." — No structured extraction, no gap analysis, no contradiction detection, no completeness scoring. Planning proceeds on incomplete understanding. [EXPLICIT]
 
 ## Salida (Deliverables)
 - `00_input_digest_{proyecto}_{WIP}.md` — Structured input analysis

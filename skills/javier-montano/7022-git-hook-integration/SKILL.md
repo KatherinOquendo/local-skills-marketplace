@@ -3,7 +3,7 @@ name: git-hook-integration
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Pre-commit and pre-push hooks, conventional commit enforcement.
+  Pre-commit and pre-push hooks, conventional commit enforcement. [EXPLICIT]
   Trigger: "git hook integration"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Git Hook Integration
 > "Method over hacks."
 ## TL;DR
-Pre-commit and pre-push hooks, conventional commit enforcement.
+Pre-commit and pre-push hooks, conventional commit enforcement. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Pre-commit and pre-push hooks, conventional commit enforcement.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/git-hook-integration" — Run the full git hook integration workflow
+- "git hook integration on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

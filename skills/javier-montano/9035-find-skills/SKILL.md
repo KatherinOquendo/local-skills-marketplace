@@ -18,7 +18,7 @@ allowed-tools:
 
 # Find Skills
 
-Discover and install specialized agent skills from both the open ecosystem and local plugin catalogs.
+Discover and install specialized agent skills from both the open ecosystem and local plugin catalogs. [EXPLICIT]
 
 > *The best skill is the one that already exists. Search before you build.*
 
@@ -32,20 +32,20 @@ Discover and install specialized agent skills from both the open ecosystem and l
 
 ### Step 0 — Read References
 
-Read `references/skill-sources.md` for the catalog of known sources and quality tiers.
+Read `references/skill-sources.md` for the catalog of known sources and quality tiers. [EXPLICIT]
 
 ### Step 1 — Parse Intent
 
-Extract from user request:
+Extract from user request: [EXPLICIT]
 1. **Domain** — e.g., React, testing, deployment, data, security
 2. **Task** — e.g., write tests, review PRs, scaffold project, optimize performance
 3. **Scope** — local only, remote only, or both (default: both)
 
-Tag intent: `[INFERENCIA]` if inferred from vague request, `[DOC]` if user stated explicitly.
+Tag intent: `[INFERENCIA]` if inferred from vague request, `[DOC]` if user stated explicitly. [EXPLICIT]
 
 ### Step 2 — Search Local Ecosystem
 
-Search installed plugin skills first. They are pre-vetted and MOAT-certified:
+Search installed plugin skills first. They are pre-vetted and MOAT-certified: [EXPLICIT]
 
 ```bash
 # Search across all local plugin skill catalogs
@@ -53,17 +53,17 @@ grep -rl "$QUERY" /Users/deonto/skills/plugins/*/skills/*/SKILL.md 2>/dev/null
 grep -rl "$QUERY" /Users/deonto/skills/plugins/*/references/ontology/skills-catalog.md 2>/dev/null
 ```
 
-Check these catalogs in order:
+Check these catalogs in order: [EXPLICIT]
 1. **SA** (127 skills) — `sa/references/ontology/skills-catalog.md`
 2. **SDF** (100+ skills) — `sofka-discovery-framework/references/ontology/skills-catalog.md`
 3. **MAO** (100+ skills) — `metodologia-discovery-framework/references/ontology/skills-catalog.md`
 4. **PM** (100+ skills) — `pm-project-framework/references/ontology/skills-catalog.md`
 
-If a local match is found, skip to Step 5 with the local recommendation.
+If a local match is found, skip to Step 5 with the local recommendation. [EXPLICIT]
 
 ### Step 3 — Search Remote Ecosystem
 
-If no local match or user explicitly wants remote:
+If no local match or user explicitly wants remote: [EXPLICIT]
 
 1. **Check skills.sh leaderboard** via `WebFetch`:
    ```
@@ -82,7 +82,7 @@ If no local match or user explicitly wants remote:
 
 ### Step 4 — Evaluate Quality
 
-Apply quality tiers to every candidate:
+Apply quality tiers to every candidate: [EXPLICIT]
 
 | Tier | Criteria | Action |
 |------|----------|--------|
@@ -92,7 +92,7 @@ Apply quality tiers to every candidate:
 | **C** | <100 installs, unknown author | Warn, suggest manual review |
 | **F** | Security audit warnings (Snyk/Socket fail) | Do NOT recommend |
 
-For local skills, apply MOAT depth assessment:
+For local skills, apply MOAT depth assessment: [EXPLICIT]
 
 | Depth | Quality Signal |
 |-------|----------------|
@@ -103,7 +103,7 @@ For local skills, apply MOAT depth assessment:
 
 ### Step 5 — Present Recommendations
 
-Format results as a comparison table:
+Format results as a comparison table: [EXPLICIT]
 
 ```markdown
 ## Skill Recommendations for: "{query}"
@@ -117,7 +117,7 @@ Format results as a comparison table:
 [Your reasoned recommendation based on evidence]
 ```
 
-Include for each skill:
+Include for each skill: [EXPLICIT]
 - What it does (one sentence)
 - Source and trust level
 - Install/invoke command
@@ -136,7 +136,7 @@ npx skills add <owner/repo@skill> -g -y
 
 ### Step 7 — No Match Protocol
 
-If no relevant skill exists:
+If no relevant skill exists: [EXPLICIT]
 
 1. Acknowledge the gap explicitly
 2. Offer to help with the task using general capabilities
@@ -169,3 +169,25 @@ If no relevant skill exists:
 - **Local + remote overlap**: Prefer local (MOAT-certified), note remote alternative
 - **Skills CLI not installed**: Fall back to WebFetch of skills.sh, suggest `npm i -g skills`
 - **Offline**: Search local catalogs only, note that remote search was skipped
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/find-skills" — Run the full find skills workflow
+- "find skills on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

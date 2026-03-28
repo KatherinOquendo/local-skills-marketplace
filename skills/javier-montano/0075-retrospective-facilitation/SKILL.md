@@ -3,7 +3,7 @@ name: retrospective-facilitation
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Sprint retros, blameless postmortems, action item tracking.
+  Sprint retros, blameless postmortems, action item tracking. [EXPLICIT]
   Trigger: "retrospective facilitation"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Retrospective Facilitation
 > "Method over hacks."
 ## TL;DR
-Sprint retros, blameless postmortems, action item tracking.
+Sprint retros, blameless postmortems, action item tracking. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Sprint retros, blameless postmortems, action item tracking.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/retrospective-facilitation" — Run the full retrospective facilitation workflow
+- "retrospective facilitation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

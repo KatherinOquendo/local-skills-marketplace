@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Scaffold and govern the workspace/ directory — gitignored user interaction layer
-  with dated session folders, task bridges, and estandares. Constitution XVIII + Workspace.
+  with dated session folders, task bridges, and estandares. Constitution XVIII + Workspace. [EXPLICIT]
   Trigger: "workspace", "scaffold workspace", "session folder", "workspace governance", "estandares"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Scaffolds and maintains the `workspace/` directory — the user's local interaction layer that is gitignored. Creates dated session folders, task bridges (connecting `tasklog.md` to working files), and manages the `estandares/` reference area. Ensures workspace structure is canonical and never pollutes the version-controlled repository.
+Scaffolds and maintains the `workspace/` directory — the user's local interaction layer that is gitignored. Creates dated session folders, task bridges (connecting `tasklog.md` to working files), and manages the `estandares/` reference area. Ensures workspace structure is canonical and never pollutes the version-controlled repository. [EXPLICIT]
 
 ## Procedure
 
@@ -93,3 +93,25 @@ Scaffolds and maintains the `workspace/` directory — the user's local interact
 - `tasklog-management` — Tasklog items drive task bridge creation
 - `indexability-validator` — Workspace READMEs follow same rules
 - `repository-organization` — Workspace complements repo organization
+
+## Usage
+
+Example invocations:
+
+- "/workspace-governance" — Run the full workspace governance workflow
+- "workspace governance on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

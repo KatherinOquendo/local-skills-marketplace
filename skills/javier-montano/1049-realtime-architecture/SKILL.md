@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Designs real-time data architectures using Firestore snapshot listeners,
-  Firebase Realtime Database, WebSockets, and Server-Sent Events (SSE).
-  Covers optimistic updates, conflict resolution, and presence systems.
+  Firebase Realtime Database, WebSockets, and Server-Sent Events (SSE). [EXPLICIT]
+  Covers optimistic updates, conflict resolution, and presence systems. [EXPLICIT]
   Trigger: "real-time", "Firestore listeners", "WebSocket", "SSE", "live updates"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs real-time data synchronization architectures using Firestore listeners, Firebase RTDB, WebSockets, and SSE for live collaborative features, dashboards, and notifications. Use this skill when building chat systems, live dashboards, collaborative editing, or any feature requiring instant data propagation.
+Designs real-time data synchronization architectures using Firestore listeners, Firebase RTDB, WebSockets, and SSE for live collaborative features, dashboards, and notifications. Use this skill when building chat systems, live dashboards, collaborative editing, or any feature requiring instant data propagation. [EXPLICIT]
 
 ## Procedure
 
@@ -74,3 +74,25 @@ Designs real-time data synchronization architectures using Firestore listeners, 
 - `state-management` — integrating real-time data with client state
 - `event-architecture` — server-side event patterns feeding real-time clients
 - `auth-architecture` — Firestore security rules for real-time access control
+
+## Usage
+
+Example invocations:
+
+- "/realtime-architecture" — Run the full realtime architecture workflow
+- "realtime architecture on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -10,7 +10,7 @@ metadata:
 
 # Intent Integrity Kit Tasks
 
-Generate an actionable, dependency-ordered tasks.md for the feature.
+Generate an actionable, dependency-ordered tasks.md for the feature. [EXPLICIT]
 
 ## User Input
 
@@ -18,11 +18,11 @@ Generate an actionable, dependency-ordered tasks.md for the feature.
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty).
+You **MUST** consider the user input before proceeding (if not empty). [EXPLICIT]
 
 ## Constitution Loading
 
-Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (basic mode — note TDD requirements for task ordering).
+Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (basic mode — note TDD requirements for task ordering). [EXPLICIT]
 
 ## Prerequisites Check
 
@@ -44,7 +44,7 @@ Load constitution per [constitution-loading.md](../iikit-core/references/constit
 2. **User story mapping**: verify each story in spec.md has acceptance criteria
 3. **Dependency pre-analysis**: identify shared entities used by multiple stories -> suggest Foundational phase
 
-Report readiness per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Plan Readiness section).
+Report readiness per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Plan Readiness section). [EXPLICIT]
 
 ## Execution Flow
 
@@ -53,15 +53,15 @@ Report readiness per [formatting-guide.md](../iikit-core/references/formatting-g
 - **Required**: `plan.md`, `spec.md`
 - **Optional**: `data-model.md`, `contracts/`, `research.md`, `quickstart.md`, `tests/features/` (.feature files)
 
-If .feature files exist (or legacy test-specs.md), tasks reference specific test IDs (e.g., "T012 [US1] Implement to pass TS-001").
+If .feature files exist (or legacy test-specs.md), tasks reference specific test IDs (e.g., "T012 [US1] Implement to pass TS-001"). [EXPLICIT]
 
 ### 2. Tessl Convention Consultation
 
-If Tessl installed: query primary framework tile for project structure conventions and testing framework tile for test organization. Apply to file paths and task ordering. If not available: skip silently.
+If Tessl installed: query primary framework tile for project structure conventions and testing framework tile for test organization. Apply to file paths and task ordering. If not available: skip silently. [EXPLICIT]
 
 ### 3. Generate Tasks
 
-Extract tech stack from plan.md, user stories from spec.md, entities from data-model.md, endpoints from contracts/, decisions from research.md. Organize by user story with dependency graph and parallel markers.
+Extract tech stack from plan.md, user stories from spec.md, entities from data-model.md, endpoints from contracts/, decisions from research.md. Organize by user story with dependency graph and parallel markers. [EXPLICIT]
 
 ### 4. Task Format (REQUIRED)
 
@@ -100,11 +100,11 @@ Extract tech stack from plan.md, user stories from spec.md, entities from data-m
 
 ### 6. Task Organization
 
-Map each component to its user story. Shared entities serving multiple stories go in Setup/Foundational. Each contract gets a contract test task. Story dependencies marked explicitly.
+Map each component to its user story. Shared entities serving multiple stories go in Setup/Foundational. Each contract gets a contract test task. Story dependencies marked explicitly. [EXPLICIT]
 
 ### 7. Dependency Graph Validation
 
-After generating, validate:
+After generating, validate: [EXPLICIT]
 1. **Circular dependencies**: detect cycles, ERROR if found with resolution options
 2. **Orphan tasks**: warn about tasks with no dependencies and not blocking anything
 3. **Critical path**: identify longest chain, suggest parallelization, list parallel batches per phase
@@ -113,15 +113,15 @@ After generating, validate:
 
 ### 8. Write tasks.md
 
-Use [tasks-template.md](../iikit-core/templates/tasks-template.md) with phases, dependencies, parallel examples, and implementation strategy.
+Use [tasks-template.md](../iikit-core/templates/tasks-template.md) with phases, dependencies, parallel examples, and implementation strategy. [EXPLICIT]
 
 ## Report
 
-Output: path to tasks.md, total count, count per story, parallel opportunities, MVP scope suggestion, format validation.
+Output: path to tasks.md, total count, count per story, parallel opportunities, MVP scope suggestion, format validation. [EXPLICIT]
 
 ## Semantic Diff on Re-run
 
-If tasks.md exists: preserve `[x]` completion status, map old IDs to new by similarity, warn about changes to completed tasks. Ask confirmation before overwriting. Use format from [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Semantic Diff section).
+If tasks.md exists: preserve `[x]` completion status, map old IDs to new by similarity, warn about changes to completed tasks. Ask confirmation before overwriting. Use format from [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Semantic Diff section). [EXPLICIT]
 
 ## Commit
 
@@ -132,20 +132,20 @@ git commit -m "tasks: <feature-short-name> task breakdown"
 
 ## Dashboard Refresh
 
-Regenerate the dashboard so the pipeline reflects the new tasks:
+Regenerate the dashboard so the pipeline reflects the new tasks: [EXPLICIT]
 
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/generate-dashboard-safe.sh
 ```
 
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1`
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1` [EXPLICIT]
 
 ## Next Steps
 
-Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 05 --json`
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 05 -Json`
+Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 05 --json` [EXPLICIT]
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 05 -Json` [EXPLICIT]
 
-Parse the JSON and present:
+Parse the JSON and present: [EXPLICIT]
 1. If `clear_after` is true: suggest `/clear` before proceeding
 2. Present `next_step` as the primary recommendation
 3. If `alt_steps` non-empty: list as alternatives
@@ -154,9 +154,39 @@ Parse the JSON and present:
 
 Format:
 ```
-Tasks generated!
-Next: [/clear → ] <next_step> (model: <tier>)
+Tasks generated! [EXPLICIT]
+Next: [/clear → ] <next_step> (model: <tier>) [EXPLICIT]
 [- <alt_step> — <reason> (model: <tier>)]
 
 - Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path)
 ```
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/iikit-05-tasks" — Run the full iikit 05 tasks workflow
+- "iikit 05 tasks on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

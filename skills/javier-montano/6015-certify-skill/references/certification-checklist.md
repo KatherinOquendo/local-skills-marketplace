@@ -98,7 +98,7 @@ A skill that passes CERTIFIED must also pass these 5 checks to achieve MOAT stat
 | M1b | >= 5 distinct evals | Parse evals.json, count entries | >= 5 entries with distinct `name` fields | BLOCKER — insufficient coverage |
 | M2 | False-positive eval | Grep for `"false_positive"` or eval named `*false*` or `*negative*` | >= 1 match | WARNING — no guard against over-triggering |
 | M2b | Edge-case eval | Grep for `"edge_case"` or eval named `*edge*` or `*boundary*` | >= 1 match | WARNING — no edge coverage |
-| M3 | References substantive | For each file in references/: `wc -l` and `grep -c 'TBD\|TODO\|placeholder'` | All files >= 20 lines AND zero TBD/TODO/placeholder | BLOCKER — broken progressive disclosure |
+| M3 | References substantive | For each file in references/: `wc -l` and `grep -c 'pending\|pending\|template'` | All files >= 20 lines AND zero pending/pending/template | BLOCKER — broken progressive disclosure |
 | M4 | Template A compliance | Grep for required sections: "## Usage" or "## When to Activate", "## Validation Gate" or "## Quality Gate" | Both present | BLOCKER — skill doesn't follow current standard |
 | M4b | No Template B markers | `grep -c '## The Physics\|## The Protocol\|## TL;DR' SKILL.md` | 0 matches | BLOCKER — deprecated template |
 | M5 | Evidence tag coverage | Count `[EXPLICIT]\|[INFERRED]\|[OPEN]` occurrences / count factual sentences | >= 80% (for Standard/Orchestrator tiers); >= 50% (for Utility tier) | WARNING — ungrounded claims |

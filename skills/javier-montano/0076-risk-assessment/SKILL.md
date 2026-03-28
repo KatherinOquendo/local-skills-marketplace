@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Identifies, quantifies, and mitigates project and technical risks using
-  risk registers, probability/impact matrices, and mitigation strategies.
-  Produces actionable risk management plans.
+  risk registers, probability/impact matrices, and mitigation strategies. [EXPLICIT]
+  Produces actionable risk management plans. [EXPLICIT]
   Trigger: "risk register", "risk matrix", "mitigation", "risk assessment"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Systematically identifies, quantifies, and plans mitigations for project and technical risks using risk registers and probability/impact matrices. Use this skill at project inception, before major milestones, or when uncertainty threatens delivery commitments.
+Systematically identifies, quantifies, and plans mitigations for project and technical risks using risk registers and probability/impact matrices. Use this skill at project inception, before major milestones, or when uncertainty threatens delivery commitments. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Systematically identifies, quantifies, and plans mitigations for project and tec
 - `feasibility-validation` — risk assessment informs feasibility scoring
 - `cost-estimation` — risk contingency feeds into effort estimates
 - `security-architecture` — technical security risks via STRIDE
+
+## Usage
+
+Example invocations:
+
+- "/risk-assessment" — Run the full risk assessment workflow
+- "risk assessment on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

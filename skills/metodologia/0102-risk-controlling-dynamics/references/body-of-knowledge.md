@@ -129,7 +129,7 @@ COSO Enterprise Risk Management integra riesgo con estrategia y performance. Mie
 | **Performance Integration** | S6: Financial Controls conecta riesgos con impacto en magnitudes y presupuesto |
 | **Risk Appetite Statement** | S1: Declaración formal por dimensión (técnico, timeline, costo, calidad, reputacional) |
 | **Severity Assessment** | S4: Exposure = Probabilidad × Impacto con categorización 🔴🟠🟡🟢 |
-| **Pursuing Risk** | No todo riesgo es malo — innovación requiere aceptar cierto nivel de riesgo |
+| **Pursuing Risk** | No Todo riesgo es malo — innovación requiere aceptar cierto nivel de riesgo |
 | **Risk Culture** | La "paranoia productiva" como cultura del controller — preocuparse es profesional |
 | **Governance and Culture** | Steering committee, escalation paths, decision logs |
 | **Review and Revision** | Risk register actualizado en cada gate y cada hallazgo nuevo |
@@ -233,7 +233,7 @@ Taleb fundamenta la humildad epistémica del controller: los riesgos más destru
 
 | Fuente | Aporte Específico |
 |---|---|
-| Hubbard, D. W. (2009). *The Failure of Risk Management* | Crítica a métodos cualitativos de riesgo — aboga por cuantificación real |
+| Hubbard, D. W. (2009). *The Failure of Risk Management* | Crítica a méTodos cualitativos de riesgo — aboga por cuantificación real |
 | Kahneman, D. (2011). *Thinking, Fast and Slow* | Sesgos cognitivos que afectan la evaluación de riesgos (optimism bias, anchoring) |
 | Meadows, D. H. (2008). *Thinking in Systems* | Riesgos sistémicos, feedback loops, leverage points |
 | Spetzler, C. et al. (2016). *Decision Quality* | Framework para evaluar la calidad de decisiones bajo incertidumbre |

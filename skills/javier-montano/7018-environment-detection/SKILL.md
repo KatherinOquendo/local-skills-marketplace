@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Detect IDE and model at session start. Adapt triad mode, skill loading,
-  and capability profile. Auto-prime for optimal performance per environment.
+  and capability profile. Auto-prime for optimal performance per environment. [EXPLICIT]
   Trigger: "detect environment", "what IDE", "configure environment", "auto-prime"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Detects the runtime environment (IDE + model) and adapts Pristino's behavior accordingly. Determines triad mode (full/sequential/checklist/suggestion), skill loading strategy, and context budget. Runs at session start as part of the bootstrap sequence. Full protocol: `references/ontology/environment-protocol.md`.
+Detects the runtime environment (IDE + model) and adapts Pristino's behavior accordingly. Determines triad mode (full/sequential/checklist/suggestion), skill loading strategy, and context budget. Runs at session start as part of the bootstrap sequence. Full protocol: `references/ontology/environment-protocol.md`. [EXPLICIT]
 
 ## Procedure
 
@@ -83,3 +83,25 @@ Detects the runtime environment (IDE + model) and adapts Pristino's behavior acc
 - `session-protocol` — Environment detection is Step 0 of session init
 - `context-optimization` — Context budget depends on detected tier
 - `continuous-learning` — Log environment patterns for optimization
+
+## Usage
+
+Example invocations:
+
+- "/environment-detection" — Run the full environment detection workflow
+- "environment detection on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -5,7 +5,7 @@ description: >
   reliability, performance, cost optimization, and sustainability. This skill should be used when the user asks to
   "audit AWS AI architecture", "review Bedrock configuration", "assess SageMaker security", "optimize AWS AI costs",
   "evaluate AWS GenAI compliance", "review AWS Well-Architected for AI", or mentions AWS AI audit, Bedrock audit,
-  SageMaker review, AWS GenAI security assessment, or AWS AI cost optimization review.
+  SageMaker review, AWS GenAI security assessment, or AWS AI cost optimization review. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,17 +21,17 @@ allowed-tools:
 
 Auditar arquitecturas AWS para workloads de AI/GenAI contra el Well-Architected Framework GenAI Lens,
 evaluando los 6 pilares (GENOPS, GENSEC, GENREL, GENPERF, GENCOST, GENSUS) con checks automatizables,
-detección de waste, auditoría de seguridad AWS-específica, y compliance mapping por regulación.
+detección de waste, auditoría de seguridad AWS-específica, y compliance mapping por regulación. [EXPLICIT]
 
 ---
 
 ## Principio Rector
 
-1. **Well-Architected Lens es el estándar, no una guía.** Los checks del GenAI Lens no son sugerencias — son el baseline mínimo para workloads AI en producción. Un sistema que falla en GENSEC (security) o GENREL (reliability) no está listo para producción independientemente del rendimiento del modelo.
+1. **Well-Architected Lens es el estándar, no una guía.** Los checks del GenAI Lens no son sugerencias — son el baseline mínimo para workloads AI en producción. Un sistema que falla en GENSEC (security) o GENREL (reliability) no está listo para producción independientemente del rendimiento del modelo. [EXPLICIT]
 
-2. **Cost waste is a finding, not an optimization.** En auditoría, el waste no es "una oportunidad de mejora" — es un hallazgo con severidad. Un endpoint SageMaker idle 24/7 con tráfico esporádico es un finding HIGH, no un "nice to have".
+2. **Cost waste is a finding, not an optimization.** En auditoría, el waste no es "una oportunidad de mejora" — es un hallazgo con severidad. Un endpoint SageMaker idle 24/7 con tráfico esporádico es un finding HIGH, no un "nice to have". [EXPLICIT]
 
-3. **Automate the audit, not just the fix.** Cada check debe ser repetible y automatizable (AWS Config rules, CloudWatch alarms, custom Lambda checks). Una auditoría que depende de revisión manual no escala.
+3. **Automate the audit, not just the fix.** Cada check debe ser repetible y automatizable (AWS Config rules, CloudWatch alarms, custom Lambda checks). Una auditoría que depende de revisión manual no escala. [EXPLICIT]
 
 ---
 
@@ -46,10 +46,10 @@ Parámetros:
   SCOPE:        [bedrock | sagemaker | opensearch | full-stack]
 
 Modos de autonomía:
-  - piloto-auto: Auto para checks de configuración, HITL para findings críticos y roadmap.
-  - desatendido: Cero interrupciones. Auditoría completa con supuestos documentados.
-  - supervisado: Autónomo con checkpoint en security findings, cost waste, y roadmap.
-  - paso-a-paso: Confirma cada pilar, cada finding, y cada remediación.
+  - piloto-auto: Auto para checks de configuración, HITL para findings críticos y roadmap. [EXPLICIT]
+  - desatendido: Cero interrupciones. Auditoría completa con supuestos documentados. [EXPLICIT]
+  - supervisado: Autónomo con checkpoint en security findings, cost waste, y roadmap. [EXPLICIT]
+  - paso-a-paso: Confirma cada pilar, cada finding, y cada remediación. [EXPLICIT]
 
 Detección automática:
   - Si existe CDK/CloudFormation con Bedrock → SCOPE incluye bedrock
@@ -85,7 +85,7 @@ Detección automática:
 
 ### S1: Well-Architected GenAI Lens Assessment
 
-Evalúa el workload contra los 6 pilares del GenAI Lens con checks específicos de AWS.
+Evalúa el workload contra los 6 pilares del GenAI Lens con checks específicos de AWS. [EXPLICIT]
 
 ```
 Load references:
@@ -103,11 +103,11 @@ Load references:
 | GENCOST (Cost) | 8 | [n] | [n] | [n] | [%] |
 | GENSUS (Sustainability) | 3 | [n] | [n] | [n] | [%] |
 
-Para cada check fallido: evidencia específica de AWS (console screenshot, CLI output, config file), severidad, y remediación con servicio AWS concreto.
+Para cada check fallido: evidencia específica de AWS (console screenshot, CLI output, config file), severidad, y remediación con servicio AWS concreto. [EXPLICIT]
 
 ### S2: AWS Service Configuration Audit
 
-Audita la configuración específica de cada servicio AWS utilizado para AI.
+Audita la configuración específica de cada servicio AWS utilizado para AI. [EXPLICIT]
 
 **Bedrock:**
 - ¿Guardrails configurados con content filtering, PII redaction, topic denial?
@@ -140,7 +140,7 @@ Audita la configuración específica de cada servicio AWS utilizado para AI.
 
 ### S3: Security Posture Assessment
 
-Audita la postura de seguridad completa del stack AI en AWS.
+Audita la postura de seguridad completa del stack AI en AWS. [EXPLICIT]
 
 ```
 Load references:
@@ -177,7 +177,7 @@ Load references:
 
 ### S4: Cost Optimization Audit
 
-Detecta cost waste y oportunidades de optimización en servicios AI de AWS.
+Detecta cost waste y oportunidades de optimización en servicios AI de AWS. [EXPLICIT]
 
 ```
 Load references:
@@ -206,7 +206,7 @@ Load references:
 
 ### S5: Reliability & Performance Audit
 
-Evalúa disponibilidad, rendimiento, y escalabilidad del stack AI.
+Evalúa disponibilidad, rendimiento, y escalabilidad del stack AI. [EXPLICIT]
 
 **Reliability checks:**
 - ¿Multi-AZ para model endpoints?
@@ -234,7 +234,7 @@ Evalúa disponibilidad, rendimiento, y escalabilidad del stack AI.
 
 ### S6: Remediation Roadmap (AWS-Specific)
 
-Transforma findings en acciones AWS concretas priorizadas.
+Transforma findings en acciones AWS concretas priorizadas. [EXPLICIT]
 
 **Para cada finding:**
 - AWS service/feature específico para remediar
@@ -284,15 +284,15 @@ Transforma findings en acciones AWS concretas priorizadas.
 
 ## Edge Cases
 
-1. **Cuenta multi-service (AI + non-AI)**: Focus en recursos taggeados como AI. Si no hay tags, el primer finding es "implementar tagging strategy para AI resources".
+1. **Cuenta multi-service (AI + non-AI)**: Focus en recursos taggeados como AI. Si no hay tags, el primer finding es "implementar tagging strategy para AI resources". [EXPLICIT]
 
-2. **Multi-account architecture**: Auditar cada cuenta con workloads AI. Verificar cross-account IAM roles, shared services (VPC, KMS), y Service Control Policies en Organizations.
+2. **Multi-account architecture**: Auditar cada cuenta con workloads AI. Verificar cross-account IAM roles, shared services (VPC, KMS), y Service Control Policies en Organizations. [EXPLICIT]
 
-3. **Bedrock-only (no SageMaker)**: Simplificar audit scope. Focus en Guardrails, IAM, cost (model selection), y Knowledge Bases. SageMaker-specific checks se marcan N/A.
+3. **Bedrock-only (no SageMaker)**: Simplificar audit scope. Focus en Guardrails, IAM, cost (model selection), y Knowledge Bases. SageMaker-specific checks se marcan N/A. [EXPLICIT]
 
-4. **Regulatory pre-audit**: Aumentar profundidad de S3 (security) y S5 (reliability). Producir evidencia en formato auditable. Mapear cada check contra el framework regulatorio específico (HIPAA, PCI-DSS).
+4. **Regulatory pre-audit**: Aumentar profundidad de S3 (security) y S5 (reliability). Producir evidencia en formato auditable. Mapear cada check contra el framework regulatorio específico (HIPAA, PCI-DSS). [EXPLICIT]
 
-5. **Post-incident audit**: Priorizar cadena causal del incidente. Si fue cost overrun → S4 primero. Si fue security breach → S3 primero. Si fue outage → S5 primero.
+5. **Post-incident audit**: Priorizar cadena causal del incidente. Si fue cost overrun → S4 primero. Si fue security breach → S3 primero. Si fue outage → S5 primero. [EXPLICIT]
 
 ## Manejo de Inputs Ambiguos
 

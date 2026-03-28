@@ -1,7 +1,7 @@
 ---
 name: sofka-devsecops-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design the CI/CD pipeline",
   "integrate security into delivery", "set up SBOM and artifact signing",
   "automate compliance", "measure DORA metrics", or mentions SAST, SCA, DAST,
@@ -10,8 +10,8 @@ description: >
   security, supply chain integrity, release management, and compliance
   automation. Use this skill whenever the conversation involves build pipelines,
   deployment security, or delivery automation, even if they don't explicitly
-  ask for "devsecops architecture".
-argument-hint: "<project-or-system-name>"
+  ask for "devsecops architecture". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -25,7 +25,7 @@ allowed-tools:
 
 # DevSecOps Architecture: Delivery & Security Pipeline
 
-DevSecOps architecture designs how software is built, tested, secured, and released to production. It integrates security into every stage of the delivery pipeline, ensuring code quality, compliance, and supply chain integrity.
+DevSecOps architecture designs how software is built, tested, secured, and released to production. It integrates security into every stage of the delivery pipeline, ensuring code quality, compliance, and supply chain integrity. [EXPLICIT]
 
 ## Principio Rector
 
@@ -33,20 +33,20 @@ DevSecOps architecture designs how software is built, tested, secured, and relea
 
 ### Filosofía DevSecOps
 
-1. **Shift-left, pero no solo-left.** La seguridad empieza en el IDE, pero no termina ahí. Cada stage del pipeline tiene su gate de seguridad.
-2. **Supply chain integrity.** SBOM, artifact signing, dependency scanning — la cadena de suministro de software es un vector de ataque. Se verifica, no se asume.
-3. **DORA metrics como North Star.** Deployment frequency, lead time, failure rate, MTTR — medir para mejorar, no para reportar.
+1. **Shift-left, pero no solo-left.** La seguridad empieza en el IDE, pero no termina ahí. Cada stage del pipeline tiene su gate de seguridad. [EXPLICIT]
+2. **Supply chain integrity.** SBOM, artifact signing, dependency scanning — la cadena de suministro de software es un vector de ataque. Se verifica, no se asume. [EXPLICIT]
+3. **DORA metrics como North Star.** Deployment frequency, lead time, failure rate, MTTR — medir para mejorar, no para reportar. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or pipeline name as `$ARGUMENTS`. Parse `$1` as the **system/pipeline name** used throughout all output artifacts.
+The user provides a system or pipeline name as `$ARGUMENTS`. Parse `$1` as the **system/pipeline name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de pipeline y security gates, HITL para decisiones de deployment strategy y compliance policies.
-  - **desatendido**: Cero interrupciones. Pipeline documentado automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en security gates, deployment strategy, y compliance automation.
-  - **paso-a-paso**: Confirma cada stage, security gate, deployment strategy, y compliance policy.
+  - **piloto-auto**: Auto para análisis de pipeline y security gates, HITL para decisiones de deployment strategy y compliance policies. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Pipeline documentado automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en security gates, deployment strategy, y compliance automation. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada stage, security gate, deployment strategy, y compliance policy. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 CI/CD pipeline + S2 shift-left security + S5 DORA metrics) | `técnica` (full 7 sections, default)
 
@@ -88,7 +88,7 @@ Read ${CLAUDE_SKILL_DIR}/references/compliance-policies.md
 
 ### S1: CI/CD Pipeline Architecture
 
-Design of build, test, and deployment stages.
+Design of build, test, and deployment stages. [EXPLICIT]
 
 **Commit Stage (5-10 min):** Git push -> compile -> unit tests -> lint -> build artifact -> publish to artifact repository
 
@@ -111,7 +111,7 @@ Design of build, test, and deployment stages.
 
 ### S2: Shift-Left Security (SAST/SCA/DAST/Secrets/IaC)
 
-Security controls embedded throughout the pipeline.
+Security controls embedded throughout the pipeline. [EXPLICIT]
 
 **SAST (Static Analysis):** Scans source code for vulnerabilities (SQLi, XSS, hard-coded creds). Tools: SonarQube, Semgrep, Checkmarx. Gate: block merge on critical/high.
 
@@ -129,7 +129,7 @@ Security controls embedded throughout the pipeline.
 
 ### S3: Supply Chain Security (SBOM, Signing)
 
-Ensures code and artifact integrity end-to-end.
+Ensures code and artifact integrity end-to-end. [EXPLICIT]
 
 **SBOM:** Complete component list (SPDX/CycloneDX format), generated at build time, used for vulnerability tracking and compliance.
 
@@ -143,7 +143,7 @@ Ensures code and artifact integrity end-to-end.
 
 ### S4: Release Management
 
-Strategy for version management and production deployment.
+Strategy for version management and production deployment. [EXPLICIT]
 
 **Versioning:** Semantic versioning (MAJOR.MINOR.PATCH), conventional commits, automated changelog generation.
 
@@ -158,7 +158,7 @@ Strategy for version management and production deployment.
 
 ### S5: Pipeline Observability (DORA Metrics)
 
-Tracking and visibility into build/deployment process.
+Tracking and visibility into build/deployment process. [EXPLICIT]
 
 **DORA Metrics:**
 - **Deployment Frequency:** Target: on-demand, multiple per day
@@ -176,7 +176,7 @@ Tracking and visibility into build/deployment process.
 
 ### S6: Compliance Automation
 
-Enforcement of compliance requirements through automated controls.
+Enforcement of compliance requirements through automated controls. [EXPLICIT]
 
 **Policy-as-Code:** Define rules in code (YAML, Rego, Jinja). Enforce at build time, deploy time, runtime. Tools: OPA, Kyverno, HashiCorp Sentinel.
 
@@ -197,7 +197,7 @@ Enforcement of compliance requirements through automated controls.
 
 ### S7: Minimum Controls & Risk Matrix
 
-Security gates: non-negotiable vs. optional by risk classification.
+Security gates: non-negotiable vs. optional by risk classification. [EXPLICIT]
 
 **Commit Stage (Always Required):** Code compiles, unit tests pass (>=80% coverage), linting passes, no secrets in code.
 
@@ -251,19 +251,19 @@ Security gates: non-negotiable vs. optional by risk classification.
 ## Edge Cases
 
 **Legacy System (No Pipeline):**
-Manual deploys, no automated tests. Build pipeline incrementally: add tests first, then automation, then gates.
+Manual deploys, no automated tests. Build pipeline incrementally: add tests first, then automation, then gates. [EXPLICIT]
 
 **High-Compliance System (Financial, Healthcare):**
-Every change requires audit trail, approval, evidence. Security gates mandatory. Automate compliance evidence collection; gate all changes.
+Every change requires audit trail, approval, evidence. Security gates mandatory. Automate compliance evidence collection; gate all changes. [EXPLICIT]
 
 **Rapid Innovation (Startup):**
-Speed over perfection; risk tolerance high. Minimal gates; automate only critical security. Continuous deployment, canary by default, rollback emphasis.
+Speed over perfection; risk tolerance high. Minimal gates; automate only critical security. Continuous deployment, canary by default, rollback emphasis. [EXPLICIT]
 
 **Distributed Systems (Microservices):**
-Hundreds of independent services; monolithic pipeline doesn't scale. Platform team provides shared pipeline template, service teams customize.
+Hundreds of independent services; monolithic pipeline doesn't scale. Platform team provides shared pipeline template, service teams customize. [EXPLICIT]
 
 **Supply Chain Compromise Risk:**
-Sophisticated attackers targeting build system. Signed artifacts, immutable build environment, provenance attestation.
+Sophisticated attackers targeting build system. Signed artifacts, immutable build environment, provenance attestation. [EXPLICIT]
 
 ---
 
@@ -299,7 +299,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

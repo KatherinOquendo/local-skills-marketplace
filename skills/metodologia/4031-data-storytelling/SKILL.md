@@ -1,12 +1,12 @@
 ---
 name: metodologia-data-storytelling
 author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<data-context: metrics|scoring|financial|performance|coverage> <audience: executive|technical|mixed>"
-description: >
+argument-hint: "data-context: metrics|scoring|financial|performance|coverage audience: executive|technical|mixed"
+description: 
   Transforms metrics and findings into meaningful narratives — insight extraction,
-  metrics-to-meaning conversion, comparison framing, and magnitude communication.
+  metrics-to-meaning conversion, comparison framing, and magnitude communication. [EXPLICIT]
   Use when presenting scoring matrices, coverage metrics, performance data, cost
-  estimates, or any quantitative finding that needs interpretation and context.
+  estimates, or any quantitative finding that needs interpretation and context. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Data Storytelling — Metrics to Meaning
 
-Transforms raw metrics, scores, and quantitative findings into meaningful narratives that drive understanding and action. Owns insight extraction, comparison framing, magnitude communication, and the bridge between numbers and decisions.
+Transforms raw metrics, scores, and quantitative findings into meaningful narratives that drive understanding and action. Owns insight extraction, comparison framing, magnitude communication, and the bridge between numbers and decisions. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,17 +27,17 @@ Transforms raw metrics, scores, and quantitative findings into meaningful narrat
 
 ### Narrative Data Philosophy
 
-1. **Context before number.** Not "coverage is 92%". Yes: "the team invested in quality (92% coverage), but the uncovered 8% concentrates the critical payment modules".
-2. **Always compare.** Every metric needs a reference: vs. baseline, vs. industry, vs. target, vs. prior quarter.
+1. **Context before number.** Not "coverage is 92%". Yes: "the team invested in quality (92% coverage), but the uncovered 8% concentrates the critical payment modules". [EXPLICIT]
+2. **Always compare.** Every metric needs a reference: vs. baseline, vs. industry, vs. target, vs. prior quarter. [EXPLICIT]
 3. **Explicit consequence.** So what? → "This means that..." → "Which implies that..." → "Therefore, we recommend..."
-4. **Tangible magnitude.** FTE-months → "equivalent to a team of 5 people for 8 months". Abstract → concrete.
+4. **Tangible magnitude.** FTE-months → "equivalent to a team of 5 people for 8 months". Abstract → concrete. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Data context: `metrics`, `scoring`, `financial`, `performance`, `coverage` (default: `metrics`)
 - `$2` — Audience: `executive`, `technical`, `mixed` (default: `mixed`)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 ## Core Patterns
 
@@ -94,7 +94,7 @@ Abstract → Concrete → Impactful
   → "Equivalente a casi 2 días completos sin servicio,
      probablemente concentrados en momentos de alta demanda"
 
-"$2M de deuda técnica" → NEVER. Use FTE-month equivalents.
+"$2M de deuda técnica" → NEVER. Use FTE-month equivalents. [EXPLICIT]
 ```
 
 ## Scoring Matrix Narratives
@@ -132,7 +132,7 @@ Chart 3: The comparison
 Chart 4: The path
   "Así cerramos la brecha" — roadmap or scenario projection
 
-Each chart builds on the previous. No standalone charts.
+Each chart builds on the previous. No standalone charts. [EXPLICIT]
 ```
 
 ## Semantic Density Rules
@@ -333,3 +333,11 @@ graph TD
 - This skill owns **metric interpretation and narrative framing**. It does NOT own visualization design (that's metodologia-data-viz-storytelling) or overall narrative arc (that's metodologia-storytelling).
 - NEVER present metrics without context and comparison.
 - NEVER use currency values for costs. FTE-months only.
+
+## Usage
+
+Example invocations:
+
+- "/data-storytelling" — Run the full data storytelling workflow
+- "data storytelling on this project" — Apply to current context
+

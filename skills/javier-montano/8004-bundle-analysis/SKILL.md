@@ -10,33 +10,33 @@ tags: [performance, bundle, webpack, rollup, vite, code-splitting, tree-shaking]
 # 099 — Bundle Analysis {Performance}
 
 ## Purpose
-Visualize, analyze, and optimize JavaScript bundle composition. Identify oversized dependencies, eliminate dead code, and enforce chunk splitting strategies that minimize initial load time.
+Visualize, analyze, and optimize JavaScript bundle composition. Identify oversized dependencies, eliminate dead code, and enforce chunk splitting strategies that minimize initial load time. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of Visibility**: You cannot optimize what you cannot see. Bundle visualization is the first step — treemaps reveal what code actually ships to users.
-2. **Law of Lazy Loading**: Code not needed for initial render must not be in the initial bundle. Dynamic imports split code at route and feature boundaries.
-3. **Law of Dependency Awareness**: Every `npm install` has a bundle cost. The team must know the gzipped size of every dependency before adding it.
+1. **Law of Visibility**: You cannot optimize what you cannot see. Bundle visualization is the first step — treemaps reveal what code actually ships to users. [EXPLICIT]
+2. **Law of Lazy Loading**: Code not needed for initial render must not be in the initial bundle. Dynamic imports split code at route and feature boundaries. [EXPLICIT]
+3. **Law of Dependency Awareness**: Every `npm install` has a bundle cost. The team must know the gzipped size of every dependency before adding it. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Visualization Setup
-1. Vite: `rollup-plugin-visualizer` in `vite.config.ts` — generates `stats.html` treemap.
-2. Webpack: `webpack-bundle-analyzer` plugin — opens interactive treemap on build.
-3. Add npm script: `"analyze": "ANALYZE=true vite build"` or `"analyze": "webpack --profile --json > stats.json"`.
-4. Run analysis on every release and after adding new dependencies.
+1. Vite: `rollup-plugin-visualizer` in `vite.config.ts` — generates `stats.html` treemap. [EXPLICIT]
+2. Webpack: `webpack-bundle-analyzer` plugin — opens interactive treemap on build. [EXPLICIT]
+3. Add npm script: `"analyze": "ANALYZE=true vite build"` or `"analyze": "webpack --profile --json > stats.json"`. [EXPLICIT]
+4. Run analysis on every release and after adding new dependencies. [EXPLICIT]
 
 ### Phase 2 — Chunk Audit
-1. Identify top 5 largest chunks by gzipped size.
+1. Identify top 5 largest chunks by gzipped size. [EXPLICIT]
 2. For each large chunk: can it be lazy-loaded? Is tree shaking working? Is there a lighter alternative?
-3. Check for duplicate dependencies (multiple versions of same package).
-4. Verify vendor chunk contains only shared dependencies, not route-specific code.
+3. Check for duplicate dependencies (multiple versions of same package). [EXPLICIT]
+4. Verify vendor chunk contains only shared dependencies, not route-specific code. [EXPLICIT]
 
 ### Phase 3 — Optimization Actions
-1. Replace heavy dependencies: `moment` → `date-fns` or `dayjs`. `lodash` → `lodash-es` (tree-shakeable).
-2. Dynamic import heavy features: `const Chart = lazy(() => import('chart.js'))`.
-3. Configure `manualChunks` to isolate firebase, react, and other large vendors.
-4. Verify tree shaking: check that unused exports don't appear in bundle.
+1. Replace heavy dependencies: `moment` → `date-fns` or `dayjs`. `lodash` → `lodash-es` (tree-shakeable). [EXPLICIT]
+2. Dynamic import heavy features: `const Chart = lazy(() => import('chart.js'))`. [EXPLICIT]
+3. Configure `manualChunks` to isolate firebase, react, and other large vendors. [EXPLICIT]
+4. Verify tree shaking: check that unused exports don't appear in bundle. [EXPLICIT]
 
 ## I/O
 
@@ -49,11 +49,11 @@ Visualize, analyze, and optimize JavaScript bundle composition. Identify oversiz
 
 ## Quality Gates — 5 Checks
 
-1. **Initial JS bundle < 250KB gzipped** — total of all eagerly loaded chunks.
-2. **No single dependency > 50KB gzipped** without documented justification.
-3. **Zero duplicate packages** — `npm dedupe` resolves all duplicates.
-4. **Tree shaking verified** — unused named exports absent from output.
-5. **Bundle analysis run on every release** — treemap reviewed before deploy.
+1. **Initial JS bundle < 250KB gzipped** — total of all eagerly loaded chunks. [EXPLICIT]
+2. **No single dependency > 50KB gzipped** without documented justification. [EXPLICIT]
+3. **Zero duplicate packages** — `npm dedupe` resolves all duplicates. [EXPLICIT]
+4. **Tree shaking verified** — unused named exports absent from output. [EXPLICIT]
+5. **Bundle analysis run on every release** — treemap reviewed before deploy. [EXPLICIT]
 
 ## Edge Cases
 
@@ -68,3 +68,17 @@ Visualize, analyze, and optimize JavaScript bundle composition. Identify oversiz
 - New dependency adds > 50KB → find lighter alternative or lazy-load.
 - Duplicate dependency detected → run `npm dedupe`, update lock file.
 - Tree shaking broken → check `sideEffects` in `package.json`, verify ESM imports.
+
+## Usage
+
+Example invocations:
+
+- "/bundle-analysis" — Run the full bundle analysis workflow
+- "bundle analysis on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

@@ -3,7 +3,7 @@ name: notification-ux
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Toast patterns, badge counts, notification center, priority ranking.
+  Toast patterns, badge counts, notification center, priority ranking. [EXPLICIT]
   Trigger: "notification ux"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Notification Ux
 > "Method over hacks."
 ## TL;DR
-Toast patterns, badge counts, notification center, priority ranking.
+Toast patterns, badge counts, notification center, priority ranking. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Toast patterns, badge counts, notification center, priority ranking.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/notification-ux" — Run the full notification ux workflow
+- "notification ux on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

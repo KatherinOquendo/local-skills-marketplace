@@ -1,0 +1,9 @@
+[
+  {"id": "ci-pipeline-design-happy-path", "type": "happy_path", "input": "Run ci pipeline design on this project", "expected_behavior": "Skill activates and produces the expected ci pipeline design output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "ci-pipeline-design-explicit-trigger", "type": "happy_path", "input": "Apply ci pipeline design analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the ci pipeline design workflow", "tags": ["trigger", "recognition"]},
+  {"id": "ci-pipeline-design-with-context", "type": "happy_path", "input": "Apply ci pipeline design to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive ci pipeline design analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "ci-pipeline-design-minimal-input", "type": "happy_path", "input": "Quick ci pipeline design", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "ci-pipeline-design-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to ci pipeline design", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "ci-pipeline-design-edge-empty-input", "type": "edge_case", "input": "Run ci pipeline design but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "ci-pipeline-design-edge-conflicting", "type": "edge_case", "input": "Apply ci pipeline design but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

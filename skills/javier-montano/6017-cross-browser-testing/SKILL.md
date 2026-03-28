@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Test and ensure cross-browser compatibility with progressive enhancement,
-  polyfills, feature detection, and browser-specific fixes.
+  polyfills, feature detection, and browser-specific fixes. [EXPLICIT]
   Trigger: "cross-browser", "browser compatibility", "polyfill", "progressive enhancement"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides cross-browser compatibility testing and fixes — identifying browser-specific issues, using feature detection with progressive enhancement, implementing polyfills for missing APIs, and setting up automated cross-browser testing. Use when your application must work across Chrome, Firefox, Safari, and Edge.
+Guides cross-browser compatibility testing and fixes — identifying browser-specific issues, using feature detection with progressive enhancement, implementing polyfills for missing APIs, and setting up automated cross-browser testing. Use when your application must work across Chrome, Firefox, Safari, and Edge. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides cross-browser compatibility testing and fixes — identifying browser-spe
 
 - `e2e-testing` — Playwright supports multi-browser e2e testing
 - `build-optimization` — browserslist affects transpilation and bundle size
+
+## Usage
+
+Example invocations:
+
+- "/cross-browser-testing" — Run the full cross browser testing workflow
+- "cross browser testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

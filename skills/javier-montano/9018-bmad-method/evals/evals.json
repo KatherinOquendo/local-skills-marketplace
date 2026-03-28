@@ -1,0 +1,9 @@
+[
+  {"id": "bmad-method-happy-path", "type": "happy_path", "input": "Run bmad method on this project", "expected_behavior": "Skill activates and produces the expected bmad method output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "bmad-method-explicit-trigger", "type": "happy_path", "input": "Apply bmad method analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the bmad method workflow", "tags": ["trigger", "recognition"]},
+  {"id": "bmad-method-with-context", "type": "happy_path", "input": "Apply bmad method to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive bmad method analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "bmad-method-minimal-input", "type": "happy_path", "input": "Quick bmad method", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "bmad-method-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to bmad method", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "bmad-method-edge-empty-input", "type": "edge_case", "input": "Run bmad method but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "bmad-method-edge-conflicting", "type": "edge_case", "input": "Apply bmad method but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

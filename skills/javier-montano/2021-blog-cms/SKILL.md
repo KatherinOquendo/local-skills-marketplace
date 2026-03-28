@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build blog and CMS features including Markdown rendering, categories and tags,
-  full-text search, and SEO optimization for content-driven sites.
+  full-text search, and SEO optimization for content-driven sites. [EXPLICIT]
   Trigger: "blog", "CMS", "markdown", "content management"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the implementation of blog and content management features — Markdown/MDX rendering, category and tag taxonomies, full-text search, RSS feeds, and SEO optimization. Use when building content-driven websites, developer blogs, or lightweight CMS solutions.
+Guides the implementation of blog and content management features — Markdown/MDX rendering, category and tag taxonomies, full-text search, RSS feeds, and SEO optimization. Use when building content-driven websites, developer blogs, or lightweight CMS solutions. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the implementation of blog and content management features — Markdown/M
 
 - `landing-pages` — blog post pages need the same performance and SEO attention
 - `firebase-hosting` — deploying static blog content with CDN caching
+
+## Usage
+
+Example invocations:
+
+- "/blog-cms" — Run the full blog cms workflow
+- "blog cms on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

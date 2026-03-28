@@ -106,7 +106,7 @@
 | **PII (Personally Identifiable Information)** | Datos que pueden identificar directa o indirectamente a una persona natural |
 | **DPIA (Data Protection Impact Assessment)** | Evaluación obligatoria bajo GDPR cuando el tratamiento presenta alto riesgo para los derechos del titular |
 | **Accuracy** | Dimensión de calidad: grado en que los datos representan correctamente la realidad que modelan |
-| **Completeness** | Dimensión de calidad: grado en que todos los valores esperados están presentes y no son nulos |
+| **Completeness** | Dimensión de calidad: grado en que Todos los valores esperados están presentes y no son nulos |
 | **Consistency** | Dimensión de calidad: grado en que los datos son coherentes entre sistemas, tablas y momentos temporales |
 | **Timeliness** | Dimensión de calidad: grado en que los datos están disponibles cuando se necesitan y reflejan el estado actual |
 | **Uniqueness** | Dimensión de calidad: grado en que cada entidad aparece una sola vez sin duplicados |

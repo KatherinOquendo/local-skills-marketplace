@@ -1,11 +1,11 @@
 ---
 name: metodologia-software-architecture
 author: Javier Montano · Comunidad MetodologIA
-argument-hint: "<system-or-project-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
-description: >
-  Software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy.
+argument-hint: "system-or-project-name [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
+description: 
+  Software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy. [EXPLICIT]
   Use when the user asks to "design the internal structure", "define module boundaries", "select architecture patterns",
-  "document architecture decisions", "evaluate code architecture", or mentions CQRS, Hexagonal, Event Sourcing, Clean Architecture, ADRs, or technical debt.
+  "document architecture decisions", "evaluate code architecture", or mentions CQRS, Hexagonal, Event Sourcing, Clean Architecture, ADRs, or technical debt. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Software Architecture: Internal System Structure & Design Decisions
 
-Software architecture defines how code is organized internally — module boundaries, layer separation, dependency direction, design patterns, and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand structure, maintain it consistently, and evolve it strategically.
+Software architecture defines how code is organized internally — module boundaries, layer separation, dependency direction, design patterns, and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand structure, maintain it consistently, and evolve it strategically. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -29,20 +29,20 @@ Software architecture defines how code is organized internally — module bounda
 
 ### Software Architecture Philosophy
 
-1. **Explicit decisions > implicit conventions.** If there is no ADR, there is no decision — there is a coincidence that will be confused with intention.
-2. **Quality attributes rule.** Patterns serve quality attributes (performance, modifiability, availability), not the other way around. CQRS without a performance need is free complexity.
-3. **Technical debt is a decision, not an accident.** It is documented, prioritized, and paid off. Ignoring it does not eliminate it — it compounds it.
+1. **Explicit decisions > implicit conventions.** If there is no ADR, there is no decision — there is a coincidence that will be confused with intention. [EXPLICIT]
+2. **Quality attributes rule.** Patterns serve quality attributes (performance, modifiability, availability), not the other way around. CQRS without a performance need is free complexity. [EXPLICIT]
+3. **Technical debt is a decision, not an accident.** It is documented, prioritized, and paid off. Ignoring it does not eliminate it — it compounds it. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de refactoring.
-  - **desatendido**: Zero interruptions. Arquitectura documentada automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en pattern selection y ADRs.
-  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución.
+  - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de refactoring. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Arquitectura documentada automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en pattern selection y ADRs. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 module view + S3 patterns + S5 ADRs) | `técnica` (full 6 sections, default)
 
@@ -52,7 +52,7 @@ Before generating architecture, detect the codebase context:
 !find . -name "*.ts" -o -name "*.java" -o -name "*.py" -o -name "*.go" -o -name "*.cs" | head -30
 ```
 
-Use detected languages and frameworks to tailor pattern recommendations, module conventions, and component naming.
+Use detected languages and frameworks to tailor pattern recommendations, module conventions, and component naming. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -86,7 +86,7 @@ Read ${CLAUDE_SKILL_DIR}/references/quality-attributes.md
 
 ### S1: Module View
 
-Maps internal module structure — what modules exist, responsibilities, dependencies, layer architecture.
+Maps internal module structure — what modules exist, responsibilities, dependencies, layer architecture. [EXPLICIT]
 
 **Includes:**
 - Module decomposition logic (domain-driven, layer-based, feature-based, or hybrid)
@@ -103,7 +103,7 @@ Maps internal module structure — what modules exist, responsibilities, depende
 
 ### S2: Component View
 
-Decomposes selected modules into components — what they do, interfaces exposed, dependencies.
+Decomposes selected modules into components — what they do, interfaces exposed, dependencies. [EXPLICIT]
 
 **Includes:**
 - Component identification and naming (controller, service, repository, gateway)
@@ -120,7 +120,7 @@ Decomposes selected modules into components — what they do, interfaces exposed
 
 ### S3: Design Patterns
 
-Documents selected patterns with justification, detected anti-patterns, and alternatives.
+Documents selected patterns with justification, detected anti-patterns, and alternatives. [EXPLICIT]
 
 **Architectural patterns** (Hexagonal, Clean, CQRS, Event Sourcing, Microkernel):
 - Why chosen: quality attributes it enables, constraints it respects
@@ -150,7 +150,7 @@ ATAM-style scenarios: **Stimulus -> Response -> Measure**
 
 ### S5: Architecture Decision Records (ADRs)
 
-Captures significant decisions with context, decision, consequences, and alternatives.
+Captures significant decisions with context, decision, consequences, and alternatives. [EXPLICIT]
 
 **ADR structure:**
 - **Title:** Concise decision statement
@@ -167,7 +167,7 @@ Captures significant decisions with context, decision, consequences, and alterna
 
 ### S6: Debt & Evolution Plan
 
-Identifies current architectural debt and a strategy for evolution without disruption.
+Identifies current architectural debt and a strategy for evolution without disruption. [EXPLICIT]
 
 **Debt inventory per item:**
 - Symptom (what fails or creates friction)
@@ -339,7 +339,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

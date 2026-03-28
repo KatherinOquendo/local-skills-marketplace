@@ -3,8 +3,8 @@ name: generate-qa-scorecard
 author: JM Labs (Javier Montaño)
 description: >
   Produces a compact executive scorecard grading a plugin across 7 quality dimensions
-  with a letter grade, numeric score, and top 3 priority actions.
-  Trigger: generate scorecard, qa scorecard, plugin grade, executive summary.
+  with a letter grade, numeric score, and top 3 priority actions. [EXPLICIT]
+  Trigger: generate scorecard, qa scorecard, plugin grade, executive summary. [EXPLICIT]
 allowed-tools:
   - Read
   - Glob
@@ -16,13 +16,13 @@ allowed-tools:
 
 > "A dashboard is only as good as the decisions it enables."
 
-Produces a compact 7-dimension scorecard from validation and audit findings. Each dimension receives PASS/WARN/FAIL status and a numeric score. The total score maps to a letter grade (A-F) with top 3 priority actions for improvement.
+Produces a compact 7-dimension scorecard from validation and audit findings. Each dimension receives PASS/WARN/FAIL status and a numeric score. The total score maps to a letter grade (A-F) with top 3 priority actions for improvement. [EXPLICIT]
 
 ---
 
 ## Procedure
 
-1. **Collect or receive findings** -- gather results from all validation and audit skills. If results are not available in the current session, inform the user and suggest running the relevant skills first. Map findings to their source dimensions.
+1. **Collect or receive findings** -- gather results from all validation and audit skills. If results are not available in the current session, inform the user and suggest running the relevant skills first. Map findings to their source dimensions. [EXPLICIT]
 
 2. **Build the 7-dimension scorecard** -- evaluate each dimension based on findings from its corresponding source:
    - **Structure Conformance** -- sourced from `validate-structure` findings
@@ -44,7 +44,7 @@ Produces a compact 7-dimension scorecard from validation and audit findings. Eac
    - WARN = 6 points
    - FAIL = 2 points
    - N/A = excluded from total (adjust denominator)
-   - Sum all points. Maximum possible = 70 (if all 7 evaluated).
+   - Sum all points. Maximum possible = 70 (if all 7 evaluated). [EXPLICIT]
 
 5. **Assign letter grade** based on total score (out of 70):
    - **A**: 63-70 (90-100%) -- Production ready
@@ -67,7 +67,7 @@ Produces a compact 7-dimension scorecard from validation and audit findings. Eac
    | **Total**              |        | XX/70 |                   |
    | **Grade**              |        | X     |                   |
    ```
-   Follow with the top 3 priority actions as a numbered list.
+   Follow with the top 3 priority actions as a numbered list. [EXPLICIT]
 
 ## Quality Criteria
 
@@ -92,7 +92,7 @@ Produces a compact 7-dimension scorecard from validation and audit findings. Eac
 Grade: B
 Score: 58/70
 ```
-Missing: no per-dimension breakdown, no finding counts, no priority actions.
+Missing: no per-dimension breakdown, no finding counts, no priority actions. [EXPLICIT]
 
 **Good scorecard:**
 ```
@@ -104,20 +104,28 @@ Missing: no per-dimension breakdown, no finding counts, no priority actions.
 | **Grade**             |        | **C** |                   |
 
 Priority Actions:
-1. Hook Safety (FAIL): Fix prompt hook on SessionStart — change type to command. +8 points.
+1. Hook Safety (FAIL): Fix prompt hook on SessionStart — change type to command. +8 points. [EXPLICIT]
 ```
-Includes: per-dimension status with finding counts, verifiable math, grade, ranked priority actions with expected improvement.
+Includes: per-dimension status with finding counts, verifiable math, grade, ranked priority actions with expected improvement. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Subjective grading** -- assigning PASS to a dimension with warnings because "they are minor." The rules are strict: warnings mean WARN.
-2. **Missing dimension** -- silently omitting a dimension instead of marking it N/A, inflating the apparent score.
-3. **Score without context** -- reporting "52/70 = B" without showing the per-dimension breakdown that explains where points were lost.
-4. **Priority actions from passing dimensions** -- recommending improvements to dimensions that already scored PASS while FAIL dimensions remain unaddressed.
+1. **Subjective grading** -- assigning PASS to a dimension with warnings because "they are minor." The rules are strict: warnings mean WARN. [EXPLICIT]
+2. **Missing dimension** -- silently omitting a dimension instead of marking it N/A, inflating the apparent score. [EXPLICIT]
+3. **Score without context** -- reporting "52/70 = B" without showing the per-dimension breakdown that explains where points were lost. [EXPLICIT]
+4. **Priority actions from passing dimensions** -- recommending improvements to dimensions that already scored PASS while FAIL dimensions remain unaddressed. [EXPLICIT]
 
 ## Edge Cases
 
-1. **All dimensions PASS** -- score is 70/70, grade A. Priority actions section should state "No critical actions needed" and optionally suggest polish items from INFO findings.
-2. **All dimensions FAIL** -- score is 14/70, grade F. Limit priority actions to the 3 most impactful (not all 7). Note that comprehensive rework is needed.
-3. **Mixed N/A dimensions** -- if only 4 of 7 dimensions were evaluated, maximum score is 40. Recalculate grade thresholds proportionally: A = 90%+ of evaluated max, etc. Clearly note the reduced scope.
-4. **Dimensions with only INFO findings** -- INFO findings do not affect PASS/WARN/FAIL status. A dimension with 0 critical, 0 warnings, and 5 INFO items is still PASS.
+1. **All dimensions PASS** -- score is 70/70, grade A. Priority actions section should state "No critical actions needed" and optionally suggest polish items from INFO findings. [EXPLICIT]
+2. **All dimensions FAIL** -- score is 14/70, grade F. Limit priority actions to the 3 most impactful (not all 7). Note that comprehensive rework is needed. [EXPLICIT]
+3. **Mixed N/A dimensions** -- if only 4 of 7 dimensions were evaluated, maximum score is 40. Recalculate grade thresholds proportionally: A = 90%+ of evaluated max, etc. Clearly note the reduced scope. [EXPLICIT]
+4. **Dimensions with only INFO findings** -- INFO findings do not affect PASS/WARN/FAIL status. A dimension with 0 critical, 0 warnings, and 5 INFO items is still PASS. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/generate-qa-scorecard" — Run the full generate qa scorecard workflow
+- "generate qa scorecard on this project" — Apply to current context
+

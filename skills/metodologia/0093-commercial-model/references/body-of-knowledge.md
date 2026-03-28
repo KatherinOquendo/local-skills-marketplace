@@ -50,7 +50,7 @@
 - **Fuente:** Lemkin, J. (2012-2025). *SaaStr*. saastr.com. Conferencias y posts sobre pricing, ARR, y growth metrics.
 
 ### Subscribed — Tien Tzuo & Gabe Weisert (2018)
-- **Relevancia:** Tesis central: la economía está migrando de ownership a subscriptions en todos los sectores. Define el Subscription Economy Index y los principios de relaciones recurrentes con el cliente.
+- **Relevancia:** Tesis central: la economía está migrando de ownership a subscriptions en Todos los sectores. Define el Subscription Economy Index y los principios de relaciones recurrentes con el cliente.
 - **Uso en el skill:** Informa S2 (Commercial Model Catalog) cuando se evalúa la migración de modelos perpetuos a subscription. El edge case "migration from perpetual to subscription" se fundamenta en este texto.
 - **Fuente:** Tzuo, T. & Weisert, G. (2018). *Subscribed: Why the Subscription Model Will Be Your Company's Future*. Portfolio/Penguin.
 

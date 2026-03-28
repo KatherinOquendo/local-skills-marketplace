@@ -107,7 +107,7 @@ Incluir vendor exit strategy para el vendor recomendado.
 
 ## 4. Open-Source Risk Evaluation
 
-**When:** The proposed stack depends heavily on open-source components. Sustainability and dependency chain risk need to be validated.
+**When:** The proposed stack depends heavily on open-source components. Sustainability and dependency chain risk need tbd.
 
 ```
 Ejecutar evaluación de riesgo open-source para las dependencias críticas del proyecto {NOMBRE_PROYECTO}.

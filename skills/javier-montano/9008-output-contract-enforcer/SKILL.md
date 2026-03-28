@@ -1,6 +1,6 @@
 ---
 name: output-contract-enforcer
-description: Validates that every skill output matches its declared contract (format, completeness, evidence tags). Rejects non-conformant outputs.
+description: Validates that every skill output matches its declared contract (format, completeness, evidence tags). Rejects non-conformant outputs. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -13,7 +13,7 @@ tags: [core, validation, contracts, output]
 
 ## Purpose
 
-Post-execution validator that checks every skill's output against its declared Inputs/Outputs table. Verifies format compliance (markdown structure, evidence tags, naming conventions) and completeness (all required sections present).
+Post-execution validator that checks every skill's output against its declared Inputs/Outputs table. Verifies format compliance (markdown structure, evidence tags, naming conventions) and completeness (all required sections present). [EXPLICIT]
 
 **When to use:**
 
@@ -23,20 +23,20 @@ Post-execution validator that checks every skill's output against its declared I
 
 ---
 
-## 1. The Physics (Immutable Laws)
+## Core Principles (Immutable Laws)
 
-1. **Law of Contract:** Every skill declares its outputs in the I/O table. The output MUST match.
-2. **Law of Evidence:** Analysis outputs MUST contain evidence tags. No tags = contract violation.
-3. **Law of Naming:** Files follow conventions: kebab-case for files, PascalCase for components, camelCase for functions.
+1. **Law of Contract:** Every skill declares its outputs in the I/O table. The output MUST match. [EXPLICIT]
+2. **Law of Evidence:** Analysis outputs MUST contain evidence tags. No tags = contract violation. [EXPLICIT]
+3. **Law of Naming:** Files follow conventions: kebab-case for files, PascalCase for components, camelCase for functions. [EXPLICIT]
 
 ---
 
-## 2. The Protocol (Step-by-Step)
+## Core Process (Step-by-Step)
 
 ### Phase 1: Contract Loading
 
-1. **Read the skill's SKILL.md** Outputs table.
-2. **Extract expected outputs:** file type, name pattern, required sections.
+1. **Read the skill's SKILL.md** Outputs table. [EXPLICIT]
+2. **Extract expected outputs:** file type, name pattern, required sections. [EXPLICIT]
 
 ### Phase 2: Validation
 
@@ -48,8 +48,8 @@ Post-execution validator that checks every skill's output against its declared I
 
 ### Phase 3: Verdict
 
-1. **Pass:** Output matches contract → proceed.
-2. **Fail:** List specific violations → block until fixed.
+1. **Pass:** Output matches contract → proceed. [EXPLICIT]
+2. **Fail:** List specific violations → block until fixed. [EXPLICIT]
 
 ---
 
@@ -70,7 +70,7 @@ Post-execution validator that checks every skill's output against its declared I
 
 ---
 
-## 4. Quality Gates (10x Checklist)
+## Validation Gate (10x Checklist)
 
 - [ ] **Contract loaded** from skill's I/O table
 - [ ] **All declared outputs** exist
@@ -87,3 +87,25 @@ Post-execution validator that checks every skill's output against its declared I
 
 > [!WARNING]
 > IF output file uses wrong naming convention THEN auto-suggest the correct name but don't rename without user approval.
+
+## Usage
+
+Example invocations:
+
+- "/output-contract-enforcer" — Run the full output contract enforcer workflow
+- "output contract enforcer on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

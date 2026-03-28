@@ -53,7 +53,7 @@ Apply when rewriting or adding content to a skill. Each rule includes the reason
 | Unreferenced resources | File exists in references/ but SKILL.md never mentions it | Add reference pointer with WHEN and SKIP conditions | HIGH — Claude won't know the file exists |
 | Second person | "You should...", "You can...", "You need to..." | Rewrite in imperative: "Parse...", "Read...", "Check..." | MEDIUM — inconsistent voice |
 | Orphan sections | Section exists but nothing references or depends on it | Integrate into a related section, or remove if zero value | MEDIUM — wasted context |
-| Template without content | "## Edge Cases\n\nTBD" or empty section | Write the content or remove the header entirely | HIGH — placeholder headers set false expectations |
+| Template without content | "## Edge Cases\n\nTBD" or empty section | Write the content or remove the header entirely | HIGH — template headers set false expectations |
 | Broken examples | Code blocks or templates that don't match the actual output format | Test every example against the skill's real output schema | HIGH — misleading examples degrade output quality |
 | Meta-commentary | "In this section we will explain how to..." | Delete the commentary, keep the explanation | LOW — filler but not harmful |
 

@@ -41,7 +41,7 @@ Tendencias, avances y dirección del ecosistema de design systems relevantes par
 **Impacto en el skill:**
 - El skill ya soporta white-label via `brand-config.json` — cambiar marca = cambiar un archivo.
 - Oportunidad: soportar múltiples `brand-config.json` simultáneos para comparación side-by-side o generación batch multi-marca.
-- Referencia: Salesforce Lightning, Shopify Polaris, y IBM Carbon todos implementaron multi-theme en 2024-2025.
+- Referencia: Salesforce Lightning, Shopify Polaris, y IBM Carbon Todos implementaron multi-theme en 2024-2025.
 
 **Señales:**
 - CSS `@layer` adoption permite cascada controlada entre brand tokens y component tokens.

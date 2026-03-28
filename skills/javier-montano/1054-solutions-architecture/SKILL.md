@@ -1,11 +1,11 @@
 ---
 name: sofka-solutions-architecture
-argument-hint: "<project-or-system-name>"
-description: >
-  End-to-end solution design — system integration, channel orchestration, identity management, observability, and cross-cutting concerns.
+argument-hint: "project-or-system-name"
+description: 
+  End-to-end solution design — system integration, channel orchestration, identity management, observability, and cross-cutting concerns. [EXPLICIT]
   Use when the user asks to "design the full solution", "integrate multiple systems", "plan API gateway strategy",
-  "define identity and security architecture", "set up observability", or mentions C4 containers, BFF, Zero Trust, SLI/SLO, circuit breaker, or migration planning.
-argument-hint: "<project-or-system-name>"
+  "define identity and security architecture", "set up observability", or mentions C4 containers, BFF, Zero Trust, SLI/SLO, circuit breaker, or migration planning. [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Solutions Architecture: End-to-End Capability Delivery
 
-Solutions architecture designs the complete system that solves a business problem — how multiple systems connect, how users interact, how data flows, how security is enforced, and how the solution is observed and operated. It bridges business requirements and technical implementation.
+Solutions architecture designs the complete system that solves a business problem — how multiple systems connect, how users interact, how data flows, how security is enforced, and how the solution is observed and operated. It bridges business requirements and technical implementation. [EXPLICIT]
 
 ## Principio Rector
 
@@ -27,20 +27,20 @@ Solutions architecture designs the complete system that solves a business proble
 
 ### Filosofía de Solución End-to-End
 
-1. **Integration-first thinking.** Los sistemas individuales funcionan solos; la solución falla en las costuras. El foco está en los puntos de conexión.
-2. **Zero Trust by default.** Cada servicio verifica, cada canal autentica, cada dato se cifra en tránsito y reposo. La seguridad no es un layer — es una propiedad.
-3. **Observable antes que operacional.** Si no se puede observar, no se puede operar. Logging, tracing, y metrics se diseñan junto con la funcionalidad, no después.
+1. **Integration-first thinking.** Los sistemas individuales funcionan solos; la solución falla en las costuras. El foco está en los puntos de conexión. [EXPLICIT]
+2. **Zero Trust by default.** Cada servicio verifica, cada canal autentica, cada dato se cifra en tránsito y reposo. La seguridad no es un layer — es una propiedad. [EXPLICIT]
+3. **Observable antes que operacional.** Si no se puede observar, no se puede operar. Logging, tracing, y metrics se diseñan junto con la funcionalidad, no después. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **solution/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **solution/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para solution view y integration patterns, HITL para security model y transition plan.
-  - **desatendido**: Cero interrupciones. Arquitectura de solución documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en integration architecture y identity model.
-  - **paso-a-paso**: Confirma cada container, integration pattern, security decision, y observability config.
+  - **piloto-auto**: Auto para solution view y integration patterns, HITL para security model y transition plan. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura de solución documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en integration architecture y identity model. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada container, integration pattern, security decision, y observability config. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 solution view + S2 integration + S4 security) | `técnica` (full 7 sections, default)
 
@@ -83,7 +83,7 @@ Read ${CLAUDE_SKILL_DIR}/references/security-models.md
 
 ### S1: Solution View (C4 Containers)
 
-High-level diagram showing all systems, boundaries, external dependencies, and integration points.
+High-level diagram showing all systems, boundaries, external dependencies, and integration points. [EXPLICIT]
 
 **Includes:**
 - C4 Container diagram: independent deployable components
@@ -100,7 +100,7 @@ High-level diagram showing all systems, boundaries, external dependencies, and i
 
 ### S2: Integration Architecture
 
-How systems connect, exchange data, and coordinate.
+How systems connect, exchange data, and coordinate. [EXPLICIT]
 
 **Includes:**
 - API Gateway: entry point, routing, rate limiting, request transformation
@@ -118,7 +118,7 @@ How systems connect, exchange data, and coordinate.
 
 ### S3: Channel & BFF Architecture
 
-How end-users and external systems interact with the solution.
+How end-users and external systems interact with the solution. [EXPLICIT]
 
 **Includes:**
 - Web Channel: SPA, PWA, browser-based
@@ -136,7 +136,7 @@ How end-users and external systems interact with the solution.
 
 ### S4: Identity & Security (Zero Trust)
 
-How users are authenticated, authorized, and how data is protected.
+How users are authenticated, authorized, and how data is protected. [EXPLICIT]
 
 **Authentication (AuthN):**
 - OAuth2/OIDC (industry standard, delegated), SAML (enterprise federation)
@@ -160,7 +160,7 @@ How users are authenticated, authorized, and how data is protected.
 
 ### S5: Observability (SLI/SLO)
 
-How the solution is monitored, debugged, and operated in production.
+How the solution is monitored, debugged, and operated in production. [EXPLICIT]
 
 **Logging:** Structured, centralized, correlation IDs, retention policy
 **Metrics:** Application (RPS, error rate, latency p50/p95/p99), infrastructure (CPU, memory), business (transactions, revenue)
@@ -175,7 +175,7 @@ How the solution is monitored, debugged, and operated in production.
 
 ### S6: Cross-Cutting Concerns
 
-Technical patterns applied across multiple components.
+Technical patterns applied across multiple components. [EXPLICIT]
 
 - **Caching:** HTTP cache, application (Redis), database; invalidation (TTL, event-based); stampede/penetration risks
 - **Rate Limiting:** Per-user/IP/API-key; token bucket, leaky bucket; graceful degradation vs. rejection
@@ -187,7 +187,7 @@ Technical patterns applied across multiple components.
 
 ### S7: Transition Plan
 
-How to move from current state to target state without disrupting operations.
+How to move from current state to target state without disrupting operations. [EXPLICIT]
 
 **Migration Strategy:** Strangler fig, parallel running, cutover (flag day vs. phased), rollback plan
 **Data Migration:** Schema evolution, dual-write, verification (checksums, counts), rollback
@@ -235,19 +235,19 @@ How to move from current state to target state without disrupting operations.
 ## Edge Cases
 
 **Greenfield Multi-System Solution:**
-No existing integration patterns. Risk: over-designing for scale that doesn't exist. Start simple (sync APIs), add async/caching when metrics show need.
+No existing integration patterns. Risk: over-designing for scale that doesn't exist. Start simple (sync APIs), add async/caching when metrics show need. [EXPLICIT]
 
 **Legacy Mainframe Integration:**
-Impedance mismatch (batch vs. real-time, EBCDIC vs. UTF-8, CICS vs. REST). Solution: integration layer (adapter, translator), strangler fig, eventual retirement timeline.
+Impedance mismatch (batch vs. real-time, EBCDIC vs. UTF-8, CICS vs. REST). Solution: integration layer (adapter, translator), strangler fig, eventual retirement timeline. [EXPLICIT]
 
 **High-Latency or Unreliable Networks:**
-Offline-first architecture required: local cache, sync when connected. Conflict resolution for eventual consistency.
+Offline-first architecture required: local cache, sync when connected. Conflict resolution for eventual consistency. [EXPLICIT]
 
 **Real-Time, Low-Latency Requirements:**
-Financial trading, gaming, autonomous systems. Synchronous preferred; async trade-offs documented. Infrastructure must support global distribution and failover.
+Financial trading, gaming, autonomous systems. Synchronous preferred; async trade-offs documented. Infrastructure must support global distribution and failover. [EXPLICIT]
 
 **Highly Regulated System:**
-GDPR, HIPAA, PCI-DSS, SOX: compliance non-negotiable. Every decision maps to compliance requirement. Audit trails, encryption, data residency, consent management built-in from start.
+GDPR, HIPAA, PCI-DSS, SOX: compliance non-negotiable. Every decision maps to compliance requirement. Audit trails, encryption, data residency, consent management built-in from start. [EXPLICIT]
 
 ---
 
@@ -283,7 +283,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -10,7 +10,7 @@ metadata:
 
 # Intent Integrity Kit Implement
 
-Execute the implementation plan by processing all tasks in tasks.md.
+Execute the implementation plan by processing all tasks in tasks.md. [EXPLICIT]
 
 ## User Input
 
@@ -18,13 +18,13 @@ Execute the implementation plan by processing all tasks in tasks.md.
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty).
+You **MUST** consider the user input before proceeding (if not empty). [EXPLICIT]
 
 > **Windows**: Replace `bash …/iikit-core/scripts/bash/*.sh` with `pwsh …/iikit-core/scripts/powershell/*.ps1` (same flags, `-PascalCase`).
 
 ## Constitution Loading
 
-Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (enforcement mode — extract rules, declare hard gate, validate before every file write).
+Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (enforcement mode — extract rules, declare hard gate, validate before every file write). [EXPLICIT]
 
 ## Prerequisites Check
 
@@ -46,32 +46,32 @@ Load constitution per [constitution-loading.md](../iikit-core/references/constit
 
 ## Dashboard
 
-Suggest the user open the dashboard to watch implementation progress in real time:
+Suggest the user open the dashboard to watch implementation progress in real time: [EXPLICIT]
 ```
-Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path) — updates live as tasks complete
+Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path) — updates live as tasks complete [EXPLICIT]
 ```
 
 ## Execution Flow
 
 ### 1. Load Context
 
-Read `tasks.md` + `plan.md` (standard) or `tasks.md` + `bugs.md` (bugfix). Optional: `data-model.md`, `contracts/`, `research.md`, `quickstart.md`, `tests/features/`.
+Read `tasks.md` + `plan.md` (standard) or `tasks.md` + `bugs.md` (bugfix). Optional: `data-model.md`, `contracts/`, `research.md`, `quickstart.md`, `tests/features/`. [EXPLICIT]
 
 ### 2. TDD Support Check
 
-If `tests/features/` directory exists (contains `.feature` files), verify assertion integrity:
+If `tests/features/` directory exists (contains `.feature` files), verify assertion integrity: [EXPLICIT]
 
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/testify-tdd.sh comprehensive-check "FEATURE_DIR/tests/features" "CONSTITUTION.md"
 ```
 
-Parse JSON response: `PASS` (proceed), `BLOCKED` (halt, show remediation), `WARN` (proceed with caution).
+Parse JSON response: `PASS` (proceed), `BLOCKED` (halt, show remediation), `WARN` (proceed with caution). [EXPLICIT]
 
-If TDD **mandatory** but `tests/features/` missing or empty: ERROR with `Run: /iikit-04-testify`.
+If TDD **mandatory** but `tests/features/` missing or empty: ERROR with `Run: /iikit-04-testify`. [EXPLICIT]
 
 ### 2.1 BDD Verification Chain Enforcement
 
-When `.feature` files exist, the full BDD verification chain applies to each implementation task:
+When `.feature` files exist, the full BDD verification chain applies to each implementation task: [EXPLICIT]
 
 **Step 1 — Write step definitions**: Write step definition code that binds Gherkin steps to application calls. Place in `tests/step_definitions/`.
 
@@ -79,7 +79,7 @@ When `.feature` files exist, the full BDD verification chain applies to each imp
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/verify-steps.sh --json "FEATURE_DIR/tests/features" "FEATURE_DIR/plan.md"
 ```
-Must return `PASS` before continuing. If `BLOCKED`: fix missing step definitions. If `DEGRADED`: proceed with caution (no BDD framework available).
+Must return `PASS` before continuing. If `BLOCKED`: fix missing step definitions. If `DEGRADED`: proceed with caution (no BDD framework available). [EXPLICIT]
 
 **Step 3 — RED phase**: Run the BDD tests. They MUST fail (step definitions exist but production code does not yet implement the behavior). This confirms the tests are meaningful.
 
@@ -91,7 +91,7 @@ Must return `PASS` before continuing. If `BLOCKED`: fix missing step definitions
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/verify-step-quality.sh --json "FEATURE_DIR/tests/step_definitions" "<language>"
 ```
-Must return `PASS` before marking the task complete. If `BLOCKED`: fix the flagged step definitions.
+Must return `PASS` before marking the task complete. If `BLOCKED`: fix the flagged step definitions. [EXPLICIT]
 
 ### 2.2 Feature File Immutability
 
@@ -99,26 +99,26 @@ Must return `PASS` before marking the task complete. If `BLOCKED`: fix the flagg
 
 ### 2.3 Test Execution Enforcement
 
-Tests **MUST** be run, not just written. After writing a test: run it immediately (expect red). After implementing: run it (expect green). If tests fail: fix code, not tests. Never mark a test task `[x]` without execution output.
+Tests **MUST** be run, not just written. After writing a test: run it immediately (expect red). After implementing: run it (expect green). If tests fail: fix code, not tests. Never mark a test task `[x]` without execution output. [EXPLICIT]
 
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/verify-test-execution.sh verify "FEATURE_DIR/tests/features" "$(cat test-output.log)"
 ```
 
-Block on any status other than `PASS`.
+Block on any status other than `PASS`. [EXPLICIT]
 
 ### 2.4 Task Completion Gate
 
-A task is NOT complete until:
+A task is NOT complete until: [EXPLICIT]
 1. `verify-steps.sh` returns `PASS` (all steps defined)
 2. BDD tests pass (GREEN phase confirmed)
 3. `verify-step-quality.sh` returns `PASS` (no empty/trivial assertions)
 
-Do NOT mark `[x]` in tasks.md until all three gates pass.
+Do NOT mark `[x]` in tasks.md until all three gates pass. [EXPLICIT]
 
 ### 3. Setup (Dependencies, Tiles, Scaffolding)
 
-Before writing source code:
+Before writing source code: [EXPLICIT]
 1. **Install dependencies** from plan.md Technical Context (detect package manager, add runtime + dev deps, commit manifest + lockfile)
 2. **Install Tessl tiles** for each major dependency: `tessl search <pkg>` then `tessl install <tile>`. Query tile docs before writing library code. See [tessl-integration.md](references/tessl-integration.md).
 3. **Scaffold project** if needed. For existing directories, use force/overwrite flags. See [ignore-patterns.md](references/ignore-patterns.md) for gitignore patterns.
@@ -128,7 +128,7 @@ Before writing source code:
 **6.1 Task extraction**: parse tasks.md for phase, completion status (`[x]` = skip), dependencies, [P] markers, [USn] labels. Build in-memory task graph.
 
 **6.2 Execution strategy — read [parallel-execution.md](references/parallel-execution.md) BEFORE proceeding**:
-If tasks.md contains `[P]` markers, you **MUST** use the `Task` tool to dispatch parallel batches as concurrent subagents (one worker per task). Only fall back to sequential execution if the runtime has no subagent dispatch mechanism. Report mode per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Execution Mode Header).
+If tasks.md contains `[P]` markers, you **MUST** use the `Task` tool to dispatch parallel batches as concurrent subagents (one worker per task). Only fall back to sequential execution if the runtime has no subagent dispatch mechanism. Report mode per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Execution Mode Header). [EXPLICIT]
 
 **6.3 Phase-by-phase**:
 1. Collect eligible tasks (dependencies satisfied)
@@ -137,7 +137,7 @@ If tasks.md contains `[P]` markers, you **MUST** use the `Task` tool to dispatch
 4. Collect results, checkpoint `[x]` in tasks.md per batch, then commit per task (§6.6)
 5. Repeat until phase complete
 
-Cross-story parallelism: independent stories can run as parallel workstreams after Phase 2 (verify no shared file modifications).
+Cross-story parallelism: independent stories can run as parallel workstreams after Phase 2 (verify no shared file modifications). [EXPLICIT]
 
 **6.4 Rules**: install dependencies (§3) and Tessl tiles (§4) before writing code, query tiles before library code, tests before code if TDD, run tests after writing them, only orchestrator updates tasks.md.
 
@@ -156,15 +156,15 @@ Cross-story parallelism: independent stories can run as parallel workstreams aft
 
 ### 7. Output Validation
 
-Before writing ANY file: review against constitutional principles. On violation: STOP, explain, suggest alternative.
+Before writing ANY file: review against constitutional principles. On violation: STOP, explain, suggest alternative. [EXPLICIT]
 
 ### 8. Progress Tracking
 
-Report after each task/batch. Mark completed `[x]` in tasks.md. Halt on failure.
+Report after each task/batch. Mark completed `[x]` in tasks.md. Halt on failure. [EXPLICIT]
 
 ### 9. Post-Fix GitHub Integration (Bug Fix Tasks)
 
-After completing bug fix tasks (tasks with `T-B` prefix pattern):
+After completing bug fix tasks (tasks with `T-B` prefix pattern): [EXPLICIT]
 
 1. Check if `FEATURE_DIR/bugs.md` exists
 2. For each completed bug (all T-BNNN tasks for a BUG-NNN marked `[x]`):
@@ -176,18 +176,18 @@ After completing bug fix tasks (tasks with `T-B` prefix pattern):
 
 ### 10. Completion
 
-All tasks `[x]`, features validated against spec, test execution enforcement (§2.1) satisfied, Tessl usage reported.
+All tasks `[x]`, features validated against spec, test execution enforcement (§2.1) satisfied, Tessl usage reported. [EXPLICIT]
 
 ## Error Handling
 
-Missing artifacts: STOP with run instructions. Constitution violations: STOP, explain, suggest alternative. Checklist incomplete: ask user. Task/parallel failure: report + halt (§6.5). Tests not run: STOP. Tests failing: fix code, re-run.
+Missing artifacts: STOP with run instructions. Constitution violations: STOP, explain, suggest alternative. Checklist incomplete: ask user. Task/parallel failure: report + halt (§6.5). Tests not run: STOP. Tests failing: fix code, re-run. [EXPLICIT]
 
 ## Next Steps
 
-Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 07 --json`
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 07 -Json`
+Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 07 --json` [EXPLICIT]
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 07 -Json` [EXPLICIT]
 
-Parse the JSON and present:
+Parse the JSON and present: [EXPLICIT]
 1. If `clear_after` is true: suggest `/clear` before proceeding
 2. If `next_step` is `/iikit-07-implement` (feature incomplete): suggest resuming implementation
 3. If `next_step` is null (feature complete): congratulate and list alt_steps
@@ -195,16 +195,46 @@ Parse the JSON and present:
 5. For `next_step` and each `alt_step`, include the `model_tier` from the JSON so the user knows which model is best for each option. Look up tiers in [model-recommendations.md](../iikit-core/references/model-recommendations.md) for agent-specific switch commands.
 6. Append dashboard link
 
-Push commits to remote if available: `git push`. If on a feature branch, offer to merge. Ask the user which approach they prefer:
+Push commits to remote if available: `git push`. If on a feature branch, offer to merge. Ask the user which approach they prefer: [EXPLICIT]
 - **A) Merge locally**: `git checkout main && git merge <branch>`
 - **B) Create PR**: `gh pr create` if available, otherwise provide the GitHub URL to create one manually
 - **C) Skip**: user will handle it
 
 Format:
 ```
-Implementation complete!
-Next: [/clear → ] <next_step or "All tasks done!">
+Implementation complete! [EXPLICIT]
+Next: [/clear → ] <next_step or "All tasks done!"> [EXPLICIT]
 [- <alt_step> — <reason> (model: <tier>)]
 
 - Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path)
 ```
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/iikit-07-implement" — Run the full iikit 07 implement workflow
+- "iikit 07 implement on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -1,10 +1,10 @@
 ---
 name: metodologia-design-system
 description: >
-  Configurable design system for HTML deliverables with tokens, page structure, and component library.
+  Configurable design system for HTML deliverables with tokens, page structure, and component library. [EXPLICIT]
   Use when the user asks to "apply design system", "generate styled HTML", "set up brand tokens",
   "configure brand colors", or mentions "design system", "design tokens", "component library",
-  "brand config", "page template".
+  "brand config", "page template". [EXPLICIT]
 argument-hint: "[action] [brand-config-path]"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
@@ -20,7 +20,7 @@ allowed-tools:
 
 # Design System v4 (Brand-Configurable)
 
-Foundation system for building styled HTML documents. All colors, typography, layout patterns, and component specs. **CRITICAL:** All brand tokens are configurable via `brand-config.json` — no hardcoded brand colors. Works for ANY brand.
+Foundation system for building styled HTML documents. All colors, typography, layout patterns, and component specs. **CRITICAL:** All brand tokens are configurable via `brand-config.json` — no hardcoded brand colors. Works for ANY brand. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -28,9 +28,9 @@ Foundation system for building styled HTML documents. All colors, typography, la
 
 ### Design System Philosophy
 
-1. **Tokens, not hardcode.** Everything configurable via brand-config.json. Changing brand = changing one file, not rewriting CSS.
-2. **Consistency > creativity.** Within an engagement, all deliverables look like part of the same system. No visual surprises.
-3. **Responsive and accessible.** Print-ready layout, high contrast for readability, semantic HTML for screen readers.
+1. **Tokens, not hardcode.** Everything configurable via brand-config.json. Changing brand = changing one file, not rewriting CSS. [EXPLICIT]
+2. **Consistency > creativity.** Within an engagement, all deliverables look like part of the same system. No visual surprises. [EXPLICIT]
+3. **Responsive and accessible.** Print-ready layout, high contrast for readability, semantic HTML for screen readers. [EXPLICIT]
 
 ## $ARGUMENTS
 
@@ -71,7 +71,7 @@ Examples:
 
 ## Brand Configuration Schema
 
-All brand identity lives in `brand-config.json`. No brand values hardcoded in skill or templates.
+All brand identity lives in `brand-config.json`. No brand values hardcoded in skill or templates. [EXPLICIT]
 
 ```json
 {
@@ -110,7 +110,7 @@ All brand identity lives in `brand-config.json`. No brand values hardcoded in sk
 
 ### Mapping Rule
 
-In ALL templates and components, reference `var(--brand-primary)` never a hex literal. The CSS custom properties are set from brand-config.json at generation time:
+In ALL templates and components, reference `var(--brand-primary)` never a hex literal. The CSS custom properties are set from brand-config.json at generation time: [EXPLICIT]
 
 ```css
 :root {
@@ -127,7 +127,7 @@ In ALL templates and components, reference `var(--brand-primary)` never a hex li
 
 ## Semantic Colors (Brand-Independent)
 
-These are universal and do NOT change per brand:
+These are universal and do NOT change per brand: [EXPLICIT]
 
 | Token | Value | Usage |
 |-------|-------|-------|
@@ -185,15 +185,15 @@ These are universal and do NOT change per brand:
 
 ### Standard Sections
 
-1. **Hero Header** — bg: var(--brand-black), border-bottom: 8px solid var(--brand-primary), radial gradient glow. Contains: logo, meta badges, h1 with brand-primary highlight, subtitle.
+1. **Hero Header** — bg: var(--brand-black), border-bottom: 8px solid var(--brand-primary), radial gradient glow. Contains: logo, meta badges, h1 with brand-primary highlight, subtitle. [EXPLICIT]
 
-2. **Sticky Nav** — bg: var(--brand-white), sticky top:0 z-100, border-bottom 1px solid gray-200. Links: uppercase 0.72rem, active = brand-primary border-bottom.
+2. **Sticky Nav** — bg: var(--brand-white), sticky top:0 z-100, border-bottom 1px solid gray-200. Links: uppercase 0.72rem, active = brand-primary border-bottom. [EXPLICIT]
 
-3. **Main Container** — max-width 1100px, margin 0 auto, padding 0 2rem.
+3. **Main Container** — max-width 1100px, margin 0 auto, padding 0 2rem. [EXPLICIT]
 
-4. **Sections** — scroll-margin-top 60px, padding 6rem 0. Section header: 60x60px black box with brand-primary number + title.
+4. **Sections** — scroll-margin-top 60px, padding 6rem 0. Section header: 60x60px black box with brand-primary number + title. [EXPLICIT]
 
-5. **Footer** — bg: var(--brand-black), border-top: 8px solid var(--brand-primary), white text. Two-row: (logo + badges) above (confidentiality + doc ref).
+5. **Footer** — bg: var(--brand-black), border-top: 8px solid var(--brand-primary), white text. Two-row: (logo + badges) above (confidentiality + doc ref). [EXPLICIT]
 
 ## Component Quick Reference
 
@@ -223,7 +223,7 @@ These are universal and do NOT change per brand:
 | Timeline | `.timeline` | Vertical with markers |
 | Score Ring | `.score-ring` | Circular visualization |
 
-For full component HTML snippets, read: `${CLAUDE_SKILL_DIR}/references/component-snippets.md`
+For full component HTML snippets, read: `${CLAUDE_SKILL_DIR}/references/component-snippets.md` [EXPLICIT]
 
 ## Generation Workflow
 
@@ -233,7 +233,7 @@ For full component HTML snippets, read: `${CLAUDE_SKILL_DIR}/references/componen
 4. **Build Hero** — Logo from config, meta badges, h1 with brand-primary span, subtitle
 5. **Build Nav** — Auto-generate from section IDs
 6. **Build Sections** — Section headers with brand-primary numbers, content with semantic components
-7. **Validate** — All colors match tokens (no hex literals outside :root). Severity low = yellow. Hero/footer borders = brand-primary. TOC is horizontal sticky. Semantic HTML used. WCAG AA contrast met.
+7. **Validate** — All colors match tokens (no hex literals outside :root). Severity low = yellow. Hero/footer borders = brand-primary. TOC is horizontal sticky. Semantic HTML used. WCAG AA contrast met. [EXPLICIT]
 8. **Export** — Save .html, test responsive, verify font loading, check keyboard nav
 
 ## Color Usage Rules
@@ -379,7 +379,7 @@ graph TD
 
 ## Validation Gate
 
-Before delivering design system output:
+Before delivering design system output: [EXPLICIT]
 - [ ] All brand colors sourced from brand-config.json (no hardcoded hex in components)
 - [ ] Semantic colors applied correctly (positive=yellow, not green)
 - [ ] Hero and footer use brand-primary for 8px borders
@@ -408,3 +408,11 @@ Before delivering design system output:
 
 ---
 **Author:** Javier Montano | **Last updated:** March 12, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/design-system" — Run the full design system workflow
+- "design system on this project" — Apply to current context
+

@@ -1,32 +1,9 @@
 [
-  {
-    "id": "qe-1-maturity-assessment",
-    "input": "Assess quality maturity for our e-commerce platform",
-    "expected_behavior": "Produces S1 maturity assessment scoring 6 dimensions (0-100% each), overall maturity level (1-5), 12-month target, gap analysis, DORA benchmark comparison, and prioritized quick wins.",
-    "criteria": ["6 dimensions scored", "overall level assigned", "target maturity set", "gap analysis present", "quick wins identified"]
-  },
-  {
-    "id": "qe-2-test-strategy-microservices",
-    "input": "Design a test strategy for our microservices architecture",
-    "expected_behavior": "Selects Test Diamond shape (Unit 20% / Integration 40% / Contract 30% / E2E 10%), defines all test types with owners and frequency, includes contract testing recommendation (Pact), and test data strategy with synthetic generation.",
-    "criteria": ["diamond shape selected for microservices", "all test types defined", "contract testing included", "test data strategy present", "owner and frequency per type"]
-  },
-  {
-    "id": "qe-3-quality-gates-pipeline",
-    "input": "Set up quality gates for our CI/CD pipeline",
-    "expected_behavior": "Defines 5 pipeline stages (Commit/PR/Nightly/Release/Production) with specific tests, timeouts, pass criteria, and failure actions. Includes gate enforcement rules: no bypass for security, flaky test policy, timeout = fail.",
-    "criteria": ["5 stages defined", "pass criteria per stage", "timeouts configured", "escalation paths clear", "flaky test policy included"]
-  },
-  {
-    "id": "qe-4-quality-metrics",
-    "input": "Define quality metrics and dashboard for engineering leadership",
-    "expected_behavior": "Produces S5 with leading indicators (coverage, PR review time, build stability, flaky rate) and lagging indicators (production incidents, escaped defects, MTTR, regression rate) with targets. Dashboard design with 4 panels.",
-    "criteria": ["leading indicators with targets", "lagging indicators with targets", "dashboard 4-panel design", "DORA metrics referenced", "actionable thresholds"]
-  },
-  {
-    "id": "qe-5-shift-left-legacy",
-    "input": "Introduce shift-left practices for a legacy Java monolith with no tests",
-    "expected_behavior": "Recommends Golden Master / characterization tests before refactoring, smoke tests on critical paths first (20-30 cases), test pyramid shape for monolith (Unit 55% / Integration 25% / API 15% / E2E 5%), phased implementation plan starting with foundations (weeks 1-4).",
-    "criteria": ["Golden Master pattern recommended", "pyramid shape for monolith", "phased implementation plan", "developer buy-in addressed", "no refactoring without tests rule"]
-  }
+  {"id": "quality-engineering-happy-path", "type": "happy_path", "input": "Run quality engineering on this project", "expected_behavior": "Skill activates and produces the expected quality engineering output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "quality-engineering-explicit-trigger", "type": "happy_path", "input": "Apply quality engineering analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the quality engineering workflow", "tags": ["trigger", "recognition"]},
+  {"id": "quality-engineering-with-context", "type": "happy_path", "input": "Apply quality engineering to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive quality engineering analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "quality-engineering-minimal-input", "type": "happy_path", "input": "Quick quality engineering", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "quality-engineering-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to quality engineering", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "quality-engineering-edge-empty-input", "type": "edge_case", "input": "Run quality engineering but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "quality-engineering-edge-conflicting", "type": "edge_case", "input": "Apply quality engineering but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

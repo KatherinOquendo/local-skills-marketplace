@@ -3,7 +3,7 @@ name: market-intelligence
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Geographic market analysis. Demographics, economy, tech ecosystem, sector analysis, competitor mapping, entry strategy. Output: branded HTML report.
+  Geographic market analysis. Demographics, economy, tech ecosystem, sector analysis, competitor mapping, entry strategy. Output: branded HTML report. [EXPLICIT]
   Trigger: "market intelligence", "market research", "geographic analysis", "sector analysis", "competitive landscape"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Geographic market analysis. Demographics, economy, tech ecosystem, sector analysis, competitor mapping, entry strategy. Output: branded HTML report. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html).
+Geographic market analysis. Demographics, economy, tech ecosystem, sector analysis, competitor mapping, entry strategy. Output: branded HTML report. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html). [EXPLICIT]
 
 ## Procedure
 
@@ -66,3 +66,25 @@ Geographic market analysis. Demographics, economy, tech ecosystem, sector analys
 
 - branded-html-output — Base skill for all HTML generation
 - guardrails-management — Check user guardrails before generating
+
+## Usage
+
+Example invocations:
+
+- "/market-intelligence" — Run the full market intelligence workflow
+- "market intelligence on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

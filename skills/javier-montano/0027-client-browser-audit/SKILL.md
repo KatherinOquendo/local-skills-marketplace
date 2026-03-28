@@ -2,11 +2,11 @@
 name: apex-client-browser-audit
 description: >
   Use when the user asks to "audit PM tools visually", "inspect Jira configuration",
-  "review Azure DevOps setup", "check Monday.com boards", or "evaluate tool configuration".
+  "review Azure DevOps setup", "check Monday.com boards", or "evaluate tool configuration". [EXPLICIT]
   Activates when a stakeholder needs to perform a visual audit of PM tool configurations,
   capture screenshot evidence of misconfigurations, compare tool setup against methodology
   best practices, identify workflow anti-patterns in PM tools, or produce a remediation
-  roadmap for tool optimization.
+  roadmap for tool optimization. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -21,7 +21,7 @@ allowed-tools:
 **TL;DR**: Uses MCP Playwright to perform visual audits of client PM tools (Jira, Azure DevOps, Monday.com, Asana, ClickUp). Captures screenshots, evaluates configuration against best practices, identifies misconfigurations, and produces an actionable remediation report with annotated evidence.
 
 ## Principio Rector
-Las herramientas de PM no fallan porque sean malas — fallan porque se configuran mal. Un tablero Jira con 47 columnas no es un board Kanban; es un laberinto. La auditoría visual revela problemas que ningún export de datos puede mostrar: flujos rotos, estados huérfanos, permisos mal asignados y ceremonias sin soporte tooling.
+Las herramientas de PM no fallan porque sean malas — fallan porque se configuran mal. Un tablero Jira con 47 columnas no es un board Kanban; es un laberinto. La auditoría visual revela problemas que ningún export de datos puede mostrar: flujos rotos, estados huérfanos, permisos mal asignados y ceremonias sin soporte tooling. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes read-only access to the PM tool is available for the audit session [SUPUESTO]
@@ -111,7 +111,7 @@ Las herramientas de PM no fallan porque sean malas — fallan porque se configur
 | Evidence | Every finding backed by screenshot |
 
 **Bad Browser Audit:**
-A report saying "Jira needs cleanup" without screenshots, specific issues, severity ratings, or remediation steps. Fails because it provides no actionable information — tool administrators cannot fix problems that are not specifically identified and documented.
+A report saying "Jira needs cleanup" without screenshots, specific issues, severity ratings, or remediation steps. Fails because it provides no actionable information — tool administrators cannot fix problems that are not specifically identified and documented. [EXPLICIT]
 
 ## Validation Gate
 - [ ] Every finding backed by ≥1 screenshot or configuration capture

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Create print-optimized stylesheets with @media print, PDF-friendly layouts,
-  page break control, and content visibility management for printing.
+  page break control, and content visibility management for printing. [EXPLICIT]
   Trigger: "print stylesheet", "print CSS", "PDF layout", "@media print"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the creation of print-optimized stylesheets using `@media print` — hiding non-essential UI elements, controlling page breaks, adjusting typography for paper, and ensuring links and content are useful in printed/PDF form. Use when your content needs to be printable (invoices, articles, reports, resumes).
+Guides the creation of print-optimized stylesheets using `@media print` — hiding non-essential UI elements, controlling page breaks, adjusting typography for paper, and ensuring links and content are useful in printed/PDF form. Use when your content needs to be printable (invoices, articles, reports, resumes). [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides the creation of print-optimized stylesheets using `@media print` — hidi
 
 - `accessibility-testing` — print accessibility overlaps with visual a11y
 - `blog-cms` — articles and documentation are the most-printed web content
+
+## Usage
+
+Example invocations:
+
+- "/print-stylesheet" — Run the full print stylesheet workflow
+- "print stylesheet on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

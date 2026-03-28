@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Designs REST and GraphQL API contracts with OpenAPI/Swagger specifications,
-  versioning strategies, pagination patterns, error handling, and rate limiting.
-  Produces production-ready API specifications.
+  versioning strategies, pagination patterns, error handling, and rate limiting. [EXPLICIT]
+  Produces production-ready API specifications. [EXPLICIT]
   Trigger: "API design", "REST", "GraphQL", "OpenAPI", "API contract"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs RESTful and GraphQL API contracts with OpenAPI specifications, versioning strategies, pagination, error handling, and rate limiting patterns. Use this skill when designing new APIs, evolving existing contracts, or establishing API design standards for a team.
+Designs RESTful and GraphQL API contracts with OpenAPI specifications, versioning strategies, pagination, error handling, and rate limiting patterns. Use this skill when designing new APIs, evolving existing contracts, or establishing API design standards for a team. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Designs RESTful and GraphQL API contracts with OpenAPI specifications, versionin
 - `system-architecture` — API boundaries derive from system decomposition
 - `security-architecture` — API authentication and authorization patterns
 - `database-design` — data models underlying API resources
+
+## Usage
+
+Example invocations:
+
+- "/api-design" — Run the full api design workflow
+- "api design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

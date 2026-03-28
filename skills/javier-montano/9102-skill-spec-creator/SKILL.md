@@ -1,60 +1,60 @@
----
-name: skill-spec-creator
-description: >
-  This skill should be used when the user asks to "create a skill spec", "generate a
-  skill.yaml", "define skill workflows", "design an agentic capability", or mentions
-  skill specifications, workflow decomposition, agent capabilities, or YAML skill
-  definitions. Generates complete skill.yaml specifications with workflows, security,
-  observability, and failure handling for agentic ecosystems. Use this skill whenever
-  the user needs to define a structured capability for a multi-agent system, even if
-  they don't explicitly ask for "skill-spec-creator".
-argument-hint: <skill-id> <owning-agent-id>
-model: opus
-context: fork
-allowed-tools: Read, Write, Edit, Glob, Grep
----
-
-# Skill Spec Creator
-
-Generate complete `skill.yaml` definitions — capability modules for agents in multi-agent ecosystems. Each spec defines inputs/outputs, security, observability, interoperability contracts, and minimum 4 workflows with full step decomposition.
-
-> **Scope**: This creates YAML skill specifications for agentic frameworks (custom agent ecosystems). For Claude Code SKILL.md files, use `/skill-creator-moat`.
-
-## Assumptions & Limits
-
-- **Assumes** an agentic ecosystem with defined agents, tools, and security checkpoints
-- **Assumes** the owning agent's `agent.md` constitution exists (reads it for grounding)
-- **Limit**: YAML specs are design artifacts — they don't execute themselves (orchestrator interprets them)
-- **Limit**: Exactly 4 workflows minimum; fewer suggests the "skill" is actually a single operation, not a capability
-- **Trade-off**: More granular steps = better traceability but more maintenance; coarser steps = easier to maintain but harder to debug
-
-## Usage
-
-```
-/skill-spec-creator text-analysis data-analyst
-/skill-spec-creator customer-onboarding          # interview mode
-```
-
-Parse `$1` as skill ID (kebab-case), `$2` as owning agent ID. If missing, ask:
-1. What capability does this skill provide? (1-2 sentences)
-2. Which agent owns it? (must exist in `agents/`)
-3. What does the user get? (business value, not implementation detail)
-
-## Before Generating
-
-1. **Read the agent**: `Read agents/$2/agent.md` — ground the skill in agent's mandate, tools, security policy
-2. **Check existing skills**: `Glob agents/$2/skills/*/skill.yaml` — avoid overlap
-3. **Read specs if available**: `Read references/skill-yaml-spec.md`, `Read references/workflow-spec.md`, `Read references/step-spec.md`
-
-## Output Structure
-
-Write to `agents/{agentId}/skills/{skillId}/skill.yaml`:
-
-```yaml
-id: "{id}"
-name: "{Human-readable name}"
-purpose: "{1-2 sentences — the WHY}"
-businessValue: "{User-facing value, not implementation detail}"
+--- [EXPLICIT]
+name: skill-spec-creator [EXPLICIT]
+description:  [EXPLICIT]
+  This skill should be used when the user asks to "create a skill spec", "generate a [EXPLICIT]
+  skill.yaml", "define skill workflows", "design an agentic capability", or mentions [EXPLICIT]
+  skill specifications, workflow decomposition, agent capabilities, or YAML skill [EXPLICIT]
+  definitions. Generates complete skill.yaml specifications with workflows, security, [EXPLICIT]
+  observability, and failure handling for agentic ecosystems. Use this skill whenever [EXPLICIT]
+  the user needs to define a structured capability for a multi-agent system, even if [EXPLICIT]
+  they don't explicitly ask for "skill-spec-creator". [EXPLICIT]
+argument-hint: skill-id owning-agent-id [EXPLICIT]
+model: opus [EXPLICIT]
+context: fork [EXPLICIT]
+allowed-tools: Read, Write, Edit, Glob, Grep [EXPLICIT]
+--- [EXPLICIT]
+ [EXPLICIT]
+# Skill Spec Creator [EXPLICIT]
+ [EXPLICIT]
+Generate complete `skill.yaml` definitions — capability modules for agents in multi-agent ecosystems. Each spec defines inputs/outputs, security, observability, interoperability contracts, and minimum 4 workflows with full step decomposition. [EXPLICIT]
+ [EXPLICIT]
+> **Scope**: This creates YAML skill specifications for agentic frameworks (custom agent ecosystems). For Claude Code SKILL.md files, use `/skill-creator-moat`. [EXPLICIT]
+ [EXPLICIT]
+## Assumptions & Limits [EXPLICIT]
+ [EXPLICIT]
+- **Assumes** an agentic ecosystem with defined agents, tools, and security checkpoints [EXPLICIT]
+- **Assumes** the owning agent's `agent.md` constitution exists (reads it for grounding) [EXPLICIT]
+- **Limit**: YAML specs are design artifacts — they don't execute themselves (orchestrator interprets them) [EXPLICIT]
+- **Limit**: Exactly 4 workflows minimum; fewer suggests the "skill" is actually a single operation, not a capability [EXPLICIT]
+- **Trade-off**: More granular steps = better traceability but more maintenance; coarser steps = easier to maintain but harder to debug [EXPLICIT]
+ [EXPLICIT]
+## Usage [EXPLICIT]
+ [EXPLICIT]
+``` [EXPLICIT]
+/skill-spec-creator text-analysis data-analyst [EXPLICIT]
+/skill-spec-creator customer-onboarding          # interview mode [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+Parse `$1` as skill ID (kebab-case), `$2` as owning agent ID. If missing, ask: [EXPLICIT]
+1. What capability does this skill provide? (1-2 sentences) [EXPLICIT]
+2. Which agent owns it? (must exist in `agents/`) [EXPLICIT]
+3. What does the user get? (business value, not implementation detail) [EXPLICIT]
+ [EXPLICIT]
+## Before Generating [EXPLICIT]
+ [EXPLICIT]
+1. **Read the agent**: `Read agents/$2/agent.md` — ground the skill in agent's mandate, tools, security policy [EXPLICIT]
+2. **Check existing skills**: `Glob agents/$2/skills/*/skill.yaml` — avoid overlap [EXPLICIT]
+3. **Read specs if available**: `Read references/skill-yaml-spec.md`, `Read references/workflow-spec.md`, `Read references/step-spec.md` [EXPLICIT]
+ [EXPLICIT]
+## Output Structure [EXPLICIT]
+ [EXPLICIT]
+Write to `agents/{agentId}/skills/{skillId}/skill.yaml`: [EXPLICIT]
+ [EXPLICIT]
+```yaml [EXPLICIT]
+id: "{id}" [EXPLICIT]
+name: "{Human-readable name}" [EXPLICIT]
+purpose: "{1-2 sentences — the WHY}" [EXPLICIT]
+businessValue: "{User-facing value, not implementation detail}" [EXPLICIT]
 triggerTypes: ["command", "event", "schedule", "delegation"]
 owningAgent: "{agentId}"
 

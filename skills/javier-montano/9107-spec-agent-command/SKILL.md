@@ -1,10 +1,10 @@
 ---
 name: spec-agent-command
 author: JM Labs (Javier Montaño)
-description: >
-  Generate production-ready agent .md and command .md files from designs. Enforces plugin subagent constraints and alias linkage.
-  Trigger: spec agent, spec command, generate agent file, write command file, create agent specification.
-argument-hint: "<agent-design-path>"
+description: 
+  Generate production-ready agent .md and command .md files from designs. Enforces plugin subagent constraints and alias linkage. [EXPLICIT]
+  Trigger: spec agent, spec command, generate agent file, write command file, create agent specification. [EXPLICIT]
+argument-hint: "agent-design-path"
 allowed-tools:
   - Read
   - Write
@@ -17,7 +17,7 @@ allowed-tools:
 
 > "An agent without a clear role is a meeting without an agenda -- everyone is busy, nothing gets done."
 
-Generates production-ready agent markdown files and command markdown files (canonical + alias pairs) from design documents. Enforces plugin subagent constraints: no `hooks`, `mcpServers`, or `permissionMode` in agent frontmatter. Validates kebab-case naming and cross-reference integrity.
+Generates production-ready agent markdown files and command markdown files (canonical + alias pairs) from design documents. Enforces plugin subagent constraints: no `hooks`, `mcpServers`, or `permissionMode` in agent frontmatter. Validates kebab-case naming and cross-reference integrity. [EXPLICIT]
 
 ---
 
@@ -35,23 +35,23 @@ Generates production-ready agent markdown files and command markdown files (cano
 Compose the agent file with these sections:
 
 1. **Frontmatter** (YAML):
-   - `name`: kebab-case agent identifier.
-   - `description`: 1-2 sentence role description.
-   - `tools`: list of tools the agent uses.
-   - `model`: typically `inherit`.
-   - MUST NOT contain: `hooks`, `mcpServers`, `permissionMode` (plugin subagent constraint).
+   - `name`: kebab-case agent identifier. [EXPLICIT]
+   - `description`: 1-2 sentence role description. [EXPLICIT]
+   - `tools`: list of tools the agent uses. [EXPLICIT]
+   - `model`: typically `inherit`. [EXPLICIT]
+   - MUST NOT contain: `hooks`, `mcpServers`, `permissionMode` (plugin subagent constraint). [EXPLICIT]
 
-2. **Title** -- H1 with the agent name in title case.
+2. **Title** -- H1 with the agent name in title case. [EXPLICIT]
 
-3. **Role** -- 2-4 sentences defining what the agent does, which movement it owns, and its relationship to other agents.
+3. **Role** -- 2-4 sentences defining what the agent does, which movement it owns, and its relationship to other agents. [EXPLICIT]
 
-4. **Responsibilities** -- Numbered list of high-level duties.
+4. **Responsibilities** -- Numbered list of high-level duties. [EXPLICIT]
 
-5. **Skills Assigned** -- Table with columns: `#`, `Skill`, `Trigger`.
+5. **Skills Assigned** -- Table with columns: `#`, `Skill`, `Trigger`. [EXPLICIT]
 
-6. **Execution Flows** -- One subsection per command/workflow showing the skill execution sequence as an indented flow diagram.
+6. **Execution Flows** -- One subsection per command/workflow showing the skill execution sequence as an indented flow diagram. [EXPLICIT]
 
-7. **Operating Principles** -- Numbered list of behavioral rules (5-8 items). Include safety, idempotency, and cross-reference rules.
+7. **Operating Principles** -- Numbered list of behavioral rules (5-8 items). Include safety, idempotency, and cross-reference rules. [EXPLICIT]
 
 ### Step 3 -- Enforce Subagent Constraints
 
@@ -64,23 +64,23 @@ Compose the agent file with these sections:
 For each canonical command:
 
 1. **Frontmatter** (YAML):
-   - `description`: 1 sentence describing what the command does.
-   - `user-invocable`: `true`.
-   - `argument-hint`: from design (use `<>` for required, `[]` for optional).
+   - `description`: 1 sentence describing what the command does. [EXPLICIT]
+   - `user-invocable`: `true`. [EXPLICIT]
+   - `argument-hint`: from design (use `<>` for required, `[]` for optional). [EXPLICIT]
 
 2. **Body**:
-   - **Usage** section with the command syntax.
-   - **Execution Flow** describing which skill(s) are invoked and in what order.
-   - **Output** describing what the user receives.
+   - **Usage** section with the command syntax. [EXPLICIT]
+   - **Execution Flow** describing which skill(s) are invoked and in what order. [EXPLICIT]
+   - **Output** describing what the user receives. [EXPLICIT]
 
 ### Step 5 -- Generate Alias Command .md Files
 
 For each alias:
 
 1. **Frontmatter** (YAML):
-   - `alias-of`: the canonical command name (without plugin prefix).
-   - `description`: same as canonical.
-   - `user-invocable`: `true`.
+   - `alias-of`: the canonical command name (without plugin prefix). [EXPLICIT]
+   - `description`: same as canonical. [EXPLICIT]
+   - `user-invocable`: `true`. [EXPLICIT]
 
 2. **Body**: Single line stating this is an alias. Example: `Alias for [canonical-name]. See commands/{canonical-name}.md.`
 
@@ -129,14 +129,14 @@ hooks:
 # My Agent
 Handles validation.
 ```
-Missing: forbidden `hooks` field, no tools list, no skills table, no execution flows, no operating principles.
+Missing: forbidden `hooks` field, no tools list, no skills table, no execution flows, no operating principles. [EXPLICIT]
 
 **Good agent spec:**
 ```
 ---
 name: plugin-qa-engineer
 description: >
-  Orchestrates plugin quality assurance across validation, audit, and reporting.
+  Orchestrates plugin quality assurance across validation, audit, and reporting. [EXPLICIT]
 tools:
   - Read
   - Glob
@@ -152,20 +152,28 @@ maxTurns: 45
 | 1 | validate-structure | VALIDATE |
 ## Execution Flows
 ### /pqa:validate
-1. Run validate-structure → 2. Run validate-manifest → ...
+1. Run validate-structure → 2. Run validate-manifest → ... [EXPLICIT]
 ## Operating Principles
-1. Read first, write never.
+1. Read first, write never. [EXPLICIT]
 ```
-Includes: no forbidden fields, tool list, maxTurns, skills table, execution flow, operating principles.
+Includes: no forbidden fields, tool list, maxTurns, skills table, execution flow, operating principles. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Including hooks in agent frontmatter** -- Plugin subagents cannot define their own hooks. Hooks belong in `hooks/hooks.json` at the plugin level. Remove the field entirely.
-2. **Alias without canonical** -- Creating an alias command that points to a non-existent canonical command. Always generate the canonical first, then the alias.
-3. **Execution flow with unnamed skills** -- Writing flows like "run validation" instead of referencing the exact skill name (`validate-structure`). Every step in a flow must reference a concrete skill.
+1. **Including hooks in agent frontmatter** -- Plugin subagents cannot define their own hooks. Hooks belong in `hooks/hooks.json` at the plugin level. Remove the field entirely. [EXPLICIT]
+2. **Alias without canonical** -- Creating an alias command that points to a non-existent canonical command. Always generate the canonical first, then the alias. [EXPLICIT]
+3. **Execution flow with unnamed skills** -- Writing flows like "run validation" instead of referencing the exact skill name (`validate-structure`). Every step in a flow must reference a concrete skill. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Agent with a single skill** -- Valid. Still generate the full agent structure including a minimal execution flow and skills table with one row.
-2. **Command with no argument-hint** -- Valid for commands that take no arguments (e.g., `/pqa:menu`). Omit `argument-hint` from frontmatter rather than setting it to empty string.
-3. **Multiple agents sharing a skill** -- Valid. The skill appears in both agents' skills tables. Note this in both agents' operating principles for clarity.
+1. **Agent with a single skill** -- Valid. Still generate the full agent structure including a minimal execution flow and skills table with one row. [EXPLICIT]
+2. **Command with no argument-hint** -- Valid for commands that take no arguments (e.g., `/pqa:menu`). Omit `argument-hint` from frontmatter rather than setting it to empty string. [EXPLICIT]
+3. **Multiple agents sharing a skill** -- Valid. The skill appears in both agents' skills tables. Note this in both agents' operating principles for clarity. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/spec-agent-command" — Run the full spec agent command workflow
+- "spec agent command on this project" — Apply to current context
+

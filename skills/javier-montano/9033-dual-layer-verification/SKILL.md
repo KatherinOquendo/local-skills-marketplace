@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Two-layer security verification: static source analysis (grep/ESLint) + runtime
   browser inspection (Playwright). Catches what each layer alone misses. Required
-  by Constitution VII for security invariants.
+  by Constitution VII for security invariants. [EXPLICIT]
   Trigger: "dual-layer", "static + runtime", "security verification", "runtime inspection"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Verifies security invariants at two independent layers: (1) static analysis of source files and (2) runtime inspection of deployed/served artifacts via Playwright. The marginal cost of the second layer is near-zero when E2E tests already exist; the marginal benefit is closing vectors that static analysis cannot detect. Required by Constitution VII for defense-in-depth.
+Verifies security invariants at two independent layers: (1) static analysis of source files and (2) runtime inspection of deployed/served artifacts via Playwright. The marginal cost of the second layer is near-zero when E2E tests already exist; the marginal benefit is closing vectors that static analysis cannot detect. Required by Constitution VII for defense-in-depth. [EXPLICIT]
 
 ## Procedure
 
@@ -121,3 +121,25 @@ Verifies security invariants at two independent layers: (1) static analysis of s
 - `input-sanitization` — The sanitization that dual-layer verifies
 - `e2e-testing` — Playwright infrastructure that runtime layer uses
 - `lighthouse-ci` — Performance verification in the same CI pipeline
+
+## Usage
+
+Example invocations:
+
+- "/dual-layer-verification" — Run the full dual layer verification workflow
+- "dual layer verification on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

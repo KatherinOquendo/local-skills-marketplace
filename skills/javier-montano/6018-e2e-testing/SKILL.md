@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Write end-to-end tests with Playwright or Cypress — covering user flow testing,
-  page objects, network mocking, and CI integration.
+  page objects, network mocking, and CI integration. [EXPLICIT]
   Trigger: "e2e test", "Playwright", "Cypress", "user flow test"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides end-to-end test implementation with Playwright or Cypress — covering critical user flow testing, page object patterns, network request mocking, visual assertions, and CI integration. Use when you need to verify complete user journeys across your application.
+Guides end-to-end test implementation with Playwright or Cypress — covering critical user flow testing, page object patterns, network request mocking, visual assertions, and CI integration. Use when you need to verify complete user journeys across your application. [EXPLICIT]
 
 ## Procedure
 
@@ -75,3 +75,25 @@ Guides end-to-end test implementation with Playwright or Cypress — covering cr
 - `dual-layer-verification` — E2e infrastructure reused for runtime security verification
 - `lighthouse-ci` — Performance verification in the same CI pipeline
 - `bdd-full-spectrum` — Gherkin scenarios drive e2e test generation
+
+## Usage
+
+Example invocations:
+
+- "/e2e-testing" — Run the full e2e testing workflow
+- "e2e testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

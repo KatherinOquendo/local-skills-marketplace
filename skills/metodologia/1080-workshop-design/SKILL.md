@@ -3,11 +3,11 @@ name: metodologia-workshop-design
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-or-workshop-name]"
 description: >
-  Workshop design methodology — event storming, impact mapping, user story mapping, design sprints.
-  Replaces former workshop-facilitator (facilitation is the agent's job, design is the skill).
+  Workshop design methodology — event storming, impact mapping, user story mapping, design sprints. [EXPLICIT]
+  Replaces former workshop-facilitator (facilitation is the agent's job, design is the skill). [EXPLICIT]
   Use when the user asks to "design a workshop", "plan event storming", "design impact mapping session",
   "design a sprint", "create user story map", "design discovery session",
-  or mentions workshop design, design sprint, event storming, story mapping, or collaborative design.
+  or mentions workshop design, design sprint, event storming, story mapping, or collaborative design. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,19 +21,19 @@ allowed-tools:
 
 # Workshop Design: Collaborative Discovery & Design Techniques
 
-Workshop design creates structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints.
+Workshop design creates structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints. [EXPLICIT]
 
 ## Grounding Guideline
 
 > A poorly facilitated workshop does not just waste time — it destroys the team's trust in collaborative processes. Excellent facilitation is the difference between genuine alignment and superficial consensus.
 
-1. **Collaborative discovery over unilateral presentation.** Tacit knowledge only emerges when people do, not when they listen. Every minute of a workshop must be designed to extract, not to transmit.
-2. **Structure in service of creativity.** Time-boxes, techniques, and participation rules do not limit creativity — they amplify it. Without structure, the loudest voices dominate and the most valuable ideas are lost.
-3. **Living artifacts over dead meeting notes.** The value of a workshop is not in the synthesis document — it is in the shared mental models that are built. Artifacts must be working tools, not evidence files.
+1. **Collaborative discovery over unilateral presentation.** Tacit knowledge only emerges when people do, not when they listen. Every minute of a workshop must be designed to extract, not to transmit. [EXPLICIT]
+2. **Structure in service of creativity.** Time-boxes, techniques, and participation rules do not limit creativity — they amplify it. Without structure, the loudest voices dominate and the most valuable ideas are lost. [EXPLICIT]
+3. **Living artifacts over dead meeting notes.** The value of a workshop is not in the synthesis document — it is in the shared mental models that are built. Artifacts must be working tools, not evidence files. [EXPLICIT]
 
 ## Inputs
 
-The user provides a project or workshop goal as `$ARGUMENTS`. Parse `$1` as the **project/workshop name** used throughout all output artifacts.
+The user provides a project or workshop goal as `$ARGUMENTS`. Parse `$1` as the **project/workshop name** used throughout all output artifacts. [EXPLICIT]
 
 Before generating workshop design, detect project context:
 
@@ -43,10 +43,10 @@ find . -name "*.md" -o -name "*.miro" -o -name "*.figjam" -o -name "*.pdf" -o -n
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto for agenda design and technique selection, HITL for participant validation and format decisions.
-  - **desatendido**: Zero interruptions. Complete design auto-generated. Assumptions documented.
-  - **supervisado**: Autonomous with checkpoints on technique selection and final design.
-  - **paso-a-paso**: Confirms before each design decision.
+  - **piloto-auto**: Auto for agenda design and technique selection, HITL for participant validation and format decisions. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Complete design auto-generated. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autonomous with checkpoints on technique selection and final design. [EXPLICIT]
+  - **paso-a-paso**: Confirms before each design decision. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 - `{MODO_OPERACIONAL}`: `integral` (default, complete workshop design + synthesis) | `facilitacion` (energy management, diverge/converge cycles, breaks, energizers, facilitation timeline) | `sintesis` (output consolidation, deduplication, thematic clustering, owner assignment, action items)
@@ -65,7 +65,7 @@ find . -name "*.md" -o -name "*.miro" -o -name "*.figjam" -o -name "*.pdf" -o -n
 
 ### S1: Workshop Selection & Design
 
-Matches the right technique to the workshop goal, selects participants, and designs the agenda.
+Matches the right technique to the workshop goal, selects participants, and designs the agenda. [EXPLICIT]
 
 **Technique selection matrix:**
 - "Understand the domain" — Event Storming
@@ -88,7 +88,7 @@ Matches the right technique to the workshop goal, selects participants, and desi
 
 ### S2: Event Storming
 
-Discovers domain knowledge by exploring events, commands, aggregates, and bounded contexts.
+Discovers domain knowledge by exploring events, commands, aggregates, and bounded contexts. [EXPLICIT]
 
 **Includes:**
 - Domain event discovery: past-tense verbs on orange stickies (OrderPlaced, PaymentReceived)
@@ -102,7 +102,7 @@ Discovers domain knowledge by exploring events, commands, aggregates, and bounde
 
 ### S3: Impact Mapping
 
-Connects business goals to deliverables through actors and impacts.
+Connects business goals to deliverables through actors and impacts. [EXPLICIT]
 
 **Includes:**
 - Goal definition: measurable business objective at the center
@@ -114,7 +114,7 @@ Connects business goals to deliverables through actors and impacts.
 
 ### S4: User Story Mapping
 
-Organizes user activities into a backbone and plans releases as horizontal slices.
+Organizes user activities into a backbone and plans releases as horizontal slices. [EXPLICIT]
 
 **Includes:**
 - Backbone construction: high-level user activities across the top (left to right = user journey)
@@ -126,7 +126,7 @@ Organizes user activities into a backbone and plans releases as horizontal slice
 
 ### S5: Design Sprint
 
-Compressed prototyping and validation cycle — understand, sketch, decide, prototype, test.
+Compressed prototyping and validation cycle — understand, sketch, decide, prototype, test. [EXPLICIT]
 
 **Includes:**
 - Day 1 — Understand: map the challenge, interview experts, set sprint goal, pick target
@@ -138,7 +138,7 @@ Compressed prototyping and validation cycle — understand, sketch, decide, prot
 
 ### S6: Synthesis & Handoff
 
-Consolidates workshop outputs into actionable artifacts and establishes follow-up cadence.
+Consolidates workshop outputs into actionable artifacts and establishes follow-up cadence. [EXPLICIT]
 
 **Includes:**
 - Insight consolidation: key findings, decisions made, open questions
@@ -334,7 +334,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Configuration
 
@@ -360,6 +360,6 @@ Formerly separate sub-agents (`energy-manager`, `synthesis-engine`) are now oper
 | `facilitacion` | Energy management, diverge/converge cycles, strategic breaks, energizers, attention monitoring, energy arc | Optimizing engagement and productivity during the workshop |
 | `sintesis` | Raw output consolidation, deduplication, thematic clustering, contradiction resolution, action items with owners and deadlines | Post-workshop: transforming raw outputs into actionable deliverables |
 
-Invoke with `{MODO_OPERACIONAL}=facilitacion` or `{MODO_OPERACIONAL}=sintesis`.
+Invoke with `{MODO_OPERACIONAL}=facilitacion` or `{MODO_OPERACIONAL}=sintesis`. [EXPLICIT]
 
 ---

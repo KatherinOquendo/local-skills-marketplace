@@ -1,7 +1,7 @@
 ---
 name: sofka-sap-implementation
 author: JM Labs (Javier Montano)
-description: >
+description: 
   SAP S/4HANA implementation skill covering module selection (CO, SD, PS, FI, HCM),
   SAP Activate methodology, fit-to-standard workshops, multi-country localization,
   intercompany configuration, and professional services industry patterns. Use whenever
@@ -10,10 +10,10 @@ description: >
   configuration for IT services companies. Also trigger for SAP-specific gap analysis,
   SAP scope definition, SAP best practices, CATS integration, Strangler Fig migration,
   Activity Type configuration, or revenue recognition patterns for T&M, fixed price,
-  retainer, or managed services contracts.
+  retainer, or managed services contracts. [EXPLICIT]
   Trigger: SAP implementation, S/4HANA configuration, fit-to-standard, SAP modules,
-  SAP localization, CATS integration, Strangler Fig, Activity Types, revenue recognition.
-argument-hint: "<module-or-topic> [--variant tm|fixprice|retainer|managed]"
+  SAP localization, CATS integration, Strangler Fig, Activity Types, revenue recognition. [EXPLICIT]
+argument-hint: "module-or-topic [--variant tm|fixprice|retainer|managed]"
 model: opus
 context: fork
 allowed-tools:
@@ -32,7 +32,7 @@ allowed-tools:
 
 ## Purpose
 
-Guide SAP S/4HANA Public Cloud implementations for IT services companies. Covers module configuration, SAP Activate methodology, fit-to-standard workshops, multi-country localization, intercompany billing, incremental data migration (Strangler Fig), timesheet integration (external frontend + CATS API), and revenue recognition across multiple service variants.
+Guide SAP S/4HANA Public Cloud implementations for IT services companies. Covers module configuration, SAP Activate methodology, fit-to-standard workshops, multi-country localization, intercompany billing, incremental data migration (Strangler Fig), timesheet integration (external frontend + CATS API), and revenue recognition across multiple service variants. [EXPLICIT]
 
 ## When to Use
 
@@ -90,7 +90,7 @@ Activity Types map skill levels to Cost Rates and Sales Prices. Each AT has:
 - **Sales Price** (client-negotiated, loaded via Manage Sales Prices)
 - **Validity period** (rates change with annual reviews)
 
-See `sofka-regional-finance` skill for CTC formulas and AT rate tables.
+See `sofka-regional-finance` skill for CTC formulas and AT rate tables. [EXPLICIT]
 
 ### SD - Sales & Distribution
 
@@ -149,8 +149,8 @@ IT services companies typically have multiple billing models. Each requires dist
 Revenue-generating contract?
 |-- NO -> Internal Order (CO only). Bench/training.
 |-- YES: Pricing per hour?
-    |-- YES: Fixed hours/month? -> T&M fixed. Variable? -> T&M variable.
-    |-- NO: Per milestone? -> Fixed Price. Monthly fee? -> Retainer.
+    |-- YES: Fixed hours/month? -> T&M fixed. Variable? -> T&M variable. [EXPLICIT]
+    |-- NO: Per milestone? -> Fixed Price. Monthly fee? -> Retainer. [EXPLICIT]
 ```
 
 ---
@@ -208,7 +208,7 @@ Revenue-generating contract?
 
 ## Strangler Fig Data Migration
 
-Instead of big-bang migration, eliminate legacy Excel/tools incrementally. SAP takes over one data domain at a time.
+Instead of big-bang migration, eliminate legacy Excel/tools incrementally. SAP takes over one data domain at a time. [EXPLICIT]
 
 ### Migration Protocol Per Source
 1. **Map**: Document every column, formula, business rule
@@ -234,7 +234,7 @@ Instead of big-bang migration, eliminate legacy Excel/tools incrementally. SAP t
 ## Timesheet Integration via CATS API
 
 ### Why External Frontend + CATS
-When employees already use an established timesheet tool, forcing migration to SAP's native Manage My Timesheet risks adoption resistance. Instead, preserve the familiar frontend and integrate with SAP backend via CATS BAPI.
+When employees already use an established timesheet tool, forcing migration to SAP's native Manage My Timesheet risks adoption resistance. Instead, preserve the familiar frontend and integrate with SAP backend via CATS BAPI. [EXPLICIT]
 
 ### Architecture
 ```
@@ -299,19 +299,25 @@ When employees already use an established timesheet tool, forcing migration to S
 
 ## Anti-Patterns
 
-1. **Generic ERP advice** — Every recommendation must name the SAP app, scope code, or config step.
-2. **Treating blocking gaps independently** — Interdependent gaps (e.g., master data + cost segregation + intercompany) must be resolved as a package.
-3. **Assuming big-bang migration** — Always propose Strangler Fig incremental approach unless explicitly overridden.
-4. **Conflating cost rate with sales price** — Always segregate CTC-based Cost Rate from client Sales Price.
+1. **Generic ERP advice** — Every recommendation must name the SAP app, scope code, or config step. [EXPLICIT]
+2. **Treating blocking gaps independently** — Interdependent gaps (e.g., master data + cost segregation + intercompany) must be resolved as a package. [EXPLICIT]
+3. **Assuming big-bang migration** — Always propose Strangler Fig incremental approach unless explicitly overridden. [EXPLICIT]
+4. **Conflating cost rate with sales price** — Always segregate CTC-based Cost Rate from client Sales Price. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Fixed price variant with broken AS-IS** — When milestones are forced to fictitious hours, do not propose timesheet-based recognition. Redesign with Milestone Billing Plan.
-2. **External timesheet timeline outside control** — Always document both paths (external integration AND native fallback) in recommendations.
-3. **Per-account allocation files** — Legacy staffing allocation may exist as N files (one per account/client), not a single master. Migration must account for this family.
+1. **Fixed price variant with broken AS-IS** — When milestones are forced to fictitious hours, do not propose timesheet-based recognition. Redesign with Milestone Billing Plan. [EXPLICIT]
+2. **External timesheet timeline outside control** — Always document both paths (external integration AND native fallback) in recommendations. [EXPLICIT]
+3. **Per-account allocation files** — Legacy staffing allocation may exist as N files (one per account/client), not a single master. Migration must account for this family. [EXPLICIT]
 
 ## Cross-References
 
 - **sofka-regional-finance**: CTC formulas, Activity Type rates, transfer pricing, withholding matrix
 - **sofka-bpmn-process-analysis**: AS-IS/TO-BE process models, Fit-to-Standard workshop flows
 - **analisis-horizontal-financiero**: Financial analysis for implementation business case
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

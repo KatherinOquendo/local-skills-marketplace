@@ -3,7 +3,7 @@ name: alerting-strategy
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Alert fatigue prevention, escalation rules, severity classification.
+  Alert fatigue prevention, escalation rules, severity classification. [EXPLICIT]
   Trigger: "alerting strategy"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Alerting Strategy
 > "Method over hacks."
 ## TL;DR
-Alert fatigue prevention, escalation rules, severity classification.
+Alert fatigue prevention, escalation rules, severity classification. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Alert fatigue prevention, escalation rules, severity classification.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/alerting-strategy" — Run the full alerting strategy workflow
+- "alerting strategy on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

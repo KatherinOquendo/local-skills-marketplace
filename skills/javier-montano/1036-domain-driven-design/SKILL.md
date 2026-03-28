@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Applies Domain-Driven Design tactical and strategic patterns to model complex
   business domains. Identifies bounded contexts, aggregates, domain events, and
-  establishes ubiquitous language shared by developers and domain experts.
+  establishes ubiquitous language shared by developers and domain experts. [EXPLICIT]
   Trigger: "bounded context", "aggregate", "domain event", "ubiquitous language", "DDD"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Models complex business domains using DDD strategic and tactical patterns — bounded contexts, aggregates, entities, value objects, domain events, and ubiquitous language. Use this skill when tackling complex business logic, designing microservice boundaries, or when the team and domain experts speak different languages.
+Models complex business domains using DDD strategic and tactical patterns — bounded contexts, aggregates, entities, value objects, domain events, and ubiquitous language. Use this skill when tackling complex business logic, designing microservice boundaries, or when the team and domain experts speak different languages. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Models complex business domains using DDD strategic and tactical patterns — bo
 - `event-architecture` — implements domain events technically
 - `system-architecture` — bounded contexts inform service decomposition
 - `flow-mapping` — visualizes the business processes DDD models
+
+## Usage
+
+Example invocations:
+
+- "/domain-driven-design" — Run the full domain driven design workflow
+- "domain driven design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

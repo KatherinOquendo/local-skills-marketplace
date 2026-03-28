@@ -2,10 +2,10 @@
 name: apex-capacity-planning
 description: >
   Use when the user asks to "plan capacity", "forecast resource demand",
-  "analyze resource availability", "match supply to demand", or "model resource scenarios".
+  "analyze resource availability", "match supply to demand", or "model resource scenarios". [EXPLICIT]
   Activates when a stakeholder needs to analyze resource supply vs demand, identify capacity gaps,
   detect over-allocations, build time-phased capacity models, or plan proactive hiring
-  and cross-training decisions before bottlenecks impact delivery.
+  and cross-training decisions before bottlenecks impact delivery. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -20,7 +20,7 @@ allowed-tools:
 **TL;DR**: Analyzes resource supply against demand to identify capacity gaps, over-allocations, and optimization opportunities. Produces time-phased capacity models that forecast resource needs, enabling proactive hiring, training, or reallocation decisions before bottlenecks impact delivery.
 
 ## Principio Rector
-La capacidad real es siempre menor que la teórica. Un recurso al 100% de utilización no tiene capacidad para absorber variabilidad — ese es el camino al retraso sistémico. La regla: planificar al 80% de capacidad, reservar 20% para variabilidad, reuniones, y trabajo no planificado. La previsibilidad nace de la holgura deliberada.
+La capacidad real es siempre menor que la teórica. Un recurso al 100% de utilización no tiene capacidad para absorber variabilidad — ese es el camino al retraso sistémico. La regla: planificar al 80% de capacidad, reservar 20% para variabilidad, reuniones, y trabajo no planificado. La previsibilidad nace de la holgura deliberada. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes resource availability data is current and reflects actual calendars [SUPUESTO]
@@ -102,7 +102,7 @@ La capacidad real es siempre menor que la teórica. Un recurso al 100% de utiliz
 | Recommendations | Specific: cross-train 2 devs, hire 1 QA by Month 3 |
 
 **Bad Capacity Plan:**
-A spreadsheet showing "we need 10 developers" without supply analysis, no time-phasing, no skill breakdown, no over-allocation detection. Fails because it provides no actionable insight about when gaps occur, which skills are short, or what trade-offs exist.
+A spreadsheet showing "we need 10 developers" without supply analysis, no time-phasing, no skill breakdown, no over-allocation detection. Fails because it provides no actionable insight about when gaps occur, which skills are short, or what trade-offs exist. [EXPLICIT]
 
 ## Validation Gate
 - [ ] Supply model reflects actual resource calendars, not theoretical 100% availability

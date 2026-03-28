@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Send transactional and marketing emails via SendGrid, Mailgun, or SES with
-  templates, delivery tracking, and bounce handling.
+  templates, delivery tracking, and bounce handling. [EXPLICIT]
   Trigger: "send email", "SendGrid", "Mailgun", "transactional email"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides email sending infrastructure setup — configuring providers like SendGrid or Mailgun, building template-based transactional emails, managing sender reputation, and handling bounces and complaints. Use when your application needs to send automated emails (verification, receipts, notifications, marketing).
+Guides email sending infrastructure setup — configuring providers like SendGrid or Mailgun, building template-based transactional emails, managing sender reputation, and handling bounces and complaints. Use when your application needs to send automated emails (verification, receipts, notifications, marketing). [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides email sending infrastructure setup — configuring providers like SendGri
 
 - `email-templates` — HTML template design for these emails
 - `cloud-functions` — email sending logic runs in Cloud Functions
+
+## Usage
+
+Example invocations:
+
+- "/email-sending" — Run the full email sending workflow
+- "email sending on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

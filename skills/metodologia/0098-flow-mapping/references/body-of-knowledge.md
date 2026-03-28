@@ -55,7 +55,7 @@ El mapeo de flujos de negocio es la disciplina que traduce el comportamiento obs
 
 ## 5. Análisis de Fallos y Riesgo
 
-**FMEA (Failure Mode and Effects Analysis)** — método de origen aeronáutico (MIL-STD-1629, 1949) adoptado por la industria de software para análisis de puntos de falla. Cada failure point tiene: modo de fallo, causa raíz, efecto, probabilidad, severidad, y mitigación actual.
+**FMEA (Failure Mode and Effects Analysis)** — méTodo de origen aeronáutico (MIL-STD-1629, 1949) adoptado por la industria de software para análisis de puntos de falla. Cada failure point tiene: modo de fallo, causa raíz, efecto, probabilidad, severidad, y mitigación actual.
 
 **Teoría de cascada de fallos** — sistemas acoplados pueden amplificar fallos locales hasta colapso sistémico (Charles Perrow, *Normal Accidents*, 1984). En flujos de negocio esto se manifiesta como: alta dependencia fan-in sin circuit breaker, ausencia de timeouts explícitos, y circular dependencies entre servicios.
 

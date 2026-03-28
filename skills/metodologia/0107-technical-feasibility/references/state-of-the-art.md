@@ -85,7 +85,7 @@
 
 - **Debate:** ¿D1 (Technical) es más importante que D2 (Organizational)?
 - **Evidencia:** Estudios del Standish Group (CHAOS Reports 2020-2024) muestran que los factores organizacionales (D2) causan más fracasos que los técnicos (D1). Sin embargo, los técnicos son los más visibles y más fáciles de validar.
-- **Posición del skill:** Pesos iguales por default. El analista puede ajustar pesos según contexto. Pero NUNCA eliminar una dimensión — la feasibility parcial es feasibility falsa. Un composite score con D2=1/5 y todo lo demás en 4/5 sigue siendo FEASIBLE WITH CONDITIONS.
+- **Posición del skill:** Pesos iguales por default. El analista puede ajustar pesos según contexto. Pero NUNCA eliminar una dimensión — la feasibility parcial es feasibility falsa. Un composite score con D2=1/5 y Todo lo demás en 4/5 sigue siendo FEASIBLE WITH CONDITIONS.
 
 ### 3.3 ¿El fact-checking con AI es confiable?
 

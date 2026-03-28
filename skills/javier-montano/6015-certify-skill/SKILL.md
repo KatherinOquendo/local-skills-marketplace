@@ -1,6 +1,6 @@
 ---
 name: certify-skill
-description: >
+description: 
   This skill should be used when the user asks to "certify a skill",
   "validate this skill", "is this skill ready", "check skill quality",
   "grade this skill", or "run quality gate". Runs every quality check
@@ -10,8 +10,8 @@ description: >
   certification level (CERTIFIED / CONDITIONAL / BLOCKED). Use this
   skill after running surgeon-skill to verify improvements, or standalone
   to assess any skill's production readiness, even if the user just says
-  "is this good enough to ship".
-argument-hint: "<path-to-skill-directory>"
+  "is this good enough to ship". [EXPLICIT]
+argument-hint: "path-to-skill-directory"
 allowed-tools:
   - Read
   - Glob
@@ -23,9 +23,9 @@ context: fork
 
 # Skill Certify
 
-Final quality gate for Claude Code skills. Runs every check and produces a certification report that says exactly what passed, what failed, and what to fix — with no ambiguity about production readiness.
+Final quality gate for Claude Code skills. Runs every check and produces a certification report that says exactly what passed, what failed, and what to fix — with no ambiguity about production readiness. [EXPLICIT]
 
-Part of the Skill Quality Suite: x-ray-skill → surgeon-skill → **certify-skill** (+ trigger-skill, benchmark-skill, assembly-skill). Each skill is standalone. Use assembly-skill to run the full pipeline in one command.
+Part of the Skill Quality Suite: x-ray-skill → surgeon-skill → **certify-skill** (+ trigger-skill, benchmark-skill, assembly-skill). Each skill is standalone. Use assembly-skill to run the full pipeline in one command. [EXPLICIT]
 
 ## Difference from x-ray-skill
 
@@ -45,15 +45,15 @@ x-ray-skill produces a diagnostic for exploration ("what's the state of this ski
 /certify-skill ./my-skill
 ```
 
-Parse the argument as the path to a skill directory containing SKILL.md.
+Parse the argument as the path to a skill directory containing SKILL.md. [EXPLICIT]
 
 ## The Certification Process
 
-Read `references/certification-checklist.md` for the complete checklist with verification methods and the report template.
+Read `references/certification-checklist.md` for the complete checklist with verification methods and the report template. [EXPLICIT]
 
 ### Phase 1: Structural Validation (automated)
 
-Verify the skill's file structure mechanically. Structural failures block all further evaluation.
+Verify the skill's file structure mechanically. Structural failures block all further evaluation. [EXPLICIT]
 
 ```bash
 ls {path}/SKILL.md                                      # S1: exists?
@@ -67,7 +67,7 @@ grep -r 'references/\|tools/' {path}                      # S9: no old paths?
 
 **Abort condition:** If S1 fails (no SKILL.md), report BLOCKED immediately. No further phases.
 
-Record each check as PASS/FAIL with the command output as evidence. 9 structural checks total — see `references/certification-checklist.md` for full definitions.
+Record each check as PASS/FAIL with the command output as evidence. 9 structural checks total — see `references/certification-checklist.md` for full definitions. [EXPLICIT]
 
 ### Phase 2: Content Validation (judgment required)
 
@@ -84,7 +84,7 @@ Read SKILL.md and evaluate content against 18 checks across 3 categories:
 
 **2B: Body Sections (9 checks: B1-B9)**
 
-For each: is it present, substantive (not placeholder), and meets its minimum criteria? A section header with "TBD" scores as MISSING.
+For each: is it present, substantive (not placeholder), and meets its minimum criteria? A section header with "TBD" scores as MISSING. [EXPLICIT]
 
 | Check | Minimum Criteria | Why It Matters |
 |-------|-----------------|----------------|
@@ -122,7 +122,7 @@ Skip for single-file skills — report N/A. For multi-file skills, run 5 checks:
 
 ### Phase 4: Quality Rubric (10 dimensions)
 
-Score each dimension 1-10 using the detailed rubric in `references/certification-checklist.md` (which references x-ray-skill's `quality-rubric.md` for full scoring guides when available).
+Score each dimension 1-10 using the detailed rubric in `references/certification-checklist.md` (which references x-ray-skill's `quality-rubric.md` for full scoring guides when available). [EXPLICIT]
 
 For each dimension, provide:
 1. **Numeric score** (1-10)
@@ -143,7 +143,7 @@ If Phases 1-4 result in CERTIFIED, run 5 additional deterministic checks from `r
 | M4: Template A structure | "## Usage" or "## When to Activate" + "## Validation Gate" present; no Template B markers |
 | M5: evidence tag coverage | [EXPLICIT]/[INFERRED]/[OPEN] on >= 80% factual claims (>= 50% for Utility tier) |
 
-Skip Phase 5 if the skill is CONDITIONAL or BLOCKED — MOAT requires CERTIFIED as a prerequisite.
+Skip Phase 5 if the skill is CONDITIONAL or BLOCKED — MOAT requires CERTIFIED as a prerequisite. [EXPLICIT]
 
 ### Phase 6: Produce Report
 
@@ -190,22 +190,22 @@ Use the Certification Report Template from `references/certification-checklist.m
 
 **Bad certification:**
 ```
-Certification: CONDITIONAL. Some issues found. Please fix and re-certify.
+Certification: CONDITIONAL. Some issues found. Please fix and re-certify. [EXPLICIT]
 ```
-No evidence, no specifics, no fix instructions. Useless.
+No evidence, no specifics, no fix instructions. Useless. [EXPLICIT]
 
 **Good certification:**
 ```
 Certification: CONDITIONAL (11/13 gate, avg 7.8/10)
 Fails: S6 (references/patterns.md referenced but file doesn't exist),
-       Checkpoint 6 (no Good vs Bad example).
-Rubric: Depth 6/10 (only 2 edge cases; need 3+), others 8+.
-Fix: (1) Create references/patterns.md or remove the reference.
-     (2) Add Good vs Bad section with concrete comparison.
-     (3) Add 1+ edge case to Edge Cases section.
-Estimated effort: 30 minutes. Re-certify after.
+       Checkpoint 6 (no Good vs Bad example). [EXPLICIT]
+Rubric: Depth 6/10 (only 2 edge cases; need 3+), others 8+. [EXPLICIT]
+Fix: (1) Create references/patterns.md or remove the reference. [EXPLICIT]
+     (2) Add Good vs Bad section with concrete comparison. [EXPLICIT]
+     (3) Add 1+ edge case to Edge Cases section. [EXPLICIT]
+Estimated effort: 30 minutes. Re-certify after. [EXPLICIT]
 ```
-Specific, evidenced, actionable, with effort estimate.
+Specific, evidenced, actionable, with effort estimate. [EXPLICIT]
 
 ## Validation Gate
 

@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Designs performance optimization strategies targeting Core Web Vitals (LCP,
   INP, CLS), lazy loading, code splitting, image optimization, and bundle
-  size reduction for fast web experiences.
+  size reduction for fast web experiences. [EXPLICIT]
   Trigger: "performance", "Core Web Vitals", "LCP", "lazy loading", "code splitting"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs web performance optimization strategies targeting Core Web Vitals (LCP, INP, CLS) through lazy loading, code splitting, image optimization, and bundle analysis. Use this skill when Core Web Vitals scores are poor, page load times are unacceptable, or when building performance budgets for new projects.
+Designs web performance optimization strategies targeting Core Web Vitals (LCP, INP, CLS) through lazy loading, code splitting, image optimization, and bundle analysis. Use this skill when Core Web Vitals scores are poor, page load times are unacceptable, or when building performance budgets for new projects. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Designs web performance optimization strategies targeting Core Web Vitals (LCP, 
 - `pwa-architecture` — service worker caching improves load performance
 - `caching-strategy` — browser and CDN caching reduce server round trips
 - `seo-architecture` — Core Web Vitals impact search ranking
+
+## Usage
+
+Example invocations:
+
+- "/performance-architecture" — Run the full performance architecture workflow
+- "performance architecture on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

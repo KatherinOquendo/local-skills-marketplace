@@ -1,13 +1,13 @@
----
-name: plugin-builder
-argument-hint: "<plugin-name>"
-description: >
+--- [EXPLICIT]
+name: plugin-builder [EXPLICIT]
+argument-hint: "plugin-name" [EXPLICIT]
+description: 
   Builds complete Claude Code plugins from scratch — scaffolds plugin.json, CLAUDE.md, commands/, agents/,
   skills/, hooks/, scripts/, settings.json. Activates when the user says "create a plugin", "scaffold a plugin",
   "build a new plugin", "initialize plugin structure", or "set up a plugin project". Also triggers on mentions
   of plugin creation, plugin scaffolding, or Claude Code extension packaging. Use this skill even if the user
-  only names the plugin — it interviews for missing details.
-argument-hint: "<plugin-name>"
+  only names the plugin — it interviews for missing details. [EXPLICIT]
+argument-hint: "plugin-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Plugin Builder — Claude Code Plugin Scaffolding
 
-Creates production-ready Claude Code plugins following the official plugin specification.
+Creates production-ready Claude Code plugins following the official plugin specification. [EXPLICIT]
 
 ## Plugin Directory Structure (mandatory)
 
@@ -183,12 +183,12 @@ user-invocable: true
 
 # Redirect: {alias} → {target-command}
 
-Activate `{target-command}` skill with all arguments passed through: $ARGUMENTS
+Activate `{target-command}` skill with all arguments passed through: $ARGUMENTS [EXPLICIT]
 ```
 
 ## Packaging as .skill file
 
-Each skill can be packaged as a ZIP with extension `.skill`:
+Each skill can be packaged as a ZIP with extension `.skill`: [EXPLICIT]
 ```
 sofka-{name}.skill (ZIP containing):
   sofka-{name}/
@@ -207,7 +207,7 @@ sofka-{name}.skill (ZIP containing):
 
 ## Packaging as .plugin file
 
-The entire plugin can be packaged as a ZIP with extension `.plugin`:
+The entire plugin can be packaged as a ZIP with extension `.plugin`: [EXPLICIT]
 ```
 {name}.plugin (ZIP containing):
   {name}/
@@ -232,3 +232,25 @@ The entire plugin can be packaged as a ZIP with extension `.plugin`:
 7. **Create hooks**: If automation needed
 8. **Verify**: Check all frontmatter valid, all cross-refs correct
 9. **Test**: Suggest `claude --plugin-dir ./{name}` to verify
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/plugin-builder" — Run the full plugin builder workflow
+- "plugin builder on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

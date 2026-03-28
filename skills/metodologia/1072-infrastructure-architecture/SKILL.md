@@ -1,11 +1,11 @@
 ---
 name: metodologia-infrastructure-architecture
 author: Javier Montano · Comunidad MetodologIA
-argument-hint: "<platform-or-system-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
-description: >
-  Infrastructure and platform architecture — compute, network, storage, HA/DR, IAM, cloud landing zones, and cost optimization.
+argument-hint: "platform-or-system-name [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
+description: 
+  Infrastructure and platform architecture — compute, network, storage, HA/DR, IAM, cloud landing zones, and cost optimization. [EXPLICIT]
   Use when the user asks to "design cloud infrastructure", "plan network topology", "define HA/DR strategy",
-  "set up cloud landing zones", "optimize cloud costs", or mentions VPC, Kubernetes, serverless, multi-AZ, IAM, reserved instances, or chaos testing.
+  "set up cloud landing zones", "optimize cloud costs", or mentions VPC, Kubernetes, serverless, multi-AZ, IAM, reserved instances, or chaos testing. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -27,20 +27,20 @@ Infrastructure architecture designs where and how software runs — compute reso
 
 ### Infrastructure Philosophy
 
-1. **Infrastructure as Code, always.** If it is not in code, it does not exist. Terraform, Pulumi, or CDK — never manual consoles in production.
-2. **HA/DR is not optional.** Multi-AZ is the minimum. RPO and RTO are defined BEFORE the design, not after the first incident.
-3. **FinOps from Day 1.** Cloud cost is not controlled at the end — it is designed from the beginning. Reserved instances, right-sizing, and cost alerts are part of the design.
+1. **Infrastructure as Code, always.** If it is not in code, it does not exist. Terraform, Pulumi, or CDK — never manual consoles in production. [EXPLICIT]
+2. **HA/DR is not optional.** Multi-AZ is the minimum. RPO and RTO are defined BEFORE the design, not after the first incident. [EXPLICIT]
+3. **FinOps from Day 1.** Cloud cost is not controlled at the end — it is designed from the beginning. Reserved instances, right-sizing, and cost alerts are part of the design. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **platform/system name** used throughout all output artifacts.
+The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **platform/system name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de infra y network design, HITL para decisiones de HA/DR y cost commitments.
-  - **desatendido**: Zero interruptions. Infraestructura documentada automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en network topology, compute strategy, y cost optimization.
-  - **paso-a-paso**: Confirma cada VPC, subnet, compute choice, storage tier, y cost recommendation.
+  - **piloto-auto**: Auto para análisis de infra y network design, HITL para decisiones de HA/DR y cost commitments. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Infraestructura documentada automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en network topology, compute strategy, y cost optimization. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada VPC, subnet, compute choice, storage tier, y cost recommendation. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 network topology + S4 HA/DR + S7 cost optimization) | `técnica` (full 7 sections, default)
 
@@ -82,7 +82,7 @@ Read ${CLAUDE_SKILL_DIR}/references/cost-models.md
 
 ### S1: Network Topology
 
-Design of network architecture ensuring connectivity, segmentation, security, and resilience.
+Design of network architecture ensuring connectivity, segmentation, security, and resilience. [EXPLICIT]
 
 **VPC/Network Architecture:** Subnets by tier:
 - Public: load balancers, NAT gateways, bastion hosts
@@ -101,7 +101,7 @@ Design of network architecture ensuring connectivity, segmentation, security, an
 
 ### S2: Compute & Containers
 
-Strategy for running workloads — VMs, containers, or serverless.
+Strategy for running workloads — VMs, containers, or serverless. [EXPLICIT]
 
 **VMs:** Full control, best for legacy/compliance. Trade-off: more management overhead.
 **Containers (Docker/K8s):** Standardized, portable. Best for microservices. Trade-off: orchestration complexity.
@@ -115,7 +115,7 @@ Strategy for running workloads — VMs, containers, or serverless.
 
 ### S3: Storage & Data
 
-Data persistence — performance, reliability, cost.
+Data persistence — performance, reliability, cost. [EXPLICIT]
 
 **Block Storage:** Virtual hard drives for IOPS-intensive workloads (databases)
 **Object Storage:** Distributed, durable, cheap at scale (backups, logs, media, data lake)
@@ -132,7 +132,7 @@ Data persistence — performance, reliability, cost.
 
 ### S4: HA & Disaster Recovery (Multi-AZ, Chaos)
 
-Strategy for surviving failures and maintaining continuity.
+Strategy for surviving failures and maintaining continuity. [EXPLICIT]
 
 **Failure Modes:**
 - Single instance → redundancy (replicas, failover)
@@ -149,7 +149,7 @@ Strategy for surviving failures and maintaining continuity.
 
 ### S5: IAM & Platform Security
 
-Identity and access management for infrastructure resources.
+Identity and access management for infrastructure resources. [EXPLICIT]
 
 - **Identity Federation:** SSO via SAML/OIDC, LDAP for legacy
 - **Service Accounts:** Short-lived credentials, least-privilege IAM roles
@@ -160,7 +160,7 @@ Identity and access management for infrastructure resources.
 
 ### S6: Cloud Landing Zone & Governance
 
-Foundation for safe, scalable, compliant cloud deployment.
+Foundation for safe, scalable, compliant cloud deployment. [EXPLICIT]
 
 **Account Structure:** Management (billing/guardrails), shared services (logging/monitoring/security), workload accounts (dev/staging/prod per app or team)
 
@@ -174,7 +174,7 @@ Foundation for safe, scalable, compliant cloud deployment.
 
 ### S7: Cost Optimization
 
-Strategies for reducing cloud spend without sacrificing performance or reliability.
+Strategies for reducing cloud spend without sacrificing performance or reliability. [EXPLICIT]
 
 - **Right-Sizing:** Analyze utilization, downsize over-provisioned resources, review monthly
 - **Commitment Discounts:** Reserved Instances (30-70% off, steady-state), Savings Plans (flexible), Spot (70-90% off, fault-tolerant batch)
@@ -344,7 +344,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -1,12 +1,12 @@
 ---
 name: workshop-facilitator
-argument-hint: "<workshop-topic> [duration]"
-description: >
-  Workshop design — event storming, impact mapping, user story mapping, design sprints.
+argument-hint: "workshop-topic [duration]"
+description: 
+  Workshop design — event storming, impact mapping, user story mapping, design sprints. [EXPLICIT]
   Use when the user asks to "plan a workshop", "run event storming", "facilitate impact mapping",
   "design a sprint", "create user story map", "facilitate discovery session",
-  or mentions workshop facilitation, design sprint, event storming, story mapping, or collaborative design.
-argument-hint: "<workshop-topic> [duration]"
+  or mentions workshop facilitation, design sprint, event storming, story mapping, or collaborative design. [EXPLICIT]
+argument-hint: "workshop-topic [duration]"
 model: opus
 context: fork
 allowed-tools:
@@ -20,19 +20,19 @@ allowed-tools:
 
 # Workshop Facilitator: Collaborative Discovery & Design Techniques
 
-Workshop facilitation designs and runs structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints.
+Workshop facilitation designs and runs structured collaborative sessions to extract knowledge, align stakeholders, and produce actionable artifacts. Covers technique selection, session design, facilitation guides, and synthesis — from event storming to design sprints. [EXPLICIT]
 
 ## Principio Rector
 
 > Un taller mal facilitado no solo desperdicia tiempo — destruye la confianza del equipo en los procesos colaborativos. La facilitación excelente es la diferencia entre alineamiento genuino y consenso superficial.
 
-1. **Descubrimiento colaborativo sobre presentación unilateral.** El conocimiento tácito solo emerge cuando las personas hacen, no cuando escuchan. Cada minuto de un taller debe diseñarse para extraer, no para transmitir.
-2. **Estructura al servicio de la creatividad.** Los time-boxes, las técnicas y las reglas de participación no limitan la creatividad — la potencian. Sin estructura, dominan las voces más fuertes y se pierden las ideas más valiosas.
-3. **Artefactos vivos sobre actas muertas.** El valor de un taller no está en el documento de síntesis — está en los modelos mentales compartidos que se construyen. Los artefactos deben ser herramientas de trabajo, no archivos de evidencia.
+1. **Descubrimiento colaborativo sobre presentación unilateral.** El conocimiento tácito solo emerge cuando las personas hacen, no cuando escuchan. Cada minuto de un taller debe diseñarse para extraer, no para transmitir. [EXPLICIT]
+2. **Estructura al servicio de la creatividad.** Los time-boxes, las técnicas y las reglas de participación no limitan la creatividad — la potencian. Sin estructura, dominan las voces más fuertes y se pierden las ideas más valiosas. [EXPLICIT]
+3. **Artefactos vivos sobre actas muertas.** El valor de un taller no está en el documento de síntesis — está en los modelos mentales compartidos que se construyen. Los artefactos deben ser herramientas de trabajo, no archivos de evidencia. [EXPLICIT]
 
 ## Inputs
 
-The user provides a project or workshop goal as `$ARGUMENTS`. Parse `$1` as the **project/workshop name** used throughout all output artifacts.
+The user provides a project or workshop goal as `$ARGUMENTS`. Parse `$1` as the **project/workshop name** used throughout all output artifacts. [EXPLICIT]
 
 Before generating workshop design, detect project context:
 
@@ -42,10 +42,10 @@ find . -name "*.md" -o -name "*.miro" -o -name "*.figjam" -o -name "*.pdf" -o -n
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para diseño de agenda y selección de técnicas, HITL para validación de participantes y decisiones de formato.
-  - **desatendido**: Cero interrupciones. Diseño completo auto-generado. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoints en selección de técnica y diseño final.
-  - **paso-a-paso**: Confirma antes de cada decisión de diseño.
+  - **piloto-auto**: Auto para diseño de agenda y selección de técnicas, HITL para validación de participantes y decisiones de formato. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Diseño completo auto-generado. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoints en selección de técnica y diseño final. [EXPLICIT]
+  - **paso-a-paso**: Confirma antes de cada decisión de diseño. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -63,7 +63,7 @@ find . -name "*.md" -o -name "*.miro" -o -name "*.figjam" -o -name "*.pdf" -o -n
 
 ### S1: Workshop Selection & Design
 
-Matches the right technique to the workshop goal, selects participants, and designs the agenda.
+Matches the right technique to the workshop goal, selects participants, and designs the agenda. [EXPLICIT]
 
 **Technique selection matrix:**
 - "Understand the domain" — Event Storming
@@ -86,7 +86,7 @@ Matches the right technique to the workshop goal, selects participants, and desi
 
 ### S2: Event Storming
 
-Discovers domain knowledge by exploring events, commands, aggregates, and bounded contexts.
+Discovers domain knowledge by exploring events, commands, aggregates, and bounded contexts. [EXPLICIT]
 
 **Includes:**
 - Domain event discovery: past-tense verbs on orange stickies (OrderPlaced, PaymentReceived)
@@ -100,7 +100,7 @@ Discovers domain knowledge by exploring events, commands, aggregates, and bounde
 
 ### S3: Impact Mapping
 
-Connects business goals to deliverables through actors and impacts.
+Connects business goals to deliverables through actors and impacts. [EXPLICIT]
 
 **Includes:**
 - Goal definition: measurable business objective at the center
@@ -112,7 +112,7 @@ Connects business goals to deliverables through actors and impacts.
 
 ### S4: User Story Mapping
 
-Organizes user activities into a backbone and plans releases as horizontal slices.
+Organizes user activities into a backbone and plans releases as horizontal slices. [EXPLICIT]
 
 **Includes:**
 - Backbone construction: high-level user activities across the top (left to right = user journey)
@@ -124,7 +124,7 @@ Organizes user activities into a backbone and plans releases as horizontal slice
 
 ### S5: Design Sprint
 
-Compressed prototyping and validation cycle — understand, sketch, decide, prototype, test.
+Compressed prototyping and validation cycle — understand, sketch, decide, prototype, test. [EXPLICIT]
 
 **Includes:**
 - Day 1 — Understand: map the challenge, interview experts, set sprint goal, pick target
@@ -136,7 +136,7 @@ Compressed prototyping and validation cycle — understand, sketch, decide, prot
 
 ### S6: Synthesis & Handoff
 
-Consolidates workshop outputs into actionable artifacts and establishes follow-up cadence.
+Consolidates workshop outputs into actionable artifacts and establishes follow-up cadence. [EXPLICIT]
 
 **Includes:**
 - Insight consolidation: key findings, decisions made, open questions
@@ -208,7 +208,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

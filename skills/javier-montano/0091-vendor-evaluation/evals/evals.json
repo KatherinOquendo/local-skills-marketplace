@@ -1,0 +1,9 @@
+[
+  {"id": "vendor-evaluation-happy-path", "type": "happy_path", "input": "Run vendor evaluation on this project", "expected_behavior": "Skill activates and produces the expected vendor evaluation output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "vendor-evaluation-explicit-trigger", "type": "happy_path", "input": "Apply vendor evaluation analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the vendor evaluation workflow", "tags": ["trigger", "recognition"]},
+  {"id": "vendor-evaluation-with-context", "type": "happy_path", "input": "Apply vendor evaluation to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive vendor evaluation analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "vendor-evaluation-minimal-input", "type": "happy_path", "input": "Quick vendor evaluation", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "vendor-evaluation-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to vendor evaluation", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "vendor-evaluation-edge-empty-input", "type": "edge_case", "input": "Run vendor evaluation but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "vendor-evaluation-edge-conflicting", "type": "edge_case", "input": "Apply vendor evaluation but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

@@ -13,7 +13,7 @@ allowed-tools:
 
 > "An orphaned skill is dead code. A broken reference is a runtime error waiting to happen."
 
-Validates that all internal references between plugin components (agents referencing skills, commands referencing agents, aliases pointing to canonical commands, settings.json declaring agents) are valid and resolvable. Detects orphaned components that no other file references.
+Validates that all internal references between plugin components (agents referencing skills, commands referencing agents, aliases pointing to canonical commands, settings.json declaring agents) are valid and resolvable. Detects orphaned components that no other file references. [EXPLICIT]
 
 ---
 
@@ -76,9 +76,9 @@ Validates that all internal references between plugin components (agents referen
 
 - Produce findings table: `| Severity | Source File | Reference | Target | Status |`.
 - Include a dependency summary section:
-  - Agents and the skills they reference (validated).
-  - Commands and the agents/skills they reference (validated).
-  - Orphaned components list.
+  - Agents and the skills they reference (validated). [EXPLICIT]
+  - Commands and the agents/skills they reference (validated). [EXPLICIT]
+  - Orphaned components list. [EXPLICIT]
 - If all references resolve and no orphans: "Cross-reference validation PASSED".
 
 ---
@@ -103,27 +103,35 @@ Validates that all internal references between plugin components (agents referen
 
 **Bad finding:**
 ```
-Broken reference found.
+Broken reference found. [EXPLICIT]
 ```
-Missing: no source file, no target, no suggestion.
+Missing: no source file, no target, no suggestion. [EXPLICIT]
 
 **Good finding:**
 ```
 CRITICAL | agents/plugin-qa-engineer.md:15 | Skill reference "valdate-hooks" does not exist. Did you mean "validate-hooks"? (edit distance: 1)
 ```
-Includes: severity, source file with line number, broken reference, suggestion with edit distance.
+Includes: severity, source file with line number, broken reference, suggestion with edit distance. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Only checking backtick-quoted references and missing table-based skill assignments in agents.
-2. Reporting commands as orphaned (they are user-facing entry points by definition).
-3. Not following alias chains to detect circular references.
-4. Treating a missing CLAUDE.md as a CRITICAL error (it is optional).
+1. Only checking backtick-quoted references and missing table-based skill assignments in agents. [EXPLICIT]
+2. Reporting commands as orphaned (they are user-facing entry points by definition). [EXPLICIT]
+3. Not following alias chains to detect circular references. [EXPLICIT]
+4. Treating a missing CLAUDE.md as a CRITICAL error (it is optional). [EXPLICIT]
 
 ## Edge Cases
 
-1. Agent references a skill that exists but has a typo in the name (e.g., `valdate-hooks`) -- CRITICAL with "Did you mean `validate-hooks`?" suggestion using edit distance.
-2. Plugin with only commands and no agents or skills -- valid architecture, no orphan warnings.
-3. Multiple agents referencing the same skill -- valid, not a duplicate.
-4. Command with `alias-of` pointing to another alias -- WARNING for alias chain depth > 1.
-5. settings.json with `defaultAgent` set to an empty string -- CRITICAL.
+1. Agent references a skill that exists but has a typo in the name (e.g., `valdate-hooks`) -- CRITICAL with "Did you mean `validate-hooks`?" suggestion using edit distance. [EXPLICIT]
+2. Plugin with only commands and no agents or skills -- valid architecture, no orphan warnings. [EXPLICIT]
+3. Multiple agents referencing the same skill -- valid, not a duplicate. [EXPLICIT]
+4. Command with `alias-of` pointing to another alias -- WARNING for alias chain depth > 1. [EXPLICIT]
+5. settings.json with `defaultAgent` set to an empty string -- CRITICAL. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/validate-cross-refs" — Run the full validate cross refs workflow
+- "validate cross refs on this project" — Apply to current context
+

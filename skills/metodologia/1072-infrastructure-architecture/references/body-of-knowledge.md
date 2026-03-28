@@ -53,7 +53,7 @@
 ## 3. Networking
 
 ### RFC 1918 — Address Allocation for Private Internets
-- **Relevancia:** Define los rangos de IP privados (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) que fundamentan todo diseño de VPC/VNET.
+- **Relevancia:** Define los rangos de IP privados (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) que fundamentan Todo diseño de VPC/VNET.
 - **Uso en el skill:** S1 (Network Topology) usa rangos RFC 1918 para CIDR planning. El skill verifica que no haya solapamiento entre VPCs.
 - **Fuente:** Rekhter, Y., Moskowitz, B., Karrenberg, D., de Groot, G.J., Lear, E. (1996). RFC 1918.
 
@@ -67,7 +67,7 @@
 - **Fuente:** Hardt, D. (2012). RFC 6749.
 
 ### Zero Trust Networks — Gilman & Barth (O'Reilly, 2017)
-- **Relevancia:** Modelo de seguridad que asume breach y verifica todo acceso. Fundamenta el diseño de network segmentation y IAM en S1 y S5.
+- **Relevancia:** Modelo de seguridad que asume breach y verifica Todo acceso. Fundamenta el diseño de network segmentation y IAM en S1 y S5.
 - **Uso en el skill:** Principio de "never trust, always verify" aplicado a security groups, service mesh, y service-to-service auth.
 - **Fuente:** Gilman, E. & Barth, D. (2017). *Zero Trust Networks*. O'Reilly.
 

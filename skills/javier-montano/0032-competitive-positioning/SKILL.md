@@ -3,7 +3,7 @@ name: competitive-positioning
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Competitor analysis frameworks, differentiation strategy, feature comparison.
+  Competitor analysis frameworks, differentiation strategy, feature comparison. [EXPLICIT]
   Trigger: "competitive positioning, competitor analysis frameworks, differentiation strategy, feature comparison"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Competitor analysis frameworks, differentiation strategy, feature comparison. All outputs follow MetodologIA brand standards and evidence tagging.
+Competitor analysis frameworks, differentiation strategy, feature comparison. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Competitor analysis frameworks, differentiation strategy, feature comparison. Al
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/competitive-positioning" — Run the full competitive positioning workflow
+- "competitive positioning on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

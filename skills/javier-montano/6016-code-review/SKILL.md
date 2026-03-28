@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Conduct effective code reviews with PR checklists, anti-pattern detection,
-  best practice enforcement, and constructive feedback techniques.
+  best practice enforcement, and constructive feedback techniques. [EXPLICIT]
   Trigger: "code review", "PR review", "pull request", "review checklist"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides effective code review practices — PR review checklists, common anti-pattern detection, constructive feedback techniques, and automated review tooling. Use when establishing code review standards, reviewing pull requests, or improving team code quality practices.
+Guides effective code review practices — PR review checklists, common anti-pattern detection, constructive feedback techniques, and automated review tooling. Use when establishing code review standards, reviewing pull requests, or improving team code quality practices. [EXPLICIT]
 
 ## Procedure
 
@@ -74,3 +74,25 @@ Guides effective code review practices — PR review checklists, common anti-pat
 - `linting-formatting` — Automated enforcement of style reduces review burden
 - `test-strategy` — Reviewing test quality alongside code quality
 - `integrity-chain-validation` — Verify code traces back to requirements
+
+## Usage
+
+Example invocations:
+
+- "/code-review" — Run the full code review workflow
+- "code review on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

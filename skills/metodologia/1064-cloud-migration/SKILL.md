@@ -1,10 +1,10 @@
 ---
 name: metodologia-cloud-migration
-description: >
-  Cloud migration planning -- 7R assessment, workload classification, wave planning, cutover.
+description: 
+  Cloud migration planning -- 7R assessment, workload classification, wave planning, cutover. [EXPLICIT]
   Use when the user asks to "plan cloud migration", "assess workloads for migration", "design landing zone",
-  "create migration waves", "plan cutover strategy", or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory.
-argument-hint: "<migration-program-name>"
+  "create migration waves", "plan cutover strategy", or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory. [EXPLICIT]
+argument-hint: "migration-program-name"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Cloud Migration: Assessment, Planning & Execution
 
-Cloud migration moves workloads from on-premises or legacy environments to cloud platforms. This skill produces comprehensive migration plans covering 7R assessment, workload analysis, wave planning, landing zone design, execution patterns, and post-migration optimization.
+Cloud migration moves workloads from on-premises or legacy environments to cloud platforms. This skill produces comprehensive migration plans covering 7R assessment, workload analysis, wave planning, landing zone design, execution patterns, and post-migration optimization. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,21 +27,21 @@ Cloud migration moves workloads from on-premises or legacy environments to cloud
 
 ### Cloud Migration Philosophy
 
-1. **7R assessment per workload.** There is no "migrate everything the same way". Each application has context, dependencies, and constraints that determine its optimal strategy.
-2. **Wave planning reduces risk.** Big-bang migrations are gambles. Incremental waves allow learning, tooling adjustments, and progressive throughput scaling.
-3. **Cutover rehearsal is mandatory.** If the runbook has not been executed end-to-end in staging, it is not ready for production. Includes rollback — always.
-4. **Retire ruthlessly.** Every workload that does not migrate is cost avoided. The "retain" and "retire" classifications are legitimate architecture decisions.
+1. **7R assessment per workload.** There is no "migrate everything the same way". Each application has context, dependencies, and constraints that determine its optimal strategy. [EXPLICIT]
+2. **Wave planning reduces risk.** Big-bang migrations are gambles. Incremental waves allow learning, tooling adjustments, and progressive throughput scaling. [EXPLICIT]
+3. **Cutover rehearsal is mandatory.** If the runbook has not been executed end-to-end in staging, it is not ready for production. Includes rollback — always. [EXPLICIT]
+4. **Retire ruthlessly.** Every workload that does not migrate is cost avoided. The "retain" and "retire" classifications are legitimate architecture decisions. [EXPLICIT]
 
 ## Inputs
 
-The user provides a migration program or portfolio name as `$ARGUMENTS`. Parse `$1` as the **program/portfolio name** used throughout all output artifacts.
+The user provides a migration program or portfolio name as `$ARGUMENTS`. Parse `$1` as the **program/portfolio name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para discovery y 7R classification, HITL para wave sequencing y cutover decisions.
-  - **desatendido**: Zero interruptions. Plan de migración completo automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en 7R classification y landing zone design.
-  - **paso-a-paso**: Confirma cada workload classification, wave assignment, landing zone component, y cutover step.
+  - **piloto-auto**: Auto para discovery y 7R classification, HITL para wave sequencing y cutover decisions. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Plan de migración completo automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en 7R classification y landing zone design. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada workload classification, wave assignment, landing zone component, y cutover step. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 7R classification + S3 wave plan + S5 cutover) | `técnica` (full 6 sections, default)
 
@@ -81,7 +81,7 @@ Read ${CLAUDE_SKILL_DIR}/references/migration-patterns.md
 
 ### S1: Migration Assessment & 7R Classification
 
-Classify every workload using the 7R framework to determine optimal migration strategy.
+Classify every workload using the 7R framework to determine optimal migration strategy. [EXPLICIT]
 
 **7R Strategies:**
 - **Rehost (Lift-and-Shift):** Move as-is to cloud VMs. Fastest, lowest risk, no modernization. Best for: quick wins, legacy apps with no code access.
@@ -106,41 +106,9 @@ Classify every workload using the 7R framework to determine optimal migration st
 
 ### S2: Workload Analysis & Dependency Mapping
 
-**Automated Discovery Tools:**
+Automated discovery using AWS Application Discovery/Migration Hub, Azure Migrate, Google Cloud Migration Center, Cloudamize, or Flexera One. Start agentless for broad inventory, deploy agents on Tier 1/2 apps. Run discovery minimum 30 days for full monthly patterns. [EXPLICIT]
 
-| Tool | Provider | Method | Discovers |
-|---|---|---|---|
-| AWS Application Discovery Service | AWS | Agent or agentless | Server config, utilization, network connections, process data |
-| AWS Migration Hub | AWS | Aggregator | Unified view across discovery + migration tools |
-| Azure Migrate | Azure | Agent or appliance | Servers, databases, web apps, VDI; includes assessment + migration |
-| Azure App Service Migration Assistant | Azure | Web app scan | .NET/Java web app readiness for Azure App Service |
-| Google Cloud Migration Center | GCP | Agent or API import | Technical fit, TCO, migration complexity scoring |
-| Cloudamize | Multi-cloud | Agent-based | Performance profiling, right-sizing, cost projection, dependency mapping |
-| Flexera One | Multi-cloud | CMDB integration | License optimization, cloud cost modeling, portfolio rationalization |
-
-- **Start with agentless discovery** for broad inventory (network flow analysis, DNS logs). Deploy agents on Tier 1/2 applications for detailed dependency and performance data.
-- Run discovery for minimum 30 days to capture full monthly patterns (batch jobs, month-end processing).
-
-**Application Inventory Fields:**
-Name, owner, business unit, criticality tier (T1-T4), technology stack, infrastructure requirements (CPU, memory, storage, network), performance baseline (response time, throughput, utilization), compliance requirements.
-
-**Dependency Graph:**
-- App-to-app: API calls, file transfers, shared databases
-- App-to-infrastructure: specific hardware, network, licenses
-- Data dependencies: shared databases, ETL feeds, replication chains
-- External: third-party APIs, SaaS integrations, partner connections
-
-**Data Gravity Analysis:**
-- Data gravity score per workload: `(data_volume_TB * access_frequency * compliance_anchors)` -- higher score = harder to move
-- Transfer time estimate: `(data_size_GB / bandwidth_Gbps) * 8 / 3600 = hours` + 30-50% verification overhead
-- Connectivity: Direct Connect/ExpressRoute for >5TB; VPN for smaller transfers; Snowball/Data Box for >50TB
-- **Anti-pattern:** Underestimating data volumes and WAN throttling. Start continuous replication weeks before cutover.
-
-**Application Difficulty Scoring:**
-- Score 1-5 on: technical complexity, dependency count, data gravity, compliance constraints
-- Composite: `(technical * 0.3) + (dependencies * 0.25) + (data_gravity * 0.25) + (compliance * 0.2)`
-- Score >4.0: requires dedicated migration architect and extended parallel-run
-- Group tightly coupled applications into the same wave
+Covers: application inventory (name, owner, criticality, stack, infra requirements, performance baseline), dependency graph (app-to-app, app-to-infra, data, external), data gravity analysis (scoring, transfer time estimates), and application difficulty scoring (composite 1-5 scale). See `references/workload-analysis.md` for the complete discovery tool matrix, scoring formulas, and anti-patterns. [EXPLICIT]
 
 ### S3: Wave Planning & Sequencing
 
@@ -206,68 +174,7 @@ A migration factory standardizes repeatable processes across waves. Structure:
 
 ### S5: Migration Execution Patterns
 
-**Rehost Tools:** AWS MGN (Application Migration Service), Azure Migrate/Site Recovery, GCP Migrate for Compute Engine. Process: install agent, replicate, test, cutover, decommission.
-
-**Database Migration:** Homogeneous (native replication, DMS continuous) or heterogeneous (schema conversion + DMS). Zero-downtime via continuous replication. Validate: row counts, checksums, sample comparison.
-
-**TCO Calculator Methodology:**
-
-| Cost Category | On-Premises | Cloud |
-|---|---|---|
-| Compute | Hardware amortization (3-5yr) | Reserved + on-demand instances |
-| Storage | SAN/NAS, disk replacement | S3/EBS tiered pricing |
-| Facilities | Power, cooling, DC lease ($8-15/kW/mo) | Included |
-| Staff | FTE * fully loaded cost | Reduced (managed services) |
-| Licenses | On-prem perpetual or subscription | BYOL, cloud-native, or included |
-| Network | WAN circuits, load balancers | Egress fees, cross-AZ traffic |
-| Migration (one-time) | N/A | Dual-run, tooling, consulting, training |
-
-- Break-even: typically 18-36 months. Include hidden costs: egress fees, premium support, cross-AZ traffic.
-- Use AWS Pricing Calculator, Azure TCO Calculator, or Google Cloud Pricing Calculator for estimates. Validate with 3-month post-migration actuals.
-
-**Cutover Rehearsal Checklist:**
-
-Perform a full dress rehearsal 1-2 weeks before each production cutover:
-
-1. [ ] Execute complete cutover runbook end-to-end in non-prod environment
-2. [ ] Measure actual duration vs. planned window (target: <80% of window)
-3. [ ] Test data sync: verify final replication lag <1 minute
-4. [ ] Execute DNS switch and verify propagation
-5. [ ] Run full smoke test suite against cloud endpoints
-6. [ ] **Execute rollback procedure** -- restore source, revert DNS, verify source healthy
-7. [ ] Validate monitoring/alerting fires correctly in cloud environment
-8. [ ] Time the rollback procedure (target: <30 minutes)
-9. [ ] Document gaps and update runbook before production cutover
-10. [ ] Obtain sign-off from app owner and operations team
-
-**Rollback Decision Criteria:**
-
-Trigger rollback if ANY of the following occur during cutover:
-
-| Condition | Threshold | Action |
-|---|---|---|
-| Error rate spike | >5x baseline for 15+ minutes | Immediate rollback |
-| Latency degradation | P99 >3x baseline for 15+ minutes | Immediate rollback |
-| Data integrity failure | Any checksum mismatch on critical tables | Immediate rollback |
-| Functionality gap | Any Tier 1 feature non-functional | Immediate rollback |
-| Cutover window exceeded | >80% of planned window with steps remaining | Assess and likely rollback |
-| Monitoring blind spot | Key dashboards/alerts not functioning | Pause and remediate; rollback if >30 min |
-
-- Keep source running during validation period (1-2 weeks minimum).
-- Reverse replication from cloud to on-prem for data-heavy workloads.
-- Rollback window: define per application (typically 24-72 hours post-cutover).
-
-**Common Anti-Patterns:**
-
-| Anti-Pattern | Consequence | Mitigation |
-|---|---|---|
-| Skip discovery; migrate by guesswork | Missed dependencies cause outages during cutover | Run automated discovery 30+ days |
-| Migrate without application owner | No UAT, no sign-off, unclear accountability | Require named owner before wave assignment |
-| No cutover rehearsal | Surprises on go-live night, panic rollbacks | Mandatory dress rehearsal for every wave |
-| Big-bang migration of entire portfolio | Maximum blast radius, no learning curve | Wave-based with pilot first |
-| Underestimate data transfer time | Cutover window exceeded, forced rollback | Calculate transfer time + 50% buffer; use continuous replication |
-| Retire nothing | Cloud costs add to existing costs | Enforce retire/retain classification in 7R assessment |
-| No rollback plan | Cannot revert when issues found | Define rollback triggers and test procedure |
+Covers rehost tools (AWS MGN, Azure Migrate/Site Recovery, GCP Migrate), database migration (homogeneous/heterogeneous, zero-downtime replication), TCO calculator methodology (7 cost categories, 18-36 month break-even), cutover rehearsal checklist (10-step dress rehearsal), rollback decision criteria (6 threshold-based triggers), and 7 common anti-patterns with mitigations. See `references/workload-analysis.md` for the complete execution patterns, TCO table, checklists, and anti-pattern catalog. [EXPLICIT]
 
 ### S6: Validation & Optimization
 
@@ -328,19 +235,19 @@ Trigger rollback if ANY of the following occur during cutover:
 ## Edge Cases
 
 **Datacenter Exit with Hard Deadline:**
-Favor rehost for speed. Accept technical debt. Plan post-migration optimization waves. Prioritize by lease expiry.
+Favor rehost for speed. Accept technical debt. Plan post-migration optimization waves. Prioritize by lease expiry. [EXPLICIT]
 
 **Shared Database Serving Multiple Applications:**
-Cannot migrate database independently. Options: migrate all consumers together, introduce API layer to decouple, or replicate and gradually cut over consumers.
+Cannot migrate database independently. Options: migrate all consumers together, introduce API layer to decouple, or replicate and gradually cut over consumers. [EXPLICIT]
 
 **Mainframe Workloads:**
-Specialized tools (Micro Focus, AWS Mainframe Modernization, Azure Mainframe Migration). Replatform to cloud-hosted emulation first, then gradually refactor.
+Specialized tools (Micro Focus, AWS Mainframe Modernization, Azure Mainframe Migration). Replatform to cloud-hosted emulation first, then gradually refactor. [EXPLICIT]
 
 **Compliance-Restricted Data:**
-Data residency may limit regions. Encryption requirements affect replication tooling. Audit trail must be maintained through migration.
+Data residency may limit regions. Encryption requirements affect replication tooling. Audit trail must be maintained through migration. [EXPLICIT]
 
 **No Source Code Available:**
-Rehost is the only viable strategy. Containerization may be possible for binary apps. Evaluate repurchase with SaaS alternative.
+Rehost is the only viable strategy. Containerization may be possible for binary apps. Evaluate repurchase with SaaS alternative. [EXPLICIT]
 
 ---
 
@@ -370,7 +277,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

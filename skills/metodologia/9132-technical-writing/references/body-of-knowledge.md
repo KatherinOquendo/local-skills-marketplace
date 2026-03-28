@@ -23,7 +23,7 @@
 ### Structured Writing (Ann Rockley)
 
 - **Relevancia:** Framework para crear contenido modular, reutilizable y estructurado mediante modelos de información, taxonomías y relaciones semánticas. Fundamenta la consistencia terminológica transversal.
-- **Uso en el skill:** El protocolo de consistencia terminológica ("un término = un significado en todo el discovery") implementa los content models de Rockley. La trazabilidad entre entregables (00-09) requiere structured writing.
+- **Uso en el skill:** El protocolo de consistencia terminológica ("un término = un significado en Todo el discovery") implementa los content models de Rockley. La trazabilidad entre entregables (00-09) requiere structured writing.
 - **Fuente:** Rockley, A. (2003). *Managing Enterprise Content: A Unified Content Strategy*. New Riders.
 - **Actualización:** Rockley, A. & Cooper, C. (2012). *Managing Enterprise Content: A Unified Content Strategy* (2nd Ed). New Riders.
 
@@ -177,13 +177,13 @@
 | **Cross-reference** | Referencia cruzada entre secciones o entregables: "→ See [XX § Sección]" |
 | **TL;DR** | "Too Long; Didn't Read" — resumen de 3-5 bullets al inicio de cada documento |
 | **Densidad informativa** | Ratio de información nueva por frase. Objetivo: 100% (cada frase aporta) |
-| **Terminología como contrato** | Principio de usar un único término para cada concepto en todo el discovery |
+| **Terminología como contrato** | Principio de usar un único término para cada concepto en Todo el discovery |
 | **Anti-patrón** | Patrón de escritura que se identifica y bloquea: filler, pasiva sin agente, scores sin justificación |
-| **Validation Gate** | Checklist de 8 criterios que todo entregable debe pasar antes de entrega |
+| **Validation Gate** | Checklist de 8 criterios que Todo entregable debe pasar antes de entrega |
 | **Markdown-excellence** | Estándar MetodologIA de calidad para documentación markdown en entregables de discovery |
 | **Topic-based authoring** | Escritura modular donde cada unidad (tópico) es autocontenida y tipificada |
 | **DITA** | Darwin Information Typing Architecture — estándar OASIS para documentación modular XML |
-| **Information Mapping** | Método de estructuración de información en bloques clasificados por tipo |
+| **Information Mapping** | MéTodo de estructuración de información en bloques clasificados por tipo |
 
 ---
 

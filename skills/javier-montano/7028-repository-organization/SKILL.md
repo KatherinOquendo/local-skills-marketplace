@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Audit and improve repository structure: naming consistency, directory patterns,
-  file organization, staleness detection. Auto-organization per Constitution XVIII.
+  file organization, staleness detection. Auto-organization per Constitution XVIII. [EXPLICIT]
   Trigger: "repo organization", "structure audit", "naming consistency", "directory cleanup", "auto-organize"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Audits and improves repository structure for navigability and maintainability. Checks naming consistency (kebab-case slugs), directory patterns (self-documenting layout), file organization (no accumulation without structure), and staleness (empty/outdated directories). Implements Constitution XVIII auto-organization: when files accumulate without structure, organize into named subdirectories with READMEs.
+Audits and improves repository structure for navigability and maintainability. Checks naming consistency (kebab-case slugs), directory patterns (self-documenting layout), file organization (no accumulation without structure), and staleness (empty/outdated directories). Implements Constitution XVIII auto-organization: when files accumulate without structure, organize into named subdirectories with READMEs. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Audits and improves repository structure for navigability and maintainability. C
 - `indexability-validator` — README-specific validation
 - `code-review` — Code sustainability includes naming (XII)
 - `workspace-governance` — Workspace structure separate from repo
+
+## Usage
+
+Example invocations:
+
+- "/repository-organization" — Run the full repository organization workflow
+- "repository organization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

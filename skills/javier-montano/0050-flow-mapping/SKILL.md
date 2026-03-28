@@ -1,13 +1,13 @@
 ---
 name: flow-mapping
-argument-hint: "<project-name> [codebase-path]"
-description: >
+argument-hint: "project-name [codebase-path]"
+description: 
   This skill should be used when the user asks to "map business flows",
   "document business processes", "trace integrations", "identify failure points",
-  or mentions DDD domain mapping, integration matrix, dependency graph, or swimlane diagrams.
-  It generates DDD domain taxonomies, 8-12 end-to-end business flows with sequence diagrams and trama specifications, integration matrices, critical failure point analysis, and system dependency graphs.
-  Use this skill whenever the user needs to understand how systems actually operate end-to-end, even if they don't explicitly ask for "flow mapping".
-argument-hint: "<project-name> [codebase-path]"
+  or mentions DDD domain mapping, integration matrix, dependency graph, or swimlane diagrams. [EXPLICIT]
+  It generates DDD domain taxonomies, 8-12 end-to-end business flows with sequence diagrams and trama specifications, integration matrices, critical failure point analysis, and system dependency graphs. [EXPLICIT]
+  Use this skill whenever the user needs to understand how systems actually operate end-to-end, even if they don't explicitly ask for "flow mapping". [EXPLICIT]
+argument-hint: "project-name [codebase-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Flow Mapping — DDD Domains & Business Flows
 
-Translates AS-IS architecture findings into business flow documentation. Delivers DDD domain taxonomy, 8-12 primary E2E business flows with sequence diagrams and trama specifications, integration matrix, critical failure point analysis, and system dependency graph.
+Translates AS-IS architecture findings into business flow documentation. Delivers DDD domain taxonomy, 8-12 primary E2E business flows with sequence diagrams and trama specifications, integration matrix, critical failure point analysis, and system dependency graph. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,23 +29,23 @@ Translates AS-IS architecture findings into business flow documentation. Deliver
 
 ### Filosofía de Mapeo
 
-1. **Código como fuente de verdad.** La documentación miente. El código no. Los flujos se extraen del código y se validan contra el negocio, nunca al revés.
-2. **Dominios antes que flujos.** Sin taxonomía DDD, los flujos son secuencias sin contexto. Primero los bounded contexts, luego los recorridos que los cruzan.
-3. **Cada flecha es un contrato.** Cada integración documentada incluye protocolo, payload, SLA, y comportamiento ante fallo. Una flecha sin etiqueta es deuda de documentación.
+1. **Código como fuente de verdad.** La documentación miente. El código no. Los flujos se extraen del código y se validan contra el negocio, nunca al revés. [EXPLICIT]
+2. **Dominios antes que flujos.** Sin taxonomía DDD, los flujos son secuencias sin contexto. Primero los bounded contexts, luego los recorridos que los cruzan. [EXPLICIT]
+3. **Cada flecha es un contrato.** Cada integración documentada incluye protocolo, payload, SLA, y comportamiento ante fallo. Una flecha sin etiqueta es deuda de documentación. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Path to codebase root (default: current working directory)
 - `$2` — Target flow count (default: 8, range: 4-12)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para extracción de flujos y análisis de integraciones, HITL para validación de taxonomía de dominios y puntos de fallo críticos.
-  - **desatendido**: Cero interrupciones. Flujos extraídos automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con reportes al completar taxonomía y cada grupo de flujos.
-  - **paso-a-paso**: Confirma taxonomía, cada flujo individual, y análisis de fallos.
+  - **piloto-auto**: Auto para extracción de flujos y análisis de integraciones, HITL para validación de taxonomía de dominios y puntos de fallo críticos. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Flujos extraídos automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes al completar taxonomía y cada grupo de flujos. [EXPLICIT]
+  - **paso-a-paso**: Confirma taxonomía, cada flujo individual, y análisis de fallos. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 taxonomy + S7 integration matrix + S8 failure points) | `técnica` (full, default)
 
@@ -67,7 +67,7 @@ find . -name "*.yaml" -o -name "*.properties" -o -name "*.env*" | xargs grep -l 
 find . -name "*Controller*" -o -name "*Handler*" -o -name "*Route*" -o -name "*Endpoint*" | head -15
 ```
 
-Use discovered APIs, message brokers, databases, and endpoints to scope flow analysis.
+Use discovered APIs, message brokers, databases, and endpoints to scope flow analysis. [EXPLICIT]
 
 ## Input Requirements
 
@@ -121,7 +121,7 @@ Use discovered APIs, message brokers, databases, and endpoints to scope flow ana
 ## 9-Section Analytical Framework
 
 ### S1: Domain Taxonomy (DDD)
-Domain card grid (color-coded by type). Per domain: name, type (Core/Supporting/Generic), purpose, responsibilities, aggregates, business value. Domain interaction map. Boundary specifications. Context mapping patterns (Shared Kernel, Customer-Supplier, Conformist, Anti-Corruption Layer). **Minimum:** 4 domains identified.
+Domain card grid (color-coded by type). Per domain: name, type (Core/Supporting/Generic), purpose, responsibilities, aggregates, business value. Domain interaction map. Boundary specifications. Context mapping patterns (Shared Kernel, Customer-Supplier, Conformist, Anti-Corruption Layer). **Minimum:** 4 domains identified. [EXPLICIT]
 
 ### S2-S6: E2E Business Flows (8-12)
 
@@ -130,28 +130,28 @@ Domain card grid (color-coded by type). Per domain: name, type (Core/Supporting/
 **Per flow (5-8 pages):**
 
 **2.1 ASCII Sequence Diagram (Swimlane)**
-Columns: Actor/System participants. Timeline: top to bottom, numbered 1-N. Notation: arrow-right sync, arrow-left response, long-arrow async. Branching: alt [condition], par [parallel], loop [iteration].
+Columns: Actor/System participants. Timeline: top to bottom, numbered 1-N. Notation: arrow-right sync, arrow-left response, long-arrow async. Branching: alt [condition], par [parallel], loop [iteration]. [EXPLICIT]
 
 **2.2 Trama Specification Table**
 | Seq | Msg ID | Source | Destination | Type | Protocol | Content | Sync/Async | SLA |
 
 **2.3 Step-by-Step Narrative**
-Per step: business action, data transformation, validation rules, error handling. Decision branches (IF/THEN). Preconditions + postconditions.
+Per step: business action, data transformation, validation rules, error handling. Decision branches (IF/THEN). Preconditions + postconditions. [EXPLICIT]
 
 **2.4 Error Scenarios**
 | Error | Root Cause | Handling | User Feedback | Recovery |
 
 **2.5 Integration Dependencies**
-External systems, protocols, timeout/retry logic, fallback strategies, data contracts, circuit breaker patterns.
+External systems, protocols, timeout/retry logic, fallback strategies, data contracts, circuit breaker patterns. [EXPLICIT]
 
 ### S7: Integration Matrix
-Rows: systems. Columns: transaction types. Cells: integration type (sync/conditional/async) + protocol. Complexity color-coded. Critical integrations called out. Data volume indicators per transaction.
+Rows: systems. Columns: transaction types. Cells: integration type (sync/conditional/async) + protocol. Complexity color-coded. Critical integrations called out. Data volume indicators per transaction. [EXPLICIT]
 
 ### S8: Critical Failure Points
-Per failure point: FP-ID, description + business consequence, affected flows/systems, probability, impact, current mitigation (MTTR, residual risk), recommended improvement. **Minimum:** Top-10. Includes cascade failure diagram and mitigation roadmap.
+Per failure point: FP-ID, description + business consequence, affected flows/systems, probability, impact, current mitigation (MTTR, residual risk), recommended improvement. **Minimum:** Top-10. Includes cascade failure diagram and mitigation roadmap. [EXPLICIT]
 
 ### S9: System Dependency Graph
-Nodes: systems. Edges: dependency arrows with type labels (sync API, async event, data replication, batch). Criticality color-coded. Circular dependencies marked. Single points of failure identified. Recovery order documented.
+Nodes: systems. Edges: dependency arrows with type labels (sync API, async event, data replication, batch). Criticality color-coded. Circular dependencies marked. Single points of failure identified. Recovery order documented. [EXPLICIT]
 
 ## Conditional Logic
 
@@ -236,7 +236,7 @@ IF single system handles multiple bounded contexts:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - Sequence diagrams: top 3-5 E2E business flows (happy path + exceptions)
@@ -245,3 +245,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/flow-mapping" — Run the full flow mapping workflow
+- "flow mapping on this project" — Apply to current context
+

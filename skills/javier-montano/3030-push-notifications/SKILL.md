@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implement push notifications with Firebase Cloud Messaging, Web Push API,
-  notification strategies, and user preference management.
+  notification strategies, and user preference management. [EXPLICIT]
   Trigger: "push notification", "FCM", "web push", "notification"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides push notification implementation using Firebase Cloud Messaging (FCM) and the Web Push API — from permission requests to topic-based messaging, notification strategies, and user preference management. Use when your app needs to re-engage users with timely, relevant notifications.
+Guides push notification implementation using Firebase Cloud Messaging (FCM) and the Web Push API — from permission requests to topic-based messaging, notification strategies, and user preference management. Use when your app needs to re-engage users with timely, relevant notifications. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides push notification implementation using Firebase Cloud Messaging (FCM) and
 
 - `cloud-functions` — notifications sent from server-side Cloud Functions
 - `firebase-auth` — FCM tokens linked to authenticated users
+
+## Usage
+
+Example invocations:
+
+- "/push-notifications" — Run the full push notifications workflow
+- "push notifications on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

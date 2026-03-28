@@ -3,8 +3,8 @@ name: audit-content-quality
 author: JM Labs (Javier Montaño)
 description: >
   Audits all SKILL.md files in a plugin against a 6-criteria excellence rubric, producing
-  per-skill scores, plugin averages, and actionable improvement recommendations.
-  Trigger: audit content quality, score skills, check skill quality, content rubric.
+  per-skill scores, plugin averages, and actionable improvement recommendations. [EXPLICIT]
+  Trigger: audit content quality, score skills, check skill quality, content rubric. [EXPLICIT]
 allowed-tools:
   - Read
   - Glob
@@ -16,13 +16,13 @@ allowed-tools:
 
 > "Quality is never an accident; it is always the result of intelligent effort." -- John Ruskin
 
-Scores every SKILL.md in a plugin across 6 quality dimensions (Completeness, Description Quality, Procedure Clarity, Quality Criteria, Anti-Patterns, Edge Cases). Produces per-skill scorecards, identifies the bottom 3 weakest skills, and flags systematic gaps across the plugin.
+Scores every SKILL.md in a plugin across 6 quality dimensions (Completeness, Description Quality, Procedure Clarity, Quality Criteria, Anti-Patterns, Edge Cases). Produces per-skill scorecards, identifies the bottom 3 weakest skills, and flags systematic gaps across the plugin. [EXPLICIT]
 
 ---
 
 ## Procedure
 
-1. **Discover all SKILL.md files** -- glob for `**/SKILL.md` within the target plugin root. Build an inventory with skill name (from directory name) and file path. If zero skills are found, report an error and halt.
+1. **Discover all SKILL.md files** -- glob for `**/SKILL.md` within the target plugin root. Build an inventory with skill name (from directory name) and file path. If zero skills are found, report an error and halt. [EXPLICIT]
 
 2. **Parse each SKILL.md** -- for every skill file, extract:
    - YAML frontmatter block (between `---` markers)
@@ -33,18 +33,18 @@ Scores every SKILL.md in a plugin across 6 quality dimensions (Completeness, Des
    - Guiding principle quote
 
 3. **Score each skill on 6 criteria** (1-10 scale):
-   - **Completeness (1-10)**: Has frontmatter with `name`, `description`, `allowed-tools`. Has procedure, quality criteria, anti-patterns sections. 10 = all present with edge cases and quote; 1 = missing most sections.
-   - **Description Quality (1-10)**: Trigger phrases present in description, clear what/when explanation, description length >30 characters. 10 = multiple trigger phrases + precise explanation; 1 = empty or single-word description.
-   - **Procedure Clarity (1-10)**: Steps are numbered, each step has a specific action (not vague), references actual tools or commands, logically ordered. 10 = every step is concrete and tool-aware; 1 = vague bullet points.
-   - **Quality Criteria (1-10)**: At least 4 verifiable criteria present. Each criterion is testable (not subjective). 10 = 5+ measurable criteria; 5 = exactly 4 criteria; 1 = fewer than 2.
-   - **Anti-Patterns (1-10)**: At least 3 anti-patterns with explanations of why they are harmful. 10 = 5+ well-explained anti-patterns; 5 = exactly 3; 1 = none or unlabeled.
-   - **Edge Cases (1-10)**: At least 2 edge cases with explicit response strategies. 10 = 4+ edge cases with handling; 5 = exactly 2; 1 = none.
+   - **Completeness (1-10)**: Has frontmatter with `name`, `description`, `allowed-tools`. Has procedure, quality criteria, anti-patterns sections. 10 = all present with edge cases and quote; 1 = missing most sections. [EXPLICIT]
+   - **Description Quality (1-10)**: Trigger phrases present in description, clear what/when explanation, description length >30 characters. 10 = multiple trigger phrases + precise explanation; 1 = empty or single-word description. [EXPLICIT]
+   - **Procedure Clarity (1-10)**: Steps are numbered, each step has a specific action (not vague), references actual tools or commands, logically ordered. 10 = every step is concrete and tool-aware; 1 = vague bullet points. [EXPLICIT]
+   - **Quality Criteria (1-10)**: At least 4 verifiable criteria present. Each criterion is testable (not subjective). 10 = 5+ measurable criteria; 5 = exactly 4 criteria; 1 = fewer than 2. [EXPLICIT]
+   - **Anti-Patterns (1-10)**: At least 3 anti-patterns with explanations of why they are harmful. 10 = 5+ well-explained anti-patterns; 5 = exactly 3; 1 = none or unlabeled. [EXPLICIT]
+   - **Edge Cases (1-10)**: At least 2 edge cases with explicit response strategies. 10 = 4+ edge cases with handling; 5 = exactly 2; 1 = none. [EXPLICIT]
 
-4. **Calculate per-skill scores** -- sum the 6 criteria for each skill (max 60). Compute a percentage. Assign a letter grade: A (90-100%), B (80-89%), C (70-79%), D (60-69%), F (<60%).
+4. **Calculate per-skill scores** -- sum the 6 criteria for each skill (max 60). Compute a percentage. Assign a letter grade: A (90-100%), B (80-89%), C (70-79%), D (60-69%), F (<60%). [EXPLICIT]
 
-5. **Calculate plugin average** -- average all per-skill scores. Identify the bottom 3 weakest skills by total score.
+5. **Calculate plugin average** -- average all per-skill scores. Identify the bottom 3 weakest skills by total score. [EXPLICIT]
 
-6. **Identify systematic gaps** -- for each of the 6 criteria, compute the average across all skills. Flag any criterion whose average falls below 6.0 as a systematic weakness.
+6. **Identify systematic gaps** -- for each of the 6 criteria, compute the average across all skills. Flag any criterion whose average falls below 6.0 as a systematic weakness. [EXPLICIT]
 
 7. **Generate content quality report** with:
    - Per-skill scorecard table (skill name, 6 scores, total, grade)
@@ -75,26 +75,34 @@ Scores every SKILL.md in a plugin across 6 quality dimensions (Completeness, Des
 ```
 validate-hooks: 7/10
 ```
-Missing: no per-criterion breakdown, no rationale, no improvement advice.
+Missing: no per-criterion breakdown, no rationale, no improvement advice. [EXPLICIT]
 
 **Good finding:**
 ```
 | validate-hooks | 9 | 8 | 9 | 7 | 8 | 9 | 50/60 (83%) | B |
-Quality Criteria scored 7: only 4 criteria present, needs 5+ for score ≥8. Add a 5th verifiable criterion.
+Quality Criteria scored 7: only 4 criteria present, needs 5+ for score ≥8. Add a 5th verifiable criterion. [EXPLICIT]
 ```
-Includes: per-criterion scores, total with percentage, grade, specific rationale for lowest score, actionable improvement.
+Includes: per-criterion scores, total with percentage, grade, specific rationale for lowest score, actionable improvement. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Binary scoring** -- giving only 1 or 10, never intermediate values. Scores must reflect gradations.
-2. **Counting without reading** -- scoring quality criteria count as 10 just because 4 items exist, without checking if they are actually verifiable.
-3. **Ignoring frontmatter parsing errors** -- if YAML is malformed, the skill should score 1 on Completeness with an explicit note, not be silently skipped.
-4. **Generic improvement advice** -- telling every weak skill to "add more content" instead of specifying which section needs what.
-5. **Averaging away outliers** -- a plugin average of 7.5 can hide a skill scoring 2.0. Always surface the bottom performers.
+1. **Binary scoring** -- giving only 1 or 10, never intermediate values. Scores must reflect gradations. [EXPLICIT]
+2. **Counting without reading** -- scoring quality criteria count as 10 just because 4 items exist, without checking if they are actually verifiable. [EXPLICIT]
+3. **Ignoring frontmatter parsing errors** -- if YAML is malformed, the skill should score 1 on Completeness with an explicit note, not be silently skipped. [EXPLICIT]
+4. **Generic improvement advice** -- telling every weak skill to "add more content" instead of specifying which section needs what. [EXPLICIT]
+5. **Averaging away outliers** -- a plugin average of 7.5 can hide a skill scoring 2.0. Always surface the bottom performers. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Single-skill plugin** -- the "bottom 3" analysis should adapt to report only the one skill. Systematic gap analysis still applies across the 6 criteria of that single skill.
-2. **SKILL.md with no frontmatter** -- score Completeness as 1, Description Quality as 1. Still attempt to parse and score remaining sections.
-3. **Extremely long SKILL.md (500+ lines)** -- do not truncate. Read the full file to ensure accurate scoring. Note the unusual length as an INFO observation.
-4. **Non-English SKILL.md** -- score based on structural criteria (sections present, counts) rather than prose quality. Note the language in the report.
+1. **Single-skill plugin** -- the "bottom 3" analysis should adapt to report only the one skill. Systematic gap analysis still applies across the 6 criteria of that single skill. [EXPLICIT]
+2. **SKILL.md with no frontmatter** -- score Completeness as 1, Description Quality as 1. Still attempt to parse and score remaining sections. [EXPLICIT]
+3. **Extremely long SKILL.md (500+ lines)** -- do not truncate. Read the full file to ensure accurate scoring. Note the unusual length as an INFO observation. [EXPLICIT]
+4. **Non-English SKILL.md** -- score based on structural criteria (sections present, counts) rather than prose quality. Note the language in the report. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/audit-content-quality" — Run the full audit content quality workflow
+- "audit content quality on this project" — Apply to current context
+

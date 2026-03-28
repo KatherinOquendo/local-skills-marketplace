@@ -1,16 +1,16 @@
 ---
 name: assembly-skill
-description: >
+description: 
   This skill should be used when the user asks to "run the full skill
   pipeline", "improve this skill end to end", "take this skill to
-  production", "one-command skill upgrade", or "assembly line this skill".
+  production", "one-command skill upgrade", or "assembly line this skill". [EXPLICIT]
   Orchestrates the complete skill quality pipeline — from diagnostic
   through intervention to certification — in a single invocation with
   configurable depth. Use this skill whenever someone wants the full
   x-ray → surgeon → certify workflow without running each skill
   separately, or when they say "make this skill great" without
-  specifying which step to run.
-argument-hint: "<path-to-skill> [--mode quick|standard|deep]"
+  specifying which step to run. [EXPLICIT]
+argument-hint: "path-to-skill [--mode quick|standard|deep]"
 model: opus
 context: fork
 allowed-tools:
@@ -26,13 +26,13 @@ model: opus
 
 # Skill Assembly Line
 
-One-command skill engineering pipeline. Runs diagnostic → intervention → certification in sequence, adapting depth to the skill's current state — so a single invocation takes a skill from whatever state it's in to production-certified.
+One-command skill engineering pipeline. Runs diagnostic → intervention → certification in sequence, adapting depth to the skill's current state — so a single invocation takes a skill from whatever state it's in to production-certified. [EXPLICIT]
 
 ## Why This Exists
 
-Running x-ray-skill, surgeon-skill, and certify-skill separately requires 3 invocations, manual handoff between steps, and context switching. The assembly line eliminates that friction: one command, one report, one result.
+Running x-ray-skill, surgeon-skill, and certify-skill separately requires 3 invocations, manual handoff between steps, and context switching. The assembly line eliminates that friction: one command, one report, one result. [EXPLICIT]
 
-The trade-off: less granular control than running each skill individually. Use individual skills when you want to inspect or approve each phase. Use assembly-skill when you trust the pipeline and want results.
+The trade-off: less granular control than running each skill individually. Use individual skills when you want to inspect or approve each phase. Use assembly-skill when you trust the pipeline and want results. [EXPLICIT]
 
 ## Usage
 
@@ -52,7 +52,7 @@ The trade-off: less granular control than running each skill individually. Use i
 
 ### Mode Selection Logic
 
-If no mode specified, auto-select based on initial assessment:
+If no mode specified, auto-select based on initial assessment: [EXPLICIT]
 
 | Initial State | Auto-Selected Mode | Reasoning |
 |--------------|-------------------|-----------|
@@ -65,7 +65,7 @@ If no mode specified, auto-select based on initial assessment:
 
 ### Phase A: Diagnostic (all modes)
 
-Run x-ray-skill internally. Produce the full scorecard:
+Run x-ray-skill internally. Produce the full scorecard: [EXPLICIT]
 - Inventory all files
 - Validate frontmatter
 - Audit body sections
@@ -79,25 +79,25 @@ Run x-ray-skill internally. Produce the full scorecard:
 
 ### Phase B: Intervention (standard + deep modes)
 
-Run surgeon-skill internally using Phase A's scorecard:
+Run surgeon-skill internally using Phase A's scorecard: [EXPLICIT]
 - Select applicable improvement patterns based on gap analysis
 - Present the plan to the user:
 
 ```
-Assembly Line — Intervention Plan:
-Score: {current}/10 → projected {projected}/10
-Interventions: {N} across {M} layers
+Assembly Line — Intervention Plan: [EXPLICIT]
+Score: {current}/10 → projected {projected}/10 [EXPLICIT]
+Interventions: {N} across {M} layers [EXPLICIT]
 {numbered list with pattern IDs and descriptions}
 Proceed? [Y/n]
 ```
 
 **Gate B:** Wait for user confirmation before modifying files. The assembly line automates sequencing, not decision-making.
 
-After confirmation, execute all interventions with snapshot-verify-document protocol.
+After confirmation, execute all interventions with snapshot-verify-document protocol. [EXPLICIT]
 
 ### Phase C: Certification (standard + deep modes)
 
-Run certify-skill internally on the improved skill:
+Run certify-skill internally on the improved skill: [EXPLICIT]
 - All structural checks
 - All content checks
 - Rubric re-scoring
@@ -107,17 +107,17 @@ Run certify-skill internally on the improved skill:
 
 ### Phase C+ : Trigger Optimization (deep mode only)
 
-Run trigger-skill internally to optimize the description:
+Run trigger-skill internally to optimize the description: [EXPLICIT]
 - Generate 15-20 test queries (should-trigger + should-not-trigger)
 - Test triggering accuracy
 - Iterate on description (up to 3 iterations)
 - Produce optimized description
 
-Then re-run certification to verify the optimization didn't degrade other dimensions.
+Then re-run certification to verify the optimization didn't degrade other dimensions. [EXPLICIT]
 
 ### Phase D: Assembly Report
 
-Synthesize all phases into a single unified report:
+Synthesize all phases into a single unified report: [EXPLICIT]
 
 ```markdown
 # Assembly Report: {skill-name}
@@ -153,7 +153,7 @@ Synthesize all phases into a single unified report:
 
 ## Gate Protocol
 
-The assembly line has 3 decision gates. Each is explicit — the pipeline never makes destructive decisions autonomously.
+The assembly line has 3 decision gates. Each is explicit — the pipeline never makes destructive decisions autonomously. [EXPLICIT]
 
 | Gate | Question | Options |
 |------|----------|---------|
@@ -192,7 +192,7 @@ The assembly line has 3 decision gates. Each is explicit — the pipeline never 
 
 ## Validation Gate
 
-Before delivering the assembly report:
+Before delivering the assembly report: [EXPLICIT]
 
 - [ ] Every phase that ran produced a complete output
 - [ ] User confirmed the intervention plan before files were modified (Gate B)

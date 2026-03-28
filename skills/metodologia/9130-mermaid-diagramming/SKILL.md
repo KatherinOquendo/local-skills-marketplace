@@ -7,7 +7,7 @@ description: >
   "visualize architecture", "diagram flows", "draw a sequence diagram", "create a C4 diagram",
   "add visual diagrams", or mentions diagramming, visualization, flowcharts, sequence diagrams,
   Mermaid syntax, architecture diagrams, or visual documentation. Use this skill to embed
-  precise, syntactically valid Mermaid diagrams in any discovery deliverable.
+  precise, syntactically valid Mermaid diagrams in any discovery deliverable. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Mermaid Diagramming Engine
 
-Generates syntactically valid, semantically precise Mermaid diagrams for discovery deliverables. Every diagram earns its place — no decorative visuals. Each diagram must compress complexity into clarity, replacing paragraphs of prose with a single visual that a reader grasps in seconds.
+Generates syntactically valid, semantically precise Mermaid diagrams for discovery deliverables. Every diagram earns its place — no decorative visuals. Each diagram must compress complexity into clarity, replacing paragraphs of prose with a single visual that a reader grasps in seconds. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -29,9 +29,9 @@ Generates syntactically valid, semantically precise Mermaid diagrams for discove
 
 ### Diagramming Philosophy
 
-1. **Information density.** If a diagram does not convey more than 3 sentences of text, it is visual noise. Remove it.
-2. **Impeccable syntax.** A diagram that does not render is worse than no diagram. Validate before delivery.
-3. **Context > aesthetics.** Nodes are named with domain meaning, not codes. Arrows carry labels. Subgraphs group with purpose.
+1. **Information density.** If a diagram does not convey more than 3 sentences of text, it is visual noise. Remove it. [EXPLICIT]
+2. **Impeccable syntax.** A diagram that does not render is worse than no diagram. Validate before delivery. [EXPLICIT]
+3. **Context > aesthetics.** Nodes are named with domain meaning, not codes. Arrows carry labels. Subgraphs group with purpose. [EXPLICIT]
 
 ## Inputs ($ARGUMENTS)
 
@@ -43,10 +43,10 @@ Generates syntactically valid, semantically precise Mermaid diagrams for discove
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para selección de tipo y composición, HITL para validación de diagramas complejos (>15 nodos).
-  - **desatendido**: Zero interruptions. Diagramas generados automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint al seleccionar tipo de diagrama.
-  - **paso-a-paso**: Confirma tipo, composición, y validación de cada diagrama.
+  - **piloto-auto**: Auto para selección de tipo y composición, HITL para validación de diagramas complejos (>15 nodos). [EXPLICIT]
+  - **desatendido**: Zero interruptions. Diagramas generados automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint al seleccionar tipo de diagrama. [EXPLICIT]
+  - **paso-a-paso**: Confirma tipo, composición, y validación de cada diagrama. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default, fenced code blocks) | `html` (pre class="mermaid") | `dual`
 - `{VARIANTE}`: `ejecutiva` (simplified, ≤10 nodes) | `técnica` (full detail, default)
 
@@ -82,18 +82,18 @@ Analyze the content and select the optimal diagram type:
 | User journey steps | User Journey | `journey` |
 | Data flow / pipeline | Flowchart with subgraphs | `flowchart LR` + `subgraph` |
 
-Selection criteria: Choose the type that maximizes information density while minimizing cognitive load.
+Selection criteria: Choose the type that maximizes information density while minimizing cognitive load. [EXPLICIT]
 
 ## S2 — Diagram Composition Rules
 
-1. **Syntax validity**: Every diagram MUST render without errors in standard Mermaid renderers (GitHub, GitLab, Obsidian, Mermaid Live Editor).
-2. **Node naming**: Use descriptive IDs (`authService` not `A1`). Wrap display labels in quotes if they contain spaces.
-3. **Edge labels**: Every relationship/arrow carries a label explaining the connection.
-4. **Subgraphs**: Group related nodes. Name subgraphs meaningfully.
-5. **Direction**: Use `TD` (top-down) for hierarchies, `LR` (left-right) for flows/sequences.
-6. **Color/styling**: Use `classDef` for semantic coloring (e.g., `classDef critical fill:#f96,stroke:#333`). Max 4 style classes per diagram.
-7. **Size discipline**: Max 20 nodes per diagram. If more needed, split into multiple diagrams with cross-references.
-8. **Accessibility**: Include a 1-line text summary before each diagram for screen readers and non-rendering contexts.
+1. **Syntax validity**: Every diagram MUST render without errors in standard Mermaid renderers (GitHub, GitLab, Obsidian, Mermaid Live Editor). [EXPLICIT]
+2. **Node naming**: Use descriptive IDs (`authService` not `A1`). Wrap display labels in quotes if they contain spaces. [EXPLICIT]
+3. **Edge labels**: Every relationship/arrow carries a label explaining the connection. [EXPLICIT]
+4. **Subgraphs**: Group related nodes. Name subgraphs meaningfully. [EXPLICIT]
+5. **Direction**: Use `TD` (top-down) for hierarchies, `LR` (left-right) for flows/sequences. [EXPLICIT]
+6. **Color/styling**: Use `classDef` for semantic coloring (e.g., `classDef critical fill:#f96,stroke:#333`). Max 4 style classes per diagram. [EXPLICIT]
+7. **Size discipline**: Max 20 nodes per diagram. If more needed, split into multiple diagrams with cross-references. [EXPLICIT]
+8. **Accessibility**: Include a 1-line text summary before each diagram for screen readers and non-rendering contexts. [EXPLICIT]
 
 ## S3 — Deliverable-Specific Diagram Catalog
 
@@ -111,7 +111,7 @@ Each discovery deliverable has recommended diagram types:
 | 08_Pitch_Ejecutivo | Mindmap (value pillars) | Gantt (investment timeline) |
 | 09_Handover | Flowchart (governance flow) | Gantt (90-day plan) |
 
-Minimum: 1 diagram per deliverable. Recommended: 2. Maximum: 4 (avoid visual overload).
+Minimum: 1 diagram per deliverable. Recommended: 2. Maximum: 4 (avoid visual overload). [EXPLICIT]
 
 ## S4 — Quality Validation
 
@@ -140,7 +140,7 @@ Every diagram passes through validation:
 ````
 
 **In HTML deliverables (on demand):**
-Embed Mermaid via `<pre class="mermaid">` tag with Mermaid JS CDN include. Add `alt` attribute with text description.
+Embed Mermaid via `<pre class="mermaid">` tag with Mermaid JS CDN include. Add `alt` attribute with text description. [EXPLICIT]
 
 ## Trade-off Matrix
 
@@ -174,10 +174,10 @@ Embed Mermaid via `<pre class="mermaid">` tag with Mermaid JS CDN include. Add `
 ## Validation Gate
 
 Before delivering any diagram:
-1. Paste into Mermaid Live Editor mentally — would it render? Fix syntax if not.
-2. Does it add information the text doesn't? If no, remove it.
-3. Can the target audience understand it without explanation? If no, simplify.
-4. Are all labels/names consistent with the document? If no, align.
+1. Paste into Mermaid Live Editor mentally — would it render? Fix syntax if not. [EXPLICIT]
+2. Does it add information the text doesn't? If no, remove it. [EXPLICIT]
+3. Can the target audience understand it without explanation? If no, simplify. [EXPLICIT]
+4. Are all labels/names consistent with the document? If no, align. [EXPLICIT]
 
 ## Edge Cases
 
@@ -269,7 +269,7 @@ graph TD
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

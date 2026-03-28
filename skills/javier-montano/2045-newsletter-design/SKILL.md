@@ -3,7 +3,7 @@ name: newsletter-design
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Newsletter strategy, content structure, engagement metrics, send optimization.
+  Newsletter strategy, content structure, engagement metrics, send optimization. [EXPLICIT]
   Trigger: "newsletter design, newsletter strategy, content structure, engagement metrics, send optimization"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Newsletter strategy, content structure, engagement metrics, send optimization. All outputs follow MetodologIA brand standards and evidence tagging.
+Newsletter strategy, content structure, engagement metrics, send optimization. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Newsletter strategy, content structure, engagement metrics, send optimization. A
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/newsletter-design" — Run the full newsletter design workflow
+- "newsletter design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -3,7 +3,7 @@ name: survey-design
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  NPS/CSAT/CES surveys, question design, response analysis, benchmarks.
+  NPS/CSAT/CES surveys, question design, response analysis, benchmarks. [EXPLICIT]
   Trigger: "survey design"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Survey Design
 > "Method over hacks."
 ## TL;DR
-NPS/CSAT/CES surveys, question design, response analysis, benchmarks.
+NPS/CSAT/CES surveys, question design, response analysis, benchmarks. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ NPS/CSAT/CES surveys, question design, response analysis, benchmarks.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/survey-design" — Run the full survey design workflow
+- "survey design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

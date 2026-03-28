@@ -3,7 +3,7 @@ name: data-validation
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Schema validation, type checking, constraint enforcement, error handling.
+  Schema validation, type checking, constraint enforcement, error handling. [EXPLICIT]
   Trigger: "data validation"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Data Validation
 > "Method over hacks."
 ## TL;DR
-Schema validation, type checking, constraint enforcement, error handling.
+Schema validation, type checking, constraint enforcement, error handling. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Schema validation, type checking, constraint enforcement, error handling.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/data-validation" — Run the full data validation workflow
+- "data validation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

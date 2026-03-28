@@ -110,7 +110,7 @@ Las plataformas low-code (OutSystems, Mendix, Power Platform, Retool) han alcanz
 
 ### Estado Actual (2025-2026)
 
-Continuous discovery (Teresa Torres) integra la validación de producto con el delivery en un flujo dual-track: mientras un track construye, el otro valida. Esto elimina el modelo "waterfall de PoC" donde se diseña todo, se construye todo, y se valida al final.
+Continuous discovery (Teresa Torres) integra la validación de producto con el delivery en un flujo dual-track: mientras un track construye, el otro valida. Esto elimina el modelo "waterfall de PoC" donde se diseña pending, se construye pending, y se valida al final.
 
 ### Impacto en Roadmap & PoC
 

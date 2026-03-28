@@ -1,182 +1,182 @@
----
-name: mcp-creator
-description: >
-  This skill should be used when the user asks to "configure an MCP server", "connect Claude to
-  an external tool", "set up a database MCP", "add an API integration via MCP", or "list MCP
-  servers". Also triggers on mentions of Model Context Protocol, stdio transport, MCP JSON config,
-  or remote tool connections. Use this skill even if the user only wants to check existing MCP
-  configuration — the full setup and validation workflow applies.
-argument-hint: <server-name> [transport: stdio|http]
-model: opus
-context: fork
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep
----
-
-# MCP Creator
-
-Configure Model Context Protocol servers — the bridge between Claude Code and external tools, databases, APIs.
-
-## Assumptions & Limits
-
-- **Assumes** the target service exists and is accessible (this skill configures the connection, not the server)
-- **Limit**: stdio servers run as child processes — they consume resources for the session duration
-- **Limit**: SSE transport is deprecated — use HTTP for all new remote connections
-- **Limit**: OAuth flows require browser access; headless environments need pre-configured tokens
-- **Trade-off**: Local scope (default) = private but not shared; project scope = shared but exposes config to git
-
-### When NOT to use MCP
-
-| Situation | Better alternative |
-|---|---|
-| One-off API call | Bash with curl |
-| File system operations | Built-in Read/Write/Glob tools |
-| Git operations | Built-in Bash with git |
-| Static data reference | CLAUDE.md or skill reference files |
-
-## Usage
-
-```
-/mcp-creator my-database stdio        # local database server
-/mcp-creator analytics-api http       # remote API
-/mcp-creator project-tools            # interview mode
-```
-
-Parse `$1` as server name (kebab-case), `$2` as transport. If missing, ask:
-1. What external system? (database, API, file service, custom tool)
-2. Local process or remote endpoint?
-3. Auth required? (API key, OAuth, none)
-
-## Before Creating
-
-1. **Check existing**: Run `claude mcp list` to see configured servers
-2. **Read project MCP**: `Read .mcp.json` if it exists
-3. **Verify no name collision**: Server names must be unique across all scopes
-
-## Transport Types
-
-### stdio (local processes — most common)
-
-```json
-{
-  "mcpServers": {
-    "{name}": {
-      "type": "stdio",
-      "command": "node",
-      "args": ["./mcp-server/index.js"],
-      "env": {
-        "DATABASE_URL": "${DATABASE_URL}"
-      }
-    }
-  }
-}
-```
-
-**When**: Server runs on the same machine. Typical for databases, local tools, custom scripts.
-**Lifecycle**: Spawned on first tool use, killed on session end.
-
-### HTTP (remote — recommended for cloud)
-
-```json
-{
-  "mcpServers": {
-    "{name}": {
-      "type": "http",
-      "url": "https://api.example.com/mcp",
-      "headers": {
-        "Authorization": "Bearer ${API_TOKEN}"
-      }
-    }
-  }
-}
-```
-
-**When**: Server is a remote endpoint. Stateless, no process management.
-
-## Configuration Scopes
-
-| Scope | Storage | Precedence | Use When |
-|---|---|---|---|
-| Local | `~/.claude.json` | Highest | Personal, current project |
-| Project | `.mcp.json` (git tracked) | Medium | Team-shared servers |
-| User | `~/.claude.json` | Lowest | Personal, all projects |
-| Plugin | Plugin's `.mcp.json` | Plugin scope | Bundled with plugin |
-
-**Decision logic**: If the whole team needs it → project scope. If only you → local. If across all your projects → user.
-
-## Environment Variables
-
-Use `${VAR}` in command, args, env, url, headers:
-
-```json
-{
-  "env": {
-    "API_KEY": "${MY_API_KEY}",
-    "DB_URL": "${DATABASE_URL:-sqlite:///fallback.db}",
-    "HOME_DIR": "${HOME}"
-  }
-}
-```
-
-- `${VAR}` — required, fails if missing
-- `${VAR:-default}` — optional with fallback
-
-**Security rule**: NEVER hardcode secrets. Always use env vars.
-
-## Common Server Patterns
-
-### PostgreSQL
-```json
-{
-  "mcpServers": {
-    "postgres": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres", "${DATABASE_URL}"]
-    }
-  }
-}
-```
-
-### Filesystem (sandboxed)
-```json
-{
-  "mcpServers": {
-    "files": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${PROJECT_DATA_DIR}"]
-    }
-  }
-}
-```
-
-### Custom API with OAuth
-```bash
-claude mcp add --transport http my-api https://api.example.com/mcp \
-  --client-id "${CLIENT_ID}" \
-  --client-secret "${CLIENT_SECRET}" \
-  --callback-port 3000
-```
-Then authenticate via `/mcp` in session.
-
-### Plugin-bundled server
-```json
-{
-  "mcpServers": {
-    "my-tool": {
-      "type": "stdio",
-      "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/tool.js"]
-    }
-  }
-}
-```
-
-## CLI Quick Reference
-
-```bash
-claude mcp add --transport stdio my-db -- node server.js   # Add stdio
-claude mcp add --transport http my-api https://url.com      # Add HTTP
+--- [EXPLICIT]
+name: mcp-creator [EXPLICIT]
+description:  [EXPLICIT]
+  This skill should be used when the user asks to "configure an MCP server", "connect Claude to [EXPLICIT]
+  an external tool", "set up a database MCP", "add an API integration via MCP", or "list MCP [EXPLICIT]
+  servers". Also triggers on mentions of Model Context Protocol, stdio transport, MCP JSON config, [EXPLICIT]
+  or remote tool connections. Use this skill even if the user only wants to check existing MCP [EXPLICIT]
+  configuration — the full setup and validation workflow applies. [EXPLICIT]
+argument-hint: server-name [transport: stdio|http] [EXPLICIT]
+model: opus [EXPLICIT]
+context: fork [EXPLICIT]
+allowed-tools: Read, Write, Edit, Bash, Glob, Grep [EXPLICIT]
+--- [EXPLICIT]
+ [EXPLICIT]
+# MCP Creator [EXPLICIT]
+ [EXPLICIT]
+Configure Model Context Protocol servers — the bridge between Claude Code and external tools, databases, APIs. [EXPLICIT]
+ [EXPLICIT]
+## Assumptions & Limits [EXPLICIT]
+ [EXPLICIT]
+- **Assumes** the target service exists and is accessible (this skill configures the connection, not the server) [EXPLICIT]
+- **Limit**: stdio servers run as child processes — they consume resources for the session duration [EXPLICIT]
+- **Limit**: SSE transport is deprecated — use HTTP for all new remote connections [EXPLICIT]
+- **Limit**: OAuth flows require browser access; headless environments need pre-configured tokens [EXPLICIT]
+- **Trade-off**: Local scope (default) = private but not shared; project scope = shared but exposes config to git [EXPLICIT]
+ [EXPLICIT]
+### When NOT to use MCP [EXPLICIT]
+ [EXPLICIT]
+| Situation | Better alternative | [EXPLICIT]
+|---|---| [EXPLICIT]
+| One-off API call | Bash with curl | [EXPLICIT]
+| File system operations | Built-in Read/Write/Glob tools | [EXPLICIT]
+| Git operations | Built-in Bash with git | [EXPLICIT]
+| Static data reference | CLAUDE.md or skill reference files | [EXPLICIT]
+ [EXPLICIT]
+## Usage [EXPLICIT]
+ [EXPLICIT]
+``` [EXPLICIT]
+/mcp-creator my-database stdio        # local database server [EXPLICIT]
+/mcp-creator analytics-api http       # remote API [EXPLICIT]
+/mcp-creator project-tools            # interview mode [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+Parse `$1` as server name (kebab-case), `$2` as transport. If missing, ask: [EXPLICIT]
+1. What external system? (database, API, file service, custom tool) [EXPLICIT]
+2. Local process or remote endpoint? [EXPLICIT]
+3. Auth required? (API key, OAuth, none) [EXPLICIT]
+ [EXPLICIT]
+## Before Creating [EXPLICIT]
+ [EXPLICIT]
+1. **Check existing**: Run `claude mcp list` to see configured servers [EXPLICIT]
+2. **Read project MCP**: `Read .mcp.json` if it exists [EXPLICIT]
+3. **Verify no name collision**: Server names must be unique across all scopes [EXPLICIT]
+ [EXPLICIT]
+## Transport Types [EXPLICIT]
+ [EXPLICIT]
+### stdio (local processes — most common) [EXPLICIT]
+ [EXPLICIT]
+```json [EXPLICIT]
+{ [EXPLICIT]
+  "mcpServers": { [EXPLICIT]
+    "{name}": { [EXPLICIT]
+      "type": "stdio", [EXPLICIT]
+      "command": "node", [EXPLICIT]
+      "args": ["./mcp-server/index.js"], [EXPLICIT]
+      "env": { [EXPLICIT]
+        "DATABASE_URL": "${DATABASE_URL}" [EXPLICIT]
+      } [EXPLICIT]
+    } [EXPLICIT]
+  } [EXPLICIT]
+} [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+**When**: Server runs on the same machine. Typical for databases, local tools, custom scripts. [EXPLICIT]
+**Lifecycle**: Spawned on first tool use, killed on session end. [EXPLICIT]
+ [EXPLICIT]
+### HTTP (remote — recommended for cloud) [EXPLICIT]
+ [EXPLICIT]
+```json [EXPLICIT]
+{ [EXPLICIT]
+  "mcpServers": { [EXPLICIT]
+    "{name}": { [EXPLICIT]
+      "type": "http", [EXPLICIT]
+      "url": "https://api.example.com/mcp", [EXPLICIT]
+      "headers": { [EXPLICIT]
+        "Authorization": "Bearer ${API_TOKEN}" [EXPLICIT]
+      } [EXPLICIT]
+    } [EXPLICIT]
+  } [EXPLICIT]
+} [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+**When**: Server is a remote endpoint. Stateless, no process management. [EXPLICIT]
+ [EXPLICIT]
+## Configuration Scopes [EXPLICIT]
+ [EXPLICIT]
+| Scope | Storage | Precedence | Use When | [EXPLICIT]
+|---|---|---|---| [EXPLICIT]
+| Local | `~/.claude.json` | Highest | Personal, current project | [EXPLICIT]
+| Project | `.mcp.json` (git tracked) | Medium | Team-shared servers | [EXPLICIT]
+| User | `~/.claude.json` | Lowest | Personal, all projects | [EXPLICIT]
+| Plugin | Plugin's `.mcp.json` | Plugin scope | Bundled with plugin | [EXPLICIT]
+ [EXPLICIT]
+**Decision logic**: If the whole team needs it → project scope. If only you → local. If across all your projects → user. [EXPLICIT]
+ [EXPLICIT]
+## Environment Variables [EXPLICIT]
+ [EXPLICIT]
+Use `${VAR}` in command, args, env, url, headers: [EXPLICIT]
+ [EXPLICIT]
+```json [EXPLICIT]
+{ [EXPLICIT]
+  "env": { [EXPLICIT]
+    "API_KEY": "${MY_API_KEY}", [EXPLICIT]
+    "DB_URL": "${DATABASE_URL:-sqlite:///fallback.db}", [EXPLICIT]
+    "HOME_DIR": "${HOME}" [EXPLICIT]
+  } [EXPLICIT]
+} [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+- `${VAR}` — required, fails if missing [EXPLICIT]
+- `${VAR:-default}` — optional with fallback [EXPLICIT]
+ [EXPLICIT]
+**Security rule**: NEVER hardcode secrets. Always use env vars. [EXPLICIT]
+ [EXPLICIT]
+## Common Server Patterns [EXPLICIT]
+ [EXPLICIT]
+### PostgreSQL [EXPLICIT]
+```json [EXPLICIT]
+{ [EXPLICIT]
+  "mcpServers": { [EXPLICIT]
+    "postgres": { [EXPLICIT]
+      "type": "stdio", [EXPLICIT]
+      "command": "npx", [EXPLICIT]
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "${DATABASE_URL}"] [EXPLICIT]
+    } [EXPLICIT]
+  } [EXPLICIT]
+} [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+### Filesystem (sandboxed) [EXPLICIT]
+```json [EXPLICIT]
+{ [EXPLICIT]
+  "mcpServers": { [EXPLICIT]
+    "files": { [EXPLICIT]
+      "type": "stdio", [EXPLICIT]
+      "command": "npx", [EXPLICIT]
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${PROJECT_DATA_DIR}"] [EXPLICIT]
+    } [EXPLICIT]
+  } [EXPLICIT]
+} [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+### Custom API with OAuth [EXPLICIT]
+```bash [EXPLICIT]
+claude mcp add --transport http my-api https://api.example.com/mcp \ [EXPLICIT]
+  --client-id "${CLIENT_ID}" \ [EXPLICIT]
+  --client-secret "${CLIENT_SECRET}" \ [EXPLICIT]
+  --callback-port 3000 [EXPLICIT]
+``` [EXPLICIT]
+Then authenticate via `/mcp` in session. [EXPLICIT]
+ [EXPLICIT]
+### Plugin-bundled server [EXPLICIT]
+```json [EXPLICIT]
+{ [EXPLICIT]
+  "mcpServers": { [EXPLICIT]
+    "my-tool": { [EXPLICIT]
+      "type": "stdio", [EXPLICIT]
+      "command": "node", [EXPLICIT]
+      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/tool.js"] [EXPLICIT]
+    } [EXPLICIT]
+  } [EXPLICIT]
+} [EXPLICIT]
+``` [EXPLICIT]
+ [EXPLICIT]
+## CLI Quick Reference [EXPLICIT]
+ [EXPLICIT]
+```bash [EXPLICIT]
+claude mcp add --transport stdio my-db -- node server.js   # Add stdio [EXPLICIT]
+claude mcp add --transport http my-api https://url.com      # Add HTTP [EXPLICIT]
 claude mcp list                                             # List all
 claude mcp remove my-db                                     # Remove
 ```
@@ -193,7 +193,7 @@ claude mcp remove my-db                                     # Remove
 
 ## MCP Tool Search (auto-discovery)
 
-When MCP tools exceed 10% of context window, Claude auto-enables tool search — loading tool definitions on demand instead of all at once. Control with `ENABLE_TOOL_SEARCH`: `auto` (default), `true`, `false`.
+When MCP tools exceed 10% of context window, Claude auto-enables tool search — loading tool definitions on demand instead of all at once. Control with `ENABLE_TOOL_SEARCH`: `auto` (default), `true`, `false`. [EXPLICIT]
 
 ## Edge Cases
 

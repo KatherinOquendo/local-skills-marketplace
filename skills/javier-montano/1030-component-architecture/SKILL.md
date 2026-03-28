@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Designs frontend module boundaries, interface contracts, and composition
   patterns for scalable component hierarchies. Covers smart/dumb patterns,
-  compound components, and dependency injection.
+  compound components, and dependency injection. [EXPLICIT]
   Trigger: "component architecture", "module boundary", "composition pattern", "interface contract"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs scalable frontend component hierarchies with clear module boundaries, interface contracts, and composition patterns that promote reusability and testability. Use this skill when building component libraries, structuring large frontend applications, or when component coupling is causing maintenance issues.
+Designs scalable frontend component hierarchies with clear module boundaries, interface contracts, and composition patterns that promote reusability and testability. Use this skill when building component libraries, structuring large frontend applications, or when component coupling is causing maintenance issues. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Designs scalable frontend component hierarchies with clear module boundaries, in
 - `design-system` — design tokens consumed by components
 - `state-management` — state boundaries align with component architecture
 - `responsive-design` — components adapt to viewport using architecture patterns
+
+## Usage
+
+Example invocations:
+
+- "/component-architecture" — Run the full component architecture workflow
+- "component architecture on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

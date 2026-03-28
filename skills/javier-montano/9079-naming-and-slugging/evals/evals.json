@@ -1,32 +1,9 @@
 [
-  {
-    "id": "naming-happy-slug",
-    "title": "Basic slug generation",
-    "prompt": "Generate a slug for 'My New API Client v2'",
-    "expected_behavior": "Produces 'my-new-api-client-v2' as the basic slug. With --clean mode, produces 'api-client' (strips version marker and 'new' prefix). Explains that versions belong in git, not filenames."
-  },
-  {
-    "id": "naming-happy-audit",
-    "title": "Project naming audit",
-    "prompt": "Audit the naming conventions in my project directory",
-    "expected_behavior": "Scans files for naming violations: underscores, uppercase, version markers, status prefixes, consecutive hyphens. Reports issues with suggested fixes and entity type pattern compliance."
-  },
-  {
-    "id": "naming-edge-acronyms",
-    "title": "Acronym handling in slugs",
-    "prompt": "What should I name a file about our REST API client?",
-    "expected_behavior": "Produces 'rest-api-client' — acronyms become lowercase but are NOT hyphenated per letter (not 'r-e-s-t-a-p-i'). Treats acronyms as single words."
-  },
-  {
-    "id": "naming-edge-compound-ext",
-    "title": "Compound extensions preserved",
-    "prompt": "Rename 'MyComponent.test.tsx' to follow naming conventions",
-    "expected_behavior": "Produces 'my-component.test.tsx' — converts to kebab-case but preserves compound extension '.test.tsx' as semantic, not a violation."
-  },
-  {
-    "id": "naming-false-positive",
-    "title": "False positive — content writing request",
-    "prompt": "Write the content for our API documentation page",
-    "expected_behavior": "Does NOT activate this skill. Recognizes this is a content writing request, not a naming/slugging task. The word 'API' alone does not trigger naming conventions."
-  }
+  {"id": "naming-and-slugging-happy-path", "type": "happy_path", "input": "Run naming and slugging on this project", "expected_behavior": "Skill activates and produces the expected naming and slugging output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "naming-and-slugging-explicit-trigger", "type": "happy_path", "input": "Apply naming and slugging analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the naming and slugging workflow", "tags": ["trigger", "recognition"]},
+  {"id": "naming-and-slugging-with-context", "type": "happy_path", "input": "Apply naming and slugging to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive naming and slugging analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "naming-and-slugging-minimal-input", "type": "happy_path", "input": "Quick naming and slugging", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "naming-and-slugging-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to naming and slugging", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "naming-and-slugging-edge-empty-input", "type": "edge_case", "input": "Run naming and slugging but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "naming-and-slugging-edge-conflicting", "type": "edge_case", "input": "Apply naming and slugging but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

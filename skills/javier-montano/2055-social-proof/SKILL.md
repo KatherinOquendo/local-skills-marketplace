@@ -3,7 +3,7 @@ name: social-proof
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Testimonials, case studies, trust badges, social validation pattern design.
+  Testimonials, case studies, trust badges, social validation pattern design. [EXPLICIT]
   Trigger: "social proof, testimonials, case studies, trust badges, social validation pattern design"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Testimonials, case studies, trust badges, social validation pattern design. All outputs follow MetodologIA brand standards and evidence tagging.
+Testimonials, case studies, trust badges, social validation pattern design. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Testimonials, case studies, trust badges, social validation pattern design. All 
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/social-proof" — Run the full social proof workflow
+- "social proof on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

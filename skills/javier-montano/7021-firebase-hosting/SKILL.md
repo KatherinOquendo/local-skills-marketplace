@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Deploy web apps with Firebase Hosting — configure rewrites, headers, preview
-  channels, multi-site hosting, and CDN cache control.
+  channels, multi-site hosting, and CDN cache control. [EXPLICIT]
   Trigger: "firebase hosting", "firebase deploy", "preview channel", "hosting config"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Firebase Hosting configuration and deployment — rewrite rules for SPAs, custom headers for security and caching, preview channels for PR reviews, multi-site hosting for multiple apps, and CDN cache control. Use when deploying static sites or SPAs to Firebase's global CDN.
+Guides Firebase Hosting configuration and deployment — rewrite rules for SPAs, custom headers for security and caching, preview channels for PR reviews, multi-site hosting for multiple apps, and CDN cache control. Use when deploying static sites or SPAs to Firebase's global CDN. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Firebase Hosting configuration and deployment — rewrite rules for SPAs,
 
 - `firebase-setup` — hosting is part of Firebase project initialization
 - `firebase-deployment` — deployment workflows for production releases
+
+## Usage
+
+Example invocations:
+
+- "/firebase-hosting" — Run the full firebase hosting workflow
+- "firebase hosting on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

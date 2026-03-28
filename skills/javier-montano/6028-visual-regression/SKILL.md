@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Detect visual changes with screenshot comparison testing using Chromatic,
-  Percy, or Playwright visual comparisons for UI regression prevention.
+  Percy, or Playwright visual comparisons for UI regression prevention. [EXPLICIT]
   Trigger: "visual regression", "screenshot testing", "Chromatic", "Percy"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides visual regression testing setup — screenshot-based comparison using Chromatic (Storybook), Percy, or Playwright's built-in visual comparison to detect unintended UI changes before deployment. Use when maintaining design consistency across code changes and preventing visual regressions.
+Guides visual regression testing setup — screenshot-based comparison using Chromatic (Storybook), Percy, or Playwright's built-in visual comparison to detect unintended UI changes before deployment. Use when maintaining design consistency across code changes and preventing visual regressions. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides visual regression testing setup — screenshot-based comparison using Chr
 
 - `e2e-testing` — Playwright can serve both functional and visual testing
 - `dark-mode` — visual regression testing should cover both themes
+
+## Usage
+
+Example invocations:
+
+- "/visual-regression" — Run the full visual regression workflow
+- "visual regression on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

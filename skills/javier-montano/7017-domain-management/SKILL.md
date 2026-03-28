@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Manage DNS records, nameservers, SSL certificates, email routing, and
-  domain configuration for web applications.
+  domain configuration for web applications. [EXPLICIT]
   Trigger: "DNS records", "domain setup", "nameserver", "SSL certificate", "email routing"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides domain management — configuring DNS records (A, CNAME, TXT, MX), setting up nameservers, provisioning SSL certificates, configuring email routing, and managing domain redirects. Use when connecting a custom domain to hosting, setting up email, or troubleshooting DNS issues.
+Guides domain management — configuring DNS records (A, CNAME, TXT, MX), setting up nameservers, provisioning SSL certificates, configuring email routing, and managing domain redirects. Use when connecting a custom domain to hosting, setting up email, or troubleshooting DNS issues. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides domain management — configuring DNS records (A, CNAME, TXT, MX), settin
 
 - `hostinger-deployment` — domain DNS for Hostinger-hosted sites
 - `email-sending` — DNS records required for email deliverability
+
+## Usage
+
+Example invocations:
+
+- "/domain-management" — Run the full domain management workflow
+- "domain management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

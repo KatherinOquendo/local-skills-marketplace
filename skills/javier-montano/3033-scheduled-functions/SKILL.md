@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build scheduled Cloud Functions with Cloud Scheduler, cron patterns,
-  batch processing, and reliable execution strategies.
+  batch processing, and reliable execution strategies. [EXPLICIT]
   Trigger: "scheduled function", "cron job", "batch processing", "Cloud Scheduler"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides implementation of scheduled Cloud Functions using Firebase's `onSchedule` with cron patterns — covering batch data processing, cleanup tasks, report generation, and reliable execution with error handling and monitoring. Use when you need periodic server-side tasks that run automatically.
+Guides implementation of scheduled Cloud Functions using Firebase's `onSchedule` with cron patterns — covering batch data processing, cleanup tasks, report generation, and reliable execution with error handling and monitoring. Use when you need periodic server-side tasks that run automatically. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides implementation of scheduled Cloud Functions using Firebase's `onSchedule`
 
 - `cloud-functions` — scheduled functions are a specialized Cloud Function trigger
 - `firebase-extensions` — some extensions include scheduled processing
+
+## Usage
+
+Example invocations:
+
+- "/scheduled-functions" — Run the full scheduled functions workflow
+- "scheduled functions on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

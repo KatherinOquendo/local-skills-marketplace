@@ -5,7 +5,7 @@ description: >
   Explainability Wrapper, Canary Deployment, Bulkhead, and traditional patterns adapted for AI. This skill should be used
   when the user asks to "select AI design patterns", "apply ML patterns", "design drift detection", "implement feature store",
   "plan shadow deployment", "design champion-challenger", "select availability tactics for AI", or mentions AI anti-patterns,
-  maintainability tactics, fault recovery for models, or pattern selection for ML systems.
+  maintainability tactics, fault recovery for models, or pattern selection for ML systems. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # AI Design Patterns: Patterns & Tactics for AI-Enabled Systems
 
-AI design patterns define reusable solutions to recurring architectural problems in AI systems. This skill produces a pattern selection analysis covering maintainability tactics, availability tactics, AI-specific patterns (Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection), traditional patterns adapted for AI, anti-pattern detection, and a decision framework that maps system requirements to recommended patterns.
+AI design patterns define reusable solutions to recurring architectural problems in AI systems. This skill produces a pattern selection analysis covering maintainability tactics, availability tactics, AI-specific patterns (Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection), traditional patterns adapted for AI, anti-pattern detection, and a decision framework that maps system requirements to recommended patterns. [EXPLICIT]
 
 ## Principio Rector
 
@@ -27,13 +27,13 @@ AI design patterns define reusable solutions to recurring architectural problems
 
 ### Filosofía de Design Patterns para IA
 
-1. **Tácticas primero, patrones después.** Las tácticas (detección de fallas, recuperación, prevención) son los bloques constituyentes. Los patrones combinan tácticas en soluciones cohesivas. Seleccionar un patrón sin entender las tácticas subyacentes produce implementaciones frágiles.
-2. **Anti-patrones como guía negativa.** Conocer los anti-patrones (Training-Serving Skew, YOLO Deploy, Silent Degradation) es tan valioso como conocer los patrones. La detección de anti-patrones en el sistema existente informa qué patrones aplicar.
-3. **El contexto determina el patrón, no la moda.** Feature Store no es necesario para un modelo único con features simples. Champion-Challenger no aplica si solo hay un modelo. Shadow Deployment no justifica su costo para modelos de bajo riesgo. Cada patrón debe justificarse por las necesidades del sistema.
+1. **Tácticas primero, patrones después.** Las tácticas (detección de fallas, recuperación, prevención) son los bloques constituyentes. Los patrones combinan tácticas en soluciones cohesivas. Seleccionar un patrón sin entender las tácticas subyacentes produce implementaciones frágiles. [EXPLICIT]
+2. **Anti-patrones como guía negativa.** Conocer los anti-patrones (Training-Serving Skew, YOLO Deploy, Silent Degradation) es tan valioso como conocer los patrones. La detección de anti-patrones en el sistema existente informa qué patrones aplicar. [EXPLICIT]
+3. **El contexto determina el patrón, no la moda.** Feature Store no es necesario para un modelo único con features simples. Champion-Challenger no aplica si solo hay un modelo. Shadow Deployment no justifica su costo para modelos de bajo riesgo. Cada patrón debe justificarse por las necesidades del sistema. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -46,10 +46,10 @@ Before generating pattern analysis, detect the codebase context:
 Detección automática de contexto:
   Escanear el codebase por frameworks ML (PyTorch, TensorFlow, scikit-learn),
   orquestadores (Airflow, Dagster, Prefect, Kubeflow), y serving frameworks
-  (TensorFlow Serving, TorchServe, Triton, vLLM) para adaptar recomendaciones.
+  (TensorFlow Serving, TorchServe, Triton, vLLM) para adaptar recomendaciones. [EXPLICIT]
 ```
 
-Detect existing patterns (feature stores, A/B testing, monitoring, model serving, drift detection).
+Detect existing patterns (feature stores, A/B testing, monitoring, model serving, drift detection). [EXPLICIT]
 
 Load references:
 
@@ -86,7 +86,7 @@ Read ${CLAUDE_SKILL_DIR}/references/anti-patterns.md
 
 ### S1: Maintainability Tactics for AI
 
-Identifies tactics that enable the AI system to evolve, be tested, and be configured without fragility.
+Identifies tactics that enable the AI system to evolve, be tested, and be configured without fragility. [EXPLICIT]
 
 **Tactic categories:**
 - **Modifiability**: Module decomposition, configuration externalization, abstract model interfaces, dependency injection for data sources and model versions
@@ -101,7 +101,7 @@ Identifies tactics that enable the AI system to evolve, be tested, and be config
 
 ### S2: Availability Tactics for AI
 
-Identifies tactics that ensure the AI system detects, recovers from, and prevents failures.
+Identifies tactics that ensure the AI system detects, recovers from, and prevents failures. [EXPLICIT]
 
 **Fault detection tactics:**
 - Model performance monitoring (accuracy, latency, throughput)
@@ -129,7 +129,7 @@ Identifies tactics that ensure the AI system detects, recovers from, and prevent
 
 ### S3: AI-Specific Patterns Catalog
 
-Catalogs the patterns purpose-built for AI system challenges.
+Catalogs the patterns purpose-built for AI system challenges. [EXPLICIT]
 
 **Patterns:**
 - **Feature Store**: Centralized feature computation, training-serving consistency, feature reuse
@@ -143,7 +143,7 @@ Catalogs the patterns purpose-built for AI system challenges.
 - **Prompt Caching**: Store and reuse prompt-response pairs for repeated or similar queries
 - **Guardrail Pattern**: Input/output validation layer between user and model (content safety, PII, topic control)
 
-For each pattern: intent, structure, key decisions, and trade-offs. Detail in `references/ai-patterns-detail.md`.
+For each pattern: intent, structure, key decisions, and trade-offs. Detail in `references/ai-patterns-detail.md`. [EXPLICIT]
 
 **Key decisions:**
 - Which patterns are required vs. optional for the system
@@ -152,7 +152,7 @@ For each pattern: intent, structure, key decisions, and trade-offs. Detail in `r
 
 ### S4: Traditional Patterns Adapted for AI
 
-Maps traditional software patterns to AI-specific applications.
+Maps traditional software patterns to AI-specific applications. [EXPLICIT]
 
 **Service-oriented:**
 - Model-as-a-Service: Independent model deployment with versioned API
@@ -179,7 +179,7 @@ Maps traditional software patterns to AI-specific applications.
 
 ### S5: Anti-Pattern Detection for AI Systems
 
-Identifies known anti-patterns, detects their presence, and prescribes remediation.
+Identifies known anti-patterns, detects their presence, and prescribes remediation. [EXPLICIT]
 
 **Anti-patterns:**
 - **Training-Serving Skew**: Feature computation divergence between training and production
@@ -194,7 +194,7 @@ Identifies known anti-patterns, detects their presence, and prescribes remediati
 - **Unguarded LLM**: LLM exposed without input/output validation, prone to injection and misuse
 - **Token Budget Blindness**: No cost controls on LLM calls, unbounded agent loops, surprise bills
 
-For each: symptom, cause, detection signal, and recommended pattern fix.
+For each: symptom, cause, detection signal, and recommended pattern fix. [EXPLICIT]
 
 **Key decisions:**
 - Which anti-patterns are present in the current system
@@ -203,7 +203,7 @@ For each: symptom, cause, detection signal, and recommended pattern fix.
 
 ### S6: Pattern Selection Decision Framework
 
-Provides a systematic approach for selecting patterns based on system requirements.
+Provides a systematic approach for selecting patterns based on system requirements. [EXPLICIT]
 
 **Selection dimensions:**
 - **Risk level**: High-risk systems need more patterns (Explainability, Drift Detection, N-Party Voting)
@@ -267,16 +267,16 @@ Shadow Deployment -> Canary Deployment -> Blue & Gold CI/CD
 ## Edge Cases
 
 **Early-Stage System with One Model:**
-Most patterns are overkill for a single-model MVP. Start with Drift Detection and basic monitoring. Add Feature Store only when a second model needs shared features. Add Champion-Challenger only when there are model alternatives to compare.
+Most patterns are overkill for a single-model MVP. Start with Drift Detection and basic monitoring. Add Feature Store only when a second model needs shared features. Add Champion-Challenger only when there are model alternatives to compare. [EXPLICIT]
 
 **Real-Time vs. Batch Pattern Selection:**
-Some patterns behave differently in real-time vs. batch contexts. Champion-Challenger in real-time splits live traffic; in batch, it runs parallel jobs on the same dataset. Feature Store online store is for real-time; offline store is for batch. Ensure pattern documentation specifies both modes.
+Some patterns behave differently in real-time vs. batch contexts. Champion-Challenger in real-time splits live traffic; in batch, it runs parallel jobs on the same dataset. Feature Store online store is for real-time; offline store is for batch. Ensure pattern documentation specifies both modes. [EXPLICIT]
 
 **Multi-Team Pattern Governance:**
-Different teams may implement the same pattern differently (e.g., each team builds their own drift detection). Establish shared pattern implementations as platform capabilities. Feature Store and Model Registry are infrastructure-level patterns, not team-level.
+Different teams may implement the same pattern differently (e.g., each team builds their own drift detection). Establish shared pattern implementations as platform capabilities. Feature Store and Model Registry are infrastructure-level patterns, not team-level. [EXPLICIT]
 
 **Regulated Environment Pattern Requirements:**
-In finance and healthcare, Explainability Wrapper and audit trails are mandatory, not optional. Drift Detection thresholds may be set by regulators. Champion-Challenger experiments may require ethics board approval. Document regulatory pattern mandates separately from optional patterns.
+In finance and healthcare, Explainability Wrapper and audit trails are mandatory, not optional. Drift Detection thresholds may be set by regulators. Champion-Challenger experiments may require ethics board approval. Document regulatory pattern mandates separately from optional patterns. [EXPLICIT]
 
 ---
 

@@ -41,7 +41,7 @@
 - **Fuente:** Nussbaumer Knaflic, C. (2015). *Storytelling with Data: A Data Visualization Guide for Business Professionals*. Wiley.
 
 ### Tom Davenport & Jinho Kim — Keeping Up with the Quants (2013)
-- **Relevancia:** Como presentar analisis cuantitativos a audiencias no tecnicas. Enfatiza que el "ultimo paso" de todo analisis es la narrativa — sin ella, el analisis no genera accion.
+- **Relevancia:** Como presentar analisis cuantitativos a audiencias no tecnicas. Enfatiza que el "ultimo paso" de Todo analisis es la narrativa — sin ella, el analisis no genera accion.
 - **Uso en el skill:** El principio rector "un hallazgo tecnico es un dato; un hallazgo envuelto en contexto, consecuencia y camino de accion es una historia" es una adaptacion directa de Davenport.
 - **Fuente:** Davenport, T. & Kim, J. (2013). *Keeping Up with the Quants*. Harvard Business Review Press.
 
@@ -140,7 +140,7 @@
 
 | Termino | Definicion |
 |---|---|
-| **Master Arc** | Arco narrativo principal que cruza todos los entregables (00-14): descubrimiento → revelacion → decision → transformacion |
+| **Master Arc** | Arco narrativo principal que cruza Todos los entregables (00-14): descubrimiento → revelacion → decision → transformacion |
 | **Transformation Narrative** | Estructura de 3 actos (Current State / Decision Point / Future State) aplicada a un hallazgo o entregable |
 | **Scenario Narrative** | Relato vivido de un futuro plausible: como seria el dia a dia si se toma esa decision |
 | **Risk Narrative** | Narrativa basada en pensamiento consecuencial: si X → entonces Y → cascada Z. Factual, no alarmista |

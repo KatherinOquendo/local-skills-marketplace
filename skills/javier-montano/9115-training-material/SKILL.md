@@ -3,7 +3,7 @@ name: training-material
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Course design, exercises, assessments, facilitator guide, handouts.
+  Course design, exercises, assessments, facilitator guide, handouts. [EXPLICIT]
   Trigger: "training material"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Training Material
 > "Method over hacks."
 ## TL;DR
-Course design, exercises, assessments, facilitator guide, handouts.
+Course design, exercises, assessments, facilitator guide, handouts. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Course design, exercises, assessments, facilitator guide, handouts.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/training-material" — Run the full training material workflow
+- "training material on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

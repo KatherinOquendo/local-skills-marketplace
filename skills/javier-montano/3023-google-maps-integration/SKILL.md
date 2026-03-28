@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Integrates Google Maps Platform APIs including Maps JavaScript API, advanced markers, geocoding, Places API, and Directions API for building location-aware web applications with interactive maps. Use this skill when adding maps, location search, address autocomplete, routing, or geospatial features to web applications.
+Integrates Google Maps Platform APIs including Maps JavaScript API, advanced markers, geocoding, Places API, and Directions API for building location-aware web applications with interactive maps. Use this skill when adding maps, location search, address autocomplete, routing, or geospatial features to web applications. [EXPLICIT]
 
 ## Procedure
 
@@ -77,3 +77,25 @@ Integrates Google Maps Platform APIs including Maps JavaScript API, advanced mar
 - `vanilla-javascript` — Maps API integration without framework wrappers
 - `responsive-design` — responsive map containers and mobile interaction
 - `performance-architecture` — lazy loading maps for page performance
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/google-maps-integration" — Run the full google maps integration workflow
+- "google maps integration on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -10,34 +10,34 @@ tags: [devops, dns, domain, ssl, firebase-hosting, mx-records, cname]
 # 093 — Domain & DNS Setup {DevOps}
 
 ## Purpose
-Configure DNS records for Firebase Hosting, email delivery, domain verification, and SSL certificates. Ensure all domains resolve correctly with proper security and email functionality.
+Configure DNS records for Firebase Hosting, email delivery, domain verification, and SSL certificates. Ensure all domains resolve correctly with proper security and email functionality. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of DNS Propagation**: DNS changes take 1-48 hours to propagate globally. Plan changes in advance. Never change DNS during high-traffic periods.
-2. **Law of Record Specificity**: Each record type serves one purpose. A records for hosting, MX for email, TXT for verification, CNAME for aliases. Never mix purposes.
-3. **Law of SSL Enforcement**: All domains serve HTTPS only. HTTP redirects to HTTPS. HSTS headers enabled with 1-year max-age.
+1. **Law of DNS Propagation**: DNS changes take 1-48 hours to propagate globally. Plan changes in advance. Never change DNS during high-traffic periods. [EXPLICIT]
+2. **Law of Record Specificity**: Each record type serves one purpose. A records for hosting, MX for email, TXT for verification, CNAME for aliases. Never mix purposes. [EXPLICIT]
+3. **Law of SSL Enforcement**: All domains serve HTTPS only. HTTP redirects to HTTPS. HSTS headers enabled with 1-year max-age. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Firebase Hosting Domain
-1. In Firebase Console → Hosting → Add Custom Domain.
-2. Add A records in DNS provider pointing to Firebase IPs (provided in console).
-3. Add TXT record for domain ownership verification.
-4. Wait for SSL provisioning (Firebase uses Let's Encrypt, auto-renews).
-5. Verify: `curl -I https://yourdomain.com` returns Firebase hosting headers.
+1. In Firebase Console → Hosting → Add Custom Domain. [EXPLICIT]
+2. Add A records in DNS provider pointing to Firebase IPs (provided in console). [EXPLICIT]
+3. Add TXT record for domain ownership verification. [EXPLICIT]
+4. Wait for SSL provisioning (Firebase uses Let's Encrypt, auto-renews). [EXPLICIT]
+5. Verify: `curl -I https://yourdomain.com` returns Firebase hosting headers. [EXPLICIT]
 
 ### Phase 2 — Email Configuration
-1. Add MX records for email provider (Google Workspace, Zoho, etc.).
-2. Add SPF TXT record: `v=spf1 include:_spf.google.com ~all`.
-3. Add DKIM TXT record from email provider.
-4. Add DMARC TXT record: `v=DMARC1; p=quarantine; rua=mailto:admin@domain.com`.
+1. Add MX records for email provider (Google Workspace, Zoho, etc.). [EXPLICIT]
+2. Add SPF TXT record: `v=spf1 include:_spf.google.com ~all`. [EXPLICIT]
+3. Add DKIM TXT record from email provider. [EXPLICIT]
+4. Add DMARC TXT record: `v=DMARC1; p=quarantine; rua=mailto:admin@domain.com`. [EXPLICIT]
 
 ### Phase 3 — Subdomain & Alias Setup
-1. `www` CNAME → root domain (or Firebase Hosting).
-2. `api.domain.com` CNAME → Cloud Functions URL or Cloud Run service.
-3. `staging.domain.com` A records → staging Firebase project.
-4. Wildcard `*.domain.com` only if needed — prefer explicit subdomains.
+1. `www` CNAME → root domain (or Firebase Hosting). [EXPLICIT]
+2. `api.domain.com` CNAME → Cloud Functions URL or Cloud Run service. [EXPLICIT]
+3. `staging.domain.com` A records → staging Firebase project. [EXPLICIT]
+4. Wildcard `*.domain.com` only if needed — prefer explicit subdomains. [EXPLICIT]
 
 ## I/O
 
@@ -50,11 +50,11 @@ Configure DNS records for Firebase Hosting, email delivery, domain verification,
 
 ## Quality Gates — 5 Checks
 
-1. **A records resolve to Firebase IPs** — `dig A yourdomain.com` returns expected IPs.
-2. **SSL certificate active** — no mixed content warnings, HSTS header present.
-3. **MX records valid** — `dig MX yourdomain.com` returns email provider.
-4. **SPF + DKIM + DMARC configured** — email passes authentication checks.
-5. **No dangling CNAMEs** — all CNAME targets are active services.
+1. **A records resolve to Firebase IPs** — `dig A yourdomain.com` returns expected IPs. [EXPLICIT]
+2. **SSL certificate active** — no mixed content warnings, HSTS header present. [EXPLICIT]
+3. **MX records valid** — `dig MX yourdomain.com` returns email provider. [EXPLICIT]
+4. **SPF + DKIM + DMARC configured** — email passes authentication checks. [EXPLICIT]
+5. **No dangling CNAMEs** — all CNAME targets are active services. [EXPLICIT]
 
 ## Edge Cases
 
@@ -69,3 +69,17 @@ Configure DNS records for Firebase Hosting, email delivery, domain verification,
 - Email going to spam → verify SPF, DKIM, DMARC records. Test with mail-tester.com.
 - Domain not resolving → check nameserver configuration, verify zone file syntax.
 - Mixed content warnings → audit all asset URLs, ensure HTTPS everywhere.
+
+## Usage
+
+Example invocations:
+
+- "/domain-dns-setup" — Run the full domain dns setup workflow
+- "domain dns setup on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

@@ -1,38 +1,9 @@
 [
-  {
-    "prompt": "Audit browser landscape for enterprise client with 5000 users.",
-    "assertions": [
-      "identifies browser distribution",
-      "maps device types",
-      "assesses version diversity",
-      "identifies support challenges"
-    ]
-  },
-  {
-    "prompt": "Map compatibility requirements for web application.",
-    "assertions": [
-      "defines browser support matrix",
-      "identifies compatibility risks",
-      "maps to testing requirements",
-      "recommends polyfill strategy"
-    ]
-  },
-  {
-    "prompt": "Assess accessibility baseline.",
-    "assertions": [
-      "evaluates current WCAG compliance",
-      "identifies accessibility gaps",
-      "maps assistive technology usage",
-      "recommends improvements"
-    ]
-  },
-  {
-    "prompt": "Recommend device support strategy.",
-    "assertions": [
-      "analyzes cost-benefit per device",
-      "prioritizes by user population",
-      "recommends support tiers",
-      "addresses progressive enhancement"
-    ]
-  }
+  {"id": "client-browser-audit-happy-path", "type": "happy_path", "input": "Run client browser audit on this project", "expected_behavior": "Skill activates and produces the expected client browser audit output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "client-browser-audit-explicit-trigger", "type": "happy_path", "input": "Apply client browser audit analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the client browser audit workflow", "tags": ["trigger", "recognition"]},
+  {"id": "client-browser-audit-with-context", "type": "happy_path", "input": "Apply client browser audit to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive client browser audit analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "client-browser-audit-minimal-input", "type": "happy_path", "input": "Quick client browser audit", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "client-browser-audit-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to client browser audit", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "client-browser-audit-edge-empty-input", "type": "edge_case", "input": "Run client browser audit but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "client-browser-audit-edge-conflicting", "type": "edge_case", "input": "Apply client browser audit but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

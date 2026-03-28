@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Implements advanced TypeScript patterns: branded types, generics, utility
   types, discriminated unions, strict mode, module augmentation, and type-safe
-  API contracts for robust frontend and backend code.
+  API contracts for robust frontend and backend code. [EXPLICIT]
   Trigger: "TypeScript", "branded types", "generics", "utility types", "strict mode"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements advanced TypeScript patterns including branded types for domain safety, generics for reusable code, discriminated unions for exhaustive handling, and strict mode enforcement for maximum type safety. Use this skill when designing type-safe APIs, improving codebase type coverage, or when TypeScript types are too loose to catch bugs.
+Implements advanced TypeScript patterns including branded types for domain safety, generics for reusable code, discriminated unions for exhaustive handling, and strict mode enforcement for maximum type safety. Use this skill when designing type-safe APIs, improving codebase type coverage, or when TypeScript types are too loose to catch bugs. [EXPLICIT]
 
 ## Procedure
 
@@ -72,3 +72,25 @@ Implements advanced TypeScript patterns including branded types for domain safet
 - `angular-development` — TypeScript is the foundation of Angular
 - `react-development` — type-safe React components and hooks
 - `api-design` — type-safe API contracts with OpenAPI codegen
+
+## Usage
+
+Example invocations:
+
+- "/typescript-patterns" — Run the full typescript patterns workflow
+- "typescript patterns on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

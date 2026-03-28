@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Performs 7-dimension technical feasibility assessment covering architecture,
-  team capability, timeline, cost, risk, integration, and scalability.
-  Produces go/no-go recommendations with confidence levels.
+  team capability, timeline, cost, risk, integration, and scalability. [EXPLICIT]
+  Produces go/no-go recommendations with confidence levels. [EXPLICIT]
   Trigger: "feasibility", "technical assessment", "go/no-go", "viability"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Assesses technical feasibility across 7 dimensions — architecture, team capability, timeline, cost, risk, integration complexity, and scalability — to produce a go/no-go recommendation with confidence levels. Use this skill before committing to a technical approach, responding to an RFP, or greenlighting a new initiative.
+Assesses technical feasibility across 7 dimensions — architecture, team capability, timeline, cost, risk, integration complexity, and scalability — to produce a go/no-go recommendation with confidence levels. Use this skill before committing to a technical approach, responding to an RFP, or greenlighting a new initiative. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Assesses technical feasibility across 7 dimensions — architecture, team capabi
 - `cost-estimation` — detailed effort estimation for feasible approaches
 - `risk-assessment` — deeper risk analysis beyond feasibility scope
 - `scenario-analysis` — evaluating alternative approaches when feasibility is mixed
+
+## Usage
+
+Example invocations:
+
+- "/feasibility-validation" — Run the full feasibility validation workflow
+- "feasibility validation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Write efficient Firestore queries with compound filters, composite indexes,
-  cursor-based pagination, aggregation queries, and real-time listeners.
+  cursor-based pagination, aggregation queries, and real-time listeners. [EXPLICIT]
   Trigger: "firestore query", "firestore index", "firestore pagination", "firestore where"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides efficient Firestore query implementation — compound queries with multiple where clauses, composite index management, cursor-based pagination with `startAfter`/`limit`, aggregation queries (count, sum, average), and real-time listeners with proper cleanup. Use when building data-fetching logic against Firestore.
+Guides efficient Firestore query implementation — compound queries with multiple where clauses, composite index management, cursor-based pagination with `startAfter`/`limit`, aggregation queries (count, sum, average), and real-time listeners with proper cleanup. Use when building data-fetching logic against Firestore. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides efficient Firestore query implementation — compound queries with multip
 
 - `firestore-modeling` — query efficiency depends on data model design
 - `firestore-security-rules` — rules must allow the queries being performed
+
+## Usage
+
+Example invocations:
+
+- "/firestore-queries" — Run the full firestore queries workflow
+- "firestore queries on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

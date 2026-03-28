@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Integrate reCAPTCHA v3 and Firebase App Check for bot protection on forms,
-  APIs, and Firebase services without user friction.
+  APIs, and Firebase services without user friction. [EXPLICIT]
   Trigger: "reCAPTCHA", "bot protection", "app check", "spam prevention"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides reCAPTCHA v3 and Firebase App Check integration for invisible bot protection — scoring-based verification on forms and API endpoints, Firebase App Check for protecting backend services, and fallback strategies for low-score interactions. Use when protecting forms, APIs, or Firebase services from automated abuse.
+Guides reCAPTCHA v3 and Firebase App Check integration for invisible bot protection — scoring-based verification on forms and API endpoints, Firebase App Check for protecting backend services, and fallback strategies for low-score interactions. Use when protecting forms, APIs, or Firebase services from automated abuse. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides reCAPTCHA v3 and Firebase App Check integration for invisible bot protect
 
 - `firebase-auth` — reCAPTCHA protects auth flows from credential stuffing
 - `cloud-functions` — server-side token verification in Cloud Functions
+
+## Usage
+
+Example invocations:
+
+- "/recaptcha-integration" — Run the full recaptcha integration workflow
+- "recaptcha integration on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

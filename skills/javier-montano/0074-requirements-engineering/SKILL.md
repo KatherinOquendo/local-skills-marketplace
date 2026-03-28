@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Elicits, structures, and validates software requirements using user stories,
-  acceptance criteria in Given/When/Then format, and traceability matrices.
-  Transforms vague stakeholder needs into precise, testable specifications.
+  acceptance criteria in Given/When/Then format, and traceability matrices. [EXPLICIT]
+  Transforms vague stakeholder needs into precise, testable specifications. [EXPLICIT]
   Trigger: "user stories", "acceptance criteria", "requirements"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Transforms stakeholder needs into structured, testable requirements using user stories with acceptance criteria in Given/When/Then (Gherkin) format. Use this skill when starting a new feature, capturing business rules, or when requirements are ambiguous and need formalization.
+Transforms stakeholder needs into structured, testable requirements using user stories with acceptance criteria in Given/When/Then (Gherkin) format. Use this skill when starting a new feature, capturing business rules, or when requirements are ambiguous and need formalization. [EXPLICIT]
 
 ## Procedure
 
@@ -66,3 +66,25 @@ Transforms stakeholder needs into structured, testable requirements using user s
 - `stakeholder-mapping` — identifies who provides and validates requirements
 - `domain-driven-design` — provides ubiquitous language for precise requirements
 - `scenario-analysis` — evaluates alternative requirement approaches
+
+## Usage
+
+Example invocations:
+
+- "/requirements-engineering" — Run the full requirements engineering workflow
+- "requirements engineering on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

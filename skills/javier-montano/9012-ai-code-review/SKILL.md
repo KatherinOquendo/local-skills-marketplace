@@ -3,7 +3,7 @@ name: ai-code-review
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  LLM-assisted code review patterns, automated suggestion generation.
+  LLM-assisted code review patterns, automated suggestion generation. [EXPLICIT]
   Trigger: "ai code review"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Ai Code Review
 > "Method over hacks."
 ## TL;DR
-LLM-assisted code review patterns, automated suggestion generation.
+LLM-assisted code review patterns, automated suggestion generation. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ LLM-assisted code review patterns, automated suggestion generation.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/ai-code-review" — Run the full ai code review workflow
+- "ai code review on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

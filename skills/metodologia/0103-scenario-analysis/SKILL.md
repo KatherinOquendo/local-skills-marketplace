@@ -3,10 +3,10 @@ name: metodologia-scenario-analysis
 author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[scenario-count: 3+] [weight-override-path] — e.g. '4' or '3 weights.yaml'"
 description: >
-  Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension weighted scoring.
+  Evaluates 3+ modernization scenarios using Tree of Thought with 6-dimension weighted scoring. [EXPLICIT]
   Use when the user asks to "compare scenarios", "evaluate options", "run scenario analysis",
   "Tree of Thought", "which approach should we take", "compare architectures", or mentions
-  "Phase 3", "strategic analysis", "trade-off analysis", "SWOT comparison".
+  "Phase 3", "strategic analysis", "trade-off analysis", "SWOT comparison". [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,21 +20,21 @@ allowed-tools:
 
 # Strategic Scenario Analysis — Tree of Thought
 
-Develops 3+ parallel technology/approach scenarios, scores each across 6 weighted dimensions, performs SWOT per scenario, builds cross-scenario comparative analysis, and recommends the strongest path with documented trade-offs and conditional switching logic.
+Develops 3+ parallel technology/approach scenarios, scores each across 6 weighted dimensions, performs SWOT per scenario, builds cross-scenario comparative analysis, and recommends the strongest path with documented trade-offs and conditional switching logic. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Number of scenarios to evaluate (default: 3, min: 3)
 - `$2` — Weight override file path (optional; overrides default dimension weights)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para generación de escenarios y scoring, HITL para validación de pesos dimensionales y decisión final.
-  - **desatendido**: Zero interruptions. Scoring y recomendación automáticos. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en selección de escenarios y antes de recomendación final.
-  - **paso-a-paso**: Confirma cada escenario, cada score dimensional, y la recomendación.
+  - **piloto-auto**: Auto para generación de escenarios y scoring, HITL para validación de pesos dimensionales y decisión final. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Scoring y recomendación automáticos. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en selección de escenarios y antes de recomendación final. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada escenario, cada score dimensional, y la recomendación. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — scoring matrix + recommendation only) | `técnica` (full SWOT + risk register + implementation roadmap, default)
 
@@ -44,9 +44,9 @@ Parse from `$ARGUMENTS`.
 
 ### Strategic Analysis Philosophy
 
-1. **Mandatory divergence.** Minimum 3 scenarios. Confirmation bias favors the "obvious" scenario — alternatives challenge and strengthen it (or disqualify it).
-2. **Scoring > opinion.** Each dimension is scored with a rubric. If it cannot be scored, evidence is missing — do not infer, investigate.
-3. **Context changes, recommendation changes.** Conditional switching logic documents under what circumstances the recommendation would change. No recommendation is absolute.
+1. **Mandatory divergence.** Minimum 3 scenarios. Confirmation bias favors the "obvious" scenario — alternatives challenge and strengthen it (or disqualify it). [EXPLICIT]
+2. **Scoring > opinion.** Each dimension is scored with a rubric. If it cannot be scored, evidence is missing — do not infer, investigate. [EXPLICIT]
+3. **Context changes, recommendation changes.** Conditional switching logic documents under what circumstances the recommendation would change. No recommendation is absolute. [EXPLICIT]
 
 ## 6-Dimension Weighted Scoring
 
@@ -80,7 +80,7 @@ Parse from `$ARGUMENTS`.
 - Best for: digitally mature orgs, competitive urgency, ample resources.
 - Typical pattern: Greenfield rebuild, cloud-native, event sourcing.
 
-If `$1` > 3, generate additional scenarios as variations (e.g., "B with outsourced team", "C phased over 24 months", "A with selective cloud migration").
+If `$1` > 3, generate additional scenarios as variations (e.g., "B with outsourced team", "C phased over 24 months", "A with selective cloud migration"). [EXPLICIT]
 
 ## Per-Scenario Documentation
 
@@ -89,15 +89,15 @@ For each scenario, deliver:
 1. **Vision & Strategic Rationale** — one-sentence direction, business benefits, technical benefits, org impact
 2. **Technology Stack Proposal** — ASCII architecture diagram (presentation to API to services to data to infrastructure)
 3. **Scope Intervention Matrix** — effort vs complexity grid (3x3)
-4. **SWOT Assessment** — Strengths (internal+), Weaknesses (internal-), Opportunities (external+), Threats (external-). Minimum 3 items per quadrant.
+4. **SWOT Assessment** — Strengths (internal+), Weaknesses (internal-), Opportunities (external+), Threats (external-). Minimum 3 items per quadrant. [EXPLICIT]
 5. **Risk Register** — per-risk: ID, statement, impact (1-5), probability (1-5), score, mitigation, owner
-6. **Scoring Grid** — 6 dimensions with weighted scores + rationale per score. No empty cells.
+6. **Scoring Grid** — 6 dimensions with weighted scores + rationale per score. No empty cells. [EXPLICIT]
 7. **Verdict Callout** — Final score, recommendation tier (STRONG / VIABLE / CONDITIONAL / NOT RECOMMENDED), key drivers, primary concern, next steps
 
 ## Cross-Scenario Comparative Analysis
 
 ### Scoring Matrix
-All scenarios side-by-side with per-dimension winners and total weighted scores.
+All scenarios side-by-side with per-dimension winners and total weighted scores. [EXPLICIT]
 
 ### Trade-off Decision Map
 ```
@@ -133,10 +133,10 @@ Document 5+ triggers that would change the recommendation:
 ## Implementation Roadmap (Recommended Scenario)
 
 4 phases with go/no-go gates:
-1. **Foundation (Months 1-2):** Team, PoC, validate assumptions. Gate: PoC achieves target KPI.
-2. **Pilot (Months 3-5):** Expand scope, test integration. Gate: load test passes, SLO targets met.
-3. **Scale (Months 6-10):** Full migration, parallel run. Gate: zero incidents during parallel run.
-4. **Optimize (Months 10-12):** Stabilize, cost-optimize. Gate: ops/finance/security sign-off.
+1. **Foundation (Months 1-2):** Team, PoC, validate assumptions. Gate: PoC achieves target KPI. [EXPLICIT]
+2. **Pilot (Months 3-5):** Expand scope, test integration. Gate: load test passes, SLO targets met. [EXPLICIT]
+3. **Scale (Months 6-10):** Full migration, parallel run. Gate: zero incidents during parallel run. [EXPLICIT]
+4. **Optimize (Months 10-12):** Stabilize, cost-optimize. Gate: ops/finance/security sign-off. [EXPLICIT]
 
 ## Edge Cases
 
@@ -195,7 +195,7 @@ Document 5+ triggers that would change the recommendation:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - Flowchart: decision tree (Tree-of-Thought) with criteria at each node
@@ -282,3 +282,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026
+
+## Usage
+
+Example invocations:
+
+- "/scenario-analysis" — Run the full scenario analysis workflow
+- "scenario analysis on this project" — Apply to current context
+

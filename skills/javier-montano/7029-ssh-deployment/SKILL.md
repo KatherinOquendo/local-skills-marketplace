@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Deploy to Hostinger via SSH+Git with key management, post-receive hooks, and
-  rollback strategy. Alternative to FTP/SFTP for automated deployments.
+  rollback strategy. Alternative to FTP/SFTP for automated deployments. [EXPLICIT]
   Trigger: "SSH deploy", "Hostinger SSH", "git push deploy", "remote deployment", "SFTP"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Deploys to Hostinger shared hosting via SSH+Git as an alternative to FTP/SFTP. Sets up SSH key authentication, bare Git repository on the server with post-receive hook for automatic deployment, and rollback via `git revert`. Covers key management, connection security, and `.ssh/config` for convenience. Falls back to SFTP if SSH is unavailable on the Hostinger plan.
+Deploys to Hostinger shared hosting via SSH+Git as an alternative to FTP/SFTP. Sets up SSH key authentication, bare Git repository on the server with post-receive hook for automatic deployment, and rollback via `git revert`. Covers key management, connection security, and `.ssh/config` for convenience. Falls back to SFTP if SSH is unavailable on the Hostinger plan. [EXPLICIT]
 
 ## Procedure
 
@@ -116,3 +116,25 @@ Deploys to Hostinger shared hosting via SSH+Git as an alternative to FTP/SFTP. S
 - `firebase-deployment` — Firebase Hosting deployment (alternative target)
 - `github-actions-ci` — Automate SSH deployment in CI pipeline
 - `deployment-checklist` — Pre-deploy quality gates
+
+## Usage
+
+Example invocations:
+
+- "/ssh-deployment" — Run the full ssh deployment workflow
+- "ssh deployment on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

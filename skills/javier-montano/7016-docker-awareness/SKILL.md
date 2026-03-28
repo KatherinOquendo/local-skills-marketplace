@@ -3,7 +3,7 @@ name: docker-awareness
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Dockerfile patterns, compose, multi-stage builds for development awareness.
+  Dockerfile patterns, compose, multi-stage builds for development awareness. [EXPLICIT]
   Trigger: "docker awareness"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Docker Awareness
 > "Method over hacks."
 ## TL;DR
-Dockerfile patterns, compose, multi-stage builds for development awareness.
+Dockerfile patterns, compose, multi-stage builds for development awareness. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Dockerfile patterns, compose, multi-stage builds for development awareness.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/docker-awareness" — Run the full docker awareness workflow
+- "docker awareness on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

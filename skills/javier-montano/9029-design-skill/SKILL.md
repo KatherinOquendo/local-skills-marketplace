@@ -1,10 +1,10 @@
 ---
 name: design-skill
 author: JM Labs (Javier Montaño)
-description: >
-  Design a plugin skill in detail: frontmatter, procedure outline, quality criteria, anti-patterns, edge cases, tool selection.
-  Trigger: design skill, skill design, create skill spec, plan skill, draft skill.
-argument-hint: "<skill-name> [plugin-path]"
+description: 
+  Design a plugin skill in detail: frontmatter, procedure outline, quality criteria, anti-patterns, edge cases, tool selection. [EXPLICIT]
+  Trigger: design skill, skill design, create skill spec, plan skill, draft skill. [EXPLICIT]
+argument-hint: "skill-name [plugin-path]"
 allowed-tools:
   - Read
   - Write
@@ -17,7 +17,7 @@ allowed-tools:
 
 > "A well-designed skill is a contract: it promises a procedure, guarantees quality criteria, and warns about anti-patterns."
 
-Design a single plugin skill in full detail. Produces a complete SKILL.md specification with frontmatter, guiding principle, numbered procedure, quality criteria, anti-patterns, and edge cases. Validates against MOAT quality dimensions.
+Design a single plugin skill in full detail. Produces a complete SKILL.md specification with frontmatter, guiding principle, numbered procedure, quality criteria, anti-patterns, and edge cases. Validates against MOAT quality dimensions. [EXPLICIT]
 
 ---
 
@@ -52,16 +52,16 @@ Draft the complete YAML frontmatter using ALL official fields. The full field ca
 - `$1`, `$2`, ..., `$N` -- Positional arguments.
 - `${CLAUDE_SKILL_DIR}` -- Absolute path to the skill's directory at runtime.
 
-Apply **least privilege**: include only tools the skill genuinely needs. Read-only skills must NOT include Write.
+Apply **least privilege**: include only tools the skill genuinely needs. Read-only skills must NOT include Write. [EXPLICIT]
 
 ### Step 3 -- Design Procedure Steps
 
 - Write 5-10 numbered procedure steps.
 - Each step must have:
-  - **Action verb** as the first word (Scan, Read, Validate, Generate, Produce).
-  - **Input**: What data the step consumes.
-  - **Output**: What the step produces.
-  - **Evidence tag**: Which tag applies to the step's output.
+  - **Action verb** as the first word (Scan, Read, Validate, Generate, Produce). [EXPLICIT]
+  - **Input**: What data the step consumes. [EXPLICIT]
+  - **Output**: What the step produces. [EXPLICIT]
+  - **Evidence tag**: Which tag applies to the step's output. [EXPLICIT]
 - Steps must be ordered logically -- no forward references.
 - Include conditional logic where relevant ("If X, then Y. Otherwise, Z.").
 
@@ -69,9 +69,9 @@ Apply **least privilege**: include only tools the skill genuinely needs. Read-on
 
 - Define 4-6 testable quality criteria.
 - Each criterion must be:
-  - **Observable**: Can be verified by reading the output.
-  - **Measurable**: Has a clear pass/fail threshold.
-  - **Tagged**: Includes an evidence tag indicating the verification method.
+  - **Observable**: Can be verified by reading the output. [EXPLICIT]
+  - **Measurable**: Has a clear pass/fail threshold. [EXPLICIT]
+  - **Tagged**: Includes an evidence tag indicating the verification method. [EXPLICIT]
 - Format: Numbered list. Each criterion is a single declarative sentence.
 - Example: "Every finding references the exact file path relative to plugin root. `[CODIGO]`"
 
@@ -93,10 +93,10 @@ Apply **least privilege**: include only tools the skill genuinely needs. Read-on
 
 - Review the procedure steps to determine which tools are actually used.
 - Apply the least privilege principle:
-  - Read-only skills: `Read`, `Glob`, `Grep` (never Write).
-  - Analysis skills: `Read`, `Glob`, `Grep`, `Bash`.
-  - Generation skills: `Read`, `Write`, `Glob`, `Grep`.
-  - Full-access skills: `Read`, `Write`, `Glob`, `Grep`, `Bash`.
+  - Read-only skills: `Read`, `Glob`, `Grep` (never Write). [EXPLICIT]
+  - Analysis skills: `Read`, `Glob`, `Grep`, `Bash`. [EXPLICIT]
+  - Generation skills: `Read`, `Write`, `Glob`, `Grep`. [EXPLICIT]
+  - Full-access skills: `Read`, `Write`, `Glob`, `Grep`, `Bash`. [EXPLICIT]
 - Document the rationale for each tool's inclusion. `[CONFIG]`
 
 ### Step 8 -- Compose the Guiding Principle
@@ -163,15 +163,15 @@ allowed-tools:
 1. Do the thing.
 2. Return result.
 ```
-Missing: no trigger phrases in description, Write included for a read-only skill, vague steps, no quality criteria, no anti-patterns, no edge cases.
+Missing: no trigger phrases in description, Write included for a read-only skill, vague steps, no quality criteria, no anti-patterns, no edge cases. [EXPLICIT]
 
 **Good skill design:**
 ```
 ---
 name: validate-config
 description: >
-  Validates configuration files for correctness and consistency.
-  Trigger: validate config, check config, config audit.
+  Validates configuration files for correctness and consistency. [EXPLICIT]
+  Trigger: validate config, check config, config audit. [EXPLICIT]
 allowed-tools:
   - Read
   - Glob
@@ -187,25 +187,33 @@ allowed-tools:
 - [ ] Every config file is validated; none silently skipped.
 ...
 ## Anti-Patterns
-1. Accepting malformed YAML because the parser auto-corrects...
+1. Accepting malformed YAML because the parser auto-corrects... [EXPLICIT]
 ## Edge Cases
-1. Plugin with zero config files -- report INFO, do not error.
+1. Plugin with zero config files -- report INFO, do not error. [EXPLICIT]
 ```
-Includes: trigger phrases, least-privilege tools, guiding quote, structured steps with evidence tags, quality criteria, anti-patterns, edge cases.
+Includes: trigger phrases, least-privilege tools, guiding quote, structured steps with evidence tags, quality criteria, anti-patterns, edge cases. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Including `Write` in allowed-tools for a read-only analysis skill.
-2. Writing vague quality criteria like "output is high quality" (not testable).
-3. Copying anti-patterns from another skill without adapting to this skill's domain.
-4. Designing procedure steps that reference outputs from later steps (forward reference).
-5. Setting `disable-model-invocation: true` without justification (limits discoverability).
-6. Omitting the guiding principle quote (every skill benefits from a north star).
+1. Including `Write` in allowed-tools for a read-only analysis skill. [EXPLICIT]
+2. Writing vague quality criteria like "output is high quality" (not testable). [EXPLICIT]
+3. Copying anti-patterns from another skill without adapting to this skill's domain. [EXPLICIT]
+4. Designing procedure steps that reference outputs from later steps (forward reference). [EXPLICIT]
+5. Setting `disable-model-invocation: true` without justification (limits discoverability). [EXPLICIT]
+6. Omitting the guiding principle quote (every skill benefits from a north star). [EXPLICIT]
 
 ## Edge Cases
 
-1. Skill has no arguments (invoked without parameters) -- `argument-hint` should be omitted, not set to empty string.
-2. Skill needs a tool for a single step but not the rest -- still include it in allowed-tools, document why in the procedure.
-3. Skill is internal-only (called by agents, never by users) -- set `user-invocable: false` and omit from command routing.
-4. Skill requires a specific model for quality (e.g., complex reasoning) -- use the `model` field with justification.
-5. Skill's MOAT depth was set to MINIMAL but the design reveals HIGH complexity -- flag for MOAT strategy update.
+1. Skill has no arguments (invoked without parameters) -- `argument-hint` should be omitted, not set to empty string. [EXPLICIT]
+2. Skill needs a tool for a single step but not the rest -- still include it in allowed-tools, document why in the procedure. [EXPLICIT]
+3. Skill is internal-only (called by agents, never by users) -- set `user-invocable: false` and omit from command routing. [EXPLICIT]
+4. Skill requires a specific model for quality (e.g., complex reasoning) -- use the `model` field with justification. [EXPLICIT]
+5. Skill's MOAT depth was set to MINIMAL but the design reveals HIGH complexity -- flag for MOAT strategy update. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/design-skill" — Run the full design skill workflow
+- "design skill on this project" — Apply to current context
+

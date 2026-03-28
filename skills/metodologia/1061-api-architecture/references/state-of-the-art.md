@@ -8,7 +8,7 @@ copyright: © Comunidad MetodologIA
 
 # State of the Art: API Architecture (2024–2026)
 
-La arquitectura de APIs atraviesa una transformación acelerada impulsada por tres fuerzas convergentes: la consolidación de API-first como estrategia de negocio (no solo técnica), la irrupción de IA generativa en el ciclo de diseño y consumo de APIs, y la maduración de estándares de seguridad que elevan el piso mínimo de cumplimiento. Este documento captura las tendencias dominantes, herramientas emergentes y debates activos que todo arquitecto de APIs debe considerar en 2026.
+La arquitectura de APIs atraviesa una transformación acelerada impulsada por tres fuerzas convergentes: la consolidación de API-first como estrategia de negocio (no solo técnica), la irrupción de IA generativa en el ciclo de diseño y consumo de APIs, y la maduración de estándares de seguridad que elevan el piso mínimo de cumplimiento. Este documento captura las tendencias dominantes, herramientas emergentes y debates activos que Todo arquitecto de APIs debe considerar en 2026.
 
 ---
 
@@ -44,7 +44,7 @@ La arquitectura de APIs atraviesa una transformación acelerada impulsada por tr
 
 ## Tendencia 4: Evolución de Seguridad API — OAuth 2.1, FAPI 2.0 y API Threat Protection (2024–2026)
 
-**Descripción:** OAuth 2.1 (RFC en progreso, finalización esperada 2025) consolida las mejores prácticas eliminando flujos inseguros (implicit grant deprecado formalmente, PKCE obligatorio para todos los flujos públicos). FAPI 2.0 (Financial-grade API) se adopta más allá de finanzas: healthcare (SMART on FHIR), gobierno (Open Banking Brasil, PSD2 Europa) y telecomunicaciones. API threat protection evoluciona con herramientas como Salt Security, Noname Security y 42Crunch que aplican behavioral analysis para detectar ataques de lógica de negocio que WAFs tradicionales no capturan. OWASP API Security Top 10 (2023) se consolida como estándar de evaluación.
+**Descripción:** OAuth 2.1 (RFC en progreso, finalización esperada 2025) consolida las mejores prácticas eliminando flujos inseguros (implicit grant deprecado formalmente, PKCE obligatorio para Todos los flujos públicos). FAPI 2.0 (Financial-grade API) se adopta más allá de finanzas: healthcare (SMART on FHIR), gobierno (Open Banking Brasil, PSD2 Europa) y telecomunicaciones. API threat protection evoluciona con herramientas como Salt Security, Noname Security y 42Crunch que aplican behavioral analysis para detectar ataques de lógica de negocio que WAFs tradicionales no capturan. OWASP API Security Top 10 (2023) se consolida como estándar de evaluación.
 
 **Impacto en la práctica de discovery:** La sección S4 (Security & Access Control) del skill eleva su piso mínimo: OAuth 2.1 como baseline (no OAuth 2.0 legacy), PKCE obligatorio, y evaluación contra OWASP API Top 10 como checklist de validación. Para clientes en sectores regulados, FAPI 2.0 se convierte en requisito. Rate limiting evoluciona de protección volumétrica a behavioral — se monitorean patrones de consumo, no solo conteos.
 

@@ -3,7 +3,7 @@ name: constitution-compliance
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Validate outputs against Constitution v5.2.0 (18 principles). Flag violations before delivery.
+  Validate outputs against Constitution v5.2.0 (18 principles). Flag violations before delivery. [EXPLICIT]
   Trigger: "constitution compliance"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Validate outputs against Constitution v5.2.0 (18 principles). Flag violations before delivery. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md.
+Validate outputs against Constitution v5.2.0 (18 principles). Flag violations before delivery. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md. [EXPLICIT]
 
 ## Procedure
 
@@ -49,3 +49,25 @@ Validate outputs against Constitution v5.2.0 (18 principles). Flag violations be
 ## Related Skills
 
 - See PRISTINO.md for full orchestration protocol
+
+## Usage
+
+Example invocations:
+
+- "/constitution-compliance" — Run the full constitution compliance workflow
+- "constitution compliance on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

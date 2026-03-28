@@ -8,7 +8,7 @@
 
 ### Pierre Wack — Shell Scenario Planning (1985)
 - **Relevancia:** Origeno del scenario planning corporativo moderno. Wack demostro en Royal Dutch Shell que los escenarios no predicen el futuro — preparan a la organizacion para multiples futuros plausibles.
-- **Uso en el skill:** El principio rector "divergencia antes de convergencia" viene directamente de Wack: primero generar todos los escenarios viables, luego evaluar. Nunca al reves.
+- **Uso en el skill:** El principio rector "divergencia antes de convergencia" viene directamente de Wack: primero generar Todos los escenarios viables, luego evaluar. Nunca al reves.
 - **Fuente:** Wack, P. (1985). "Scenarios: Uncharted Waters Ahead." Harvard Business Review, Sept-Oct 1985.
 - **Fuente complementaria:** Wack, P. (1985). "Scenarios: Shooting the Rapids." Harvard Business Review, Nov-Dec 1985.
 
@@ -48,7 +48,7 @@
 - **URL:** https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions
 
 ### ThoughtWorks Technology Radar — ADRs en "Adopt"
-- **Relevancia:** Desde 2020, ThoughtWorks clasifica ADRs como "Adopt" — practica recomendada para todos los proyectos.
+- **Relevancia:** Desde 2020, ThoughtWorks clasifica ADRs como "Adopt" — practica recomendada para Todos los proyectos.
 - **Fuente:** ThoughtWorks (2024). *Technology Radar Vol. 30*. thoughtworks.com/radar
 
 ---
@@ -61,8 +61,8 @@
 - **Fuente:** Belton, V. & Stewart, T.J. (2002). *Multiple Criteria Decision Analysis: An Integrated Approach*. Springer.
 
 ### Saaty — The Analytic Hierarchy Process (AHP)
-- **Relevancia:** Metodo sistematico para derivar pesos de criterios mediante comparaciones pareadas. Alternativa mas rigurosa al weight override manual.
-- **Uso en el skill:** Cuando stakeholders no logran consenso en pesos, AHP ofrece un metodo estructurado para llegar a pesos consistentes.
+- **Relevancia:** MeTodo sistematico para derivar pesos de criterios mediante comparaciones pareadas. Alternativa mas rigurosa al weight override manual.
+- **Uso en el skill:** Cuando stakeholders no logran consenso en pesos, AHP ofrece un meTodo estructurado para llegar a pesos consistentes.
 - **Fuente:** Saaty, T.L. (1980). *The Analytic Hierarchy Process*. McGraw-Hill.
 
 ### TOPSIS (Hwang & Yoon, 1981)
@@ -86,7 +86,7 @@
 - **Fuente:** ISO/IEC/IEEE 42010:2022. "Systems and software engineering — Architecture description."
 
 ### ATAM — Architecture Tradeoff Analysis Method (SEI/CMU)
-- **Relevancia:** Metodo del Software Engineering Institute para evaluar trade-offs en arquitecturas de software. Usa "quality attribute scenarios" como unidad de evaluacion.
+- **Relevancia:** MeTodo del Software Engineering Institute para evaluar trade-offs en arquitecturas de software. Usa "quality attribute scenarios" como unidad de evaluacion.
 - **Uso en el skill:** El SWOT por escenario incorpora elementos de ATAM: los scenarios de quality attributes informan Strengths/Weaknesses, y los sensitivity/tradeoff points informan el scoring.
 - **Fuente:** Kazman, R., Klein, M., & Clements, P. (2000). "ATAM: Method for Architecture Evaluation." SEI-CMU, CMU/SEI-2000-TR-004.
 - **URL:** https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=5177
@@ -134,9 +134,9 @@
 | **Conditional Switching** | Logica documentada que indica bajo que circunstancias la recomendacion cambiaria a otro escenario |
 | **Decision Rules** | Reglas basadas en la diferencia de score entre escenarios para categorizar la confianza de la recomendacion |
 | **SWOT** | Strengths (fortalezas internas), Weaknesses (debilidades internas), Opportunities (oportunidades externas), Threats (amenazas externas) |
-| **MCDA** | Multi-Criteria Decision Analysis — familia de metodos para decisiones con multiples criterios en conflicto |
+| **MCDA** | Multi-Criteria Decision Analysis — familia de meTodos para decisiones con multiples criterios en conflicto |
 | **ADR** | Architecture Decision Record — documento que captura una decision de arquitectura con contexto, alternativas, y consecuencias |
-| **ATAM** | Architecture Tradeoff Analysis Method — metodo de evaluacion de trade-offs arquitectonicos del SEI |
+| **ATAM** | Architecture Tradeoff Analysis Method — meTodo de evaluacion de trade-offs arquitectonicos del SEI |
 | **TCO** | Total Cost of Ownership — costo total de propiedad incluyendo CAPEX, OPEX, y costos ocultos |
 | **Parallel Run** | Periodo de operacion simultanea de sistema legacy y nuevo para validar equivalencia funcional |
 

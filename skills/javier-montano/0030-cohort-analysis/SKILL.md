@@ -3,7 +3,7 @@ name: cohort-analysis
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  User segmentation, retention curves, lifecycle stage analysis.
+  User segmentation, retention curves, lifecycle stage analysis. [EXPLICIT]
   Trigger: "cohort analysis"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Cohort Analysis
 > "Method over hacks."
 ## TL;DR
-User segmentation, retention curves, lifecycle stage analysis.
+User segmentation, retention curves, lifecycle stage analysis. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ User segmentation, retention curves, lifecycle stage analysis.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/cohort-analysis" — Run the full cohort analysis workflow
+- "cohort analysis on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

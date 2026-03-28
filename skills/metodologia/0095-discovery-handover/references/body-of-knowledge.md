@@ -136,7 +136,7 @@ Mantener la estructura de governance del discovery (reuniones semanales de aline
 | Métrica | Target | Indicador de Falla |
 |---------|--------|-------------------|
 | % de owners asignados | 100% | Tareas operativas sin nombre |
-| % de supuestos con fecha de validación | 100% | Supuestos con "TBD" en deadline |
+| % de supuestos con fecha de validación | 100% | Supuestos con "pending" en deadline |
 | Kill criteria definidos con umbrales numéricos | ≥3 criterios | Criterios cualitativos solamente |
 | Velocidad Sprint 1 vs. estimada | ≥70% | Velocidad <50% señala problemas de readiness |
 | Stakeholders contactados post-handover | 100% del RACI | Stakeholder que "no supo" del handover |

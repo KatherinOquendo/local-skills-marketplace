@@ -82,7 +82,7 @@ Tendencias emergentes, tecnologías en evolución y cambios de paradigma que imp
 **Estado:** Evolución conceptual. Shift-left se expande a shift-right y shift-everywhere.
 
 **Impacto en el skill:**
-- S2 (Test Strategy): La estrategia cubre todo el ciclo — no solo pre-deploy
+- S2 (Test Strategy): La estrategia cubre Todo el ciclo — no solo pre-deploy
 - S4 (Quality Gates): Production gate con la misma importancia que commit gate
 - S6 (Implementation): Plan de implementación incluye observabilidad de calidad post-deploy
 

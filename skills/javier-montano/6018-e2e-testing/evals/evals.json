@@ -1,0 +1,9 @@
+[
+  {"id": "e2e-testing-happy-path", "type": "happy_path", "input": "Run e2e testing on this project", "expected_behavior": "Skill activates and produces the expected e2e testing output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "e2e-testing-explicit-trigger", "type": "happy_path", "input": "Apply e2e testing analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the e2e testing workflow", "tags": ["trigger", "recognition"]},
+  {"id": "e2e-testing-with-context", "type": "happy_path", "input": "Apply e2e testing to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive e2e testing analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "e2e-testing-minimal-input", "type": "happy_path", "input": "Quick e2e testing", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "e2e-testing-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to e2e testing", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "e2e-testing-edge-empty-input", "type": "edge_case", "input": "Run e2e testing but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "e2e-testing-edge-conflicting", "type": "edge_case", "input": "Apply e2e testing but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

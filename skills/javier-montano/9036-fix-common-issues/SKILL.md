@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 description: >
   Automatically fixes mechanical issues found during plugin validation, including JSON
   formatting, missing shebangs, file permissions, hook types, frontmatter gaps, and
-  settings.json defaults. ALWAYS asks for confirmation before modifying any files.
-  Trigger: fix issues, auto-fix, fix common problems, repair plugin.
+  settings.json defaults. ALWAYS asks for confirmation before modifying any files. [EXPLICIT]
+  Trigger: fix issues, auto-fix, fix common problems, repair plugin. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -19,28 +19,28 @@ allowed-tools:
 
 > "Automate the mechanical so humans can focus on the meaningful."
 
-Auto-remediates mechanical issues found during plugin validation: JSON syntax, missing shebangs, script permissions, incompatible hook types, missing frontmatter fields, and settings.json defaults. Presents all proposed changes for user approval before modifying any file.
+Auto-remediates mechanical issues found during plugin validation: JSON syntax, missing shebangs, script permissions, incompatible hook types, missing frontmatter fields, and settings.json defaults. Presents all proposed changes for user approval before modifying any file. [EXPLICIT]
 
 ---
 
 ## Procedure
 
-1. **Inventory fixable issues** -- review findings from previous validation results. If no validation has been run yet, inform the user and suggest running validations first. Categorize issues into fixable (mechanical) vs. non-fixable (requires human judgment). List only mechanical issues for auto-fix.
+1. **Inventory fixable issues** -- review findings from previous validation results. If no validation has been run yet, inform the user and suggest running validations first. Categorize issues into fixable (mechanical) vs. non-fixable (requires human judgment). List only mechanical issues for auto-fix. [EXPLICIT]
 
-2. **Detect and plan JSON trailing comma fixes** -- scan all `.json` files for trailing commas (comma before `]` or `}`). Plan: parse the JSON, reformat with standard 2-space indentation, write clean JSON back.
+2. **Detect and plan JSON trailing comma fixes** -- scan all `.json` files for trailing commas (comma before `]` or `}`). Plan: parse the JSON, reformat with standard 2-space indentation, write clean JSON back. [EXPLICIT]
 
-3. **Detect and plan missing shebang fixes** -- scan all `.sh` files for missing `#!/bin/bash` (or `#!/usr/bin/env bash`) on line 1. Plan: prepend `#!/bin/bash` followed by a newline.
+3. **Detect and plan missing shebang fixes** -- scan all `.sh` files for missing `#!/bin/bash` (or `#!/usr/bin/env bash`) on line 1. Plan: prepend `#!/bin/bash` followed by a newline. [EXPLICIT]
 
-4. **Detect and plan non-executable script fixes** -- check all `.sh` files in `scripts/` and `hooks/` for missing execute permission. Plan: mark for `chmod +x`.
+4. **Detect and plan non-executable script fixes** -- check all `.sh` files in `scripts/` and `hooks/` for missing execute permission. Plan: mark for `chmod +x`. [EXPLICIT]
 
-5. **Detect and plan prompt-to-command hook conversion** -- scan `hooks/hooks.json` for entries using `type: "prompt"` or `type: "agent"` on non-ToolUseContext events (any event other than PreToolUse, PostToolUse, PermissionRequest). Plan: convert to `type: "command"` using `echo` as the command, preserve the original prompt text as a comment in the command string.
+5. **Detect and plan prompt-to-command hook conversion** -- scan `hooks/hooks.json` for entries using `type: "prompt"` or `type: "agent"` on non-ToolUseContext events (any event other than PreToolUse, PostToolUse, PermissionRequest). Plan: convert to `type: "command"` using `echo` as the command, preserve the original prompt text as a comment in the command string. [EXPLICIT]
 
 6. **Detect and plan missing frontmatter field fixes** -- scan all `SKILL.md` files for missing required frontmatter fields (`name`, `description`, `allowed-tools`). Plan:
    - Missing `name`: derive from parent directory name in kebab-case
    - Missing `description`: add placeholder `"TODO: Add description with trigger phrases"`
    - Missing `allowed-tools`: add default `[Read]`
 
-7. **Detect and plan settings.json agent key fix** -- check if `settings.json` exists but lacks an `"agent"` key. Plan: find the first agent directory under `agents/`, set `"agent"` to that path.
+7. **Detect and plan settings.json agent key fix** -- check if `settings.json` exists but lacks an `"agent"` key. Plan: find the first agent directory under `agents/`, set `"agent"` to that path. [EXPLICIT]
 
 8. **Present all proposed changes for confirmation** -- display a numbered list of every planned modification:
    - Change number
@@ -48,14 +48,14 @@ Auto-remediates mechanical issues found during plugin validation: JSON syntax, m
    - What will change (before/after summary)
    - Category (JSON fix, shebang, permissions, hook type, frontmatter, settings)
 
-   **STOP HERE AND WAIT FOR USER APPROVAL.** Do not modify any files until the user explicitly confirms. The user may approve all, approve selectively by number, or reject.
+   **STOP HERE AND WAIT FOR USER APPROVAL.** Do not modify any files until the user explicitly confirms. The user may approve all, approve selectively by number, or reject. [EXPLICIT]
 
 9. **Apply approved fixes** -- execute only the changes the user approved. For each fix:
    - Read the file before modification
    - Apply the change
    - Verify the result (e.g., JSON parses cleanly, shebang is on line 1)
 
-10. **Re-validate after fixes** -- run the relevant validation checks on modified files to confirm the issues are resolved. Report any fixes that did not resolve their target issue.
+10. **Re-validate after fixes** -- run the relevant validation checks on modified files to confirm the issues are resolved. Report any fixes that did not resolve their target issue. [EXPLICIT]
 
 11. **Generate fix report** -- produce a summary listing:
     - Total issues found vs. fixed vs. skipped
@@ -85,28 +85,36 @@ Auto-remediates mechanical issues found during plugin validation: JSON syntax, m
 ```
 Fix 1: Fix hooks.json
 ```
-Missing: no file path, no before/after, no change type.
+Missing: no file path, no before/after, no change type. [EXPLICIT]
 
 **Good fix proposal:**
 ```
 Fix 1 [Hook Type] hooks/hooks.json
   Before: { "type": "prompt", "prompt": "Review safety" } on SessionStart
   After:  { "type": "command", "command": "echo 'Review safety'" } on SessionStart
-  Reason: type:prompt requires ToolUseContext; SessionStart does not provide it.
+  Reason: type:prompt requires ToolUseContext; SessionStart does not provide it. [EXPLICIT]
 ```
-Includes: fix number, category, file path, before/after with context, reason for the change.
+Includes: fix number, category, file path, before/after with context, reason for the change. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Silent modification** -- applying fixes without showing the user what will change. Every fix must be previewed.
-2. **Fix-and-forget** -- applying a fix without re-validating. The shebang fix means nothing if the file still has syntax errors.
-3. **Destructive formatting** -- reformatting an entire JSON file when only a trailing comma needed removal, destroying intentional formatting.
-4. **Blind chmod** -- making every file executable without checking if it is actually a script. Only `.sh` files in `scripts/` and `hooks/` should be modified.
-5. **Overwriting custom frontmatter** -- replacing existing valid frontmatter fields while adding missing ones. Only add what is missing; never overwrite existing values.
+1. **Silent modification** -- applying fixes without showing the user what will change. Every fix must be previewed. [EXPLICIT]
+2. **Fix-and-forget** -- applying a fix without re-validating. The shebang fix means nothing if the file still has syntax errors. [EXPLICIT]
+3. **Destructive formatting** -- reformatting an entire JSON file when only a trailing comma needed removal, destroying intentional formatting. [EXPLICIT]
+4. **Blind chmod** -- making every file executable without checking if it is actually a script. Only `.sh` files in `scripts/` and `hooks/` should be modified. [EXPLICIT]
+5. **Overwriting custom frontmatter** -- replacing existing valid frontmatter fields while adding missing ones. Only add what is missing; never overwrite existing values. [EXPLICIT]
 
 ## Edge Cases
 
-1. **No fixable issues found** -- report "No mechanical issues detected" and skip the approval gate. Do not create an empty fix report.
-2. **User rejects all fixes** -- acknowledge the rejection, do not apply any changes, and suggest manual fixes with specific guidance for each issue.
-3. **File is read-only** -- detect permission errors before batching fixes. Exclude read-only files from the proposal and note them as requiring manual permission changes.
-4. **Conflicting fixes** -- if two fixes target the same file and region (e.g., frontmatter field addition and frontmatter reformatting), merge them into a single coherent change rather than applying sequentially with potential conflicts.
+1. **No fixable issues found** -- report "No mechanical issues detected" and skip the approval gate. Do not create an empty fix report. [EXPLICIT]
+2. **User rejects all fixes** -- acknowledge the rejection, do not apply any changes, and suggest manual fixes with specific guidance for each issue. [EXPLICIT]
+3. **File is read-only** -- detect permission errors before batching fixes. Exclude read-only files from the proposal and note them as requiring manual permission changes. [EXPLICIT]
+4. **Conflicting fixes** -- if two fixes target the same file and region (e.g., frontmatter field addition and frontmatter reformatting), merge them into a single coherent change rather than applying sequentially with potential conflicts. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/fix-common-issues" — Run the full fix common issues workflow
+- "fix common issues on this project" — Apply to current context
+

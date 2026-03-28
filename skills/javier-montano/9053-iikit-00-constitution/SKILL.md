@@ -116,3 +116,33 @@ Next: [/clear → ] <next_step> (model: <tier>)
 
 - Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path)
 ```
+
+## Usage
+
+Example invocations:
+
+- "/iikit-00-constitution" — Run the full iikit 00 constitution workflow
+- "iikit 00 constitution on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

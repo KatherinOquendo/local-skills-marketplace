@@ -3,10 +3,10 @@ name: metodologia-ux-writing
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[standard-number-or-name] [target-content-or-path]"
 description: >
-  UX writing and document accessibility standards for technical deliverables.
+  UX writing and document accessibility standards for technical deliverables. [EXPLICIT]
   Use when the user asks to "improve readability", "fix information hierarchy", "reduce cognitive load",
   "write microcopy", "check readability score", or mentions "UX writing", "scanability",
-  "Flesch-Kincaid", "escritura UX", "legibilidad", "cognitive load".
+  "Flesch-Kincaid", "escritura UX", "legibilidad", "cognitive load". [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,7 +20,7 @@ allowed-tools:
 
 # UX Writing: Information Design & Cognitive Accessibility Standards
 
-Ensures deliverables are business-readable, scannable, and cognitively accessible. Provides 5 standards: information hierarchy, cognitive load reduction, scannability, microcopy, and readability heuristics. Spanish-first bilingual support.
+Ensures deliverables are business-readable, scannable, and cognitively accessible. Provides 5 standards: information hierarchy, cognitive load reduction, scannability, microcopy, and readability heuristics. Spanish-first bilingual support. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -28,20 +28,20 @@ Ensures deliverables are business-readable, scannable, and cognitively accessibl
 
 ### UX Writing Philosophy
 
-1. **Progressive disclosure reduces cognitive load.** The reader chooses depth: summary > detail > appendix. Forcing full reading is an anti-pattern.
-2. **Consistent terminology across deliverables.** The same concept with three different names is three concepts for the reader. Implicit glossary, never explicit.
-3. **Microcopy matters.** Every button, every error message, every tooltip is a micro design decision. "Click here" is not microcopy — it is noise.
+1. **Progressive disclosure reduces cognitive load.** The reader chooses depth: summary > detail > appendix. Forcing full reading is an anti-pattern. [EXPLICIT]
+2. **Consistent terminology across deliverables.** The same concept with three different names is three concepts for the reader. Implicit glossary, never explicit. [EXPLICIT]
+3. **Microcopy matters.** Every button, every error message, every tooltip is a micro design decision. "Click here" is not microcopy — it is noise. [EXPLICIT]
 
 ## Inputs
 
-The user provides a standard or target content as `$ARGUMENTS`. Parse `$1` as **standard name/number** and `$2` as **target content or file path**.
+The user provides a standard or target content as `$ARGUMENTS`. Parse `$1` as **standard name/number** and `$2` as **target content or file path**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para readability metrics y hierarchy analysis, HITL para microcopy recommendations y audience adaptation.
-  - **desatendido**: Zero interruptions. Auditoria completa con supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint en readability scores y anti-pattern findings.
-  - **paso-a-paso**: Confirma cada standard assessment, anti-pattern fix, y readability target.
+  - **piloto-auto**: Auto para readability metrics y hierarchy analysis, HITL para microcopy recommendations y audience adaptation. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Auditoria completa con supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autonomo con checkpoint en readability scores y anti-pattern findings. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada standard assessment, anti-pattern fix, y readability target. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 hierarchy + S5 readability + top anti-patterns) | `tecnica` (full 5 standards, default)
 
@@ -143,7 +143,7 @@ Examples:
 | Decision Required | Awaiting stakeholder approval |
 | Success | Positive outcome, milestone reached |
 
-Callout styling: left 4px border + tinted background. Colors configurable via brand-config.json or design system tokens.
+Callout styling: left 4px border + tinted background. Colors configurable via brand-config.json or design system tokens. [EXPLICIT]
 
 **Table Rules:** Max 6 visible columns (rest in appendix). Sticky header row. Min 32px row height. Highlight critical rows.
 
@@ -313,7 +313,7 @@ graph TD
 | Metrica | Actual | Target | Status |
 ## Recomendaciones Priorizadas
 1. [Quick win] ...
-2. [Medium effort] ...
+2. [Medium effort] ... [EXPLICIT]
 ```
 
 **Formato DOCX (bajo demanda):**
@@ -368,7 +368,7 @@ Footer: Attribution MetodologIA + fecha de auditoria
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

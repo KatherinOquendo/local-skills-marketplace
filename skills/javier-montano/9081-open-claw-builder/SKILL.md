@@ -1,12 +1,12 @@
 ---
 name: open-claw-builder
-description: >
-  Builds production-grade tool-calling AI agents with TypeScript on open LLM stacks (Groq, OpenRouter, Ollama).
+description: 
+  Builds production-grade tool-calling AI agents with TypeScript on open LLM stacks (Groq, OpenRouter, Ollama). [EXPLICIT]
   Activates when the user says "build an agent", "create a bot", "scaffold a Telegram bot",
   "make a Discord agent", or "set up an HTTP agent". Also triggers on mentions of tool-calling,
   open LLM stack, Groq agent, or OpenRouter bot. Use this skill even if the user only has a
-  vague idea — it interviews for missing details.
-argument-hint: <agent-name> [platform: telegram|discord|http]
+  vague idea — it interviews for missing details. [EXPLICIT]
+argument-hint: agent-name [platform: telegram|discord|http]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Agent
 model: opus
 context: fork
@@ -14,7 +14,7 @@ context: fork
 
 # Open-Claw Agent Builder
 
-Build tool-calling AI agents on open LLM stacks. "Claw" = Claude-like architecture patterns (loop → tool → security) applied to any function-calling LLM.
+Build tool-calling AI agents on open LLM stacks. "Claw" = Claude-like architecture patterns (loop → tool → security) applied to any function-calling LLM. [EXPLICIT]
 
 ## Assumptions & Limits
 
@@ -42,7 +42,7 @@ Build tool-calling AI agents on open LLM stacks. "Claw" = Claude-like architectu
 /open-claw-builder assistant          # interview for platform
 ```
 
-Parse `$1` as agent name (kebab-case), `$2` as platform. Default: telegram.
+Parse `$1` as agent name (kebab-case), `$2` as platform. Default: telegram. [EXPLICIT]
 
 ## Before Building
 
@@ -54,12 +54,12 @@ Parse `$1` as agent name (kebab-case), `$2` as platform. Default: telegram.
 ## Architecture: 6 Layers
 
 ```
-L1 ENTRY      index.ts            Lifecycle, shutdown, error boundaries
-L2 CONFIG     config.ts + .env    Env loading, validation, fail-fast
-L3 INTERFACE  bot.ts              Platform adapter (Telegram/Discord/HTTP)
-L4 ORCHESTR.  agent.ts            The Loop: security → tokens → tools → response
-L5 PROVIDERS  llm.ts + memory.ts  LLM abstraction + SQLite conversation store
-L6 TOOLS      tools/*.ts          Tool registry, async dispatch, delegation
+L1 ENTRY      index.ts            Lifecycle, shutdown, error boundaries [EXPLICIT]
+L2 CONFIG     config.ts + .env    Env loading, validation, fail-fast [EXPLICIT]
+L3 INTERFACE  bot.ts              Platform adapter (Telegram/Discord/HTTP) [EXPLICIT]
+L4 ORCHESTR.  agent.ts            The Loop: security → tokens → tools → response [EXPLICIT]
+L5 PROVIDERS  llm.ts + memory.ts  LLM abstraction + SQLite conversation store [EXPLICIT]
+L6 TOOLS      tools/*.ts          Tool registry, async dispatch, delegation [EXPLICIT]
 ```
 
 **Iron rule**: Each layer imports ONLY from layers below it. Violations create circular dependencies.
@@ -108,7 +108,7 @@ npx tsc --noEmit  # Zero errors required
 ## Security Deep Dive
 
 ```
-User Input → [CP1: sanitize] → [CP2: harden prompt] → Agent Loop → [CP3: validate output] → User
+User Input → [CP1: sanitize] → [CP2: harden prompt] → Agent Loop → [CP3: validate output] → User [EXPLICIT]
 ```
 
 | Checkpoint | Function | Strategy | Why |
@@ -131,7 +131,7 @@ available = modelContext - maxTokens - systemPrompt - 10% safetyMargin
 
 ## Multi-Agent Delegation
 
-Sub-agents in `delegate.ts`: `{name, description, systemPrompt, tools[]}`. Main agent (depth=0) has `delegate_to_agent` tool. Spawned sub-agent runs at depth=1 with restricted tools and NO delegation capability (prevents infinite loops).
+Sub-agents in `delegate.ts`: `{name, description, systemPrompt, tools[]}`. Main agent (depth=0) has `delegate_to_agent` tool. Spawned sub-agent runs at depth=1 with restricted tools and NO delegation capability (prevents infinite loops). [EXPLICIT]
 
 **Circular dependency resolution**: `delegate.ts` defines agent data → `registry.ts` holds executor function slot → `agent.ts` fills the slot at startup via `initDelegation()`. This breaks the import cycle.
 

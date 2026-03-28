@@ -1,6 +1,6 @@
 ---
 name: iic-core-engine
-description: State machine and next-step guidance. Computes feature stage from artifacts. Suggests next action. Updates context.json.
+description: State machine and next-step guidance. Computes feature stage from artifacts. Suggests next action. Updates context.json. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -12,7 +12,7 @@ tags: [metacognition, integrity, state-machine, engine]
 > **"I know where you are. I know where you should go next."**
 
 ## Purpose
-Central state machine. Computes project stage from artifact existence. Suggests the next skill/workflow to invoke. Single source of truth for workflow progression.
+Central state machine. Computes project stage from artifact existence. Suggests the next skill/workflow to invoke. Single source of truth for workflow progression. [EXPLICIT]
 
 **When to use:**
 - Session start (cold-start priming)
@@ -21,12 +21,12 @@ Central state machine. Computes project stage from artifact existence. Suggests 
 
 ---
 
-## 1. The Physics
-1. **Law of State:** context.json is the single source of truth.
-2. **Law of Stages:** specified → planned → testified → tasks-ready → implementing-NN% → complete.
-3. **Law of Suggestion:** Always recommend next action based on current stage.
+## Core Principles
+1. **Law of State:** context.json is the single source of truth. [EXPLICIT]
+2. **Law of Stages:** specified → planned → testified → tasks-ready → implementing-NN% → complete. [EXPLICIT]
+3. **Law of Suggestion:** Always recommend next action based on current stage. [EXPLICIT]
 
-## 2. The Protocol
+## Core Process
 ### Phase 1: Compute Stage
 1. Check artifact existence:
    - spec.md exists → `specified`
@@ -48,8 +48,8 @@ Central state machine. Computes project stage from artifact existence. Suggests 
 | complete | `/jm:deploy-firebase` or `/jm:deploy-hostinger` |
 
 ### Phase 3: Update State
-1. Update context.json stage field.
-2. Log transition in score-history.json.
+1. Update context.json stage field. [EXPLICIT]
+2. Log transition in score-history.json. [EXPLICIT]
 
 ## 3. Inputs / Outputs
 | Input | Type | Required | Description |
@@ -62,7 +62,29 @@ Central state machine. Computes project stage from artifact existence. Suggests 
 | Status report | Text | Stage + next action |
 | context.json update | JSON | Updated stage |
 
-## 4. Quality Gates
+## Validation Gate
 - [ ] Stage computed from actual artifact existence
 - [ ] Next action maps to valid skill/workflow
 - [ ] context.json updated after state change
+
+## Usage
+
+Example invocations:
+
+- "/iic-core-engine" — Run the full iic core engine workflow
+- "iic core engine on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

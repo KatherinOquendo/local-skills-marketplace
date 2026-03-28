@@ -1,38 +1,9 @@
 [
-  {
-    "prompt": "Design PoC for AI testing tool.",
-    "assertions": [
-      "defines hypothesis",
-      "scopes experiment",
-      "establishes criteria",
-      "plans evaluation"
-    ]
-  },
-  {
-    "prompt": "Plan 2-week PoC with 3 developers.",
-    "assertions": [
-      "defines scope",
-      "allocates resources",
-      "creates milestones",
-      "plans capture"
-    ]
-  },
-  {
-    "prompt": "Compare 3 technology options.",
-    "assertions": [
-      "defines metrics",
-      "includes qualitative assessment",
-      "establishes thresholds",
-      "plans fair evaluation"
-    ]
-  },
-  {
-    "prompt": "Mixed PoC results.",
-    "assertions": [
-      "analyzes validated hypotheses",
-      "assesses failures",
-      "recommends next steps",
-      "identifies conditions"
-    ]
-  }
+  {"id": "poc-lab-happy-path", "type": "happy_path", "input": "Run poc lab on this project", "expected_behavior": "Skill activates and produces the expected poc lab output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "poc-lab-explicit-trigger", "type": "happy_path", "input": "Apply poc lab analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the poc lab workflow", "tags": ["trigger", "recognition"]},
+  {"id": "poc-lab-with-context", "type": "happy_path", "input": "Apply poc lab to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive poc lab analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "poc-lab-minimal-input", "type": "happy_path", "input": "Quick poc lab", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "poc-lab-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to poc lab", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "poc-lab-edge-empty-input", "type": "edge_case", "input": "Run poc lab but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "poc-lab-edge-conflicting", "type": "edge_case", "input": "Apply poc lab but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

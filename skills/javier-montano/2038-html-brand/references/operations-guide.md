@@ -123,7 +123,7 @@ A "complete" deliverable passes all of these. Run through them as a final qualit
 - Hero title contains `<span>` with orange highlight on key term
 - Hero has 3–4 KPI items with value + label
 - Content density matches document type guidelines
-- No unreplaced `{{PLACEHOLDER}}` text
+- No unreplaced `{{template}}` text
 - All tables have styled header rows
 - All links have descriptive text (not "click here")
 

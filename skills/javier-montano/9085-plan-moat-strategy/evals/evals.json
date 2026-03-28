@@ -1,0 +1,9 @@
+[
+  {"id": "plan-moat-strategy-happy-path", "type": "happy_path", "input": "Run plan moat strategy on this project", "expected_behavior": "Skill activates and produces the expected plan moat strategy output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "plan-moat-strategy-explicit-trigger", "type": "happy_path", "input": "Apply plan moat strategy analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the plan moat strategy workflow", "tags": ["trigger", "recognition"]},
+  {"id": "plan-moat-strategy-with-context", "type": "happy_path", "input": "Apply plan moat strategy to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive plan moat strategy analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "plan-moat-strategy-minimal-input", "type": "happy_path", "input": "Quick plan moat strategy", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "plan-moat-strategy-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to plan moat strategy", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "plan-moat-strategy-edge-empty-input", "type": "edge_case", "input": "Run plan moat strategy but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "plan-moat-strategy-edge-conflicting", "type": "edge_case", "input": "Apply plan moat strategy but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

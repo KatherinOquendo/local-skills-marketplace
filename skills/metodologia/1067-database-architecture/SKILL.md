@@ -1,10 +1,10 @@
 ---
 name: metodologia-database-architecture
-description: >
-  Database design — schema patterns, indexing, partitioning, replication, migration, performance tuning.
+description: 
+  Database design — schema patterns, indexing, partitioning, replication, migration, performance tuning. [EXPLICIT]
   Use when the user asks to "design the database schema", "plan indexing strategy", "set up replication",
-  "partition large tables", "migrate database schema", "tune query performance", or mentions normalization, sharding, B-tree indexes, zero-downtime migration, or connection pooling.
-argument-hint: "<system_or_database_name>"
+  "partition large tables", "migrate database schema", "tune query performance", or mentions normalization, sharding, B-tree indexes, zero-downtime migration, or connection pooling. [EXPLICIT]
+argument-hint: "system_or_database_name"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Database Architecture: Schema Design, Storage Strategy & Data Evolution
 
-Database architecture defines how data is structured, stored, accessed, replicated, and evolved over time. This skill produces comprehensive database design documentation covering schema modeling, indexing, partitioning, high availability, migration strategy, and performance tuning.
+Database architecture defines how data is structured, stored, accessed, replicated, and evolved over time. This skill produces comprehensive database design documentation covering schema modeling, indexing, partitioning, high availability, migration strategy, and performance tuning. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -29,14 +29,14 @@ Database architecture defines how data is structured, stored, accessed, replicat
 
 ## Inputs
 
-The user provides a system or database name as `$ARGUMENTS`. Parse `$1` as the **system/database name** used throughout all output artifacts.
+The user provides a system or database name as `$ARGUMENTS`. Parse `$1` as the **system/database name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para profiling y schema design, HITL para decisiones de particionamiento y replicación.
-  - **desatendido**: Zero interruptions. Schema, índices y migraciones documentados automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en indexing strategy y migration plan.
-  - **paso-a-paso**: Confirma cada tabla, índice, partición y plan de migración.
+  - **piloto-auto**: Auto para profiling y schema design, HITL para decisiones de particionamiento y replicación. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Schema, índices y migraciones documentados automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en indexing strategy y migration plan. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada tabla, índice, partición y plan de migración. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 schema design + S2 indexing + S5 migration plan) | `técnica` (full 6 sections, default)
 
@@ -56,7 +56,7 @@ Read ${CLAUDE_SKILL_DIR}/references/database-patterns.md
 
 ## Polyglot Persistence Decision Matrix
 
-Match workload to engine. Default to PostgreSQL unless a specialized need is clear.
+Match workload to engine. Default to PostgreSQL unless a specialized need is clear. [EXPLICIT]
 
 | Workload | Engine | Why | When NOT to use |
 |---|---|---|---|
@@ -95,7 +95,7 @@ Match workload to engine. Default to PostgreSQL unless a specialized need is cle
 
 ### S1: Schema Design & Modeling
 
-Defines the logical and physical data model.
+Defines the logical and physical data model. [EXPLICIT]
 
 **Includes:**
 - Entity-relationship model with cardinality (1:1, 1:N, M:N)
@@ -113,7 +113,7 @@ Defines the logical and physical data model.
 
 ### S2: Indexing Strategy
 
-Plans indexes to optimize query patterns without degrading write performance.
+Plans indexes to optimize query patterns without degrading write performance. [EXPLICIT]
 
 **Index types and use cases:**
 - **B-tree:** Default. Range queries, sorting, equality. Most RDBMS.
@@ -142,7 +142,7 @@ Plans indexes to optimize query patterns without degrading write performance.
 
 ### S3: Partitioning & Sharding
 
-Strategies for splitting data across partitions or physical nodes.
+Strategies for splitting data across partitions or physical nodes. [EXPLICIT]
 
 **Partitioning (single node):**
 - **Range:** Time-based (monthly, yearly), ID ranges -- best for time-series, log data
@@ -163,7 +163,7 @@ Strategies for splitting data across partitions or physical nodes.
 
 ### S4: Replication & High Availability
 
-Replication topology, failover strategy, MVCC tuning, and recovery objectives.
+Replication topology, failover strategy, MVCC tuning, and recovery objectives. [EXPLICIT]
 
 **Replication models:**
 - **Primary-replica (async):** Low latency writes, eventual consistency reads
@@ -196,7 +196,7 @@ Replication topology, failover strategy, MVCC tuning, and recovery objectives.
 
 ### S5: Migration & Evolution
 
-Schema versioning, zero-downtime migrations, and rollback strategy.
+Schema versioning, zero-downtime migrations, and rollback strategy. [EXPLICIT]
 
 **Zero-downtime migration patterns:**
 
@@ -224,7 +224,7 @@ Schema versioning, zero-downtime migrations, and rollback strategy.
 
 ### S6: Performance Tuning
 
-Query optimization, connection management, caching, and monitoring.
+Query optimization, connection management, caching, and monitoring. [EXPLICIT]
 
 **Connection pool sizing:**
 - PostgreSQL formula: `max_connections = (core_count * 2) + effective_spindle_count` (typically 20-50 for SSD)
@@ -407,7 +407,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

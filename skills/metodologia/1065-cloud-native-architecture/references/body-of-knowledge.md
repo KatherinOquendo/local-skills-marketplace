@@ -124,7 +124,7 @@ Extensión de CI/CD que permite desplegar gradualmente nuevas versiones controla
 ### Zero Trust Networking
 - **mTLS entre servicios**: certificados de corta vida (<24h) gestionados por el service mesh
 - **SPIFFE/SPIRE**: identidades criptográficas para workloads
-- **Deny-by-default**: NetworkPolicies que niegan todo el tráfico no declarado explícitamente
+- **Deny-by-default**: NetworkPolicies que niegan Todo el tráfico no declarado explícitamente
 
 ### Multi-Cloud y Portabilidad
 - **Kubernetes como capa de portabilidad**: mismos manifiestos en EKS/GKE/AKS
@@ -142,7 +142,7 @@ Extensión de CI/CD que permite desplegar gradualmente nuevas versiones controla
 | `software-architecture` | Patrones internos de aplicación (DDD, hexagonal, event sourcing) que son prerequisito para containerizar bien |
 | `cloud-migration` | La migración produce workloads que deben ser diseñados o rediseñados con esta skill |
 | `security-architecture` | Zero trust, mTLS, SPIFFE, threat modeling de workloads Kubernetes |
-| `observability` | Stack OTel, RED metrics, SLOs — transversal a todos los servicios cloud-native |
+| `observability` | Stack OTel, RED metrics, SLOs — transversal a Todos los servicios cloud-native |
 
 ---
 

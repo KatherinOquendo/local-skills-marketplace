@@ -56,7 +56,7 @@
 
 - **Relevancia:** Framework de Google/OpenSSF para integridad de la cadena de suministro de software. Define niveles de seguridad incrementales para el proceso de build.
 - **Niveles:** Level 1 (provenance exists), Level 2 (hosted build), Level 3 (hardened builds, non-falsifiable provenance).
-- **Uso en el skill:** S3 (Supply Chain Security) selecciona el nivel SLSA apropiado. Level 1 es el minimo recomendado para todo proyecto; Level 3 para sistemas regulados o de alta seguridad.
+- **Uso en el skill:** S3 (Supply Chain Security) selecciona el nivel SLSA apropiado. Level 1 es el minimo recomendado para Todo proyecto; Level 3 para sistemas regulados o de alta seguridad.
 - **Fuente:** Google / OpenSSF (2024). *SLSA v1.0*. slsa.dev
 
 ### Sigstore Project (cosign, Rekor, Fulcio)

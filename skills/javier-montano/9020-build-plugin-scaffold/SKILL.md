@@ -1,10 +1,10 @@
 ---
 name: build-plugin-scaffold
 author: JM Labs (Javier Montaño)
-description: >
-  Scaffold a complete plugin directory from architecture plans and specs. Creates all files, then validates structure.
-  Trigger: build plugin, scaffold plugin, create plugin directory, assemble plugin, generate plugin files.
-argument-hint: "<architecture-plan-path> <target-directory>"
+description: 
+  Scaffold a complete plugin directory from architecture plans and specs. Creates all files, then validates structure. [EXPLICIT]
+  Trigger: build plugin, scaffold plugin, create plugin directory, assemble plugin, generate plugin files. [EXPLICIT]
+argument-hint: "architecture-plan-path target-directory"
 allowed-tools:
   - Read
   - Write
@@ -18,7 +18,7 @@ allowed-tools:
 
 > "A scaffold is not the building -- it is the promise that a building will stand."
 
-Assembles a complete Claude Code plugin directory from architecture plans and specification packages. Creates all structural files (plugin.json, settings.json, hooks.json), writes agent and command files from specs, generates documentation (CLAUDE.md, README.md), copies the LICENSE, and runs a validation smoke test.
+Assembles a complete Claude Code plugin directory from architecture plans and specification packages. Creates all structural files (plugin.json, settings.json, hooks.json), writes agent and command files from specs, generates documentation (CLAUDE.md, README.md), copies the LICENSE, and runs a validation smoke test. [EXPLICIT]
 
 ---
 
@@ -35,9 +35,9 @@ Assembles a complete Claude Code plugin directory from architecture plans and sp
 
 - Check if `<target-directory>` already exists. `[Glob]`
 - If it exists:
-  - List its contents.
+  - List its contents. [EXPLICIT]
   - Warn the user: "Target directory exists with {N} files. Overwrite?"
-  - Wait for user confirmation before proceeding.
+  - Wait for user confirmation before proceeding. [EXPLICIT]
 - If it does not exist, proceed to creation.
 
 ### Step 3 -- Create Plugin Root Directory
@@ -57,7 +57,7 @@ Assembles a complete Claude Code plugin directory from architecture plans and sp
 
 - For each agent in the spec package:
   - Write the agent `.md` file to `agents/{agent-name}.md`. `[Write]`
-  - Verify the file contains valid YAML frontmatter.
+  - Verify the file contains valid YAML frontmatter. [EXPLICIT]
 - Report each agent file created with its path.
 
 ### Step 6 -- Write Command Files from Specs
@@ -65,7 +65,7 @@ Assembles a complete Claude Code plugin directory from architecture plans and sp
 - For each command in the spec package:
   - Write the canonical command `.md` to `commands/{command-name}.md`. `[Write]`
   - Write each alias `.md` to `commands/{alias-name}.md`. `[Write]`
-  - Verify each alias has a valid `alias-of` field pointing to its canonical.
+  - Verify each alias has a valid `alias-of` field pointing to its canonical. [EXPLICIT]
 - Report each command file created.
 
 ### Step 7 -- Write hooks/hooks.json
@@ -84,12 +84,12 @@ Assembles a complete Claude Code plugin directory from architecture plans and sp
 
 - Generate the plugin's CLAUDE.md using `assets/claude-md-template.md` as the base. `[Write]`
 - Populate sections:
-  - **Quick Start**: List the most common commands with brief descriptions.
-  - **Architecture**: Plugin name, version, agent count, skill count, command count.
-  - **Skills Table**: All skills with movement, purpose columns.
-  - **Commands Table**: All commands with alias and description columns.
-  - **Execution Flows**: Major workflows from the architecture plan.
-  - **Finding Severity Classification**: If applicable to the plugin domain.
+  - **Quick Start**: List the most common commands with brief descriptions. [EXPLICIT]
+  - **Architecture**: Plugin name, version, agent count, skill count, command count. [EXPLICIT]
+  - **Skills Table**: All skills with movement, purpose columns. [EXPLICIT]
+  - **Commands Table**: All commands with alias and description columns. [EXPLICIT]
+  - **Execution Flows**: Major workflows from the architecture plan. [EXPLICIT]
+  - **Finding Severity Classification**: If applicable to the plugin domain. [EXPLICIT]
 - Keep CLAUDE.md focused and navigable -- it is the entry point for users and LLMs.
 
 ### Step 10 -- Generate README.md
@@ -154,9 +154,9 @@ Output a comprehensive build report:
 
 **Bad build report:**
 ```
-Plugin created at /path/to/plugin.
+Plugin created at /path/to/plugin. [EXPLICIT]
 ```
-Missing: no file counts, no validation results, no file list.
+Missing: no file counts, no validation results, no file list. [EXPLICIT]
 
 **Good build report:**
 ```
@@ -179,17 +179,25 @@ agents/report-generator.md (38 lines)
 commands/validate.md (12 lines)
 ...
 ```
-Includes: category counts, validation summary, per-file list with line counts.
+Includes: category counts, validation summary, per-file list with line counts. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Silent overwrite** -- Never replace an existing plugin directory without explicit user confirmation. Data loss from overwriting is unrecoverable.
-2. **Partial scaffold left on disk** -- If a critical step fails (e.g., plugin.json write fails), do not leave a half-built plugin. Either complete the build or clean up the partial directory.
-3. **Hardcoded paths** -- All paths in generated files must be relative to the plugin root. Absolute paths break portability.
-4. **Stale CLAUDE.md** -- The CLAUDE.md must reflect the actual files on disk, not the plan. If a spec file was skipped, the CLAUDE.md tables must exclude it.
+1. **Silent overwrite** -- Never replace an existing plugin directory without explicit user confirmation. Data loss from overwriting is unrecoverable. [EXPLICIT]
+2. **Partial scaffold left on disk** -- If a critical step fails (e.g., plugin.json write fails), do not leave a half-built plugin. Either complete the build or clean up the partial directory. [EXPLICIT]
+3. **Hardcoded paths** -- All paths in generated files must be relative to the plugin root. Absolute paths break portability. [EXPLICIT]
+4. **Stale CLAUDE.md** -- The CLAUDE.md must reflect the actual files on disk, not the plan. If a spec file was skipped, the CLAUDE.md tables must exclude it. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Architecture plan with zero hooks** -- Valid. Write `hooks/hooks.json` with empty hooks object: `{"hooks": {}}`. Do not skip the hooks directory.
-2. **Single-agent plugin** -- Valid. The agent is both the default and only agent. settings.json points to it. CLAUDE.md agent section shows one entry.
-3. **Plugin with skills but no commands** -- Unusual but valid. Skip the commands section in CLAUDE.md. Still create an empty `commands/` directory per spec requirements.
+1. **Architecture plan with zero hooks** -- Valid. Write `hooks/hooks.json` with empty hooks object: `{"hooks": {}}`. Do not skip the hooks directory. [EXPLICIT]
+2. **Single-agent plugin** -- Valid. The agent is both the default and only agent. settings.json points to it. CLAUDE.md agent section shows one entry. [EXPLICIT]
+3. **Plugin with skills but no commands** -- Unusual but valid. Skip the commands section in CLAUDE.md. Still create an empty `commands/` directory per spec requirements. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/build-plugin-scaffold" — Run the full build plugin scaffold workflow
+- "build plugin scaffold on this project" — Apply to current context
+

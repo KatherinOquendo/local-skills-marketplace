@@ -149,7 +149,7 @@ Dependencies: [List critical path items, e.g., "Sprint 1 blocks Sprint 2 start",
 
 ```
 ┌──────────────────────────────┬──────────────────────────────┐
-│ METODOLOGIA SETUP (Internal)       │ CLIENT SETUP (External)      │
+│ METBDLOGIA SETUP (Internal)       │ CLIENT SETUP (External)      │
 ├──────────────────────────────┼──────────────────────────────┤
 │ • VPN/Network access         │ • Infrastructure provisioning│
 │ • Dev workspace setup        │ • Executive sponsorship      │

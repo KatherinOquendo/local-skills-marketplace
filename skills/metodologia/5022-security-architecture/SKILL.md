@@ -1,11 +1,11 @@
 ---
 name: metodologia-security-architecture
-argument-hint: "<system-or-organization-name>"
+argument-hint: "system-or-organization-name"
 author: Javier Montaño · Comunidad MetodologIA
-description: >
-  Security architecture design — threat modeling, zero trust, identity, encryption, compliance.
+description: 
+  Security architecture design — threat modeling, zero trust, identity, encryption, compliance. [EXPLICIT]
   Use when the user asks to "design security architecture", "model threats", "implement zero trust", "design IAM",
-  "plan encryption strategy", "map compliance requirements", or mentions STRIDE, OWASP, OAuth, RBAC, SOC2, ISO27001, PCI-DSS.
+  "plan encryption strategy", "map compliance requirements", or mentions STRIDE, OWASP, OAuth, RBAC, SOC2, ISO27001, PCI-DSS. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Security Architecture: Threat Modeling, Identity & Compliance Design
 
-Security architecture defines how systems protect data, verify identity, enforce access, and maintain compliance across the entire technology stack. The skill produces comprehensive security designs covering threat modeling, zero trust implementation, identity management, data protection, application security pipelines, and compliance mapping.
+Security architecture defines how systems protect data, verify identity, enforce access, and maintain compliance across the entire technology stack. The skill produces comprehensive security designs covering threat modeling, zero trust implementation, identity management, data protection, application security pipelines, and compliance mapping. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,20 +27,20 @@ Security architecture defines how systems protect data, verify identity, enforce
 
 ### Security Architecture Philosophy
 
-1. **Zero Trust everywhere.** There is no trusted network, no trusted user, no trusted service. Every request is authenticated, authorized, and encrypted — no exceptions.
-2. **Threat modeling before design.** Modeling threats AFTER design is auditing. Modeling them BEFORE is architecture. STRIDE/PASTA in the design phase reduces remediation cost by 100x.
-3. **Compliance is minimum bar, not maximum goal.** Passing an audit does not mean being secure. Frameworks (SOC2, PCI-DSS, ISO 27001) define the floor — security architecture defines the ceiling.
+1. **Zero Trust everywhere.** There is no trusted network, no trusted user, no trusted service. Every request is authenticated, authorized, and encrypted — no exceptions. [EXPLICIT]
+2. **Threat modeling before design.** Modeling threats AFTER design is auditing. Modeling them BEFORE is architecture. STRIDE/PASTA in the design phase reduces remediation cost by 100x. [EXPLICIT]
+3. **Compliance is minimum bar, not maximum goal.** Passing an audit does not mean being secure. Frameworks (SOC2, PCI-DSS, ISO 27001) define the floor — security architecture defines the ceiling. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or organization name as `$ARGUMENTS`. Parse `$1` as the **system/organization name** used throughout all output artifacts.
+The user provides a system or organization name as `$ARGUMENTS`. Parse `$1` as the **system/organization name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para threat enumeration y control mapping, HITL para Zero Trust maturity y compliance scope decisions.
-  - **desatendido**: Zero interruptions. Security architecture documentada automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en threat model review y IAM design.
-  - **paso-a-paso**: Confirma cada threat, mitigation, encryption decision, y compliance mapping.
+  - **piloto-auto**: Auto para threat enumeration y control mapping, HITL para Zero Trust maturity y compliance scope decisions. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Security architecture documentada automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en threat model review y IAM design. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada threat, mitigation, encryption decision, y compliance mapping. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 threat model + S2 zero trust + S6 compliance) | `técnica` (full 6 sections, default)
 
@@ -57,7 +57,7 @@ All deliverables map to the six NIST CSF 2.0 functions:
 | **Respond** | Incident management, analysis, mitigation, reporting | RS.MA, RS.AN, RS.MI |
 | **Recover** | Recovery execution, communication | RC.RP, RC.CO |
 
-Use the Govern function to ensure security architecture has executive sponsorship and integrates into enterprise risk management. CSF 2.0 explicitly addresses supply chain security, zero trust, and AI-related risks.
+Use the Govern function to ensure security architecture has executive sponsorship and integrates into enterprise risk management. CSF 2.0 explicitly addresses supply chain security, zero trust, and AI-related risks. [EXPLICIT]
 
 Before generating architecture, detect the technology context:
 
@@ -95,7 +95,7 @@ Read ${CLAUDE_SKILL_DIR}/references/security-frameworks.md
 
 ### S1: Threat Modeling
 
-Systematically identify threats using structured methodologies applied to the system's architecture.
+Systematically identify threats using structured methodologies applied to the system's architecture. [EXPLICIT]
 
 **Methodology selection:**
 - **STRIDE** (per-element): Spoofing, Tampering, Repudiation, Information Disclosure, DoS, Elevation of Privilege. Best for component-level analysis.
@@ -112,7 +112,7 @@ Systematically identify threats using structured methodologies applied to the sy
 
 ### S2: Zero Trust Architecture
 
-Design identity-centric security that assumes no implicit trust regardless of network location.
+Design identity-centric security that assumes no implicit trust regardless of network location. [EXPLICIT]
 
 **Core principles:** Verify explicitly, least privilege access, assume breach.
 
@@ -138,7 +138,7 @@ Design identity-centric security that assumes no implicit trust regardless of ne
 
 ### S3: Identity & Access Management
 
-Design authentication, authorization, and secret management for human and machine identities.
+Design authentication, authorization, and secret management for human and machine identities. [EXPLICIT]
 
 **Authentication:** OAuth 2.0 / OIDC for user flows, client credentials for S2S, WebAuthn/FIDO2 for passwordless
 **MFA:** TOTP/WebAuthn for users, certificate-based for services, risk-based triggers
@@ -158,7 +158,7 @@ Design authentication, authorization, and secret management for human and machin
 
 ### S4: Data Protection
 
-Design encryption, key management, and data loss prevention across the data lifecycle.
+Design encryption, key management, and data loss prevention across the data lifecycle. [EXPLICIT]
 
 **Encryption at rest:** Database TDE, filesystem encryption, backup encryption — AES-256 minimum
 **Encryption in transit:** TLS 1.3 everywhere, certificate management (ACME/Let's Encrypt), certificate pinning for mobile
@@ -177,7 +177,7 @@ Design encryption, key management, and data loss prevention across the data life
 
 ### S5: Application Security
 
-Integrate security testing into the development lifecycle.
+Integrate security testing into the development lifecycle. [EXPLICIT]
 
 **Shift-Left Cost Multiplier:**
 
@@ -217,7 +217,7 @@ Integrate security testing into the development lifecycle.
 
 ### S6: Compliance & Audit
 
-Map regulatory frameworks to technical controls with evidence collection and continuous compliance.
+Map regulatory frameworks to technical controls with evidence collection and continuous compliance. [EXPLICIT]
 
 **Compliance Framework Mapping Table:**
 
@@ -356,7 +356,7 @@ graph TD
 ```
 
 **Formato XLSX:**
-Matriz de controles de seguridad: filas por framework regulatorio (SOC2, ISO27001, PCI-DSS, HIPAA, GDPR), columnas por area de control, con estado de implementacion, evidencia requerida, owner, y frecuencia de testing. Incluye hoja de threat model con scoring de riesgo.
+Matriz de controles de seguridad: filas por framework regulatorio (SOC2, ISO27001, PCI-DSS, HIPAA, GDPR), columnas por area de control, con estado de implementacion, evidencia requerida, owner, y frecuencia de testing. Incluye hoja de threat model con scoring de riesgo. [EXPLICIT]
 
 ### DOCX (bajo demanda)
 - Filename: `{fase}_security_architecture_{cliente}_{WIP}.docx`
@@ -393,7 +393,7 @@ Matriz de controles de seguridad: filas por framework regulatorio (SOC2, ISO2700
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

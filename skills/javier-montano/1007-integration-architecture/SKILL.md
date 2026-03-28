@@ -1,6 +1,6 @@
 ---
 name: integration-architecture
-description: Third-party + Google API integration patterns. Payment gateways, email services, maps, analytics.
+description: Third-party + Google API integration patterns. Payment gateways, email services, maps, analytics. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -9,19 +9,41 @@ tags: [architecture, integration, google-apis, third-party]
 # integration-architecture {Architecture} (v1.0)
 > **"Architecture is decisions. Document every one."**
 ## Purpose
-Third-party + Google API integration patterns. Payment gateways, email services, maps, analytics.
+Third-party + Google API integration patterns. Payment gateways, email services, maps, analytics. [EXPLICIT]
 **When to use:** When designing or reviewing architecture for Firebase/Google stack projects.
-## 1. The Physics
-1. **Law of Firebase-First:** All architecture decisions constrained to Firebase/Google ecosystem (R-002).
-2. **Law of Evidence:** Every architectural claim tagged [CODE], [CONFIG], [DOC], [INFERENCE], or [ASSUMPTION].
-3. **Law of Diagrams:** Architecture without diagrams is incomplete. Use Mermaid for C4, sequence, flow.
-## 2. The Protocol
+## Core Principles
+1. **Law of Firebase-First:** All architecture decisions constrained to Firebase/Google ecosystem (R-002). [EXPLICIT]
+2. **Law of Evidence:** Every architectural claim tagged [CODE], [CONFIG], [DOC], [INFERENCE], or [ASSUMPTION]. [EXPLICIT]
+3. **Law of Diagrams:** Architecture without diagrams is incomplete. Use Mermaid for C4, sequence, flow. [EXPLICIT]
+## Core Process
 ### Phase 1: Analyze requirements and constraints.
 ### Phase 2: Design architecture with Firebase/Google services.
 ### Phase 3: Document with C4 diagrams, decision records, and evidence tags.
-## 3. Quality Gates
+## Validation Gate
 - [ ] Architecture designed within Firebase/Google/Hostinger constraints
 - [ ] C4 or sequence diagrams produced (Mermaid)
 - [ ] Evidence tags on all claims
 - [ ] ADR created for significant decisions
 - [ ] No AWS/Azure/Docker references
+
+## Usage
+
+Example invocations:
+
+- "/integration-architecture" — Run the full integration architecture workflow
+- "integration architecture on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

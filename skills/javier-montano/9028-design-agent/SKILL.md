@@ -1,11 +1,11 @@
 ---
 name: design-agent
 author: JM Labs (Javier Montaño)
-description: >
-  Design a plugin agent: role, tool allowlist, skill assignments, execution flows, operating principles.
-  Trigger: design agent, agent design, create agent spec, plan agent, draft agent.
-  Enforces plugin subagent constraints (no hooks/mcpServers/permissionMode in frontmatter).
-argument-hint: "<agent-name> [plugin-path]"
+description: 
+  Design a plugin agent: role, tool allowlist, skill assignments, execution flows, operating principles. [EXPLICIT]
+  Trigger: design agent, agent design, create agent spec, plan agent, draft agent. [EXPLICIT]
+  Enforces plugin subagent constraints (no hooks/mcpServers/permissionMode in frontmatter). [EXPLICIT]
+argument-hint: "agent-name [plugin-path]"
 allowed-tools:
   - Read
   - Write
@@ -18,7 +18,7 @@ allowed-tools:
 
 > "An agent is a role, not a god -- it owns a boundary, delegates within it, and never crosses it."
 
-Design a plugin agent with complete frontmatter, role definition, skill assignments, execution flows, and operating principles. Prominently enforces the plugin subagent constraint: agents in plugins cannot use hooks, mcpServers, or permissionMode.
+Design a plugin agent with complete frontmatter, role definition, skill assignments, execution flows, and operating principles. Prominently enforces the plugin subagent constraint: agents in plugins cannot use hooks, mcpServers, or permissionMode. [EXPLICIT]
 
 ---
 
@@ -32,7 +32,7 @@ Design a plugin agent with complete frontmatter, role definition, skill assignme
 | `mcpServers` | Plugin agents cannot start or connect to MCP servers. |
 | `permissionMode` | Plugin agents cannot override the session's permission model. |
 
-Attempting to use these fields will cause runtime errors or silent failures. This constraint is enforced by the Claude Code runtime and cannot be circumvented.
+Attempting to use these fields will cause runtime errors or silent failures. This constraint is enforced by the Claude Code runtime and cannot be circumvented. [EXPLICIT]
 
 ---
 
@@ -68,9 +68,9 @@ Draft the YAML frontmatter using ALL supported fields for plugin subagents:
 
 - List all skills this agent manages from the architecture plan.
 - For each skill, specify:
-  - Whether the agent invokes it directly or delegates to a sub-agent.
-  - The typical invocation order (sequential, parallel, conditional).
-  - Any shared data or state between skills.
+  - Whether the agent invokes it directly or delegates to a sub-agent. [EXPLICIT]
+  - The typical invocation order (sequential, parallel, conditional). [EXPLICIT]
+  - Any shared data or state between skills. [EXPLICIT]
 - Verify skill names match the architecture plan. `[CODIGO]`
 
 ### Step 4 -- Design Execution Flows
@@ -92,21 +92,21 @@ Draft the YAML frontmatter using ALL supported fields for plugin subagents:
 
 - Define 4-7 operating principles that govern the agent's behavior.
 - Each principle must be:
-  - **Specific** to this agent (not generic "be careful" advice).
-  - **Actionable** (describes a behavior, not a value).
-  - **Verifiable** (an observer can determine if it was followed).
+  - **Specific** to this agent (not generic "be careful" advice). [EXPLICIT]
+  - **Actionable** (describes a behavior, not a value). [EXPLICIT]
+  - **Verifiable** (an observer can determine if it was followed). [EXPLICIT]
 - Common patterns:
-  - "Read first, write never" (for analysis agents).
-  - "Cite file + line" (for audit agents).
-  - "Fail fast on CRITICAL" (for validation agents).
-  - "Propose before creating" (for design agents).
+  - "Read first, write never" (for analysis agents). [EXPLICIT]
+  - "Cite file + line" (for audit agents). [EXPLICIT]
+  - "Fail fast on CRITICAL" (for validation agents). [EXPLICIT]
+  - "Propose before creating" (for design agents). [EXPLICIT]
 
 ### Step 6 -- Set maxTurns
 
 - Estimate maxTurns based on:
-  - Number of skills managed: roughly 3-5 turns per skill.
-  - Complexity of execution flows: add 5 turns for complex routing.
-  - User interaction points: add 2 turns per decision point.
+  - Number of skills managed: roughly 3-5 turns per skill. [EXPLICIT]
+  - Complexity of execution flows: add 5 turns for complex routing. [EXPLICIT]
+  - User interaction points: add 2 turns per decision point. [EXPLICIT]
 - Formula: `maxTurns = (skills * 4) + (complexity_bonus) + (interaction_points * 2)`
 - Round up to nearest 5 for headroom.
 - Document the calculation. `[INFERENCIA]`
@@ -163,17 +163,17 @@ hooks:
   PreToolUse: [...]
 ---
 # My Agent
-This agent does validation.
+This agent does validation. [EXPLICIT]
 ```
-Missing: forbidden `hooks` field, no tool allowlist, no skills assigned, no execution flows, no operating principles.
+Missing: forbidden `hooks` field, no tool allowlist, no skills assigned, no execution flows, no operating principles. [EXPLICIT]
 
 **Good agent design:**
 ```
 ---
 name: plugin-qa-engineer
 description: >
-  Orchestrates validation, audit, and reporting for plugin quality assurance.
-  Trigger: qa engineer, run validation, audit plugin.
+  Orchestrates validation, audit, and reporting for plugin quality assurance. [EXPLICIT]
+  Trigger: qa engineer, run validation, audit plugin. [EXPLICIT]
 tools:
   - Read
   - Glob
@@ -189,24 +189,32 @@ maxTurns: 45
 | validate-structure | VALIDATE | Sequential, first |
 | validate-manifest | VALIDATE | Sequential, second |
 ## Operating Principles
-1. Read first, write never -- this agent only reads and reports.
-2. Cite file + line for every finding.
+1. Read first, write never -- this agent only reads and reports. [EXPLICIT]
+2. Cite file + line for every finding. [EXPLICIT]
 ```
-Includes: no forbidden fields, tool allowlist, maxTurns, structured body, skill table, operating principles.
+Includes: no forbidden fields, tool allowlist, maxTurns, structured body, skill table, operating principles. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Including `hooks` in agent frontmatter (forbidden for plugin subagents -- causes runtime error).
-2. Setting `maxTurns` too low (agent stops mid-execution) or too high (wastes resources).
-3. Creating an agent that manages only one skill (merge the agent's logic into the skill).
-4. Defining `tools` AND `disallowedTools` simultaneously (disallowedTools is silently ignored).
-5. Writing operating principles that are generic platitudes instead of specific behavioral rules.
-6. Omitting delegation criteria in a multi-agent plugin (ambiguous handoffs).
+1. Including `hooks` in agent frontmatter (forbidden for plugin subagents -- causes runtime error). [EXPLICIT]
+2. Setting `maxTurns` too low (agent stops mid-execution) or too high (wastes resources). [EXPLICIT]
+3. Creating an agent that manages only one skill (merge the agent's logic into the skill). [EXPLICIT]
+4. Defining `tools` AND `disallowedTools` simultaneously (disallowedTools is silently ignored). [EXPLICIT]
+5. Writing operating principles that are generic platitudes instead of specific behavioral rules. [EXPLICIT]
+6. Omitting delegation criteria in a multi-agent plugin (ambiguous handoffs). [EXPLICIT]
 
 ## Edge Cases
 
-1. Plugin has only one agent -- the agent IS the plugin orchestrator. Include all skills.
-2. Agent needs to invoke skills from another plugin -- currently not supported. Document the limitation.
-3. Agent handles a command that spans multiple movements with quality gates -- document the gate check in the execution flow.
-4. Agent should have different tool access for different skills -- use `allowed-tools` at the skill level to restrict per-skill.
-5. Agent needs background context from reference files -- use the `background` field with the reference file path.
+1. Plugin has only one agent -- the agent IS the plugin orchestrator. Include all skills. [EXPLICIT]
+2. Agent needs to invoke skills from another plugin -- currently not supported. Document the limitation. [EXPLICIT]
+3. Agent handles a command that spans multiple movements with quality gates -- document the gate check in the execution flow. [EXPLICIT]
+4. Agent should have different tool access for different skills -- use `allowed-tools` at the skill level to restrict per-skill. [EXPLICIT]
+5. Agent needs background context from reference files -- use the `background` field with the reference file path. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/design-agent" — Run the full design agent workflow
+- "design agent on this project" — Apply to current context
+

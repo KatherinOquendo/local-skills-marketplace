@@ -1,12 +1,12 @@
 ---
 name: sofka-ux-writing
-argument-hint: "<component-or-flow-name>"
-description: >
-  UX writing and document accessibility standards for technical deliverables.
+argument-hint: "component-or-flow-name"
+description: 
+  UX writing and document accessibility standards for technical deliverables. [EXPLICIT]
   Use when the user asks to "improve readability", "fix information hierarchy", "reduce cognitive load",
   "write microcopy", "check readability score", or mentions "UX writing", "scanability",
-  "Flesch-Kincaid", "escritura UX", "legibilidad", "cognitive load".
-argument-hint: "<component-or-flow-name>"
+  "Flesch-Kincaid", "escritura UX", "legibilidad", "cognitive load". [EXPLICIT]
+argument-hint: "component-or-flow-name"
 model: opus
 context: fork
 allowed-tools:
@@ -20,7 +20,7 @@ allowed-tools:
 
 # UX Writing: Information Design & Cognitive Accessibility Standards
 
-Ensures deliverables are business-readable, scannable, and cognitively accessible. Provides 5 standards: information hierarchy, cognitive load reduction, scannability, microcopy, and readability heuristics. Spanish-first bilingual support.
+Ensures deliverables are business-readable, scannable, and cognitively accessible. Provides 5 standards: information hierarchy, cognitive load reduction, scannability, microcopy, and readability heuristics. Spanish-first bilingual support. [EXPLICIT]
 
 ## Principio Rector
 
@@ -28,20 +28,20 @@ Ensures deliverables are business-readable, scannable, and cognitively accessibl
 
 ### Filosofia de UX Writing
 
-1. **Progressive disclosure reduces cognitive load.** El lector elige profundidad: summary > detail > appendix. Forzar la lectura completa es un antipatron.
-2. **Consistent terminology across deliverables.** Un mismo concepto con tres nombres diferentes es tres conceptos para el lector. Glosario implicito, nunca explicito.
-3. **Microcopy matters.** Cada boton, cada mensaje de error, cada tooltip es una micro-decision de diseno. "Click here" no es microcopy — es ruido.
+1. **Progressive disclosure reduces cognitive load.** El lector elige profundidad: summary > detail > appendix. Forzar la lectura completa es un antipatron. [EXPLICIT]
+2. **Consistent terminology across deliverables.** Un mismo concepto con tres nombres diferentes es tres conceptos para el lector. Glosario implicito, nunca explicito. [EXPLICIT]
+3. **Microcopy matters.** Cada boton, cada mensaje de error, cada tooltip es una micro-decision de diseno. "Click here" no es microcopy — es ruido. [EXPLICIT]
 
 ## Inputs
 
-The user provides a standard or target content as `$ARGUMENTS`. Parse `$1` as **standard name/number** and `$2` as **target content or file path**.
+The user provides a standard or target content as `$ARGUMENTS`. Parse `$1` as **standard name/number** and `$2` as **target content or file path**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para readability metrics y hierarchy analysis, HITL para microcopy recommendations y audience adaptation.
-  - **desatendido**: Cero interrupciones. Auditoria completa con supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint en readability scores y anti-pattern findings.
-  - **paso-a-paso**: Confirma cada standard assessment, anti-pattern fix, y readability target.
+  - **piloto-auto**: Auto para readability metrics y hierarchy analysis, HITL para microcopy recommendations y audience adaptation. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Auditoria completa con supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autonomo con checkpoint en readability scores y anti-pattern findings. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada standard assessment, anti-pattern fix, y readability target. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 hierarchy + S5 readability + top anti-patterns) | `tecnica` (full 5 standards, default)
 
@@ -143,7 +143,7 @@ Examples:
 | Decision Required | Awaiting stakeholder approval |
 | Success | Positive outcome, milestone reached |
 
-Callout styling: left 4px border + tinted background. Colors configurable via brand-config.json or design system tokens.
+Callout styling: left 4px border + tinted background. Colors configurable via brand-config.json or design system tokens. [EXPLICIT]
 
 **Table Rules:** Max 6 visible columns (rest in appendix). Sticky header row. Min 32px row height. Highlight critical rows.
 
@@ -253,7 +253,7 @@ Before delivering UX writing audit:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

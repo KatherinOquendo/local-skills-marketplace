@@ -1,65 +1,9 @@
-{
-  "skill_name": "devsecops-architecture",
-  "evals": [
-    {
-      "id": 1,
-      "name": "cicd_pipeline_design",
-      "prompt": "Design the CI/CD pipeline for our microservices platform",
-      "expected_output": "success",
-      "expectations": [
-        "Covers commit, acceptance, and production stages",
-        "Includes branching strategy recommendation",
-        "Addresses artifact management with immutable builds",
-        "Defines environment promotion with same artifact through all envs"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "shift_left_security",
-      "prompt": "Integrate security into our delivery pipeline with SAST and SCA",
-      "expected_output": "success",
-      "expectations": [
-        "Covers SAST, SCA, container scanning, and secrets scanning",
-        "Recommends specific tools for each security gate",
-        "Defines blocking vs warning thresholds per gate",
-        "Includes IaC scanning for infrastructure misconfigurations"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "supply_chain_security",
-      "prompt": "Set up SBOM generation and artifact signing for our build pipeline",
-      "expected_output": "success",
-      "expectations": [
-        "Covers SBOM generation in SPDX or CycloneDX format",
-        "Includes artifact signing with cosign or sigstore",
-        "Addresses dependency verification and pinned versions",
-        "Covers build reproducibility and immutable build agents"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "dora_metrics",
-      "prompt": "Help us measure and improve our DORA metrics",
-      "expected_output": "success",
-      "expectations": [
-        "Defines all 4 DORA metrics with targets",
-        "Covers pipeline observability and bottleneck detection",
-        "Includes deployment tracking and incident correlation",
-        "Recommends specific measurement and improvement strategies"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "compliance_automation",
-      "prompt": "Automate compliance for our regulated healthcare application",
-      "expected_output": "success",
-      "expectations": [
-        "Covers policy-as-code with OPA or Kyverno",
-        "Includes audit trail with immutable logging",
-        "Addresses evidence collection for compliance audits",
-        "Defines risk-based deployment gates (low/medium/high)"
-      ]
-    }
-  ]
-}
+[
+  {"id": "devsecops-architecture-happy-path", "type": "happy_path", "input": "Run devsecops architecture on this project", "expected_behavior": "Skill activates and produces the expected devsecops architecture output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "devsecops-architecture-explicit-trigger", "type": "happy_path", "input": "Apply devsecops architecture analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the devsecops architecture workflow", "tags": ["trigger", "recognition"]},
+  {"id": "devsecops-architecture-with-context", "type": "happy_path", "input": "Apply devsecops architecture to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive devsecops architecture analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "devsecops-architecture-minimal-input", "type": "happy_path", "input": "Quick devsecops architecture", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "devsecops-architecture-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to devsecops architecture", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "devsecops-architecture-edge-empty-input", "type": "edge_case", "input": "Run devsecops architecture but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "devsecops-architecture-edge-conflicting", "type": "edge_case", "input": "Apply devsecops architecture but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

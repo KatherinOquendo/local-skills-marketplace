@@ -1,38 +1,9 @@
 [
-  {
-    "prompt": "Convert SDF skill to PM-APEX format.",
-    "assertions": [
-      "analyzes source skill structure",
-      "maps to target format",
-      "preserves skill logic",
-      "validates converted output"
-    ]
-  },
-  {
-    "prompt": "Validate converted skill against PM-APEX requirements.",
-    "assertions": [
-      "checks frontmatter compliance",
-      "validates file structure",
-      "tests skill activation",
-      "reports compatibility issues"
-    ]
-  },
-  {
-    "prompt": "Build migration plan for 10 skills.",
-    "assertions": [
-      "sequences conversion by priority",
-      "estimates effort per skill",
-      "identifies conversion risks",
-      "plans validation testing"
-    ]
-  },
-  {
-    "prompt": "Handle incompatible features during conversion.",
-    "assertions": [
-      "identifies incompatible elements",
-      "proposes workarounds",
-      "documents limitations",
-      "recommends manual adjustments"
-    ]
-  }
+  {"id": "cross-platform-convert-happy-path", "type": "happy_path", "input": "Run cross platform convert on this project", "expected_behavior": "Skill activates and produces the expected cross platform convert output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "cross-platform-convert-explicit-trigger", "type": "happy_path", "input": "Apply cross platform convert analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the cross platform convert workflow", "tags": ["trigger", "recognition"]},
+  {"id": "cross-platform-convert-with-context", "type": "happy_path", "input": "Apply cross platform convert to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive cross platform convert analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "cross-platform-convert-minimal-input", "type": "happy_path", "input": "Quick cross platform convert", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "cross-platform-convert-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to cross platform convert", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "cross-platform-convert-edge-empty-input", "type": "edge_case", "input": "Run cross platform convert but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "cross-platform-convert-edge-conflicting", "type": "edge_case", "input": "Apply cross platform convert but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

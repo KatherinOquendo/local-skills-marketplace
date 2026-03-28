@@ -1,0 +1,9 @@
+[
+  {"id": "iic-tasks-to-issues-happy-path", "type": "happy_path", "input": "Run iic tasks to issues on this project", "expected_behavior": "Skill activates and produces the expected iic tasks to issues output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "iic-tasks-to-issues-explicit-trigger", "type": "happy_path", "input": "Apply iic tasks to issues analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the iic tasks to issues workflow", "tags": ["trigger", "recognition"]},
+  {"id": "iic-tasks-to-issues-with-context", "type": "happy_path", "input": "Apply iic tasks to issues to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive iic tasks to issues analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "iic-tasks-to-issues-minimal-input", "type": "happy_path", "input": "Quick iic tasks to issues", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "iic-tasks-to-issues-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to iic tasks to issues", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "iic-tasks-to-issues-edge-empty-input", "type": "edge_case", "input": "Run iic tasks to issues but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "iic-tasks-to-issues-edge-conflicting", "type": "edge_case", "input": "Apply iic tasks to issues but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

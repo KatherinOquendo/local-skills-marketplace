@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Implements WCAG 2.1 AA accessibility patterns including ARIA roles, keyboard
   navigation, screen reader support, color contrast, and inclusive design
-  principles for web applications.
+  principles for web applications. [EXPLICIT]
   Trigger: "accessibility", "WCAG", "ARIA", "a11y", "screen reader", "inclusive design"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements WCAG 2.1 AA compliance with proper ARIA roles, keyboard navigation, screen reader support, and inclusive design patterns to ensure web applications are usable by everyone. Use this skill when building new features, auditing existing applications, or establishing accessibility standards for a team.
+Implements WCAG 2.1 AA compliance with proper ARIA roles, keyboard navigation, screen reader support, and inclusive design patterns to ensure web applications are usable by everyone. Use this skill when building new features, auditing existing applications, or establishing accessibility standards for a team. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Implements WCAG 2.1 AA compliance with proper ARIA roles, keyboard navigation, s
 - `html-semantic` — semantic HTML is the foundation of accessibility
 - `form-engineering` — accessible form patterns and validation
 - `responsive-design` — responsive and accessible design overlap significantly
+
+## Usage
+
+Example invocations:
+
+- "/accessibility-design" — Run the full accessibility design workflow
+- "accessibility design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

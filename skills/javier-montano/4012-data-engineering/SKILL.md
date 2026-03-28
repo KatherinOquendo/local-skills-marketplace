@@ -1,16 +1,16 @@
 ---
 name: sofka-data-engineering
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design data pipelines",
   "architect data ingestion", "set up orchestration", "plan a data lake",
-  or mentions Airflow, Dagster, CDC, data lineage, or pipeline SLAs.
+  or mentions Airflow, Dagster, CDC, data lineage, or pipeline SLAs. [EXPLICIT]
   It produces data engineering documentation covering ingestion patterns,
   orchestration design, storage architecture, quality frameworks, lineage,
-  and cost management for scalable data platforms.
+  and cost management for scalable data platforms. [EXPLICIT]
   Use this skill whenever the user needs data platform architecture,
-  even if they don't explicitly ask for "data-engineering".
-argument-hint: "<project-or-system-name>"
+  even if they don't explicitly ask for "data-engineering". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -24,7 +24,7 @@ allowed-tools:
 
 # Data Engineering: Pipeline Architecture & Data Platform Design
 
-Data engineering architecture defines how data is ingested, orchestrated, stored, validated, and observed — the backbone infrastructure that feeds analytics, ML, and operational systems. This skill produces data engineering documentation that enables teams to build reliable, scalable, and cost-efficient data platforms.
+Data engineering architecture defines how data is ingested, orchestrated, stored, validated, and observed — the backbone infrastructure that feeds analytics, ML, and operational systems. This skill produces data engineering documentation that enables teams to build reliable, scalable, and cost-efficient data platforms. [EXPLICIT]
 
 ## Principio Rector
 
@@ -32,20 +32,20 @@ Data engineering architecture defines how data is ingested, orchestrated, stored
 
 ### Filosofía de Data Engineering
 
-1. **Idempotency por diseño.** Cada pipeline puede re-ejecutarse sin duplicar datos. Si no es idempotente, no es production-ready.
-2. **Schema evolution, no schema revolution.** Los schemas cambian — backward/forward compatibility es obligatorio. Breaking changes son planificados, no sorpresas.
-3. **Data contracts entre equipos.** El productor define el contrato, el consumidor lo valida. Sin contratos, la calidad es responsabilidad de nadie.
+1. **Idempotency por diseño.** Cada pipeline puede re-ejecutarse sin duplicar datos. Si no es idempotente, no es production-ready. [EXPLICIT]
+2. **Schema evolution, no schema revolution.** Los schemas cambian — backward/forward compatibility es obligatorio. Breaking changes son planificados, no sorpresas. [EXPLICIT]
+3. **Data contracts entre equipos.** El productor define el contrato, el consumidor lo valida. Sin contratos, la calidad es responsabilidad de nadie. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para ingestion patterns y storage design, HITL para orchestration decisions y data contracts.
-  - **desatendido**: Cero interrupciones. Arquitectura de data platform documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en storage architecture y quality framework.
-  - **paso-a-paso**: Confirma cada ingestion pattern, DAG design, storage zone, y quality check.
+  - **piloto-auto**: Auto para ingestion patterns y storage design, HITL para orchestration decisions y data contracts. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura de data platform documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en storage architecture y quality framework. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada ingestion pattern, DAG design, storage zone, y quality check. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 ingestion + S3 storage + S5 lineage) | `técnica` (full 6 sections, default)
 
@@ -55,7 +55,7 @@ Before generating architecture, detect the project context:
 !find . -name "*.py" -o -name "*.yaml" -o -name "*.yml" -o -name "Dockerfile" -o -name "*.tf" -o -name "*.sql" | head -30
 ```
 
-Use detected tools (Airflow, Dagster, Prefect, Spark, Kafka, dbt, etc.) to tailor recommendations.
+Use detected tools (Airflow, Dagster, Prefect, Spark, Kafka, dbt, etc.) to tailor recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -87,7 +87,7 @@ Read ${CLAUDE_SKILL_DIR}/references/pipeline-patterns.md
 
 ### S1: Ingestion Patterns
 
-Defines how data enters the platform — sources, methods, schema handling.
+Defines how data enters the platform — sources, methods, schema handling. [EXPLICIT]
 
 **Data contract enforcement at ingestion:**
 - Schema registry (Confluent Schema Registry or AWS Glue): enforce backward compatibility by default — new schemas must read old data
@@ -116,7 +116,7 @@ Defines how data enters the platform — sources, methods, schema handling.
 
 ### S2: Orchestration Design
 
-Maps DAG patterns, scheduling, dependency management, and SLA enforcement.
+Maps DAG patterns, scheduling, dependency management, and SLA enforcement. [EXPLICIT]
 
 **Orchestrator comparison — select by team profile:**
 
@@ -130,7 +130,7 @@ Maps DAG patterns, scheduling, dependency management, and SLA enforcement.
 | **Community size** | Largest (10K+ contributors) | Growing rapidly (2K+) | Medium (1.5K+) | Smaller (600+) |
 | **Choose when** | Existing Airflow investment, heavy K8s ops | Greenfield, asset-first thinking, dbt integration | Dynamic/event-driven workflows | Data scientists building pipelines |
 
-Practical guidance: run Dagster for new analytics/ML pipelines; keep Airflow for legacy or operator-heavy workflows; trigger across systems via APIs. Migrate incrementally.
+Practical guidance: run Dagster for new analytics/ML pipelines; keep Airflow for legacy or operator-heavy workflows; trigger across systems via APIs. Migrate incrementally. [EXPLICIT]
 
 **Includes:**
 - DAG architecture (pipeline decomposition, task granularity, dependencies)
@@ -147,7 +147,7 @@ Practical guidance: run Dagster for new analytics/ML pipelines; keep Airflow for
 
 ### S3: Storage Architecture
 
-Designs the data platform storage layers — zones, formats, and lifecycle.
+Designs the data platform storage layers — zones, formats, and lifecycle. [EXPLICIT]
 
 **Lakehouse table format comparison:**
 
@@ -161,7 +161,7 @@ Designs the data platform storage layers — zones, formats, and lifecycle.
 | **Catalog** | Nessie, Polaris, HMS, AWS Glue | Unity Catalog, HMS | HMS |
 | **Choose when** | Multi-engine is priority, vendor-neutral | Databricks-centric, need Delta Sharing | Heavy CDC from transactional DBs |
 
-Decision guidance: Iceberg is the 2025-2026 momentum leader for multi-engine portability; Delta Lake for Databricks-committed shops; Hudi only for CDC-dominant workloads.
+Decision guidance: Iceberg is the 2025-2026 momentum leader for multi-engine portability; Delta Lake for Databricks-committed shops; Hudi only for CDC-dominant workloads. [EXPLICIT]
 
 **Includes:**
 - Zone architecture (landing/raw → curated/clean → consumption/marts → archive)
@@ -177,7 +177,7 @@ Decision guidance: Iceberg is the 2025-2026 momentum leader for multi-engine por
 
 ### S4: Data Quality Framework
 
-Establishes validation, profiling, and remediation within data pipelines.
+Establishes validation, profiling, and remediation within data pipelines. [EXPLICIT]
 
 **Data observability stack integration:**
 
@@ -188,7 +188,7 @@ Establishes validation, profiling, and remediation within data pipelines.
 | **Soda** | Data quality checks as code | YAML-based checks, CI/CD integration | Cross-platform, polyglot teams |
 | **Great Expectations** | Programmable data validation | Python library, checkpoint-based | Engineering teams wanting full control |
 
-Selection criteria: Elementary for dbt shops (zero incremental infra); Soda for multi-tool environments; Monte Carlo for enterprise-wide observability; Great Expectations for Python-first teams.
+Selection criteria: Elementary for dbt shops (zero incremental infra); Soda for multi-tool environments; Monte Carlo for enterprise-wide observability; Great Expectations for Python-first teams. [EXPLICIT]
 
 **Includes:**
 - Quality checks in pipeline (schema validation, null checks, range validation)
@@ -205,7 +205,7 @@ Selection criteria: Elementary for dbt shops (zero incremental infra); Soda for 
 
 ### S5: Lineage & Observability
 
-Tracks data flow, monitors pipeline health, and enables incident response.
+Tracks data flow, monitors pipeline health, and enables incident response. [EXPLICIT]
 
 **Includes:**
 - Lineage tracking (table-level minimum for all paths, column-level for regulated/complex pipelines)
@@ -222,7 +222,7 @@ Tracks data flow, monitors pipeline health, and enables incident response.
 
 ### S6: Scalability & Cost Management
 
-Optimizes data platform for growth while controlling costs.
+Optimizes data platform for growth while controlling costs. [EXPLICIT]
 
 **Includes:**
 - Partitioning and compaction (target 128-256MB files; compact daily for active, weekly for stable)
@@ -272,19 +272,19 @@ Optimizes data platform for growth while controlling costs.
 ## Edge Cases
 
 **Greenfield Data Platform:**
-Start with managed connectors for quick wins, event-driven architecture for new systems, batch for legacy. Avoid custom connectors until managed options fail. Choose Iceberg as table format for future portability.
+Start with managed connectors for quick wins, event-driven architecture for new systems, batch for legacy. Avoid custom connectors until managed options fail. Choose Iceberg as table format for future portability. [EXPLICIT]
 
 **Legacy ETL Migration (Informatica, SSIS, Talend):**
-Map existing jobs to modern orchestration. Document undocumented business logic. Run parallel validation before cutover. Expect 20-30% of logic to be obsolete.
+Map existing jobs to modern orchestration. Document undocumented business logic. Run parallel validation before cutover. Expect 20-30% of logic to be obsolete. [EXPLICIT]
 
 **Multi-Cloud Data Platform:**
-Data ingested from AWS, processed in GCP, served from Azure. Address cross-cloud networking costs ($0.01-0.02/GB transfer), format compatibility (use Iceberg for portability), and unified catalog.
+Data ingested from AWS, processed in GCP, served from Azure. Address cross-cloud networking costs ($0.01-0.02/GB transfer), format compatibility (use Iceberg for portability), and unified catalog. [EXPLICIT]
 
 **Real-Time Streaming at Scale:**
-Kafka/Kinesis with millions of events per second. Address exactly-once semantics, consumer group management, dead-letter queues. Backpressure handling: bounded buffers, flow control that slows producers when consumers lag, consumer lag as first-class metric.
+Kafka/Kinesis with millions of events per second. Address exactly-once semantics, consumer group management, dead-letter queues. Backpressure handling: bounded buffers, flow control that slows producers when consumers lag, consumer lag as first-class metric. [EXPLICIT]
 
 **Compliance-Heavy Environment (GDPR, CCPA, HIPAA):**
-Data must be classifiable, deletable, and auditable. Support PII tagging in catalog, right-to-delete pipelines (Iceberg row-level deletes), and access logging at record level.
+Data must be classifiable, deletable, and auditable. Support PII tagging in catalog, right-to-delete pipelines (Iceberg row-level deletes), and access logging at record level. [EXPLICIT]
 
 ---
 
@@ -313,7 +313,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implement Google Analytics 4 with custom events, conversion tracking, GTM
-  integration, and data-driven insights for web applications.
+  integration, and data-driven insights for web applications. [EXPLICIT]
   Trigger: "google analytics", "GA4", "event tracking", "GTM", "conversions"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Google Analytics 4 implementation — from initial setup through custom event tracking, conversion configuration, Google Tag Manager integration, and actionable reporting. Use when adding analytics to a web application or migrating from Universal Analytics to GA4.
+Guides Google Analytics 4 implementation — from initial setup through custom event tracking, conversion configuration, Google Tag Manager integration, and actionable reporting. Use when adding analytics to a web application or migrating from Universal Analytics to GA4. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Google Analytics 4 implementation — from initial setup through custom e
 
 - `landing-pages` — conversion tracking is essential for landing page optimization
 - `recaptcha-integration` — bot traffic skews analytics data
+
+## Usage
+
+Example invocations:
+
+- "/google-analytics" — Run the full google analytics workflow
+- "google analytics on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -10,7 +10,7 @@ description: >
   "detect vaporware", "verify AI claims", "assess software maturity", "check if this tech actually works",
   or mentions technology due diligence, software validation, AI feasibility, vendor evaluation, or
   tech-stack viability. This is the devoted software-specific validator — separate and more critical
-  than the multidimensional feasibility analysis.
+  than the multidimensional feasibility analysis. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -25,11 +25,11 @@ allowed-tools:
 
 # Service & Technology Viability: Substance vs Smoke Validator
 
-Forensic validation of whether proposed software solutions, technology choices, and AI/ML
-components are viable, mature, and fit-for-purpose — or speculative, overhyped, and risky.
-This is NOT the multidimensional feasibility analysis (technical-feasibility covers that).
-This is a **devoted, deep-cut software validator** that operates at the level of code, APIs,
-vendor maturity, community health, and real-world production evidence.
+Forensic validation of whether proposed software solutions, technology choices, and AI/ML [EXPLICIT]
+components are viable, mature, and fit-for-purpose — or speculative, overhyped, and risky. [EXPLICIT]
+This is NOT the multidimensional feasibility analysis (technical-feasibility covers that). [EXPLICIT]
+This is a **devoted, deep-cut software validator** that operates at the level of code, APIs, [EXPLICIT]
+vendor maturity, community health, and real-world production evidence. [EXPLICIT]
 
 > **Universal scope:** This skill validates viability of software technologies (SDA), automation platforms (RPA), testing tools (QA), management frameworks (Management), data platforms (Data-AI), cloud services (Cloud), and any technological or methodological component proposed in a services engagement.
 
@@ -39,11 +39,11 @@ vendor maturity, community health, and real-world production evidence.
 
 ### Software Validation Philosophy
 
-1. **Evidence > narrative.** A reproducible benchmark is worth more than ten customer testimonials. If evidence does not exist, the verdict is provisional — and documented as such.
-2. **Smoke is detected in the details.** Vague claims ("state of the art", "enterprise-grade", "AI-powered") without specific metrics, documented datasets, or verifiable production cases are smoke signals until proven otherwise.
-3. **Viability is contextual.** A technology can be SUBSTANCE for a team with experience and HIGH RISK for another without it. The verdict is always issued in the context of the project, the team, and the specific constraints.
+1. **Evidence > narrative.** A reproducible benchmark is worth more than ten customer testimonials. If evidence does not exist, the verdict is provisional — and documented as such. [EXPLICIT]
+2. **Smoke is detected in the details.** Vague claims ("state of the art", "enterprise-grade", "AI-powered") without specific metrics, documented datasets, or verifiable production cases are smoke signals until proven otherwise. [EXPLICIT]
+3. **Viability is contextual.** A technology can be SUBSTANCE for a team with experience and HIGH RISK for another without it. The verdict is always issued in the context of the project, the team, and the specific constraints. [EXPLICIT]
 
-Escala de veredicto:
+Escala de veredicto: [EXPLICIT]
 - 🟢 **SUBSTANCIA** — producción comprobada, comunidad activa, API estable
 - 🟡 **PROMESA VIABLE** — early stage pero con fundamentos sólidos
 - 🟠 **RIESGO ALTO** — dependencia de vendor, lock-in, roadmap incierto
@@ -51,15 +51,15 @@ Escala de veredicto:
 
 ## Inputs
 
-Parse `$1` as **project name**, `$2` as **technology/solution to validate**.
-Accepts: technology names, vendor products, AI/ML proposals, architectural patterns, library choices.
+Parse `$1` as **project name**, `$2` as **technology/solution to validate**. [EXPLICIT]
+Accepts: technology names, vendor products, AI/ML proposals, architectural patterns, library choices. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario y análisis de madurez, HITL para veredictos de AI/ML y evaluación de vendors.
-  - **desatendido**: Zero interruptions. Scorecard generado automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en scorecard antes de entrega.
-  - **paso-a-paso**: Confirma cada tecnología evaluada, cada score, y el veredicto global.
+  - **piloto-auto**: Auto para inventario y análisis de madurez, HITL para veredictos de AI/ML y evaluación de vendors. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Scorecard generado automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en scorecard antes de entrega. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada tecnología evaluada, cada score, y el veredicto global. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 inventory + S6 scorecard only) | `técnica` (full forensic analysis, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
@@ -67,7 +67,7 @@ Accepts: technology names, vendor products, AI/ML proposals, architectural patte
 
 ### Service-Type Validation Lenses
 
-The SUBSTANCIA/PROMESA/RIESGO/HUMO scale applies universally. What changes is WHAT gets validated:
+The SUBSTANCIA/PROMESA/RIESGO/HUMO scale applies universally. What changes is WHAT gets validated: [EXPLICIT]
 
 | Service Type | What Gets Validated | Key Evidence Sources |
 |---|---|---|
@@ -84,7 +84,7 @@ The SUBSTANCIA/PROMESA/RIESGO/HUMO scale applies universally. What changes is WH
 
 ### S1: Technology Inventory & Claim Extraction
 
-Para cada tecnología, framework, vendor, o componente AI/ML propuesto:
+Para cada tecnología, framework, vendor, o componente AI/ML propuesto: [EXPLICIT]
 
 | Tecnología | Claim | Fuente del Claim | Evidencia Requerida |
 |---|---|---|---|
@@ -94,7 +94,7 @@ Para cada tecnología, framework, vendor, o componente AI/ML propuesto:
 
 ### S2: Software Maturity Assessment
 
-Por cada pieza de software evaluada:
+Por cada pieza de software evaluada: [EXPLICIT]
 
 **2a. Lifecycle Stage**
 | Indicador | Qué Buscar | Dónde |
@@ -125,7 +125,7 @@ Por cada pieza de software evaluada:
 
 **SECCIÓN CRÍTICA — la IA es el campo con mayor ratio humo/substancia.**
 
-Para cada componente AI/ML propuesto:
+Para cada componente AI/ML propuesto: [EXPLICIT]
 
 **3a. Claims vs Reality Matrix**
 | Claim | Benchmark Citado | Benchmark Real | Gap | Veredicto |
@@ -172,14 +172,14 @@ Para cada componente AI/ML propuesto:
 
 ### S5: Proof-of-Concept Design
 
-Para cada tecnología con veredicto 🟡 o 🟠, diseña un PoC mínimo:
+Para cada tecnología con veredicto 🟡 o 🟠, diseña un PoC mínimo: [EXPLICIT]
 
 | Tecnología | PoC Objective | Success Criteria | Effort | Timeline |
 |---|---|---|---|---|
 | {AI Platform} | Validate accuracy on real data | >85% on 100 production samples | 1 sprint | Sprint 0 |
 | {Framework Y} | Load test with production-like data | >50K rps at p99 <200ms | 3 days | Sprint 0 |
 
-Cada PoC debe:
+Cada PoC debe: [EXPLICIT]
 - Usar datos reales (no demo data)
 - Medir contra criteria del proyecto (no benchmarks genéricos)
 - Tener kill criteria: "Si < X, descartamos esta tecnología"
@@ -189,7 +189,7 @@ Cada PoC debe:
 ```
 SOFTWARE VIABILITY SCORECARD
 ════════════════════════════
-Proyecto: {nombre}
+Proyecto: {nombre} [EXPLICIT]
 
 | Tecnología | Maturity | Community | Production | AI Score | Vendor | VEREDICTO |
 |---|---|---|---|---|---|---|
@@ -327,15 +327,15 @@ graph TD
 **Formato HTML (para comite tecnico):**
 
 ```
-Header: Logo + proyecto + veredicto global badge
-Section 1: Technology Inventory (cards con semaforo por tecnologia)
-Section 2: Maturity Dashboard (tabla comparativa con community health indicators)
-Section 3: AI/ML Red Flags (si aplica, cards con hallazgos criticos)
-Section 4: Vendor Risk Assessment (visual con scoring)
-Section 5: PoC Designs (tabla con effort, timeline, success criteria)
-Section 6: Viability Scorecard (tabla resumen con veredictos)
-Section 7: Recommendations & Guardrails (action items priorizados)
-Footer: Attribution MetodologIA + re-evaluation triggers
+Header: Logo + proyecto + veredicto global badge [EXPLICIT]
+Section 1: Technology Inventory (cards con semaforo por tecnologia) [EXPLICIT]
+Section 2: Maturity Dashboard (tabla comparativa con community health indicators) [EXPLICIT]
+Section 3: AI/ML Red Flags (si aplica, cards con hallazgos criticos) [EXPLICIT]
+Section 4: Vendor Risk Assessment (visual con scoring) [EXPLICIT]
+Section 5: PoC Designs (tabla con effort, timeline, success criteria) [EXPLICIT]
+Section 6: Viability Scorecard (tabla resumen con veredictos) [EXPLICIT]
+Section 7: Recommendations & Guardrails (action items priorizados) [EXPLICIT]
+Footer: Attribution MetodologIA + re-evaluation triggers [EXPLICIT]
 ```
 
 ### DOCX (bajo demanda)
@@ -386,7 +386,7 @@ Footer: Attribution MetodologIA + re-evaluation triggers
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 
@@ -398,3 +398,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/software-viability" — Run the full software viability workflow
+- "software viability on this project" — Apply to current context
+

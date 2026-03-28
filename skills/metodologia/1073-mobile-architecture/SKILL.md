@@ -1,10 +1,10 @@
 ---
 name: metodologia-mobile-architecture
-description: >
-  Mobile app architecture -- native vs cross-platform, offline-first, state management, release management.
+description: 
+  Mobile app architecture -- native vs cross-platform, offline-first, state management, release management. [EXPLICIT]
   Use when the user asks to "design mobile architecture", "choose between native and cross-platform", "implement offline-first",
-  "plan mobile CI/CD", "optimize app performance", or mentions Flutter, React Native, KMP, MVVM, SwiftUI, Jetpack Compose, or app store deployment.
-argument-hint: "<app_or_project_name>"
+  "plan mobile CI/CD", "optimize app performance", or mentions Flutter, React Native, KMP, MVVM, SwiftUI, Jetpack Compose, or app store deployment. [EXPLICIT]
+argument-hint: "app_or_project_name"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Mobile Architecture: Platform Strategy, Patterns & Release Management
 
-Mobile architecture defines how mobile applications are structured, how they communicate with backends, handle offline scenarios, manage state, and reach users through app stores. This skill produces comprehensive mobile architecture documentation covering platform selection, app architecture patterns, offline-first design, performance optimization, backend integration, and release strategy.
+Mobile architecture defines how mobile applications are structured, how they communicate with backends, handle offline scenarios, manage state, and reach users through app stores. This skill produces comprehensive mobile architecture documentation covering platform selection, app architecture patterns, offline-first design, performance optimization, backend integration, and release strategy. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,21 +27,21 @@ Mobile architecture defines how mobile applications are structured, how they com
 
 ### Mobile Architecture Philosophy
 
-1. **Offline-first for unreliable networks.** The app must work without connectivity. Sync when there is a network, cache always, persistent action queue. The user should not notice the difference.
-2. **Native vs cross-platform is a business decision.** It is not technical — it is about team, velocity, and budget. Flutter for velocity, Native for extreme performance, KMP for shared logic with native UI.
-3. **Release management is more complex than web.** There is no "deploy to production in 5 minutes." There are store reviews, staged rollouts, feature flags, and forced updates. The release pipeline is architecture.
-4. **Performance is UX.** Cold start <2s, 60fps minimum, <200MB RAM. Every millisecond counts in mobile.
+1. **Offline-first for unreliable networks.** The app must work without connectivity. Sync when there is a network, cache always, persistent action queue. The user should not notice the difference. [EXPLICIT]
+2. **Native vs cross-platform is a business decision.** It is not technical — it is about team, velocity, and budget. Flutter for velocity, Native for extreme performance, KMP for shared logic with native UI. [EXPLICIT]
+3. **Release management is more complex than web.** There is no "deploy to production in 5 minutes." There are store reviews, staged rollouts, feature flags, and forced updates. The release pipeline is architecture. [EXPLICIT]
+4. **Performance is UX.** Cold start <2s, 60fps minimum, <200MB RAM. Every millisecond counts in mobile. [EXPLICIT]
 
 ## Inputs
 
-The user provides an app or project name as `$ARGUMENTS`. Parse `$1` as the **app/project name** used throughout all output artifacts.
+The user provides an app or project name as `$ARGUMENTS`. Parse `$1` as the **app/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para platform comparison y architecture patterns, HITL para platform selection y offline strategy.
-  - **desatendido**: Zero interruptions. Arquitectura mobile documentada automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en platform decision y release strategy.
-  - **paso-a-paso**: Confirma cada platform evaluation, architecture pattern, offline design, y release pipeline.
+  - **piloto-auto**: Auto para platform comparison y architecture patterns, HITL para platform selection y offline strategy. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Arquitectura mobile documentada automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en platform decision y release strategy. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada platform evaluation, architecture pattern, offline design, y release pipeline. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 platform strategy + S3 offline-first + S6 release) | `técnica` (full 6 sections, default)
 
@@ -378,19 +378,19 @@ graph TD
 ## Edge Cases
 
 **Single Developer Building for Both Platforms:**
-Cross-platform (Flutter or React Native) strongly favored. Maximize code sharing. Use managed services for backend.
+Cross-platform (Flutter or React Native) strongly favored. Maximize code sharing. Use managed services for backend. [EXPLICIT]
 
 **Enterprise App with MDM Requirements:**
-MDM integration affects architecture: managed app config, VPN tunneling, data loss prevention. Test with MDM profiles early.
+MDM integration affects architecture: managed app config, VPN tunneling, data loss prevention. Test with MDM profiles early. [EXPLICIT]
 
 **App with Large Media (Video, 3D):**
-Streaming over download. Progressive loading for 3D. CDN integration. Selective offline download with storage management UI.
+Streaming over download. Progressive loading for 3D. CDN integration. Selective offline download with storage management UI. [EXPLICIT]
 
 **Super App / Multi-Feature App:**
-Micro-frontend architecture: each feature team owns a module. Dynamic feature delivery. Navigation contract between modules.
+Micro-frontend architecture: each feature team owns a module. Dynamic feature delivery. Navigation contract between modules. [EXPLICIT]
 
 **Regulated Industry (Healthcare, Finance):**
-Biometric auth. Certificate pinning. No sensitive data in logs or screenshots. Jailbreak/root detection. HIPAA/PCI-DSS compliance.
+Biometric auth. Certificate pinning. No sensitive data in logs or screenshots. Jailbreak/root detection. HIPAA/PCI-DSS compliance. [EXPLICIT]
 
 ---
 
@@ -419,7 +419,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

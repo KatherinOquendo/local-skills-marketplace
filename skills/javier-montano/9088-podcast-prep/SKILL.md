@@ -3,7 +3,7 @@ name: podcast-prep
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Episode planning, guest research, question frameworks, show notes.
+  Episode planning, guest research, question frameworks, show notes. [EXPLICIT]
   Trigger: "podcast prep"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Podcast Prep
 > "Method over hacks."
 ## TL;DR
-Episode planning, guest research, question frameworks, show notes.
+Episode planning, guest research, question frameworks, show notes. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Episode planning, guest research, question frameworks, show notes.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/podcast-prep" — Run the full podcast prep workflow
+- "podcast prep on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

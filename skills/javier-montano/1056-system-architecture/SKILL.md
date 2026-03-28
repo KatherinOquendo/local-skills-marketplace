@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Designs software architectures using C4 diagrams, Architecture Decision Records
   (ADRs), quality attribute analysis, and trade-off evaluation. Covers system
-  decomposition from context to code level.
+  decomposition from context to code level. [EXPLICIT]
   Trigger: "C4 diagram", "architecture", "ADR", "quality attributes", "system design"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs software system architectures using C4 model diagrams, documents decisions via ADRs, and evaluates quality attribute trade-offs to produce maintainable, scalable systems. Use this skill when starting a new system, evaluating architectural fitness, or when the team needs shared understanding of system structure.
+Designs software system architectures using C4 model diagrams, documents decisions via ADRs, and evaluates quality attribute trade-offs to produce maintainable, scalable systems. Use this skill when starting a new system, evaluating architectural fitness, or when the team needs shared understanding of system structure. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Designs software system architectures using C4 model diagrams, documents decisio
 - `mermaid-diagramming` — renders C4 and other architecture diagrams
 - `trade-off-analysis` — structured quality attribute trade-off evaluation
 - `api-design` — detailed contract design for system interfaces
+
+## Usage
+
+Example invocations:
+
+- "/system-architecture" — Run the full system architecture workflow
+- "system architecture on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

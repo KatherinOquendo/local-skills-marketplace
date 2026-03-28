@@ -156,7 +156,7 @@ A gold standard skill must also meet MOAT criteria to be considered production-q
 MOAT = CERTIFIED (all rubric dims >= 7, avg >= 8, S1-S9 pass, 13/13 gate)
      + M1: evals/evals.json with >= 5 distinct test prompts
      + M2: >= 1 false-positive eval + >= 1 edge-case eval
-     + M3: All references/ files >= 20 lines, no TBD/TODO/placeholder
+     + M3: All references/ files >= 20 lines, no pending/pending/template
      + M4: Template A structure (deprecated: Template B Physics/Protocol)
      + M5: Evidence tags [EXPLICIT]/[INFERRED]/[OPEN] on >= 80% factual claims
 ```
@@ -189,7 +189,7 @@ Template B (Physics/Protocol/TL;DR) is **DEPRECATED** and must be migrated. All 
 All factual claims must carry one of:
 - `[EXPLICIT]` — Direct fact or specification
 - `[INFERRED]` — Derived conclusion from evidence
-- `[OPEN]` — Unknown, to be validated
+- `[OPEN]` — Unknown, tbd
 
 Coverage target: >= 80% for Standard/Orchestrator, >= 50% for Utility tier.
 

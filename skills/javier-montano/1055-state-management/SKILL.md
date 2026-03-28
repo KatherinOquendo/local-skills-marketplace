@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Designs client-side state management strategies using Redux, NgRx, Zustand,
   Context API, and Firestore real-time sync. Covers state shape design,
-  selector patterns, and optimistic updates.
+  selector patterns, and optimistic updates. [EXPLICIT]
   Trigger: "state management", "Redux", "NgRx", "Zustand", "Context API"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs client-side state management architectures using Redux, NgRx, Zustand, Context API, or Firestore sync, with clear patterns for state shape, selectors, and side effects. Use this skill when application state grows complex, when multiple components share data, or when choosing between state management solutions.
+Designs client-side state management architectures using Redux, NgRx, Zustand, Context API, or Firestore sync, with clear patterns for state shape, selectors, and side effects. Use this skill when application state grows complex, when multiple components share data, or when choosing between state management solutions. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Designs client-side state management architectures using Redux, NgRx, Zustand, C
 - `realtime-architecture` — Firestore real-time sync patterns
 - `component-architecture` — state boundaries align with component boundaries
 - `react-development` — React-specific state management patterns
+
+## Usage
+
+Example invocations:
+
+- "/state-management" — Run the full state management workflow
+- "state management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

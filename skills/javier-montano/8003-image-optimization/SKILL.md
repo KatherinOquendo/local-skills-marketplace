@@ -10,21 +10,21 @@ tags: [performance, images, webp, avif, srcset, lazy-loading, firebase-storage]
 # 098 — Image Optimization {Performance}
 
 ## Purpose
-Minimize image payload while maintaining visual quality. Serve the optimal format, size, and resolution for each device and viewport through modern formats, responsive images, and automated processing.
+Minimize image payload while maintaining visual quality. Serve the optimal format, size, and resolution for each device and viewport through modern formats, responsive images, and automated processing. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of Format Efficiency**: AVIF > WebP > JPEG > PNG for photographic content. Always serve the most efficient format the browser supports.
-2. **Law of Right-Sizing**: Never serve a 2000px image to a 375px viewport. Responsive images deliver the exact resolution needed.
-3. **Law of Deferred Loading**: Images below the fold are lazy-loaded. Only above-the-fold hero images load eagerly. The browser decides when to fetch the rest.
+1. **Law of Format Efficiency**: AVIF > WebP > JPEG > PNG for photographic content. Always serve the most efficient format the browser supports. [EXPLICIT]
+2. **Law of Right-Sizing**: Never serve a 2000px image to a 375px viewport. Responsive images deliver the exact resolution needed. [EXPLICIT]
+3. **Law of Deferred Loading**: Images below the fold are lazy-loaded. Only above-the-fold hero images load eagerly. The browser decides when to fetch the rest. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Format Pipeline
-1. Source images stored as high-quality originals (JPEG/PNG) in Firebase Storage.
-2. Install Firebase Extension: `storage-resize-images` — auto-generates resized variants.
-3. Configure sizes: `[320, 640, 960, 1280, 1920]` widths. Formats: `[webp, avif]`.
-4. Build-time alternative: `sharp` or `squoosh` CLI for static assets in `public/`.
+1. Source images stored as high-quality originals (JPEG/PNG) in Firebase Storage. [EXPLICIT]
+2. Install Firebase Extension: `storage-resize-images` — auto-generates resized variants. [EXPLICIT]
+3. Configure sizes: `[320, 640, 960, 1280, 1920]` widths. Formats: `[webp, avif]`. [EXPLICIT]
+4. Build-time alternative: `sharp` or `squoosh` CLI for static assets in `public/`. [EXPLICIT]
 
 ### Phase 2 — Responsive Image Markup
 1. Use `<picture>` element with `<source>` for format selection:
@@ -35,14 +35,14 @@ Minimize image payload while maintaining visual quality. Serve the optimal forma
      <img src="img.jpg" alt="description">
    </picture>
    ```
-2. Add `srcset` with width descriptors: `srcset="img-320.webp 320w, img-640.webp 640w"`.
-3. Add `sizes` attribute: `sizes="(max-width: 768px) 100vw, 50vw"`.
-4. Set explicit `width` and `height` attributes to prevent CLS.
+2. Add `srcset` with width descriptors: `srcset="img-320.webp 320w, img-640.webp 640w"`. [EXPLICIT]
+3. Add `sizes` attribute: `sizes="(max-width: 768px) 100vw, 50vw"`. [EXPLICIT]
+4. Set explicit `width` and `height` attributes to prevent CLS. [EXPLICIT]
 
 ### Phase 3 — Loading Strategy
-1. Above-the-fold images: `loading="eager"`, `fetchpriority="high"`, preload in `<head>`.
-2. Below-the-fold images: `loading="lazy"`, `decoding="async"`.
-3. Background images: use `IntersectionObserver` for lazy loading CSS backgrounds.
+1. Above-the-fold images: `loading="eager"`, `fetchpriority="high"`, preload in `<head>`. [EXPLICIT]
+2. Below-the-fold images: `loading="lazy"`, `decoding="async"`. [EXPLICIT]
+3. Background images: use `IntersectionObserver` for lazy loading CSS backgrounds. [EXPLICIT]
 
 ## I/O
 
@@ -55,11 +55,11 @@ Minimize image payload while maintaining visual quality. Serve the optimal forma
 
 ## Quality Gates — 5 Checks
 
-1. **No images > 200KB** served to any device — resize or compress further.
-2. **WebP/AVIF served** to supporting browsers — `<picture>` fallback for others.
-3. **All images have `width`/`height`** — prevents CLS.
-4. **Below-fold images lazy-loaded** — `loading="lazy"` present.
-5. **Hero image preloaded** — `<link rel="preload">` in document head.
+1. **No images > 200KB** served to any device — resize or compress further. [EXPLICIT]
+2. **WebP/AVIF served** to supporting browsers — `<picture>` fallback for others. [EXPLICIT]
+3. **All images have `width`/`height`** — prevents CLS. [EXPLICIT]
+4. **Below-fold images lazy-loaded** — `loading="lazy"` present. [EXPLICIT]
+5. **Hero image preloaded** — `<link rel="preload">` in document head. [EXPLICIT]
 
 ## Edge Cases
 
@@ -74,3 +74,17 @@ Minimize image payload while maintaining visual quality. Serve the optimal forma
 - CLS from images → add missing `width`/`height` attributes.
 - Storage costs rising → audit image sizes, remove unused resized variants.
 - AVIF not serving → verify `<picture>` source order (AVIF before WebP).
+
+## Usage
+
+Example invocations:
+
+- "/image-optimization" — Run the full image optimization workflow
+- "image optimization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

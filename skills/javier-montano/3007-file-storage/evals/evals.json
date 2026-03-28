@@ -1,0 +1,9 @@
+[
+  {"id": "file-storage-happy-path", "type": "happy_path", "input": "Run file storage on this project", "expected_behavior": "Skill activates and produces the expected file storage output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "file-storage-explicit-trigger", "type": "happy_path", "input": "Apply file storage analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the file storage workflow", "tags": ["trigger", "recognition"]},
+  {"id": "file-storage-with-context", "type": "happy_path", "input": "Apply file storage to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive file storage analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "file-storage-minimal-input", "type": "happy_path", "input": "Quick file storage", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "file-storage-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to file storage", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "file-storage-edge-empty-input", "type": "edge_case", "input": "Run file storage but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "file-storage-edge-conflicting", "type": "edge_case", "input": "Apply file storage but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

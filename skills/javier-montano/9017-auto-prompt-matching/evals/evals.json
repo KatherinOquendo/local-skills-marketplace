@@ -1,0 +1,9 @@
+[
+  {"id": "auto-prompt-matching-happy-path", "type": "happy_path", "input": "Run auto prompt matching on this project", "expected_behavior": "Skill activates and produces the expected auto prompt matching output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "auto-prompt-matching-explicit-trigger", "type": "happy_path", "input": "Apply auto prompt matching analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the auto prompt matching workflow", "tags": ["trigger", "recognition"]},
+  {"id": "auto-prompt-matching-with-context", "type": "happy_path", "input": "Apply auto prompt matching to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive auto prompt matching analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "auto-prompt-matching-minimal-input", "type": "happy_path", "input": "Quick auto prompt matching", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "auto-prompt-matching-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to auto prompt matching", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "auto-prompt-matching-edge-empty-input", "type": "edge_case", "input": "Run auto prompt matching but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "auto-prompt-matching-edge-conflicting", "type": "edge_case", "input": "Apply auto prompt matching but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

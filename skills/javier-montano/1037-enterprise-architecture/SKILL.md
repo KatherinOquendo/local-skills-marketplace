@@ -1,13 +1,13 @@
 ---
 name: sofka-enterprise-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "map business capabilities",
   "build a technology radar", "define architecture governance",
-  "prioritize strategic initiatives", or mentions capability mapping, DDD domains, ARB, DORA metrics, or target operating model.
-  It generates enterprise architecture alignment artifacts including capability maps, domain decomposition, governance frameworks, technology radars, and strategic initiative roadmaps.
-  Use this skill whenever the user needs to align technology initiatives with business strategy, even if they don't explicitly ask for "enterprise architecture".
-argument-hint: "<project-or-system-name>"
+  "prioritize strategic initiatives", or mentions capability mapping, DDD domains, ARB, DORA metrics, or target operating model. [EXPLICIT]
+  It generates enterprise architecture alignment artifacts including capability maps, domain decomposition, governance frameworks, technology radars, and strategic initiative roadmaps. [EXPLICIT]
+  Use this skill whenever the user needs to align technology initiatives with business strategy, even if they don't explicitly ask for "enterprise architecture". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Enterprise Architecture: Strategy & Portfolio Alignment
 
-Enterprise architecture aligns technology initiatives with business strategy. It defines what capabilities the enterprise needs, what technologies support them, how decisions are governed, and how investments are prioritized.
+Enterprise architecture aligns technology initiatives with business strategy. It defines what capabilities the enterprise needs, what technologies support them, how decisions are governed, and how investments are prioritized. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,20 +29,20 @@ Enterprise architecture aligns technology initiatives with business strategy. It
 
 ### Filosofía de Arquitectura Enterprise
 
-1. **Capacidades > sistemas.** Los sistemas cambian; las capacidades del negocio persisten. Se invierte en capacidades, no en tecnología por sí misma.
-2. **Radar > mandato.** El technology radar guía, no obliga. Los equipos proponen, el ARB valida, el contexto decide.
-3. **Gobierno proporcional.** Más governance para alto riesgo/costo. Menos para experimentos y innovación. El gobierno habilita, no frena.
+1. **Capacidades > sistemas.** Los sistemas cambian; las capacidades del negocio persisten. Se invierte en capacidades, no en tecnología por sí misma. [EXPLICIT]
+2. **Radar > mandato.** El technology radar guía, no obliga. Los equipos proponen, el ARB valida, el contexto decide. [EXPLICIT]
+3. **Gobierno proporcional.** Más governance para alto riesgo/costo. Menos para experimentos y innovación. El gobierno habilita, no frena. [EXPLICIT]
 
 ## Inputs
 
-The user provides an organization or initiative name as `$ARGUMENTS`. Parse `$1` as the **enterprise/organization name** used throughout all output artifacts.
+The user provides an organization or initiative name as `$ARGUMENTS`. Parse `$1` as the **enterprise/organization name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para capability mapping y radar, HITL para governance decisions y portfolio prioritization.
-  - **desatendido**: Cero interrupciones. Arquitectura enterprise documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en domain boundaries y governance framework.
-  - **paso-a-paso**: Confirma cada capability, domain context, radar entry, y initiative.
+  - **piloto-auto**: Auto para capability mapping y radar, HITL para governance decisions y portfolio prioritization. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura enterprise documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en domain boundaries y governance framework. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada capability, domain context, radar entry, y initiative. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 capability map + S3 radar + S5 portfolio) | `técnica` (full 6 sections, default)
 
@@ -84,7 +84,7 @@ Read ${CLAUDE_SKILL_DIR}/references/governance-frameworks.md
 
 ### S1: Capability Map (Maturity 1-5)
 
-Hierarchical decomposition of business capabilities from strategic to operational level.
+Hierarchical decomposition of business capabilities from strategic to operational level. [EXPLICIT]
 
 **Structure:**
 - **Level 1 (Strategic):** Core business capabilities (e.g., "Acquire Customers", "Process Payments")
@@ -109,7 +109,7 @@ Hierarchical decomposition of business capabilities from strategic to operationa
 
 ### S2: Domain Model (DDD)
 
-Decomposes the enterprise into cohesive domains using Domain-Driven Design principles.
+Decomposes the enterprise into cohesive domains using Domain-Driven Design principles. [EXPLICIT]
 
 **Bounded Contexts:**
 - Core Domain: differentiates from competitors (invest heavily)
@@ -132,7 +132,7 @@ Decomposes the enterprise into cohesive domains using Domain-Driven Design princ
 
 ### S3: Technology Radar (Adopt/Trial/Assess/Hold)
 
-Guides technology adoption across the enterprise (ThoughtWorks-style).
+Guides technology adoption across the enterprise (ThoughtWorks-style). [EXPLICIT]
 
 **Classification:**
 - **Adopt:** Proven, recommended; invest in new projects
@@ -153,7 +153,7 @@ Guides technology adoption across the enterprise (ThoughtWorks-style).
 
 ### S4: Architectural Governance (ARB)
 
-Framework for making and enforcing architecture decisions.
+Framework for making and enforcing architecture decisions. [EXPLICIT]
 
 **Architectural Principles:** Long-lived, guide decision-making
 - "Cloud-first: default to cloud; on-prem justified by specific constraints"
@@ -181,7 +181,7 @@ Framework for making and enforcing architecture decisions.
 
 ### S5: Initiative Portfolio
 
-Prioritized list of strategic initiatives aligned with business objectives and capability gaps.
+Prioritized list of strategic initiatives aligned with business objectives and capability gaps. [EXPLICIT]
 
 **Per initiative:**
 - Name & Objective, Business Value, Cost estimate, Risk, Strategic Alignment
@@ -201,7 +201,7 @@ Prioritized list of strategic initiatives aligned with business objectives and c
 
 ### S6: Target Operating Model (Team Topologies, DORA)
 
-How the organization is structured and operates to deliver and manage architecture.
+How the organization is structured and operates to deliver and manage architecture. [EXPLICIT]
 
 **Organizational Structure (Team Topologies):**
 - Stream-aligned teams: own end-to-end capabilities, cross-functional
@@ -258,19 +258,19 @@ How the organization is structured and operates to deliver and manage architectu
 ## Edge Cases
 
 **Legacy Enterprise with Technical Debt:**
-Capabilities supported by outdated tech. Modernization competes with new feature development. Prioritize highest-value, lowest-cost improvements; parallel running during transition.
+Capabilities supported by outdated tech. Modernization competes with new feature development. Prioritize highest-value, lowest-cost improvements; parallel running during transition. [EXPLICIT]
 
 **Multi-Geographic or Multi-Regulatory:**
-Different regions have different compliance (GDPR EU, CCPA California). Architecture must accommodate regional customization. Domain model per region, shared kernel for common capabilities.
+Different regions have different compliance (GDPR EU, CCPA California). Architecture must accommodate regional customization. Domain model per region, shared kernel for common capabilities. [EXPLICIT]
 
 **High-Growth Startup Becoming Enterprise:**
-"Move fast, break things" needs governance. Retrospective capability mapping, gradual governance introduction, strategic initiative prioritization.
+"Move fast, break things" needs governance. Retrospective capability mapping, gradual governance introduction, strategic initiative prioritization. [EXPLICIT]
 
 **Merger or Acquisition:**
-Two enterprises with different architectures, technologies, governance. Capability analysis for synergies, phased integration roadmap, shared platform investments.
+Two enterprises with different architectures, technologies, governance. Capability analysis for synergies, phased integration roadmap, shared platform investments. [EXPLICIT]
 
 **Digital Transformation Initiative:**
-High visibility, multiple stakeholders, cross-cutting impact. Clear vision, phased capability evolution, frequent communication, quick wins early.
+High visibility, multiple stakeholders, cross-cutting impact. Clear vision, phased capability evolution, frequent communication, quick wins early. [EXPLICIT]
 
 ---
 
@@ -306,7 +306,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

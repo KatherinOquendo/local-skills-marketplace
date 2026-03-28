@@ -1,13 +1,13 @@
----
-name: sofka-functional-toolbelt
-argument-hint: "<module-or-system-name>"
-description: >
+--- [EXPLICIT]
+name: sofka-functional-toolbelt [EXPLICIT]
+argument-hint: "module-or-system-name"
+description: 
   This skill should be used when the user asks to "run event storming",
   "create a story map", "extract business rules", "write acceptance criteria",
-  or mentions traceability matrix, Given/When/Then, anti-pattern detection, or requirements quality.
-  It provides a 6-tool functional analysis toolkit covering event storming, story mapping, business rule extraction, acceptance criteria writing, traceability matrices, and anti-pattern detection.
-  Use this skill whenever the user needs structured requirements engineering techniques, even if they don't explicitly ask for "functional toolbelt".
-argument-hint: "<module-or-system-name>"
+  or mentions traceability matrix, Given/When/Then, anti-pattern detection, or requirements quality. [EXPLICIT]
+  It provides a 6-tool functional analysis toolkit covering event storming, story mapping, business rule extraction, acceptance criteria writing, traceability matrices, and anti-pattern detection. [EXPLICIT]
+  Use this skill whenever the user needs structured requirements engineering techniques, even if they don't explicitly ask for "functional toolbelt". [EXPLICIT]
+argument-hint: "module-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Functional Toolbelt
 
-Mental models, techniques, and validation tools for producing better functional analysis. NOT a deliverable skill — a **toolbelt** that enhances output quality of any requirements or specification work.
+Mental models, techniques, and validation tools for producing better functional analysis. NOT a deliverable skill — a **toolbelt** that enhances output quality of any requirements or specification work. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,9 +29,9 @@ Mental models, techniques, and validation tools for producing better functional 
 
 ### Filosofía del Toolbelt
 
-1. **Técnica correcta para el contexto.** Event storming para descubrir dominios, story mapping para planificar releases, acceptance criteria para validar. No usar martillo para todo.
-2. **Formalismo proporcional.** Business rules críticas en pseudo-código. Rules simples en lenguaje natural. El nivel de formalismo depende de la severidad.
-3. **Traceability end-to-end.** Cada requirement tiene un origen (stakeholder, rule, flow) y un destino (test, acceptance criteria). Sin trazabilidad, los requirements son declaraciones sueltas.
+1. **Técnica correcta para el contexto.** Event storming para descubrir dominios, story mapping para planificar releases, acceptance criteria para validar. No usar martillo para todo. [EXPLICIT]
+2. **Formalismo proporcional.** Business rules críticas en pseudo-código. Rules simples en lenguaje natural. El nivel de formalismo depende de la severidad. [EXPLICIT]
+3. **Traceability end-to-end.** Cada requirement tiene un origen (stakeholder, rule, flow) y un destino (test, acceptance criteria). Sin trazabilidad, los requirements son declaraciones sueltas. [EXPLICIT]
 
 ## $ARGUMENTS
 
@@ -239,7 +239,7 @@ Examples:
 
 ## Validation Gate
 
-Before delivering toolbelt output, verify:
+Before delivering toolbelt output, verify: [EXPLICIT]
 - [ ] Tool selection justified for project context
 - [ ] Inputs identified and available (or gaps flagged)
 - [ ] Edge cases for the selected tool explicitly addressed
@@ -267,3 +267,11 @@ Before delivering toolbelt output, verify:
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/functional-toolbelt" — Run the full functional toolbelt workflow
+- "functional toolbelt on this project" — Apply to current context
+

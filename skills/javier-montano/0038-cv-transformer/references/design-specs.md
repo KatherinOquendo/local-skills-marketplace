@@ -87,7 +87,7 @@ Choose the palette that best matches the candidate's industry. If uncertain, use
 Single-page web resume with these sections:
 1. **Hero Section** — Full-width, gradient background, name + title + tagline
 2. **About** — Professional summary with subtle animation on scroll
-3. **Experience** — Cards with company logo placeholder, expandable details
+3. **Experience** — Cards with company logo template, expandable details
 4. **Skills** — Animated progress bars or tag cloud
 5. **Education** — Timeline visual
 6. **Contact** — Clean footer with social links
@@ -105,13 +105,13 @@ Single-page web resume with these sections:
 
 | Slide | Content | Layout |
 |-------|---------|--------|
-| 1 — Hero | Name, Title, Tagline, Photo placeholder | Dark bg, large text, accent border |
+| 1 — Hero | Name, Title, Tagline, Photo template | Dark bg, large text, accent border |
 | 2 — Summary | Professional summary + key metrics | Two-column: text + stat callouts |
 | 3 — Experience | Timeline of roles | Visual timeline with icons |
 | 4-N — Role Detail | One slide per major role | Company + achievements + metrics |
 | N+1 — Skills | Technical + soft skills | Icon grid or category columns |
 | N+2 — Education | Degrees, certifications | Clean cards layout |
-| N+3 — Contact | Contact info + QR code placeholder | Centered, clean |
+| N+3 — Contact | Contact info + QR code template | Centered, clean |
 
 ---
 

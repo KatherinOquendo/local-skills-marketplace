@@ -1,63 +1,9 @@
-{
-  "skill_name": "agent-constitution-creator",
-  "evals": [
-    {
-      "id": 1,
-      "name": "full-constitution-with-role",
-      "prompt": "Create an agent constitution for data-validator that transforms raw CSV datasets into validated, typed schemas",
-      "expected_output": "Complete agent.md with all 22 fields filled, specific to data validation domain, with measurable mission, typed inputs/outputs, and 3+ failure modes.",
-      "expectations": [
-        "Output contains all 22 fields (identity 3, authority 6, governance 6, quality 7)",
-        "Mission includes measurable outcome specific to data validation",
-        "Non-Goals has 3+ items with responsible alternative agents named",
-        "Allowed Tools lists specific tool names, no wildcards",
-        "Failure Handling table has 3+ modes with detection, response, fallback columns"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "interview-mode-no-role",
-      "prompt": "Create an agent constitution for onboarding-agent",
-      "expected_output": "Enters interview mode asking 3 questions: primary responsibility, ecosystem context, tool access. Does not generate constitution until answers provided.",
-      "expectations": [
-        "Asks about primary responsibility before generating",
-        "Asks about existing agents in the ecosystem",
-        "Asks about tool access requirements",
-        "Does not generate a complete constitution from the name alone"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "ecosystem-awareness",
-      "prompt": "Create a constitution for report-generator agent. We already have data-analyst, chart-builder, and email-sender agents.",
-      "expected_output": "Constitution references existing agents in delegation rules, escalation, and non-goals. Boundaries are explicitly drawn against data-analyst and chart-builder.",
-      "expectations": [
-        "Non-Goals reference data-analyst for data transformation tasks",
-        "Delegation Rules specify when to delegate to chart-builder for visualization",
-        "Escalation Rules include path to human for business decisions",
-        "Scope explicitly excludes what data-analyst and chart-builder handle"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "false-positive-not-agent",
-      "prompt": "Write a Python function that validates user input",
-      "expected_output": "Does not generate an agent constitution. This is a code request, not an agent design request.",
-      "expectations": [
-        "Does not trigger agent constitution generation",
-        "Recognizes this as a coding task, not an agent design task"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "overlapping-scope-detection",
-      "prompt": "Create a constitution for data-processor. We already have data-analyst that handles data transformation.",
-      "expected_output": "Flags the scope overlap between data-processor and data-analyst. Asks for clarification on boundaries before generating.",
-      "expectations": [
-        "Detects overlap between data-processor and existing data-analyst",
-        "Asks user to clarify boundaries before proceeding",
-        "Does not generate a constitution with overlapping scope without resolution"
-      ]
-    }
-  ]
-}
+[
+  {"id": "agent-constitution-creator-happy-path", "type": "happy_path", "input": "Run agent constitution creator on this project", "expected_behavior": "Skill activates and produces the expected agent constitution creator output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "agent-constitution-creator-explicit-trigger", "type": "happy_path", "input": "Apply agent constitution creator analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the agent constitution creator workflow", "tags": ["trigger", "recognition"]},
+  {"id": "agent-constitution-creator-with-context", "type": "happy_path", "input": "Apply agent constitution creator to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive agent constitution creator analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "agent-constitution-creator-minimal-input", "type": "happy_path", "input": "Quick agent constitution creator", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "agent-constitution-creator-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to agent constitution creator", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "agent-constitution-creator-edge-empty-input", "type": "edge_case", "input": "Run agent constitution creator but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "agent-constitution-creator-edge-conflicting", "type": "edge_case", "input": "Apply agent constitution creator but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

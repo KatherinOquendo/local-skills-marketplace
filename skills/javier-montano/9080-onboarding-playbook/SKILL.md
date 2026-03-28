@@ -1,12 +1,12 @@
----
-name: metodologia-onboarding-playbook
-description: >
-  Developer and team onboarding program design, knowledge transfer framework, and ramp-up metrics
-  definition. Use when the user asks to "design onboarding program", "create onboarding playbook",
-  "plan knowledge transfer", or mentions onboarding checklist, 30-60-90 plan, ramp-up metrics,
-  or knowledge map.
-argument-hint: "<project-or-org> <role-or-team>"
-author: Javier Montaño · Comunidad MetodologIA
+--- [EXPLICIT]
+name: metodologia-onboarding-playbook [EXPLICIT]
+description:  [EXPLICIT]
+  Developer and team onboarding program design, knowledge transfer framework, and ramp-up metrics [EXPLICIT]
+  definition. Use when the user asks to "design onboarding program", "create onboarding playbook", [EXPLICIT]
+  "plan knowledge transfer", or mentions onboarding checklist, 30-60-90 plan, ramp-up metrics, [EXPLICIT]
+  or knowledge map. [EXPLICIT]
+argument-hint: "project-or-org role-or-team" [EXPLICIT]
+author: Javier Montaño · Comunidad MetodologIA [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,16 +21,16 @@ allowed-tools:
 
 # Playbook de Onboarding
 
-Diseno de programa de onboarding para developers y equipos, framework de transferencia
-de conocimiento y definicion de metricas de ramp-up.
+Diseno de programa de onboarding para developers y equipos, framework de transferencia [EXPLICIT]
+de conocimiento y definicion de metricas de ramp-up. [EXPLICIT]
 
 ## Grounding Guideline
 
 > *A team that does not know where to start loses its first two weeks — and the client's trust.*
 
-1. **Onboarding as investment, not expense.** Every hour invested in a clear playbook saves days of confusion for the receiving team.
-2. **Context before tasks.** The team needs to understand the why before the what — without context, tasks are meaningless instructions.
-3. **Living document.** A static playbook becomes outdated in the first week — it must evolve with the project.
+1. **Onboarding as investment, not expense.** Every hour invested in a clear playbook saves days of confusion for the receiving team. [EXPLICIT]
+2. **Context before tasks.** The team needs to understand the why before the what — without context, tasks are meaningless instructions. [EXPLICIT]
+3. **Living document.** A static playbook becomes outdated in the first week — it must evolve with the project. [EXPLICIT]
 
 ## TL;DR
 
@@ -42,7 +42,7 @@ de conocimiento y definicion de metricas de ramp-up.
 
 ## Inputs
 
-Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo target**.
+Parse `$1` como **nombre del proyecto/organizacion**, `$2` como **rol o equipo target**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -298,3 +298,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/onboarding-playbook" — Run the full onboarding playbook workflow
+- "onboarding playbook on this project" — Apply to current context
+

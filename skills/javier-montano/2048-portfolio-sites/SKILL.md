@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build portfolio and showcase websites with image galleries, case studies,
-  smooth animations, and contact forms. Covers personal branding and presentation.
+  smooth animations, and contact forms. Covers personal branding and presentation. [EXPLICIT]
   Trigger: "portfolio", "showcase site", "case study", "gallery website"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the creation of portfolio and showcase websites featuring project galleries, detailed case studies, smooth scroll animations, and functional contact forms. Use when building personal portfolios, agency showcases, or creative professional websites.
+Guides the creation of portfolio and showcase websites featuring project galleries, detailed case studies, smooth scroll animations, and functional contact forms. Use when building personal portfolios, agency showcases, or creative professional websites. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the creation of portfolio and showcase websites featuring project galleri
 
 - `image-optimization` — critical for fast-loading galleries
 - `scroll-interaction` — tasteful scroll-driven animations
+
+## Usage
+
+Example invocations:
+
+- "/portfolio-sites" — Run the full portfolio sites workflow
+- "portfolio sites on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

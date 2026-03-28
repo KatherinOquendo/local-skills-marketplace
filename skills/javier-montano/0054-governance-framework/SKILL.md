@@ -5,7 +5,7 @@ description: >
   "set up escalation paths", "design authority matrix", "establish decision framework",
   or mentions project governance, steering committee, decision framework, authority levels,
   escalation matrix. Triggers on: builds a governance charter, designs escalation paths,
-  defines decision-making authority, creates steering committee structure, maps authority levels.
+  defines decision-making authority, creates steering committee structure, maps authority levels. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -20,7 +20,7 @@ allowed-tools:
 **TL;DR**: Designs the project governance model including decision-making authority levels, steering committee structure, escalation paths, reporting cadence, and governance ceremonies. Ensures clear authority, timely decisions, and appropriate oversight without bureaucratic overhead.
 
 ## Principio Rector
-La gobernanza existe para facilitar decisiones, no para retrasarlas. Un buen modelo de gobernanza define quién puede decidir qué, hasta qué monto, y cómo se escala lo que excede su autoridad. La gobernanza excesiva paraliza; la gobernanza insuficiente produce caos. El equilibrio depende del tamaño, riesgo y cultura del proyecto.
+La gobernanza existe para facilitar decisiones, no para retrasarlas. Un buen modelo de gobernanza define quién puede decidir qué, hasta qué monto, y cómo se escala lo que excede su autoridad. La gobernanza excesiva paraliza; la gobernanza insuficiente produce caos. El equilibrio depende del tamaño, riesgo y cultura del proyecto. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes stakeholder register and RACI matrix are available or will be created concurrently [SUPUESTO]
@@ -72,11 +72,11 @@ La gobernanza existe para facilitar decisiones, no para retrasarlas. Un buen mod
 10. **Effectiveness review** — Plan periodic governance effectiveness assessments
 
 ## Edge Cases
-1. **No executive sponsor identified** — Escalate immediately; document governance gap as critical risk; propose interim authority structure with explicit expiry date.
-2. **Matrix organization with dual reporting** — Define primary vs. secondary authority per decision type; document conflict resolution protocol for competing authorities.
-3. **Governance overhead exceeds 15% of team capacity** — Simplify: merge ceremonies, raise decision thresholds, remove redundant approvals.
-4. **Remote/distributed teams across time zones** — Design asynchronous decision protocols with SLA-based response windows; avoid synchronous-only governance.
-5. **Regulatory-mandated governance layers** — Map regulatory requirements to governance ceremonies explicitly; tag mandatory vs. discretionary governance elements.
+1. **No executive sponsor identified** — Escalate immediately; document governance gap as critical risk; propose interim authority structure with explicit expiry date. [EXPLICIT]
+2. **Matrix organization with dual reporting** — Define primary vs. secondary authority per decision type; document conflict resolution protocol for competing authorities. [EXPLICIT]
+3. **Governance overhead exceeds 15% of team capacity** — Simplify: merge ceremonies, raise decision thresholds, remove redundant approvals. [EXPLICIT]
+4. **Remote/distributed teams across time zones** — Design asynchronous decision protocols with SLA-based response windows; avoid synchronous-only governance. [EXPLICIT]
+5. **Regulatory-mandated governance layers** — Map regulatory requirements to governance ceremonies explicitly; tag mandatory vs. discretionary governance elements. [EXPLICIT]
 
 ## Example: Good vs Bad
 
@@ -90,7 +90,7 @@ La gobernanza existe para facilitar decisiones, no para retrasarlas. Un buen mod
 | Change authority | Budget changes under 5% approved by PM; above by steering [PLAN] |
 
 **Bad Governance Framework:**
-"The steering committee will meet as needed to make decisions." — No defined cadence, no authority matrix, no escalation triggers, no decision thresholds. Result: decisions blocked for weeks with no clear path to resolution.
+"The steering committee will meet as needed to make decisions." — No defined cadence, no authority matrix, no escalation triggers, no decision thresholds. Result: decisions blocked for weeks with no clear path to resolution. [EXPLICIT]
 
 ## Salida (Deliverables)
 - `03_governance_framework_{proyecto}_{WIP}.md` — Governance model document

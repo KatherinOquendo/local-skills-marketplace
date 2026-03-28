@@ -3,9 +3,9 @@ name: input-sanitization
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Input sanitization with strip-first default using native browser APIs (DOMParser).
+  Input sanitization with strip-first default using native browser APIs (DOMParser). [EXPLICIT]
   Context-specific encoding for HTML, URL, CSS, and JS contexts. Dual-layer
-  client + server validation. No external sanitization libraries by default.
+  client + server validation. No external sanitization libraries by default. [EXPLICIT]
   Trigger: "sanitize input", "XSS prevention", "input validation", "strip HTML", "DOMParser"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements the Constitution VII sanitization default: strip HTML tags from user input before storage — not escape, not allowlist. Uses native browser APIs (DOMParser) over external libraries. Covers all input contexts: HTML, URL, CSS, JS. Enforces dual-layer validation (client + server). `<script>` and `<style>` tags are removed with their content, not just tag-stripped. Rich text fields are the exception, requiring explicit justification per Constitution XIV (Simple First).
+Implements the Constitution VII sanitization default: strip HTML tags from user input before storage — not escape, not allowlist. Uses native browser APIs (DOMParser) over external libraries. Covers all input contexts: HTML, URL, CSS, JS. Enforces dual-layer validation (client + server). `<script>` and `<style>` tags are removed with their content, not just tag-stripped. Rich text fields are the exception, requiring explicit justification per Constitution XIV (Simple First). [EXPLICIT]
 
 ## Procedure
 
@@ -102,3 +102,25 @@ Implements the Constitution VII sanitization default: strip HTML tags from user 
 - `dual-layer-verification` — Static + runtime verification of security invariants
 - `form-engineering` — Form UX patterns that integrate sanitization
 - `firestore-security-rules` — Server-side rule enforcement
+
+## Usage
+
+Example invocations:
+
+- "/input-sanitization" — Run the full input sanitization workflow
+- "input sanitization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

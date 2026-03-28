@@ -6,7 +6,7 @@ description: >
   brand standards", "fix broken MetodologIA styles", or mentions MetodologIA HTML, entregable,
   brand deliverable, Neo-Swiss, Design System v6, or any combination of MetodologIA + document/report/
   summary/analysis/roadmap. Also use when batch-upgrading existing HTML files to
-  MetodologIA brand compliance, even if the user does not explicitly say "brand".
+  MetodologIA brand compliance, even if the user does not explicitly say "brand". [EXPLICIT]
 argument-hint: "[executive|technical|transformation|--batch] [output_path]"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
@@ -22,7 +22,7 @@ allowed-tools:
 
 # MetodologIA HTML Brand — Neo-Swiss Document Generator
 
-Generate beautiful, accessible, on-brand HTML deliverables following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every output is a self-contained single-file HTML document with all CSS inline, no external dependencies, and full WCAG AA accessibility.
+Generate beautiful, accessible, on-brand HTML deliverables following the **MetodologIA Neo-Swiss Clean & Soft Explainer** design system (v6). Every output is a self-contained single-file HTML document with all CSS inline, no external dependencies, and full WCAG AA accessibility. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -30,11 +30,11 @@ Generate beautiful, accessible, on-brand HTML deliverables following the **Metod
 
 ### Brand HTML Philosophy
 
-1. **Brand = Visual trust.** Every Design System element exists to convey professionalism and consistency. Breaking a brand token is breaking the visual promise to the client.
+1. **Brand = Visual trust.** Every Design System element exists to convey professionalism and consistency. Breaking a brand token is breaking the visual promise to the client. [EXPLICIT]
 
-2. **Self-contained = Guaranteed portability.** An HTML file that depends on external resources is a fragile deliverable. File autonomy is a functional requirement, not a technical preference.
+2. **Self-contained = Guaranteed portability.** An HTML file that depends on external resources is a fragile deliverable. File autonomy is a functional requirement, not a technical preference. [EXPLICIT]
 
-3. **Accessibility = Real reach.** WCAG AA is not compliance — it is the guarantee that 100% of stakeholders can consume the deliverable without barriers. A beautiful document that cannot be read has zero impact.
+3. **Accessibility = Real reach.** WCAG AA is not compliance — it is the guarantee that 100% of stakeholders can consume the deliverable without barriers. A beautiful document that cannot be read has zero impact. [EXPLICIT]
 
 ---
 
@@ -196,7 +196,7 @@ graph TD
 
 ## Color Rules
 
-Neo-Swiss uses blue for positive/success states because it maintains brand coherence with the professional MetodologIA palette.
+Neo-Swiss uses blue for positive/success states because it maintains brand coherence with the professional MetodologIA palette. [EXPLICIT]
 
 | Semantic State | Color | Variable | Usage |
 |---------------|-------|----------|-------|
@@ -205,9 +205,9 @@ Neo-Swiss uses blue for positive/success states because it maintains brand coher
 | Critical/Error | Red #DC2626 | `--critical` | Failures, blockers, high severity |
 | Accent/Highlight | Gold #FFD700 | `--gold` | CTA, emphasis, hero highlights |
 
-Green is ONLY for charts and data visualization — never for semantic states.
+Green is ONLY for charts and data visualization — never for semantic states. [EXPLICIT]
 
-See `references/design-tokens.md` for the complete CSS variable system.
+See `references/design-tokens.md` for the complete CSS variable system. [EXPLICIT]
 
 ## Content Density by Document Type
 
@@ -337,7 +337,7 @@ Before delivering any HTML document, verify:
 
 ## Batch Processing
 
-When upgrading 3+ files at once, use parallel sub-agents. Read `references/operations-guide.md` for the squad pattern, concurrency limits, and error handling.
+When upgrading 3+ files at once, use parallel sub-agents. Read `references/operations-guide.md` for the squad pattern, concurrency limits, and error handling. [EXPLICIT]
 
 ## Reference Files
 
@@ -357,7 +357,7 @@ When upgrading 3+ files at once, use parallel sub-agents. Read `references/opera
 /metodologia-html-brand --batch ./legacy-docs/          # upgrade 3+ files in parallel
 ```
 
-Parse `$1` as document type (`executive`, `technical`, `transformation`) or `--batch` flag. Parse `$2` as output path.
+Parse `$1` as document type (`executive`, `technical`, `transformation`) or `--batch` flag. Parse `$2` as output path. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`

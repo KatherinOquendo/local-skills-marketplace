@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build admin dashboard interfaces with data tables, filters, charts, CRUD
-  operations, and real-time data updates. Covers layout patterns and state management.
+  operations, and real-time data updates. Covers layout patterns and state management. [EXPLICIT]
   Trigger: "admin panel", "dashboard", "data table", "CRUD interface"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the architecture and implementation of admin dashboard interfaces featuring sortable/filterable data tables, CRUD operations, charts/metrics, real-time updates, and role-based access control. Use when building back-office tools, content management systems, or operational dashboards.
+Guides the architecture and implementation of admin dashboard interfaces featuring sortable/filterable data tables, CRUD operations, charts/metrics, real-time updates, and role-based access control. Use when building back-office tools, content management systems, or operational dashboards. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the architecture and implementation of admin dashboard interfaces featuri
 
 - `firestore-queries` — efficient data fetching for dashboard tables
 - `cloud-functions` — API endpoints backing CRUD operations
+
+## Usage
+
+Example invocations:
+
+- "/admin-dashboards" — Run the full admin dashboards workflow
+- "admin dashboards on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

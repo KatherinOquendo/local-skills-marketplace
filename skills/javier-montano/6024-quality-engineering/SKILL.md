@@ -1,13 +1,13 @@
 ---
 name: sofka-quality-engineering
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   Designs strategic quality engineering frameworks covering test strategy, automation architecture, quality gates,
   metrics, and shift-left practices. Activates when the user says "design test strategy", "plan quality gates",
   "set up test automation", "assess quality maturity", or "define quality metrics". Also triggers on mentions of
   test pyramid, shift-left, CI/CD quality, automation architecture, or quality engineering. Use this skill even if
-  the user only asks about test coverage — it assesses the full quality posture.
-argument-hint: "<project-or-system-name>"
+  the user only asks about test coverage — it assesses the full quality posture. [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Quality Engineering: Strategic Quality Architecture & Shift-Left Practices
 
-Strategic quality engineering framework. Designs the system — QA teams execute it. For architects, engineering leads, and quality strategists who define *how* quality works.
+Strategic quality engineering framework. Designs the system — QA teams execute it. For architects, engineering leads, and quality strategists who define *how* quality works. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,20 +29,20 @@ Strategic quality engineering framework. Designs the system — QA teams execute
 
 ### Filosofía de Quality Engineering
 
-1. **Test strategy shapes > test counts.** La pirámide, el trofeo y el diamante son guías, no dogmas. La forma correcta depende de la arquitectura, no de la convención.
-2. **Shift-left quality.** Cada defecto encontrado después del merge cuesta 10-100x más. Pre-commit hooks, PR gates, y developer-owned tests son inversión, no overhead.
-3. **Quality gates in pipeline.** Un gate sin criterio medible es un semáforo decorativo. Cada gate define pass/fail, timeout, y escalation path.
+1. **Test strategy shapes > test counts.** La pirámide, el trofeo y el diamante son guías, no dogmas. La forma correcta depende de la arquitectura, no de la convención. [EXPLICIT]
+2. **Shift-left quality.** Cada defecto encontrado después del merge cuesta 10-100x más. Pre-commit hooks, PR gates, y developer-owned tests son inversión, no overhead. [EXPLICIT]
+3. **Quality gates in pipeline.** Un gate sin criterio medible es un semáforo decorativo. Cada gate define pass/fail, timeout, y escalation path. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para maturity assessment y test strategy, HITL para quality gates y automation decisions.
-  - **desatendido**: Cero interrupciones. Framework completo con supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en gate criteria y automation architecture.
-  - **paso-a-paso**: Confirma cada maturity score, test shape, gate criteria, y metric target.
+  - **piloto-auto**: Auto para maturity assessment y test strategy, HITL para quality gates y automation decisions. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Framework completo con supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en gate criteria y automation architecture. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada maturity score, test shape, gate criteria, y metric target. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 maturity + S4 gates + S5 metrics) | `técnica` (full 6 sections, default)
 
@@ -52,7 +52,7 @@ Before generating framework, detect the codebase context:
 !find . -name "*.test.*" -o -name "*.spec.*" -o -name "*test*" -type d -o -name "jest*" -o -name "pytest*" | head -20
 ```
 
-Use detected testing frameworks, languages, and existing test structure to tailor recommendations.
+Use detected testing frameworks, languages, and existing test structure to tailor recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -136,7 +136,7 @@ For framework recommendations by language and automation patterns (Page Object, 
 
 ### Framework Selection Criteria
 
-Evaluate: language alignment, team skills, community support, maintenance cost, scalability, reporting, cost (OSS vs commercial).
+Evaluate: language alignment, team skills, community support, maintenance cost, scalability, reporting, cost (OSS vs commercial). [EXPLICIT]
 
 ### CI/CD Pipeline Stages
 
@@ -196,7 +196,7 @@ For detailed pipeline YAML examples and report/dashboard architecture, read: `${
 
 ### Dashboard Design
 
-4 panels: Test Health (pass/fail, execution time, flaky list, coverage trend), Quality Metrics (DORA, incidents, escaped defects), Automation Coverage (by type and team), SLA Compliance (build stability, PR pass rate, deploy success).
+4 panels: Test Health (pass/fail, execution time, flaky list, coverage trend), Quality Metrics (DORA, incidents, escaped defects), Automation Coverage (by type and team), SLA Compliance (build stability, PR pass rate, deploy success). [EXPLICIT]
 
 ### S6: Implementation Plan
 
@@ -274,7 +274,7 @@ Before delivering quality engineering output:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

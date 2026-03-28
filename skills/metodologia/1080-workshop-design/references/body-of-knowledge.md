@@ -20,7 +20,7 @@ Fuentes fundacionales, estandares de referencia y glosario para el skill de Work
 
 ### 3. Alberto Brandolini — Introducing EventStorming (2021)
 
-- **Relevancia:** Metodo de modelado de dominio mediante eventos. Fundamenta la seccion S2 del skill. Permite descubrir bounded contexts, aggregates, y politicas de dominio en sesiones colaborativas.
+- **Relevancia:** MeTodo de modelado de dominio mediante eventos. Fundamenta la seccion S2 del skill. Permite descubrir bounded contexts, aggregates, y politicas de dominio en sesiones colaborativas.
 - **Aporte clave:** El principio de "unlimited modeling space" — usar paredes completas, no pizarras limitadas. El proceso de discovery avanza por capas: eventos > comandos > aggregates > bounded contexts > hotspots. Los hotspots (stickies rosas) marcan conflictos y desconocimientos — son el output mas valioso.
 - **Referencia:** Brandolini, A. (2021). *Introducing EventStorming*. Leanpub.
 

@@ -3,7 +3,7 @@ name: lead-generation
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Lead magnets, gated content, signup optimization, qualification scoring.
+  Lead magnets, gated content, signup optimization, qualification scoring. [EXPLICIT]
   Trigger: "lead generation, lead magnets, gated content, signup optimization, qualification scoring"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Lead magnets, gated content, signup optimization, qualification scoring. All outputs follow MetodologIA brand standards and evidence tagging.
+Lead magnets, gated content, signup optimization, qualification scoring. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Lead magnets, gated content, signup optimization, qualification scoring. All out
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/lead-generation" — Run the full lead generation workflow
+- "lead generation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

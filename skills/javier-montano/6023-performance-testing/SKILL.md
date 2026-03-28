@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Measure and optimize web performance with Lighthouse CI, WebPageTest,
-  bundle analysis, and Core Web Vitals monitoring.
+  bundle analysis, and Core Web Vitals monitoring. [EXPLICIT]
   Trigger: "performance test", "Lighthouse", "Core Web Vitals", "bundle size"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides web performance measurement and optimization — running Lighthouse CI in pipelines, analyzing bundle sizes, monitoring Core Web Vitals (LCP, INP, CLS), and setting performance budgets. Use when establishing performance baselines, debugging slow pages, or preventing performance regressions.
+Guides web performance measurement and optimization — running Lighthouse CI in pipelines, analyzing bundle sizes, monitoring Core Web Vitals (LCP, INP, CLS), and setting performance budgets. Use when establishing performance baselines, debugging slow pages, or preventing performance regressions. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides web performance measurement and optimization — running Lighthouse CI in
 
 - `build-optimization` — bundle optimization directly impacts performance metrics
 - `image-optimization` — images are the largest contributor to page weight
+
+## Usage
+
+Example invocations:
+
+- "/performance-testing" — Run the full performance testing workflow
+- "performance testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -10,36 +10,36 @@ tags: [testing, code-review, owasp, performance, firebase, typescript, best-prac
 # 083 — Code Review Checklist {Testing}
 
 ## Purpose
-Provide a deterministic, repeatable code review process that catches security vulnerabilities, performance regressions, Firebase anti-patterns, and type safety issues before merge.
+Provide a deterministic, repeatable code review process that catches security vulnerabilities, performance regressions, Firebase anti-patterns, and type safety issues before merge. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of Objectivity**: Every review item is a binary pass/fail check — no subjective opinions. The checklist is the standard.
-2. **Law of Shift Left**: Catch defects at review time, not in production. A review that misses a security flaw is a review failure.
-3. **Law of Knowledge Transfer**: Reviews spread codebase knowledge. Every review must have at least one comment explaining WHY, not just WHAT.
+1. **Law of Objectivity**: Every review item is a binary pass/fail check — no subjective opinions. The checklist is the standard. [EXPLICIT]
+2. **Law of Shift Left**: Catch defects at review time, not in production. A review that misses a security flaw is a review failure. [EXPLICIT]
+3. **Law of Knowledge Transfer**: Reviews spread codebase knowledge. Every review must have at least one comment explaining WHY, not just WHAT. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Security Review (OWASP)
-1. No secrets in code (API keys, tokens, passwords) — use env vars or Secret Manager.
-2. User input sanitized — XSS prevention via React's default escaping + DOMPurify for dangerouslySetInnerHTML.
-3. Firestore rules enforce auth — no open read/write rules in production.
-4. CORS configured restrictively — no `*` origins.
-5. Dependencies audited — `npm audit` shows zero high/critical.
+1. No secrets in code (API keys, tokens, passwords) — use env vars or Secret Manager. [EXPLICIT]
+2. User input sanitized — XSS prevention via React's default escaping + DOMPurify for dangerouslySetInnerHTML. [EXPLICIT]
+3. Firestore rules enforce auth — no open read/write rules in production. [EXPLICIT]
+4. CORS configured restrictively — no `*` origins. [EXPLICIT]
+5. Dependencies audited — `npm audit` shows zero high/critical. [EXPLICIT]
 
 ### Phase 2 — Performance & Firebase
-1. No unbounded Firestore queries — `limit()` on every `getDocs()`.
-2. No Firestore reads in loops — batch or use `in` queries.
-3. Images optimized — WebP format, lazy loading, responsive srcset.
-4. Bundle impact assessed — no new dependency > 50KB without justification.
-5. Cloud Functions cold start mitigated — minimal imports, lazy initialization.
+1. No unbounded Firestore queries — `limit()` on every `getDocs()`. [EXPLICIT]
+2. No Firestore reads in loops — batch or use `in` queries. [EXPLICIT]
+3. Images optimized — WebP format, lazy loading, responsive srcset. [EXPLICIT]
+4. Bundle impact assessed — no new dependency > 50KB without justification. [EXPLICIT]
+5. Cloud Functions cold start mitigated — minimal imports, lazy initialization. [EXPLICIT]
 
 ### Phase 3 — Code Quality & Types
-1. No `any` types — use `unknown` + type guards if type is uncertain.
-2. No `eslint-disable` without JIRA ticket comment.
-3. Functions < 50 lines, files < 300 lines — extract if exceeding.
-4. Naming is intention-revealing — no abbreviations, no single-letter variables (except loops).
-5. Error handling explicit — no swallowed catches, user-facing errors use error boundary.
+1. No `any` types — use `unknown` + type guards if type is uncertain. [EXPLICIT]
+2. No `eslint-disable` without JIRA ticket comment. [EXPLICIT]
+3. Functions < 50 lines, files < 300 lines — extract if exceeding. [EXPLICIT]
+4. Naming is intention-revealing — no abbreviations, no single-letter variables (except loops). [EXPLICIT]
+5. Error handling explicit — no swallowed catches, user-facing errors use error boundary. [EXPLICIT]
 
 ## I/O
 
@@ -52,11 +52,11 @@ Provide a deterministic, repeatable code review process that catches security vu
 
 ## Quality Gates — 5 Checks
 
-1. **Zero OWASP Top 10 violations** — any finding blocks merge.
-2. **No unbounded Firestore queries** — every query has `limit()` or pagination.
-3. **TypeScript strict mode** — no `any`, no `@ts-ignore` without ticket.
-4. **Bundle size delta < 50KB** — justify or code-split if exceeding.
-5. **All review items addressed** — no unresolved comments at merge.
+1. **Zero OWASP Top 10 violations** — any finding blocks merge. [EXPLICIT]
+2. **No unbounded Firestore queries** — every query has `limit()` or pagination. [EXPLICIT]
+3. **TypeScript strict mode** — no `any`, no `@ts-ignore` without ticket. [EXPLICIT]
+4. **Bundle size delta < 50KB** — justify or code-split if exceeding. [EXPLICIT]
+5. **All review items addressed** — no unresolved comments at merge. [EXPLICIT]
 
 ## Edge Cases
 
@@ -71,3 +71,17 @@ Provide a deterministic, repeatable code review process that catches security vu
 - Review turnaround > 24h → escalate or split PR into smaller changes.
 - Same defect found 3x → add automated lint rule to prevent it.
 - Reviewer approves without checklist completion → flag in team retro.
+
+## Usage
+
+Example invocations:
+
+- "/code-review-checklist" — Run the full code review checklist workflow
+- "code review checklist on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

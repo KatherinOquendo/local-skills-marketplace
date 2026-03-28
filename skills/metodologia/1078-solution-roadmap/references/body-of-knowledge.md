@@ -148,7 +148,7 @@ Matthew Skelton y Manuel Pais proponen cuatro tipos de equipos y tres modos de i
 
 El ramp-up no es lineal: los primeros meses tienen menor velocidad por curva de aprendizaje, setup de ambiente y alineación cultural. Un plan de ramp-up realista incluye:
 - Inventario de skills actuales vs. skills requeridos
-- Secuencia de introducción tecnológica (no todo en semana 1)
+- Secuencia de introducción tecnológica (no Todo en semana 1)
 - Hitos de knowledge transfer (quién sabe qué y cuándo)
 - Mentoring y pair programming como mecanismos de transferencia
 

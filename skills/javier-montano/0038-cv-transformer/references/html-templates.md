@@ -495,7 +495,7 @@ The ATS HTML is semantic, clean, and parseable with zero visual frills.
 
 When generating HTML resumes:
 
-1. **WOW version**: Use the WOW template as a starting point. Replace all `{{PLACEHOLDERS}}` with actual data. Customize colors based on industry (see design-specs.md). Add real content for all sections. Make sure all animations work. Test responsiveness mentally.
+1. **WOW version**: Use the WOW template as a starting point. Replace all `{{templateS}}` with actual data. Customize colors based on industry (see design-specs.md). Add real content for all sections. Make sure all animations work. Test responsiveness mentally.
 
 2. **ATS version**: Use the ATS template. Pure semantic HTML. Schema.org markup. No visual flourishes. Ensure all text is directly readable by ATS parsers.
 

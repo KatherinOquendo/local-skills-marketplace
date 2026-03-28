@@ -3,7 +3,7 @@ name: copywriting-frameworks
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  AIDA, PAS, FAB frameworks applied to marketing copy and landing pages.
+  AIDA, PAS, FAB frameworks applied to marketing copy and landing pages. [EXPLICIT]
   Trigger: "copywriting frameworks, aida, pas, fab frameworks applied to marketing copy and landing pages"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-AIDA, PAS, FAB frameworks applied to marketing copy and landing pages. All outputs follow MetodologIA brand standards and evidence tagging.
+AIDA, PAS, FAB frameworks applied to marketing copy and landing pages. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ AIDA, PAS, FAB frameworks applied to marketing copy and landing pages. All outpu
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/copywriting-frameworks" — Run the full copywriting frameworks workflow
+- "copywriting frameworks on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

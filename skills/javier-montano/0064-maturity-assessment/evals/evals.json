@@ -1,38 +1,9 @@
 [
-  {
-    "prompt": "Assess our organization's PM maturity. We have 50 project managers but no standard methodology, inconsistent project documentation, and each PM runs projects their own way. No metrics are collected.",
-    "assertions": [
-      "Must classify the organization at CMMI Level 1 (Initial) or equivalent given lack of standardization",
-      "Must identify absence of standard processes and metrics as the primary maturity gaps",
-      "Must recommend standardization as the prerequisite before measurement or control improvements",
-      "Must provide a phased roadmap starting with quick wins to build improvement momentum"
-    ]
-  },
-  {
-    "prompt": "Benchmark our PM maturity against financial services industry peers. We score Level 3 on CMMI for project planning and monitoring but Level 1 for risk management and Level 2 for requirements.",
-    "assertions": [
-      "Must compare scores against financial services industry benchmarks for each process area",
-      "Must identify risk management at Level 1 as a critical gap for a regulated industry",
-      "Must recognize uneven maturity across process areas as a common organizational pattern",
-      "Must prioritize risk management improvement given the regulatory context of financial services"
-    ]
-  },
-  {
-    "prompt": "We completed a maturity assessment last year and scored Level 2 overall. We implemented improvements but want to know if we have advanced. How should we reassess?",
-    "assertions": [
-      "Must recommend a structured reassessment approach using the same framework for comparability",
-      "Must evaluate whether the implemented improvements produced measurable process changes",
-      "Must assess whether Level 3 prerequisites are being met including process definition and institutionalization",
-      "Must provide a delta analysis comparing current state to previous assessment baseline"
-    ]
-  },
-  {
-    "prompt": "Create a maturity improvement roadmap for a mid-size technology company at CMMI Level 2 that wants to reach Level 3 within 18 months. Budget is limited.",
-    "assertions": [
-      "Must identify specific Level 3 practice gaps that need to be closed",
-      "Must sequence improvements based on dependencies and organizational change capacity",
-      "Must include quick wins achievable within 90 days to build stakeholder confidence",
-      "Must estimate effort realistically and address the limited budget constraint with prioritization"
-    ]
-  }
+  {"id": "maturity-assessment-happy-path", "type": "happy_path", "input": "Run maturity assessment on this project", "expected_behavior": "Skill activates and produces the expected maturity assessment output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "maturity-assessment-explicit-trigger", "type": "happy_path", "input": "Apply maturity assessment analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the maturity assessment workflow", "tags": ["trigger", "recognition"]},
+  {"id": "maturity-assessment-with-context", "type": "happy_path", "input": "Apply maturity assessment to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive maturity assessment analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "maturity-assessment-minimal-input", "type": "happy_path", "input": "Quick maturity assessment", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "maturity-assessment-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to maturity assessment", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "maturity-assessment-edge-empty-input", "type": "edge_case", "input": "Run maturity assessment but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "maturity-assessment-edge-conflicting", "type": "edge_case", "input": "Apply maturity assessment but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

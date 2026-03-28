@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Maintain tasklog.md for cross-session task tracking. Track status, owner, age,
-  blockers. Flag stale items. Bridge to workspace/tasks/.
+  blockers. Flag stale items. Bridge to workspace/tasks/. [EXPLICIT]
   Trigger: "tasklog", "track task", "open tasks", "task status", "pending items"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Maintains `tasklog.md` as the cross-session task tracking system. Each item has ID, description, status, owner, opened date, and notes. Items >14 days without progress are flagged for review. Completed items retained 30 days then archived. Task bridges connect to `workspace/tasks/TL-XXX-<slug>/` for working files.
+Maintains `tasklog.md` as the cross-session task tracking system. Each item has ID, description, status, owner, opened date, and notes. Items >14 days without progress are flagged for review. Completed items retained 30 days then archived. Task bridges connect to `workspace/tasks/TL-XXX-<slug>/` for working files. [EXPLICIT]
 
 ## Procedure
 
@@ -64,3 +64,25 @@ Maintains `tasklog.md` as the cross-session task tracking system. Each item has 
 - `session-protocol` — Reviews tasklog during pending closure
 - `changelog-management` — Complementary log for decisions
 - `workspace-governance` — Task bridges live in workspace/tasks/
+
+## Usage
+
+Example invocations:
+
+- "/tasklog-management" — Run the full tasklog management workflow
+- "tasklog management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

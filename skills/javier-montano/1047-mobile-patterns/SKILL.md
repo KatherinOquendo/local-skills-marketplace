@@ -3,7 +3,7 @@ name: mobile-patterns
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Bottom sheets, pull-to-refresh, swipe actions, FAB, gesture navigation.
+  Bottom sheets, pull-to-refresh, swipe actions, FAB, gesture navigation. [EXPLICIT]
   Trigger: "mobile patterns"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Mobile Patterns
 > "Method over hacks."
 ## TL;DR
-Bottom sheets, pull-to-refresh, swipe actions, FAB, gesture navigation.
+Bottom sheets, pull-to-refresh, swipe actions, FAB, gesture navigation. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Bottom sheets, pull-to-refresh, swipe actions, FAB, gesture navigation.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/mobile-patterns" — Run the full mobile patterns workflow
+- "mobile patterns on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -36,7 +36,7 @@
 
 ### 1.5 Cross-Channel Narrative Coherence
 - **Que esta pasando:** Las organizaciones producen narrativas en multiples canales (documentos, presentaciones, dashboards, videos, workshops) y la coherencia entre canales es un desafio creciente. Un mensaje en el pitch ejecutivo que contradice la narrativa del handover destruye la credibilidad.
-- **Impacto en el skill:** El Thread Management del storytelling skill aborda exactamente este problema. Los 5 hilos narrativos (tech debt cost, user pain, risk exposure, value proposition, transformation path) deben ser consistentes en TODOS los formatos y canales.
+- **Impacto en el skill:** El Thread Management del storytelling skill aborda exactamente este problema. Los 5 hilos narrativos (tech debt cost, user pain, risk exposure, value proposition, transformation path) deben ser consistentes en TBDS los formatos y canales.
 - **Herramientas emergentes:** Notion AI, Confluence AI (2025), y herramientas de "narrative consistency checking" basadas en LLMs que comparan multiples documentos y detectan contradicciones.
 - **Estado 2026:** Adopcion baja-media de herramientas automaticas. La mayoria de equipos depende de revision manual — el editorial committee del framework es una respuesta a este gap.
 - **Fuentes:** Content Science (2025) "Omnichannel Content Coherence"; McKinsey (2025) "The Consistency Tax: Cost of Contradictory Narratives"
@@ -68,7 +68,7 @@
 
 | Herramienta | Proposito | Relevancia |
 |---|---|---|
-| **Claude Projects** | Long-context narrative generation | Genera narrativas coherentes sobre todo el corpus de discovery |
+| **Claude Projects** | Long-context narrative generation | Genera narrativas coherentes sobre Todo el corpus de discovery |
 | **GPT-4 Canvas** | Collaborative writing | Iterar narrativas con AI como co-author |
 | **Notion AI** | In-context narrative generation | Generar narrativas dentro del espacio de trabajo del cliente |
 | **Grammarly Business** | Tone and style consistency | Validar que el tono narrativo es consistente cross-deliverable |
@@ -79,7 +79,7 @@
 
 ### 3.1 Objectivity vs. Advocacy in Consulting Narratives
 - **El debate:** ¿El consultor debe ser un "narrador objetivo" que presenta hallazgos sin sesgo, o un "abogado informado" que usa la narrativa para guiar hacia la mejor decision? En discovery, el storytelling skill claramente es advocacy — guia hacia la transformacion — pero ¿donde esta el limite etico?
-- **Posicion A (Objectividad):** La narrativa debe presentar todos los escenarios con igual profundidad y dejar que el cliente decida. El consultor no "vende" — informa.
+- **Posicion A (Objectividad):** La narrativa debe presentar Todos los escenarios con igual profundidad y dejar que el cliente decida. El consultor no "vende" — informa.
 - **Posicion B (Advocacy informada):** La narrativa debe ser honesta pero direccional. Si la evidencia apunta a una recomendacion, la narrativa debe guiar — no manipular, sino persuadir con evidencia.
 - **Posicion del skill:** Advocacy informada. El skill no oculta datos ni exagera riesgos, pero SI estructura la narrativa para que la evidencia lleve naturalmente a la recomendacion. Los evidence tags garantizan trazabilidad.
 

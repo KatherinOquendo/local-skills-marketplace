@@ -1,0 +1,9 @@
+[
+  {"id": "training-material-happy-path", "type": "happy_path", "input": "Run training material on this project", "expected_behavior": "Skill activates and produces the expected training material output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "training-material-explicit-trigger", "type": "happy_path", "input": "Apply training material analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the training material workflow", "tags": ["trigger", "recognition"]},
+  {"id": "training-material-with-context", "type": "happy_path", "input": "Apply training material to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive training material analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "training-material-minimal-input", "type": "happy_path", "input": "Quick training material", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "training-material-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to training material", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "training-material-edge-empty-input", "type": "edge_case", "input": "Run training material but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "training-material-edge-conflicting", "type": "edge_case", "input": "Apply training material but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

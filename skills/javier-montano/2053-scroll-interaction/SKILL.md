@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implement scroll-driven interactions using Intersection Observer, CSS
-  scroll-driven animations, parallax effects, and scroll progress indicators.
+  scroll-driven animations, parallax effects, and scroll progress indicators. [EXPLICIT]
   Trigger: "scroll animation", "intersection observer", "parallax", "scroll-driven"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the implementation of scroll-driven interactions — fade-in animations triggered by Intersection Observer, CSS scroll-driven animations, parallax effects, scroll progress indicators, and snap scrolling. Use when you want to create engaging scroll experiences without sacrificing performance.
+Guides the implementation of scroll-driven interactions — fade-in animations triggered by Intersection Observer, CSS scroll-driven animations, parallax effects, scroll progress indicators, and snap scrolling. Use when you want to create engaging scroll experiences without sacrificing performance. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the implementation of scroll-driven interactions — fade-in animations t
 
 - `portfolio-sites` — scroll animations are common in portfolios
 - `performance-testing` — measuring scroll performance impact
+
+## Usage
+
+Example invocations:
+
+- "/scroll-interaction" — Run the full scroll interaction workflow
+- "scroll interaction on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

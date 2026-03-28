@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Implements robust web forms with client and server validation, multi-step
   wizards, file upload handling, accessible error messaging, and optimistic
-  submission patterns.
+  submission patterns. [EXPLICIT]
   Trigger: "form validation", "multi-step form", "file upload", "form engineering", "wizard"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements robust web forms with layered validation (HTML5, client-side, server-side), multi-step wizards, file upload handling, and accessible error messaging for friction-free data capture. Use this skill when building complex forms, improving form conversion rates, or when form validation is inconsistent across the application.
+Implements robust web forms with layered validation (HTML5, client-side, server-side), multi-step wizards, file upload handling, and accessible error messaging for friction-free data capture. Use this skill when building complex forms, improving form conversion rates, or when form validation is inconsistent across the application. [EXPLICIT]
 
 ## Procedure
 
@@ -74,3 +74,25 @@ Implements robust web forms with layered validation (HTML5, client-side, server-
 - `accessibility-design` — accessible form patterns and error handling
 - `html-semantic` — proper form markup and native validation
 - `angular-development` — Angular reactive forms implementation
+
+## Usage
+
+Example invocations:
+
+- "/form-engineering" — Run the full form engineering workflow
+- "form engineering on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

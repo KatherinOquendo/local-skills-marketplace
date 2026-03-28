@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Node.js development patterns including streams, ESM modules, error handling,
-  process management, and production-ready server configuration.
+  process management, and production-ready server configuration. [EXPLICIT]
   Trigger: "node.js", "node patterns", "streams", "ESM modules"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Node.js development best practices — ESM module patterns, stream processing for large data, robust error handling, environment configuration, and production-ready patterns. Use when building Node.js server-side applications, CLIs, or Cloud Functions backends.
+Guides Node.js development best practices — ESM module patterns, stream processing for large data, robust error handling, environment configuration, and production-ready patterns. Use when building Node.js server-side applications, CLIs, or Cloud Functions backends. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Node.js development best practices — ESM module patterns, stream proces
 
 - `cloud-functions` — Cloud Functions run Node.js runtime
 - `serverless-patterns` — Node.js patterns specific to serverless
+
+## Usage
+
+Example invocations:
+
+- "/node-development" — Run the full node development workflow
+- "node development on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

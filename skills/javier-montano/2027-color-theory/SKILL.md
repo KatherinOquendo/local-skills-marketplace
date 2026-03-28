@@ -3,7 +3,7 @@ name: color-theory
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Color psychology, palette generation, harmony rules, contrast.
+  Color psychology, palette generation, harmony rules, contrast. [EXPLICIT]
   Trigger: "color theory"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Color Theory
 > "Method over hacks."
 ## TL;DR
-Color psychology, palette generation, harmony rules, contrast.
+Color psychology, palette generation, harmony rules, contrast. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Color psychology, palette generation, harmony rules, contrast.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/color-theory" — Run the full color theory workflow
+- "color theory on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

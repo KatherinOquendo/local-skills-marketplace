@@ -8,7 +8,7 @@ copyright: © Comunidad MetodologIA
 
 # State of the Art: Enterprise Architecture (2024–2026)
 
-La arquitectura enterprise atraviesa una reinvención profunda: la IA generativa transforma cómo se mapean capacidades y se toman decisiones de portfolio, la empresa composable redefine cómo se estructuran las capacidades de negocio, TOGAF evoluciona hacia mayor agilidad, y el concepto de "digital twin de la organización" pasa de teoría a implementación. Este documento captura las tendencias dominantes, herramientas emergentes y debates activos que todo arquitecto enterprise debe considerar en 2026.
+La arquitectura enterprise atraviesa una reinvención profunda: la IA generativa transforma cómo se mapean capacidades y se toman decisiones de portfolio, la empresa composable redefine cómo se estructuran las capacidades de negocio, TOGAF evoluciona hacia mayor agilidad, y el concepto de "digital twin de la organización" pasa de teoría a implementación. Este documento captura las tendencias dominantes, herramientas emergentes y debates activos que Todo arquitecto enterprise debe considerar en 2026.
 
 ---
 

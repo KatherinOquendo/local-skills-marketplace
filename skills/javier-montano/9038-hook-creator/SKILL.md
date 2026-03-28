@@ -1,12 +1,12 @@
 ---
 name: hook-creator
-description: >
+description: 
   This skill should be used when the user asks to "create a hook",
   "add format-on-save", "set up a file guard", "automate on tool use",
-  or mentions Claude Code hooks, PreToolUse, PostToolUse, or event-driven automation.
-  It generates Claude Code hook configurations for lifecycle events including format-on-save, file guards, notifications, and quality gates.
-  Use this skill whenever the user wants deterministic automation at Claude Code lifecycle points, even if they don't explicitly ask for "hook creator".
-argument-hint: <event-name> [handler-type]
+  or mentions Claude Code hooks, PreToolUse, PostToolUse, or event-driven automation. [EXPLICIT]
+  It generates Claude Code hook configurations for lifecycle events including format-on-save, file guards, notifications, and quality gates. [EXPLICIT]
+  Use this skill whenever the user wants deterministic automation at Claude Code lifecycle points, even if they don't explicitly ask for "hook creator". [EXPLICIT]
+argument-hint: event-name [handler-type]
 model: opus
 context: fork
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
@@ -14,7 +14,7 @@ allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 
 # Hook Creator
 
-Create event-driven hooks — deterministic automation that fires at Claude Code lifecycle points. Hooks are NOT LLM judgment; they're programmatic control.
+Create event-driven hooks — deterministic automation that fires at Claude Code lifecycle points. Hooks are NOT LLM judgment; they're programmatic control. [EXPLICIT]
 
 ## Assumptions & Limits
 
@@ -39,7 +39,7 @@ Create event-driven hooks — deterministic automation that fires at Claude Code
 /hook-creator PreToolUse             # interview mode — determine handler type
 ```
 
-Parse `$1` as event name, `$2` as handler type (default: `command`). If missing, interview:
+Parse `$1` as event name, `$2` as handler type (default: `command`). If missing, interview: [EXPLICIT]
 1. What should happen automatically? (action description)
 2. When? (before/after tool use, session start, on stop, etc.)
 3. Should it block the action or just react? (blocking = exit 2)
@@ -71,8 +71,8 @@ Parse `$1` as event name, `$2` as handler type (default: `command`). If missing,
 | `WorktreeCreate` | Worktree created | No | -- | worktree_path |
 | `WorktreeRemove` | Worktree removed | No | -- | worktree_path |
 
-SessionStart source values: `startup`, `resume`, `clear`, `compact`
-Notification type values: `permission_prompt`, `idle_prompt`
+SessionStart source values: `startup`, `resume`, `clear`, `compact` [EXPLICIT]
+Notification type values: `permission_prompt`, `idle_prompt` [EXPLICIT]
 
 ## Handler Types
 
@@ -95,7 +95,7 @@ Notification type values: `permission_prompt`, `idle_prompt`
   "matcher": null
 }
 ```
-Returns `{"ok": true/false, "reason": "..."}`. Uses Haiku by default. Good for subjective quality checks.
+Returns `{"ok": true/false, "reason": "..."}`. Uses Haiku by default. Good for subjective quality checks. [EXPLICIT]
 
 ### Agent (multi-turn verification)
 ```json
@@ -105,7 +105,7 @@ Returns `{"ok": true/false, "reason": "..."}`. Uses Haiku by default. Good for s
   "timeout": 60000
 }
 ```
-Full subagent with tool access. 60s default timeout, max 50 tool turns. Use when verification needs codebase state.
+Full subagent with tool access. 60s default timeout, max 50 tool turns. Use when verification needs codebase state. [EXPLICIT]
 
 ### HTTP (webhook)
 ```json
@@ -116,11 +116,11 @@ Full subagent with tool access. 60s default timeout, max 50 tool turns. Use when
   "allowedEnvVars": ["API_TOKEN"]
 }
 ```
-POST event data to endpoint. Cannot be added via `/hooks` menu — requires direct JSON editing.
+POST event data to endpoint. Cannot be added via `/hooks` menu — requires direct JSON editing. [EXPLICIT]
 
 ## Matcher Patterns
 
-Matchers are **regex** applied to the event's matcher field:
+Matchers are **regex** applied to the event's matcher field: [EXPLICIT]
 
 | Pattern | Matches | Use Case |
 |---|---|---|
@@ -192,3 +192,11 @@ Matchers are **regex** applied to the event's matcher field:
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

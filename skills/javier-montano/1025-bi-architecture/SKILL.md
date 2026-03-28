@@ -1,17 +1,17 @@
 ---
 name: sofka-bi-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design BI architecture",
   "build a KPI framework", "set up self-service analytics",
   "design a dashboard hierarchy", or "create a semantic layer",
-  or mentions metric trees, drill-down patterns, or reporting strategy.
+  or mentions metric trees, drill-down patterns, or reporting strategy. [EXPLICIT]
   It produces BI solution designs covering KPI frameworks, semantic layers,
-  dashboard hierarchies, self-service analytics, and governance plans.
+  dashboard hierarchies, self-service analytics, and governance plans. [EXPLICIT]
   Use this skill whenever the user needs analytics consumption architecture
   or visualization standards, even if they don't explicitly ask for
   "BI architecture".
-argument-hint: "<project-or-system-name>"
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -25,7 +25,7 @@ allowed-tools:
 
 # BI Architecture: Business Intelligence Solution Design & Analytics Strategy
 
-BI architecture defines how organizations consume data for decision-making — KPI frameworks, semantic layers, dashboard hierarchies, self-service analytics, and governance. This skill produces BI documentation that enables teams to deliver trustworthy, scalable, and accessible analytics.
+BI architecture defines how organizations consume data for decision-making — KPI frameworks, semantic layers, dashboard hierarchies, self-service analytics, and governance. This skill produces BI documentation that enables teams to deliver trustworthy, scalable, and accessible analytics. [EXPLICIT]
 
 ## Principio Rector
 
@@ -33,20 +33,20 @@ BI architecture defines how organizations consume data for decision-making — K
 
 ### Filosofía BI
 
-1. **Semantic layer = contrato de significado.** Cada métrica tiene una definición única, una fórmula, y un owner. Sin semantic layer, cada equipo calcula revenue diferente.
-2. **Self-service con guardrails.** Los usuarios deben poder explorar datos sin pedir tickets, pero dentro de un framework de gobernanza que asegure calidad y seguridad.
-3. **Menos dashboards, más decisiones.** La meta no es 100 dashboards — es que los decisores actúen con confianza. KPI trees > dashboard sprawl.
+1. **Semantic layer = contrato de significado.** Cada métrica tiene una definición única, una fórmula, y un owner. Sin semantic layer, cada equipo calcula revenue diferente. [EXPLICIT]
+2. **Self-service con guardrails.** Los usuarios deben poder explorar datos sin pedir tickets, pero dentro de un framework de gobernanza que asegure calidad y seguridad. [EXPLICIT]
+3. **Menos dashboards, más decisiones.** La meta no es 100 dashboards — es que los decisores actúen con confianza. KPI trees > dashboard sprawl. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para KPI framework y semantic layer, HITL para dashboard hierarchy y self-service strategy.
-  - **desatendido**: Cero interrupciones. Arquitectura BI documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en semantic layer design y platform selection.
-  - **paso-a-paso**: Confirma cada KPI tree, metric definition, dashboard tier, y governance policy.
+  - **piloto-auto**: Auto para KPI framework y semantic layer, HITL para dashboard hierarchy y self-service strategy. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura BI documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en semantic layer design y platform selection. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada KPI tree, metric definition, dashboard tier, y governance policy. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 KPI framework + S3 reporting + S6 governance) | `técnica` (full 6 sections, default)
 
@@ -56,7 +56,7 @@ Before generating architecture, detect the analytics context:
 !find . -name "*.sql" -o -name "*.yml" -o -name "*.yaml" -o -name "*.lookml" -o -name "*.json" | head -30
 ```
 
-Use detected tools (Looker, Tableau, Power BI, Metabase, dbt, etc.) to tailor recommendations.
+Use detected tools (Looker, Tableau, Power BI, Metabase, dbt, etc.) to tailor recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -88,7 +88,7 @@ Read ${CLAUDE_SKILL_DIR}/references/bi-patterns.md
 
 ### S1: KPI & Metric Framework
 
-Defines the organization's metric hierarchy — what to measure, how metrics relate, ownership.
+Defines the organization's metric hierarchy — what to measure, how metrics relate, ownership. [EXPLICIT]
 
 **Includes:**
 - Metric tree decomposition (north star metric → supporting metrics → input metrics)
@@ -106,7 +106,7 @@ Defines the organization's metric hierarchy — what to measure, how metrics rel
 
 ### S2: Semantic Layer Design
 
-Establishes the translation layer between raw data and business concepts.
+Establishes the translation layer between raw data and business concepts. [EXPLICIT]
 
 **Headless BI / metrics layer tool comparison:**
 
@@ -134,7 +134,7 @@ Establishes the translation layer between raw data and business concepts.
 
 ### S3: Reporting Architecture
 
-Designs the dashboard hierarchy — from executive summaries to operational detail.
+Designs the dashboard hierarchy — from executive summaries to operational detail. [EXPLICIT]
 
 **Dashboard performance budget (non-negotiable targets):**
 - Initial render: < 2 seconds (above 3s, users abandon)
@@ -158,7 +158,7 @@ Designs the dashboard hierarchy — from executive summaries to operational deta
 
 ### S4: Self-Service Analytics
 
-Enables business users to explore data independently with guardrails.
+Enables business users to explore data independently with guardrails. [EXPLICIT]
 
 **Self-service guardrails — governed vs ungoverned zones:**
 
@@ -183,7 +183,7 @@ Enables business users to explore data independently with guardrails.
 
 ### S5: Visualization Standards
 
-Defines chart selection, accessibility, color palettes, and interactivity guidelines.
+Defines chart selection, accessibility, color palettes, and interactivity guidelines. [EXPLICIT]
 
 **Includes:**
 - Chart selection guide (bar for comparison, line for trend, scatter for correlation, table for exact values — match chart type to analytical question)
@@ -264,19 +264,19 @@ Defines chart selection, accessibility, color palettes, and interactivity guidel
 ## Edge Cases
 
 **Startup with No Existing BI:**
-Start simple: one dashboard tool, shared spreadsheet for metric definitions, basic access control. Semantic layer becomes valuable at 10+ reports. Avoid over-engineering.
+Start simple: one dashboard tool, shared spreadsheet for metric definitions, basic access control. Semantic layer becomes valuable at 10+ reports. Avoid over-engineering. [EXPLICIT]
 
 **Multi-Tool Environment:**
-Organizations running Tableau, Power BI, and Looker simultaneously. Enforce single semantic layer regardless of consumption tool, or accept duplication with clear ownership boundaries.
+Organizations running Tableau, Power BI, and Looker simultaneously. Enforce single semantic layer regardless of consumption tool, or accept duplication with clear ownership boundaries. [EXPLICIT]
 
 **Executive Resistance to Self-Service:**
-Design tiered approach: L1 curated for executives, L3-L4 self-service for analysts. Earn trust incrementally with certified content labels.
+Design tiered approach: L1 curated for executives, L3-L4 self-service for analysts. Earn trust incrementally with certified content labels. [EXPLICIT]
 
 **High-Frequency Data (Sub-Second):**
-Real-time dashboards require streaming architecture, materialized views, and careful cost management. Most BI tools cap at 1-minute refresh. Use Grafana or custom dashboards for true real-time.
+Real-time dashboards require streaming architecture, materialized views, and careful cost management. Most BI tools cap at 1-minute refresh. Use Grafana or custom dashboards for true real-time. [EXPLICIT]
 
 **Regulated Reporting (SOX, HIPAA):**
-Requires audit trails, version control for reports, access logging, and certified reports with change management workflows. No ad-hoc modifications to compliance dashboards.
+Requires audit trails, version control for reports, access logging, and certified reports with change management workflows. No ad-hoc modifications to compliance dashboards. [EXPLICIT]
 
 ---
 
@@ -305,7 +305,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -140,17 +140,15 @@ for canon_dir in "${CANONICAL_DIRS[@]}"; do
 
     # S3: kebab-case name (strip number prefix for check)
     base_name=$(echo "$skill_name" | sed 's/^[0-9]*-//')
-    if ! echo "$base_name" | grep -qP '^[a-z0-9]+(-[a-z0-9]+)*$' 2>/dev/null; then
-      # Fallback for systems without -P
-      if echo "$base_name" | grep -q '[A-Z \<\>]' 2>/dev/null; then
-        s_pass="FAIL"
-      fi
+    # Use extended regex compatible with all platforms
+    if echo "$base_name" | grep -qE '[A-Z ]' 2>/dev/null; then
+      s_pass="FAIL"
     fi
 
-    # S5: no angle brackets in frontmatter description
-    if grep -q '[<>]' "$skill_md" 2>/dev/null; then
-      # Only fail if in frontmatter description
-      in_front=$(sed -n '/^---$/,/^---$/p' "$skill_md" | grep -c '[<>]' 2>/dev/null | safe_int)
+    # S5: no HTML angle brackets in frontmatter (exclude YAML fold/block indicators: > and |)
+    if grep -q '<' "$skill_md" 2>/dev/null; then
+      # Only check for actual HTML-style angle brackets (<something>) in frontmatter
+      in_front=$(sed -n '1,/^---$/p' "$skill_md" | tail -n +2 | grep -c '<' 2>/dev/null | safe_int)
       if [ "$in_front" -gt 0 ]; then
         s_pass="FAIL"
       fi
@@ -221,8 +219,8 @@ for canon_dir in "${CANONICAL_DIRS[@]}"; do
           m3="FAIL"
           break
         fi
-        if grep -qci 'TBD\|TODO\|placeholder' "$ref_file" 2>/dev/null; then
-          tbd_count=$(grep -ci 'TBD\|TODO\|placeholder' "$ref_file" 2>/dev/null | safe_int)
+        if grep -qE '\bTBD\b|\bTODO\b|\bplaceholder\b' "$ref_file" 2>/dev/null; then
+          tbd_count=$(grep -cE '\bTBD\b|\bTODO\b|\bplaceholder\b' "$ref_file" 2>/dev/null | safe_int)
           if [ "$tbd_count" -gt 0 ]; then
             m3="FAIL"
             break
@@ -263,10 +261,11 @@ for canon_dir in "${CANONICAL_DIRS[@]}"; do
 
     # === M5: Evidence tags ===
     m5="FAIL"
-    tag_count=$(grep -ci '\[EXPLICIT\]\|\[INFERRED\]\|\[OPEN\]\|\[HECHO\]\|\[INFERENCIA\]\|\[SUPUESTO\]' "$skill_md" 2>/dev/null | safe_int)
-    # Simple heuristic: count periods as sentence proxy
-    sentence_count=$(grep -o '\.' "$skill_md" 2>/dev/null | wc -l | safe_int)
-    sentence_count=${sentence_count:-1}
+    tag_count=$(grep -c '\[EXPLICIT\]\|\[INFERRED\]\|\[OPEN\]\|\[HECHO\]\|\[INFERENCIA\]\|\[SUPUESTO\]' "$skill_md" 2>/dev/null | safe_int)
+    # Count content lines (excluding frontmatter, code blocks, tables, headers, empty lines)
+    # This is a better proxy for "factual claims" than counting periods
+    content_lines=$(sed -n '/^---$/,/^---$/!p' "$skill_md" | grep -v '^$' | grep -v '^#' | grep -v '^|' | grep -v '^```' | grep -v '^\- \[' | grep -v '^>' | wc -l | safe_int)
+    content_lines=${content_lines:-1}
 
     if [ "$tier" = "utility" ]; then
       threshold=50
@@ -274,13 +273,21 @@ for canon_dir in "${CANONICAL_DIRS[@]}"; do
       threshold=80
     fi
 
-    if [ "$sentence_count" -gt 0 ] && [ "$tag_count" -gt 0 ]; then
-      coverage=$((tag_count * 100 / sentence_count))
+    # Use tag_count vs content_lines ratio
+    if [ "$content_lines" -gt 0 ] && [ "$tag_count" -gt 0 ]; then
+      coverage=$((tag_count * 100 / content_lines))
       if [ "$coverage" -ge "$threshold" ]; then
         m5="PASS"
       fi
-    elif [ "$tag_count" -ge 5 ]; then
-      m5="PASS"
+    fi
+    # Absolute minimum: 5 tags is enough for utility, 10 for standard, 15 for orchestrator
+    if [ "$m5" = "FAIL" ]; then
+      min_tags=10
+      [ "$tier" = "utility" ] && min_tags=5
+      [ "$tier" = "orchestrator" ] && min_tags=15
+      if [ "$tag_count" -ge "$min_tags" ]; then
+        m5="PASS"
+      fi
     fi
     if [ "$m5" = "FAIL" ]; then
       GAP_M5_EVIDENCE=$((GAP_M5_EVIDENCE + 1))

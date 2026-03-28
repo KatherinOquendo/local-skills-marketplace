@@ -1,0 +1,9 @@
+[
+  {"id": "creator-moat-skill-happy-path", "type": "happy_path", "input": "Run creator moat skill on this project", "expected_behavior": "Skill activates and produces the expected creator moat skill output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "creator-moat-skill-explicit-trigger", "type": "happy_path", "input": "Apply creator moat skill analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the creator moat skill workflow", "tags": ["trigger", "recognition"]},
+  {"id": "creator-moat-skill-with-context", "type": "happy_path", "input": "Apply creator moat skill to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive creator moat skill analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "creator-moat-skill-minimal-input", "type": "happy_path", "input": "Quick creator moat skill", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "creator-moat-skill-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to creator moat skill", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "creator-moat-skill-edge-empty-input", "type": "edge_case", "input": "Run creator moat skill but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "creator-moat-skill-edge-conflicting", "type": "edge_case", "input": "Apply creator moat skill but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

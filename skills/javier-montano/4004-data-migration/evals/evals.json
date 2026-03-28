@@ -1,0 +1,9 @@
+[
+  {"id": "data-migration-happy-path", "type": "happy_path", "input": "Run data migration on this project", "expected_behavior": "Skill activates and produces the expected data migration output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "data-migration-explicit-trigger", "type": "happy_path", "input": "Apply data migration analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the data migration workflow", "tags": ["trigger", "recognition"]},
+  {"id": "data-migration-with-context", "type": "happy_path", "input": "Apply data migration to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive data migration analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "data-migration-minimal-input", "type": "happy_path", "input": "Quick data migration", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "data-migration-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to data migration", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "data-migration-edge-empty-input", "type": "edge_case", "input": "Run data migration but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "data-migration-edge-conflicting", "type": "edge_case", "input": "Apply data migration but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Configure ESLint, Prettier, and Stylelint for automated code quality
-  enforcement with pre-commit hooks and CI integration.
+  enforcement with pre-commit hooks and CI integration. [EXPLICIT]
   Trigger: "ESLint", "Prettier", "linting", "code formatting", "Stylelint"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the setup of automated code quality tools — ESLint for code correctness, Prettier for formatting, Stylelint for CSS, pre-commit hooks with Husky/lint-staged, and CI integration. Use when establishing or improving code quality tooling for a project.
+Guides the setup of automated code quality tools — ESLint for code correctness, Prettier for formatting, Stylelint for CSS, pre-commit hooks with Husky/lint-staged, and CI integration. Use when establishing or improving code quality tooling for a project. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides the setup of automated code quality tools — ESLint for code correctness
 
 - `code-review` — linting removes style debates from code reviews
 - `github-actions-ci` — lint step in CI pipeline
+
+## Usage
+
+Example invocations:
+
+- "/linting-formatting" — Run the full linting formatting workflow
+- "linting formatting on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

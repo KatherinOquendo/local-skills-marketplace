@@ -33,7 +33,7 @@ Users rarely say exactly what they mean. The gap between typed request and actua
 | Wrong term used consistently | "I need an algorithm for sorting" | Means: workflow or process, not computational algorithm |
 | Over-technical for context | "JSON serialization in the database" | Means: store structured data |
 | Describes outcome, not mechanism | "Make it use AI" | Means: automate this repetitive task |
-| Vague placeholder words | "the strategy", "the solution" | Vocabulary + scope gap combined |
+| Vague template words | "the strategy", "the solution" | Vocabulary + scope gap combined |
 | Mixes domain terminology | "ML to predict churn" (no ML infrastructure mentioned) | Borrowed term from adjacent field |
 
 **Reformulation:** Map to correct terminology. Explain the difference briefly. If the mapping is uncertain, present both interpretations and ask.

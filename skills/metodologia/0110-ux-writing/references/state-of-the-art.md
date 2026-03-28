@@ -58,7 +58,7 @@ Tendencias, avances y direccion del ecosistema de UX writing relevantes para el 
 
 **Impacto en el skill:**
 - El skill audita documentos individuales. ContentOps extiende esto a la gestion del portfolio de contenido: consistencia terminologica entre deliverables, voice compliance transversal, deprecacion de patrones obsoletos.
-- Oportunidad: integrar un "content lint" que valide terminologia consistente entre todos los deliverables del engagement, no solo dentro de cada documento.
+- Oportunidad: integrar un "content lint" que valide terminologia consistente entre Todos los deliverables del engagement, no solo dentro de cada documento.
 - Los modos operacionales (legibilidad, optimizacion-contenido) son un paso hacia ContentOps — auditorias especializadas por dimension.
 
 **Senales:**
@@ -90,7 +90,7 @@ Tendencias, avances y direccion del ecosistema de UX writing relevantes para el 
 **Estado:** Los design systems maduros integran guidelines de contenido como primera clase: cada componente tiene no solo specs visuales sino patrones de texto asociados. El patron emergente es el "content component" — un componente que define estructura, tono, y limites de su contenido textual.
 
 **Impacto en el skill:**
-- El skill se cruza directamente con metodologia-design-system. La convergencia sugiere que cada componente del design system deberia incluir sus UX writing patterns (labels, placeholders, error messages, help text).
+- El skill se cruza directamente con metodologia-design-system. La convergencia sugiere que cada componente del design system deberia incluir sus UX writing patterns (labels, templates, error messages, help text).
 - Oportunidad: generar un "content patterns appendix" por componente del design system v4 — no solo como validar, sino como escribir correctamente para cada componente.
 
 **Senales:**

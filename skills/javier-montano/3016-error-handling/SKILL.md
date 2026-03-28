@@ -3,7 +3,7 @@ name: error-handling
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Error handling patterns: try/catch, error boundaries, fallback UI, user-friendly error messages, offline error states. Ensures graceful degradation.
+  Error handling patterns: try/catch, error boundaries, fallback UI, user-friendly error messages, offline error states. Ensures graceful degradation. [EXPLICIT]
   Trigger: "error handling", "try catch", "error boundary", "fallback", "graceful degradation"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements error handling patterns for web applications: try/catch with meaningful messages, error boundaries for component isolation, fallback UI for failed states, offline error handling, and user-friendly error messages. Every error state is a UX opportunity, not a dead end.
+Implements error handling patterns for web applications: try/catch with meaningful messages, error boundaries for component isolation, fallback UI for failed states, offline error handling, and user-friendly error messages. Every error state is a UX opportunity, not a dead end. [EXPLICIT]
 
 ## Procedure
 
@@ -55,3 +55,25 @@ Implements error handling patterns for web applications: try/catch with meaningf
 - `e2e-testing` — Test error states in E2E
 - `firebase-setup` — Firebase error handling patterns
 - `vanilla-javascript` — DOM error handling
+
+## Usage
+
+Example invocations:
+
+- "/error-handling" — Run the full error handling workflow
+- "error handling on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

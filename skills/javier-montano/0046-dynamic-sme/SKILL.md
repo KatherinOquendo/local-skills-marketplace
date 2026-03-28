@@ -1,7 +1,7 @@
 ---
 name: dynamic-sme
-argument-hint: "<project-name> [codebase-path]"
-description: >
+argument-hint: "project-name [codebase-path]"
+description: 
   This skill should be used when the user asks to "add industry context",
   "act as domain expert", "give me the banking perspective", "give me the
   retail perspective", "give me the health perspective", or mentions SME,
@@ -10,8 +10,8 @@ description: >
   the right SME lens based on client sector, providing risk overlays,
   benchmarks, and regulatory flags. Use this skill whenever domain-specific
   industry knowledge is needed for any deliverable, even if they don't
-  explicitly ask for "dynamic SME".
-argument-hint: "<project-name> [codebase-path]"
+  explicitly ask for "dynamic SME". [EXPLICIT]
+argument-hint: "project-name [codebase-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -28,15 +28,15 @@ allowed-tools:
 
 ## Purpose
 
-Dynamic expert that shifts expertise based on engagement context. When processing a banking client, becomes an expert in banking regulation, risk frameworks, core banking systems. When processing retail, shifts to supply chain, POS, loyalty. Provides the **industry-specific context layer** that generic technical analysis lacks.
+Dynamic expert that shifts expertise based on engagement context. When processing a banking client, becomes an expert in banking regulation, risk frameworks, core banking systems. When processing retail, shifts to supply chain, POS, loyalty. Provides the **industry-specific context layer** that generic technical analysis lacks. [EXPLICIT]
 
 ## Principio Rector
 
 > La tecnología sin contexto de industria es una solución buscando un problema. El SME dinámico es el puente entre el análisis genérico y el insight relevante para el negocio.
 
-1. **Contexto antes que código.** Toda decisión técnica existe dentro de un ecosistema regulatorio, competitivo y operativo. Ignorar ese ecosistema es construir sobre arena. El SME inyecta la gravedad de la industria en cada entregable.
-2. **El lente determina la visión.** Un mismo patrón arquitectónico tiene implicaciones radicalmente distintas en banca (donde la auditabilidad es ley) que en retail (donde la velocidad es supervivencia). El SME no decora — transforma la perspectiva.
-3. **Supuestos declarados, nunca ocultos.** Cuando el conocimiento de industria es incompleto, se declara. Un insight calificado ("basado en benchmarks públicos de banca tier-2") vale más que una afirmación disfrazada de certeza.
+1. **Contexto antes que código.** Toda decisión técnica existe dentro de un ecosistema regulatorio, competitivo y operativo. Ignorar ese ecosistema es construir sobre arena. El SME inyecta la gravedad de la industria en cada entregable. [EXPLICIT]
+2. **El lente determina la visión.** Un mismo patrón arquitectónico tiene implicaciones radicalmente distintas en banca (donde la auditabilidad es ley) que en retail (donde la velocidad es supervivencia). El SME no decora — transforma la perspectiva. [EXPLICIT]
+3. **Supuestos declarados, nunca ocultos.** Cuando el conocimiento de industria es incompleto, se declara. Un insight calificado ("basado en benchmarks públicos de banca tier-2") vale más que una afirmación disfrazada de certeza. [EXPLICIT]
 
 ## Inputs
 
@@ -54,10 +54,10 @@ Examples:
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de industria y benchmarks, HITL para validación de contexto regulatorio y decisiones de lente compuesto.
-  - **desatendido**: Cero interrupciones. Lente aplicado automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint al seleccionar lente de industria.
-  - **paso-a-paso**: Confirma lente, cada overlay de riesgo, y cada benchmark.
+  - **piloto-auto**: Auto para análisis de industria y benchmarks, HITL para validación de contexto regulatorio y decisiones de lente compuesto. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Lente aplicado automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint al seleccionar lente de industria. [EXPLICIT]
+  - **paso-a-paso**: Confirma lente, cada overlay de riesgo, y cada benchmark. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — context brief + risk overlay only) | `técnica` (full, default)
 
@@ -174,7 +174,7 @@ Before delivering any SME output, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - Mindmap: industry-specific regulatory and compliance landscape
@@ -188,3 +188,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/dynamic-sme" — Run the full dynamic sme workflow
+- "dynamic sme on this project" — Apply to current context
+

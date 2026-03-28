@@ -5,7 +5,7 @@ description: >
   business value assessment, success metrics, and operational modes. This skill should be used when the user asks to
   "define the AI operational concept", "map AI stakeholders", "design AI-human interaction levels", "assess AI business value",
   "define AI success metrics", "plan AI operational modes", or mentions CONOPS, IEEE 1362, AI autonomy levels,
-  AI value matrix, or AI system vision.
+  AI value matrix, or AI system vision. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # AI CONOPS: Operational Concept for AI-Enabled Systems
 
-CONOPS for AI systems defines *what the system does, for whom, and under what conditions* — before architecture begins. Aligned with IEEE 1362-2022, this skill produces the operational concept document that drives all downstream architectural decisions: stakeholder identification, interaction autonomy levels, business value assessment, measurable success metrics, and operational modes with their state transitions.
+CONOPS for AI systems defines *what the system does, for whom, and under what conditions* — before architecture begins. Aligned with IEEE 1362-2022, this skill produces the operational concept document that drives all downstream architectural decisions: stakeholder identification, interaction autonomy levels, business value assessment, measurable success metrics, and operational modes with their state transitions. [EXPLICIT]
 
 ## Principio Rector
 
@@ -27,20 +27,20 @@ CONOPS for AI systems defines *what the system does, for whom, and under what co
 
 ### Filosofía de CONOPS para IA
 
-1. **Primero el problema, después el modelo.** La tentación de empezar por la tecnología (LLM, RAG, fine-tuning) es fuerte. CONOPS obliga a articular el problema de negocio, los stakeholders afectados, y las métricas de éxito ANTES de seleccionar soluciones.
-2. **El nivel de autonomía es una decisión arquitectónica, no técnica.** Decidir si el sistema opera en Decision Support o Supervised Autonomy afecta la arquitectura completa — interfaces, monitoreo, escalación, compliance. No es un parámetro de configuración.
-3. **Métricas de éxito híbridas o nada.** Un sistema de IA que optimiza accuracy pero ignora fairness, o que maximiza throughput pero destruye user trust, ha fracasado. CONOPS define métricas en tres pilares: Technical Performance, Business Impact, User Experience & Ethics.
+1. **Primero el problema, después el modelo.** La tentación de empezar por la tecnología (LLM, RAG, fine-tuning) es fuerte. CONOPS obliga a articular el problema de negocio, los stakeholders afectados, y las métricas de éxito ANTES de seleccionar soluciones. [EXPLICIT]
+2. **El nivel de autonomía es una decisión arquitectónica, no técnica.** Decidir si el sistema opera en Decision Support o Supervised Autonomy afecta la arquitectura completa — interfaces, monitoreo, escalación, compliance. No es un parámetro de configuración. [EXPLICIT]
+3. **Métricas de éxito híbridas o nada.** Un sistema de IA que optimiza accuracy pero ignora fairness, o que maximiza throughput pero destruye user trust, ha fracasado. CONOPS define métricas en tres pilares: Technical Performance, Business Impact, User Experience & Ethics. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para visión y stakeholders, HITL para interaction level y métricas.
-  - **desatendido**: Cero interrupciones. CONOPS documentado automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en interaction level y success metrics.
-  - **paso-a-paso**: Confirma cada sección antes de avanzar.
+  - **piloto-auto**: Auto para visión y stakeholders, HITL para interaction level y métricas. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. CONOPS documentado automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en interaction level y success metrics. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada sección antes de avanzar. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{ALCANCE}`: `ejecutiva` (~40% — S1 visión + S4 value + S5 metrics) | `técnica` (full 6 sections, default)
 
@@ -76,7 +76,7 @@ Load references:
 
 ### S1: System Vision & Objectives
 
-Articulates the purpose, scope, and expected outcomes of the AI-enabled system.
+Articulates the purpose, scope, and expected outcomes of the AI-enabled system. [EXPLICIT]
 
 **Includes:**
 - Problem statement: what business problem the AI system addresses, with quantified impact
@@ -92,7 +92,7 @@ Articulates the purpose, scope, and expected outcomes of the AI-enabled system.
 
 ### S2: Stakeholder & Actor Map
 
-Identifies all human and system actors that interact with the AI system, their roles, and their concerns.
+Identifies all human and system actors that interact with the AI system, their roles, and their concerns. [EXPLICIT]
 
 **AI System Architect Roles (from source):**
 - **Vision Holder**: Translates business objectives into system requirements; ensures architecture aligns with organizational strategy
@@ -117,7 +117,7 @@ Identifies all human and system actors that interact with the AI system, their r
 
 ### S3: AI-Human Interaction Design
 
-Selects the appropriate autonomy level for the AI system using the 5-level interaction spectrum.
+Selects the appropriate autonomy level for the AI system using the 5-level interaction spectrum. [EXPLICIT]
 
 **Levels:**
 1. **Manual Operation**: No AI — baseline comparison
@@ -141,7 +141,7 @@ Selects the appropriate autonomy level for the AI system using the 5-level inter
 
 ### S4: Business Value Assessment
 
-Evaluates AI use cases using the Business Value Matrix (2x2: Value vs. Effort).
+Evaluates AI use cases using the Business Value Matrix (2x2: Value vs. Effort). [EXPLICIT]
 
 **Quadrants:**
 - **Quick Wins** (High Value, Low Effort): API-first, pre-trained models, fast integration
@@ -159,7 +159,7 @@ Evaluates AI use cases using the Business Value Matrix (2x2: Value vs. Effort).
 
 ### S5: Success Metrics Framework
 
-Defines measurable success across three pillars, aligned with stakeholder concerns.
+Defines measurable success across three pillars, aligned with stakeholder concerns. [EXPLICIT]
 
 **Pillar 1 — Technical Performance:**
 - Accuracy & predictive power (accuracy, AUC, F1, precision, recall)
@@ -186,7 +186,7 @@ Defines measurable success across three pillars, aligned with stakeholder concer
 
 ### S6: Operational Modes & Transitions
 
-Defines the operational states the AI system can inhabit and the transitions between them.
+Defines the operational states the AI system can inhabit and the transitions between them. [EXPLICIT]
 
 **8 Operational Modes:**
 - **Configuration** (orange): System setup or initial configuration before first deployment
@@ -252,16 +252,16 @@ Defines the operational states the AI system can inhabit and the transitions bet
 ## Edge Cases
 
 **AI System Replacing Human Process:**
-Interaction level selection is politically sensitive. Stakeholders affected by automation may resist. CONOPS must address change management alongside technical design. Document current process metrics as baseline.
+Interaction level selection is politically sensitive. Stakeholders affected by automation may resist. CONOPS must address change management alongside technical design. Document current process metrics as baseline. [EXPLICIT]
 
 **Greenfield AI with No Existing Data:**
-Business value assessment is speculative without data. Start with Level 2 (Decision Support) to build data and trust simultaneously. Phase CONOPS to evolve as data matures.
+Business value assessment is speculative without data. Start with Level 2 (Decision Support) to build data and trust simultaneously. Phase CONOPS to evolve as data matures. [EXPLICIT]
 
 **Multi-Domain AI System:**
-Different domains within the same system may require different interaction levels. A healthcare AI may need Level 2 for diagnosis but Level 4 for scheduling. CONOPS must accommodate per-domain autonomy levels.
+Different domains within the same system may require different interaction levels. A healthcare AI may need Level 2 for diagnosis but Level 4 for scheduling. CONOPS must accommodate per-domain autonomy levels. [EXPLICIT]
 
 **Regulated Industry (Finance, Healthcare, Government):**
-Compliance requirements may cap the maximum interaction level regardless of technical capability. CONOPS must reference specific regulations constraining autonomy. Explainability and audit requirements become hard constraints, not preferences.
+Compliance requirements may cap the maximum interaction level regardless of technical capability. CONOPS must reference specific regulations constraining autonomy. Explainability and audit requirements become hard constraints, not preferences. [EXPLICIT]
 
 ---
 
@@ -314,7 +314,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

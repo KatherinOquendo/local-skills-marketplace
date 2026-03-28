@@ -34,7 +34,7 @@ La arquitectura cloud-native vive su fase de maduración acelerada: las decision
 
 ## Tendencia 3: eBPF — Networking y Observabilidad sin Sidecars (2024–2026)
 
-**Descripción:** eBPF (extended Berkeley Packet Filter) revoluciona el networking cloud-native al ejecutar programas en el kernel Linux sin modificar código de aplicación ni inyectar sidecars. Cilium (CNCF Graduated 2024) lidera como CNI + service mesh + observabilidad unificados: mTLS sin sidecar (via eBPF), network policies L3-L7, Hubble para observabilidad de red, y Tetragon para runtime security — todo con overhead mínimo (<2% CPU vs. 5-15% de sidecars Envoy). Istio responde con Ambient Mesh: ztunnel per-node para L4 (mTLS) + waypoint proxies per-namespace para L7, eliminando sidecars per-pod. La tendencia clara: los sidecars per-pod están en declive para nuevos despliegues.
+**Descripción:** eBPF (extended Berkeley Packet Filter) revoluciona el networking cloud-native al ejecutar programas en el kernel Linux sin modificar código de aplicación ni inyectar sidecars. Cilium (CNCF Graduated 2024) lidera como CNI + service mesh + observabilidad unificados: mTLS sin sidecar (via eBPF), network policies L3-L7, Hubble para observabilidad de red, y Tetragon para runtime security — Todo con overhead mínimo (<2% CPU vs. 5-15% de sidecars Envoy). Istio responde con Ambient Mesh: ztunnel per-node para L4 (mTLS) + waypoint proxies per-namespace para L7, eliminando sidecars per-pod. La tendencia clara: los sidecars per-pod están en declive para nuevos despliegues.
 
 **Impacto en la práctica de discovery:** La sección S3 (Service Mesh & Networking) del skill evoluciona: la decisión ya no es "¿Istio o Linkerd?" sino "¿eBPF-native (Cilium) o sidecar-less mesh (Istio Ambient)?". Los criterios de evaluación priorizan overhead operacional y de recursos. Para clientes con <50 servicios, Cilium sin mesh dedicado puede ser suficiente. La observabilidad eBPF (Hubble, Tetragon) reduce la necesidad de instrumentación manual.
 
@@ -64,7 +64,7 @@ La arquitectura cloud-native vive su fase de maduración acelerada: las decision
 
 ## Tendencia 6: GitOps Maturity — Más Allá del Deployment (2024–2026)
 
-**Descripción:** GitOps evoluciona de "despliegue declarativo" a práctica integral de gestión de infraestructura y configuración. ArgoCD 2.x introduce ApplicationSets para multi-cluster y multi-tenant deployments, Progressive Delivery con Argo Rollouts (canary, blue-green automatizados), y Notifications para integración con Slack/Teams/PagerDuty. Flux v2 (CNCF Graduated) compite con reconciliación más granular y soporte nativo de Helm OCI. El concepto se extiende a "Everything as Code": políticas (OPA), secrets (External Secrets Operator + Vault), certificados (cert-manager), y DNS (ExternalDNS) — todo gestionado via Git con reconciliación continua. El GitOps Maturity Model (OpenGitOps) define niveles de 0 a 4.
+**Descripción:** GitOps evoluciona de "despliegue declarativo" a práctica integral de gestión de infraestructura y configuración. ArgoCD 2.x introduce ApplicationSets para multi-cluster y multi-tenant deployments, Progressive Delivery con Argo Rollouts (canary, blue-green automatizados), y Notifications para integración con Slack/Teams/PagerDuty. Flux v2 (CNCF Graduated) compite con reconciliación más granular y soporte nativo de Helm OCI. El concepto se extiende a "Everything as Code": políticas (OPA), secrets (External Secrets Operator + Vault), certificados (cert-manager), y DNS (ExternalDNS) — Todo gestionado via Git con reconciliación continua. El GitOps Maturity Model (OpenGitOps) define niveles de 0 a 4.
 
 **Impacto en la práctica de discovery:** La sección S2 del skill evalúa el nivel de madurez GitOps del cliente contra el modelo OpenGitOps. El estado objetivo mínimo es Level 2 (declarative, versioned, automated). Para organizaciones en Level 3-4, el skill incorpora progressive delivery, drift detection, y policy-as-code como componentes estándar. La governance de FinOps (S6) se beneficia: cambios de infraestructura con cost impact se revisan como PRs.
 
@@ -112,7 +112,7 @@ La arquitectura cloud-native vive su fase de maduración acelerada: las decision
 1. **Wasm components como primitiva de composición:** componentes Wasm reemplazarán librerías/SDKs para extensibilidad de plataformas, con sandboxing de seguridad nativo y portabilidad garantizada por WASI.
 2. **AI-driven platform engineering:** IDPs usarán LLMs para recomendar golden paths, detectar drift, y auto-remediar configuraciones — el platform engineer como curator, no operador.
 3. **eBPF-native observability universal:** instrumentación zero-code via eBPF será default; OpenTelemetry SDK será fallback para métricas custom, no el mecanismo primario.
-4. **Serverless Kubernetes:** la distinción entre "serverless" y "container" desaparecerá — todo compute será scale-to-zero por default, facturado por uso real.
+4. **Serverless Kubernetes:** la distinción entre "serverless" y "container" desaparecerá — Todo compute será scale-to-zero por default, facturado por uso real.
 5. **Sustainability-aware scheduling:** clusters optimizarán ubicación de workloads por huella de carbono del datacenter, no solo por costo o latencia, impulsados por regulación EU (CSRD) y reporting ESG.
 
 ---

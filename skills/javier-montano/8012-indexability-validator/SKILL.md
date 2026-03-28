@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Scan repository directories for README presence, validate index-driven navigation,
-  flag orphan folders, generate missing READMEs. Constitution XVIII enforcement.
+  flag orphan folders, generate missing READMEs. Constitution XVIII enforcement. [EXPLICIT]
   Trigger: "indexability", "README audit", "orphan folders", "directory index", "repo navigation"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Enforces Constitution XVIII: every directory MUST have a README.md. Scans the repository, flags directories missing READMEs, identifies orphan folders (not linked from parent), checks .gitignore has comments, and validates the index-driven navigation chain from root to leaves. Can generate stub READMEs for missing directories.
+Enforces Constitution XVIII: every directory MUST have a README.md. Scans the repository, flags directories missing READMEs, identifies orphan folders (not linked from parent), checks .gitignore has comments, and validates the index-driven navigation chain from root to leaves. Can generate stub READMEs for missing directories. [EXPLICIT]
 
 ## Procedure
 
@@ -92,3 +92,25 @@ Enforces Constitution XVIII: every directory MUST have a README.md. Scans the re
 - `repository-organization` — Broader structural health audit
 - `code-review` — Sustainability check includes README presence (XII)
 - `workspace-governance` — Workspace follows same README rules
+
+## Usage
+
+Example invocations:
+
+- "/indexability-validator" — Run the full indexability validator workflow
+- "indexability validator on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

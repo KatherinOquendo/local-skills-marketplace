@@ -4,7 +4,7 @@ description: >
   Constructor de skills de produccion. Genera skills estructuradas con SKILL.md + references/,
   validacion de calidad, y estandares canonicos. Usar cuando el usuario pida "crear skill",
   "nueva skill", "generar skill", "construir habilidad", o mencione skill architecture,
-  skill scaffolding, o skill template generation.
+  skill scaffolding, o skill template generation. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,17 +20,17 @@ allowed-tools:
 
 Generar skills estructuradas, de alta densidad, listas para produccion. Cada skill sigue el
 patron canonico: SKILL.md como orquestador + directorio `references/` con archivos de dominio
-especificos. El constructor valida calidad antes de entregar.
+especificos. El constructor valida calidad antes de entregar. [EXPLICIT]
 
 ---
 
 ## Principio Rector
 
-1. **Progressive Disclosure.** SKILL.md es el orquestador — contiene estructura, parametros, y flujo. La logica pesada vive en `references/`. Esto protege la ventana de contexto del agente y separa responsabilidades.
+1. **Progressive Disclosure.** SKILL.md es el orquestador — contiene estructura, parametros, y flujo. La logica pesada vive en `references/`. Esto protege la ventana de contexto del agente y separa responsabilidades. [EXPLICIT]
 
-2. **Densidad sobre verbosidad.** Cada linea del skill debe ser accionable. Sin platitudes genericas ("se util"), sin filler conversacional, sin repeticion. Si una instruccion no cambia el comportamiento del agente, sobra.
+2. **Densidad sobre verbosidad.** Cada linea del skill debe ser accionable. Sin platitudes genericas ("se util"), sin filler conversacional, sin repeticion. Si una instruccion no cambia el comportamiento del agente, sobra. [EXPLICIT]
 
-3. **Validacion antes de entrega.** Ningun skill se entrega sin pasar el Validation Gate. El constructor verifica estructura, contenido, y coherencia antes de presentar al usuario.
+3. **Validacion antes de entrega.** Ningun skill se entrega sin pasar el Validation Gate. El constructor verifica estructura, contenido, y coherencia antes de presentar al usuario. [EXPLICIT]
 
 ---
 
@@ -83,7 +83,7 @@ Read ${CLAUDE_SKILL_DIR}/references/skill-output-templates.md
 
 ### S1: Analisis de Requisitos
 
-Clarificar el nombre, proposito, dominio, y restricciones del skill solicitado.
+Clarificar el nombre, proposito, dominio, y restricciones del skill solicitado. [EXPLICIT]
 
 **Incluye:**
 - Nombre en kebab-case
@@ -94,7 +94,7 @@ Clarificar el nombre, proposito, dominio, y restricciones del skill solicitado.
 
 ### S2: Generacion de Estructura
 
-Crear la topologia de archivos siguiendo el patron canonico.
+Crear la topologia de archivos siguiendo el patron canonico. [EXPLICIT]
 
 **Estructura generada:**
 
@@ -115,7 +115,7 @@ Crear la topologia de archivos siguiendo el patron canonico.
 
 ### S3: Generacion de SKILL.md
 
-Generar el archivo orquestador con todas las secciones canonicas.
+Generar el archivo orquestador con todas las secciones canonicas. [EXPLICIT]
 
 **Secciones obligatorias del SKILL.md generado:**
 1. Frontmatter YAML (name, description, model, context, allowed-tools)
@@ -138,7 +138,7 @@ Generar el archivo orquestador con todas las secciones canonicas.
 
 ### S4: Generacion de Reference Files
 
-Crear los 3+ archivos de referencia con contenido denso y especifico del dominio.
+Crear los 3+ archivos de referencia con contenido denso y especifico del dominio. [EXPLICIT]
 
 **Cada reference file debe:**
 - Contener la logica pesada que no debe estar en SKILL.md
@@ -148,7 +148,7 @@ Crear los 3+ archivos de referencia con contenido denso y especifico del dominio
 
 ### S5: Validacion de Calidad
 
-Ejecutar el Validation Gate antes de entregar.
+Ejecutar el Validation Gate antes de entregar. [EXPLICIT]
 
 **Checks obligatorios:**
 - [ ] Frontmatter YAML completo y valido
@@ -200,15 +200,15 @@ Presentar al usuario el skill generado con:
 
 ## Edge Cases
 
-1. **Dominio desconocido**: Si el usuario pide un skill para un dominio que el constructor no conoce, generar la estructura canonica con placeholders `[Requiere input del dominio: {descripcion}]` y solicitar contenido especifico.
+1. **Dominio desconocido**: Si el usuario pide un skill para un dominio que el constructor no conoce, generar la estructura canonica con placeholders `[Requiere input del dominio: {descripcion}]` y solicitar contenido especifico. [EXPLICIT]
 
-2. **Skill muy simple**: Si el dominio requiere menos de 6 secciones, mantener la estructura completa pero marcar secciones no aplicables como `[N/A para este dominio — {razon}]`.
+2. **Skill muy simple**: Si el dominio requiere menos de 6 secciones, mantener la estructura completa pero marcar secciones no aplicables como `[N/A para este dominio — {razon}]`. [EXPLICIT]
 
-3. **Skill de auditoria**: Agregar automaticamente PROFUNDIDAD (express|standard|deep) a los parametros y separar de MODO (autonomia).
+3. **Skill de auditoria**: Agregar automaticamente PROFUNDIDAD (express|standard|deep) a los parametros y separar de MODO (autonomia). [EXPLICIT]
 
-4. **Skill que referencia otros inexistentes**: Documentar cross-references como `[Pendiente de construccion]` en lugar de omitirlas.
+4. **Skill que referencia otros inexistentes**: Documentar cross-references como `[Pendiente de construccion]` en lugar de omitirlas. [EXPLICIT]
 
-5. **Usuario pide estructura legacy (4 archivos fijos)**: Migrar a la estructura canonica (3+ refs con nombres descriptivos). Documentar la migracion.
+5. **Usuario pide estructura legacy (4 archivos fijos)**: Migrar a la estructura canonica (3+ refs con nombres descriptivos). Documentar la migracion. [EXPLICIT]
 
 ---
 

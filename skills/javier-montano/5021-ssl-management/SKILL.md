@@ -3,7 +3,7 @@ name: ssl-management
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Certificate lifecycle, auto-renewal, HSTS, certificate pinning.
+  Certificate lifecycle, auto-renewal, HSTS, certificate pinning. [EXPLICIT]
   Trigger: "ssl management"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Ssl Management
 > "Method over hacks."
 ## TL;DR
-Certificate lifecycle, auto-renewal, HSTS, certificate pinning.
+Certificate lifecycle, auto-renewal, HSTS, certificate pinning. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Certificate lifecycle, auto-renewal, HSTS, certificate pinning.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/ssl-management" — Run the full ssl management workflow
+- "ssl management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

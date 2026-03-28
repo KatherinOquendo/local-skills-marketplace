@@ -1,35 +1,9 @@
-{
-  "skill_name": "roadmap-poc",
-  "evals": [
-    {
-      "id": 1,
-      "prompt": "Run roadmap-poc on this repository and produce a full assessment report",
-      "expected_output": "Structured report with evidence-tagged findings, prioritized recommendations, and next steps",
-      "assertions": [
-        {"text": "Output contains evidence tags [HECHO], [INFERENCIA], or [SUPUESTO]", "type": "contains"},
-        {"text": "Output contains a TL;DR or Executive Summary section", "type": "contains"},
-        {"text": "Output contains prioritized recommendations (P0/P1/P2)", "type": "contains"}
-      ]
-    },
-    {
-      "id": 2,
-      "prompt": "Quick roadmap-poc health check — focus on critical issues only, 1-page max",
-      "expected_output": "Concise 1-page summary with top 3 critical findings and immediate actions",
-      "assertions": [
-        {"text": "Output is concise (under 100 lines)", "type": "length"},
-        {"text": "Output identifies at least 1 critical finding", "type": "contains"},
-        {"text": "Output provides actionable next steps", "type": "contains"}
-      ]
-    },
-    {
-      "id": 3,
-      "prompt": "Compare current roadmap-poc state against industry best practices and identify gaps",
-      "expected_output": "Gap analysis with current vs target state, remediation roadmap",
-      "assertions": [
-        {"text": "Output contains gap analysis or comparison", "type": "contains"},
-        {"text": "Output references industry standards or best practices", "type": "contains"},
-        {"text": "Output provides improvement roadmap or remediation plan", "type": "contains"}
-      ]
-    }
-  ]
-}
+[
+  {"id": "roadmap-poc-happy-path", "type": "happy_path", "input": "Run roadmap poc on this project", "expected_behavior": "Skill activates and produces the expected roadmap poc output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "roadmap-poc-explicit-trigger", "type": "happy_path", "input": "Apply roadmap poc analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the roadmap poc workflow", "tags": ["trigger", "recognition"]},
+  {"id": "roadmap-poc-with-context", "type": "happy_path", "input": "Apply roadmap poc to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive roadmap poc analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "roadmap-poc-minimal-input", "type": "happy_path", "input": "Quick roadmap poc", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "roadmap-poc-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to roadmap poc", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "roadmap-poc-edge-empty-input", "type": "edge_case", "input": "Run roadmap poc but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "roadmap-poc-edge-conflicting", "type": "edge_case", "input": "Apply roadmap poc but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

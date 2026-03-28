@@ -19,7 +19,7 @@
 
 ### Relevancia para el Skill
 
-El ciclo Build-Measure-Learn es la columna vertebral de todo PoC bien diseñado. Sin este framework, un PoC es un prototipo disfrazado de validación.
+El ciclo Build-Measure-Learn es la columna vertebral de Todo PoC bien diseñado. Sin este framework, un PoC es un prototipo disfrazado de validación.
 
 ### Conceptos Clave Aplicados
 

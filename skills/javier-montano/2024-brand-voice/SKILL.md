@@ -1,15 +1,15 @@
 ---
 name: brand-voice
-description: >
+description: 
   This skill should be used when the user asks to "apply brand voice",
   "write in our brand tone", "review copy for brand consistency",
   "create brand writing guidelines", or "calibrate tone for a proposal",
-  or mentions voice pillars, tone calibration, or vocabulary mapping.
+  or mentions voice pillars, tone calibration, or vocabulary mapping. [EXPLICIT]
   It applies configurable brand voice and tone guidelines by reading brand config
-  to adapt voice pillars, content type calibration, vocabulary mapping, and writing rules.
+  to adapt voice pillars, content type calibration, vocabulary mapping, and writing rules. [EXPLICIT]
   Use this skill whenever the user needs branded written content or voice
-  consistency checks, even if they don't explicitly ask for "brand voice".
-argument-hint: "<content-type> <text-or-path> [brand-config-path]"
+  consistency checks, even if they don't explicitly ask for "brand voice". [EXPLICIT]
+argument-hint: "content-type text-or-path [brand-config-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -22,7 +22,7 @@ allowed-tools:
 
 # Brand Voice & Tone
 
-Apply configurable brand voice to any written content. Reads brand identity from a config file and adapts voice pillars, vocabulary, tone calibration, and writing patterns accordingly.
+Apply configurable brand voice to any written content. Reads brand identity from a config file and adapts voice pillars, vocabulary, tone calibration, and writing patterns accordingly. [EXPLICIT]
 
 ## Brand Configuration
 
@@ -79,46 +79,46 @@ Search for brand voice config in this order:
 
 ### Default (No Config)
 
-If no config found, use professional neutral voice: clear, direct, active voice, no jargon, human-centered. Prompt user to provide brand config for branded output.
+If no config found, use professional neutral voice: clear, direct, active voice, no jargon, human-centered. Prompt user to provide brand config for branded output. [EXPLICIT]
 
 ## Voice Pillars
 
 Read from `voice.pillars` in config. Default 4-pillar framework:
 
 ### 1. Close & Human
-Companion, not vendor. Warm, direct, personal. Talk TO people, not AT them. Use "we" and "you" naturally.
+Companion, not vendor. Warm, direct, personal. Talk TO people, not AT them. Use "we" and "you" naturally. [EXPLICIT]
 
 ### 2. Confident & Grounded
 Lead with facts, not adjectives. Active voice. Confidence without arrogance: "We deliver" not "We are proud to deliver."
 
 ### 3. Forward-Looking & Optimistic
-Focus on progress, not perfection. Frame challenges as opportunities. End on a forward note.
+Focus on progress, not perfection. Frame challenges as opportunities. End on a forward note. [EXPLICIT]
 
 ### 4. Simple & Direct
-Short sentences. One idea per sentence. Avoid jargon when plain language works. Active verbs: build, deliver, transform, improve.
+Short sentences. One idea per sentence. Avoid jargon when plain language works. Active verbs: build, deliver, transform, improve. [EXPLICIT]
 
 ## Writing by Content Type
 
 ### Headlines & Titles
-Short, punchy, sentence case. Lead with action or aspiration. Optionally highlight one key word in brand primary color.
+Short, punchy, sentence case. Lead with action or aspiration. Optionally highlight one key word in brand primary color. [EXPLICIT]
 
 ### Body Copy
-2-4 sentences per block. Active voice. End with forward-looking statement or CTA. Subtly reference brand philosophy.
+2-4 sentences per block. Active voice. End with forward-looking statement or CTA. Subtly reference brand philosophy. [EXPLICIT]
 
 ### Proposals & Reports
-Open with client's challenge, not credentials. Data-anchor claims. Structure: Context > Approach > Expected Impact. Close with warm, direct invitation.
+Open with client's challenge, not credentials. Data-anchor claims. Structure: Context > Approach > Expected Impact. Close with warm, direct invitation. [EXPLICIT]
 
 ### Social / LinkedIn
-Start with human hook. Conversational, no buzzwords. Concrete insight or takeaway. End with tagline when appropriate.
+Start with human hook. Conversational, no buzzwords. Concrete insight or takeaway. End with tagline when appropriate. [EXPLICIT]
 
 ### Emails (External)
-Clear subject (benefit or question). Reference specific context. One key message. Single CTA. Warm professional sign-off.
+Clear subject (benefit or question). Reference specific context. One key message. Single CTA. Warm professional sign-off. [EXPLICIT]
 
 ### Slide Text
-6-10 words max per headline. No full paragraphs. "Eyebrow + headline" structure. Tagline on closing slides.
+6-10 words max per headline. No full paragraphs. "Eyebrow + headline" structure. Tagline on closing slides. [EXPLICIT]
 
 ### Internal Communications
-Same warmth, slightly more informal. Reference team identity. Celebrate small wins, frame feedback as improvement.
+Same warmth, slightly more informal. Reference team identity. Celebrate small wins, frame feedback as improvement. [EXPLICIT]
 
 ## Language Rules
 
@@ -126,7 +126,7 @@ Same warmth, slightly more informal. Reference team identity. Celebrate small wi
 
 **Avoid:** Synergy, leverage, seamless, cutting-edge, world-class, innovative (unless earned). Passive voice. Exclamation marks in professional contexts. ALL CAPS. Vague superlatives without proof.
 
-Read additional rules from `vocabulary.preferred` and `vocabulary.avoid` in config.
+Read additional rules from `vocabulary.preferred` and `vocabulary.avoid` in config. [EXPLICIT]
 
 ## Tone Calibration
 
@@ -144,7 +144,7 @@ Read from `toneCalibration` in config. Default matrix:
 
 ## Claim & Tagline System
 
-Read from `brand.claim` and `brand.claimVariants`.
+Read from `brand.claim` and `brand.claimVariants`. [EXPLICIT]
 
 **Rules:**
 - Claims work as standalone statements
@@ -155,8 +155,8 @@ Read from `brand.claim` and `brand.claimVariants`.
 
 For high-impact copy, use anaphoric structure from brand philosophy:
 ```
-Every [moment/person/project/step] [is/has/connects].
-That's why we [action].
+Every [moment/person/project/step] [is/has/connects]. [EXPLICIT]
+That's why we [action]. [EXPLICIT]
 ```
 
 ## Assumptions & Limits
@@ -187,3 +187,11 @@ That's why we [action].
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/brand-voice" — Run the full brand voice workflow
+- "brand voice on this project" — Apply to current context
+

@@ -5,7 +5,7 @@ description: >
   pattern adherence, anti-pattern detection, security compliance, and technical debt inventory. This skill should
   be used when the user asks to "audit AI architecture", "review ML system quality", "assess AI technical debt",
   "evaluate AI compliance", "detect AI anti-patterns", "review AI security posture", or mentions AI architecture
-  review, AI system assessment, AI quality audit, drift monitoring audit, or AI governance review.
+  review, AI system assessment, AI quality audit, drift monitoring audit, or AI governance review. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,17 +21,17 @@ allowed-tools:
 
 Auditar arquitecturas de sistemas de IA existentes contra mejores prácticas, identificando gaps en calidad,
 seguridad, patrones, y deuda técnica. Produce un informe de auditoría con findings categorizados por severidad,
-evidencia por cada hallazgo, y un roadmap de remediación priorizado por impacto y urgencia.
+evidencia por cada hallazgo, y un roadmap de remediación priorizado por impacto y urgencia. [EXPLICIT]
 
 ---
 
 ## Principio Rector
 
-1. **Evidence-based, not opinion-based.** Cada finding debe tener evidencia adjunta — código, configuración, métricas, o entrevista. Un hallazgo sin evidencia es una opinión, no un resultado de auditoría.
+1. **Evidence-based, not opinion-based.** Cada finding debe tener evidencia adjunta — código, configuración, métricas, o entrevista. Un hallazgo sin evidencia es una opinión, no un resultado de auditoría. [EXPLICIT]
 
-2. **Severity drives priority, not sequence.** No auditar linealmente de arriba a abajo. Empezar por las dimensiones de mayor riesgo para el sistema específico (seguridad en regulados, quality attributes en producción, deuda en sistemas legacy).
+2. **Severity drives priority, not sequence.** No auditar linealmente de arriba a abajo. Empezar por las dimensiones de mayor riesgo para el sistema específico (seguridad en regulados, quality attributes en producción, deuda en sistemas legacy). [EXPLICIT]
 
-3. **Remediation is part of the audit.** Un informe que solo lista problemas sin soluciones ejecutables es un documento de quejas. Cada finding incluye patrón de remediación, esfuerzo estimado, y dependencias.
+3. **Remediation is part of the audit.** Un informe que solo lista problemas sin soluciones ejecutables es un documento de quejas. Cada finding incluye patrón de remediación, esfuerzo estimado, y dependencias. [EXPLICIT]
 
 ---
 
@@ -81,7 +81,7 @@ Detección automática:
 
 ### S1: Structural Integrity Assessment
 
-Evalúa la estructura interna del sistema AI contra el modelo de 6 capas.
+Evalúa la estructura interna del sistema AI contra el modelo de 6 capas. [EXPLICIT]
 
 ```
 Load references:
@@ -104,7 +104,7 @@ Load references:
 
 ### S2: AI Quality Attributes Audit
 
-Evalúa quality attributes específicos de AI con métricas medibles.
+Evalúa quality attributes específicos de AI con métricas medibles. [EXPLICIT]
 
 **Attributes evaluados:**
 
@@ -128,7 +128,7 @@ Evalúa quality attributes específicos de AI con métricas medibles.
 
 ### S3: Pattern & Anti-Pattern Detection
 
-Escanea el sistema por patrones implementados y anti-patrones presentes.
+Escanea el sistema por patrones implementados y anti-patrones presentes. [EXPLICIT]
 
 ```
 Load references:
@@ -154,7 +154,7 @@ Load references:
 
 ### S4: Security & Compliance Audit
 
-Evalúa la postura de seguridad y compliance del sistema AI.
+Evalúa la postura de seguridad y compliance del sistema AI. [EXPLICIT]
 
 **OWASP LLM Top 10 Assessment** (para sistemas GenAI):
 - LLM01 Prompt Injection: ¿Input sanitization? ¿Guardrails?
@@ -185,7 +185,7 @@ Evalúa la postura de seguridad y compliance del sistema AI.
 
 ### S5: Technical Debt Inventory
 
-Cataloga deuda técnica específica de AI con impacto cuantificado.
+Cataloga deuda técnica específica de AI con impacto cuantificado. [EXPLICIT]
 
 **Debt types:**
 - **Model drift debt**: Modelos sin monitoreo de drift → accuracy desconocida en producción
@@ -207,7 +207,7 @@ Cataloga deuda técnica específica de AI con impacto cuantificado.
 
 ### S6: Remediation Roadmap
 
-Transforma findings en un roadmap ejecutable priorizado por valor y esfuerzo.
+Transforma findings en un roadmap ejecutable priorizado por valor y esfuerzo. [EXPLICIT]
 
 ```
 Load references:
@@ -267,15 +267,15 @@ Load references:
 
 ## Edge Cases
 
-1. **Sistema sin monitoreo**: Muchas métricas de quality attributes serán "desconocidas". El primer finding es "implementar observabilidad básica antes de poder auditar quality attributes".
+1. **Sistema sin monitoreo**: Muchas métricas de quality attributes serán "desconocidas". El primer finding es "implementar observabilidad básica antes de poder auditar quality attributes". [EXPLICIT]
 
-2. **Sistema legacy sin documentación**: La auditoría debe hacer reverse engineering. Aumentar esfuerzo de S1 (structural). Usar import analysis y dependency graphs como fuente primaria de evidencia.
+2. **Sistema legacy sin documentación**: La auditoría debe hacer reverse engineering. Aumentar esfuerzo de S1 (structural). Usar import analysis y dependency graphs como fuente primaria de evidencia. [EXPLICIT]
 
-3. **Sistema pre-producción**: No hay métricas de producción. Auditar diseño y tests, no runtime. Reducir peso de S2 (quality attributes en producción) y aumentar S3 (pattern adherence) y S4 (security).
+3. **Sistema pre-producción**: No hay métricas de producción. Auditar diseño y tests, no runtime. Reducir peso de S2 (quality attributes en producción) y aumentar S3 (pattern adherence) y S4 (security). [EXPLICIT]
 
-4. **Multi-team ownership**: Findings pueden cruzar boundaries de equipo. Documentar ownership por finding. Roadmap debe considerar coordinación cross-team.
+4. **Multi-team ownership**: Findings pueden cruzar boundaries de equipo. Documentar ownership por finding. Roadmap debe considerar coordinación cross-team. [EXPLICIT]
 
-5. **Post-incident audit**: Foco en la cadena causal del incidente. S4 (security) y S2 (quality) tienen prioridad. Remediation roadmap empieza por la causa raíz del incidente.
+5. **Post-incident audit**: Foco en la cadena causal del incidente. S4 (security) y S2 (quality) tienen prioridad. Remediation roadmap empieza por la causa raíz del incidente. [EXPLICIT]
 
 ---
 
@@ -376,4 +376,4 @@ if FORMATO == "híbrido":
 
 ## Fuente
 
-Avila, R.D. & Ahmad, I. (2025). *Architecting AI Software Systems*. Packt.
+Avila, R.D. & Ahmad, I. (2025). *Architecting AI Software Systems*. Packt. [EXPLICIT]

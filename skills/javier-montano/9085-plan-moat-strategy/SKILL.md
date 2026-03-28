@@ -1,10 +1,10 @@
 ---
 name: plan-moat-strategy
 author: JM Labs (Javier Montaño)
-description: >
-  Design MOAT asset strategy per skill: which subdirectories needed, what content they contain, naming conventions.
-  Trigger: plan MOAT, MOAT strategy, asset planning, reference planning, plan skill assets.
-argument-hint: "<architecture-plan-path>"
+description: 
+  Design MOAT asset strategy per skill: which subdirectories needed, what content they contain, naming conventions. [EXPLICIT]
+  Trigger: plan MOAT, MOAT strategy, asset planning, reference planning, plan skill assets. [EXPLICIT]
+argument-hint: "architecture-plan-path"
 allowed-tools:
   - Read
   - Write
@@ -17,7 +17,7 @@ allowed-tools:
 
 > "A skill without references is a skill that hallucinates. A skill without examples is a skill that guesses."
 
-Design the MOAT (Materials, Ontology, Assets, Templates) asset allocation for each skill in a plugin. Determines which subdirectories each skill needs, what content they should contain, naming conventions, and estimated line counts.
+Design the MOAT (Materials, Ontology, Assets, Templates) asset allocation for each skill in a plugin. Determines which subdirectories each skill needs, what content they should contain, naming conventions, and estimated line counts. [EXPLICIT]
 
 ---
 
@@ -56,9 +56,9 @@ Design the MOAT (Materials, Ontology, Assets, Templates) asset allocation for ea
 | VERY HIGH (11-12) | `DEEP` | SKILL.md + references/ + examples/ + prompts/ |
 
 - Override rules:
-  - Skills that reference external specs or standards: always include references/ (minimum STANDARD).
-  - Skills that produce artifacts the user must understand: always include examples/ (minimum FULL).
-  - Skills that elicit user input through structured questions: always include prompts/ (DEEP).
+  - Skills that reference external specs or standards: always include references/ (minimum STANDARD). [EXPLICIT]
+  - Skills that produce artifacts the user must understand: always include examples/ (minimum FULL). [EXPLICIT]
+  - Skills that elicit user input through structured questions: always include prompts/ (DEEP). [EXPLICIT]
 
 ### Step 4 -- Plan Content for Each Subdirectory
 
@@ -82,10 +82,10 @@ For each skill at STANDARD or above, specify:
 ### Step 5 -- Define Naming Conventions
 
 - Document the naming conventions for the plugin:
-  - Skill directories: kebab-case verb-noun (e.g., `validate-hooks`).
-  - Reference files: `{topic}-{type}.md` where type is one of: `spec`, `guide`, `matrix`, `patterns`, `framework`.
-  - Example files: `sample-{artifact}.md`.
-  - Prompt files: `{purpose}-prompts.md`.
+  - Skill directories: kebab-case verb-noun (e.g., `validate-hooks`). [EXPLICIT]
+  - Reference files: `{topic}-{type}.md` where type is one of: `spec`, `guide`, `matrix`, `patterns`, `framework`. [EXPLICIT]
+  - Example files: `sample-{artifact}.md`. [EXPLICIT]
+  - Prompt files: `{purpose}-prompts.md`. [EXPLICIT]
 - Verify all proposed names follow the conventions. `[CODIGO]`
 
 ### Step 6 -- Estimate Total Asset Count
@@ -137,9 +137,9 @@ For each skill at STANDARD or above, specify:
 **Bad MOAT strategy:**
 ```
 All skills: DEEP.
-References: yes. Examples: yes. Prompts: yes.
+References: yes. Examples: yes. Prompts: yes. [EXPLICIT]
 ```
-Missing: no per-skill justification, no complexity assessment, no naming conventions, no line estimates.
+Missing: no per-skill justification, no complexity assessment, no naming conventions, no line estimates. [EXPLICIT]
 
 **Good MOAT strategy:**
 ```
@@ -148,20 +148,28 @@ Missing: no per-skill justification, no complexity assessment, no naming convent
 | validate-hooks | HIGH (10) | FULL | hook-compatibility-matrix.md (80 lines) | valid-hooks.md, incompatible-hooks.md (40 lines each) | -- |
 | ideate-plugin | MEDIUM (7) | STANDARD | plugin-idea-framework.md (60 lines) | -- | -- |
 
-Justification: validate-hooks scores HIGH because it requires deep domain knowledge (hook spec) and has 5+ edge cases. ideate-plugin is MEDIUM — straightforward procedure but needs reference material for overlap analysis.
+Justification: validate-hooks scores HIGH because it requires deep domain knowledge (hook spec) and has 5+ edge cases. ideate-plugin is MEDIUM — straightforward procedure but needs reference material for overlap analysis. [EXPLICIT]
 ```
-Includes: per-skill complexity scores, depth with rationale, specific asset files with line estimates, justification.
+Includes: per-skill complexity scores, depth with rationale, specific asset files with line estimates, justification. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Giving every skill DEEP MOAT depth regardless of complexity (wasteful, dilutes quality).
-2. Creating references/ with only links and no substantive content.
-3. Using examples/ for test cases instead of illustrative samples.
-4. Estimating line counts without considering the actual content needed.
-5. Naming files generically (`notes.md`, `info.md`) instead of descriptively.
+1. Giving every skill DEEP MOAT depth regardless of complexity (wasteful, dilutes quality). [EXPLICIT]
+2. Creating references/ with only links and no substantive content. [EXPLICIT]
+3. Using examples/ for test cases instead of illustrative samples. [EXPLICIT]
+4. Estimating line counts without considering the actual content needed. [EXPLICIT]
+5. Naming files generically (`notes.md`, `info.md`) instead of descriptively. [EXPLICIT]
 
 ## Edge Cases
 
-1. A skill's complexity changes during design -- revisit the MOAT allocation.
-2. Multiple skills share the same reference material -- create one reference file and cross-link.
-3. A MINIMAL skill grows in scope -- upgrade its MOAT depth and document why.
+1. A skill's complexity changes during design -- revisit the MOAT allocation. [EXPLICIT]
+2. Multiple skills share the same reference material -- create one reference file and cross-link. [EXPLICIT]
+3. A MINIMAL skill grows in scope -- upgrade its MOAT depth and document why. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/plan-moat-strategy" — Run the full plan moat strategy workflow
+- "plan moat strategy on this project" — Apply to current context
+

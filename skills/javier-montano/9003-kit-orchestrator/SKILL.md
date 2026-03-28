@@ -1,6 +1,6 @@
 ---
 name: kit-orchestrator
-description: Entry point and mode router. Detects whether the user needs analysis (MAO DNA) or development (SA DNA) and routes to the appropriate agent cluster.
+description: Entry point and mode router. Detects whether the user needs analysis (MAO DNA) or development (SA DNA) and routes to the appropriate agent cluster. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -13,7 +13,7 @@ tags: [core, orchestrator, routing, dual-mode]
 
 ## Purpose
 
-The central nervous system of the kit. Detects user intent, classifies it as analysis or development, and routes to the correct agent cluster. Manages the pipeline lifecycle and enforces quality gates between phases.
+The central nervous system of the kit. Detects user intent, classifies it as analysis or development, and routes to the correct agent cluster. Manages the pipeline lifecycle and enforces quality gates between phases. [EXPLICIT]
 
 **When to use:**
 
@@ -23,35 +23,35 @@ The central nervous system of the kit. Detects user intent, classifies it as ana
 
 ---
 
-## 1. The Physics (Immutable Laws)
+## Core Principles (Immutable Laws)
 
-1. **Law of Impartiality:** The orchestrator does NOT analyze, does NOT code. It routes and sequences.
-2. **Law of Detection:** Classify every request into Analysis Mode or Development Mode using R-004 keyword matrix.
-3. **Law of Gates:** No phase transition without passing the corresponding quality gate (R-005).
+1. **Law of Impartiality:** The orchestrator does NOT analyze, does NOT code. It routes and sequences. [EXPLICIT]
+2. **Law of Detection:** Classify every request into Analysis Mode or Development Mode using R-004 keyword matrix. [EXPLICIT]
+3. **Law of Gates:** No phase transition without passing the corresponding quality gate (R-005). [EXPLICIT]
 
 ---
 
-## 2. The Protocol (Step-by-Step)
+## Core Process (Step-by-Step)
 
 ### Phase 1: Intent Classification
 
-1. **Parse user request** for keywords matching R-004 Skill Selection Matrix.
+1. **Parse user request** for keywords matching R-004 Skill Selection Matrix. [EXPLICIT]
    - Analysis keywords: "analyze", "assess", "discover", "requirements", "spec", "stakeholder", "risk", "feasibility", "flow", "scenario"
    - Development keywords: "scaffold", "create", "build", "implement", "deploy", "test", "component", "page", "API"
 2. **If ambiguous:** Ask user: "Are you in analysis or development mode?"
-3. **Set mode:** Route to Analysis agents (009-025) or Development agents (026-101).
+3. **Set mode:** Route to Analysis agents (009-025) or Development agents (026-101). [EXPLICIT]
 
 ### Phase 2: Agent Selection
 
-1. **Match request** to specific agent(s) from the 101-agent roster.
-2. **Load agent skills:** Each agent declares its skill dependencies.
-3. **For complex tasks:** Assemble 2-3+ agents for multi-agent orchestration.
+1. **Match request** to specific agent(s) from the 101-agent roster. [EXPLICIT]
+2. **Load agent skills:** Each agent declares its skill dependencies. [EXPLICIT]
+3. **For complex tasks:** Assemble 2-3+ agents for multi-agent orchestration. [EXPLICIT]
 
 ### Phase 3: Execution & Gate Check
 
-1. **Dispatch** to selected agent(s).
-2. **Monitor** for quality gate triggers (G0, G1, G2, G3).
-3. **Block advancement** if gate criteria are not met.
+1. **Dispatch** to selected agent(s). [EXPLICIT]
+2. **Monitor** for quality gate triggers (G0, G1, G2, G3). [EXPLICIT]
+3. **Block advancement** if gate criteria are not met. [EXPLICIT]
 
 ---
 
@@ -73,7 +73,7 @@ The central nervous system of the kit. Detects user intent, classifies it as ana
 
 ---
 
-## 4. Quality Gates (10x Checklist)
+## Validation Gate (10x Checklist)
 
 - [ ] **Detection:** Request classified into analysis or development mode
 - [ ] **Routing:** Correct agent(s) selected from roster
@@ -103,3 +103,25 @@ The central nervous system of the kit. Detects user intent, classifies it as ana
 
 > [!WARNING]
 > IF user request doesn't match any keyword THEN ask: "Could you clarify? Are you looking to analyze requirements or build something?"
+
+## Usage
+
+Example invocations:
+
+- "/kit-orchestrator" — Run the full kit orchestrator workflow
+- "kit orchestrator on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

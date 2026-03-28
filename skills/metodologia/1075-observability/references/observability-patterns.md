@@ -219,7 +219,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 ## Using These Templates
 
 1. **Copy template structure** into HTML document
-2. **Replace bracketed placeholders** with actual system names, metrics, and timestamps
+2. **Replace bracketed templates** with actual system names, metrics, and timestamps
 3. **Apply status colors** based on severity and health thresholds
 4. **Compose templates** into full report: maturity assessment, log standard, alert definitions, incident timelines
 5. **Link to live dashboards** where possible for real-time data alongside documented architecture

@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Implements web animations using CSS keyframes, transitions, GSAP library,
   and the View Transitions API. Covers performance-optimized animations,
-  reduced motion support, and scroll-driven animations.
+  reduced motion support, and scroll-driven animations. [EXPLICIT]
   Trigger: "animation", "keyframes", "transitions", "GSAP", "View Transitions", "scroll animation"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements web animations using CSS keyframes, transitions, GSAP, and the View Transitions API with performance optimization and accessibility considerations (prefers-reduced-motion). Use this skill when adding micro-interactions, page transitions, scroll-driven animations, or complex choreographed sequences.
+Implements web animations using CSS keyframes, transitions, GSAP, and the View Transitions API with performance optimization and accessibility considerations (prefers-reduced-motion). Use this skill when adding micro-interactions, page transitions, scroll-driven animations, or complex choreographed sequences. [EXPLICIT]
 
 ## Procedure
 
@@ -74,3 +74,25 @@ Implements web animations using CSS keyframes, transitions, GSAP, and the View T
 - `css-architecture` — animation classes within the CSS methodology
 - `performance-architecture` — animations impact Core Web Vitals (CLS)
 - `responsive-design` — animations may need adjustment per viewport
+
+## Usage
+
+Example invocations:
+
+- "/css-animation" — Run the full css animation workflow
+- "css animation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

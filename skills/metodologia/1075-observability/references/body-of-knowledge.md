@@ -155,7 +155,7 @@
 | **USE (Utilization, Saturation, Errors)** | Framework de metricas para recursos de infraestructura: CPU, memoria, disco, red |
 | **Cardinality** | Numero de combinaciones unicas de labels en una serie temporal. Alta cardinalidad = alto costo |
 | **Structured Logging** | Logs en formato JSON con campos estandarizados (timestamp, level, service, traceId, message) |
-| **Correlation ID** | Identificador unico propagado a traves de todos los servicios para correlacionar logs, traces y metricas |
+| **Correlation ID** | Identificador unico propagado a traves de Todos los servicios para correlacionar logs, traces y metricas |
 | **Runbook** | Documento operativo vinculado a una alerta con pasos de diagnostico, causas probables, y acciones de remediacion |
 | **Post-mortem** | Analisis blameless posterior a un incidente que documenta timeline, impacto, causa raiz, y acciones correctivas |
 | **Dashboard-as-Code** | Practica de definir dashboards en codigo (JSON, Jsonnet) versionado en Git, desplegado via CI/CD |

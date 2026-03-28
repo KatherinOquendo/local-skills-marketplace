@@ -1,15 +1,15 @@
 ---
 name: sofka-cloud-migration
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "plan a cloud migration",
   "assess workloads for migration", "design a landing zone", "create migration waves",
-  or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory.
+  or mentions 7R, rehost, replatform, refactor, lift-and-shift, or migration factory. [EXPLICIT]
   It produces comprehensive migration plans covering 7R assessment, workload analysis,
-  wave planning, landing zone design, cutover execution, and post-migration optimization.
+  wave planning, landing zone design, cutover execution, and post-migration optimization. [EXPLICIT]
   Use this skill whenever the user discusses moving workloads to the cloud,
-  even if they don't explicitly ask for "cloud-migration".
-argument-hint: "<project-or-system-name>"
+  even if they don't explicitly ask for "cloud-migration". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -23,7 +23,7 @@ allowed-tools:
 
 # Cloud Migration: Assessment, Planning & Execution
 
-Cloud migration moves workloads from on-premises or legacy environments to cloud platforms. This skill produces comprehensive migration plans covering 7R assessment, workload analysis, wave planning, landing zone design, execution patterns, and post-migration optimization.
+Cloud migration moves workloads from on-premises or legacy environments to cloud platforms. This skill produces comprehensive migration plans covering 7R assessment, workload analysis, wave planning, landing zone design, execution patterns, and post-migration optimization. [EXPLICIT]
 
 ## Principio Rector
 
@@ -31,21 +31,21 @@ Cloud migration moves workloads from on-premises or legacy environments to cloud
 
 ### Filosofía de Migración Cloud
 
-1. **7R assessment per workload.** No existe "migrar todo igual". Cada aplicación tiene contexto, dependencias, y restricciones que determinan su estrategia óptima.
-2. **Wave planning reduces risk.** Migraciones big-bang son apuestas. Waves incrementales permiten aprender, ajustar tooling, y escalar throughput progresivamente.
-3. **Cutover rehearsal is mandatory.** Si el runbook no se ha ejecutado end-to-end en staging, no está listo para producción. Incluye rollback — siempre.
-4. **Retire ruthlessly.** Cada workload que no migra es costo evitado. La clasificación "retain" y "retire" son decisiones legítimas de arquitectura.
+1. **7R assessment per workload.** No existe "migrar todo igual". Cada aplicación tiene contexto, dependencias, y restricciones que determinan su estrategia óptima. [EXPLICIT]
+2. **Wave planning reduces risk.** Migraciones big-bang son apuestas. Waves incrementales permiten aprender, ajustar tooling, y escalar throughput progresivamente. [EXPLICIT]
+3. **Cutover rehearsal is mandatory.** Si el runbook no se ha ejecutado end-to-end en staging, no está listo para producción. Incluye rollback — siempre. [EXPLICIT]
+4. **Retire ruthlessly.** Cada workload que no migra es costo evitado. La clasificación "retain" y "retire" son decisiones legítimas de arquitectura. [EXPLICIT]
 
 ## Inputs
 
-The user provides a migration program or portfolio name as `$ARGUMENTS`. Parse `$1` as the **program/portfolio name** used throughout all output artifacts.
+The user provides a migration program or portfolio name as `$ARGUMENTS`. Parse `$1` as the **program/portfolio name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para discovery y 7R classification, HITL para wave sequencing y cutover decisions.
-  - **desatendido**: Cero interrupciones. Plan de migración completo automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en 7R classification y landing zone design.
-  - **paso-a-paso**: Confirma cada workload classification, wave assignment, landing zone component, y cutover step.
+  - **piloto-auto**: Auto para discovery y 7R classification, HITL para wave sequencing y cutover decisions. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Plan de migración completo automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en 7R classification y landing zone design. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada workload classification, wave assignment, landing zone component, y cutover step. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 7R classification + S3 wave plan + S5 cutover) | `técnica` (full 6 sections, default)
 
@@ -85,7 +85,7 @@ Read ${CLAUDE_SKILL_DIR}/references/migration-patterns.md
 
 ### S1: Migration Assessment & 7R Classification
 
-Classify every workload using the 7R framework to determine optimal migration strategy.
+Classify every workload using the 7R framework to determine optimal migration strategy. [EXPLICIT]
 
 **7R Strategies:**
 - **Rehost (Lift-and-Shift):** Move as-is to cloud VMs. Fastest, lowest risk, no modernization. Best for: quick wins, legacy apps with no code access.
@@ -126,7 +126,7 @@ Classify every workload using the 7R framework to determine optimal migration st
 - Run discovery for minimum 30 days to capture full monthly patterns (batch jobs, month-end processing).
 
 **Application Inventory Fields:**
-Name, owner, business unit, criticality tier (T1-T4), technology stack, infrastructure requirements (CPU, memory, storage, network), performance baseline (response time, throughput, utilization), compliance requirements.
+Name, owner, business unit, criticality tier (T1-T4), technology stack, infrastructure requirements (CPU, memory, storage, network), performance baseline (response time, throughput, utilization), compliance requirements. [EXPLICIT]
 
 **Dependency Graph:**
 - App-to-app: API calls, file transfers, shared databases
@@ -332,19 +332,19 @@ Trigger rollback if ANY of the following occur during cutover:
 ## Edge Cases
 
 **Datacenter Exit with Hard Deadline:**
-Favor rehost for speed. Accept technical debt. Plan post-migration optimization waves. Prioritize by lease expiry.
+Favor rehost for speed. Accept technical debt. Plan post-migration optimization waves. Prioritize by lease expiry. [EXPLICIT]
 
 **Shared Database Serving Multiple Applications:**
-Cannot migrate database independently. Options: migrate all consumers together, introduce API layer to decouple, or replicate and gradually cut over consumers.
+Cannot migrate database independently. Options: migrate all consumers together, introduce API layer to decouple, or replicate and gradually cut over consumers. [EXPLICIT]
 
 **Mainframe Workloads:**
-Specialized tools (Micro Focus, AWS Mainframe Modernization, Azure Mainframe Migration). Replatform to cloud-hosted emulation first, then gradually refactor.
+Specialized tools (Micro Focus, AWS Mainframe Modernization, Azure Mainframe Migration). Replatform to cloud-hosted emulation first, then gradually refactor. [EXPLICIT]
 
 **Compliance-Restricted Data:**
-Data residency may limit regions. Encryption requirements affect replication tooling. Audit trail must be maintained through migration.
+Data residency may limit regions. Encryption requirements affect replication tooling. Audit trail must be maintained through migration. [EXPLICIT]
 
 **No Source Code Available:**
-Rehost is the only viable strategy. Containerization may be possible for binary apps. Evaluate repurchase with SaaS alternative.
+Rehost is the only viable strategy. Containerization may be possible for binary apps. Evaluate repurchase with SaaS alternative. [EXPLICIT]
 
 ---
 
@@ -374,7 +374,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

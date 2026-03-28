@@ -3,7 +3,7 @@ name: pricing-strategy
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Pricing page design, anchoring, tier structure, value-based framing.
+  Pricing page design, anchoring, tier structure, value-based framing. [EXPLICIT]
   Trigger: "pricing strategy, pricing page design, anchoring, tier structure, value-based framing"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Pricing page design, anchoring, tier structure, value-based framing. All outputs follow MetodologIA brand standards and evidence tagging.
+Pricing page design, anchoring, tier structure, value-based framing. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Pricing page design, anchoring, tier structure, value-based framing. All outputs
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/pricing-strategy" — Run the full pricing strategy workflow
+- "pricing strategy on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

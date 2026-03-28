@@ -2,10 +2,10 @@
 name: apex-context-optimization
 description: >
   Use when the user asks to "optimize context", "reduce token usage",
-  "prune context window", "configure progressive loading", or "manage session state".
+  "prune context window", "configure progressive loading", or "manage session state". [EXPLICIT]
   Activates when a stakeholder needs to optimize context window usage, configure progressive
   MOAT loading levels, design intelligent pruning strategies, manage session state persistence,
-  or implement token-efficient skill routing across the agent framework.
+  or implement token-efficient skill routing across the agent framework. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -20,7 +20,7 @@ allowed-tools:
 **TL;DR**: Optimizes context window usage through progressive MOAT loading (L1/L2/L3), intelligent pruning, session state management, and token-efficient skill routing. Ensures the AI agent operates within context limits while maintaining access to the knowledge needed for the current task.
 
 ## Principio Rector
-El contexto es un recurso finito. Cargar los 100 skills completos excede cualquier ventana de contexto. La carga progresiva (L1 metadata, L2 core, L3 deep) permite acceder al conocimiento correcto en el momento correcto. La optimización de contexto no es ahorro — es precisión en la información cargada.
+El contexto es un recurso finito. Cargar los 100 skills completos excede cualquier ventana de contexto. La carga progresiva (L1 metadata, L2 core, L3 deep) permite acceder al conocimiento correcto en el momento correcto. La optimización de contexto no es ahorro — es precisión en la información cargada. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes skill catalog is indexed with loading level metadata (L1/L2/L3) [PLAN]
@@ -102,7 +102,7 @@ El contexto es un recurso finito. Cargar los 100 skills completos excede cualqui
 | Efficiency | 40% reduction vs. full loading |
 
 **Bad Context Optimization:**
-Loading all 100 skills at L3 into context, overflowing the window, and producing degraded responses because critical information is truncated. No pruning, no prioritization, no session state management. Fails because it treats context as infinite rather than as a resource to be managed.
+Loading all 100 skills at L3 into context, overflowing the window, and producing degraded responses because critical information is truncated. No pruning, no prioritization, no session state management. Fails because it treats context as infinite rather than as a resource to be managed. [EXPLICIT]
 
 ## Validation Gate
 - [ ] Every loaded skill has explicit loading level (L1/L2/L3) justified by task relevance

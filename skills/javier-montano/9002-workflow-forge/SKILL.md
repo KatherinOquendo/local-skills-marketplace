@@ -1,6 +1,6 @@
 ---
 name: workflow-forge
-description: Creates new workflows (slash commands) following the Antigravity format with phases, agent coordination, and verification checkpoints.
+description: Creates new workflows (slash commands) following the Antigravity format with phases, agent coordination, and verification checkpoints. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -13,7 +13,7 @@ tags: [core, forge, workflow, scaffold]
 
 ## Purpose
 
-Factory for creating new workflows (slash commands) in the kit. Produces workflow `.md` files that coordinate agents through phases with verification checkpoints.
+Factory for creating new workflows (slash commands) in the kit. Produces workflow `.md` files that coordinate agents through phases with verification checkpoints. [EXPLICIT]
 
 **When to use:**
 
@@ -23,15 +23,15 @@ Factory for creating new workflows (slash commands) in the kit. Produces workflo
 
 ---
 
-## 1. The Physics (Immutable Laws)
+## Core Principles (Immutable Laws)
 
-1. **Law of Phases:** Every workflow has 2+ phases. Phase 1 is always clarification/planning. Final phase is always verification.
-2. **Law of Agents:** Every phase declares which agents execute it. No anonymous work.
-3. **Law of Checkpoints:** Between phases, a verification step validates output before proceeding.
+1. **Law of Phases:** Every workflow has 2+ phases. Phase 1 is always clarification/planning. Final phase is always verification. [EXPLICIT]
+2. **Law of Agents:** Every phase declares which agents execute it. No anonymous work. [EXPLICIT]
+3. **Law of Checkpoints:** Between phases, a verification step validates output before proceeding. [EXPLICIT]
 
 ---
 
-## 2. The Protocol (Step-by-Step)
+## Core Process (Step-by-Step)
 
 ### Phase 1: Intent Mapping
 
@@ -41,15 +41,15 @@ Factory for creating new workflows (slash commands) in the kit. Produces workflo
 
 ### Phase 2: Phase Design
 
-1. **Phase 1 (Clarification):** Agent asks qualifying questions before proceeding.
-2. **Phase 2-N (Execution):** Sequential or parallel agent work with clear inputs/outputs.
-3. **Final Phase (Verification):** Quality gate check against defined criteria.
+1. **Phase 1 (Clarification):** Agent asks qualifying questions before proceeding. [EXPLICIT]
+2. **Phase 2-N (Execution):** Sequential or parallel agent work with clear inputs/outputs. [EXPLICIT]
+3. **Final Phase (Verification):** Quality gate check against defined criteria. [EXPLICIT]
 
 ### Phase 3: Assembly
 
-1. **Write the workflow .md** with frontmatter (description, command, skills_involved, agents_coordinated).
-2. **Define inputs/outputs** for each phase.
-3. **Add example execution** showing a sample dialogue.
+1. **Write the workflow .md** with frontmatter (description, command, skills_involved, agents_coordinated). [EXPLICIT]
+2. **Define inputs/outputs** for each phase. [EXPLICIT]
+3. **Add example execution** showing a sample dialogue. [EXPLICIT]
 
 ---
 
@@ -72,7 +72,7 @@ Factory for creating new workflows (slash commands) in the kit. Produces workflo
 
 ---
 
-## 4. Quality Gates (10x Checklist)
+## Validation Gate (10x Checklist)
 
 - [ ] **Frontmatter:** Has description, command, skills_involved, agents_coordinated
 - [ ] **Phases:** Minimum 2 phases with clear boundaries
@@ -103,3 +103,25 @@ Factory for creating new workflows (slash commands) in the kit. Produces workflo
 
 > [!WARNING]
 > IF workflow references non-existent agents or skills THEN **STOP**. Cross-reference against the agent/skill catalog.
+
+## Usage
+
+Example invocations:
+
+- "/workflow-forge" — Run the full workflow forge workflow
+- "workflow forge on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

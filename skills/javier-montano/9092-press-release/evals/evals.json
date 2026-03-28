@@ -1,0 +1,9 @@
+[
+  {"id": "press-release-happy-path", "type": "happy_path", "input": "Run press release on this project", "expected_behavior": "Skill activates and produces the expected press release output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "press-release-explicit-trigger", "type": "happy_path", "input": "Apply press release analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the press release workflow", "tags": ["trigger", "recognition"]},
+  {"id": "press-release-with-context", "type": "happy_path", "input": "Apply press release to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive press release analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "press-release-minimal-input", "type": "happy_path", "input": "Quick press release", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "press-release-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to press release", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "press-release-edge-empty-input", "type": "edge_case", "input": "Run press release but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "press-release-edge-conflicting", "type": "edge_case", "input": "Apply press release but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

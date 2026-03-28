@@ -1,0 +1,9 @@
+[
+  {"id": "quality-metrics-happy-path", "type": "happy_path", "input": "Run quality metrics on this project", "expected_behavior": "Skill activates and produces the expected quality metrics output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "quality-metrics-explicit-trigger", "type": "happy_path", "input": "Apply quality metrics analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the quality metrics workflow", "tags": ["trigger", "recognition"]},
+  {"id": "quality-metrics-with-context", "type": "happy_path", "input": "Apply quality metrics to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive quality metrics analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "quality-metrics-minimal-input", "type": "happy_path", "input": "Quick quality metrics", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "quality-metrics-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to quality metrics", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "quality-metrics-edge-empty-input", "type": "edge_case", "input": "Run quality metrics but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "quality-metrics-edge-conflicting", "type": "edge_case", "input": "Apply quality metrics but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

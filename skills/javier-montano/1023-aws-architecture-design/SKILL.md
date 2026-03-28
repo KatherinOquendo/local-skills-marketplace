@@ -4,7 +4,7 @@ description: >
   Designs AWS cloud architectures for AI and GenAI workloads applying the Well-Architected Framework
   GenAI Lens (6 pillars: GENOPS, GENSEC, GENREL, GENPERF, GENCOST, GENSUS), AWS service selection
   matrices, RAG/Agent/Fine-Tuning patterns, cost optimization strategies, and enterprise reference
-  architectures. Activated when designing, evaluating, or migrating AI systems on AWS.
+  architectures. Activated when designing, evaluating, or migrating AI systems on AWS. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,17 +20,17 @@ allowed-tools:
 
 Diseñar, evaluar y optimizar arquitecturas AWS para sistemas de inteligencia artificial y AI generativa,
 aplicando el Well-Architected Framework con GenAI Lens, patrones arquitectónicos probados, y matrices
-de selección de servicios que equilibren rendimiento, costo, seguridad y sostenibilidad.
+de selección de servicios que equilibren rendimiento, costo, seguridad y sostenibilidad. [EXPLICIT]
 
 ---
 
 ## Principio Rector
 
-1. **Well-Architected First** — Toda decisión arquitectónica se evalúa contra los 6 pilares del GenAI Lens (Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability). No se aprueba un diseño que viole cualquier pilar sin un ADR explícito documentando el trade-off.
+1. **Well-Architected First** — Toda decisión arquitectónica se evalúa contra los 6 pilares del GenAI Lens (Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability). No se aprueba un diseño que viole cualquier pilar sin un ADR explícito documentando el trade-off. [EXPLICIT]
 
-2. **Service-Native over Custom** — Preferir servicios gestionados de AWS (Bedrock, SageMaker, OpenSearch Serverless, Bedrock Guardrails) sobre implementaciones custom. Solo justificar custom cuando los requisitos excedan las capacidades del servicio gestionado con evidencia medible.
+2. **Service-Native over Custom** — Preferir servicios gestionados de AWS (Bedrock, SageMaker, OpenSearch Serverless, Bedrock Guardrails) sobre implementaciones custom. Solo justificar custom cuando los requisitos excedan las capacidades del servicio gestionado con evidencia medible. [EXPLICIT]
 
-3. **Cost-Aware by Design** — El costo no es una optimización posterior; es una restricción de diseño desde la primera iteración. Model tiering (Haiku→Sonnet→Opus), batch inference (50% savings), semantic caching, y provisioned throughput son decisiones arquitectónicas, no operacionales.
+3. **Cost-Aware by Design** — El costo no es una optimización posterior; es una restricción de diseño desde la primera iteración. Model tiering (Haiku→Sonnet→Opus), batch inference (50% savings), semantic caching, y provisioned throughput son decisiones arquitectónicas, no operacionales. [EXPLICIT]
 
 ---
 
@@ -75,7 +75,7 @@ Detección automática:
 
 ### S1: Well-Architected Assessment for GenAI
 
-Evaluar el workload contra los 6 pilares del GenAI Lens.
+Evaluar el workload contra los 6 pilares del GenAI Lens. [EXPLICIT]
 
 ```
 Load references:
@@ -93,7 +93,7 @@ Load references:
 | Cost Optimization | GENCOST01-05 | Score 1-5 | Lista de gaps |
 | Sustainability | GENSUS01-03 | Score 1-5 | Lista de gaps |
 
-Para cada finding: clasificar como HIGH / MEDIUM / LOW risk, proponer remediation con servicio AWS específico.
+Para cada finding: clasificar como HIGH / MEDIUM / LOW risk, proponer remediation con servicio AWS específico. [EXPLICIT]
 
 **Métricas clave por pilar**:
 - GENOPS: Model evaluation automation %, prompt template version control
@@ -105,7 +105,7 @@ Para cada finding: clasificar como HIGH / MEDIUM / LOW risk, proponer remediatio
 
 ### S2: AWS Service Selection & Architecture Patterns
 
-Seleccionar servicios AWS óptimos para cada componente del sistema AI.
+Seleccionar servicios AWS óptimos para cada componente del sistema AI. [EXPLICIT]
 
 ```
 Load references:
@@ -127,7 +127,7 @@ Proceso de selección por componente:
 | Security | Bedrock Guardrails + WAF + IAM | Compliance requirements, PII sensitivity |
 | Monitoring | CloudWatch + X-Ray + Model Monitor | Observability depth, custom metrics |
 
-Para cada decisión: documentar alternativa descartada y razón con evidencia.
+Para cada decisión: documentar alternativa descartada y razón con evidencia. [EXPLICIT]
 
 Patrones arquitectónicos (seleccionar según ALCANCE):
 1. **RAG on AWS**: Bedrock KB / Custom pipeline con OpenSearch
@@ -139,7 +139,7 @@ Patrones arquitectónicos (seleccionar según ALCANCE):
 
 ### S3: RAG & Agent Architecture on AWS
 
-Diseñar la arquitectura detallada de RAG y/o Agents usando servicios AWS nativos.
+Diseñar la arquitectura detallada de RAG y/o Agents usando servicios AWS nativos. [EXPLICIT]
 
 **Entregable**: Component diagram + data flow + configuration specs.
 
@@ -167,7 +167,7 @@ Agent:     Client → API GW → Bedrock Agent → [Action Group Lambda] → [KB
 
 ### S4: Security & Compliance (GENSEC)
 
-Diseñar la postura de seguridad para el workload GenAI en AWS.
+Diseñar la postura de seguridad para el workload GenAI en AWS. [EXPLICIT]
 
 **Entregable**: Security architecture diagram + controls matrix.
 
@@ -194,7 +194,7 @@ Diseñar la postura de seguridad para el workload GenAI en AWS.
 
 ### S5: Cost Optimization & FinOps for GenAI
 
-Diseñar la estrategia de optimización de costos para workloads GenAI en AWS.
+Diseñar la estrategia de optimización de costos para workloads GenAI en AWS. [EXPLICIT]
 
 **Entregable**: Cost model + optimization roadmap.
 
@@ -225,7 +225,7 @@ Bedrock/SageMaker → CloudWatch Metrics → Cost Explorer (per-model tags)
 
 ### S6: Reliability & Performance at Scale
 
-Diseñar para alta disponibilidad, rendimiento consistente, y escalabilidad en AWS.
+Diseñar para alta disponibilidad, rendimiento consistente, y escalabilidad en AWS. [EXPLICIT]
 
 **Entregable**: Reliability architecture + performance baselines + scaling plan.
 
@@ -296,15 +296,15 @@ Diseñar para alta disponibilidad, rendimiento consistente, y escalabilidad en A
 
 ## Edge Cases
 
-1. **Modelo no disponible en la región**: Documentar cross-region inference profile como solución. Si compliance impide cross-region, evaluar SageMaker con modelo self-hosted como alternativa.
+1. **Modelo no disponible en la región**: Documentar cross-region inference profile como solución. Si compliance impide cross-region, evaluar SageMaker con modelo self-hosted como alternativa. [EXPLICIT]
 
-2. **Workload con picos extremos (100x baseline)**: Diseñar con SQS queue + async inference. Provisioned throughput para baseline, on-demand para picos, batch para backlog.
+2. **Workload con picos extremos (100x baseline)**: Diseñar con SQS queue + async inference. Provisioned throughput para baseline, on-demand para picos, batch para backlog. [EXPLICIT]
 
-3. **Migración desde otro cloud (GCP/Azure)**: Mapear servicios equivalentes (Vertex AI→Bedrock, Azure OpenAI→Bedrock), identificar vendor lock-in points, diseñar abstraction layer si multi-cloud es requisito futuro.
+3. **Migración desde otro cloud (GCP/Azure)**: Mapear servicios equivalentes (Vertex AI→Bedrock, Azure OpenAI→Bedrock), identificar vendor lock-in points, diseñar abstraction layer si multi-cloud es requisito futuro. [EXPLICIT]
 
-4. **Regulación estricta (HIPAA, PCI-DSS, SOX)**: Activar BAA para Bedrock, VPC-only deployment, KMS CMK, CloudTrail con log file validation, Macie continuous scan. Documentar compliance matrix.
+4. **Regulación estricta (HIPAA, PCI-DSS, SOX)**: Activar BAA para Bedrock, VPC-only deployment, KMS CMK, CloudTrail con log file validation, Macie continuous scan. Documentar compliance matrix. [EXPLICIT]
 
-5. **Presupuesto extremadamente limitado**: Priorizar Bedrock on-demand (sin upfront), Lambda para compute, Aurora Serverless v2 con pgvector (si ya existe), Bedrock batch inference para todo lo que tolere latencia.
+5. **Presupuesto extremadamente limitado**: Priorizar Bedrock on-demand (sin upfront), Lambda para compute, Aurora Serverless v2 con pgvector (si ya existe), Bedrock batch inference para todo lo que tolere latencia. [EXPLICIT]
 
 ---
 

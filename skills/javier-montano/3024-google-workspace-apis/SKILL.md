@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Integrate Google Workspace APIs — Sheets, Docs, Drive, Calendar, and Gmail
-  programmatic access for automation and data workflows.
+  programmatic access for automation and data workflows. [EXPLICIT]
   Trigger: "google sheets API", "google docs API", "google drive", "workspace API"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides integration with Google Workspace APIs — reading/writing Google Sheets, generating Google Docs, managing Drive files, creating Calendar events, and sending Gmail programmatically. Use when building automations, data pipelines, or integrations that interact with Google Workspace.
+Guides integration with Google Workspace APIs — reading/writing Google Sheets, generating Google Docs, managing Drive files, creating Calendar events, and sending Gmail programmatically. Use when building automations, data pipelines, or integrations that interact with Google Workspace. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides integration with Google Workspace APIs — reading/writing Google Sheets,
 
 - `cloud-functions` — Workspace API calls typically run in Cloud Functions
 - `scheduled-functions` — automated Workspace workflows run on schedules
+
+## Usage
+
+Example invocations:
+
+- "/google-workspace-apis" — Run the full google workspace apis workflow
+- "google workspace apis on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

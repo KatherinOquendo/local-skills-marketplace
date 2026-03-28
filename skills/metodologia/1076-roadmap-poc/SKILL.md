@@ -3,9 +3,9 @@ name: metodologia-roadmap-poc
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[scope] [duration] [team-model]"
 description: >
-  Execution roadmap generator with sprint breakdown, prerequisites, gates, team/budget, and risk register.
+  Execution roadmap generator with sprint breakdown, prerequisites, gates, team/budget, and risk register. [EXPLICIT]
   Use when the user asks to "create a roadmap", "plan a PoC", "build sprint plan", "execution timeline",
-  or mentions "proof of concept", "MVP plan", "milestones", "sprint breakdown", "iteracion", "go/no-go".
+  or mentions "proof of concept", "MVP plan", "milestones", "sprint breakdown", "iteracion", "go/no-go". [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Roadmap & PoC Execution Planning: Sprint-Level Delivery Architecture
 
-Generates 4-8 week execution roadmaps with sprint-level planning, prerequisite validation, measurable go/no-go gate criteria, team composition, budget ranges, and risk registers.
+Generates 4-8 week execution roadmaps with sprint-level planning, prerequisite validation, measurable go/no-go gate criteria, team composition, budget ranges, and risk registers. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,20 +27,20 @@ Generates 4-8 week execution roadmaps with sprint-level planning, prerequisite v
 
 ### Execution Planning Philosophy
 
-1. **Sprints with gates, not just demos.** Every gate exists to make a concrete decision: continue, pivot, or stop. If there is no measurable criterion, it is not a gate — it is a meeting.
-2. **Prerequisites before Sprint 1.** The most talented team in the world cannot compensate for a blocked prerequisite. Validating prerequisites in Week 0 is investment; discovering them in Sprint 2 is waste.
-3. **Team + budget realistic from Day 1.** A roadmap with an undefined team and a "TBD" budget is not a plan — it is a hope. FTE allocation and budget ranges are requirements, not optional.
+1. **Sprints with gates, not just demos.** Every gate exists to make a concrete decision: continue, pivot, or stop. If there is no measurable criterion, it is not a gate — it is a meeting. [EXPLICIT]
+2. **Prerequisites before Sprint 1.** The most talented team in the world cannot compensate for a blocked prerequisite. Validating prerequisites in Week 0 is investment; discovering them in Sprint 2 is waste. [EXPLICIT]
+3. **Team + budget realistic from Day 1.** A roadmap with an undefined team and a "TBD" budget is not a plan — it is a hope. FTE allocation and budget ranges are requirements, not optional. [EXPLICIT]
 
 ## Inputs
 
-The user provides a scope and duration as `$ARGUMENTS`. Parse `$1` as the **PoC/MVP scope**, `$2` as **duration**, `$3` as **team model**.
+The user provides a scope and duration as `$ARGUMENTS`. Parse `$1` as the **PoC/MVP scope**, `$2` as **duration**, `$3` as **team model**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para sprint breakdown y prerequisites, HITL para gate criteria y budget decisions.
-  - **desatendido**: Zero interruptions. Roadmap completo con supuestos documentados.
-  - **supervisado**: Autonomo con checkpoint en gate criteria y risk register.
-  - **paso-a-paso**: Confirma cada sprint plan, gate criterion, budget range, y risk mitigation.
+  - **piloto-auto**: Auto para sprint breakdown y prerequisites, HITL para gate criteria y budget decisions. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Roadmap completo con supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autonomo con checkpoint en gate criteria y risk register. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada sprint plan, gate criterion, budget range, y risk mitigation. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 kickoff + S5 timeline + S6 gates) | `tecnica` (full 7 sections, default)
 
@@ -100,7 +100,7 @@ Read ${CLAUDE_SKILL_DIR}/references/roadmap-patterns.md
 
 ### S2: Prerequisites Validation Table
 
-9+ prerequisites with owner, status, deadline, blocker flag.
+9+ prerequisites with owner, status, deadline, blocker flag. [EXPLICIT]
 
 | ID | Prerequisite | Status | Owner | Deadline | Blocker |
 |----|-------------|--------|-------|----------|---------|
@@ -381,7 +381,7 @@ Footer: Attribution MetodologIA + proximos pasos
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid Gantt diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid Gantt diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

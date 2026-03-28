@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Orchestrates the discovery pipeline by sequencing skills, enforcing quality
   gates, and tracking deliverable completion. Manages the flow from initial
-  input through analysis to validated output.
+  input through analysis to validated output. [EXPLICIT]
   Trigger: "discovery pipeline", "orchestrate", "gate enforcement", "deliverable tracking"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Manages the end-to-end discovery pipeline by sequencing skill execution, enforcing quality gates between phases, and tracking deliverable completion. Use this skill when running a full discovery engagement, coordinating multiple analysis skills, or ensuring nothing falls through the cracks.
+Manages the end-to-end discovery pipeline by sequencing skill execution, enforcing quality gates between phases, and tracking deliverable completion. Use this skill when running a full discovery engagement, coordinating multiple analysis skills, or ensuring nothing falls through the cracks. [EXPLICIT]
 
 ## Procedure
 
@@ -78,3 +78,25 @@ Manages the end-to-end discovery pipeline by sequencing skill execution, enforci
 - `system-architecture` — Downstream consumer of discovery outputs
 - `integrity-chain-validation` — Validates the governance chain end-to-end
 - `socratic-debate` — Resolves ambiguities during pipeline execution
+
+## Usage
+
+Example invocations:
+
+- "/discovery-orchestration" — Run the full discovery orchestration workflow
+- "discovery orchestration on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

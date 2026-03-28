@@ -13,7 +13,7 @@ allowed-tools:
 
 > "The manifest is the contract between the plugin and the runtime. A broken contract breaks trust."
 
-Validates that `plugin.json` is well-formed JSON, contains all required and recommended fields, and that its declared counts and references match the actual plugin contents.
+Validates that `plugin.json` is well-formed JSON, contains all required and recommended fields, and that its declared counts and references match the actual plugin contents. [EXPLICIT]
 
 ---
 
@@ -23,9 +23,9 @@ Validates that `plugin.json` is well-formed JSON, contains all required and reco
 
 - Look for `plugin.json` at plugin root first (official spec location), then fall back to `.claude-plugin/plugin.json` (legacy location). Report `INFO` if found at legacy path.
 - Attempt strict JSON parse. If it fails:
-  - Check for trailing commas after last array/object element -- report `CRITICAL: Trailing comma at line N`.
-  - Check for JavaScript-style comments (`//`, `/* */`) -- report `CRITICAL: Comments not allowed in JSON`.
-  - Check for single quotes instead of double quotes -- report `CRITICAL: JSON requires double quotes`.
+  - Check for trailing commas after last array/object element -- report `CRITICAL: Trailing comma at line N`. [EXPLICIT]
+  - Check for JavaScript-style comments (`//`, `/* */`) -- report `CRITICAL: Comments not allowed in JSON`. [EXPLICIT]
+  - Check for single quotes instead of double quotes -- report `CRITICAL: JSON requires double quotes`. [EXPLICIT]
 - If JSON is unparseable after diagnostics, STOP and report. Subsequent steps require valid JSON.
 
 ### Step 2 -- Validate Required Fields
@@ -89,27 +89,35 @@ Per the official plugin spec, only `name` is strictly required. The following ar
 
 **Bad finding:**
 ```
-WARNING: version field is missing.
+WARNING: version field is missing. [EXPLICIT]
 ```
-Missing: no expected format, no guidance.
+Missing: no expected format, no guidance. [EXPLICIT]
 
 **Good finding:**
 ```
 WARNING | version | Missing. Expected: semver string (e.g., "1.0.0"). | (absent)
 ```
-Includes: severity, field name, expected format with example, current value.
+Includes: severity, field name, expected format with example, current value. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Accepting `version: "1.0"` as valid semver (must be three components).
-2. Not detecting the `v` prefix in version strings (`v1.0.0` is invalid).
-3. Rejecting `author: "Jane"` (string) — the official spec accepts both string and object formats for `author`.
-4. Ignoring extra unknown fields without at least an INFO note.
+1. Accepting `version: "1.0"` as valid semver (must be three components). [EXPLICIT]
+2. Not detecting the `v` prefix in version strings (`v1.0.0` is invalid). [EXPLICIT]
+3. Rejecting `author: "Jane"` (string) — the official spec accepts both string and object formats for `author`. [EXPLICIT]
+4. Ignoring extra unknown fields without at least an INFO note. [EXPLICIT]
 
 ## Edge Cases
 
-1. plugin.json with BOM (byte order mark) -- strip before parsing, report INFO.
-2. Very large description (>500 chars) -- INFO suggesting it may be too verbose for tooling.
-3. Unicode characters in name field -- CRITICAL, names must be ASCII kebab-case.
-4. Duplicate keys in JSON (technically valid but undefined behavior) -- WARNING.
-5. Empty keywords array `[]` -- WARNING, same as missing.
+1. plugin.json with BOM (byte order mark) -- strip before parsing, report INFO. [EXPLICIT]
+2. Very large description (>500 chars) -- INFO suggesting it may be too verbose for tooling. [EXPLICIT]
+3. Unicode characters in name field -- CRITICAL, names must be ASCII kebab-case. [EXPLICIT]
+4. Duplicate keys in JSON (technically valid but undefined behavior) -- WARNING. [EXPLICIT]
+5. Empty keywords array `[]` -- WARNING, same as missing. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/validate-manifest" — Run the full validate manifest workflow
+- "validate manifest on this project" — Apply to current context
+

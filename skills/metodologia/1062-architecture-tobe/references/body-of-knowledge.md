@@ -155,7 +155,7 @@ Patrón de Michael Nygard (_Release It!_, 2007) que previene el cascade failure 
 ### 6.1 Zero Trust Architecture
 
 Principio "Never trust, always verify" articulado por John Kindervag (Forrester, 2010) y formalizado en NIST SP 800-207 (2020). En arquitecturas de microservicios se implementa mediante:
-- **mTLS** (mutual TLS) entre todos los servicios del mesh
+- **mTLS** (mutual TLS) entre Todos los servicios del mesh
 - **OAuth2/OIDC** para identidad de usuarios y sistemas
 - **RBAC/ABAC** para control de autorización granular
 - **Secrets management** via HashiCorp Vault o servicios cloud equivalentes

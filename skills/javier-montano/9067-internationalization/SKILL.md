@@ -3,9 +3,9 @@ name: internationalization
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Implement internationalization (i18n) and localization (l10n) for web applications.
+  Implement internationalization (i18n) and localization (l10n) for web applications. [EXPLICIT]
   Covers translation workflows, RTL layout support, date/number/currency formatting,
-  and locale-aware content delivery.
+  and locale-aware content delivery. [EXPLICIT]
   Trigger: "i18n", "localization", "RTL support", "translate app"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides full i18n/l10n implementation for web apps — from extracting translatable strings and setting up translation files to handling RTL layouts, pluralization, and locale-specific date/number/currency formatting. Use when your app needs to support multiple languages or regions.
+Guides full i18n/l10n implementation for web apps — from extracting translatable strings and setting up translation files to handling RTL layouts, pluralization, and locale-specific date/number/currency formatting. Use when your app needs to support multiple languages or regions. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides full i18n/l10n implementation for web apps — from extracting translatab
 
 - `accessibility-testing` — i18n and a11y overlap on lang attributes and screen reader support
 - `web-components` — Shadow DOM requires special i18n context propagation
+
+## Usage
+
+Example invocations:
+
+- "/internationalization" — Run the full internationalization workflow
+- "internationalization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

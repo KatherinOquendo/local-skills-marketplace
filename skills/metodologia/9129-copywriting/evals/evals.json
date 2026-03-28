@@ -1,38 +1,9 @@
 [
-  {
-    "prompt": "Write executive summary for a quarterly project review.",
-    "assertions": [
-      "leads with key message",
-      "uses active voice",
-      "keeps under 200 words",
-      "includes call to action"
-    ]
-  },
-  {
-    "prompt": "Craft value proposition for project funding renewal.",
-    "assertions": [
-      "articulates value delivered",
-      "quantifies benefits",
-      "addresses stakeholder concerns",
-      "frames future value"
-    ]
-  },
-  {
-    "prompt": "Design messages for 4 different stakeholder groups.",
-    "assertions": [
-      "adapts language per audience",
-      "highlights relevant benefits",
-      "uses appropriate detail level",
-      "maintains consistent core message"
-    ]
-  },
-  {
-    "prompt": "Write call to action for budget approval.",
-    "assertions": [
-      "states specific ask clearly",
-      "provides deadline",
-      "outlines consequences of delay",
-      "makes approval easy"
-    ]
-  }
+  {"id": "copywriting-happy-path", "type": "happy_path", "input": "Run copywriting on this project", "expected_behavior": "Skill activates and produces the expected copywriting output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "copywriting-explicit-trigger", "type": "happy_path", "input": "Apply copywriting analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the copywriting workflow", "tags": ["trigger", "recognition"]},
+  {"id": "copywriting-with-context", "type": "happy_path", "input": "Apply copywriting to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive copywriting analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "copywriting-minimal-input", "type": "happy_path", "input": "Quick copywriting", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "copywriting-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to copywriting", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "copywriting-edge-empty-input", "type": "edge_case", "input": "Run copywriting but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "copywriting-edge-conflicting", "type": "edge_case", "input": "Apply copywriting but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

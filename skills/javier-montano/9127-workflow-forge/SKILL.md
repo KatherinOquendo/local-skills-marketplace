@@ -1,10 +1,10 @@
 ---
 name: workflow-forge
-description: >
-  Creates, validates, and optimizes step-by-step automation workflows with turbo annotations, safety gates, callgraph analysis, and sub-workflow orchestration.
+description: 
+  Creates, validates, and optimizes step-by-step automation workflows with turbo annotations, safety gates, callgraph analysis, and sub-workflow orchestration. [EXPLICIT]
   Use when the user asks to "build a workflow", "lint a workflow", "optimize workflow steps",
-  "add turbo annotations", or mentions workflow forge, workflow validation, or callgraph analysis.
-argument-hint: "<workflow description or path> [--mode create|lint|optimize] [--callgraph]"
+  "add turbo annotations", or mentions workflow forge, workflow validation, or callgraph analysis. [EXPLICIT]
+argument-hint: "workflow description or path [--mode create|lint|optimize] [--callgraph]"
 model: opus
 context: fork
 allowed-tools:
@@ -18,7 +18,7 @@ allowed-tools:
 
 # Workflow Forge
 
-A workflow is a recipe: a sequence of atomic steps that turns a trigger into a verified result. Good workflows are deterministic (same input, same output), safe (destructive actions require confirmation), and short (10 steps max).
+A workflow is a recipe: a sequence of atomic steps that turns a trigger into a verified result. Good workflows are deterministic (same input, same output), safe (destructive actions require confirmation), and short (10 steps max). [EXPLICIT]
 
 ## Workflow Structure
 
@@ -35,13 +35,13 @@ description: Creates a new React component with tests and styles
 ## Steps
 
 ### 1. Gather requirements
-Ask the user: component name, props, whether it needs state.
+Ask the user: component name, props, whether it needs state. [EXPLICIT]
 
 ### 2. Create component directory  // turbo
 mkdir -p src/components/{name}
 
 ### 3. Generate component file  // turbo
-Create src/components/{name}/{name}.tsx with boilerplate.
+Create src/components/{name}/{name}.tsx with boilerplate. [EXPLICIT]
 
 ### 4. Verify
 - [ ] Component renders without errors
@@ -53,7 +53,7 @@ Create src/components/{name}/{name}.tsx with boilerplate.
 
 ### Step 1: Identify the Trigger
 
-What kicks off this workflow? A slash command, a user request, or an event. The trigger determines invocation method.
+What kicks off this workflow? A slash command, a user request, or an event. The trigger determines invocation method. [EXPLICIT]
 
 ### Step 2: Break into Atomic Steps
 
@@ -65,11 +65,11 @@ Each step does exactly one thing. The test: can you explain it in one sentence w
 | "Create the directory" | "Set up the project and install deps" |
 | "Read the config file" | "Check if config exists and create if not" |
 
-If a step has "and" in it, split it.
+If a step has "and" in it, split it. [EXPLICIT]
 
 ### Step 3: Apply Safety Annotations
 
-Mark steps as `// turbo` (safe to auto-execute) or leave unmarked (requires user review).
+Mark steps as `// turbo` (safe to auto-execute) or leave unmarked (requires user review). [EXPLICIT]
 
 **Safe for turbo:**
 - Read-only: `ls`, `cat`, `git status`, `git diff`, `npm test`
@@ -98,9 +98,9 @@ python tools/workflow-linter.py path/to/workflow.md
 
 Do not add more steps. Instead:
 
-1. Identify natural phase boundaries (setup, execution, verification).
-2. Extract each phase into its own sub-workflow.
-3. Create a parent workflow that calls sub-workflows in sequence.
+1. Identify natural phase boundaries (setup, execution, verification). [EXPLICIT]
+2. Extract each phase into its own sub-workflow. [EXPLICIT]
+3. Create a parent workflow that calls sub-workflows in sequence. [EXPLICIT]
 
 ```
 parent-workflow.md
@@ -109,7 +109,7 @@ parent-workflow.md
   → calls: verify-migration.md   (steps 1-3)
 ```
 
-Each sub-workflow must be independently useful and testable.
+Each sub-workflow must be independently useful and testable. [EXPLICIT]
 
 Visualize dependencies:
 ```bash
@@ -122,7 +122,7 @@ python tools/workflow-callgraph.py path/to/workflows/
 ```
 step-1 → step-2 → step-3 → verify
 ```
-Most common. Each step feeds the next.
+Most common. Each step feeds the next. [EXPLICIT]
 
 ### Fan-Out / Fan-In
 ```
@@ -130,16 +130,16 @@ step-1 → step-2a ─┐
        → step-2b ─┼→ step-3 (merge) → verify
        → step-2c ─┘
 ```
-Parallel steps that converge. Use when steps are independent.
+Parallel steps that converge. Use when steps are independent. [EXPLICIT]
 
 ### Conditional Branch
 ```
 step-1 → condition? → YES → step-2a → verify
                     → NO  → step-2b → verify
 ```
-Avoid when possible. Prefer separate workflows for each branch. If unavoidable, document both paths clearly.
+Avoid when possible. Prefer separate workflows for each branch. If unavoidable, document both paths clearly. [EXPLICIT]
 
-For multi-skill orchestration patterns, read `references/orchestration.md`.
+For multi-skill orchestration patterns, read `references/orchestration.md`. [EXPLICIT]
 
 ## Quality Checklist
 
@@ -184,7 +184,7 @@ Before delivering a workflow, confirm:
 
 ## Output Location
 
-Workflows are saved to the project's workflow directory (typically `.agent/workflows/` or `workflows/`).
+Workflows are saved to the project's workflow directory (typically `.agent/workflows/` or `workflows/`). [EXPLICIT]
 
 ## Reference Files
 
@@ -194,3 +194,11 @@ Workflows are saved to the project's workflow directory (typically `.agent/workf
 
 ---
 **Author:** Javier Montano | **Last updated:** 2026-03-12
+
+## Usage
+
+Example invocations:
+
+- "/workflow-forge" — Run the full workflow forge workflow
+- "workflow forge on this project" — Apply to current context
+

@@ -128,7 +128,7 @@ Estándar para describir APIs event-driven (webhooks, Kafka topics, WebSocket ch
 Antes de publicar una API:
 1. **Dogfooding:** El equipo productor integra su propia API.
 2. **External Developer Test:** Desarrollador externo al equipo intenta TTFC sin asistencia.
-3. **Error Walkthrough:** Se prueban todos los flujos de error y se valida claridad de mensajes.
+3. **Error Walkthrough:** Se prueban Todos los flujos de error y se valida claridad de mensajes.
 4. **SDK Smoke Test:** SDKs generados se instalan y se prueban end-to-end.
 
 ---

@@ -3,8 +3,8 @@ name: audit-security
 author: JM Labs (Javier Montaño)
 description: >
   Performs a comprehensive security audit on a Claude Code plugin, detecting leaked secrets,
-  unsafe paths, shell injection risks, sensitive files, and insecure scripts.
-  Trigger: audit security, security scan, check for secrets, find vulnerabilities.
+  unsafe paths, shell injection risks, sensitive files, and insecure scripts. [EXPLICIT]
+  Trigger: audit security, security scan, check for secrets, find vulnerabilities. [EXPLICIT]
 allowed-tools:
   - Read
   - Glob
@@ -16,46 +16,46 @@ allowed-tools:
 
 > "Security is not a feature -- it is a property of the entire system."
 
-Performs a 6-category security scan on a Claude Code plugin: secret patterns, path security, hook command injection, sensitive files, and script safety. Produces a severity-classified report with specific remediation for each finding.
+Performs a 6-category security scan on a Claude Code plugin: secret patterns, path security, hook command injection, sensitive files, and script safety. Produces a severity-classified report with specific remediation for each finding. [EXPLICIT]
 
 ---
 
 ## Procedure
 
-1. **Receive target plugin path** -- accept the plugin root directory as input. Confirm the directory exists and contains a `plugin.json` (or `.claude-plugin/plugin.json`) or recognizable plugin structure before proceeding.
+1. **Receive target plugin path** -- accept the plugin root directory as input. Confirm the directory exists and contains a `plugin.json` (or `.claude-plugin/plugin.json`) or recognizable plugin structure before proceeding. [EXPLICIT]
 
 2. **Secret pattern detection** -- scan all files for high-risk credential patterns:
    - API keys: `sk-*`, `AKIA*`, `ghp_*`, `xox[bsp]-*`
    - Generic secrets: `password\s*=`, `secret\s*=`, `token\s*=` (outside comments)
    - Private keys: `BEGIN RSA PRIVATE KEY`, `BEGIN EC PRIVATE KEY`, `BEGIN OPENSSH PRIVATE KEY`
    - `.env` files containing `KEY=`, `SECRET=`, `TOKEN=`, `PASSWORD=`
-   - Classify each match as CRITICAL severity.
+   - Classify each match as CRITICAL severity. [EXPLICIT]
 
 3. **Path security analysis** -- search for hardcoded or unsafe path usage:
    - Absolute user paths: `/Users/`, `/home/`, `/opt/`, `C:\`
    - Path traversal patterns: `../` outside of comments and documentation
    - Missing `${CLAUDE_PLUGIN_ROOT}` -- flag any path that should be relative but is absolute
-   - Classify hardcoded paths as WARNING, traversal as CRITICAL.
+   - Classify hardcoded paths as WARNING, traversal as CRITICAL. [EXPLICIT]
 
 4. **Hook command security** -- inspect all hook definitions for shell injection risks:
    - `eval` usage in hook commands
    - Backtick substitution in hook command strings
    - Unquoted variable expansion (`$VAR` instead of `"$VAR"`)
    - Commands piped to `sh`, `bash`, or `exec`
-   - Classify injection vectors as CRITICAL.
+   - Classify injection vectors as CRITICAL. [EXPLICIT]
 
 5. **Sensitive file detection** -- glob for files that should not be in a plugin:
    - `.env`, `.env.*`
    - `.pem`, `.key`, `.p12`, `.pfx`
    - `credentials.json`, `service-account.json`
    - `id_rsa`, `id_ed25519`, `*.pub` (private key pairs)
-   - Classify presence as CRITICAL.
+   - Classify presence as CRITICAL. [EXPLICIT]
 
 6. **Script security** -- evaluate shell scripts in `scripts/` and hooks:
    - World-writable permissions (mode `o+w`)
    - Downloads without validation: `curl` or `wget` without checksum or signature verification
    - Use of `chmod 777`
-   - Classify unsafe scripts as WARNING, unvalidated downloads as CRITICAL.
+   - Classify unsafe scripts as WARNING, unvalidated downloads as CRITICAL. [EXPLICIT]
 
 7. **Generate security report** -- compile all findings into a structured list with:
    - Severity level (CRITICAL / WARNING / INFO)
@@ -84,27 +84,35 @@ Performs a 6-category security scan on a Claude Code plugin: secret patterns, pa
 
 **Bad finding:**
 ```
-WARNING: Possible secret found.
+WARNING: Possible secret found. [EXPLICIT]
 ```
-Missing: no file path, no line number, no pattern, no remediation.
+Missing: no file path, no line number, no pattern, no remediation. [EXPLICIT]
 
 **Good finding:**
 ```
-CRITICAL | hooks/hooks.json:12 | Pattern: `sk-proj-*` (OpenAI API key) | Remediation: Remove the key, rotate it immediately, and use environment variables instead.
+CRITICAL | hooks/hooks.json:12 | Pattern: `sk-proj-*` (OpenAI API key) | Remediation: Remove the key, rotate it immediately, and use environment variables instead. [EXPLICIT]
 ```
-Includes: severity, exact file and line, matched pattern with classification, specific remediation.
+Includes: severity, exact file and line, matched pattern with classification, specific remediation. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Grep-and-forget** -- running a single grep for "password" without context filtering, producing dozens of false positives from documentation.
-2. **Severity inflation** -- marking every finding as CRITICAL regardless of actual exploitability.
-3. **Ignoring hook commands** -- only scanning static files while hook commands may execute arbitrary shell code.
-4. **Skipping binary/non-text files** -- failing to detect `.pem` or `.key` files because only text content was searched.
-5. **No traversal check** -- assuming all `../` usage is benign because "it's in a comment" without actually verifying.
+1. **Grep-and-forget** -- running a single grep for "password" without context filtering, producing dozens of false positives from documentation. [EXPLICIT]
+2. **Severity inflation** -- marking every finding as CRITICAL regardless of actual exploitability. [EXPLICIT]
+3. **Ignoring hook commands** -- only scanning static files while hook commands may execute arbitrary shell code. [EXPLICIT]
+4. **Skipping binary/non-text files** -- failing to detect `.pem` or `.key` files because only text content was searched. [EXPLICIT]
+5. **No traversal check** -- assuming all `../` usage is benign because "it's in a comment" without actually verifying. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Plugin with zero scripts** -- skip script security phase gracefully, note "no scripts found" in report rather than erroring.
-2. **Obfuscated secrets** -- base64-encoded credentials or secrets split across multiple lines. Flag suspicious base64 blobs (>40 chars) as INFO for manual review.
-3. **Monorepo with multiple plugins** -- ensure scanning is scoped to the specified plugin root, not the entire repository.
-4. **Template variables** -- patterns like `${API_KEY}` or `<YOUR_TOKEN>` in example files should be classified as INFO, not CRITICAL, since they are placeholders.
+1. **Plugin with zero scripts** -- skip script security phase gracefully, note "no scripts found" in report rather than erroring. [EXPLICIT]
+2. **Obfuscated secrets** -- base64-encoded credentials or secrets split across multiple lines. Flag suspicious base64 blobs (>40 chars) as INFO for manual review. [EXPLICIT]
+3. **Monorepo with multiple plugins** -- ensure scanning is scoped to the specified plugin root, not the entire repository. [EXPLICIT]
+4. **Template variables** -- patterns like `${API_KEY}` or `<YOUR_TOKEN>` in example files should be classified as INFO, not CRITICAL, since they are placeholders. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/audit-security" — Run the full audit security workflow
+- "audit security on this project" — Apply to current context
+

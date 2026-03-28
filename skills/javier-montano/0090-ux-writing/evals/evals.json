@@ -1,32 +1,9 @@
 [
-  {
-    "id": "ux-writing-hierarchy-audit",
-    "input": "Audit the information hierarchy of this executive report: it has 15 pages, no table of contents, and conclusions buried in the last paragraph of each section.",
-    "expected_behavior": "Applies Standard 1 (Information Hierarchy), recommends adding TOC for >10 pages, restructures to put conclusions first, applies the Executive Summary > What Changes > Impact > Next Steps pattern.",
-    "tags": ["hierarchy", "executive", "standard-1"]
-  },
-  {
-    "id": "ux-writing-cognitive-load",
-    "input": "Reduce cognitive load in this technical document that uses 12 acronyms without definitions and presents 15 items in a single bulleted list.",
-    "expected_behavior": "Applies Standard 2 (Cognitive Load Reduction), defines acronyms on first use, chunks the 15-item list into 3-5 item groups with category headings, applies the 7 plus/minus 2 rule.",
-    "tags": ["cognitive-load", "chunking", "standard-2"]
-  },
-  {
-    "id": "ux-writing-microcopy-review",
-    "input": "Review the microcopy in our application: buttons say 'Click Here' and 'Submit', error messages just say 'Error occurred', empty states show 'No data'.",
-    "expected_behavior": "Applies Standard 4 (Microcopy), rewrites buttons to Verb+Object pattern, adds what-happened + why + how-to-fix to error messages, adds what-is-missing + how-to-fix to empty states.",
-    "tags": ["microcopy", "CTA", "standard-4"]
-  },
-  {
-    "id": "ux-writing-readability-score",
-    "input": "Check the readability score of this executive proposal. Average sentence length is 32 words, passive voice is at 40%, and jargon density is high.",
-    "expected_behavior": "Applies Standard 5 (Readability Heuristics), flags sentences over 20-word average, identifies passive voice exceeding 15% threshold, recommends Flesch-Kincaid Grade <=12 for executive audience.",
-    "tags": ["readability", "flesch-kincaid", "standard-5"]
-  },
-  {
-    "id": "ux-writing-full-audit",
-    "input": "Run a full UX writing audit on this stakeholder-facing deliverable before presentation tomorrow.",
-    "expected_behavior": "Applies all 5 standards sequentially, produces UW-01 artifact with hierarchy assessment, cognitive load analysis, scannability review, microcopy audit, and readability metrics with specific fixes.",
-    "tags": ["full-audit", "all-standards", "deliverable"]
-  }
+  {"id": "ux-writing-happy-path", "type": "happy_path", "input": "Run ux writing on this project", "expected_behavior": "Skill activates and produces the expected ux writing output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "ux-writing-explicit-trigger", "type": "happy_path", "input": "Apply ux writing analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the ux writing workflow", "tags": ["trigger", "recognition"]},
+  {"id": "ux-writing-with-context", "type": "happy_path", "input": "Apply ux writing to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive ux writing analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "ux-writing-minimal-input", "type": "happy_path", "input": "Quick ux writing", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "ux-writing-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to ux writing", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "ux-writing-edge-empty-input", "type": "edge_case", "input": "Run ux writing but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "ux-writing-edge-conflicting", "type": "edge_case", "input": "Apply ux writing but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

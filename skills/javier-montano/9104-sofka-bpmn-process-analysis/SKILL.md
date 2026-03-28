@@ -1,7 +1,7 @@
 ---
 name: sofka-bpmn-process-analysis
 author: JM Labs (Javier Montano)
-description: >
+description: 
   BPMN 2.0 process modeling and analysis skill for AS-IS/TO-BE business process
   documentation, bottleneck identification, automation opportunity assessment, process
   maturity scoring, and process improvement design. Use whenever the user mentions
@@ -9,10 +9,10 @@ description: >
   TO-BE process, process improvement, operational workflow, delivery monitoring, process
   maturity, or needs to model how work flows through an organization. Especially relevant
   for SAP fit-to-standard workshops, IT services company operations, and service variant
-  analysis. Also trigger for RACI assignment, automation ROI, or compliance audit trail.
+  analysis. Also trigger for RACI assignment, automation ROI, or compliance audit trail. [EXPLICIT]
   Trigger: BPMN, process mapping, AS-IS TO-BE, process flow, swimlane, process maturity,
-  automation ROI, RACI, fit-to-standard, process improvement, operational workflow.
-argument-hint: "<process-name-or-area> [--mode asis|tobe|fts]"
+  automation ROI, RACI, fit-to-standard, process improvement, operational workflow. [EXPLICIT]
+argument-hint: "process-name-or-area [--mode asis|tobe|fts]"
 model: opus
 context: fork
 allowed-tools:
@@ -31,7 +31,7 @@ allowed-tools:
 
 ## Purpose
 
-Model, analyze, and improve business processes using BPMN 2.0 notation. Delivers AS-IS documentation with pain points, TO-BE design with automation opportunities, process maturity scoring, automation ROI, and SAP fit-to-standard alignment. Produces HTML deliverables with Sofka branding.
+Model, analyze, and improve business processes using BPMN 2.0 notation. Delivers AS-IS documentation with pain points, TO-BE design with automation opportunities, process maturity scoring, automation ROI, and SAP fit-to-standard alignment. Produces HTML deliverables with Sofka branding. [EXPLICIT]
 
 ## When to Use
 
@@ -288,18 +288,24 @@ SAP standard covers 80%+?
 
 ## Anti-Patterns
 
-1. **Happy path only** — Must include exceptions, errors, rework loops.
-2. **Variants as exceptions** — Different service models are distinct flows, not edge cases.
-3. **RACI without A** — Every step needs exactly one accountable person.
-4. **Default Mermaid styling** — Always apply brand theme or neutral fallback.
+1. **Happy path only** — Must include exceptions, errors, rework loops. [EXPLICIT]
+2. **Variants as exceptions** — Different service models are distinct flows, not edge cases. [EXPLICIT]
+3. **RACI without A** — Every step needs exactly one accountable person. [EXPLICIT]
+4. **Default Mermaid styling** — Always apply brand theme or neutral fallback. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Per-account allocation files** — Staffing may use N files per client. Process flows must reflect this multiplicity.
-2. **Broken milestone variant** — If milestones are forced to hours, model AS-IS as-is (broken), don't sanitize. TO-BE must show proper milestone flow.
-3. **Cross-border billing** — Adds IC posting, FX, and TP documentation as distinct subprocess.
+1. **Per-account allocation files** — Staffing may use N files per client. Process flows must reflect this multiplicity. [EXPLICIT]
+2. **Broken milestone variant** — If milestones are forced to hours, model AS-IS as-is (broken), don't sanitize. TO-BE must show proper milestone flow. [EXPLICIT]
+3. **Cross-border billing** — Adds IC posting, FX, and TP documentation as distinct subprocess. [EXPLICIT]
 
 ## Cross-References
 
 - **sofka-sap-implementation**: Module config, gap scoring, integration architecture
 - **sofka-regional-finance**: CTC rates for ROI, compliance requirements
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

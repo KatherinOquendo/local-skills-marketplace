@@ -1,20 +1,20 @@
----
-name: prompt-creator
-description: >
-  Generates structured prompts for 9 prompt types in agentic ecosystems — meta, handoff, deliberation,
-  synthesis, validation, and fallback. Activates when the user says "create a prompt", "write a handoff prompt",
-  "generate a meta prompt", "build a committee deliberation prompt", or "make a fallback prompt". Also triggers
-  on mentions of prompt types, agent prompts, or multi-agent prompt design. Use this skill even if the user
-  only names the agent — it interviews for prompt type and context.
-argument-hint: <prompt-type> <owning-agent-id>
-model: opus
-context: fork
-allowed-tools: Read, Write, Edit, Glob, Grep
+--- [EXPLICIT]
+name: prompt-creator [EXPLICIT]
+description:  [EXPLICIT]
+  Generates structured prompts for 9 prompt types in agentic ecosystems — meta, handoff, deliberation, [EXPLICIT]
+  synthesis, validation, and fallback. Activates when the user says "create a prompt", "write a handoff prompt", [EXPLICIT]
+  "generate a meta prompt", "build a committee deliberation prompt", or "make a fallback prompt". Also triggers [EXPLICIT]
+  on mentions of prompt types, agent prompts, or multi-agent prompt design. Use this skill even if the user [EXPLICIT]
+  only names the agent — it interviews for prompt type and context. [EXPLICIT]
+argument-hint: prompt-type owning-agent-id [EXPLICIT]
+model: opus [EXPLICIT]
+context: fork [EXPLICIT]
+allowed-tools: Read, Write, Edit, Glob, Grep [EXPLICIT]
 ---
 
 # Prompt Creator
 
-Generate structured prompt files for multi-agent ecosystems. Covers 9 prompt types from system prompts to committee deliberation to fallback recovery.
+Generate structured prompt files for multi-agent ecosystems. Covers 9 prompt types from system prompts to committee deliberation to fallback recovery. [EXPLICIT]
 
 ## Assumptions & Limits
 
@@ -31,7 +31,7 @@ Generate structured prompt files for multi-agent ecosystems. Covers 9 prompt typ
 /prompt-creator committee_deliberation                # interview mode
 ```
 
-Parse `$1` as prompt type, `$2` as owning agent ID. If missing, ask.
+Parse `$1` as prompt type, `$2` as owning agent ID. If missing, ask. [EXPLICIT]
 
 ## Before Generating
 
@@ -53,11 +53,11 @@ Parse `$1` as prompt type, `$2` as owning agent ID. If missing, ask.
 | 8 | `validation_prompt` | `prompts/validation.md` | Quality validation of outputs | Medium |
 | 9 | `fallback_prompt` | `prompts/fallback.md` | Recovery when primary fails | Medium |
 
-Types 1 and 4 redirect to specialized skills — this skill handles types 2, 3, 5-9.
+Types 1 and 4 redirect to specialized skills — this skill handles types 2, 3, 5-9. [EXPLICIT]
 
 ## Output Format
 
-Write to `agents/{agentId}/prompts/{filename}.md`:
+Write to `agents/{agentId}/prompts/{filename}.md`: [EXPLICIT]
 
 ```markdown
 ---
@@ -82,7 +82,7 @@ version: "1.0.0"
 ```markdown
 # Reasoning Meta-Prompt
 
-You are {{agent.name}}. Your role: {{agent.role}}.
+You are {{agent.name}}. Your role: {{agent.role}}. [EXPLICIT]
 
 ## Framework
 1. {Step 1 of reasoning process}
@@ -135,7 +135,7 @@ You are {{agent.name}}. Your role: {{agent.role}}.
 
 **Bad handoff_prompt:**
 ```
-Hand off the task to the next agent.
+Hand off the task to the next agent. [EXPLICIT]
 ```
 
 **Good handoff_prompt:**
@@ -154,7 +154,7 @@ Hand off the task to the next agent.
 - Intermediate calculations
 
 ### Success Criteria
-The handoff is complete when {{target_agent}} confirms:
+The handoff is complete when {{target_agent}} confirms: [EXPLICIT]
 - [ ] Context received and understood
 - [ ] Can proceed without clarification
 - [ ] Estimated completion: {{time_estimate}}
@@ -175,3 +175,11 @@ The handoff is complete when {{target_agent}} confirms:
 
 ---
 **Author:** Javier Montaño | **Last updated:** March 12, 2026
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

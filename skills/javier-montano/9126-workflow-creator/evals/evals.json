@@ -1,32 +1,9 @@
 [
-  {
-    "id": "workflow-creator-basic",
-    "input": "Create a workflow for user-onboarding in the customer-management skill.",
-    "expected_behavior": "Produces a 17-field YAML workflow with 3-7 steps, each having all 12 fields. Reads the customer-management skill spec first. Includes measurable objective, specific trigger, and checkable preconditions.",
-    "tags": ["basic", "17-field", "yaml"]
-  },
-  {
-    "id": "workflow-creator-interview",
-    "input": "Create a workflow for incident-response.",
-    "expected_behavior": "Since no owning skill is specified, asks for the owning skill context. Interviews for missing information before generating. Produces complete 17-field spec with RACI, KPIs, and fallback routes.",
-    "tags": ["interview", "missing-context", "raci"]
-  },
-  {
-    "id": "workflow-creator-step-quality",
-    "input": "Generate a data-validation workflow for the data-quality skill with high traceability.",
-    "expected_behavior": "Each step has specific whyThisMatters (not restating title), concrete actionInstruction (with API calls), testable validationRule, observable failureSignal, and concrete recoveryAction.",
-    "tags": ["step-quality", "traceability", "12-fields"]
-  },
-  {
-    "id": "workflow-creator-edge-external",
-    "input": "Create a workflow that calls an external payment gateway API in one of its steps.",
-    "expected_behavior": "Adds explicit timeout in actionInstruction, timeout-specific failureSignal, health-check or retry logic in recoveryAction, and escalation route for unrecoverable failures.",
-    "tags": ["edge-case", "external-service", "timeout"]
-  },
-  {
-    "id": "workflow-creator-validation-gate",
-    "input": "Create a workflow for automated-testing in the quality-engineering skill.",
-    "expected_behavior": "Passes all validation gate checks: 17 top-level fields present, measurable objective, specific trigger, checkable preconditions, 3-7 steps with all 12 fields, verifiable DoD, named agents in RACI, KPIs with units.",
-    "tags": ["validation-gate", "completeness", "kpis"]
-  }
+  {"id": "workflow-creator-happy-path", "type": "happy_path", "input": "Run workflow creator on this project", "expected_behavior": "Skill activates and produces the expected workflow creator output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "workflow-creator-explicit-trigger", "type": "happy_path", "input": "Apply workflow creator analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the workflow creator workflow", "tags": ["trigger", "recognition"]},
+  {"id": "workflow-creator-with-context", "type": "happy_path", "input": "Apply workflow creator to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive workflow creator analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "workflow-creator-minimal-input", "type": "happy_path", "input": "Quick workflow creator", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "workflow-creator-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to workflow creator", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "workflow-creator-edge-empty-input", "type": "edge_case", "input": "Run workflow creator but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "workflow-creator-edge-conflicting", "type": "edge_case", "input": "Apply workflow creator but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Optimize build configuration with Vite, tree-shaking, code splitting,
-  chunk strategies, and minification for smaller, faster bundles.
+  chunk strategies, and minification for smaller, faster bundles. [EXPLICIT]
   Trigger: "build optimization", "Vite config", "tree-shaking", "code splitting", "bundle size"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides frontend build optimization — Vite configuration, tree-shaking for dead code elimination, route-based code splitting, manual chunk strategies, and minification settings for smaller production bundles. Use when build output is too large, page load is slow, or you need to optimize the build pipeline.
+Guides frontend build optimization — Vite configuration, tree-shaking for dead code elimination, route-based code splitting, manual chunk strategies, and minification settings for smaller production bundles. Use when build output is too large, page load is slow, or you need to optimize the build pipeline. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides frontend build optimization — Vite configuration, tree-shaking for dead
 
 - `performance-testing` — measuring the impact of build optimization
 - `cross-browser-testing` — build targets affect browser compatibility
+
+## Usage
+
+Example invocations:
+
+- "/build-optimization" — Run the full build optimization workflow
+- "build optimization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

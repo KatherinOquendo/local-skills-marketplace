@@ -1,32 +1,9 @@
 [
-  {
-    "id": "xlsx-template-tracking-matrix",
-    "input": "Create a tracking matrix template for 'Sprint Task Tracker' with owner, status, priority, and due dates.",
-    "expected_behavior": "Produces YAML spec with 3 sheets (Tracker, Summary, Config). Tracker has ID, Item, Owner, Status, Priority, dates, % Complete, Notes. Config provides dropdown values. Summary has COUNTA/COUNTIF formulas. Conditional formatting uses semantic colors.",
-    "tags": ["tracking-matrix", "3-sheets", "formulas"]
-  },
-  {
-    "id": "xlsx-template-metrics-dashboard",
-    "input": "Generate a metrics dashboard template for 'Agent Performance Dashboard' with KPIs, trends, and alerts.",
-    "expected_behavior": "Produces YAML spec with 4 sheets (KPIs, Trends, Alerts, Config). KPIs has current vs target with percentage calculation and sparklines. Alerts auto-filters out-of-range KPIs. Division-by-zero guards on all formulas.",
-    "tags": ["metrics-dashboard", "4-sheets", "sparklines"]
-  },
-  {
-    "id": "xlsx-template-conditional-formatting",
-    "input": "Build a tracking matrix where overdue items turn red and completed items turn green automatically.",
-    "expected_behavior": "Status column uses semantic conditional formatting (green=#c6efce for Completado, red=#ffc7ce for Bloqueado). Due Date column highlights overdue (date < today AND status != Completado). Data bars on percentage columns.",
-    "tags": ["conditional-formatting", "overdue", "semantic-colors"]
-  },
-  {
-    "id": "xlsx-template-large-kpis",
-    "input": "Create a metrics dashboard for 25 KPIs across 4 categories: performance, quality, cost, and adoption.",
-    "expected_behavior": "Handles >20 KPI edge case by splitting into category sub-tables with subtotals. Uses named ranges for cross-sheet references. Config sheet clearly labeled for editing thresholds.",
-    "tags": ["edge-case", "large-kpis", "categories"]
-  },
-  {
-    "id": "xlsx-template-interview",
-    "input": "Create an XLSX template for our project.",
-    "expected_behavior": "Since type and title are missing, interviews the user to determine tracking-matrix vs metrics-dashboard and the template title. Asks clarifying questions about columns, owners, and KPIs before generating.",
-    "tags": ["interview", "missing-params", "disambiguation"]
-  }
+  {"id": "xlsx-template-creator-happy-path", "type": "happy_path", "input": "Run xlsx template creator on this project", "expected_behavior": "Skill activates and produces the expected xlsx template creator output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "xlsx-template-creator-explicit-trigger", "type": "happy_path", "input": "Apply xlsx template creator analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the xlsx template creator workflow", "tags": ["trigger", "recognition"]},
+  {"id": "xlsx-template-creator-with-context", "type": "happy_path", "input": "Apply xlsx template creator to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive xlsx template creator analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "xlsx-template-creator-minimal-input", "type": "happy_path", "input": "Quick xlsx template creator", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "xlsx-template-creator-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to xlsx template creator", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "xlsx-template-creator-edge-empty-input", "type": "edge_case", "input": "Run xlsx template creator but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "xlsx-template-creator-edge-conflicting", "type": "edge_case", "input": "Apply xlsx template creator but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

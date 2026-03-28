@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Integrate payment processing with Stripe Checkout, PayPal, subscription billing,
-  webhook handling, and PCI compliance considerations.
+  webhook handling, and PCI compliance considerations. [EXPLICIT]
   Trigger: "payment", "Stripe", "PayPal", "checkout", "subscription billing"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides payment integration with Stripe and PayPal — Checkout sessions, subscription management, webhook-driven fulfillment, refund handling, and PCI compliance. Use when adding payment processing, subscription billing, or one-time purchases to your application.
+Guides payment integration with Stripe and PayPal — Checkout sessions, subscription management, webhook-driven fulfillment, refund handling, and PCI compliance. Use when adding payment processing, subscription billing, or one-time purchases to your application. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides payment integration with Stripe and PayPal — Checkout sessions, subscri
 
 - `webhook-handling` — Stripe webhooks drive the payment fulfillment flow
 - `ecommerce-frontend` — checkout UI that triggers payment processing
+
+## Usage
+
+Example invocations:
+
+- "/payment-integration" — Run the full payment integration workflow
+- "payment integration on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

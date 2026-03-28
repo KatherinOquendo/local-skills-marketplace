@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Initialize and configure Firebase projects with emulators, environment-specific
-  configs, and proper project structure for development and production.
+  configs, and proper project structure for development and production. [EXPLICIT]
   Trigger: "firebase init", "firebase setup", "firebase emulator", "firebase config"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Firebase project initialization — from `firebase init` through emulator configuration, environment-specific settings, and project aliases for dev/staging/prod. Use when starting a new Firebase project or restructuring an existing one for multiple environments.
+Guides Firebase project initialization — from `firebase init` through emulator configuration, environment-specific settings, and project aliases for dev/staging/prod. Use when starting a new Firebase project or restructuring an existing one for multiple environments. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Firebase project initialization — from `firebase init` through emulator
 
 - `firestore-modeling` — data modeling follows project setup
 - `cloud-functions` — Functions initialization is part of Firebase setup
+
+## Usage
+
+Example invocations:
+
+- "/firebase-setup" — Run the full firebase setup workflow
+- "firebase setup on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

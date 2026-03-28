@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Perform security testing with OWASP checks, dependency vulnerability scanning,
-  secrets detection, and security header validation.
+  secrets detection, and security header validation. [EXPLICIT]
   Trigger: "security test", "OWASP", "vulnerability scan", "secrets detection"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides security testing practices — OWASP Top 10 checks, automated dependency scanning, secrets detection in code, security header validation, and penetration testing preparation. Use when auditing application security or establishing security testing in the development pipeline.
+Guides security testing practices — OWASP Top 10 checks, automated dependency scanning, secrets detection in code, security header validation, and penetration testing preparation. Use when auditing application security or establishing security testing in the development pipeline. [EXPLICIT]
 
 ## Procedure
 
@@ -90,3 +90,25 @@ Guides security testing practices — OWASP Top 10 checks, automated dependency 
 
 - `firestore-security-rules` — Firestore rules are a key security layer
 - `code-review` — security review should be part of every PR review
+
+## Usage
+
+Example invocations:
+
+- "/security-testing" — Run the full security testing workflow
+- "security testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

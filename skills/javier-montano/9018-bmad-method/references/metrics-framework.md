@@ -285,7 +285,7 @@ Accuracy rate = (Stories completed in planned sprint / Total stories) x 100
 
 **Section 1 — Sprint Health** (updated daily):
 - Current sprint velocity vs target (bar chart)
-- Stories by status: todo / in-progress / review / done / blocked (kanban counts)
+- Stories by status: Todo / in-progress / review / done / blocked (kanban counts)
 - Burndown chart (remaining points over time)
 
 **Section 2 — Process Health** (updated per sprint):

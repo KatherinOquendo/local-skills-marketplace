@@ -102,7 +102,7 @@
 
 ### 3.4 ¿Simplificacion vs. Precision en Documentos Tecnicos?
 
-- **Tension:** Simplificar lenguaje para un ejecutivo puede perder precision tecnica necesaria para un developer. Un documento "para todos" frecuentemente no sirve para nadie.
+- **Tension:** Simplificar lenguaje para un ejecutivo puede perder precision tecnica necesaria para un developer. Un documento "para TBDs" frecuentemente no sirve para nadie.
 - **Posicion del skill:** El pattern "summary + detail" resuelve esta tension. Executive summary en plain language (D1 score alto para ejecutivos), seguido de detalle tecnico (D1 score alto para developers). El skill evalua cada seccion contra la persona objetivo, no contra todas las personas simultaneamente. Multi-audience documents usan "reader track" structure.
 
 ---

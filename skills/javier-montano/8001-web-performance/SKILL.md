@@ -10,33 +10,33 @@ tags: [performance, core-web-vitals, lighthouse, lcp, inp, cls, critical-css]
 # 096 — Web Performance {Performance}
 
 ## Purpose
-Achieve and maintain excellent Core Web Vitals scores. Optimize Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift through systematic measurement and targeted fixes.
+Achieve and maintain excellent Core Web Vitals scores. Optimize Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift through systematic measurement and targeted fixes. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of User Perception**: Performance is measured by what users experience — LCP < 2.5s, INP < 200ms, CLS < 0.1. Server metrics are secondary.
-2. **Law of Critical Path**: The browser renders what's on the critical path. Anything not needed for first paint must be deferred, lazy-loaded, or eliminated.
-3. **Law of Budgets**: Performance budgets are enforced in CI. No PR may regress a Core Web Vital without justification and compensating optimization.
+1. **Law of User Perception**: Performance is measured by what users experience — LCP < 2.5s, INP < 200ms, CLS < 0.1. Server metrics are secondary. [EXPLICIT]
+2. **Law of Critical Path**: The browser renders what's on the critical path. Anything not needed for first paint must be deferred, lazy-loaded, or eliminated. [EXPLICIT]
+3. **Law of Budgets**: Performance budgets are enforced in CI. No PR may regress a Core Web Vital without justification and compensating optimization. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Measurement Baseline
-1. Run Lighthouse CI on all key pages: homepage, dashboard, listing, detail.
-2. Record baseline CWV: LCP, INP (formerly FID), CLS for each page.
-3. Set up Real User Monitoring (RUM) via `web-vitals` library reporting to analytics.
-4. Configure Lighthouse CI budget file: `lighthouserc.js` with per-metric thresholds.
+1. Run Lighthouse CI on all key pages: homepage, dashboard, listing, detail. [EXPLICIT]
+2. Record baseline CWV: LCP, INP (formerly FID), CLS for each page. [EXPLICIT]
+3. Set up Real User Monitoring (RUM) via `web-vitals` library reporting to analytics. [EXPLICIT]
+4. Configure Lighthouse CI budget file: `lighthouserc.js` with per-metric thresholds. [EXPLICIT]
 
 ### Phase 2 — LCP Optimization
-1. Preload hero image: `<link rel="preload" as="image" href="hero.webp">`.
-2. Inline critical CSS: extract above-the-fold CSS via `critters` or `critical`.
-3. Eliminate render-blocking resources: defer non-critical JS, async load fonts.
-4. Server response time < 200ms: use Firebase Hosting CDN cache.
+1. Preload hero image: `<link rel="preload" as="image" href="hero.webp">`. [EXPLICIT]
+2. Inline critical CSS: extract above-the-fold CSS via `critters` or `critical`. [EXPLICIT]
+3. Eliminate render-blocking resources: defer non-critical JS, async load fonts. [EXPLICIT]
+4. Server response time < 200ms: use Firebase Hosting CDN cache. [EXPLICIT]
 
 ### Phase 3 — INP & CLS Optimization
-1. INP: Break long tasks > 50ms. Use `requestIdleCallback` or `scheduler.yield()` for heavy computation.
-2. INP: Debounce rapid input handlers. Use `startTransition` for non-urgent React updates.
-3. CLS: Set explicit `width`/`height` on images and embeds.
-4. CLS: Reserve space for async content (skeletons). No layout shifts after initial paint.
+1. INP: Break long tasks > 50ms. Use `requestIdleCallback` or `scheduler.yield()` for heavy computation. [EXPLICIT]
+2. INP: Debounce rapid input handlers. Use `startTransition` for non-urgent React updates. [EXPLICIT]
+3. CLS: Set explicit `width`/`height` on images and embeds. [EXPLICIT]
+4. CLS: Reserve space for async content (skeletons). No layout shifts after initial paint. [EXPLICIT]
 
 ## I/O
 
@@ -49,11 +49,11 @@ Achieve and maintain excellent Core Web Vitals scores. Optimize Largest Contentf
 
 ## Quality Gates — 5 Checks
 
-1. **LCP < 2.5s** on p75 for all key pages.
-2. **INP < 200ms** on p75 — no interaction takes longer.
-3. **CLS < 0.1** — no unexpected layout shifts.
-4. **Lighthouse Performance >= 90** in CI.
-5. **Performance budget enforced** — CI fails on regression.
+1. **LCP < 2.5s** on p75 for all key pages. [EXPLICIT]
+2. **INP < 200ms** on p75 — no interaction takes longer. [EXPLICIT]
+3. **CLS < 0.1** — no unexpected layout shifts. [EXPLICIT]
+4. **Lighthouse Performance >= 90** in CI. [EXPLICIT]
+5. **Performance budget enforced** — CI fails on regression. [EXPLICIT]
 
 ## Edge Cases
 
@@ -68,3 +68,17 @@ Achieve and maintain excellent Core Web Vitals scores. Optimize Largest Contentf
 - CLS spikes → search for new dynamic content without reserved space.
 - Lighthouse drops below 90 → run full audit, compare with previous report.
 - RUM data diverges from lab data → investigate real-world network conditions.
+
+## Usage
+
+Example invocations:
+
+- "/web-performance" — Run the full web performance workflow
+- "web performance on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

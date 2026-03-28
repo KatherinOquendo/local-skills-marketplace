@@ -24,10 +24,10 @@
 
 ---
 
-## 2. Métodos de Evaluación Arquitectónica
+## 2. MéTodos de Evaluación Arquitectónica
 
 ### ATAM — Architecture Tradeoff Analysis Method (SEI/CMU)
-- **Relevancia:** Método estructurado para evaluar arquitecturas de software contra atributos de calidad. Identifica trade-offs, sensitivities, y risks inherentes a las decisiones arquitectónicas.
+- **Relevancia:** MéTodo estructurado para evaluar arquitecturas de software contra atributos de calidad. Identifica trade-offs, sensitivities, y risks inherentes a las decisiones arquitectónicas.
 - **Uso en el skill:** D1 (Technical Feasibility) aplica un ATAM simplificado. Para cada decisión arquitectónica del escenario, se identifican: quality attribute scenarios, architecture decisions, sensitivity points, trade-off points, y risks.
 - **Fuente:** Kazman, R., Klein, M., & Clements, P. (2000). *ATAM: Method for Architecture Evaluation*. SEI Technical Report CMU/SEI-2000-TR-004.
 - **Complemento:** Bass, L., Clements, P., & Kazman, R. (2021). *Software Architecture in Practice*, 4th Ed. Addison-Wesley. Chapters 21-22.
@@ -84,7 +84,7 @@
 - **Complemento:** Vose, D. (2008). *Risk Analysis: A Quantitative Guide*, 3rd Ed. Wiley.
 
 ### Critical Chain Project Management (Goldratt)
-- **Relevancia:** Método de planificación que identifica la cadena crítica (considerando dependencias de recursos, no solo tareas) y gestiona buffers.
+- **Relevancia:** MéTodo de planificación que identifica la cadena crítica (considerando dependencias de recursos, no solo tareas) y gestiona buffers.
 - **Uso en el skill:** D3 evalúa si el timeline propuesto ha considerado la cadena crítica real. Schedules basados solo en dependencias de tareas (ignorando contention de recursos) son claims UNVALIDATED.
 - **Fuente:** Goldratt, E. (1997). *Critical Chain*. North River Press.
 
@@ -123,7 +123,7 @@
 | Término | Definición |
 |---|---|
 | **Claim** | Afirmación técnica del escenario que requiere validación contra evidencia |
-| **ATAM** | Architecture Tradeoff Analysis Method — método de evaluación de trade-offs arquitectónicos |
+| **ATAM** | Architecture Tradeoff Analysis Method — méTodo de evaluación de trade-offs arquitectónicos |
 | **Sensitivity Point** | Propiedad de un componente que afecta un atributo de calidad |
 | **Trade-off Point** | Propiedad que afecta más de un atributo de calidad de maneras opuestas |
 | **Spike** | Investigación time-boxed para reducir incertidumbre técnica |

@@ -2,10 +2,10 @@
 name: continuous-learning
 author: JM Labs (Javier Montaño)
 version: 1.0.0
-description: >
+description: 
   Extract reusable insights from Socratic debates and discoveries. Capture patterns
-  in insights/<domain>.md. Propose constitution amendments when recurring ambiguity detected.
-  Consult insights before initiating new debates. Constitution XVII.
+  in insights/domain.md. Propose constitution amendments when recurring ambiguity detected. [EXPLICIT]
+  Consult insights before initiating new debates. Constitution XVII. [EXPLICIT]
   Trigger: "extract insight", "learn from debate", "continuous learning", "prevent re-debate", "insights"
 allowed-tools:
   - Read
@@ -22,7 +22,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements Constitution XVII: every debate and discovery produces reusable insights captured in `insights/<domain>.md`. Before new debates, consult existing insights. When recurring ambiguity detected, propose constitution amendments. The project compounds knowledge — it never re-debates a settled class of decision.
+Implements Constitution XVII: every debate and discovery produces reusable insights captured in `insights/<domain>.md`. Before new debates, consult existing insights. When recurring ambiguity detected, propose constitution amendments. The project compounds knowledge — it never re-debates a settled class of decision. [EXPLICIT]
 
 ## Procedure
 
@@ -86,3 +86,25 @@ Implements Constitution XVII: every debate and discovery produces reusable insig
 - `socratic-debate` — Produces the debates that feed insights
 - `integrity-chain-validation` — Insights improve chain compliance
 - `repository-organization` — Insights files follow indexability rules (XVIII)
+
+## Usage
+
+Example invocations:
+
+- "/continuous-learning" — Run the full continuous learning workflow
+- "continuous learning on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

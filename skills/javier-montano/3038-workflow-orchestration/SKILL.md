@@ -3,7 +3,7 @@ name: workflow-orchestration
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Multi-step workflow execution with checkpoint and resume capability.
+  Multi-step workflow execution with checkpoint and resume capability. [EXPLICIT]
   Trigger: "workflow orchestration"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Workflow Orchestration
 > "Method over hacks."
 ## TL;DR
-Multi-step workflow execution with checkpoint and resume capability.
+Multi-step workflow execution with checkpoint and resume capability. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Multi-step workflow execution with checkpoint and resume capability.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/workflow-orchestration" — Run the full workflow orchestration workflow
+- "workflow orchestration on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

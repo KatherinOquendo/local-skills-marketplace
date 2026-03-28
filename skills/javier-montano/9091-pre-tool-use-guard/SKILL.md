@@ -3,7 +3,7 @@ name: pre-tool-use-guard
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Block dangerous commands before execution using exit code 2 pattern.
+  Block dangerous commands before execution using exit code 2 pattern. [EXPLICIT]
   Trigger: "pre tool use guard"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Pre Tool Use Guard
 > "Method over hacks."
 ## TL;DR
-Block dangerous commands before execution using exit code 2 pattern.
+Block dangerous commands before execution using exit code 2 pattern. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Block dangerous commands before execution using exit code 2 pattern.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/pre-tool-use-guard" — Run the full pre tool use guard workflow
+- "pre tool use guard on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -1,0 +1,9 @@
+[
+  {"id": "build-moat-assets-happy-path", "type": "happy_path", "input": "Run build moat assets on this project", "expected_behavior": "Skill activates and produces the expected build moat assets output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "build-moat-assets-explicit-trigger", "type": "happy_path", "input": "Apply build moat assets analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the build moat assets workflow", "tags": ["trigger", "recognition"]},
+  {"id": "build-moat-assets-with-context", "type": "happy_path", "input": "Apply build moat assets to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive build moat assets analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "build-moat-assets-minimal-input", "type": "happy_path", "input": "Quick build moat assets", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "build-moat-assets-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to build moat assets", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "build-moat-assets-edge-empty-input", "type": "edge_case", "input": "Run build moat assets but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "build-moat-assets-edge-conflicting", "type": "edge_case", "input": "Apply build moat assets but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

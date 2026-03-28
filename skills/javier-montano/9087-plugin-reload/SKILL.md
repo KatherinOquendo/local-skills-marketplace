@@ -1,13 +1,13 @@
 ---
 name: plugin-reload
-argument-hint: "<plugin-name>"
-description: >
+argument-hint: "plugin-name"
+description: 
   Deploys, validates, and reloads Claude Code plugins from local development.
   Activates when the user says "reload plugins", "deploy plugin", "sync plugins",
   "update local plugins", or "verify plugin structure". Also triggers on mentions of
   plugin validation, plugin deployment, or post-change verification. Use this skill even if
   the user just says something broke after editing a plugin — it diagnoses structure issues.
-argument-hint: "<plugin-name>"
+argument-hint: "plugin-name"
 model: opus
 context: fork
 allowed-tools:
@@ -96,3 +96,25 @@ Status: READY — run /reload-plugins to activate
 | Missing directories | Create them with `mkdir -p` |
 | Duplicate skill names | Flag conflict and suggest rename |
 | Hook script not executable | Run `chmod +x` on scripts |
+
+## Usage
+
+Example invocations:
+
+- "/plugin-reload" — Run the full plugin reload workflow
+- "plugin reload on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

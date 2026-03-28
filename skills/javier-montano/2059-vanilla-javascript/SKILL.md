@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Implements solutions using vanilla JavaScript: DOM manipulation, event
   handling, Fetch API, ES modules, Web APIs, and modern ECMAScript features
-  without framework dependencies.
+  without framework dependencies. [EXPLICIT]
   Trigger: "vanilla JS", "DOM manipulation", "Fetch API", "ES modules", "plain JavaScript"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements robust solutions using vanilla JavaScript with modern DOM APIs, event delegation, Fetch API, ES modules, and Web APIs without relying on framework abstractions. Use this skill when building lightweight widgets, enhancing server-rendered pages, learning fundamentals, or when a framework is overkill.
+Implements robust solutions using vanilla JavaScript with modern DOM APIs, event delegation, Fetch API, ES modules, and Web APIs without relying on framework abstractions. Use this skill when building lightweight widgets, enhancing server-rendered pages, learning fundamentals, or when a framework is overkill. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Implements robust solutions using vanilla JavaScript with modern DOM APIs, event
 - `typescript-patterns` — type-safe JavaScript with TypeScript
 - `html-semantic` — proper HTML structure for DOM manipulation targets
 - `css-animation` — JavaScript-triggered CSS animations
+
+## Usage
+
+Example invocations:
+
+- "/vanilla-javascript" — Run the full vanilla javascript workflow
+- "vanilla javascript on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

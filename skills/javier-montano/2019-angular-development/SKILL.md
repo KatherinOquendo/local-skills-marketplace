@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Develops Angular applications using modern patterns: Signals, standalone
   components, SSR with Angular Universal, routing, reactive forms, RxJS
-  operators, and dependency injection.
+  operators, and dependency injection. [EXPLICIT]
   Trigger: "Angular", "Signals", "standalone component", "NgRx", "RxJS", "Angular SSR"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Develops Angular applications using modern patterns including Signals for reactivity, standalone components, SSR with Angular Universal, typed reactive forms, and efficient RxJS operator chains. Use this skill when building Angular applications, migrating to modern Angular patterns, or establishing Angular best practices for a team.
+Develops Angular applications using modern patterns including Signals for reactivity, standalone components, SSR with Angular Universal, typed reactive forms, and efficient RxJS operator chains. Use this skill when building Angular applications, migrating to modern Angular patterns, or establishing Angular best practices for a team. [EXPLICIT]
 
 ## Procedure
 
@@ -72,3 +72,25 @@ Develops Angular applications using modern patterns including Signals for reacti
 - `typescript-patterns` — TypeScript patterns powering Angular applications
 - `state-management` — NgRx and SignalStore patterns
 - `component-architecture` — component design patterns applicable to Angular
+
+## Usage
+
+Example invocations:
+
+- "/angular-development" — Run the full angular development workflow
+- "angular development on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

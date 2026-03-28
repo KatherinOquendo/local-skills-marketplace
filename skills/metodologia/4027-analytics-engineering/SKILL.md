@@ -1,10 +1,10 @@
 ---
 name: metodologia-analytics-engineering
-description: >
-  Analytics pipeline design — dbt-style transformations, data modeling, testing, documentation.
+description: 
+  Analytics pipeline design — dbt-style transformations, data modeling, testing, documentation. [EXPLICIT]
   Use when the user asks to "design analytics models", "set up dbt project", "plan data transformations",
-  "define data contracts", "model star schema", or mentions staging models, marts, incremental strategies, or materializations.
-argument-hint: "<system-or-project-name>"
+  "define data contracts", "model star schema", or mentions staging models, marts, incremental strategies, or materializations. [EXPLICIT]
+argument-hint: "system-or-project-name"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Analytics Engineering: Transformation Pipeline Design & Data Modeling
 
-Analytics engineering defines how raw data is transformed into reliable, documented, and tested analytical models — source-to-target mapping, modeling patterns, transformation frameworks, testing, and documentation. This skill produces analytics engineering documentation that enables teams to build maintainable, trustworthy data transformation pipelines.
+Analytics engineering defines how raw data is transformed into reliable, documented, and tested analytical models — source-to-target mapping, modeling patterns, transformation frameworks, testing, and documentation. This skill produces analytics engineering documentation that enables teams to build maintainable, trustworthy data transformation pipelines. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,14 +27,14 @@ Analytics engineering defines how raw data is transformed into reliable, documen
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para staging y naming conventions, HITL para modeling patterns y data contracts.
-  - **desatendido**: Zero interruptions. Pipeline completo documentado automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en modeling pattern selection y testing strategy.
-  - **paso-a-paso**: Confirma cada modelo, materialization, test y exposure.
+  - **piloto-auto**: Auto para staging y naming conventions, HITL para modeling patterns y data contracts. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Pipeline completo documentado automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en modeling pattern selection y testing strategy. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada modelo, materialization, test y exposure. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 source-to-target + S2 modeling patterns + S4 testing strategy) | `técnica` (full 6 sections, default)
 
@@ -44,7 +44,7 @@ Before generating architecture, detect the project context:
 !find . -name "*.sql" -o -name "*.yml" -o -name "dbt_project.yml" -o -name "profiles.yml" -o -name "*.py" | head -30
 ```
 
-Use detected tools (dbt, SQLMesh, Dataform, stored procedures, etc.) to tailor recommendations.
+Use detected tools (dbt, SQLMesh, Dataform, stored procedures, etc.) to tailor recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -76,7 +76,7 @@ Read ${CLAUDE_SKILL_DIR}/references/analytics-patterns.md
 
 ### S1: Source-to-Target Mapping
 
-Maps the journey from raw sources through staging to consumption-ready marts.
+Maps the journey from raw sources through staging to consumption-ready marts. [EXPLICIT]
 
 **dbt project structure conventions:**
 ```
@@ -114,7 +114,7 @@ models/
 
 ### S2: Data Modeling Patterns
 
-Selects the modeling approach based on query patterns and data characteristics.
+Selects the modeling approach based on query patterns and data characteristics. [EXPLICIT]
 
 **Includes:**
 - Star schema design (fact tables, dimension tables, grain definition, surrogate keys)
@@ -131,7 +131,7 @@ Selects the modeling approach based on query patterns and data characteristics.
 
 ### S3: Transformation Framework
 
-Documents tool configuration, model organization, and materialization strategies.
+Documents tool configuration, model organization, and materialization strategies. [EXPLICIT]
 
 **Incremental strategy comparison:**
 
@@ -143,7 +143,7 @@ Documents tool configuration, model organization, and materialization strategies
 | **insert_overwrite** | Overwrite entire partition | Cost-efficient on BigQuery/Hive | Not supported on all warehouses |
 | **microbatch** | Process in time-windowed batches | Very large event tables (1B+ rows) | Newer dbt feature; requires `event_time` column |
 
-Acceptance criteria for incremental models: test incremental runs against full refresh monthly to catch drift; always define `unique_key` and `updated_at`; set `on_schema_change: 'append_new_columns'` as default.
+Acceptance criteria for incremental models: test incremental runs against full refresh monthly to catch drift; always define `unique_key` and `updated_at`; set `on_schema_change: 'append_new_columns'` as default. [EXPLICIT]
 
 **ref() vs source() conventions:**
 - `source()` only in staging models — never reference raw tables in intermediate or mart layers
@@ -163,7 +163,7 @@ Acceptance criteria for incremental models: test incremental runs against full r
 
 ### S4: Testing & Data Contracts
 
-Defines testing strategy and contract enforcement for data reliability.
+Defines testing strategy and contract enforcement for data reliability. [EXPLICIT]
 
 **Testing pyramid for data (invest effort bottom-up):**
 
@@ -194,7 +194,7 @@ Defines testing strategy and contract enforcement for data reliability.
 
 ### S5: Documentation & Discovery
 
-Plans auto-generated and manually enriched documentation for data discovery.
+Plans auto-generated and manually enriched documentation for data discovery. [EXPLICIT]
 
 **Exposure and metric definitions (connecting to BI):**
 ```yaml
@@ -221,7 +221,7 @@ metrics:
     dimensions: [plan_type, region, customer_segment]
 ```
 
-Exposures create accountability: when a model breaks, the owner of every downstream exposure is notified. Define exposures for every L1-L2 dashboard and every ML pipeline consuming marts.
+Exposures create accountability: when a model breaks, the owner of every downstream exposure is notified. Define exposures for every L1-L2 dashboard and every ML pipeline consuming marts. [EXPLICIT]
 
 **Includes:**
 - Auto-documentation setup (dbt docs generate, column descriptions, model descriptions)
@@ -238,7 +238,7 @@ Exposures create accountability: when a model breaks, the owner of every downstr
 
 ### S6: Performance & Cost Optimization
 
-Optimizes warehouse performance and controls transformation costs.
+Optimizes warehouse performance and controls transformation costs. [EXPLICIT]
 
 **Includes:**
 - Query profiling (execution plans, scan volume, spill-to-disk analysis)
@@ -288,19 +288,19 @@ Optimizes warehouse performance and controls transformation costs.
 ## Edge Cases
 
 **Legacy Stored Procedures Migration:**
-Map existing logic to dbt models, preserve business rules, run parallel validation. Expect 20-30% of stored procedure logic to be obsolete or duplicated.
+Map existing logic to dbt models, preserve business rules, run parallel validation. Expect 20-30% of stored procedure logic to be obsolete or duplicated. [EXPLICIT]
 
 **Multi-Warehouse Environment:**
-Models consumed across Snowflake, BigQuery, and Redshift. Use cross-database macros, abstract warehouse-specific SQL, test on each target platform.
+Models consumed across Snowflake, BigQuery, and Redshift. Use cross-database macros, abstract warehouse-specific SQL, test on each target platform. [EXPLICIT]
 
 **Real-Time Transformation Needs:**
-dbt is batch-oriented. For streaming transformations, consider Materialize, RisingWave, or SQLMesh with streaming support. Hybrid architecture: batch marts enriched by streaming aggregates.
+dbt is batch-oriented. For streaming transformations, consider Materialize, RisingWave, or SQLMesh with streaming support. Hybrid architecture: batch marts enriched by streaming aggregates. [EXPLICIT]
 
 **Massive Scale (10B+ Rows):**
-Incremental models mandatory. Microbatch strategy, partition pruning, and clustering are critical. Profile query plans before and after optimization.
+Incremental models mandatory. Microbatch strategy, partition pruning, and clustering are critical. Profile query plans before and after optimization. [EXPLICIT]
 
 **Single Analytics Engineer:**
-Skip intermediate layers initially. Start with staging + marts. Add layers as complexity grows. Documentation is critical for bus-factor mitigation.
+Skip intermediate layers initially. Start with staging + marts. Add layers as complexity grows. Documentation is critical for bus-factor mitigation. [EXPLICIT]
 
 ---
 
@@ -460,7 +460,7 @@ Sheet 5: Cost Attribution — model, warehouse, avg duration, estimated cost/run
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

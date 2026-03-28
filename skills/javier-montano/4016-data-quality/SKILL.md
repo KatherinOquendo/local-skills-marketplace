@@ -1,15 +1,15 @@
 ---
 name: sofka-data-quality
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design a data quality framework",
   "set up data contracts", "plan data validation", "detect data anomalies",
-  or mentions data profiling, quarantine patterns, or remediation workflows.
+  or mentions data profiling, quarantine patterns, or remediation workflows. [EXPLICIT]
   It produces data quality documentation covering profiling, validation rule engines,
-  data contracts, anomaly detection, remediation workflows, and SLA monitoring.
+  data contracts, anomaly detection, remediation workflows, and SLA monitoring. [EXPLICIT]
   Use this skill whenever the user needs data quality strategy or implementation,
-  even if they don't explicitly ask for "data-quality".
-argument-hint: "<project-or-system-name>"
+  even if they don't explicitly ask for "data-quality". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -23,7 +23,7 @@ allowed-tools:
 
 # Data Quality: Framework Design for Validation, Contracts & Monitoring
 
-Data quality architecture defines how organizations detect, prevent, and remediate data issues through profiling, validation rules, anomaly detection, contracts between teams, and SLA monitoring. This skill produces data quality documentation that enables teams to build trust in their data through systematic quality management.
+Data quality architecture defines how organizations detect, prevent, and remediate data issues through profiling, validation rules, anomaly detection, contracts between teams, and SLA monitoring. This skill produces data quality documentation that enables teams to build trust in their data through systematic quality management. [EXPLICIT]
 
 ## Principio Rector
 
@@ -31,14 +31,14 @@ Data quality architecture defines how organizations detect, prevent, and remedia
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para profiling y reglas de validación, HITL para data contracts y thresholds de anomalía.
-  - **desatendido**: Cero interrupciones. Framework completo generado automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en severity classification y anomaly thresholds.
-  - **paso-a-paso**: Confirma cada regla de validación, contrato, threshold y workflow de remediación.
+  - **piloto-auto**: Auto para profiling y reglas de validación, HITL para data contracts y thresholds de anomalía. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Framework completo generado automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en severity classification y anomaly thresholds. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada regla de validación, contrato, threshold y workflow de remediación. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 profiling + S3 data contracts + S5 remediation) | `técnica` (full 6 sections, default)
 
@@ -58,7 +58,7 @@ Read ${CLAUDE_SKILL_DIR}/references/quality-patterns.md
 
 ## Tool Comparison Matrix
 
-Select based on team profile and existing stack, not feature count alone.
+Select based on team profile and existing stack, not feature count alone. [EXPLICIT]
 
 | Criterion | Great Expectations | Soda Core | dbt Tests | Elementary |
 |---|---|---|---|---|
@@ -95,7 +95,7 @@ Select based on team profile and existing stack, not feature count alone.
 
 ## Quality Dimension Formulas
 
-Use these standard formulas for composite scoring. Weight per domain; no universal formula fits all.
+Use these standard formulas for composite scoring. Weight per domain; no universal formula fits all. [EXPLICIT]
 
 | Dimension | Formula | Target (critical) |
 |---|---|---|
@@ -116,7 +116,7 @@ Use these standard formulas for composite scoring. Weight per domain; no univers
 
 ### S1: Data Profiling & Baseline
 
-Establishes the statistical baseline for understanding data characteristics.
+Establishes the statistical baseline for understanding data characteristics. [EXPLICIT]
 
 **Includes:**
 - Statistical profiling (min, max, mean, median, stddev, percentiles per column)
@@ -134,7 +134,7 @@ Establishes the statistical baseline for understanding data characteristics.
 
 ### S2: Validation Rule Engine
 
-Defines systematic data validation with severity classification.
+Defines systematic data validation with severity classification. [EXPLICIT]
 
 **Includes:**
 - Schema validation (column presence, data types, nullable constraints)
@@ -152,7 +152,7 @@ Defines systematic data validation with severity classification.
 
 ### S3: Data Contracts
 
-Formalizes agreements between data producers and consumers. Follows the data contract specification pattern (Andrew Jones): contracts defined as version-controlled YAML alongside pipeline code.
+Formalizes agreements between data producers and consumers. Follows the data contract specification pattern (Andrew Jones): contracts defined as version-controlled YAML alongside pipeline code. [EXPLICIT]
 
 **Contract specification fields:**
 - Schema (column names, types, constraints, semantic tags)
@@ -175,7 +175,7 @@ Formalizes agreements between data producers and consumers. Follows the data con
 
 ### S4: Anomaly Detection
 
-Implements statistical and ML-based methods for detecting unexpected data changes.
+Implements statistical and ML-based methods for detecting unexpected data changes. [EXPLICIT]
 
 **Statistical methods (start here):**
 - Z-score (>3 sigma), IQR (1.5x range), control charts — interpretable, low maintenance
@@ -198,7 +198,7 @@ Implements statistical and ML-based methods for detecting unexpected data change
 
 ### S5: Remediation Workflows
 
-Processes for handling data quality failures from detection to resolution.
+Processes for handling data quality failures from detection to resolution. [EXPLICIT]
 
 **Quarantine pattern:** Isolate bad records in a staging area, continue processing good records. Time-bound: 72h before escalation or auto-discard.
 
@@ -216,13 +216,13 @@ Processes for handling data quality failures from detection to resolution.
 | **Tier 2: Operational** | Core business metrics, user data | <1 hour | Alert data engineering lead |
 | **Tier 3: Analytical** | Reports, dashboards, ML features | <4 hours | Notify domain data steward |
 
-At 4h+ unresolved for any tier: leadership notification with customer/revenue impact estimate.
+At 4h+ unresolved for any tier: leadership notification with customer/revenue impact estimate. [EXPLICIT]
 
 **Post-mortem template:** Timeline, blast radius (affected datasets/consumers), root cause, corrective action, prevention measures.
 
 ### S6: SLA Monitoring & Reporting
 
-Dashboards and metrics for ongoing data quality visibility.
+Dashboards and metrics for ongoing data quality visibility. [EXPLICIT]
 
 **Monitoring targets:**
 - Freshness: time since last update per dataset, breach tracking
@@ -299,7 +299,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

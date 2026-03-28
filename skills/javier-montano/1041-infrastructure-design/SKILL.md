@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Designs hosting topology, CDN configuration, DNS setup, SSL/TLS management,
   and load balancing for web applications. Covers cloud infrastructure
-  patterns for Firebase, GCP, and multi-cloud deployments.
+  patterns for Firebase, GCP, and multi-cloud deployments. [EXPLICIT]
   Trigger: "infrastructure", "hosting", "CDN", "DNS", "SSL", "load balancing"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs hosting topologies, CDN configurations, DNS setups, SSL/TLS management, and load balancing strategies for reliable, performant web applications. Use this skill when architecting deployment infrastructure, optimizing content delivery, or designing for high availability.
+Designs hosting topologies, CDN configurations, DNS setups, SSL/TLS management, and load balancing strategies for reliable, performant web applications. Use this skill when architecting deployment infrastructure, optimizing content delivery, or designing for high availability. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Designs hosting topologies, CDN configurations, DNS setups, SSL/TLS management, 
 - `caching-strategy` — CDN caching is part of overall cache architecture
 - `performance-architecture` — infrastructure impacts Core Web Vitals
 - `security-architecture` — infrastructure security controls and hardening
+
+## Usage
+
+Example invocations:
+
+- "/infrastructure-design" — Run the full infrastructure design workflow
+- "infrastructure design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

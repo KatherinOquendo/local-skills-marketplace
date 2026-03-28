@@ -102,7 +102,7 @@
 - **Realidad 2026:** La mayoría de empresas son "multi-cloud by accident" (adquisiciones, shadow IT), no por diseño. Multi-cloud estratégico existe pero solo se justifica en organizaciones grandes con specialized needs.
 - **Posición del skill:** Cloud-primary con portabilidad consciente. Abstraer donde sea barato (containers, Terraform), aceptar lock-in donde sea valioso (managed services). Documentar decisiones de lock-in explícitamente.
 
-### 3.3 ¿Serverless para Todo?
+### 3.3 ¿Serverless para pending?
 
 - **Pro-serverless (2024):** "No managing servers, ever. Pay per request. Scale to zero."
 - **Crítica (2025-2026):** Cost at scale (Lambda a >1M invocations/day puede ser más caro que containers). Cold starts. Vendor lock-in. Debugging complexity. "Serverless was never about no servers — it was about no servers you manage."

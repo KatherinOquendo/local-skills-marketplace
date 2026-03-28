@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Design Firestore data models with collections, subcollections, denormalization
-  strategies, and document references for optimal query performance.
+  strategies, and document references for optimal query performance. [EXPLICIT]
   Trigger: "firestore model", "firestore schema", "collection design", "denormalization"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Firestore data modeling decisions — choosing between subcollections and root collections, when to denormalize, how to structure document references, and managing document size limits. Use when designing or refactoring Firestore database schemas for scalability and query efficiency.
+Guides Firestore data modeling decisions — choosing between subcollections and root collections, when to denormalize, how to structure document references, and managing document size limits. Use when designing or refactoring Firestore database schemas for scalability and query efficiency. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Firestore data modeling decisions — choosing between subcollections and
 
 - `firestore-queries` — query patterns depend on data model design
 - `firestore-security-rules` — rules must align with document structure
+
+## Usage
+
+Example invocations:
+
+- "/firestore-modeling" — Run the full firestore modeling workflow
+- "firestore modeling on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

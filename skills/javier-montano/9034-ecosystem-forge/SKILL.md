@@ -1,6 +1,6 @@
 ---
 name: ecosystem-forge
-description: >
+description: 
   This skill should be used when the user asks to "bootstrap an ecosystem",
   "audit artifact consistency", "create a coordinated system of skills",
   "verify ecosystem integrity", or mentions ecosystem forge, artifact
@@ -10,7 +10,7 @@ description: >
   systems. Use this skill whenever 3+ interrelated artifacts need to work
   together as a system, even if they don't explicitly ask for "ecosystem
   forge".
-argument-hint: "<domain-name or path-to-ecosystem> [--mode bootstrap|audit|repair] [--pattern governance|workflow|skill]"
+argument-hint: "domain-name or path-to-ecosystem [--mode bootstrap|audit|repair] [--pattern governance|workflow|skill]"
 model: opus
 context: fork
 allowed-tools:
@@ -24,7 +24,7 @@ allowed-tools:
 
 # Ecosystem Forge
 
-Individual forges (prompt-forge, rule-forge, workflow-forge) create artifacts. Ecosystem-forge coordinates them into a coherent system. Use it when you need 3+ interrelated artifacts working together.
+Individual forges (prompt-forge, rule-forge, workflow-forge) create artifacts. Ecosystem-forge coordinates them into a coherent system. Use it when you need 3+ interrelated artifacts working together. [EXPLICIT]
 
 ## When to Use This vs Other Skills
 
@@ -60,7 +60,7 @@ my-domain/
 
 ### Phase 1: Domain Mapping
 
-Before creating anything, answer:
+Before creating anything, answer: [EXPLICIT]
 
 1. **What problem does this ecosystem solve?** (One sentence.)
 2. **What artifact types does it need?**
@@ -71,10 +71,10 @@ Before creating anything, answer:
 
 ### Phase 2: Name Everything First
 
-Use naming-and-slugging conventions to name all artifacts before creating them. Consistent naming makes cross-referencing reliable.
+Use naming-and-slugging conventions to name all artifacts before creating them. Consistent naming makes cross-referencing reliable. [EXPLICIT]
 
 ```
-Domain: API Development
+Domain: API Development [EXPLICIT]
 ├── Skill: api-builder
 ├── Rules: R-no-inline-sql, R-typed-responses, R-auth-required
 ├── Workflows: create-endpoint, validate-api, deploy-api
@@ -82,17 +82,17 @@ Domain: API Development
 
 ### Phase 3: Create in Dependency Order
 
-Order matters because later artifacts reference earlier ones:
+Order matters because later artifacts reference earlier ones: [EXPLICIT]
 
-1. **Rules first** — they define constraints everything else must follow.
-2. **Skills second** — they reference rules and encode domain knowledge.
-3. **Workflows last** — they orchestrate skills and enforce rules during execution.
+1. **Rules first** — they define constraints everything else must follow. [EXPLICIT]
+2. **Skills second** — they reference rules and encode domain knowledge. [EXPLICIT]
+3. **Workflows last** — they orchestrate skills and enforce rules during execution. [EXPLICIT]
 
-Each artifact follows its forge's standards: rule-forge for rules, skill-creator for skills, workflow-forge for workflows.
+Each artifact follows its forge's standards: rule-forge for rules, skill-creator for skills, workflow-forge for workflows. [EXPLICIT]
 
 ### Phase 4: Verify Integration
 
-After all artifacts exist, run the integration checklist:
+After all artifacts exist, run the integration checklist: [EXPLICIT]
 
 - [ ] All artifacts follow kebab-case naming
 - [ ] Cross-references between artifacts resolve (no dangling references)
@@ -104,7 +104,7 @@ After all artifacts exist, run the integration checklist:
 
 ### Governance-First
 
-Best for regulated or quality-critical domains.
+Best for regulated or quality-critical domains. [EXPLICIT]
 
 ```
 1. Define all rules (forbidden/required behaviors)
@@ -116,7 +116,7 @@ Best for regulated or quality-critical domains.
 
 ### Workflow-First
 
-Best for process automation.
+Best for process automation. [EXPLICIT]
 
 ```
 1. Map the manual process into a workflow
@@ -128,7 +128,7 @@ Best for process automation.
 
 ### Skill-First
 
-Best for capability building.
+Best for capability building. [EXPLICIT]
 
 ```
 1. Create the core skill with references and tools
@@ -166,7 +166,7 @@ Best for capability building.
 
 ## Validation Gate
 
-Before declaring an ecosystem complete, confirm:
+Before declaring an ecosystem complete, confirm: [EXPLICIT]
 
 - [ ] All artifacts pass their individual forge's validation (rule-forge, workflow-forge, etc.)
 - [ ] Integration checklist (Phase 4) passes with zero failures

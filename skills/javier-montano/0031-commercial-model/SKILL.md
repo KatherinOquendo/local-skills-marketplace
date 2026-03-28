@@ -1,15 +1,15 @@
 ---
 name: commercial-model
-argument-hint: "<project-or-engagement-name>"
-description: >
+argument-hint: "project-or-engagement-name"
+description: 
   This skill should be used when the user asks to "define a business model",
   "structure the deal", "identify value capture", "design a commercial model",
-  or mentions earned value, joint venture, revenue share, or outcome-based pricing.
+  or mentions earned value, joint venture, revenue share, or outcome-based pricing. [EXPLICIT]
   It identifies optimal commercial structures for technology engagements beyond T&M,
-  producing model recommendations with trade-offs — not pricing.
+  producing model recommendations with trade-offs — not pricing. [EXPLICIT]
   Use this skill whenever the user discusses deal structure or commercial strategy,
-  even if they don't explicitly ask for "commercial-model".
-argument-hint: "<project-or-engagement-name>"
+  even if they don't explicitly ask for "commercial-model". [EXPLICIT]
+argument-hint: "project-or-engagement-name"
 model: opus
 context: fork
 allowed-tools:
@@ -26,29 +26,29 @@ allowed-tools:
 Identifies the optimal commercial model for a technology transformation engagement. Goes beyond
 time-and-materials to explore value-based, outcome-based, and hybrid structures that align
 incentives between delivery team and client. Produces model recommendations with trade-offs,
-NOT pricing — pricing is a separate commercial decision.
+NOT pricing — pricing is a separate commercial decision. [EXPLICIT]
 
 ## Principio Rector
 
 **Este skill identifica MODELOS DE NEGOCIO y ESTRUCTURAS COMERCIALES — no produce precios,
-tarifas ni márgenes.** La decisión final de pricing es del área comercial con inputs de este análisis.
+tarifas ni márgenes.** La decisión final de pricing es del área comercial con inputs de este análisis. [EXPLICIT]
 
 ### Filosofía Comercial
 
-1. **Modelo antes que precio.** La estructura comercial define la relación — el precio es un detalle posterior. Este skill diseña la estructura, no la tarifa.
-2. **Incentivos alineados = relación sostenible.** T&M puro desalinea: el proveedor gana cuando el proyecto se extiende. Los modelos híbridos crean skin-in-the-game.
-3. **Transparencia radical.** El cliente debe entender la estructura — no solo aceptarla. La confianza se construye con claridad, no con complejidad contractual.
+1. **Modelo antes que precio.** La estructura comercial define la relación — el precio es un detalle posterior. Este skill diseña la estructura, no la tarifa. [EXPLICIT]
+2. **Incentivos alineados = relación sostenible.** T&M puro desalinea: el proveedor gana cuando el proyecto se extiende. Los modelos híbridos crean skin-in-the-game. [EXPLICIT]
+3. **Transparencia radical.** El cliente debe entender la estructura — no solo aceptarla. La confianza se construye con claridad, no con complejidad contractual. [EXPLICIT]
 
 ## Inputs
 
-Parse `$1` as **project name**. Requires cost driver analysis (Phase 4) and scenario context.
+Parse `$1` as **project name**. Requires cost driver analysis (Phase 4) and scenario context. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para catálogo de modelos y análisis de fit, HITL para recomendación de modelo y deal canvas.
-  - **desatendido**: Cero interrupciones. Modelo recomendado automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en recomendación antes de deal canvas.
-  - **paso-a-paso**: Confirma value map, cada modelo evaluado, y la estructura final.
+  - **piloto-auto**: Auto para catálogo de modelos y análisis de fit, HITL para recomendación de modelo y deal canvas. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Modelo recomendado automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en recomendación antes de deal canvas. [EXPLICIT]
+  - **paso-a-paso**: Confirma value map, cada modelo evaluado, y la estructura final. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 value map + S4 recommendation + S5 canvas) | `técnica` (full 6 sections, default)
 
@@ -67,7 +67,7 @@ Identifica las fuentes de valor que la transformación genera para el cliente:
 | **Compliance** | Cumplimiento regulatorio evita multas/sanctions | Sí — valor de multa evitada | Inmediato |
 | **Scalability** | Capacidad de crecimiento sin rediseño | Parcial — capacidad × pricing | 18-36 meses |
 
-Para cada fuente: cuantificar en rango de magnitud, identificar cómo se mediría.
+Para cada fuente: cuantificar en rango de magnitud, identificar cómo se mediría. [EXPLICIT]
 
 ### S2: Commercial Model Catalog
 
@@ -135,7 +135,7 @@ Evalúa cada modelo contra el contexto del proyecto:
 | Relationship maturity | ★★★★★ | ★★★ | ★★ | ★ | ★★ | ★★★ | ★★★ |
 | **FIT SCORE** | ? | ? | ? | ? | ? | ? | ? |
 
-Score per dimension (1-5), weighted by project context.
+Score per dimension (1-5), weighted by project context. [EXPLICIT]
 
 ### S4: Recommended Model & Structure
 
@@ -230,7 +230,7 @@ IP:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 
@@ -242,3 +242,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/commercial-model" — Run the full commercial model workflow
+- "commercial model on this project" — Apply to current context
+

@@ -1,32 +1,9 @@
 [
-  {
-    "id": "html-brand-happy-executive",
-    "title": "Executive HTML deliverable generation",
-    "prompt": "Create a Sofka HTML executive report for the Acme Banking project",
-    "expected_behavior": "Generates a self-contained HTML file with Design System v4, orange #FF7E08 primary, Clash Grotesk display font, numbered sections, hero with 3-4 KPIs, WCAG AA compliance, skip-link, and inline CSS."
-  },
-  {
-    "id": "html-brand-happy-technical",
-    "title": "Technical HTML deliverable generation",
-    "prompt": "Build a branded technical deep-dive document for the Event-Driven Architecture migration",
-    "expected_behavior": "Generates technical HTML with 10-15 sections, architecture diagrams, ADR-style content, higher content density per section, and all Sofka brand tokens."
-  },
-  {
-    "id": "html-brand-edge-no-green",
-    "title": "Color enforcement — no green for success",
-    "prompt": "Create a Sofka HTML report with a health dashboard showing success indicators in green",
-    "expected_behavior": "Uses yellow (#FFD700) for success states instead of green. Explains that the Sofka Design System v4 uses yellow for success to maintain warm palette coherence."
-  },
-  {
-    "id": "html-brand-edge-batch",
-    "title": "Batch upgrade of legacy HTML files",
-    "prompt": "Upgrade these 5 legacy HTML files in ./legacy-docs/ to Sofka brand compliance",
-    "expected_behavior": "Reads the operations guide, applies parallel sub-agent pattern for batch processing, preserves content while upgrading styles to DS v4 tokens."
-  },
-  {
-    "id": "html-brand-false-positive",
-    "title": "False positive — React web app request",
-    "prompt": "Build me a multi-page React application with routing for our customer portal",
-    "expected_behavior": "Does NOT activate this skill. Recognizes this is a web application with routing, not a branded HTML deliverable. Suggests using a framework instead."
-  }
+  {"id": "html-brand-happy-path", "type": "happy_path", "input": "Run html brand on this project", "expected_behavior": "Skill activates and produces the expected html brand output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "html-brand-explicit-trigger", "type": "happy_path", "input": "Apply html brand analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the html brand workflow", "tags": ["trigger", "recognition"]},
+  {"id": "html-brand-with-context", "type": "happy_path", "input": "Apply html brand to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive html brand analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "html-brand-minimal-input", "type": "happy_path", "input": "Quick html brand", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "html-brand-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to html brand", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "html-brand-edge-empty-input", "type": "edge_case", "input": "Run html brand but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "html-brand-edge-conflicting", "type": "edge_case", "input": "Apply html brand but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

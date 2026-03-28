@@ -1,13 +1,13 @@
 ---
 name: sofka-infrastructure-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design cloud infrastructure", "plan network
-  topology", "define HA/DR strategy", "set up cloud landing zones", or "optimize cloud costs".
+  topology", "define HA/DR strategy", "set up cloud landing zones", or "optimize cloud costs". [EXPLICIT]
   Also triggers on mentions of VPC, Kubernetes, serverless, multi-AZ, IAM, reserved instances,
   chaos testing, or any compute/network/storage platform design. Use this skill even if the user
-  only mentions a single infrastructure concern — the full platform context is always relevant.
-argument-hint: "<project-or-system-name>"
+  only mentions a single infrastructure concern — the full platform context is always relevant. [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -29,20 +29,20 @@ Infrastructure architecture designs where and how software runs — compute reso
 
 ### Filosofía de Infraestructura
 
-1. **Infrastructure as Code, siempre.** Si no está en código, no existe. Terraform, Pulumi, o CDK — nunca consolas manuales en producción.
-2. **HA/DR no es opcional.** Multi-AZ es el mínimo. RPO y RTO se definen ANTES del diseño, no después del primer incidente.
-3. **FinOps desde Day 1.** El costo de la nube no se controla al final — se diseña desde el principio. Reserved instances, right-sizing, y cost alerts son parte del diseño.
+1. **Infrastructure as Code, siempre.** Si no está en código, no existe. Terraform, Pulumi, o CDK — nunca consolas manuales en producción. [EXPLICIT]
+2. **HA/DR no es opcional.** Multi-AZ es el mínimo. RPO y RTO se definen ANTES del diseño, no después del primer incidente. [EXPLICIT]
+3. **FinOps desde Day 1.** El costo de la nube no se controla al final — se diseña desde el principio. Reserved instances, right-sizing, y cost alerts son parte del diseño. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **platform/system name** used throughout all output artifacts.
+The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **platform/system name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de infra y network design, HITL para decisiones de HA/DR y cost commitments.
-  - **desatendido**: Cero interrupciones. Infraestructura documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en network topology, compute strategy, y cost optimization.
-  - **paso-a-paso**: Confirma cada VPC, subnet, compute choice, storage tier, y cost recommendation.
+  - **piloto-auto**: Auto para análisis de infra y network design, HITL para decisiones de HA/DR y cost commitments. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Infraestructura documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en network topology, compute strategy, y cost optimization. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada VPC, subnet, compute choice, storage tier, y cost recommendation. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 network topology + S4 HA/DR + S7 cost optimization) | `técnica` (full 7 sections, default)
 
@@ -84,7 +84,7 @@ Read ${CLAUDE_SKILL_DIR}/references/cost-models.md
 
 ### S1: Network Topology
 
-Design of network architecture ensuring connectivity, segmentation, security, and resilience.
+Design of network architecture ensuring connectivity, segmentation, security, and resilience. [EXPLICIT]
 
 **VPC/Network Architecture:** Subnets by tier:
 - Public: load balancers, NAT gateways, bastion hosts
@@ -103,7 +103,7 @@ Design of network architecture ensuring connectivity, segmentation, security, an
 
 ### S2: Compute & Containers
 
-Strategy for running workloads — VMs, containers, or serverless.
+Strategy for running workloads — VMs, containers, or serverless. [EXPLICIT]
 
 **VMs:** Full control, best for legacy/compliance. Trade-off: more management overhead.
 **Containers (Docker/K8s):** Standardized, portable. Best for microservices. Trade-off: orchestration complexity.
@@ -117,7 +117,7 @@ Strategy for running workloads — VMs, containers, or serverless.
 
 ### S3: Storage & Data
 
-Data persistence — performance, reliability, cost.
+Data persistence — performance, reliability, cost. [EXPLICIT]
 
 **Block Storage:** Virtual hard drives for IOPS-intensive workloads (databases)
 **Object Storage:** Distributed, durable, cheap at scale (backups, logs, media, data lake)
@@ -134,7 +134,7 @@ Data persistence — performance, reliability, cost.
 
 ### S4: HA & Disaster Recovery (Multi-AZ, Chaos)
 
-Strategy for surviving failures and maintaining continuity.
+Strategy for surviving failures and maintaining continuity. [EXPLICIT]
 
 **Failure Modes:**
 - Single instance → redundancy (replicas, failover)
@@ -151,7 +151,7 @@ Strategy for surviving failures and maintaining continuity.
 
 ### S5: IAM & Platform Security
 
-Identity and access management for infrastructure resources.
+Identity and access management for infrastructure resources. [EXPLICIT]
 
 - **Identity Federation:** SSO via SAML/OIDC, LDAP for legacy
 - **Service Accounts:** Short-lived credentials, least-privilege IAM roles
@@ -162,7 +162,7 @@ Identity and access management for infrastructure resources.
 
 ### S6: Cloud Landing Zone & Governance
 
-Foundation for safe, scalable, compliant cloud deployment.
+Foundation for safe, scalable, compliant cloud deployment. [EXPLICIT]
 
 **Account Structure:** Management (billing/guardrails), shared services (logging/monitoring/security), workload accounts (dev/staging/prod per app or team)
 
@@ -176,7 +176,7 @@ Foundation for safe, scalable, compliant cloud deployment.
 
 ### S7: Cost Optimization
 
-Strategies for reducing cloud spend without sacrificing performance or reliability.
+Strategies for reducing cloud spend without sacrificing performance or reliability. [EXPLICIT]
 
 - **Right-Sizing:** Analyze utilization, downsize over-provisioned resources, review monthly
 - **Commitment Discounts:** Reserved Instances (30-70% off, steady-state), Savings Plans (flexible), Spot (70-90% off, fault-tolerant batch)
@@ -223,19 +223,19 @@ Strategies for reducing cloud spend without sacrificing performance or reliabili
 ## Edge Cases
 
 **On-Premises to Cloud Migration:**
-Existing workloads must move with minimal disruption. Hybrid period: on-prem and cloud coexist. Approach: strangler fig, VPN connectivity, staged migration.
+Existing workloads must move with minimal disruption. Hybrid period: on-prem and cloud coexist. Approach: strangler fig, VPN connectivity, staged migration. [EXPLICIT]
 
 **Multi-Cloud (AWS + Azure + GCP):**
-No unified API; complexity increases significantly. Solution: abstraction layer (Kubernetes), consistent tagging, multi-cloud governance.
+No unified API; complexity increases significantly. Solution: abstraction layer (Kubernetes), consistent tagging, multi-cloud governance. [EXPLICIT]
 
 **Highly Regulated (Financial, Healthcare):**
-Data residency: data cannot leave country/region. Dedicated accounts, encryption, audit trails, periodic assessment.
+Data residency: data cannot leave country/region. Dedicated accounts, encryption, audit trails, periodic assessment. [EXPLICIT]
 
 **Extreme Scale (Millions of Users):**
-Handle 10x-100x load without degradation. Cost critical from start. Global infrastructure, caching at every level, spot for batch.
+Handle 10x-100x load without degradation. Cost critical from start. Global infrastructure, caching at every level, spot for batch. [EXPLICIT]
 
 **Cost-Constrained Startup:**
-Limited budget, unpredictable growth. Serverless where possible, auto-scaling, spot instances, avoid reserved instances initially.
+Limited budget, unpredictable growth. Serverless where possible, auto-scaling, spot instances, avoid reserved instances initially. [EXPLICIT]
 
 ---
 
@@ -271,7 +271,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

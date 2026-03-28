@@ -3,7 +3,7 @@ name: event-marketing
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Webinar design, conference strategy, speaking proposals, event follow-up.
+  Webinar design, conference strategy, speaking proposals, event follow-up. [EXPLICIT]
   Trigger: "event marketing, webinar design, conference strategy, speaking proposals, event follow-up"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Webinar design, conference strategy, speaking proposals, event follow-up. All outputs follow MetodologIA brand standards and evidence tagging.
+Webinar design, conference strategy, speaking proposals, event follow-up. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Webinar design, conference strategy, speaking proposals, event follow-up. All ou
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/event-marketing" — Run the full event marketing workflow
+- "event marketing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

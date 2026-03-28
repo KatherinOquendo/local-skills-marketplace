@@ -180,7 +180,7 @@ sprint:
 stories:
   - id: string                  # Story ID
     title: string
-    status: enum                # todo | in-progress | review | done | blocked
+    status: enum                # Todo | in-progress | review | done | blocked
     points: integer
     assigned-to: string
     branch: string              # Git branch name

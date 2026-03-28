@@ -71,7 +71,7 @@ Inspirado en el proceso militar de Red Team (equipo adversarial que intenta inva
 ## 5. Principios de Diseño del Sistema de Gobernanza
 
 ### 5.1 Gobernanza Proporcional al Riesgo
-No toda governance es igual para todos los contextos. La Trade-off Matrix del skill reconoce tres niveles: Full governance (7 secciones, alta confianza, alta fricción), Lite governance (S1+S2+S5, balance), QA-only (S5, enfocado en validación de propuesta). El principio: la gobernanza crea valor cuando el costo de los controles es menor que el costo de los errores que previene.
+No toda governance es igual para Todos los contextos. La Trade-off Matrix del skill reconoce tres niveles: Full governance (7 secciones, alta confianza, alta fricción), Lite governance (S1+S2+S5, balance), QA-only (S5, enfocado en validación de propuesta). El principio: la gobernanza crea valor cuando el costo de los controles es menor que el costo de los errores que previene.
 
 ### 5.2 Trazabilidad como Responsabilidad
 Cada fallo en el Proposal QA se traza a la fase origen. Coherencia falla → Phase 3b y 4. Completitud falla → fase productora del entregable faltante. Esta trazabilidad implementa el principio de **responsabilidad directa**: el equipo de cada fase es responsable de la calidad de sus outputs, no del equipo de governance.

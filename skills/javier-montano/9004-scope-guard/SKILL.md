@@ -1,6 +1,6 @@
 ---
 name: scope-guard
-description: Stack constraint enforcer. Blocks AWS, Azure, Docker, K8s references and redirects to Firebase/Google/Hostinger equivalents.
+description: Stack constraint enforcer. Blocks AWS, Azure, Docker, K8s references and redirects to Firebase/Google/Hostinger equivalents. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -13,7 +13,7 @@ tags: [core, governance, constraints, stack]
 
 ## Purpose
 
-Enforces the kit's technology stack boundaries defined in R-002 (Firebase Stack Policy) and R-003 (Hostinger Constraints). Intercepts and redirects any references to out-of-scope technologies.
+Enforces the kit's technology stack boundaries defined in R-002 (Firebase Stack Policy) and R-003 (Hostinger Constraints). Intercepts and redirects any references to out-of-scope technologies. [EXPLICIT]
 
 **When to use:**
 
@@ -23,15 +23,15 @@ Enforces the kit's technology stack boundaries defined in R-002 (Firebase Stack 
 
 ---
 
-## 1. The Physics (Immutable Laws)
+## Core Principles (Immutable Laws)
 
-1. **Law of Firebase-First:** All backend, database, auth, and hosting decisions default to Firebase services.
-2. **Law of Hostinger-Fit:** All deployment outputs must be compatible with Hostinger standard hosting (static + Node.js).
-3. **Law of Redirection:** Never just block — always suggest the Firebase/Google/Hostinger equivalent.
+1. **Law of Firebase-First:** All backend, database, auth, and hosting decisions default to Firebase services. [EXPLICIT]
+2. **Law of Hostinger-Fit:** All deployment outputs must be compatible with Hostinger standard hosting (static + Node.js). [EXPLICIT]
+3. **Law of Redirection:** Never just block — always suggest the Firebase/Google/Hostinger equivalent. [EXPLICIT]
 
 ---
 
-## 2. The Protocol (Step-by-Step)
+## Core Process (Step-by-Step)
 
 ### Phase 1: Detection
 
@@ -56,8 +56,8 @@ Enforces the kit's technology stack boundaries defined in R-002 (Firebase Stack 
 
 ### Phase 3: Communication
 
-1. **Inform user** of the redirection with rationale.
-2. **Document** the constraint in the architecture decision log.
+1. **Inform user** of the redirection with rationale. [EXPLICIT]
+2. **Document** the constraint in the architecture decision log. [EXPLICIT]
 
 ---
 
@@ -79,7 +79,7 @@ Enforces the kit's technology stack boundaries defined in R-002 (Firebase Stack 
 
 ---
 
-## 4. Quality Gates (10x Checklist)
+## Validation Gate (10x Checklist)
 
 - [ ] **No AWS references** in any generated output
 - [ ] **No Azure references** in any generated output
@@ -111,3 +111,25 @@ Enforces the kit's technology stack boundaries defined in R-002 (Firebase Stack 
 
 > [!WARNING]
 > IF a Docker reference appears in deployment output THEN replace with Hostinger Node.js hosting instructions per R-003.
+
+## Usage
+
+Example invocations:
+
+- "/scope-guard" — Run the full scope guard workflow
+- "scope guard on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

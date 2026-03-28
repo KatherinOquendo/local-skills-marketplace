@@ -1,0 +1,9 @@
+[
+  {"id": "domain-dns-setup-happy-path", "type": "happy_path", "input": "Run domain dns setup on this project", "expected_behavior": "Skill activates and produces the expected domain dns setup output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "domain-dns-setup-explicit-trigger", "type": "happy_path", "input": "Apply domain dns setup analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the domain dns setup workflow", "tags": ["trigger", "recognition"]},
+  {"id": "domain-dns-setup-with-context", "type": "happy_path", "input": "Apply domain dns setup to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive domain dns setup analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "domain-dns-setup-minimal-input", "type": "happy_path", "input": "Quick domain dns setup", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "domain-dns-setup-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to domain dns setup", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "domain-dns-setup-edge-empty-input", "type": "edge_case", "input": "Run domain dns setup but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "domain-dns-setup-edge-conflicting", "type": "edge_case", "input": "Apply domain dns setup but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

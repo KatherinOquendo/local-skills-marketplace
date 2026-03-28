@@ -3,7 +3,7 @@ name: b2b-outreach
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Cold email sequences, follow-up cadence, objection handling, persona-based templates.
+  Cold email sequences, follow-up cadence, objection handling, persona-based templates. [EXPLICIT]
   Trigger: "b2b outreach, cold email sequences, follow-up cadence, objection handling, persona-based templates"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Cold email sequences, follow-up cadence, objection handling, persona-based templates. All outputs follow MetodologIA brand standards and evidence tagging.
+Cold email sequences, follow-up cadence, objection handling, persona-based templates. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Cold email sequences, follow-up cadence, objection handling, persona-based templ
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/b2b-outreach" — Run the full b2b outreach workflow
+- "b2b outreach on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

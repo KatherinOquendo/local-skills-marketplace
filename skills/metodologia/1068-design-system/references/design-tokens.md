@@ -12,7 +12,7 @@
    - Gains/Risks Cards, Roadmap Links, Decision List, Timeline Steps, Modals, Footer
 6. [Responsive Breakpoints](#responsive-breakpoints) — Mobile at 768px
 7. [Accessibility: Reduced Motion](#accessibility-reduced-motion)
-8. [Dark Mode (Placeholder)](#dark-mode)
+8. [Dark Mode (template)](#dark-mode)
 9. [Print Stylesheet](#print-stylesheet)
 10. [JavaScript Patterns](#javascript-patterns) — TOC tracking, modals, score bars
 11. [Z-Index Hierarchy](#z-index-hierarchy)
@@ -439,7 +439,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--metodologia-ora
 ```css
 @media (prefers-color-scheme: dark) {
   /* NOTE: Dark mode token mappings not yet finalized in v4 */
-  /* Placeholder for future dark theme implementation */
+  /* template for future dark theme implementation */
   /* When implemented, create --mao-*-dark variants for semantic colors */
 }
 ```

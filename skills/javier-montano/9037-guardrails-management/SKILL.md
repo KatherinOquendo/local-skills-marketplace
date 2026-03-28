@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Detect, confirm, store, and enforce user-declared guidelines, constraints, and
-  guardrails as JSON files. Pristino's internal RAG for working rules.
+  guardrails as JSON files. Pristino's internal RAG for working rules. [EXPLICIT]
   Trigger: "guardrail", "guideline", "constraint", "from now on", "always use", "never use"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Manages user-declared working rules stored as JSON in `references/guardrails/`. When the user expresses a preference ("always use TypeScript", "never use jQuery"), Pristino detects the intent, confirms with the user, and stores it. These rules are loaded at every session start and the Guardian checks compliance.
+Manages user-declared working rules stored as JSON in `references/guardrails/`. When the user expresses a preference ("always use TypeScript", "never use jQuery"), Pristino detects the intent, confirms with the user, and stores it. These rules are loaded at every session start and the Guardian checks compliance. [EXPLICIT]
 
 ## Procedure
 
@@ -74,3 +74,25 @@ Manages user-declared working rules stored as JSON in `references/guardrails/`. 
 - `session-protocol` — Loads guardrails during bootstrap
 - `continuous-learning` — Insights may generate new guardrails
 - `code-review` — Guardian checks guardrail compliance
+
+## Usage
+
+Example invocations:
+
+- "/guardrails-management" — Run the full guardrails management workflow
+- "guardrails management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -1,12 +1,12 @@
 ---
 name: metodologia-api-architecture
 author: Javier Montano · Comunidad MetodologIA
-argument-hint: "<system-or-platform-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
-description: >
-  API design & governance — REST/GraphQL/gRPC, versioning, rate limiting, DX, contract-first.
+argument-hint: "system-or-platform-name [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
+description: 
+  API design & governance — REST/GraphQL/gRPC, versioning, rate limiting, DX, contract-first. [EXPLICIT]
   Use when the user asks to "design an API", "define API strategy", "implement contract-first",
   "set up API governance", "design API versioning", "improve developer experience",
-  or mentions REST, GraphQL, gRPC, AsyncAPI, OpenAPI, API gateway, rate limiting, or API catalog.
+  or mentions REST, GraphQL, gRPC, AsyncAPI, OpenAPI, API gateway, rate limiting, or API catalog. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,7 +20,7 @@ allowed-tools:
 
 # API Architecture: Design, Governance & Developer Experience
 
-API architecture defines how services expose capabilities to consumers — internal teams, partners, and third parties. The skill covers style selection, contract-first design, versioning strategy, security, developer experience, and lifecycle governance for APIs that scale and evolve gracefully.
+API architecture defines how services expose capabilities to consumers — internal teams, partners, and third parties. The skill covers style selection, contract-first design, versioning strategy, security, developer experience, and lifecycle governance for APIs that scale and evolve gracefully. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -28,20 +28,20 @@ API architecture defines how services expose capabilities to consumers — inter
 
 ### API Architecture Philosophy
 
-1. **Contract-first, always.** The spec (OpenAPI, Protobuf, SDL) is written BEFORE the code. If there is no contract, there is no API — there is an accident exposed to the world.
-2. **Versioning strategy upfront.** The versioning strategy is defined at design time, not when the first breaking change breaks production. Changing the strategy later costs 10x.
-3. **DX drives adoption.** Developer Experience is not a nice-to-have — it is the competitive differentiator. An API with poor docs is an abandoned API. APIs with better DX generate 2x more adoption.
+1. **Contract-first, always.** The spec (OpenAPI, Protobuf, SDL) is written BEFORE the code. If there is no contract, there is no API — there is an accident exposed to the world. [EXPLICIT]
+2. **Versioning strategy upfront.** The versioning strategy is defined at design time, not when the first breaking change breaks production. Changing the strategy later costs 10x. [EXPLICIT]
+3. **DX drives adoption.** Developer Experience is not a nice-to-have — it is the competitive differentiator. An API with poor docs is an abandoned API. APIs with better DX generate 2x more adoption. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts.
+The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de estilos y contract design, HITL para versioning strategy y governance decisions.
-  - **desatendido**: Zero interruptions. API architecture documentada automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en style selection y security design.
-  - **paso-a-paso**: Confirma cada style decision, contract spec, versioning policy, y DX plan.
+  - **piloto-auto**: Auto para análisis de estilos y contract design, HITL para versioning strategy y governance decisions. [EXPLICIT]
+  - **desatendido**: Zero interruptions. API architecture documentada automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en style selection y security design. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada style decision, contract spec, versioning policy, y DX plan. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 strategy + S2 contracts + S4 security) | `técnica` (full 6 sections, default)
 
@@ -51,7 +51,7 @@ Before generating API architecture, detect the codebase context:
 !find . -name "*.yaml" -o -name "*.json" -o -name "*.proto" -o -name "*.graphql" -o -name "openapi*" -o -name "swagger*" | head -30
 ```
 
-Use detected API specs, schemas, and service definitions to tailor style recommendations, versioning approach, and governance structure.
+Use detected API specs, schemas, and service definitions to tailor style recommendations, versioning approach, and governance structure. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -84,7 +84,7 @@ Read ${CLAUDE_SKILL_DIR}/references/api-design-patterns.md
 
 ### S1: API Strategy & Style Selection
 
-Select the right API style for each use case and define the overall API strategy.
+Select the right API style for each use case and define the overall API strategy. [EXPLICIT]
 
 **Style Decision Matrix:**
 
@@ -125,7 +125,7 @@ Select the right API style for each use case and define the overall API strategy
 
 ### S2: Contract-First Design
 
-Define APIs before implementation — schema as the source of truth.
+Define APIs before implementation — schema as the source of truth. [EXPLICIT]
 
 **Spec tooling by style:**
 - **REST:** OpenAPI 3.1 — paths, schemas, responses, examples, security schemes
@@ -145,7 +145,7 @@ Define APIs before implementation — schema as the source of truth.
 
 ### S3: Versioning & Evolution
 
-Manage API changes without breaking consumers.
+Manage API changes without breaking consumers. [EXPLICIT]
 
 **Versioning Strategy Comparison:**
 
@@ -164,7 +164,7 @@ Manage API changes without breaking consumers.
 
 ### S4: Security & Access Control
 
-Protect APIs from unauthorized access, abuse, and attacks.
+Protect APIs from unauthorized access, abuse, and attacks. [EXPLICIT]
 
 **Authentication:** OAuth 2.0 flows (authorization code + PKCE for SPAs/mobile, client credentials for S2S), API keys for identification, JWT for stateless verification
 **Authorization:** Scope-based (OAuth), role-based (RBAC), attribute-based (ABAC) for fine-grained
@@ -186,7 +186,7 @@ Protect APIs from unauthorized access, abuse, and attacks.
 
 ### S5: Developer Experience
 
-Make APIs easy to discover, learn, integrate, and debug.
+Make APIs easy to discover, learn, integrate, and debug. [EXPLICIT]
 
 **Documentation:** Interactive docs (Swagger UI, Redoc, GraphiQL, gRPC reflection)
 **Getting started:** Auth setup -> first API call -> common workflows in <5 minutes
@@ -198,7 +198,7 @@ Make APIs easy to discover, learn, integrate, and debug.
 
 ### S6: API Governance & Lifecycle
 
-Manage API portfolio — discovery, review, consistency, and retirement.
+Manage API portfolio — discovery, review, consistency, and retirement. [EXPLICIT]
 
 **API catalog:** Searchable registry with metadata, ownership, status, consumer count
 **Design review:** Pre-implementation contract review by architecture team or API CoP
@@ -366,7 +366,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

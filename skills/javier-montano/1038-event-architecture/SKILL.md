@@ -1,13 +1,13 @@
 ---
 name: sofka-event-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design an event-driven system",
   "build an event catalog", "implement CQRS", "design saga patterns",
-  or mentions Kafka, RabbitMQ, Pulsar, event bus, dead-letter queue, or event sourcing.
-  It generates event-driven architecture artifacts including event catalogs, schema registry designs, consistency patterns (sagas, outbox, idempotency), CQRS models, and operational runbooks.
-  Use this skill whenever the user needs asynchronous messaging architecture, even if they don't explicitly ask for "event architecture".
-argument-hint: "<project-or-system-name>"
+  or mentions Kafka, RabbitMQ, Pulsar, event bus, dead-letter queue, or event sourcing. [EXPLICIT]
+  It generates event-driven architecture artifacts including event catalogs, schema registry designs, consistency patterns (sagas, outbox, idempotency), CQRS models, and operational runbooks. [EXPLICIT]
+  Use this skill whenever the user needs asynchronous messaging architecture, even if they don't explicitly ask for "event architecture". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Event Architecture: Catalog, Consistency Patterns & Operational Excellence
 
-Event-driven architecture decouples producers from consumers through asynchronous messaging — enabling scalability, resilience, and temporal flexibility. The skill covers event catalog design, broker selection, schema governance, consistency patterns (sagas, CQRS, event sourcing), and the operational practices that keep event systems reliable.
+Event-driven architecture decouples producers from consumers through asynchronous messaging — enabling scalability, resilience, and temporal flexibility. The skill covers event catalog design, broker selection, schema governance, consistency patterns (sagas, CQRS, event sourcing), and the operational practices that keep event systems reliable. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,20 +29,20 @@ Event-driven architecture decouples producers from consumers through asynchronou
 
 ### Filosofía de Event Architecture
 
-1. **El catálogo de eventos ES el sistema.** Si un evento no está catalogado, no existe. El catálogo es la fuente de verdad que conecta dominios, equipos y contratos.
-2. **Schema registry previene breaking changes.** Sin schema registry, cada deploy es una ruleta rusa. La compatibilidad se valida en CI, no en producción a las 3am.
-3. **Eventual consistency es una feature, no un bug.** Los sistemas distribuidos son eventualmente consistentes por naturaleza. Diseñarlo explícitamente (sagas, outbox, idempotencia) transforma un problema en una ventaja.
+1. **El catálogo de eventos ES el sistema.** Si un evento no está catalogado, no existe. El catálogo es la fuente de verdad que conecta dominios, equipos y contratos. [EXPLICIT]
+2. **Schema registry previene breaking changes.** Sin schema registry, cada deploy es una ruleta rusa. La compatibilidad se valida en CI, no en producción a las 3am. [EXPLICIT]
+3. **Eventual consistency es una feature, no un bug.** Los sistemas distribuidos son eventualmente consistentes por naturaleza. Diseñarlo explícitamente (sagas, outbox, idempotencia) transforma un problema en una ventaja. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts.
+The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para event catalog y broker config, HITL para saga design y schema compatibility decisions.
-  - **desatendido**: Cero interrupciones. Event architecture documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en broker selection y consistency pattern design.
-  - **paso-a-paso**: Confirma cada event definition, schema, saga flow, y operational procedure.
+  - **piloto-auto**: Auto para event catalog y broker config, HITL para saga design y schema compatibility decisions. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Event architecture documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en broker selection y consistency pattern design. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada event definition, schema, saga flow, y operational procedure. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 catalog + S3 schema registry + S4 consistency) | `técnica` (full 6 sections, default)
 
@@ -52,7 +52,7 @@ Before generating event architecture, detect the codebase context:
 !find . -name "*.yaml" -o -name "*.json" -o -name "*.avro" -o -name "*.proto" -o -name "*event*" -o -name "*kafka*" -o -name "*rabbit*" | head -30
 ```
 
-Use detected event definitions, broker configurations, and schema files to tailor catalog structure, pattern recommendations, and operational guidance.
+Use detected event definitions, broker configurations, and schema files to tailor catalog structure, pattern recommendations, and operational guidance. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -85,7 +85,7 @@ Read ${CLAUDE_SKILL_DIR}/references/event-patterns.md
 
 ### S1: Event Catalog & Taxonomy
 
-Establish naming conventions, event types, and a discoverable catalog of all events.
+Establish naming conventions, event types, and a discoverable catalog of all events. [EXPLICIT]
 
 **Event naming:** `<Domain>.<Entity>.<Action>` (e.g., `Order.Payment.Completed`)
 
@@ -110,7 +110,7 @@ Establish naming conventions, event types, and a discoverable catalog of all eve
 | **State Transfer (fat)** | Full state: `{ orderId, items[], total }` | Higher (schema dependency) | Lower (self-contained) | Consumer needs embedded data; API callback adds unacceptable latency |
 | **Delta** | Changed fields only: `{ orderId, status: "shipped" }` | Medium | Lowest | Consumer maintains local state; bandwidth-constrained |
 
-Rule of thumb: start thin, fatten only when consumers demonstrably need embedded data.
+Rule of thumb: start thin, fatten only when consumers demonstrably need embedded data. [EXPLICIT]
 
 **Key decisions:**
 - Envelope vs. embedded metadata: separate header from payload (recommended) or merge
@@ -119,7 +119,7 @@ Rule of thumb: start thin, fatten only when consumers demonstrably need embedded
 
 ### S2: Message Broker Architecture
 
-Select and configure the message broker for reliability, throughput, and operational simplicity.
+Select and configure the message broker for reliability, throughput, and operational simplicity. [EXPLICIT]
 
 **Broker Selection Matrix:**
 
@@ -152,7 +152,7 @@ Select and configure the message broker for reliability, throughput, and operati
 
 ### S3: Event Schema Registry
 
-Govern schema evolution to prevent producer-consumer contract breaks.
+Govern schema evolution to prevent producer-consumer contract breaks. [EXPLICIT]
 
 **Platforms:** Confluent Schema Registry, AWS Glue Schema Registry, Apicurio
 **Formats:** Avro (compact, best Kafka integration), Protobuf (strong typing, gRPC bridge), JSON Schema (readable, flexible)
@@ -170,7 +170,7 @@ Govern schema evolution to prevent producer-consumer contract breaks.
 
 ### S4: Consistency Patterns
 
-Manage distributed consistency without distributed transactions.
+Manage distributed consistency without distributed transactions. [EXPLICIT]
 
 **Saga Pattern Comparison:**
 
@@ -196,7 +196,7 @@ Outbox table schema: `id, aggregate_type, aggregate_id, event_type, payload, cre
 | **Polling** | Higher (poll interval) | Low (simple query) | Small-medium volume, ops simplicity |
 | **CDC (Debezium)** | Near-real-time | Higher (Kafka Connect, connector config) | High volume, low-latency requirement |
 
-Debezium reads the database WAL/binlog and streams outbox rows to Kafka. Use the `outbox.event.router` SMT to transform CDC records into clean business events.
+Debezium reads the database WAL/binlog and streams outbox rows to Kafka. Use the `outbox.event.router` SMT to transform CDC records into clean business events. [EXPLICIT]
 
 **Inbox pattern:** Consumer writes received event to inbox table, deduplicates by event ID, processes idempotently.
 
@@ -204,7 +204,7 @@ Debezium reads the database WAL/binlog and streams outbox rows to Kafka. Use the
 
 ### S5: CQRS & Event Sourcing
 
-Separate read and write models; optionally store state as a sequence of events.
+Separate read and write models; optionally store state as a sequence of events. [EXPLICIT]
 
 **CQRS:**
 - Command side: validates writes, emits domain events
@@ -226,7 +226,7 @@ Separate read and write models; optionally store state as a sequence of events.
 
 ### S6: Operational Excellence
 
-Ensure event systems are reliable, observable, and recoverable in production.
+Ensure event systems are reliable, observable, and recoverable in production. [EXPLICIT]
 
 **Dead-Letter Topic (DLT) Management:**
 - Route events that fail after max retries (3-5 attempts with exponential backoff)
@@ -324,7 +324,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

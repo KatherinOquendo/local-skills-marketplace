@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Mandatory session initialization: context loading, state recovery, pending closure,
-  and next steps proposal. Ensures continuity across AI sessions with zero context loss.
-  Constitution Session Protocol section.
+  and next steps proposal. Ensures continuity across AI sessions with zero context loss. [EXPLICIT]
+  Constitution Session Protocol section. [EXPLICIT]
   Trigger: "session start", "initialize session", "context recovery", "session protocol", "state recovery"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements the mandatory session initialization sequence from the Constitution: (1) load context files in order, (2) recover state from recent activity, (3) propose closure for pending items, (4) suggest next steps. Ensures every session starts productive from minute one, with full awareness of project state, open tasks, and recent decisions.
+Implements the mandatory session initialization sequence from the Constitution: (1) load context files in order, (2) recover state from recent activity, (3) propose closure for pending items, (4) suggest next steps. Ensures every session starts productive from minute one, with full awareness of project state, open tasks, and recent decisions. [EXPLICIT]
 
 ## Procedure
 
@@ -79,3 +79,25 @@ After pending items resolved:
 - `continuous-learning` — Insights loaded during context recovery
 - `tasklog-management` — Tasklog is primary input for pending closure
 - `changelog-management` — Changelog is primary input for state recovery
+
+## Usage
+
+Example invocations:
+
+- "/session-protocol" — Run the full session protocol workflow
+- "session protocol on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implement responsive navigation patterns including mobile hamburger menus,
-  mega menus, breadcrumbs, tab navigation, and sidebar layouts.
+  mega menus, breadcrumbs, tab navigation, and sidebar layouts. [EXPLICIT]
   Trigger: "navigation", "navbar", "mega menu", "breadcrumbs", "sidebar nav"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the implementation of responsive navigation systems — hamburger menus for mobile, mega menus for complex sites, breadcrumbs for deep hierarchies, tabs for content switching, and sidebar navigation for dashboards. Use when building or refactoring site navigation for usability and accessibility.
+Guides the implementation of responsive navigation systems — hamburger menus for mobile, mega menus for complex sites, breadcrumbs for deep hierarchies, tabs for content switching, and sidebar navigation for dashboards. Use when building or refactoring site navigation for usability and accessibility. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the implementation of responsive navigation systems — hamburger menus f
 
 - `modal-dialog-patterns` — mobile nav drawers often use dialog patterns
 - `accessibility-testing` — navigation is a top a11y audit failure area
+
+## Usage
+
+Example invocations:
+
+- "/navigation-patterns" — Run the full navigation patterns workflow
+- "navigation patterns on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

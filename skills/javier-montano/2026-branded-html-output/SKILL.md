@@ -3,7 +3,7 @@ name: branded-html-output
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Generate HTML outputs using MetodologIA brand design system. Navy background, gold accents, Poppins/Montserrat, glassmorphism, print-ready. Loads design-tokens.json and html-template.html.
+  Generate HTML outputs using MetodologIA brand design system. Navy background, gold accents, Poppins/Montserrat, glassmorphism, print-ready. Loads design-tokens.json and html-template.html. [EXPLICIT]
   Trigger: "generate HTML", "branded output", "HTML report", "design system output", "MetodologIA HTML"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Generate HTML outputs using MetodologIA brand design system. Navy background, gold accents, Poppins/Montserrat, glassmorphism, print-ready. Loads design-tokens.json and html-template.html. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html).
+Generate HTML outputs using MetodologIA brand design system. Navy background, gold accents, Poppins/Montserrat, glassmorphism, print-ready. Loads design-tokens.json and html-template.html. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html). [EXPLICIT]
 
 ## Procedure
 
@@ -66,3 +66,25 @@ Generate HTML outputs using MetodologIA brand design system. Navy background, go
 
 - branded-html-output — Base skill for all HTML generation
 - guardrails-management — Check user guardrails before generating
+
+## Usage
+
+Example invocations:
+
+- "/branded-html-output" — Run the full branded html output workflow
+- "branded html output on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

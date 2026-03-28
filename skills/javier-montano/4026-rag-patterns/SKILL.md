@@ -3,7 +3,7 @@ name: rag-patterns
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Retrieval-augmented generation: chunking, embedding, vector search, reranking.
+  Retrieval-augmented generation: chunking, embedding, vector search, reranking. [EXPLICIT]
   Trigger: "rag patterns"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Rag Patterns
 > "Method over hacks."
 ## TL;DR
-Retrieval-augmented generation: chunking, embedding, vector search, reranking.
+Retrieval-augmented generation: chunking, embedding, vector search, reranking. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Retrieval-augmented generation: chunking, embedding, vector search, reranking.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/rag-patterns" — Run the full rag patterns workflow
+- "rag patterns on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

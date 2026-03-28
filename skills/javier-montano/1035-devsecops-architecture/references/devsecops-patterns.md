@@ -433,7 +433,7 @@ Reusable HTML templates and patterns for CI/CD and security pipeline documentati
 
   <div class="metric-trend">
     <h4>30-Day Trend</h4>
-    <div class="chart-placeholder">
+    <div class="chart-template">
       [Deployment frequency trending up] ↑
       [Lead time trending down] ↓
       [Failure rate stable] →
@@ -526,7 +526,7 @@ Reusable HTML templates and patterns for CI/CD and security pipeline documentati
   color: var(--color-neutral-dark);
 }
 
-.chart-placeholder {
+.chart-template {
   font-size: 12px;
   color: #666;
   font-family: monospace;

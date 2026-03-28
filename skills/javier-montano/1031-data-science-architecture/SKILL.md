@@ -1,7 +1,7 @@
 ---
 name: sofka-data-science-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design an ML system",
   "architect model serving", "set up experiment tracking", "design feature store",
   "plan MLOps pipeline", or mentions model registry, A/B testing, drift detection,
@@ -9,8 +9,8 @@ description: >
   model lifecycle, feature stores, experiment tracking, model serving, and MLOps
   pipelines. Use this skill whenever the conversation involves machine learning
   infrastructure or productionizing models, even if they don't explicitly ask for
-  "data science architecture".
-argument-hint: "<project-or-system-name>"
+  "data science architecture". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -24,7 +24,7 @@ allowed-tools:
 
 # Data Science Architecture: ML/AI System Design & Model Lifecycle
 
-Data science architecture defines how machine learning systems are structured end-to-end — from feature engineering through model training, serving, monitoring, and governance. This skill produces ML system documentation that enables teams to build reproducible, scalable, and responsible AI systems.
+Data science architecture defines how machine learning systems are structured end-to-end — from feature engineering through model training, serving, monitoring, and governance. This skill produces ML system documentation that enables teams to build reproducible, scalable, and responsible AI systems. [EXPLICIT]
 
 ## Principio Rector
 
@@ -32,20 +32,20 @@ Data science architecture defines how machine learning systems are structured en
 
 ### Filosofía de ML Architecture
 
-1. **Reproducibilidad obligatoria.** Cada experimento, cada training run, cada feature pipeline debe ser reproducible. Si no se puede reproducir, no se puede confiar.
-2. **Monitoring > accuracy.** Un modelo con 95% accuracy que driftea sin detección es peor que uno con 85% monitoreado. Drift detection es día 1.
-3. **Feature store = single source of truth.** Features compartidas entre modelos, versionadas, con lineage. No re-inventar features por modelo.
+1. **Reproducibilidad obligatoria.** Cada experimento, cada training run, cada feature pipeline debe ser reproducible. Si no se puede reproducir, no se puede confiar. [EXPLICIT]
+2. **Monitoring > accuracy.** Un modelo con 95% accuracy que driftea sin detección es peor que uno con 85% monitoreado. Drift detection es día 1. [EXPLICIT]
+3. **Feature store = single source of truth.** Features compartidas entre modelos, versionadas, con lineage. No re-inventar features por modelo. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de sistema ML y feature design, HITL para decisiones de serving y governance.
-  - **desatendido**: Cero interrupciones. Arquitectura ML documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en feature store design y model serving decisions.
-  - **paso-a-paso**: Confirma cada topology, feature pipeline, serving pattern, y governance policy.
+  - **piloto-auto**: Auto para análisis de sistema ML y feature design, HITL para decisiones de serving y governance. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura ML documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en feature store design y model serving decisions. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada topology, feature pipeline, serving pattern, y governance policy. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 topology + S4 serving + S6 governance) | `técnica` (full 6 sections, default)
 
@@ -55,7 +55,7 @@ Before generating architecture, detect the codebase context:
 !find . -name "*.py" -o -name "*.ipynb" -o -name "*.yaml" -o -name "*.toml" -o -name "Dockerfile" | head -30
 ```
 
-Use detected frameworks (PyTorch, TensorFlow, scikit-learn, MLflow, Kubeflow, etc.) to tailor recommendations.
+Use detected frameworks (PyTorch, TensorFlow, scikit-learn, MLflow, Kubeflow, etc.) to tailor recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -87,7 +87,7 @@ Read ${CLAUDE_SKILL_DIR}/references/ml-system-patterns.md
 
 ### S1: ML System Topology
 
-Maps the overall ML system structure — training vs serving paths, online vs batch inference, data flow.
+Maps the overall ML system structure — training vs serving paths, online vs batch inference, data flow. [EXPLICIT]
 
 **Includes:**
 - Training pipeline topology (data ingestion, preprocessing, training, evaluation, registration)
@@ -109,7 +109,7 @@ Maps the overall ML system structure — training vs serving paths, online vs ba
 
 ### S2: Feature Engineering & Store Design
 
-Defines how features are computed, stored, served, and reused across models.
+Defines how features are computed, stored, served, and reused across models. [EXPLICIT]
 
 **Feature store comparison — select based on ecosystem:**
 
@@ -136,7 +136,7 @@ Defines how features are computed, stored, served, and reused across models.
 
 ### S3: Experiment Tracking & Model Registry
 
-Documents how experiments are tracked, models versioned, and lineage maintained.
+Documents how experiments are tracked, models versioned, and lineage maintained. [EXPLICIT]
 
 **Experiment tracking tool comparison:**
 
@@ -162,7 +162,7 @@ Documents how experiments are tracked, models versioned, and lineage maintained.
 
 ### S4: Model Serving Architecture
 
-Designs how models are deployed, scaled, and managed in production.
+Designs how models are deployed, scaled, and managed in production. [EXPLICIT]
 
 **Model monitoring stack — select by need:**
 
@@ -173,7 +173,7 @@ Designs how models are deployed, scaled, and managed in production.
 | **WhyLabs** | Continuous profiling, anomaly detection | High-volume streaming, privacy-preserving | whylogs agent, lightweight |
 | **Fiddler** | Explainability + monitoring | Regulated industries, model cards | REST API, notebook SDK |
 
-Selection criteria: choose Evidently for budget-conscious OSS; Arize for real-time + LLM workloads; WhyLabs for high-throughput with minimal overhead; Fiddler when explainability is a regulatory requirement.
+Selection criteria: choose Evidently for budget-conscious OSS; Arize for real-time + LLM workloads; WhyLabs for high-throughput with minimal overhead; Fiddler when explainability is a regulatory requirement. [EXPLICIT]
 
 **Includes:**
 - Serving infrastructure (REST/gRPC endpoints, serverless functions, embedded models)
@@ -189,7 +189,7 @@ Selection criteria: choose Evidently for budget-conscious OSS; Arize for real-ti
 
 ### S5: MLOps Pipeline Design
 
-Defines CI/CD for ML — automated training, testing, deployment, monitoring, and retraining.
+Defines CI/CD for ML — automated training, testing, deployment, monitoring, and retraining. [EXPLICIT]
 
 **GPU cost optimization formulas:**
 - Spot/preemptible instances: 60-90% savings for fault-tolerant training with checkpointing every N steps
@@ -212,7 +212,7 @@ Defines CI/CD for ML — automated training, testing, deployment, monitoring, an
 
 ### S6: Governance & Responsible AI
 
-Establishes guardrails for bias detection, explainability, audit trails, and compliance.
+Establishes guardrails for bias detection, explainability, audit trails, and compliance. [EXPLICIT]
 
 **Responsible AI checklist (mandatory for production models):**
 1. **Model card published** — fields: model details, intended use, training data summary, evaluation metrics across subgroups, fairness analysis, limitations, ethical considerations
@@ -269,22 +269,22 @@ Establishes guardrails for bias detection, explainability, audit trails, and com
 ## Edge Cases
 
 **Notebook-to-Production Migration:**
-Most ML starts in notebooks. Define the bridge: refactor into modular code, add tests, containerize, integrate with CI/CD. Provide incremental adoption path — expect resistance.
+Most ML starts in notebooks. Define the bridge: refactor into modular code, add tests, containerize, integrate with CI/CD. Provide incremental adoption path — expect resistance. [EXPLICIT]
 
 **Multi-Model Systems:**
-When multiple models interact (ensemble, pipeline, routing), address dependency management, versioning across models, and cascade failure scenarios. Pin model versions for reproducibility.
+When multiple models interact (ensemble, pipeline, routing), address dependency management, versioning across models, and cascade failure scenarios. Pin model versions for reproducibility. [EXPLICIT]
 
 **Edge/On-Device Deployment:**
-Constraints: model size (<50MB typical), quantization (INT8/TFLite), OTA update mechanisms, offline capability. Architecture must address fallback when connectivity is lost.
+Constraints: model size (<50MB typical), quantization (INT8/TFLite), OTA update mechanisms, offline capability. Architecture must address fallback when connectivity is lost. [EXPLICIT]
 
 **Regulated Industries (Healthcare, Finance):**
-Audit trail, explainability, and bias detection are mandatory from day one. Model cards, decision logging, human override mechanisms are not optional.
+Audit trail, explainability, and bias detection are mandatory from day one. Model cards, decision logging, human override mechanisms are not optional. [EXPLICIT]
 
 **Cold Start / No Historical Data:**
-Feature stores and training pipelines assume historical data. Include bootstrapping strategies, rule-based fallbacks, and progressive learning with feedback loops.
+Feature stores and training pipelines assume historical data. Include bootstrapping strategies, rule-based fallbacks, and progressive learning with feedback loops. [EXPLICIT]
 
 **LLM/Foundation Model Integration:**
-When wrapping or fine-tuning LLMs, address: prompt versioning, evaluation frameworks (human + automated), cost per inference tracking, guardrails for hallucination and toxicity, RAG pipeline architecture if applicable.
+When wrapping or fine-tuning LLMs, address: prompt versioning, evaluation frameworks (human + automated), cost per inference tracking, guardrails for hallucination and toxicity, RAG pipeline architecture if applicable. [EXPLICIT]
 
 ---
 
@@ -313,7 +313,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

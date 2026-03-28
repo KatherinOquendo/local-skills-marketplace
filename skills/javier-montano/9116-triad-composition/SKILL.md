@@ -3,7 +3,7 @@ name: triad-composition
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Select Lead + Support + Guardian from composition matrix based on domain classification.
+  Select Lead + Support + Guardian from composition matrix based on domain classification. [EXPLICIT]
   Trigger: "triad composition"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Select Lead + Support + Guardian from composition matrix based on domain classification. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md.
+Select Lead + Support + Guardian from composition matrix based on domain classification. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md. [EXPLICIT]
 
 ## Procedure
 
@@ -49,3 +49,25 @@ Select Lead + Support + Guardian from composition matrix based on domain classif
 ## Related Skills
 
 - See PRISTINO.md for full orchestration protocol
+
+## Usage
+
+Example invocations:
+
+- "/triad-composition" — Run the full triad composition workflow
+- "triad composition on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -32,7 +32,7 @@ La referencia definitiva para análisis de performance a nivel de sistema. Gregg
 
 ### Conceptos clave aplicados
 
-- **USE Method (Utilization, Saturation, Errors):** Para cada recurso (CPU, memoria, disco, red), medir estos tres indicadores. Si utilization >70%, investigar. Si saturation >0, hay cola. Si errors >0, hay degradación. Método sistemático que evita omitir recursos.
+- **USE Method (Utilization, Saturation, Errors):** Para cada recurso (CPU, memoria, disco, red), medir estos tres indicadores. Si utilization >70%, investigar. Si saturation >0, hay cola. Si errors >0, hay degradación. MéTodo sistemático que evita omitir recursos.
 - **TSA Method (Thread State Analysis):** Clasificar el tiempo de cada thread en on-CPU, off-CPU (I/O wait, lock wait, sleep). Identifica dónde se pierde el tiempo sin depender de sampling profiling.
 - **Flame graphs:** Visualización de stack traces que revela hot paths. Creación de Gregg. Herramienta estándar para CPU profiling (async-profiler para JVM, perf para Linux, py-spy para Python).
 - **Observability stack:** Métricas (counters, gauges, histograms) + logs + traces. La tríada de observabilidad que alimenta S1.

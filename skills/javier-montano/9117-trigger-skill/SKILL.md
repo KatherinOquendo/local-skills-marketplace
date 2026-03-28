@@ -1,6 +1,6 @@
 ---
 name: trigger-skill
-description: >
+description: 
   This skill should be used when the user asks to "optimize skill triggers",
   "improve skill description", "why isn't my skill triggering",
   "fix skill activation", "tune skill detection", or "make my skill
@@ -9,8 +9,8 @@ description: >
   rates, iterating on the description, and producing the optimal version
   that maximizes true positives while minimizing false triggers. Use this
   skill whenever a skill under-triggers, over-triggers, or the user wants
-  to ensure their description is production-grade.
-argument-hint: "<path-to-skill-directory> [--queries custom-queries.json]"
+  to ensure their description is production-grade. [EXPLICIT]
+argument-hint: "path-to-skill-directory [--queries custom-queries.json]"
 model: opus
 context: fork
 allowed-tools:
@@ -25,15 +25,15 @@ model: opus
 
 # Skill Trigger Optimizer
 
-Optimize the single most important line in any skill: the frontmatter description. A perfect skill with a bad description never fires. A mediocre skill with a great description fires reliably and improves over time.
+Optimize the single most important line in any skill: the frontmatter description. A perfect skill with a bad description never fires. A mediocre skill with a great description fires reliably and improves over time. [EXPLICIT]
 
-This skill treats trigger optimization as a measurement problem, not a writing exercise. Generate test queries, measure accuracy, iterate, measure again.
+This skill treats trigger optimization as a measurement problem, not a writing exercise. Generate test queries, measure accuracy, iterate, measure again. [EXPLICIT]
 
 ## Why This Exists
 
-The description field is the primary mechanism Claude uses to decide which skill to invoke. Yet most skills are written description-first and never tested for triggering accuracy. The result: skills that under-trigger (user says the right thing, skill doesn't fire) or over-trigger (skill fires on unrelated requests).
+The description field is the primary mechanism Claude uses to decide which skill to invoke. Yet most skills are written description-first and never tested for triggering accuracy. The result: skills that under-trigger (user says the right thing, skill doesn't fire) or over-trigger (skill fires on unrelated requests). [EXPLICIT]
 
-The Anthropic skill-creator has `improve_description.py` and `run_loop.py` for this purpose. This skill provides the same capability as a standalone tool, without requiring the full skill-creator plugin.
+The Anthropic skill-creator has `improve_description.py` and `run_loop.py` for this purpose. This skill provides the same capability as a standalone tool, without requiring the full skill-creator plugin. [EXPLICIT]
 
 ## Usage
 
@@ -46,16 +46,16 @@ The Anthropic skill-creator has `improve_description.py` and `run_loop.py` for t
 
 ### Step 1: Understand the Skill
 
-Read SKILL.md completely. Extract:
+Read SKILL.md completely. Extract: [EXPLICIT]
 - **Current description** (the text to optimize)
 - **Skill purpose** (what it actually does — from the body, not just the description)
 - **Adjacent skills** (what it should NOT trigger on — skills with similar but different purposes)
 
-Build a mental model: "This skill should fire when X, Y, Z. It should NOT fire when A, B, C."
+Build a mental model: "This skill should fire when X, Y, Z. It should NOT fire when A, B, C." [EXPLICIT]
 
 ### Step 2: Generate Test Queries
 
-Create 15-20 test queries split into two categories:
+Create 15-20 test queries split into two categories: [EXPLICIT]
 
 **Should-Trigger (10-12 queries):**
 - 3-4 exact match: phrases that are clearly this skill's domain ("audit my skill quality")
@@ -81,7 +81,7 @@ Create 15-20 test queries split into two categories:
 
 ### Step 3: Analyze Current Description
 
-Score the current description against the test queries:
+Score the current description against the test queries: [EXPLICIT]
 
 | Query | Should Trigger? | Would Trigger? | Result |
 |-------|----------------|---------------|--------|
@@ -89,7 +89,7 @@ Score the current description against the test queries:
 | "create a new skill" | No | Yes | FALSE POSITIVE |
 | "is this skill ready to ship" | Yes | No | FALSE NEGATIVE |
 
-Calculate metrics:
+Calculate metrics: [EXPLICIT]
 - **True Positive Rate (TPR):** queries that should trigger and would / total should-trigger
 - **False Positive Rate (FPR):** queries that shouldn't trigger but would / total should-not-trigger
 - **Trigger Accuracy:** (true positives + true negatives) / total queries
@@ -98,25 +98,25 @@ Calculate metrics:
 
 ### Step 4: Iterate on Description
 
-For each false negative (should trigger but doesn't):
+For each false negative (should trigger but doesn't): [EXPLICIT]
 - Identify what phrase or concept is missing from the description
 - Add a trigger phrase or broader context clause
 
-For each false positive (shouldn't trigger but does):
+For each false positive (shouldn't trigger but does): [EXPLICIT]
 - Identify what's too broad in the description
 - Narrow with a scope qualifier or "NOT for" clause in the description
 
 **Iteration protocol:**
 1. Make one change to the description
 2. Re-score against all test queries
-3. If accuracy improved, keep the change. If degraded, revert.
+3. If accuracy improved, keep the change. If degraded, revert. [EXPLICIT]
 4. Repeat up to 3 iterations (diminishing returns beyond that)
 
 **Constraint:** Description must remain under 1024 chars. Each iteration that adds text must also tighten elsewhere.
 
 ### Step 5: Validate Constraints
 
-After optimization, verify the description still passes frontmatter rules:
+After optimization, verify the description still passes frontmatter rules: [EXPLICIT]
 - [ ] Under 1024 characters
 - [ ] Third person ("This skill should be used when...")
 - [ ] 3-5 trigger phrases in quotes
@@ -163,7 +163,7 @@ After optimization, verify the description still passes frontmatter rules:
 
 ## How Trigger Matching Works
 
-Claude decides which skill to invoke by comparing the user's input against all available skill descriptions. Understanding the matching helps write better descriptions:
+Claude decides which skill to invoke by comparing the user's input against all available skill descriptions. Understanding the matching helps write better descriptions: [EXPLICIT]
 
 | Factor | Impact | Implication for Description |
 |--------|--------|---------------------------|
@@ -205,26 +205,26 @@ Claude decides which skill to invoke by comparing the user's input against all a
 
 **Bad:**
 ```
-Before: "Analyzes skills for quality."
-After: "Analyzes skills for quality and production readiness."
-Change: Added "and production readiness."
+Before: "Analyzes skills for quality." [EXPLICIT]
+After: "Analyzes skills for quality and production readiness." [EXPLICIT]
+Change: Added "and production readiness." [EXPLICIT]
 ```
-No test queries. No metrics. No evidence the change improved anything.
+No test queries. No metrics. No evidence the change improved anything. [EXPLICIT]
 
 **Good:**
 ```
-Before: "Analyzes skills for quality." — TPR 40%, FPR 20%, Accuracy 55%
-After: "This skill should be used when the user asks to 'audit a skill',
+Before: "Analyzes skills for quality." — TPR 40%, FPR 20%, Accuracy 55% [EXPLICIT]
+After: "This skill should be used when the user asks to 'audit a skill', [EXPLICIT]
 'review skill quality', or 'is this skill ready'. Reads a skill directory
 and scores against gold standard." — TPR 83%, FPR 5%, Accuracy 90%
-Changes: (1) Added third person framing. (2) Added 3 trigger phrases from
+Changes: (1) Added third person framing. (2) Added 3 trigger phrases from [EXPLICIT]
 test queries that were false negatives. (3) Added functional description
-to reduce false positives from vague "quality" keyword.
+to reduce false positives from vague "quality" keyword. [EXPLICIT]
 ```
 
 ## Validation Gate
 
-Before delivering the trigger optimization report:
+Before delivering the trigger optimization report: [EXPLICIT]
 
 - [ ] 15-20 test queries generated with both should-trigger and should-not categories
 - [ ] Metrics calculated for both before and after states

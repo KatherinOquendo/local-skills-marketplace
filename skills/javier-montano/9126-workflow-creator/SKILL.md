@@ -1,10 +1,10 @@
 ---
 name: workflow-creator
-description: >
-  Generates complete workflow definitions with steps, DoD, RACI, KPIs, and failure handling for agentic ecosystems.
+description: 
+  Generates complete workflow definitions with steps, DoD, RACI, KPIs, and failure handling for agentic ecosystems. [EXPLICIT]
   Use when the user asks to "create a workflow", "define workflow steps", "build a workflow YAML",
-  "generate a workflow spec", or mentions workflow definition, step-by-step procedure, or RACI matrix.
-argument-hint: <workflow-id> [owning-skill-id]
+  "generate a workflow spec", or mentions workflow definition, step-by-step procedure, or RACI matrix. [EXPLICIT]
+argument-hint: workflow-id [owning-skill-id]
 model: opus
 context: fork
 allowed-tools: Read, Write, Edit, Glob, Grep
@@ -12,7 +12,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep
 
 # Workflow Creator
 
-Generate complete workflow definitions — sequential step-by-step operational procedures for agent skills. Each workflow has 17 fields including steps (12 fields each), RACI, KPIs, and failure routes.
+Generate complete workflow definitions — sequential step-by-step operational procedures for agent skills. Each workflow has 17 fields including steps (12 fields each), RACI, KPIs, and failure routes. [EXPLICIT]
 
 ## Assumptions & Limits
 
@@ -28,7 +28,7 @@ Generate complete workflow definitions — sequential step-by-step operational p
 /workflow-creator incident-response                     # interview for context
 ```
 
-Parse `$1` as workflow ID (kebab-case), `$2` as owning skill. If `$2` absent, ask.
+Parse `$1` as workflow ID (kebab-case), `$2` as owning skill. If `$2` absent, ask. [EXPLICIT]
 
 ## Before Generating
 
@@ -88,7 +88,7 @@ Parse `$1` as workflow ID (kebab-case), `$2` as owning skill. If `$2` absent, as
 
 ## Step Quality Standards
 
-The 12 fields per step are the atomic unit of traceability. Each must meet this bar:
+The 12 fields per step are the atomic unit of traceability. Each must meet this bar: [EXPLICIT]
 
 | Field | GOOD (specific, testable) | BAD (vague, untestable) |
 |---|---|---|

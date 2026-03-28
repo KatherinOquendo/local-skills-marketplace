@@ -3,7 +3,7 @@ name: seo-content
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  SEO content strategy: meta descriptions, Open Graph tags, schema markup (JSON-LD), keyword strategy, sitemap generation. Complements seo-architecture.
+  SEO content strategy: meta descriptions, Open Graph tags, schema markup (JSON-LD), keyword strategy, sitemap generation. Complements seo-architecture. [EXPLICIT]
   Trigger: "SEO content", "meta description", "schema markup", "JSON-LD", "keywords", "sitemap"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Creates SEO content assets: meta descriptions, Open Graph tags for social sharing, JSON-LD structured data for rich snippets, keyword-optimized content structure, and XML sitemap generation. Complements seo-architecture (technical SEO) with content-level optimization.
+Creates SEO content assets: meta descriptions, Open Graph tags for social sharing, JSON-LD structured data for rich snippets, keyword-optimized content structure, and XML sitemap generation. Complements seo-architecture (technical SEO) with content-level optimization. [EXPLICIT]
 
 ## Procedure
 
@@ -55,3 +55,25 @@ Creates SEO content assets: meta descriptions, Open Graph tags for social sharin
 - `seo-architecture` — Technical SEO foundation
 - `html-semantic` — Semantic HTML for SEO
 - `google-analytics` — Track SEO performance
+
+## Usage
+
+Example invocations:
+
+- "/seo-content" — Run the full seo content workflow
+- "seo content on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -1,16 +1,16 @@
 ---
 name: metodologia-pipeline-governance
 author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<project-or-program-name>"
-description: >
+argument-hint: "project-or-program-name"
+description: 
   Discovery pipeline governance — phase gate management, resource orchestration,
-  dependency control, and proposal QA validation across the entire discovery pipeline.
-  Replaces former project-program-management (not generic PM, specific to discovery pipeline).
+  dependency control, and proposal QA validation across the entire discovery pipeline. [EXPLICIT]
+  Replaces former project-program-management (not generic PM, specific to discovery pipeline). [EXPLICIT]
   Use when the user asks to "track the discovery", "govern the pipeline", "validate the proposal",
   "run governance check", "check phase dependencies", "coordinate resources", or mentions
   pipeline governance, phase gates, proposal readiness, milestone tracking, or cross-phase
   dependency management. Works as the structural glue that holds the entire discovery pipeline
-  together — from Phase 0 through Handover.
+  together — from Phase 0 through Handover. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -27,7 +27,7 @@ allowed-tools:
 Structural governance layer that manages the discovery pipeline as a formal program —
 tracking phases, gates, resources, dependencies, risks, and proposal readiness. Operates
 as the connective tissue between all 48 skills, ensuring nothing falls through cracks,
-phases do not skip prerequisites, and the final proposal is validated before client delivery.
+phases do not skip prerequisites, and the final proposal is validated before client delivery. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -39,25 +39,25 @@ between "we did a discovery" and "we executed a reliable discovery program."
 ### Governance Philosophy
 
 1. **Governance is not bureaucracy.** Governance exists to enable speed with confidence,
-   not to slow things down. Every control must justify its existence with a risk it mitigates.
+   not to slow things down. Every control must justify its existence with a risk it mitigates. [EXPLICIT]
 
 2. **Total traceability.** Every decision, scope change, materialized risk, and
-   resolved dependency is recorded. The program can be audited at any time.
+   resolved dependency is recorded. The program can be audited at any time. [EXPLICIT]
 
 3. **Proposal QA = Final Quality Gate.** Proposal v1 does not go out until it passes a
    multidimensional validation that verifies technical coherence, viability, completeness, and
-   alignment with discovery findings.
+   alignment with discovery findings. [EXPLICIT]
 
 ## Inputs
 
-Parse `$1` as **project/program name**. Detect discovery context from repo.
+Parse `$1` as **project/program name**. Detect discovery context from repo. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto for routine tracking, HITL for gate decisions, scope changes, and proposal validation.
-  - **desatendido**: Zero interruptions. Gates auto-evaluated. Assumptions documented.
-  - **supervisado**: Autonomous with reports at milestones. Questions only at gates and proposal QA.
-  - **paso-a-paso**: Confirms before each gate evaluation and each QA section.
+  - **piloto-auto**: Auto for routine tracking, HITL for gate decisions, scope changes, and proposal validation. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Gates auto-evaluated. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autonomous with reports at milestones. Questions only at gates and proposal QA. [EXPLICIT]
+  - **paso-a-paso**: Confirms before each gate evaluation and each QA section. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 - `{MODO_OPERACIONAL}`: `integral` (default, full governance across all 7 sections) | `seguimiento` (phase state tracking, gate readiness, scope changes, dependency monitoring, status dashboard) | `validacion-propuesta` (proposal QA across coherence, completeness, viability, alignment — final quality gate)
@@ -264,7 +264,7 @@ LISTA PARA ENVÍO A CLIENTE: SÍ / NO
 
 ## Prompt Integration Protocol
 
-The project manager is the governance backbone that accompanies ALL prompts. It is implicitly activated in every prompt execution.
+The project manager is the governance backbone that accompanies ALL prompts. It is implicitly activated in every prompt execution. [EXPLICIT]
 
 ### Role in Each Prompt
 
@@ -411,7 +411,7 @@ graph TD
 ```
 
 **Formato DOCX:**
-Reporte de gobernanza de programa en formato documento formal: charter ejecutivo, evaluaciones de gate con firmas de aprobacion, scorecard de propuesta, y dashboard de estado con graficos de varianza y tendencia de riesgos.
+Reporte de gobernanza de programa en formato documento formal: charter ejecutivo, evaluaciones de gate con firmas de aprobacion, scorecard de propuesta, y dashboard de estado con graficos de varianza y tendencia de riesgos. [EXPLICIT]
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_Pipeline_Governance_{cliente}_{WIP}.xlsx`
@@ -445,7 +445,7 @@ Reporte de gobernanza de programa en formato documento formal: charter ejecutivo
 | `dual` | On demand | Both formats. |
 | **HTML** | `{fase}_Pipeline_Governance_{proyecto}_{WIP}.html` | Mismo contenido en HTML branded (Design System MetodologIA v5). Self-contained, WCAG AA, responsive. Tipo: Dark-First Executive. Incluye Gantt interactivo de programa, gate scorecard con RAG status, y proposal QA dashboard. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Configuration
 
@@ -472,6 +472,6 @@ Formerly separate sub-agents (`governance-tracker`, `proposal-qa-validator`) are
 | `seguimiento` | Phase state tracking, gate readiness evaluation, scope change monitoring, cross-phase dependency control, RAG status dashboard | Ongoing governance during active discovery phases |
 | `validacion-propuesta` | Multidimensional proposal QA: technical coherence, completeness audit, viability verification, alignment with discovery findings, composite scoring and verdict | Pre-client delivery quality gate on proposal v1 |
 
-Invoke with `{MODO_OPERACIONAL}=seguimiento` or `{MODO_OPERACIONAL}=validacion-propuesta`.
+Invoke with `{MODO_OPERACIONAL}=seguimiento` or `{MODO_OPERACIONAL}=validacion-propuesta`. [EXPLICIT]
 
 ---

@@ -1,0 +1,9 @@
+[
+  {"id": "data-documentation-happy-path", "type": "happy_path", "input": "Run data documentation on this project", "expected_behavior": "Skill activates and produces the expected data documentation output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "data-documentation-explicit-trigger", "type": "happy_path", "input": "Apply data documentation analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the data documentation workflow", "tags": ["trigger", "recognition"]},
+  {"id": "data-documentation-with-context", "type": "happy_path", "input": "Apply data documentation to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive data documentation analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "data-documentation-minimal-input", "type": "happy_path", "input": "Quick data documentation", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "data-documentation-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to data documentation", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "data-documentation-edge-empty-input", "type": "edge_case", "input": "Run data documentation but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "data-documentation-edge-conflicting", "type": "edge_case", "input": "Apply data documentation but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

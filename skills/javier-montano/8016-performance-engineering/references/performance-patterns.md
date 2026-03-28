@@ -262,7 +262,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 ## Using These Templates
 
 1. **Copy template structure** into HTML document
-2. **Replace bracketed placeholders** with actual metrics and service names
+2. **Replace bracketed templates** with actual metrics and service names
 3. **Apply status colors** based on threshold comparison (healthy/degraded/critical)
 4. **Compose templates** into full report: baseline cards per service, load test results, capacity model, cache diagram, SLO dashboard
 5. **Link templates** to supporting data (load test scripts, monitoring dashboards, capacity spreadsheets)

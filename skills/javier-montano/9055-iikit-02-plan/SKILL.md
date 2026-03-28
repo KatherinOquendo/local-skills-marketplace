@@ -10,7 +10,7 @@ metadata:
 
 # Intent Integrity Kit Plan
 
-Generate design artifacts from the feature specification using the plan template.
+Generate design artifacts from the feature specification using the plan template. [EXPLICIT]
 
 ## User Input
 
@@ -18,11 +18,11 @@ Generate design artifacts from the feature specification using the plan template
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty).
+You **MUST** consider the user input before proceeding (if not empty). [EXPLICIT]
 
 ## Constitution Loading
 
-Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (enforcement mode — extract rules, declare hard gate, halt on violations).
+Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (enforcement mode — extract rules, declare hard gate, halt on violations). [EXPLICIT]
 
 ## Prerequisites Check
 
@@ -43,7 +43,7 @@ Load constitution per [constitution-loading.md](../iikit-core/references/constit
 
 ## Spec Quality Gate
 
-Before planning, validate spec.md:
+Before planning, validate spec.md: [EXPLICIT]
 
 1. **Requirements**: count FR-XXX patterns (ERROR if 0, WARNING if <3)
 2. **Measurable criteria**: scan for numeric values, percentages, time measurements (WARNING if none)
@@ -51,23 +51,23 @@ Before planning, validate spec.md:
 4. **User story coverage**: verify each story has acceptance scenarios
 5. **Cross-references**: check for orphan requirements not linked to stories
 
-Report quality score per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Spec Quality section). If score < 6: recommend `/iikit-clarify` first.
+Report quality score per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Spec Quality section). If score < 6: recommend `/iikit-clarify` first. [EXPLICIT]
 
 ## Execution Flow
 
 ### 1. Fill Technical Context
 
-Using the plan template, define: Language/Version, Primary Dependencies, Storage, Testing, Target Platform, Project Type, Performance Goals, Constraints, Scale/Scope. Mark unknowns as "NEEDS CLARIFICATION".
+Using the plan template, define: Language/Version, Primary Dependencies, Storage, Testing, Target Platform, Project Type, Performance Goals, Constraints, Scale/Scope. Mark unknowns as "NEEDS CLARIFICATION". [EXPLICIT]
 
-When Tessl eval results are available for candidate technologies, include eval scores in the decision rationale in research.md. Higher eval scores indicate better-validated tiles and should factor into technology selection when choosing between alternatives.
+When Tessl eval results are available for candidate technologies, include eval scores in the decision rationale in research.md. Higher eval scores indicate better-validated tiles and should factor into technology selection when choosing between alternatives. [EXPLICIT]
 
 ### 2. Tessl Tile Discovery
 
-If Tessl is installed, discover and install tiles for all technologies. See [tessl-tile-discovery.md](references/tessl-tile-discovery.md) for the full procedure.
+If Tessl is installed, discover and install tiles for all technologies. See [tessl-tile-discovery.md](references/tessl-tile-discovery.md) for the full procedure. [EXPLICIT]
 
 ### 3. Research & Resolve Unknowns
 
-For each NEEDS CLARIFICATION item and dependency: research, document findings in `research.md` with decision, rationale, and alternatives considered. Include Tessl Tiles section if applicable.
+For each NEEDS CLARIFICATION item and dependency: research, document findings in `research.md` with decision, rationale, and alternatives considered. Include Tessl Tiles section if applicable. [EXPLICIT]
 
 ### 4. Design & Contracts
 
@@ -84,17 +84,17 @@ For each NEEDS CLARIFICATION item and dependency: research, document findings in
 
 ### 5. Pre-compute Dashboard Data
 
-After the plan is complete, write pre-computed data to `.specify/context.json` for static dashboard generation. Use `jq` to merge into the existing file (create if missing).
+After the plan is complete, write pre-computed data to `.specify/context.json` for static dashboard generation. Use `jq` to merge into the existing file (create if missing). [EXPLICIT]
 
 #### 5a. Architecture Node Classifications
 
-If plan.md contains an architecture diagram (ASCII box-drawing), classify each named component as one of: `client`, `server`, `storage`, `external`.
+If plan.md contains an architecture diagram (ASCII box-drawing), classify each named component as one of: `client`, `server`, `storage`, `external`. [EXPLICIT]
 
-Write to `.specify/context.json` under `planview.nodeClassifications`:
+Write to `.specify/context.json` under `planview.nodeClassifications`: [EXPLICIT]
 
 ```bash
 # Read existing or start fresh
-CONTEXT_FILE=".specify/context.json"
+CONTEXT_FILE=".specify/context.json" [EXPLICIT]
 [[ -f "$CONTEXT_FILE" ]] || echo '{}' > "$CONTEXT_FILE"
 
 # Merge node classifications (replace example with actual nodes from the plan diagram)
@@ -106,17 +106,17 @@ jq --argjson nodes '{
 }' '.planview.nodeClassifications = $nodes' "$CONTEXT_FILE" > "$CONTEXT_FILE.tmp" && mv "$CONTEXT_FILE.tmp" "$CONTEXT_FILE"
 ```
 
-Classification rules:
+Classification rules: [EXPLICIT]
 - **client**: browsers, CLIs, mobile apps, desktop apps — anything that initiates requests
 - **server**: APIs, gateways, workers, middleware, backend services — anything that processes requests
 - **storage**: databases, caches, queues, file stores, object storage — anything that persists data
 - **external**: third-party APIs, SaaS services, payment providers — anything outside the project boundary
 
-If no architecture diagram exists in the plan, skip this step.
+If no architecture diagram exists in the plan, skip this step. [EXPLICIT]
 
 #### 5b. Tessl Eval Scores
 
-If Tessl tiles were installed in step 2, collect eval scores from the `fetch-tile-evals.sh` outputs and write a summary to `context.json`:
+If Tessl tiles were installed in step 2, collect eval scores from the `fetch-tile-evals.sh` outputs and write a summary to `context.json`: [EXPLICIT]
 
 ```bash
 # Merge eval scores (replace example with actual tile names and scores from step 2)
@@ -125,29 +125,29 @@ jq --argjson evals '{
 }' '.planview.evalScores = $evals' "$CONTEXT_FILE" > "$CONTEXT_FILE.tmp" && mv "$CONTEXT_FILE.tmp" "$CONTEXT_FILE"
 ```
 
-Use the JSON output from each `fetch-tile-evals.sh --json` call (already run in step 2 via tessl-tile-discovery.md). Extract `score`, `pct`, `scenarios`, and `scored_at` fields for each tile.
+Use the JSON output from each `fetch-tile-evals.sh --json` call (already run in step 2 via tessl-tile-discovery.md). Extract `score`, `pct`, `scenarios`, and `scored_at` fields for each tile. [EXPLICIT]
 
-If no Tessl tiles were installed, skip this step.
+If no Tessl tiles were installed, skip this step. [EXPLICIT]
 
 ### 6. Constitution Check (Post-Design)
 
-Re-validate all technical decisions against constitutional principles. On violation: STOP, state violation, suggest compliant alternative.
+Re-validate all technical decisions against constitutional principles. On violation: STOP, state violation, suggest compliant alternative. [EXPLICIT]
 
 ### 7. Phase Separation Validation
 
-Scan plan for governance content per [phase-separation-rules.md](../iikit-core/references/phase-separation-rules.md) (Plan section). Auto-fix by replacing with constitution references, re-validate.
+Scan plan for governance content per [phase-separation-rules.md](../iikit-core/references/phase-separation-rules.md) (Plan section). Auto-fix by replacing with constitution references, re-validate. [EXPLICIT]
 
 ## Output Validation
 
-Before writing any artifact: review against each constitutional principle. On violation: STOP with explanation and alternative.
+Before writing any artifact: review against each constitutional principle. On violation: STOP with explanation and alternative. [EXPLICIT]
 
 ## Report
 
-Output: branch name, plan path, generated artifacts (research.md, data-model.md, contracts/*, quickstart.md), agent file update status, Tessl integration status (tiles installed, skills available, technologies without tiles, eval results saved), dashboard pre-computed data status (node classifications written, eval scores written).
+Output: branch name, plan path, generated artifacts (research.md, data-model.md, contracts/*, quickstart.md), agent file update status, Tessl integration status (tiles installed, skills available, technologies without tiles, eval results saved), dashboard pre-computed data status (node classifications written, eval scores written). [EXPLICIT]
 
 ## Semantic Diff on Re-run
 
-If plan.md exists: compare tech stack, architecture, dependencies. Show diff per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Semantic Diff section) with downstream impact. Flag breaking changes.
+If plan.md exists: compare tech stack, architecture, dependencies. Show diff per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Semantic Diff section) with downstream impact. Flag breaking changes. [EXPLICIT]
 
 ## Commit
 
@@ -158,19 +158,19 @@ git commit -m "plan: <feature-short-name> technical design"
 
 ## Dashboard Refresh
 
-Regenerate the dashboard so the pipeline reflects the new plan:
+Regenerate the dashboard so the pipeline reflects the new plan: [EXPLICIT]
 
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/generate-dashboard-safe.sh
 ```
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1`
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1` [EXPLICIT]
 
 ## Next Steps
 
-Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 02 --json`
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 02 -Json`
+Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 02 --json` [EXPLICIT]
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 02 -Json` [EXPLICIT]
 
-Parse the JSON and present:
+Parse the JSON and present: [EXPLICIT]
 1. If `clear_after` is true: suggest `/clear` before proceeding
 2. Present `next_step` as the primary recommendation
 3. If `alt_steps` non-empty: list as alternatives
@@ -179,9 +179,39 @@ Parse the JSON and present:
 
 Format:
 ```
-Plan complete!
-Next: [/clear → ] <next_step> (model: <tier>)
+Plan complete! [EXPLICIT]
+Next: [/clear → ] <next_step> (model: <tier>) [EXPLICIT]
 [- <alt_step> — <reason> (model: <tier>)]
 
 - Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path)
 ```
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/iikit-02-plan" — Run the full iikit 02 plan workflow
+- "iikit 02 plan on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

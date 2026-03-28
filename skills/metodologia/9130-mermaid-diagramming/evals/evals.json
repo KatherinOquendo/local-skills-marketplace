@@ -1,38 +1,9 @@
 [
-  {
-    "prompt": "Generate Gantt chart for a 6-month project with 5 phases.",
-    "assertions": [
-      "creates valid Mermaid Gantt syntax",
-      "includes milestones",
-      "shows dependencies",
-      "highlights critical path"
-    ]
-  },
-  {
-    "prompt": "Build sequence diagram for change control process.",
-    "assertions": [
-      "models all participants",
-      "shows message flow",
-      "includes decision points",
-      "handles alternative paths"
-    ]
-  },
-  {
-    "prompt": "Design decision flowchart for risk response selection.",
-    "assertions": [
-      "maps decision criteria",
-      "shows all paths",
-      "includes conditions",
-      "produces valid Mermaid"
-    ]
-  },
-  {
-    "prompt": "Create C4 container diagram for project architecture.",
-    "assertions": [
-      "defines system boundary",
-      "shows containers",
-      "maps relationships",
-      "includes technology annotations"
-    ]
-  }
+  {"id": "mermaid-diagramming-happy-path", "type": "happy_path", "input": "Run mermaid diagramming on this project", "expected_behavior": "Skill activates and produces the expected mermaid diagramming output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "mermaid-diagramming-explicit-trigger", "type": "happy_path", "input": "Apply mermaid diagramming analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the mermaid diagramming workflow", "tags": ["trigger", "recognition"]},
+  {"id": "mermaid-diagramming-with-context", "type": "happy_path", "input": "Apply mermaid diagramming to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive mermaid diagramming analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "mermaid-diagramming-minimal-input", "type": "happy_path", "input": "Quick mermaid diagramming", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "mermaid-diagramming-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to mermaid diagramming", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "mermaid-diagramming-edge-empty-input", "type": "edge_case", "input": "Run mermaid diagramming but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "mermaid-diagramming-edge-conflicting", "type": "edge_case", "input": "Apply mermaid diagramming but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

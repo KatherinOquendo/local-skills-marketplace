@@ -1,0 +1,9 @@
+[
+  {"id": "auth-architecture-happy-path", "type": "happy_path", "input": "Run auth architecture on this project", "expected_behavior": "Skill activates and produces the expected auth architecture output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "auth-architecture-explicit-trigger", "type": "happy_path", "input": "Apply auth architecture analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the auth architecture workflow", "tags": ["trigger", "recognition"]},
+  {"id": "auth-architecture-with-context", "type": "happy_path", "input": "Apply auth architecture to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive auth architecture analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "auth-architecture-minimal-input", "type": "happy_path", "input": "Quick auth architecture", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "auth-architecture-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to auth architecture", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "auth-architecture-edge-empty-input", "type": "edge_case", "input": "Run auth architecture but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "auth-architecture-edge-conflicting", "type": "edge_case", "input": "Apply auth architecture but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

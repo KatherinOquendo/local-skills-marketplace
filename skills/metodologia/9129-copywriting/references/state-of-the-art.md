@@ -36,7 +36,7 @@ La IA genera borradores fluidos pero tiene debilidades específicas en copywriti
 | Calibración de tono por audiencia | Buena con instrucciones | Superior (intuición política) | Humano define tono, IA ejecuta |
 | Evidence tagging | Requiere instrucción explícita | Natural en consultor experto | Sistema de tags obligatorio |
 | Detección de muletillas | Excelente con checklist | Inconsistente bajo presión | IA como editor, checklist automatizado |
-| Juicio sobre qué omitir | Débil (tiende a incluir todo) | Fuerte (experiencia ejecutiva) | Humano decide alcance, IA produce |
+| Juicio sobre qué omitir | Débil (tiende a incluir pending) | Fuerte (experiencia ejecutiva) | Humano decide alcance, IA produce |
 | Cuantificación de COI | Buena si tiene datos | Superior (contexto de industria) | Colaboración: IA proyecta, humano valida supuestos |
 
 **Implicación para el skill:** El copywriting skill opera como un **editor experto automatizado** — no reemplaza el juicio del consultor sobre qué decir, sino que optimiza cómo se dice.
@@ -56,7 +56,7 @@ Tendencia creciente en documentos enterprise: el **micro-copy** de señalizació
 
 ### 2.1 McKinsey: Issue-Driven Communication
 
-McKinsey popularizó la comunicación **issue-driven**: cada slide, cada párrafo responde a una pregunta específica. No hay secciones "de contexto" — todo está al servicio de una decisión.
+McKinsey popularizó la comunicación **issue-driven**: cada slide, cada párrafo responde a una pregunta específica. No hay secciones "de contexto" — Todo está al servicio de una decisión.
 
 **Principio adoptado:** El headline de cada sección es una conclusión, no un tema. "La deuda técnica consume 15 FTE-meses/trimestre" — no "Análisis de deuda técnica".
 
@@ -99,7 +99,7 @@ Movimiento creciente hacia la **transparencia epistémica** en consultoría:
 
 - Todo claim indica su nivel de confianza
 - Los supuestos son explícitos y están listados
-- Las inferencias indican el método y la muestra
+- Las inferencias indican el méTodo y la muestra
 - Los datos cuantitativos tienen fecha de validez
 
 **Implementación en este skill:** El sistema de evidence tags ([CÓDIGO], [CONFIG], [DOC], [INFERENCIA], [SUPUESTO]) es una implementación directa de este estándar.

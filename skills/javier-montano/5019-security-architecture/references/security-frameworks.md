@@ -220,7 +220,7 @@ This reference provides reusable HTML templates, CSS design tokens, and structur
 ## Using These Templates
 
 1. **Copy template structure** into HTML document
-2. **Replace bracketed placeholders** with actual threats, controls, and framework requirements
+2. **Replace bracketed templates** with actual threats, controls, and framework requirements
 3. **Apply risk severity colors** based on scoring thresholds
 4. **Compose templates** into full report: threat model cards, ZT maturity, compliance matrix, IAM flow
 5. **Link to evidence sources** and runbooks for each control

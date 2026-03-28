@@ -3,7 +3,7 @@ name: session-end-cleanup
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Session summary generation, insight extraction, tasklog update.
+  Session summary generation, insight extraction, tasklog update. [EXPLICIT]
   Trigger: "session end cleanup"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Session End Cleanup
 > "Method over hacks."
 ## TL;DR
-Session summary generation, insight extraction, tasklog update.
+Session summary generation, insight extraction, tasklog update. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Session summary generation, insight extraction, tasklog update.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/session-end-cleanup" — Run the full session end cleanup workflow
+- "session end cleanup on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

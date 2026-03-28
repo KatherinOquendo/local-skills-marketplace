@@ -2,10 +2,10 @@
 name: apex-cross-platform-convert
 description: >
   Use when the user asks to "convert skills to Cursor", "export to Codex",
-  "convert to Gemini format", "port skills to another AI platform", or "create multi-platform skills".
+  "convert to Gemini format", "port skills to another AI platform", or "create multi-platform skills". [EXPLICIT]
   Activates when a stakeholder needs to convert MOAT skills from Claude Code format to Cursor rules,
   GitHub Codex AGENTS.md, Google Gemini system instructions, or other AI coding assistant formats
-  while preserving skill logic and evidence protocols.
+  while preserving skill logic and evidence protocols. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -20,7 +20,7 @@ allowed-tools:
 **TL;DR**: Converts PMO-APEX skills from Claude Code format (SKILL.md) to equivalent formats for other AI coding assistants: Cursor (.cursorrules), GitHub Codex (AGENTS.md), Google Gemini (system instructions), and others. Preserves skill logic, evidence protocols, and methodology content across platforms.
 
 ## Principio Rector
-El conocimiento de PM no debe estar locked-in a una plataforma. Las skills MOAT contienen expertise de gestión de proyectos que es valiosa independientemente de la herramienta AI. La conversión cross-platform extiende el alcance sin diluir el contenido. El formato cambia; la inteligencia metodológica permanece.
+El conocimiento de PM no debe estar locked-in a una plataforma. Las skills MOAT contienen expertise de gestión de proyectos que es valiosa independientemente de la herramienta AI. La conversión cross-platform extiende el alcance sin diluir el contenido. El formato cambia; la inteligencia metodológica permanece. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes source SKILL.md files are at full MOAT compliance level [PLAN]
@@ -101,7 +101,7 @@ El conocimiento de PM no debe estar locked-in a una plataforma. Las skills MOAT 
 | Sync protocol | Update procedure for skill changes |
 
 **Bad Cross-Platform Conversion:**
-Copy-pasting SKILL.md content into target format without format adaptation, tool mapping, or validation. Fails because each platform has different conventions — a verbatim copy may not be parseable, may ignore platform-specific features, and provides no maintenance path.
+Copy-pasting SKILL.md content into target format without format adaptation, tool mapping, or validation. Fails because each platform has different conventions — a verbatim copy may not be parseable, may ignore platform-specific features, and provides no maintenance path. [EXPLICIT]
 
 ## Validation Gate
 - [ ] Format mapping documented for every SKILL.md section to target format

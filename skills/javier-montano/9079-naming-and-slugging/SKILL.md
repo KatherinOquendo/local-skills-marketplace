@@ -1,12 +1,12 @@
 ---
 name: naming-and-slugging
-description: >
+description: 
   This skill should be used when the user asks to "generate a slug", "rename files to kebab-case",
   "audit naming conventions", "clean up filenames", or "validate a name". Also triggers on mentions
   of slug generation, kebab-case, filename linting, registry audit, or naming patterns. Use this
   skill even if the user only has a single file to rename — the full naming protocol ensures
-  consistency across the project.
-argument-hint: "<name-to-slug or path-to-audit> [--clean] [--validate] [--strict] [--json]"
+  consistency across the project. [EXPLICIT]
+argument-hint: "name-to-slug or path-to-audit [--clean] [--validate] [--strict] [--json]"
 model: opus
 context: fork
 allowed-tools:
@@ -20,13 +20,13 @@ allowed-tools:
 
 # Naming & Slugging
 
-Every artifact should be findable via search, safe for URLs and filesystems, and self-describing.
+Every artifact should be findable via search, safe for URLs and filesystems, and self-describing. [EXPLICIT]
 
 ## Quick Reference
 
 ### Slug Generation
 ```
-Input                        →  Output
+Input                        →  Output [EXPLICIT]
 "My New Component"           →  my-new-component
 "api_client_FINAL.ts"        →  api-client-final.ts
 "  Hllo Wrld!! "            →  hello-world
@@ -34,7 +34,7 @@ Input                        →  Output
 
 ### Clean Mode (strips versions and status)
 ```
-Input                        →  Output
+Input                        →  Output [EXPLICIT]
 "My New Component v2"        →  my-new-component
 "new-api-client-v3.ts"       →  api-client.ts
 "old-dashboard-final.md"     →  dashboard.md
@@ -57,13 +57,13 @@ Input                        →  Output
 - **Kebab-case:** Words separated by hyphens (`my-file-name`). Reads well, URL-safe, works on all filesystems including case-sensitive.
 - **Semantic naming:** Name reflects what it *is*, not where it came from. `api-client.ts` not `new-api-client-v2-final.ts`. Versions belong in git, not filenames.
 
-## The Protocol
+## Core Process
 
 ### Step 1: Identify Entity Type
 
-Determine if it's a skill, workflow, rule, document, or general file. Each type has a specific pattern (see table above).
+Determine if it's a skill, workflow, rule, document, or general file. Each type has a specific pattern (see table above). [EXPLICIT]
 
-For detailed conventions per entity type, read `references/naming-patterns.md`.
+For detailed conventions per entity type, read `references/naming-patterns.md`. [EXPLICIT]
 
 ### Step 2: Generate the Slug
 
@@ -79,7 +79,7 @@ python tools/slugger.py --clean "new-api-client-v2-final"
 # → api-client
 ```
 
-The `--clean` flag removes: version markers (`v1`, `v2`), status prefixes (`new-`, `old-`, `final-`, `draft-`, `temp-`, `wip-`), and trailing noise (`final`, `copy`).
+The `--clean` flag removes: version markers (`v1`, `v2`), status prefixes (`new-`, `old-`, `final-`, `draft-`, `temp-`, `wip-`), and trailing noise (`final`, `copy`). [EXPLICIT]
 
 ### Step 3: Validate
 
@@ -91,7 +91,7 @@ python tools/slugger.py --validate "my_Bad_Name-v2"
 # → Issues: uppercase, underscores, version marker → suggested: my-bad-name
 ```
 
-Validation catches: uppercase, underscores, spaces, invalid characters, consecutive hyphens, version markers, status prefixes, excessive length.
+Validation catches: uppercase, underscores, spaces, invalid characters, consecutive hyphens, version markers, status prefixes, excessive length. [EXPLICIT]
 
 ### Step 4: Audit a Project
 
@@ -103,7 +103,7 @@ python tools/registry-linter.py /path/to/project --json      # machine-readable
 
 ## Self-Correction Triggers
 
-When encountered during any file operation, apply automatically:
+When encountered during any file operation, apply automatically: [EXPLICIT]
 
 | Pattern Detected | Action |
 |------------------|--------|
@@ -146,7 +146,7 @@ When encountered during any file operation, apply automatically:
 
 ## Validation Gate
 
-Before delivering a naming recommendation or rename operation, confirm:
+Before delivering a naming recommendation or rename operation, confirm: [EXPLICIT]
 
 - [ ] All names use lowercase kebab-case (or documented exception)
 - [ ] No version markers in filenames (or user explicitly requested them)
@@ -163,3 +163,11 @@ Before delivering a naming recommendation or rename operation, confirm:
 
 ---
 **Author:** Javier Montaño | **Last updated:** 2026-03-12
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/naming-and-slugging" — Run the full naming and slugging workflow
+- "naming and slugging on this project" — Apply to current context
+

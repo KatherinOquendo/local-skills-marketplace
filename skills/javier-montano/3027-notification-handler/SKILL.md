@@ -3,7 +3,7 @@ name: notification-handler
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  System notification management, progress updates, alert routing.
+  System notification management, progress updates, alert routing. [EXPLICIT]
   Trigger: "notification handler"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Notification Handler
 > "Method over hacks."
 ## TL;DR
-System notification management, progress updates, alert routing.
+System notification management, progress updates, alert routing. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ System notification management, progress updates, alert routing.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/notification-handler" — Run the full notification handler workflow
+- "notification handler on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

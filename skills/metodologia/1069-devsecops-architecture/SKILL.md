@@ -1,11 +1,11 @@
 ---
 name: metodologia-devsecops-architecture
 author: Javier Montano · Comunidad MetodologIA
-argument-hint: "<system-or-pipeline-name> [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
-description: >
-  DevSecOps pipeline architecture — CI/CD design, shift-left security, supply chain integrity, release management, and compliance automation.
+argument-hint: "system-or-pipeline-name [--modo piloto-auto|desatendido|supervisado|paso-a-paso] [--formato markdown|html|dual] [--variante ejecutiva|tecnica]"
+description: 
+  DevSecOps pipeline architecture — CI/CD design, shift-left security, supply chain integrity, release management, and compliance automation. [EXPLICIT]
   Use when the user asks to "design the CI/CD pipeline", "integrate security into delivery", "set up SBOM and artifact signing",
-  "automate compliance", "measure DORA metrics", or mentions SAST, SCA, DAST, secrets scanning, IaC scanning, canary deployment, or policy-as-code.
+  "automate compliance", "measure DORA metrics", or mentions SAST, SCA, DAST, secrets scanning, IaC scanning, canary deployment, or policy-as-code. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # DevSecOps Architecture: Delivery & Security Pipeline
 
-DevSecOps architecture designs how software is built, tested, secured, and released to production. It integrates security into every stage of the delivery pipeline, ensuring code quality, compliance, and supply chain integrity.
+DevSecOps architecture designs how software is built, tested, secured, and released to production. It integrates security into every stage of the delivery pipeline, ensuring code quality, compliance, and supply chain integrity. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -29,20 +29,20 @@ DevSecOps architecture designs how software is built, tested, secured, and relea
 
 ### DevSecOps Philosophy
 
-1. **Shift-left, but not only-left.** Security starts in the IDE but does not end there. Every pipeline stage has its own security gate.
-2. **Supply chain integrity.** SBOM, artifact signing, dependency scanning — the software supply chain is an attack vector. It is verified, not assumed.
-3. **DORA metrics as North Star.** Deployment frequency, lead time, failure rate, MTTR — measure to improve, not to report.
+1. **Shift-left, but not only-left.** Security starts in the IDE but does not end there. Every pipeline stage has its own security gate. [EXPLICIT]
+2. **Supply chain integrity.** SBOM, artifact signing, dependency scanning — the software supply chain is an attack vector. It is verified, not assumed. [EXPLICIT]
+3. **DORA metrics as North Star.** Deployment frequency, lead time, failure rate, MTTR — measure to improve, not to report. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or pipeline name as `$ARGUMENTS`. Parse `$1` as the **system/pipeline name** used throughout all output artifacts.
+The user provides a system or pipeline name as `$ARGUMENTS`. Parse `$1` as the **system/pipeline name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de pipeline y security gates, HITL para decisiones de deployment strategy y compliance policies.
-  - **desatendido**: Zero interruptions. Pipeline documentado automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en security gates, deployment strategy, y compliance automation.
-  - **paso-a-paso**: Confirma cada stage, security gate, deployment strategy, y compliance policy.
+  - **piloto-auto**: Auto para análisis de pipeline y security gates, HITL para decisiones de deployment strategy y compliance policies. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Pipeline documentado automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en security gates, deployment strategy, y compliance automation. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada stage, security gate, deployment strategy, y compliance policy. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 CI/CD pipeline + S2 shift-left security + S5 DORA metrics) | `técnica` (full 7 sections, default)
 
@@ -84,7 +84,7 @@ Read ${CLAUDE_SKILL_DIR}/references/compliance-policies.md
 
 ### S1: CI/CD Pipeline Architecture
 
-Design of build, test, and deployment stages.
+Design of build, test, and deployment stages. [EXPLICIT]
 
 **Commit Stage (5-10 min):** Git push -> compile -> unit tests -> lint -> build artifact -> publish to artifact repository
 
@@ -107,7 +107,7 @@ Design of build, test, and deployment stages.
 
 ### S2: Shift-Left Security (SAST/SCA/DAST/Secrets/IaC)
 
-Security controls embedded throughout the pipeline.
+Security controls embedded throughout the pipeline. [EXPLICIT]
 
 **SAST (Static Analysis):** Scans source code for vulnerabilities (SQLi, XSS, hard-coded creds). Tools: SonarQube, Semgrep, Checkmarx. Gate: block merge on critical/high.
 
@@ -125,7 +125,7 @@ Security controls embedded throughout the pipeline.
 
 ### S3: Supply Chain Security (SBOM, Signing)
 
-Ensures code and artifact integrity end-to-end.
+Ensures code and artifact integrity end-to-end. [EXPLICIT]
 
 **SBOM:** Complete component list (SPDX/CycloneDX format), generated at build time, used for vulnerability tracking and compliance.
 
@@ -139,7 +139,7 @@ Ensures code and artifact integrity end-to-end.
 
 ### S4: Release Management
 
-Strategy for version management and production deployment.
+Strategy for version management and production deployment. [EXPLICIT]
 
 **Versioning:** Semantic versioning (MAJOR.MINOR.PATCH), conventional commits, automated changelog generation.
 
@@ -154,7 +154,7 @@ Strategy for version management and production deployment.
 
 ### S5: Pipeline Observability (DORA Metrics)
 
-Tracking and visibility into build/deployment process.
+Tracking and visibility into build/deployment process. [EXPLICIT]
 
 **DORA Metrics:**
 - **Deployment Frequency:** Target: on-demand, multiple per day
@@ -172,7 +172,7 @@ Tracking and visibility into build/deployment process.
 
 ### S6: Compliance Automation
 
-Enforcement of compliance requirements through automated controls.
+Enforcement of compliance requirements through automated controls. [EXPLICIT]
 
 **Policy-as-Code:** Define rules in code (YAML, Rego, Jinja). Enforce at build time, deploy time, runtime. Tools: OPA, Kyverno, HashiCorp Sentinel.
 
@@ -193,7 +193,7 @@ Enforcement of compliance requirements through automated controls.
 
 ### S7: Minimum Controls & Risk Matrix
 
-Security gates: non-negotiable vs. optional by risk classification.
+Security gates: non-negotiable vs. optional by risk classification. [EXPLICIT]
 
 **Commit Stage (Always Required):** Code compiles, unit tests pass (>=80% coverage), linting passes, no secrets in code.
 
@@ -370,7 +370,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

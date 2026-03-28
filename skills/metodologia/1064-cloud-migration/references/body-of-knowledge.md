@@ -8,7 +8,7 @@
 
 La migracion cloud es el proceso de mover workloads, datos e infraestructura desde entornos on-premises o legacy hacia plataformas cloud. No es un evento unico — es un programa que requiere assessment, clasificacion, planificacion por oleadas, ejecucion controlada y validacion post-migracion.
 
-El principio rector es **migrar con estrategia 7R, nunca migrar "todo igual"**. Cada workload tiene un contexto unico — dependencias, compliance, criticidad de negocio, deuda tecnica — que determina su estrategia optima. Mover problemas del datacenter a la nube solo produce problemas mas caros.
+El principio rector es **migrar con estrategia 7R, nunca migrar "Todo igual"**. Cada workload tiene un contexto unico — dependencias, compliance, criticidad de negocio, deuda tecnica — que determina su estrategia optima. Mover problemas del datacenter a la nube solo produce problemas mas caros.
 
 **Propiedades fundamentales de un programa de migracion exitoso:**
 - **Clasificacion rigurosa**: cada workload clasificado con 7R y justificacion documentada
@@ -76,7 +76,7 @@ Metodologia de secuenciacion que agrupa workloads en oleadas basandose en depend
 
 ### Cutover Rehearsal
 
-Practica de ejecutar el runbook de cutover completo en un entorno no-productivo antes de ejecutarlo en produccion. Incluye: migracion de datos, switch de DNS, smoke testing, y rollback. Mide tiempos reales vs. planificados. Obligatorio para todo cutover de produccion.
+Practica de ejecutar el runbook de cutover completo en un entorno no-productivo antes de ejecutarlo en produccion. Incluye: migracion de datos, switch de DNS, smoke testing, y rollback. Mide tiempos reales vs. planificados. Obligatorio para Todo cutover de produccion.
 
 ### Discovery-Driven Migration
 
@@ -92,7 +92,7 @@ Metodologia de comparacion de Total Cost of Ownership entre on-premises y cloud.
 
 ### Discovery y Assessment
 
-| Herramienta | Proveedor | Metodo | Alcance |
+| Herramienta | Proveedor | MeTodo | Alcance |
 |-------------|-----------|--------|---------|
 | AWS Application Discovery Service | AWS | Agente o agentless | Config, utilizacion, conexiones de red |
 | AWS Migration Hub | AWS | Agregador | Vista unificada de discovery + migracion |
@@ -135,14 +135,14 @@ Metodologia de comparacion de Total Cost of Ownership entre on-premises y cloud.
 
 ### Patrones de Datos
 
-- **Big Bang Data Migration**: transferir todo en una ventana de mantenimiento. Riesgo alto, simple.
+- **Big Bang Data Migration**: transferir Todo en una ventana de mantenimiento. Riesgo alto, simple.
 - **Continuous Replication**: replicar continuamente durante semanas, cutover final es solo un switch. Riesgo bajo.
 - **Dual-Write**: escribir en source y target simultaneamente durante transicion. Complejo pero zero-downtime.
 - **ETL Replay**: reconstruir datos en target via ETL historico. Util cuando se cambia schema.
 
 ### Patrones de Landing Zone
 
-- **Single-account**: todo en una cuenta. Solo para PoC o startups.
+- **Single-account**: Todo en una cuenta. Solo para PoC o startups.
 - **Multi-account**: cuentas separadas por entorno, equipo, o workload. Estandar para enterprise.
 - **Hub-and-spoke**: cuenta de networking central con cuentas de workload como spokes. Estandar AWS/Azure.
 

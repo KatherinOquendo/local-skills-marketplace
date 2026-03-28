@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Optimize web font loading with subsetting, preloading, font-display strategies,
-  and variable fonts to eliminate FOIT/FOUT and improve performance.
+  and variable fonts to eliminate FOIT/FOUT and improve performance. [EXPLICIT]
   Trigger: "font loading", "web fonts", "FOIT", "font-display", "variable fonts"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides web font optimization to eliminate invisible text (FOIT) and layout shifts (FOUT) — covers font-display strategies, preloading critical fonts, Unicode range subsetting, variable fonts for weight reduction, and self-hosting vs CDN tradeoffs. Use when custom fonts are causing performance issues or layout shifts.
+Guides web font optimization to eliminate invisible text (FOIT) and layout shifts (FOUT) — covers font-display strategies, preloading critical fonts, Unicode range subsetting, variable fonts for weight reduction, and self-hosting vs CDN tradeoffs. Use when custom fonts are causing performance issues or layout shifts. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides web font optimization to eliminate invisible text (FOIT) and layout shift
 
 - `performance-testing` — measuring font loading impact on Core Web Vitals
 - `build-optimization` — automating font subsetting in the build pipeline
+
+## Usage
+
+Example invocations:
+
+- "/font-optimization" — Run the full font optimization workflow
+- "font optimization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

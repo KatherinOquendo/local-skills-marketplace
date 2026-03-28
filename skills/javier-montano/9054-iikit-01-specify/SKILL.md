@@ -10,7 +10,7 @@ metadata:
 
 # Intent Integrity Kit Specify
 
-Create or update a feature specification from a natural language description.
+Create or update a feature specification from a natural language description. [EXPLICIT]
 
 ## User Input
 
@@ -18,19 +18,19 @@ Create or update a feature specification from a natural language description.
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty).
+You **MUST** consider the user input before proceeding (if not empty). [EXPLICIT]
 
 ## Constitution Loading
 
-Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (soft mode — warn if missing, proceed without).
+Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (soft mode — warn if missing, proceed without). [EXPLICIT]
 
 ## Execution Flow
 
-The text after `/iikit-01-specify` **is** the feature description.
+The text after `/iikit-01-specify` **is** the feature description. [EXPLICIT]
 
 ### 0. Bug-Fix Intent Detection
 
-Before proceeding with feature specification, analyze the user description for bug-fix intent using **contextual analysis** (not keyword-only):
+Before proceeding with feature specification, analyze the user description for bug-fix intent using **contextual analysis** (not keyword-only): [EXPLICIT]
 
 **Bug-fix signals** (keywords in a fixing context): "fix", "crash", "broken", "bug", "doesn't work", "fails", "error" when used to describe existing broken behavior.
 
@@ -38,7 +38,7 @@ Before proceeding with feature specification, analyze the user description for b
 
 **Decision rule**: Is the primary intent to **fix existing broken behavior** or to **add new capability**? Keywords alone are insufficient — evaluate the full description.
 
-If bug-fix intent is detected:
+If bug-fix intent is detected: [EXPLICIT]
 1. Display: "This sounds like a bug fix. Consider using `/iikit-bugfix` instead."
 2. Show example: `/iikit-bugfix '<the user description>'`
 3. Ask the user to confirm: proceed with specification (it's genuinely a new feature) or switch to `/iikit-bugfix`
@@ -47,13 +47,13 @@ If bug-fix intent is detected:
 
 ### 1. Generate Branch Name
 
-Create 2-4 word action-noun name from description:
+Create 2-4 word action-noun name from description: [EXPLICIT]
 - "I want to add user authentication" -> "user-auth"
 - "Implement OAuth2 integration for the API" -> "oauth2-api-integration"
 
 ### 2. Create Feature Branch and Directory
 
-Check current branch. If on main/master/develop, suggest creating feature branch (default). If already on feature branch, suggest skipping.
+Check current branch. If on main/master/develop, suggest creating feature branch (default). If already on feature branch, suggest skipping. [EXPLICIT]
 
 **Unix/macOS/Linux:**
 ```bash
@@ -66,7 +66,7 @@ pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powe
 # Add -SkipBranch if user declined
 ```
 
-Parse JSON for `BRANCH_NAME`, `SPEC_FILE`, `FEATURE_NUM`. Only run ONCE per feature.
+Parse JSON for `BRANCH_NAME`, `SPEC_FILE`, `FEATURE_NUM`. Only run ONCE per feature. [EXPLICIT]
 
 ### 3. Generate Specification
 
@@ -78,23 +78,23 @@ Parse JSON for `BRANCH_NAME`, `SPEC_FILE`, `FEATURE_NUM`. Only run ONCE per feat
 6. Define Success Criteria (measurable, technology-agnostic)
 7. Identify Key Entities (if data involved)
 
-Write to `SPEC_FILE` using [spec-template.md](../iikit-core/templates/spec-template.md) structure.
+Write to `SPEC_FILE` using [spec-template.md](../iikit-core/templates/spec-template.md) structure. [EXPLICIT]
 
 ### 4. Phase Separation Validation
 
-Scan for implementation details per [phase-separation-rules.md](../iikit-core/references/phase-separation-rules.md) (Specification section). Auto-fix violations, re-validate until clean.
+Scan for implementation details per [phase-separation-rules.md](../iikit-core/references/phase-separation-rules.md) (Specification section). Auto-fix violations, re-validate until clean. [EXPLICIT]
 
 ### 5. Create Spec Quality Checklist
 
-Generate `FEATURE_DIR/checklists/requirements.md` covering: content quality (no implementation details), requirement completeness, feature readiness.
+Generate `FEATURE_DIR/checklists/requirements.md` covering: content quality (no implementation details), requirement completeness, feature readiness. [EXPLICIT]
 
 ### 5b. Generate QA Acceptance Criteria
 
-Generate `FEATURE_DIR/qa/acceptance-criteria.md` from the spec's SC-XXX success criteria:
+Generate `FEATURE_DIR/qa/acceptance-criteria.md` from the spec's SC-XXX success criteria: [EXPLICIT]
 
 ```markdown
 # Acceptance Criteria — {Feature Name}
-Generated from spec.md | {date}
+Generated from spec.md | {date} [EXPLICIT]
 
 ## Success Criteria Checklist
 - [ ] SC-001: {description} — Target: {measurable target}
@@ -107,15 +107,15 @@ Generated from spec.md | {date}
 | SC-001 | FR-001, FR-002 | Unit test / E2E |
 ```
 
-Each SC-XXX from spec.md becomes a checkable acceptance criterion with a measurable target.
+Each SC-XXX from spec.md becomes a checkable acceptance criterion with a measurable target. [EXPLICIT]
 
 ### 6. Handle Clarifications
 
-If `[NEEDS CLARIFICATION]` markers remain, present each as a question with options table and wait for user response.
+If `[NEEDS CLARIFICATION]` markers remain, present each as a question with options table and wait for user response. [EXPLICIT]
 
 ### 7. Report
 
-Output: branch name, spec file path, checklist results, readiness for next phase.
+Output: branch name, spec file path, checklist results, readiness for next phase. [EXPLICIT]
 
 ## Guidelines
 
@@ -125,7 +125,7 @@ Output: branch name, spec file path, checklist results, readiness for next phase
 
 ## Semantic Diff on Re-run
 
-If spec.md already exists: extract semantic elements (stories, requirements, criteria), compare with new content per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Semantic Diff section), show downstream impact warnings, ask confirmation before overwriting.
+If spec.md already exists: extract semantic elements (stories, requirements, criteria), compare with new content per [formatting-guide.md](../iikit-core/references/formatting-guide.md) (Semantic Diff section), show downstream impact warnings, ask confirmation before overwriting. [EXPLICIT]
 
 ## Commit
 
@@ -136,19 +136,19 @@ git commit -m "spec: <feature-short-name> specification"
 
 ## Dashboard Refresh
 
-Regenerate the dashboard so the pipeline reflects the new spec:
+Regenerate the dashboard so the pipeline reflects the new spec: [EXPLICIT]
 
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/generate-dashboard-safe.sh
 ```
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1`
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1` [EXPLICIT]
 
 ## Next Steps
 
-Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 01 --json`
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 01 -Json`
+Run: `bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/next-step.sh --phase 01 --json` [EXPLICIT]
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/next-step.ps1 -Phase 01 -Json` [EXPLICIT]
 
-Parse the JSON and present:
+Parse the JSON and present: [EXPLICIT]
 1. If `clear_after` is true: suggest `/clear` before proceeding
 2. Present `next_step` as the primary recommendation
 3. If `alt_steps` non-empty: list as alternatives
@@ -157,9 +157,39 @@ Parse the JSON and present:
 
 Format:
 ```
-Specification complete!
-Next: [/clear → ] <next_step> (model: <tier>)
+Specification complete! [EXPLICIT]
+Next: [/clear → ] <next_step> (model: <tier>) [EXPLICIT]
 [- <alt_step> — <reason> (model: <tier>)]
 
 - Dashboard: file://$(pwd)/.specify/dashboard.html (resolve the path)
 ```
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/iikit-01-specify" — Run the full iikit 01 specify workflow
+- "iikit 01 specify on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

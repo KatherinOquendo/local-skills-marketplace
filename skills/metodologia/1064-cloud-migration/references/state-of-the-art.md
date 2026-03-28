@@ -82,7 +82,7 @@
 
 - **Pro-rehost masivo:** "Get out of the datacenter first, optimize later." Velocidad maxima, riesgo de ejecucion bajo. Cloud benefits (elasticidad, DR) se obtienen sin modificar aplicaciones. Ideal para datacenter exit con deadline.
 - **Pro-modernizacion selectiva:** "Rehost sin optimizar es pagar cloud prices por on-prem architecture." El 30-40% de workloads rehosted no aprovechan cloud capabilities. Los costos cloud pueden ser MAYORES que on-prem sin rightsizing.
-- **Posicion del skill:** 7R assessment per workload. Rehost para quick wins y apps sin codigo fuente. Replatform para moderate benefit. Refactor solo para apps estrategicas con >5 anos de vida util. NUNCA "todo rehost" ni "todo refactor".
+- **Posicion del skill:** 7R assessment per workload. Rehost para quick wins y apps sin codigo fuente. Replatform para moderate benefit. Refactor solo para apps estrategicas con >5 anos de vida util. NUNCA "Todo rehost" ni "Todo refactor".
 
 ### 3.2 Big-Bang vs. Wave-Based Migration?
 

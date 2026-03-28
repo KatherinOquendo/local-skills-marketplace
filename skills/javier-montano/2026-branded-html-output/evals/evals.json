@@ -1,0 +1,9 @@
+[
+  {"id": "branded-html-output-happy-path", "type": "happy_path", "input": "Run branded html output on this project", "expected_behavior": "Skill activates and produces the expected branded html output output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "branded-html-output-explicit-trigger", "type": "happy_path", "input": "Apply branded html output analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the branded html output workflow", "tags": ["trigger", "recognition"]},
+  {"id": "branded-html-output-with-context", "type": "happy_path", "input": "Apply branded html output to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive branded html output analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "branded-html-output-minimal-input", "type": "happy_path", "input": "Quick branded html output", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "branded-html-output-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to branded html output", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "branded-html-output-edge-empty-input", "type": "edge_case", "input": "Run branded html output but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "branded-html-output-edge-conflicting", "type": "edge_case", "input": "Apply branded html output but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

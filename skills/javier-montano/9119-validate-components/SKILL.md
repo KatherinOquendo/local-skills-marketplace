@@ -13,7 +13,7 @@ allowed-tools:
 
 > "Frontmatter is the API contract of a skill. Without it, the runtime cannot discover, route, or constrain."
 
-Validates that every skill, agent, and command file has correct YAML frontmatter, required fields, proper types, and a well-structured body.
+Validates that every skill, agent, and command file has correct YAML frontmatter, required fields, proper types, and a well-structured body. [EXPLICIT]
 
 ---
 
@@ -98,27 +98,35 @@ For each `commands/*.md`:
 
 **Bad finding:**
 ```
-Missing name in skill.
+Missing name in skill. [EXPLICIT]
 ```
-Missing: no file path, no field name, no expected type.
+Missing: no file path, no field name, no expected type. [EXPLICIT]
 
 **Good finding:**
 ```
 CRITICAL | skills/validate-hooks/SKILL.md | name | Missing. Expected: non-empty string in YAML frontmatter. | (absent)
 ```
-Includes: severity, exact file path, field name, expected type, current value.
+Includes: severity, exact file path, field name, expected type, current value. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Accepting `allowed-tools` as a comma-separated string instead of a YAML array.
-2. Skipping agent/command validation because "only skills matter".
-3. Not detecting frontmatter that uses tabs instead of spaces (YAML spec requires spaces).
-4. Treating `user-invocable: "true"` (string) as valid when a boolean is required.
+1. Accepting `allowed-tools` as a comma-separated string instead of a YAML array. [EXPLICIT]
+2. Skipping agent/command validation because "only skills matter". [EXPLICIT]
+3. Not detecting frontmatter that uses tabs instead of spaces (YAML spec requires spaces). [EXPLICIT]
+4. Treating `user-invocable: "true"` (string) as valid when a boolean is required. [EXPLICIT]
 
 ## Edge Cases
 
-1. Skill with frontmatter but completely empty body -- CRITICAL.
-2. Command with `alias-of` pointing to itself -- CRITICAL (circular alias).
-3. Agent file with no frontmatter delimiters at all -- CRITICAL.
-4. Frontmatter with multiline description using `|` or `>` YAML syntax -- valid, do not flag.
-5. Extra files in skill directories beyond SKILL.md (templates, examples) -- INFO.
+1. Skill with frontmatter but completely empty body -- CRITICAL. [EXPLICIT]
+2. Command with `alias-of` pointing to itself -- CRITICAL (circular alias). [EXPLICIT]
+3. Agent file with no frontmatter delimiters at all -- CRITICAL. [EXPLICIT]
+4. Frontmatter with multiline description using `|` or `>` YAML syntax -- valid, do not flag. [EXPLICIT]
+5. Extra files in skill directories beyond SKILL.md (templates, examples) -- INFO. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/validate-components" — Run the full validate components workflow
+- "validate components on this project" — Apply to current context
+

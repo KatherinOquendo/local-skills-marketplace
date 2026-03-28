@@ -1,7 +1,7 @@
 ---
 name: sofka-software-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design the internal structure", "define
   module boundaries", "select architecture patterns", "document architecture decisions",
   "evaluate code architecture", or mentions CQRS, Hexagonal, Event Sourcing, Clean
@@ -9,8 +9,8 @@ description: >
   documentation covering module views, component decomposition, design patterns, quality
   attribute scenarios, ADRs, and debt evolution plans. Use this skill whenever internal
   system structure needs to be designed, documented, or evaluated, even if they don't
-  explicitly ask for "software-architecture".
-argument-hint: "<project-or-system-name>"
+  explicitly ask for "software-architecture". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -24,7 +24,7 @@ allowed-tools:
 
 # Software Architecture: Internal System Structure & Design Decisions
 
-Software architecture defines how code is organized internally — module boundaries, layer separation, dependency direction, design patterns, and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand structure, maintain it consistently, and evolve it strategically.
+Software architecture defines how code is organized internally — module boundaries, layer separation, dependency direction, design patterns, and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand structure, maintain it consistently, and evolve it strategically. [EXPLICIT]
 
 ## Principio Rector
 
@@ -32,20 +32,20 @@ Software architecture defines how code is organized internally — module bounda
 
 ### Filosofía de Arquitectura de Software
 
-1. **Decisiones explícitas > convenciones implícitas.** Si no hay un ADR, no hay una decisión — hay una casualidad que se confundirá con intención.
-2. **Quality attributes mandan.** Los patterns sirven a los atributos de calidad (performance, modifiability, availability), no al revés. CQRS sin necesidad de performance es complejidad gratuita.
-3. **Deuda técnica es una decisión, no un accidente.** Se documenta, se prioriza, se paga. Ignorarla no la elimina — la capitaliza.
+1. **Decisiones explícitas > convenciones implícitas.** Si no hay un ADR, no hay una decisión — hay una casualidad que se confundirá con intención. [EXPLICIT]
+2. **Quality attributes mandan.** Los patterns sirven a los atributos de calidad (performance, modifiability, availability), no al revés. CQRS sin necesidad de performance es complejidad gratuita. [EXPLICIT]
+3. **Deuda técnica es una decisión, no un accidente.** Se documenta, se prioriza, se paga. Ignorarla no la elimina — la capitaliza. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de refactoring.
-  - **desatendido**: Cero interrupciones. Arquitectura documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en pattern selection y ADRs.
-  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución.
+  - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de refactoring. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en pattern selection y ADRs. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 module view + S3 patterns + S5 ADRs) | `técnica` (full 6 sections, default)
 
@@ -55,7 +55,7 @@ Before generating architecture, detect the codebase context:
 !find . -name "*.ts" -o -name "*.java" -o -name "*.py" -o -name "*.go" -o -name "*.cs" | head -30
 ```
 
-Use detected languages and frameworks to tailor pattern recommendations, module conventions, and component naming.
+Use detected languages and frameworks to tailor pattern recommendations, module conventions, and component naming. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -89,7 +89,7 @@ Read ${CLAUDE_SKILL_DIR}/references/quality-attributes.md
 
 ### S1: Module View
 
-Maps internal module structure — what modules exist, responsibilities, dependencies, layer architecture.
+Maps internal module structure — what modules exist, responsibilities, dependencies, layer architecture. [EXPLICIT]
 
 **Includes:**
 - Module decomposition logic (domain-driven, layer-based, feature-based, or hybrid)
@@ -106,7 +106,7 @@ Maps internal module structure — what modules exist, responsibilities, depende
 
 ### S2: Component View
 
-Decomposes selected modules into components — what they do, interfaces exposed, dependencies.
+Decomposes selected modules into components — what they do, interfaces exposed, dependencies. [EXPLICIT]
 
 **Includes:**
 - Component identification and naming (controller, service, repository, gateway)
@@ -123,7 +123,7 @@ Decomposes selected modules into components — what they do, interfaces exposed
 
 ### S3: Design Patterns
 
-Documents selected patterns with justification, detected anti-patterns, and alternatives.
+Documents selected patterns with justification, detected anti-patterns, and alternatives. [EXPLICIT]
 
 **Architectural patterns** (Hexagonal, Clean, CQRS, Event Sourcing, Microkernel):
 - Why chosen: quality attributes it enables, constraints it respects
@@ -153,7 +153,7 @@ ATAM-style scenarios: **Stimulus -> Response -> Measure**
 
 ### S5: Architecture Decision Records (ADRs)
 
-Captures significant decisions with context, decision, consequences, and alternatives.
+Captures significant decisions with context, decision, consequences, and alternatives. [EXPLICIT]
 
 **ADR structure:**
 - **Title:** Concise decision statement
@@ -170,7 +170,7 @@ Captures significant decisions with context, decision, consequences, and alterna
 
 ### S6: Debt & Evolution Plan
 
-Identifies current architectural debt and a strategy for evolution without disruption.
+Identifies current architectural debt and a strategy for evolution without disruption. [EXPLICIT]
 
 **Debt inventory per item:**
 - Symptom (what fails or creates friction)
@@ -222,19 +222,19 @@ Identifies current architectural debt and a strategy for evolution without disru
 ## Edge Cases
 
 **Greenfield System:**
-No existing structure; risk of over-engineering for hypothetical scales. Start simple, defer complexity, use ADRs for reversible decisions.
+No existing structure; risk of over-engineering for hypothetical scales. Start simple, defer complexity, use ADRs for reversible decisions. [EXPLICIT]
 
 **Legacy System with Tangled Dependencies:**
-Reverse-engineering structure is harder. Document current state (as-is), design target state (to-be), phase migration. Multiple "versions" of architecture may exist (intended vs. actual).
+Reverse-engineering structure is harder. Document current state (as-is), design target state (to-be), phase migration. Multiple "versions" of architecture may exist (intended vs. actual). [EXPLICIT]
 
 **Multi-Language System:**
-Each language may have different conventions. Dependencies across language boundaries (APIs, queues) must be explicit. Separate analysis per language if patterns diverge.
+Each language may have different conventions. Dependencies across language boundaries (APIs, queues) must be explicit. Separate analysis per language if patterns diverge. [EXPLICIT]
 
 **Monolith to Microservices Transition:**
-Parallel running increases complexity. Watch for: distributed monolith, chatty services, data duplication. Use strangler fig for gradual migration with clear cutover criteria.
+Parallel running increases complexity. Watch for: distributed monolith, chatty services, data duplication. Use strangler fig for gradual migration with clear cutover criteria. [EXPLICIT]
 
 **High-Scale or Real-Time System:**
-Architecture must address scale and latency early. CQRS, event sourcing, sharding, caching become non-optional. Quality attribute scenarios must include load testing evidence.
+Architecture must address scale and latency early. CQRS, event sourcing, sharding, caching become non-optional. Quality attribute scenarios must include load testing evidence. [EXPLICIT]
 
 ---
 
@@ -270,7 +270,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -33,7 +33,7 @@ context:
 
 ## 1. What is BMAD
 
-BMAD is a **documentation-first, agent-driven** software development framework. Each of 4 sequential phases produces artifacts that become mandatory context for the next. Code is a **downstream derivative** of specifications.
+BMAD is a **documentation-first, agent-driven** software development framework. Each of 4 sequential phases produces artifacts that become mandatory context for the next. Code is a **downstream derivative** of specifications. [EXPLICIT]
 
 **The 4-phase model**:
 1. **Analysis** — Explore problem space, validate ideas (Mary/Analyst)
@@ -77,7 +77,7 @@ BMAD **is NOT**:
 | **USE** | Operate BMAD: run workflows, produce artifacts, manage gates | Section 5-7 |
 | **APPLY** | Apply BMAD in real projects: greenfield, brownfield, enterprise | Section 8 |
 
-Reference Index: Section 10.
+Reference Index: Section 10. [EXPLICIT]
 
 ## 3. Quick Start
 
@@ -106,12 +106,12 @@ Reference Index: Section 10.
 
 ### 4.1 Project Initialization
 
-Run the init script to scaffold a BMAD project:
+Run the init script to scaffold a BMAD project: [EXPLICIT]
 ```bash
 python scripts/init_project.py <project-name> [--greenfield|--brownfield]
 ```
 
-This creates:
+This creates: [EXPLICIT]
 ```
 <project-name>/
 ├── .bmad/
@@ -128,20 +128,20 @@ This creates:
 
 ### 4.2 Project Context (Constitution)
 
-The `project-context.md` file is your project's constitution. Every workflow loads it automatically. Create from template:
+The `project-context.md` file is your project's constitution. Every workflow loads it automatically. Create from template: [EXPLICIT]
 - Template: `templates/project-context.md.tmpl`
 - Guide: `references/project-context-guide.md`
 
-Key sections: Vision, Tech Stack, Constraints, Conventions, Team, Links.
+Key sections: Vision, Tech Stack, Constraints, Conventions, Team, Links. [EXPLICIT]
 
 ### 4.3 Agent Definition
 
-Agents are defined as YAML files with persona, menu, and prompts. To create a custom agent:
+Agents are defined as YAML files with persona, menu, and prompts. To create a custom agent: [EXPLICIT]
 ```bash
 python scripts/scaffold_agent.py <agent-name> --role "<role description>"
 ```
 
-Agent YAML structure — see `references/agent-as-code.md`:
+Agent YAML structure — see `references/agent-as-code.md`: [EXPLICIT]
 ```yaml
 metadata:
   id: agent-code
@@ -160,12 +160,12 @@ menu:
 
 ### 4.4 Workflow Configuration
 
-Workflows are sharded into step files for sequential execution. To scaffold a new workflow:
+Workflows are sharded into step files for sequential execution. To scaffold a new workflow: [EXPLICIT]
 ```bash
 python scripts/scaffold_workflow.py <workflow-name> --steps 5
 ```
 
-This creates `step-01-init.md` through `step-05-name.md` with HALT commands preventing AI read-ahead. See `references/schemas.md` for the step file schema.
+This creates `step-01-init.md` through `step-05-name.md` with HALT commands preventing AI read-ahead. See `references/schemas.md` for the step file schema. [EXPLICIT]
 
 ## 5. USE — Operating BMAD Phase by Phase
 
@@ -301,7 +301,7 @@ This creates `step-01-init.md` through `step-05-name.md` with HALT commands prev
 
 ## 6. USE — Artifact Flow Chain
 
-Each phase's output becomes mandatory input for the next:
+Each phase's output becomes mandatory input for the next: [EXPLICIT]
 
 ```
 product-brief.md ──→ PRD.md ──→ architecture.md ──→ epics/*.md ──→ stories/*.md ──→ Code
@@ -318,58 +318,13 @@ product-brief.md ──→ PRD.md ──→ architecture.md ──→ epics/*.md
 python scripts/check_artifact_flow.py <project-root>
 ```
 
-This reports: broken references, orphaned artifacts, missing cross-links.
+This reports: broken references, orphaned artifacts, missing cross-links. [EXPLICIT]
 
-See `references/artifact-flow-chain.md` for the full dependency model.
+See `references/artifact-flow-chain.md` for the full dependency model. [EXPLICIT]
 
 ## 7. USE — Implementation Readiness Gate
 
-The gate is a **mandatory checkpoint** before Phase 4. It validates that planning and solutioning artifacts are complete and aligned.
-
-**Run the gate**:
-```bash
-python scripts/validate_prd.py <project-root>
-```
-
-**The 13 steps** (summary — full spec in `references/implementation-readiness-gate.md`):
-
-| # | Check | Validates |
-|---|-------|-----------|
-| 1 | PRD completeness | All required sections present |
-| 2 | Architecture alignment | Arch addresses all PRD requirements |
-| 3 | Story decomposition | All FRs covered by stories |
-| 4 | Acceptance criteria | Every story has Given/When/Then |
-| 5 | Dependency map | Story sequencing is valid |
-| 6 | Risk register | Risks identified with mitigations |
-| 7 | NFR coverage | Performance, security, scalability addressed |
-| 8 | API contracts | Endpoints defined with schemas |
-| 9 | Data model | Schema covers all entities |
-| 10 | Security review | Auth, authz, encryption defined |
-| 11 | Performance targets | SLAs/SLOs specified |
-| 12 | Deployment strategy | CI/CD, environments, rollback |
-| 13 | Rollback plan | Recovery procedures documented |
-
-**Output**: `PASS` / `CONCERNS` / `FAIL`
-
-### Gate Result Actions
-
-| Result | Criteria | Concrete Next Steps |
-|--------|----------|-------------------|
-| **PASS** | All 13 checks pass, ≤2 WARNs | Proceed to Phase 4. Archive gate report in `architecture/gate-result.md`. |
-| **CONCERNS** | No FAILs, 3+ WARNs | 1. Document each WARN as a tracked risk in the sprint plan. 2. Assign a mitigation owner per WARN. 3. Proceed to Phase 4 but review WARNed areas first in sprint 1. 4. Re-evaluate unresolved WARNs at sprint retrospective. |
-| **FAIL** | Any check is FAIL | 1. Identify the responsible agent per failed check (see table below). 2. Return to Phase 3 — the failing agent must remediate. 3. Re-run the gate after remediation. 4. Maximum 3 gate attempts before escalating to user for scope reduction. |
-
-**FAIL Remediation Routing**:
-
-| Failed Check | Responsible Agent | Action |
-|-------------|-------------------|--------|
-| 1 (PRD completeness) | John/PM | Complete missing PRD sections |
-| 2 (Architecture alignment) | Winston/Architect | Map unaddressed FRs to components |
-| 3-5 (Stories, criteria, dependencies) | Bob/Scrum Master | Rewrite/add stories, fix sequencing |
-| 6 (Risk register) | John/PM + Winston/Architect | Add risks with mitigations |
-| 7-13 (NFRs, API, data, security, etc.) | Winston/Architect | Update architecture.md |
-
-Use `templates/implementation-readiness.md.tmpl` as the gate checklist.
+The gate is a **mandatory checkpoint** before Phase 4. It validates that planning and solutioning artifacts are complete and aligned. Run with `python scripts/validate_prd.py <project-root>`. Output: `PASS` / `CONCERNS` / `FAIL`. See `references/implementation-gate-details.md` for the 13 validation steps, gate result actions, FAIL remediation routing, and agent roster. [EXPLICIT]
 
 ## 8. APPLY — Real Project Patterns
 
@@ -385,7 +340,7 @@ Use `templates/implementation-readiness.md.tmpl` as the gate checklist.
 
 ### 8.2 Enterprise Scaling
 
-For multi-team BMAD adoption, see `references/enterprise-governance.md`:
+For multi-team BMAD adoption, see `references/enterprise-governance.md`: [EXPLICIT]
 - Shared project-context.md across teams
 - Cross-team dependency management in epics
 - Compliance artifacts (audit trail via Git versioning)
@@ -393,7 +348,7 @@ For multi-team BMAD adoption, see `references/enterprise-governance.md`:
 
 ### 8.3 BMAD Lite (Solo/Small Scope)
 
-For solo developers or projects ≤2 weeks, see `references/bmad-lite.md`:
+For solo developers or projects ≤2 weeks, see `references/bmad-lite.md`: [EXPLICIT]
 - 3-stage compressed workflow: Define → Design → Build
 - 5-step gate instead of 13-step
 - Solo agent model cycling through 3 perspectives
@@ -401,7 +356,7 @@ For solo developers or projects ≤2 weeks, see `references/bmad-lite.md`:
 
 ### 8.4 Customization
 
-See `references/customization-guide.md`:
+See `references/customization-guide.md`: [EXPLICIT]
 - Add/remove phases, create custom agents, modify gate criteria
 - Integrate with external tools (Jira, Linear) via `references/integration-patterns.md`
 
@@ -418,7 +373,7 @@ See `references/customization-guide.md`:
 
 ### 8.6 Operational Checklists
 
-Standalone checklists for quick operational verification:
+Standalone checklists for quick operational verification: [EXPLICIT]
 
 | Checklist | Use when |
 |-----------|----------|
@@ -432,19 +387,7 @@ Standalone checklists for quick operational verification:
 
 ## 9. Agent Roster
 
-| Agent | Role | Phase | File | Conflict Resolution |
-|-------|------|-------|------|---------------------|
-| Mary | Analyst | 1 | `agents/mary-analyst.md` | Defers to data; if data conflicts, escalates to user |
-| John | Product Manager | 2 | `agents/john-pm.md` | Owns scope decisions; defers technical feasibility to Winston |
-| Sally | UX Designer | 2 | `agents/sally-ux.md` | Advocates for user; defers to John on scope, Winston on feasibility |
-| Winston | Architect | 3 | `agents/winston-architect.md` | Owns technical decisions; defers to John on requirements, creates ADR for disputes |
-| Bob | Scrum Master | 3-4 | `agents/bob-scrum-master.md` | Owns process/decomposition; defers to Winston on technical sizing |
-| Amelia | Developer | 4 | `agents/amelia-developer.md` | Follows story spec; escalates ambiguity to Bob, architectural gaps to Winston |
-| Quinn | QA Engineer | 4 | `agents/quinn-qa.md` | Quality is non-negotiable; escalates unresolved findings to Bob/SM |
-| Barry | Quick Flow Dev | Any | `agents/barry-quick-flow.md` | Self-contained; escalates to full BMAD flow if scope exceeds threshold |
-| Orchestrator | Meta-router | Any | `agents/orchestrator.md` | Routes disputes to the agent who owns that artifact |
-| Gate Reviewer | Gate evaluator | 3→4 | `agents/gate-reviewer.md` | Impartial; cannot be overridden by other agents |
-| Retro Facilitator | Sprint retro | 4 | `agents/retrospective-facilitator.md` | Facilitates resolution; does not take sides |
+11 agents across 4 phases: Mary (Analyst, Phase 1), John (PM, Phase 2), Sally (UX, Phase 2), Winston (Architect, Phase 3), Bob (Scrum Master, Phase 3-4), Amelia (Developer, Phase 4), Quinn (QA, Phase 4), Barry (Quick Flow, any phase), Orchestrator (meta-router), Gate Reviewer (impartial evaluator), Retro Facilitator. See `references/implementation-gate-details.md` for the full roster with conflict resolution rules.
 
 ## 10. Reference Index
 
@@ -482,3 +425,33 @@ Standalone checklists for quick operational verification:
 - Templates (`.tmpl` files) exist and are accessible at `templates/` relative to the skill directory
 - The project has or will have a test framework — BMAD does not prescribe which one
 - One user operates all agents (BMAD does not currently support multi-user concurrent agent sessions)
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/bmad-method" — Run the full bmad method workflow
+- "bmad method on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

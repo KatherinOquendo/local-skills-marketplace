@@ -1,15 +1,15 @@
 ---
 name: sofka-cloud-native-architecture
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design cloud-native architecture",
   "containerize the application", "evaluate service mesh options",
-  "plan serverless migration", or mentions Kubernetes, Istio, FinOps, or 12-factor.
+  "plan serverless migration", or mentions Kubernetes, Istio, FinOps, or 12-factor. [EXPLICIT]
   It produces architecture documentation covering containers, orchestration, service mesh,
-  serverless decisions, multi-cloud strategy, and cost-aware engineering with FinOps.
+  serverless decisions, multi-cloud strategy, and cost-aware engineering with FinOps. [EXPLICIT]
   Use this skill whenever the user needs to design applications for the cloud,
-  even if they don't explicitly ask for "cloud-native-architecture".
-argument-hint: "<project-or-system-name>"
+  even if they don't explicitly ask for "cloud-native-architecture". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -23,7 +23,7 @@ allowed-tools:
 
 # Cloud-Native Architecture: Containers, Mesh, Serverless & Cost Optimization
 
-Cloud-native architecture designs applications to fully exploit cloud platforms -- containers, orchestration, service mesh, serverless, infrastructure as code, and cost-aware engineering. This skill produces architecture documentation guiding teams from cloud readiness assessment through production-grade deployment.
+Cloud-native architecture designs applications to fully exploit cloud platforms -- containers, orchestration, service mesh, serverless, infrastructure as code, and cost-aware engineering. This skill produces architecture documentation guiding teams from cloud readiness assessment through production-grade deployment. [EXPLICIT]
 
 ## Principio Rector
 
@@ -31,21 +31,21 @@ Cloud-native architecture designs applications to fully exploit cloud platforms 
 
 ### Filosofía de Cloud-Native
 
-1. **Containers by default.** Todo workload comienza como contenedor. Solo se desvía a serverless (stateless, event-driven) o VM (legacy sin refactor) con justificación explícita.
-2. **Service mesh para observabilidad.** mTLS, traffic management y distributed tracing no son opcionales — son infraestructura base para operar microservicios en producción.
-3. **Serverless where stateless.** Funciones serverless para procesamiento de eventos, transformaciones, y glue code. Nunca para lógica stateful o latencia crítica.
-4. **FinOps integral.** El costo es un atributo de calidad. Se mide, se asigna, se optimiza. OpenCost desde el día uno.
+1. **Containers by default.** Todo workload comienza como contenedor. Solo se desvía a serverless (stateless, event-driven) o VM (legacy sin refactor) con justificación explícita. [EXPLICIT]
+2. **Service mesh para observabilidad.** mTLS, traffic management y distributed tracing no son opcionales — son infraestructura base para operar microservicios en producción. [EXPLICIT]
+3. **Serverless where stateless.** Funciones serverless para procesamiento de eventos, transformaciones, y glue code. Nunca para lógica stateful o latencia crítica. [EXPLICIT]
+4. **FinOps integral.** El costo es un atributo de calidad. Se mide, se asigna, se optimiza. OpenCost desde el día uno. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts.
+The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para assessment y container strategy, HITL para decisiones mesh/serverless y FinOps targets.
-  - **desatendido**: Cero interrupciones. Arquitectura cloud-native documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en mesh adoption y multi-cloud decisions.
-  - **paso-a-paso**: Confirma cada 12-factor assessment, container design, mesh config, y FinOps plan.
+  - **piloto-auto**: Auto para assessment y container strategy, HITL para decisiones mesh/serverless y FinOps targets. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura cloud-native documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en mesh adoption y multi-cloud decisions. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada 12-factor assessment, container design, mesh config, y FinOps plan. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 assessment + S2 container strategy + S6 FinOps) | `técnica` (full 6 sections, default)
 
@@ -85,7 +85,7 @@ Read ${CLAUDE_SKILL_DIR}/references/cloud-native-patterns.md
 
 ### S1: Cloud-Native Assessment
 
-Evaluate the application against cloud-native principles to identify gaps and transformation priorities.
+Evaluate the application against cloud-native principles to identify gaps and transformation priorities. [EXPLICIT]
 
 **12-Factor Compliance Audit:**
 Rate each factor as compliant / partial / non-compliant with remediation effort (S/M/L):
@@ -300,19 +300,19 @@ Rate each factor as compliant / partial / non-compliant with remediation effort 
 ## Edge Cases
 
 **Monolith Containerization:**
-Containerize the monolith first (lift-and-shift to container), then decompose. Use strangler fig pattern. Do not attempt simultaneous containerization and decomposition.
+Containerize the monolith first (lift-and-shift to container), then decompose. Use strangler fig pattern. Do not attempt simultaneous containerization and decomposition. [EXPLICIT]
 
 **Stateful Workloads on Kubernetes:**
-Use operators (CloudNativePG for PostgreSQL, Strimzi for Kafka). Alternative: managed services outside K8s. Evaluate operational burden vs. portability.
+Use operators (CloudNativePG for PostgreSQL, Strimzi for Kafka). Alternative: managed services outside K8s. Evaluate operational burden vs. portability. [EXPLICIT]
 
 **Serverless at Scale (>10M invocations/month):**
-Model break-even point. Container alternative often cheaper at high volume. Reserved concurrency or Fargate may be more cost-effective.
+Model break-even point. Container alternative often cheaper at high volume. Reserved concurrency or Fargate may be more cost-effective. [EXPLICIT]
 
 **Regulated Industries:**
-Service mesh mTLS may be mandatory. Image provenance required (SLSA, Sigstore/cosign). Multi-cloud may be required for data residency. Audit logging at infrastructure layer.
+Service mesh mTLS may be mandatory. Image provenance required (SLSA, Sigstore/cosign). Multi-cloud may be required for data residency. Audit logging at infrastructure layer. [EXPLICIT]
 
 **Small Team (<5 developers):**
-Full K8s + mesh is likely over-engineered. Use managed Kubernetes, skip mesh, use cloud-managed services. Revisit as team grows.
+Full K8s + mesh is likely over-engineered. Use managed Kubernetes, skip mesh, use cloud-managed services. Revisit as team grows. [EXPLICIT]
 
 ---
 
@@ -341,7 +341,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Generate Gherkin BDD scenarios across all quality angles — functional, accessibility,
   security, performance, SEO, offline, UI, backend, data, DevSecOps, CI/CD. Runner-agnostic
-  step definitions with traceability to requirements and constitutional principles.
+  step definitions with traceability to requirements and constitutional principles. [EXPLICIT]
   Trigger: "BDD", "Gherkin", "Given When Then", "full-spectrum testing", "acceptance scenarios"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Generates Behavior-Driven Development scenarios that go beyond functional happy paths. Every feature gets Gherkin scenarios across all relevant quality angles: functional, accessibility, security, performance, SEO, offline, UI, backend, data, DevSecOps, and CI/CD. Step definitions are runner-agnostic — Playwright for browser tests, Vitest for code invariants, Firebase Emulator for security rules. Each scenario traces to a requirement (FR-XXX), success criterion (SC-XXX), and constitutional principle.
+Generates Behavior-Driven Development scenarios that go beyond functional happy paths. Every feature gets Gherkin scenarios across all relevant quality angles: functional, accessibility, security, performance, SEO, offline, UI, backend, data, DevSecOps, and CI/CD. Step definitions are runner-agnostic — Playwright for browser tests, Vitest for code invariants, Firebase Emulator for security rules. Each scenario traces to a requirement (FR-XXX), success criterion (SC-XXX), and constitutional principle. [EXPLICIT]
 
 ## Procedure
 
@@ -111,3 +111,25 @@ Generates Behavior-Driven Development scenarios that go beyond functional happy 
 - `unit-testing` — Vitest/Jest implementation of code invariant scenarios
 - `security-testing` — Security-specific test patterns
 - `socratic-debate` — Resolve ambiguous scenarios before implementation
+
+## Usage
+
+Example invocations:
+
+- "/bdd-full-spectrum" — Run the full bdd full spectrum workflow
+- "bdd full spectrum on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

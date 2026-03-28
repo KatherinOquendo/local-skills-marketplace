@@ -3,7 +3,7 @@ name: stop-validator
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Final output validation before delivery: evidence tags, quality, completeness.
+  Final output validation before delivery: evidence tags, quality, completeness. [EXPLICIT]
   Trigger: "stop validator"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Stop Validator
 > "Method over hacks."
 ## TL;DR
-Final output validation before delivery: evidence tags, quality, completeness.
+Final output validation before delivery: evidence tags, quality, completeness. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Final output validation before delivery: evidence tags, quality, completeness.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/stop-validator" — Run the full stop validator workflow
+- "stop validator on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

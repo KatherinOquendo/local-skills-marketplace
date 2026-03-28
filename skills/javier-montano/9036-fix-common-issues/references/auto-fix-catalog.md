@@ -8,7 +8,7 @@
 |---|-------|-----------|-------------|------|
 | 1 | Missing `alias-of` in alias commands | Command file with single-line body pointing to another command | Add `alias-of: <canonical>` to frontmatter | Low |
 | 2 | Non-kebab-case naming | Regex `^[a-z][a-z0-9]*(-[a-z0-9]+)*$` fails | Rename file/directory to kebab-case equivalent | Medium (may break refs) |
-| 3 | Missing frontmatter field | Required field absent in YAML | Add field with TODO placeholder value | Low |
+| 3 | Missing frontmatter field | Required field absent in YAML | Add field with Todo template value | Low |
 | 4 | Empty hook event arrays | `"EventName": []` in hooks.json | Remove the empty event entry | Low |
 | 5 | Missing SKILL.md in skill directory | Directory exists but no SKILL.md | Generate minimal SKILL.md scaffold | Low |
 | 6 | Invalid JSON in plugin.json | JSON parse error | Attempt to fix common syntax errors (trailing comma, missing quote) | Medium |

@@ -1,14 +1,14 @@
 ---
 name: project-program-management
-argument-hint: "<project-or-engagement-name>"
-description: >
+argument-hint: "project-or-engagement-name"
+description: 
   Provides PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
   dependency control, and proposal QA validation across the entire discovery pipeline. Activates when
   the user says "track the discovery", "manage the portfolio", "validate the proposal",
   "run governance check", or "coordinate resources". Also triggers on mentions of PMO, program management,
   phase gates, proposal readiness, or cross-phase dependency management. Use this skill even if the user
-  only asks about project status — it activates the full governance layer.
-argument-hint: "<project-or-engagement-name>"
+  only asks about project status — it activates the full governance layer. [EXPLICIT]
+argument-hint: "project-or-engagement-name"
 model: opus
 context: fork
 allowed-tools:
@@ -25,7 +25,7 @@ allowed-tools:
 Structural governance layer that manages the discovery pipeline as a formal program —
 tracking phases, gates, resources, dependencies, risks, and proposal readiness. Operates
 as the connective tissue between all 48 skills, ensuring nothing falls through cracks,
-phases don't skip prerequisites, and the final proposal is validated before client delivery.
+phases don't skip prerequisites, and the final proposal is validated before client delivery. [EXPLICIT]
 
 ## Principio Rector
 
@@ -37,25 +37,25 @@ entre "hicimos un discovery" y "ejecutamos un programa de discovery confiable."
 ### Filosofía de Gobierno
 
 1. **Governance ≠ Burocracia.** El gobierno existe para habilitar velocidad con confianza,
-   no para frenar. Cada control debe justificar su existencia con un riesgo que mitiga.
+   no para frenar. Cada control debe justificar su existencia con un riesgo que mitiga. [EXPLICIT]
 
 2. **Trazabilidad Total.** Cada decisión, cambio de alcance, riesgo materializado, y
-   dependencia resuelta queda registrada. El programa se puede auditar en cualquier momento.
+   dependencia resuelta queda registrada. El programa se puede auditar en cualquier momento. [EXPLICIT]
 
 3. **Proposal QA = Quality Gate Final.** La propuesta v1 no sale hasta que pasa una validación
    multidimensional que verifica coherencia técnica, viabilidad, completitud, y alineación
-   con hallazgos del discovery.
+   con hallazgos del discovery. [EXPLICIT]
 
 ## Inputs
 
-Parse `$1` as **project/program name**. Detect discovery context from repo.
+Parse `$1` as **project/program name**. Detect discovery context from repo. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para tracking rutinario, HITL para decisiones de gate, cambios de alcance, y validación de propuesta.
-  - **desatendido**: Cero interrupciones. Gates auto-evaluados. Supuestos documentados.
-  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en gates y QA de propuesta.
-  - **paso-a-paso**: Confirma antes de cada evaluación de gate y cada sección de QA.
+  - **piloto-auto**: Auto para tracking rutinario, HITL para decisiones de gate, cambios de alcance, y validación de propuesta. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Gates auto-evaluados. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en gates y QA de propuesta. [EXPLICIT]
+  - **paso-a-paso**: Confirma antes de cada evaluación de gate y cada sección de QA. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -261,7 +261,7 @@ LISTA PARA ENVÍO A CLIENTE: SÍ / NO
 
 ## Prompt Integration Protocol
 
-El project manager es el backbone de governance que acompaña TODOS los prompts. Se activa implícitamente en cada ejecución de prompt.
+El project manager es el backbone de governance que acompaña TODOS los prompts. Se activa implícitamente en cada ejecución de prompt. [EXPLICIT]
 
 ### Rol en Cada Prompt
 
@@ -351,7 +351,7 @@ Ubicación: `plugins/sofka-discovery-framework/skills/{skill-name}/examples/`
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

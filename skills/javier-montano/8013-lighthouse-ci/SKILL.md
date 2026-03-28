@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Automated Lighthouse audits in CI with performance budgets, accessibility thresholds,
-  and trend tracking. Enforces Constitution quality gate G2.
+  and trend tracking. Enforces Constitution quality gate G2. [EXPLICIT]
   Trigger: "Lighthouse CI", "performance budget", "Core Web Vitals", "CI audit", "G2 gate"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Integrates Lighthouse audits into the CI pipeline using `@lhci/cli`. Defines performance budgets per page type, sets accessibility and SEO thresholds, and blocks merges when scores drop below targets. Enforces Constitution quality gate G2 (Lighthouse >= 90, Accessibility >= 95). Supports local development audits, PR checks, and production URL verification.
+Integrates Lighthouse audits into the CI pipeline using `@lhci/cli`. Defines performance budgets per page type, sets accessibility and SEO thresholds, and blocks merges when scores drop below targets. Enforces Constitution quality gate G2 (Lighthouse >= 90, Accessibility >= 95). Supports local development audits, PR checks, and production URL verification. [EXPLICIT]
 
 ## Procedure
 
@@ -120,3 +120,25 @@ Integrates Lighthouse audits into the CI pipeline using `@lhci/cli`. Defines per
 - `build-optimization` — Reducing bundle size to meet budgets
 - `github-actions-ci` — CI pipeline configuration
 - `dual-layer-verification` — Security verification in the same CI pipeline
+
+## Usage
+
+Example invocations:
+
+- "/lighthouse-ci" — Run the full lighthouse ci workflow
+- "lighthouse ci on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

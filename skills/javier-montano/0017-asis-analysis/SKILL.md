@@ -1,7 +1,7 @@
 ---
 name: asis-analysis
-argument-hint: "<project-name> [codebase-path]"
-description: >
+argument-hint: "project-name [codebase-path]"
+description: 
   This skill should be used when the user asks to "analyze the codebase",
   "assess current architecture", "run an AS-IS analysis", "perform a technical audit",
   or "evaluate tech debt", or mentions current state, legacy system review,
@@ -9,8 +9,8 @@ description: >
   assessment with C4 diagrams, code quality metrics, tech debt inventory,
   and prioritized recommendations. Use this skill whenever the user needs
   a baseline assessment before modernization, even if they don't explicitly
-  ask for "AS-IS analysis".
-argument-hint: "<project-name> [codebase-path]"
+  ask for "AS-IS analysis". [EXPLICIT]
+argument-hint: "project-name [codebase-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -24,29 +24,29 @@ allowed-tools:
 
 # AS-IS Technical Analysis
 
-Generates a 10-section current-state technical assessment: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations.
+Generates a 10-section current-state technical assessment: executive dashboard, technology inventory, code structure, C4 architecture, code quality metrics, technical debt inventory, NFR heatmap, security posture, operational model, and risk register with prioritized recommendations. [EXPLICIT]
 
 ## Principio Rector
 
 > *No se puede trazar un camino hacia el futuro sin comprender con honestidad brutal dónde se está parado hoy.*
 
-1. **Diagnóstico basado en evidencia, no en opinión.** Cada hallazgo debe estar respaldado por métricas extraídas del código, configuración o historial operativo. La intuición guía la exploración; la evidencia sustenta la conclusión.
-2. **El presente contiene las semillas del futuro.** Las decisiones arquitectónicas heredadas no son errores — son contexto. Comprender *por qué* se tomaron revela restricciones que cualquier transformación debe respetar o explícitamente romper.
-3. **La deuda técnica es deuda de conocimiento.** Cada atajo no documentado, cada patrón inconsistente, cada test ausente representa conocimiento que el equipo decidió no capturar. El análisis AS-IS restaura ese conocimiento antes de que se pierda.
+1. **Diagnóstico basado en evidencia, no en opinión.** Cada hallazgo debe estar respaldado por métricas extraídas del código, configuración o historial operativo. La intuición guía la exploración; la evidencia sustenta la conclusión. [EXPLICIT]
+2. **El presente contiene las semillas del futuro.** Las decisiones arquitectónicas heredadas no son errores — son contexto. Comprender *por qué* se tomaron revela restricciones que cualquier transformación debe respetar o explícitamente romper. [EXPLICIT]
+3. **La deuda técnica es deuda de conocimiento.** Cada atajo no documentado, cada patrón inconsistente, cada test ausente representa conocimiento que el equipo decidió no capturar. El análisis AS-IS restaura ese conocimiento antes de que se pierda. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Path to codebase root (default: current working directory)
 - `$2` — Analysis depth: `full` (default), `executive` (sections 0,5,9,10 only)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para extracción de métricas y análisis de código, HITL para hallazgos de seguridad y decisiones de escalamiento.
-  - **desatendido**: Cero interrupciones. Análisis completo automatizado. Supuestos documentados.
-  - **supervisado**: Autónomo con reportes al completar cada sección del framework.
-  - **paso-a-paso**: Confirma antes de cada sección del análisis.
+  - **piloto-auto**: Auto para extracción de métricas y análisis de código, HITL para hallazgos de seguridad y decisiones de escalamiento. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Análisis completo automatizado. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes al completar cada sección del framework. [EXPLICIT]
+  - **paso-a-paso**: Confirma antes de cada sección del análisis. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — sections S0, S5, S9, S10 only) | `técnica` (full, default)
 
@@ -68,7 +68,7 @@ find . -name "Dockerfile" -o -name "*.yaml" -path "*/k8s/*" -o -name "docker-com
 find . -name "*.yaml" -path "*/swagger/*" -o -name "openapi*" -o -name "*.proto" | head -10
 ```
 
-Use detected languages, build tools, and infrastructure to scope each section.
+Use detected languages, build tools, and infrastructure to scope each section. [EXPLICIT]
 
 ## Input Requirements
 
@@ -132,22 +132,22 @@ Use detected languages, build tools, and infrastructure to scope each section.
 ## 10-Section Framework
 
 ### S0: Executive Dashboard
-System snapshot: LOC, modules, integrations, team size, years in production, tech stack summary, development status, maintenance cost estimate. Health score (1-10) with color-coded indicators.
+System snapshot: LOC, modules, integrations, team size, years in production, tech stack summary, development status, maintenance cost estimate. Health score (1-10) with color-coded indicators. [EXPLICIT]
 
 ### S1: Technology Inventory
-Per layer: Backend, Frontend, Data, Infrastructure, Development. Dependency tree table with EOL status. Flag deprecated dependencies. Version currency score per component.
+Per layer: Backend, Frontend, Data, Infrastructure, Development. Dependency tree table with EOL status. Flag deprecated dependencies. Version currency score per component. [EXPLICIT]
 
 ### S2: Code Organization
-Module decomposition, coupling analysis (afferent/efferent), layering assessment, cyclomatic complexity distribution, anti-patterns (god classes, circular dependencies, duplication). Package cohesion metrics.
+Module decomposition, coupling analysis (afferent/efferent), layering assessment, cyclomatic complexity distribution, anti-patterns (god classes, circular dependencies, duplication). Package cohesion metrics. [EXPLICIT]
 
 ### S3: Architecture (C4 Model)
-Level 1 (Context): system as black box with external actors. Level 2 (Containers): major services, databases, data flows. Pattern catalog with quality assessment. Architecture fitness functions where applicable.
+Level 1 (Context): system as black box with external actors. Level 2 (Containers): major services, databases, data flows. Pattern catalog with quality assessment. Architecture fitness functions where applicable. [EXPLICIT]
 
 ### S4: Code Quality Metrics
-Complexity distribution (p50, p95), duplication %, test coverage by layer, dependency depth, code smells by type. Dashboard with severity-coded cards. Trend analysis if git history available.
+Complexity distribution (p50, p95), duplication %, test coverage by layer, dependency depth, code smells by type. Dashboard with severity-coded cards. Trend analysis if git history available. [EXPLICIT]
 
 ### S5: Technical Debt Inventory
-Per item: description, category (7 types: design, code, test, build, documentation, infrastructure, dependency), severity, technical impact, business impact, remediation pathway, prioritization score (impact x cost-to-fix).
+Per item: description, category (7 types: design, code, test, build, documentation, infrastructure, dependency), severity, technical impact, business impact, remediation pathway, prioritization score (impact x cost-to-fix). [EXPLICIT]
 
 **Conditional logic:**
 - IF debt >30% of codebase OR average CC >15: flag CRITICAL, recommend refactoring before features
@@ -156,19 +156,19 @@ Per item: description, category (7 types: design, code, test, build, documentati
 - IF >10 circular dependencies: architectural refactor required
 
 ### S6: NFR Heatmap
-7x5 matrix: performance, security, maintainability, scalability, reliability, usability, interoperability. Scored 1-10 with evidence. Gap analysis against targets. Priority ranking by business impact.
+7x5 matrix: performance, security, maintainability, scalability, reliability, usability, interoperability. Scored 1-10 with evidence. Gap analysis against targets. Priority ranking by business impact. [EXPLICIT]
 
 ### S7: Security Assessment
-Authentication, authorization, encryption, data protection, known CVEs (SBOM analysis), compliance gaps. Severity-rated findings with remediation recommendations. OWASP Top 10 mapping where applicable.
+Authentication, authorization, encryption, data protection, known CVEs (SBOM analysis), compliance gaps. Severity-rated findings with remediation recommendations. OWASP Top 10 mapping where applicable. [EXPLICIT]
 
 ### S8: Operational Model
-Deployment model, monitoring/observability, incident response (MTTR), release management, capacity management. Operational readiness scorecard. DevOps maturity assessment (DORA metrics if available).
+Deployment model, monitoring/observability, incident response (MTTR), release management, capacity management. Operational readiness scorecard. DevOps maturity assessment (DORA metrics if available). [EXPLICIT]
 
 ### S9: Risk Register
-Top-10 risks: probability x impact matrix. Per risk: category, score, current mitigations, recommended improvements, owner, status. Risk velocity indicator (growing/stable/shrinking).
+Top-10 risks: probability x impact matrix. Per risk: category, score, current mitigations, recommended improvements, owner, status. Risk velocity indicator (growing/stable/shrinking). [EXPLICIT]
 
 ### S10: Recommendations
-Top 5-10 findings with root cause + business impact. Quick wins (under 5 eng-days). Strategic roadmap (immediate/short/medium/long-term). Refactor vs rewrite vs replace decision tree per major component.
+Top 5-10 findings with root cause + business impact. Quick wins (under 5 eng-days). Strategic roadmap (immediate/short/medium/long-term). Refactor vs rewrite vs replace decision tree per major component. [EXPLICIT]
 
 ## Cross-Section Traceability
 
@@ -231,7 +231,7 @@ Every recommendation in S10 must reference evidence from S0-S9:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - C4 Context diagram: system boundaries and external actors
@@ -240,3 +240,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/asis-analysis" — Run the full asis analysis workflow
+- "asis analysis on this project" — Apply to current context
+

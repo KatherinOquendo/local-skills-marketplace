@@ -3,7 +3,7 @@ name: sales-collateral
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  One-pagers, battle cards, ROI calculators, competitive positioning documents.
+  One-pagers, battle cards, ROI calculators, competitive positioning documents. [EXPLICIT]
   Trigger: "sales collateral, one-pagers, battle cards, roi calculators, competitive positioning documents"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-One-pagers, battle cards, ROI calculators, competitive positioning documents. All outputs follow MetodologIA brand standards and evidence tagging.
+One-pagers, battle cards, ROI calculators, competitive positioning documents. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ One-pagers, battle cards, ROI calculators, competitive positioning documents. Al
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/sales-collateral" — Run the full sales collateral workflow
+- "sales collateral on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

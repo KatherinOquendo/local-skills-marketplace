@@ -3,7 +3,7 @@ name: real-time-analytics
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Live dashboards, WebSocket streams, alert threshold configuration.
+  Live dashboards, WebSocket streams, alert threshold configuration. [EXPLICIT]
   Trigger: "real time analytics"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Real Time Analytics
 > "Method over hacks."
 ## TL;DR
-Live dashboards, WebSocket streams, alert threshold configuration.
+Live dashboards, WebSocket streams, alert threshold configuration. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Live dashboards, WebSocket streams, alert threshold configuration.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/real-time-analytics" — Run the full real time analytics workflow
+- "real time analytics on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

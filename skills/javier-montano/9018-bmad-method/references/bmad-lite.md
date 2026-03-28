@@ -256,7 +256,7 @@ project: [Project Name]
 stories:
   - id: S-001
     title: [Title]
-    status: todo  # todo | doing | done
+    status: Todo  # Todo | doing | done
   - id: S-002
     title: [Title]
     status: doing

@@ -37,7 +37,7 @@ La arquitectura de software es la disciplina que define la estructura interna de
 **Autor:** Greg Young (2010); popularizado por Martin Fowler (*Event Sourcing*, 2005). **Principio:** el estado del sistema no se almacena como estado actual sino como secuencia de eventos inmutables. **Ventajas:** audit trail completo, capacidad de replay, temporal queries. **Riesgo:** event schema evolution compleja, no hay updates in-place, snapshots necesarios para performance. **Cuándo usar obligatoriamente:** sistemas financieros con requisito de audit trail, sistemas con compliance de immutability.
 
 ### Microkernel (Plugin Architecture)
-**Estructura:** núcleo mínimo estable + plugins que extienden funcionalidad. **Casos de uso:** IDEs, sistemas de reglas de negocio variables por cliente, plataformas extensibles. **Riesgo:** la API del core debe ser estable desde el inicio — cambiarla rompe todos los plugins.
+**Estructura:** núcleo mínimo estable + plugins que extienden funcionalidad. **Casos de uso:** IDEs, sistemas de reglas de negocio variables por cliente, plataformas extensibles. **Riesgo:** la API del core debe ser estable desde el inicio — cambiarla rompe Todos los plugins.
 
 ## 3. Patrones de Diseño Fundamentales
 
@@ -70,7 +70,7 @@ La arquitectura de software es la disciplina que define la estructura interna de
 
 ## 5. Quality Attributes y ATAM
 
-**ATAM (Architecture Tradeoff Analysis Method)** — Software Engineering Institute (CMU), Kazman et al. (1998, revisado 2013). Método estructurado para evaluar arquitecturas contra quality attributes mediante escenarios de calidad.
+**ATAM (Architecture Tradeoff Analysis Method)** — Software Engineering Institute (CMU), Kazman et al. (1998, revisado 2013). MéTodo estructurado para evaluar arquitecturas contra quality attributes mediante escenarios de calidad.
 
 **Quality Attribute Scenarios (formato ATAM):** Estímulo → Fuente → Entorno → Artefacto → Respuesta → Medida de Respuesta.
 
@@ -83,7 +83,7 @@ La arquitectura de software es la disciplina que define la estructura interna de
 **Ward Cunningham** (1992, primer uso del término "deuda técnica") — la metáfora financiera: código subóptimo es como tomar deuda financiera; los intereses son el costo adicional de trabajar con código no refactorizado.
 
 **Taxonomía de deuda técnica** (Alves et al., 2014):
-- **Deuda de código:** Código que funciona pero viola principios de diseño (God Objects, métodos largos, magic numbers)
+- **Deuda de código:** Código que funciona pero viola principios de diseño (God Objects, méTodos largos, magic numbers)
 - **Deuda arquitectónica:** Decisiones estructurales que generan fricción sistémica (coupling entre capas, ausencia de interfaces, violación de inversión de dependencias)
 - **Deuda de testing:** Cobertura insuficiente que incrementa el riesgo de regresiones
 - **Deuda de documentación:** Ausencia de ADRs, README obsoletos, arquitectura implícita

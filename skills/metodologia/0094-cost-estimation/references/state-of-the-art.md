@@ -57,7 +57,7 @@ La estimacion probabilistica ha pasado de ser "nice to have" a ser el estandar e
 - Integracion con Jira/Azure DevOps para alimentar tres-point estimates desde datos historicos.
 - Visualizacion de distribuciones de probabilidad en dashboards de proyecto.
 
-**Implicacion para el skill:** S5 usa Monte Carlo como metodo primario. Los outputs son siempre percentiles, nunca puntos.
+**Implicacion para el skill:** S5 usa Monte Carlo como meTodo primario. Los outputs son siempre percentiles, nunca puntos.
 
 ## 4. Cloud Cost as Estimation Component (FinOps Integration)
 
@@ -86,7 +86,7 @@ Los story points estan siendo cuestionados como unidad de estimacion por su subj
 - **T-shirt sizing simplificado**: S/M/L sin pretension de precision numerica — util para roadmaps de alto nivel.
 - **Elapsed days por tipo de trabajo**: clasificar items por tipo (feature, bug, spike, debt) y usar historicos de duracion por tipo.
 
-**Implicacion para el skill:** S2 usa T-shirt sizing y story points como metodos complementarios, pero calibrados contra throughput real. La velocity se trata como dato historico del equipo, nunca como benchmark transferible.
+**Implicacion para el skill:** S2 usa T-shirt sizing y story points como meTodos complementarios, pero calibrados contra throughput real. La velocity se trata como dato historico del equipo, nunca como benchmark transferible.
 
 ## 6. No-Estimate Movement and When It Works
 
@@ -115,8 +115,8 @@ El movimiento #NoEstimates, popularizado por Vasco Duarte y Woody Zuill, propone
 
 | Nivel | Practica | Indicador |
 |-------|----------|-----------|
-| 1 - Ad hoc | Estimacion por "experiencia" sin metodo | Varianza >100% entre estimado y real |
-| 2 - Repetible | Un metodo consistente (e.g., analogia) | Varianza 50-100% |
+| 1 - Ad hoc | Estimacion por "experiencia" sin meTodo | Varianza >100% entre estimado y real |
+| 2 - Repetible | Un meTodo consistente (e.g., analogia) | Varianza 50-100% |
 | 3 - Definido | Triangulacion de metodos, rangos explicitos | Varianza 25-50% |
 | 4 - Gestionado | Monte Carlo, calibracion continua, re-estimacion | Varianza 10-25% |
 | 5 - Optimizado | AI-assisted, throughput-based forecasting, feedback loops | Varianza <10% |

@@ -32,7 +32,7 @@ IDIOMA: {es | en | mixed}
 PROFUNDIDAD: {express | standard | deep}
 
 Ejecutar los 5 pases en orden:
-1. SUPERFICIE: Detectar y catalogar TODOS los errores de superficie. Tabla con: original, corregido, categoría (dislexia/afán/ortografía/puntuación/sintaxis/autocorrect/spanglish), patrón específico, confianza. Producir texto corregido preservando voz e intención.
+1. SUPERFICIE: Detectar y catalogar TBDS los errores de superficie. Tabla con: original, corregido, categoría (dislexia/afán/ortografía/puntuación/sintaxis/autocorrect/spanglish), patrón específico, confianza. Producir texto corregido preservando voz e intención.
 2. 5 PORQUÉS: Excavar debajo de la solicitud superficial. Parar antes de 5 si la raíz es clara. Declarar preguntas abiertas, no adivinar.
 3. 7 ENTONCES-QUÉS: Trazar impacto hacia adelante. Calibrar profundidad (standard/premium/flagship) según dónde pare la cadena.
 4. INTENCIÓN: Listar declaraciones explícitas, señales implícitas, brechas por tipo (vocabulario/alcance/expertise/emocional/contexto). Formular el "real ask".
@@ -209,7 +209,7 @@ Ejecuta input-analysis en modo superficie con enfoque spanglish.
 
 INPUT: {INPUT_SPANGLISH}
 CONTEXTO TÉCNICO: {dominio_técnico | "software general"}
-POLÍTICA DE ANGLICISMOS: {preservar-técnicos | normalizar-todo | solo-señalar}
+POLÍTICA DE ANGLICISMOS: {preservar-técnicos | normalizar-Todo | solo-señalar}
 
 Protocolo de normalización spanglish:
 1. CLASIFICACIÓN DE ANGLICISMOS: Para cada término en inglés, clasificar:
@@ -259,7 +259,7 @@ Protocolo de separación emocional:
    - SARCASMO/IRONÍA: Contradicciones tonales, exageración deliberada. NOTA: Marcar como intención incierta.
 
 2. SEPARACIÓN: Producir dos versiones del input:
-   - CONTENIDO TÉCNICO PURO: La solicitud despojada de carga emocional, preservando todos los datos y requisitos.
+   - CONTENIDO TÉCNICO PURO: La solicitud despojada de carga emocional, preservando Todos los datos y requisitos.
    - CONTEXTO EMOCIONAL: Las señales emocionales extraídas, con interpretación y nivel de intensidad (BAJA / MEDIA / ALTA / CRÍTICA).
 
 3. RECOMENDACIÓN AL CONDUCTOR: Basado en la intensidad emocional:

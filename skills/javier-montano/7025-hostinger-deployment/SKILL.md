@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Deploy websites to Hostinger with cPanel, FTP, .htaccess configuration,
-  DNS setup, SSL certificates, and PHP configuration.
+  DNS setup, SSL certificates, and PHP configuration. [EXPLICIT]
   Trigger: "Hostinger", "cPanel", "FTP deploy", ".htaccess", "shared hosting"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides website deployment to Hostinger shared hosting — cPanel file management, FTP/SFTP upload, .htaccess configuration for SPAs and redirects, DNS setup, SSL certificate provisioning, and PHP configuration. Use when deploying static sites, WordPress, or PHP applications to Hostinger.
+Guides website deployment to Hostinger shared hosting — cPanel file management, FTP/SFTP upload, .htaccess configuration for SPAs and redirects, DNS setup, SSL certificate provisioning, and PHP configuration. Use when deploying static sites, WordPress, or PHP applications to Hostinger. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Guides website deployment to Hostinger shared hosting — cPanel file management
 
 - `domain-management` — DNS configuration for Hostinger-hosted sites
 - `github-actions-ci` — automated deployment to Hostinger via FTP
+
+## Usage
+
+Example invocations:
+
+- "/hostinger-deployment" — Run the full hostinger deployment workflow
+- "hostinger deployment on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

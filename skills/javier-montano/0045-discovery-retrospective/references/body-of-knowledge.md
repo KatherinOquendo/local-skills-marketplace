@@ -8,7 +8,7 @@ La retrospectiva de discovery aplica los principios de mejora continua (Kaizen) 
 
 | Dimensión | Qué Mide | Métricas Clave |
 |-----------|----------|---------------|
-| Completeness | ¿Se produjeron todos los entregables esperados? | % deliverables completados, quality score promedio |
+| Completeness | ¿Se produjeron Todos los entregables esperados? | % deliverables completados, quality score promedio |
 | Accuracy | ¿Las estimaciones fueron correctas? | Variance % en effort, cost, timeline |
 | Timeliness | ¿Se cumplió el timeline de discovery? | Planned vs actual days per phase |
 | Stakeholder Satisfaction | ¿Los stakeholders están conformes? | NPS o satisfaction score (1-5) |
@@ -25,7 +25,7 @@ Quality Score por Deliverable (0-100):
   Actionability (0-25): ¿Los stakeholders pueden tomar decisiones con esto?
   Evidence (0-20): ¿Las afirmaciones están etiquetadas con evidencia?
 
-Discovery Quality Score = Promedio(Quality Scores de todos los deliverables)
+Discovery Quality Score = Promedio(Quality Scores de Todos los deliverables)
 Target: ≥75/100
 ```
 

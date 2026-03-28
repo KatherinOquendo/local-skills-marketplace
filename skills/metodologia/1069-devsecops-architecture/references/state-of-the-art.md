@@ -8,7 +8,7 @@
 
 ### 1.1 Supply Chain Security como Prioridad #1
 
-- **Que esta pasando:** Tras incidentes como SolarWinds (2020), Log4Shell (2021), y el backdoor de xz-utils (2024), la seguridad de la cadena de suministro de software se ha convertido en prioridad maxima. La Executive Order 14028 de EE.UU. exige SBOMs a proveedores del gobierno federal. El EU Cyber Resilience Act (CRA, 2027) mandara SBOMs y actualizaciones de seguridad para todo software vendido en la UE. OpenSSF (Open Source Security Foundation) ha movilizado >$150M para asegurar software open-source.
+- **Que esta pasando:** Tras incidentes como SolarWinds (2020), Log4Shell (2021), y el backdoor de xz-utils (2024), la seguridad de la cadena de suministro de software se ha convertido en prioridad maxima. La Executive Order 14028 de EE.UU. exige SBOMs a proveedores del gobierno federal. El EU Cyber Resilience Act (CRA, 2027) mandara SBOMs y actualizaciones de seguridad para Todo software vendido en la UE. OpenSSF (Open Source Security Foundation) ha movilizado >$150M para asegurar software open-source.
 - **Impacto en el skill:** S3 (Supply Chain Security) pasa de seccion complementaria a critica. SBOM generation, artifact signing (Sigstore), dependency verification, y SLSA levels son requisitos baseline, no opcionales. El pipeline debe verificar integridad en cada stage.
 - **Evidencia:** OpenSSF (2025) "Alpha-Omega Project Report"; EU CRA (2024) texto final publicado; CISA (2024) "SBOM Sharing Lifecycle Report"; xz-utils CVE-2024-3094 post-mortem.
 - **Tipo de evidencia:** [DOC] regulaciones publicadas, [DOC] reportes de incidentes reales.
@@ -108,7 +108,7 @@
 - **Debate:** Monorepos simplifican la gestion de dependencias internas y la consistencia de security policies, pero complican pipelines (changed-based triggers, blast radius de cambios). Polyrepos dan independencia a equipos pero fragmentan governance de seguridad.
 - **Pro-monorepo:** "Una security policy, un pipeline template, una version de cada dependencia interna. Compliance es mas facil."
 - **Pro-polyrepo:** "Teams own their pipeline. Speed of independent deployment. Blast radius acotado."
-- **Posicion del skill:** La estrategia de repositorios afecta el diseno del pipeline pero no los principios de seguridad. En monorepo: pipeline con path-based triggers y shared security gates. En polyrepo: pipeline templates (golden path) con security gates consistentes. Lo importante es que TODOS los repos tengan los mismos security gates, independientemente de la estrategia.
+- **Posicion del skill:** La estrategia de repositorios afecta el diseno del pipeline pero no los principios de seguridad. En monorepo: pipeline con path-based triggers y shared security gates. En polyrepo: pipeline templates (golden path) con security gates consistentes. Lo importante es que TBDS los repos tengan los mismos security gates, independientemente de la estrategia.
 
 ### 3.3 SBOM: Generacion vs. Consumo
 
@@ -120,7 +120,7 @@
 
 - **Debate:** DORA research muestra que continuous deployment (deploy automatico a produccion en cada commit) correlaciona con alto rendimiento. Pero requiere madurez extrema en testing, monitoring, y rollback.
 - **Pro-CD:** "Si tu pipeline es bueno, deploy automatico es mas seguro que deploy manual (humanos cometen errores, pipelines no)."
-- **Anti-CD:** "No todos los cambios son iguales. Un cambio de UI es diferente a un cambio de schema de base de datos. Risk-based deployment es mas responsable."
+- **Anti-CD:** "No Todos los cambios son iguales. Un cambio de UI es diferente a un cambio de schema de base de datos. Risk-based deployment es mas responsable."
 - **Posicion del skill:** Continuous Deployment como aspiracion, risk-based deployment como realidad. S7 (Minimum Controls & Risk Matrix) define que riesgo bajo va automatico, riesgo medio requiere approval, riesgo alto requiere CAB + security review. La meta es reducir la categoria "riesgo alto" con mejor testing y feature flags.
 
 ---

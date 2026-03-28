@@ -1,13 +1,13 @@
 ---
 name: sofka-mobile-assessment
-argument-hint: "<app-or-platform-name>"
-description: >
+argument-hint: "app-or-platform-name"
+description: 
   This skill should be used when the user asks to "assess the mobile app", "audit app health",
   "review app dependencies", "check app store compliance", or "measure app performance". Also
   triggers on mentions of crash rate, ANR, app size, cold start time, or mobile tech debt. Use
   this skill even if the user only asks about a single metric like crash rate — the full health
-  assessment context ensures no blind spots.
-argument-hint: "<app-or-platform-name>"
+  assessment context ensures no blind spots. [EXPLICIT]
+argument-hint: "app-or-platform-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Mobile Assessment: App Health, Compliance & Remediation
 
-Mobile assessment evaluates an existing mobile application across six dimensions: runtime health, dependency security, platform compliance, code quality, user experience metrics, and remediation planning. This skill produces a comprehensive AS-IS assessment that identifies risks, quantifies technical debt, and prioritizes fixes.
+Mobile assessment evaluates an existing mobile application across six dimensions: runtime health, dependency security, platform compliance, code quality, user experience metrics, and remediation planning. This skill produces a comprehensive AS-IS assessment that identifies risks, quantifies technical debt, and prioritizes fixes. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,21 +29,21 @@ Mobile assessment evaluates an existing mobile application across six dimensions
 
 ### Filosofía de Assessment Mobile
 
-1. **Store compliance is non-negotiable.** Privacy manifests, target API levels, data safety declarations. Un gap de compliance es un riesgo de rechazo que bloquea releases.
-2. **Crash-free rate drives retention.** Cada crash es un usuario que potencialmente no vuelve. El umbral de Google Play (>1.09%) afecta visibilidad en el store.
-3. **Dependency health predicts maintenance cost.** Librerías abandonadas, CVEs sin parchar, y SDK bloat son deuda que se paga con intereses. Auditar dependencias es prevención.
-4. **Measure before you optimize.** Sin baseline no hay mejora verificable. Instrumentar primero, optimizar después.
+1. **Store compliance is non-negotiable.** Privacy manifests, target API levels, data safety declarations. Un gap de compliance es un riesgo de rechazo que bloquea releases. [EXPLICIT]
+2. **Crash-free rate drives retention.** Cada crash es un usuario que potencialmente no vuelve. El umbral de Google Play (>1.09%) afecta visibilidad en el store. [EXPLICIT]
+3. **Dependency health predicts maintenance cost.** Librerías abandonadas, CVEs sin parchar, y SDK bloat son deuda que se paga con intereses. Auditar dependencias es prevención. [EXPLICIT]
+4. **Measure before you optimize.** Sin baseline no hay mejora verificable. Instrumentar primero, optimizar después. [EXPLICIT]
 
 ## Inputs
 
-The user provides an app name as `$ARGUMENTS`. Parse `$1` as the **app name** used throughout all output artifacts.
+The user provides an app name as `$ARGUMENTS`. Parse `$1` as the **app name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para health profiling y dependency audit, HITL para severity classification y remediation priorities.
-  - **desatendido**: Cero interrupciones. Assessment completo automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en compliance findings y remediation roadmap.
-  - **paso-a-paso**: Confirma cada health metric, dependency finding, compliance check, y remediation item.
+  - **piloto-auto**: Auto para health profiling y dependency audit, HITL para severity classification y remediation priorities. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Assessment completo automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en compliance findings y remediation roadmap. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada health metric, dependency finding, compliance check, y remediation item. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 health profile + S3 compliance + S6 remediation) | `técnica` (full 6 sections, default)
 
@@ -382,7 +382,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

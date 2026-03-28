@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Write Firestore security rules with auth-based access control, custom claims,
-  data validation, rate limiting, and rule testing strategies.
+  data validation, rate limiting, and rule testing strategies. [EXPLICIT]
   Trigger: "firestore rules", "security rules", "firestore permissions", "custom claims"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Firestore security rule implementation — from basic auth checks to advanced patterns with custom claims, field-level validation, rate limiting, and comprehensive rule testing using the emulator. Use when securing Firestore data access beyond simple authenticated/unauthenticated checks.
+Guides Firestore security rule implementation — from basic auth checks to advanced patterns with custom claims, field-level validation, rate limiting, and comprehensive rule testing using the emulator. Use when securing Firestore data access beyond simple authenticated/unauthenticated checks. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Firestore security rule implementation — from basic auth checks to adva
 
 - `firebase-auth` — authentication provides the identity rules check against
 - `firestore-modeling` — document structure must support the security model
+
+## Usage
+
+Example invocations:
+
+- "/firestore-security-rules" — Run the full firestore security rules workflow
+- "firestore security rules on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

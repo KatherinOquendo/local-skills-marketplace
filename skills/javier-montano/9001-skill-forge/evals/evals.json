@@ -1,0 +1,9 @@
+[
+  {"id": "skill-forge-happy-path", "type": "happy_path", "input": "Run skill forge on this project", "expected_behavior": "Skill activates and produces the expected skill forge output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "skill-forge-explicit-trigger", "type": "happy_path", "input": "Apply skill forge analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the skill forge workflow", "tags": ["trigger", "recognition"]},
+  {"id": "skill-forge-with-context", "type": "happy_path", "input": "Apply skill forge to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive skill forge analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "skill-forge-minimal-input", "type": "happy_path", "input": "Quick skill forge", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "skill-forge-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to skill forge", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "skill-forge-edge-empty-input", "type": "edge_case", "input": "Run skill forge but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "skill-forge-edge-conflicting", "type": "edge_case", "input": "Apply skill forge but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

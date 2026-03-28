@@ -1,10 +1,10 @@
 ---
 name: build-moat-assets
 author: JM Labs (Javier Montaño)
-description: >
-  Create MOAT directory structures and populate asset files (references/, examples/, prompts/, scripts/, assets/) for plugin skills.
-  Trigger: build MOAT assets, create skill assets, populate references, generate examples, build skill directories.
-argument-hint: "<spec-package-path> <target-plugin-path>"
+description: 
+  Create MOAT directory structures and populate asset files (references/, examples/, prompts/, scripts/, assets/) for plugin skills. [EXPLICIT]
+  Trigger: build MOAT assets, create skill assets, populate references, generate examples, build skill directories. [EXPLICIT]
+argument-hint: "spec-package-path target-plugin-path"
 allowed-tools:
   - Read
   - Write
@@ -18,7 +18,7 @@ allowed-tools:
 
 > "Structure without content is an empty house; content without structure is a pile of bricks."
 
-Creates MOAT directory structures for plugin skills and populates them with asset files from spec packages. Handles the physical disk operations that turn specification content into a living skill directory with references, examples, prompts, scripts, and static assets.
+Creates MOAT directory structures for plugin skills and populates them with asset files from spec packages. Handles the physical disk operations that turn specification content into a living skill directory with references, examples, prompts, scripts, and static assets. [EXPLICIT]
 
 ---
 
@@ -133,9 +133,9 @@ Include:
 
 **Bad creation summary:**
 ```
-Created 5 skill directories.
+Created 5 skill directories. [EXPLICIT]
 ```
-Missing: no file counts, no line counts, no MOAT directory details, no warnings.
+Missing: no file counts, no line counts, no MOAT directory details, no warnings. [EXPLICIT]
 
 **Good creation summary:**
 ```
@@ -144,18 +144,26 @@ Missing: no file counts, no line counts, no MOAT directory details, no warnings.
 | validate-hooks | 4 | 210 | references/, examples/, prompts/ |
 | validate-manifest | 3 | 145 | references/, examples/ |
 
-Total: 2 skills, 7 files, 355 lines. 0 warnings, 0 errors.
+Total: 2 skills, 7 files, 355 lines. 0 warnings, 0 errors. [EXPLICIT]
 ```
-Includes: per-skill breakdown, file counts, line counts, MOAT directories created, totals with error summary.
+Includes: per-skill breakdown, file counts, line counts, MOAT directories created, totals with error summary. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. **Creating empty directories** -- Every MOAT subdirectory must have at least one file. If the spec has no content for a subdirectory, do not create it. Empty directories are noise.
-2. **Forgetting chmod on scripts** -- A script without execute permission will fail silently when invoked. Always set permissions immediately after writing.
-3. **Writing files without verification** -- Disk writes can fail (permissions, disk full, path issues). Always verify each file exists after writing.
+1. **Creating empty directories** -- Every MOAT subdirectory must have at least one file. If the spec has no content for a subdirectory, do not create it. Empty directories are noise. [EXPLICIT]
+2. **Forgetting chmod on scripts** -- A script without execute permission will fail silently when invoked. Always set permissions immediately after writing. [EXPLICIT]
+3. **Writing files without verification** -- Disk writes can fail (permissions, disk full, path issues). Always verify each file exists after writing. [EXPLICIT]
 
 ## Edge Cases
 
-1. **Spec package with a single skill and no MOAT assets** -- Create just the skill directory with SKILL.md. No subdirectories. Report as valid minimal build.
-2. **Target path with existing skill of the same name** -- List the existing files, warn the user, and wait for confirmation. If confirmed, back up existing SKILL.md as `SKILL.md.bak` before overwriting.
-3. **Script files with Windows line endings** -- Detect `\r\n` and convert to `\n` before writing. Shebangs fail with Windows line endings on Unix systems.
+1. **Spec package with a single skill and no MOAT assets** -- Create just the skill directory with SKILL.md. No subdirectories. Report as valid minimal build. [EXPLICIT]
+2. **Target path with existing skill of the same name** -- List the existing files, warn the user, and wait for confirmation. If confirmed, back up existing SKILL.md as `SKILL.md.bak` before overwriting. [EXPLICIT]
+3. **Script files with Windows line endings** -- Detect `\r\n` and convert to `\n` before writing. Shebangs fail with Windows line endings on Unix systems. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/build-moat-assets" — Run the full build moat assets workflow
+- "build moat assets on this project" — Apply to current context
+

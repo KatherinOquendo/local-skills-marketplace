@@ -3,7 +3,7 @@ name: budget-management
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Project budgets, burn rate tracking, forecast modeling, variance analysis.
+  Project budgets, burn rate tracking, forecast modeling, variance analysis. [EXPLICIT]
   Trigger: "budget management"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Budget Management
 > "Method over hacks."
 ## TL;DR
-Project budgets, burn rate tracking, forecast modeling, variance analysis.
+Project budgets, burn rate tracking, forecast modeling, variance analysis. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Project budgets, burn rate tracking, forecast modeling, variance analysis.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/budget-management" — Run the full budget management workflow
+- "budget management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

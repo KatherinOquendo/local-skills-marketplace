@@ -1,12 +1,12 @@
----
-name: metodologia-maturity-assessment
-description: >
-  Capability maturity evaluation using CMMI and custom models, current vs target state scoring,
-  and improvement roadmap generation. Use when the user asks to "assess maturity", "evaluate capability",
-  "create maturity model", or mentions maturity heatmap, gap analysis, capability assessment,
-  or evolution plan.
-author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<organizacion-o-equipo> [dominios-a-evaluar]"
+--- [EXPLICIT]
+name: metodologia-maturity-assessment [EXPLICIT]
+description:  [EXPLICIT]
+  Capability maturity evaluation using CMMI and custom models, current vs target state scoring, [EXPLICIT]
+  and improvement roadmap generation. Use when the user asks to "assess maturity", "evaluate capability", [EXPLICIT]
+  "create maturity model", or mentions maturity heatmap, gap analysis, capability assessment, [EXPLICIT]
+  or evolution plan. [EXPLICIT]
+author: Javier Montaño · Comunidad MetodologIA [EXPLICIT]
+argument-hint: "organizacion-o-equipo [dominios-a-evaluar]" [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,16 +21,16 @@ allowed-tools:
 
 # Evaluacion de Madurez
 
-Evaluacion de madurez de capacidades usando modelos CMMI y custom, scoring de estado
-actual vs target, y generacion de roadmap de evolucion.
+Evaluacion de madurez de capacidades usando modelos CMMI y custom, scoring de estado [EXPLICIT]
+actual vs target, y generacion de roadmap de evolucion. [EXPLICIT]
 
 ## Grounding Guideline
 
 > *You cannot improve what has not been honestly diagnosed.*
 
-1. **Maturity is measured, not declared.** Optimistic self-assessments are the enemy of real progress.
-2. **Every level has its value.** Not every organization needs the maximum level — the goal is the right level for its objectives.
-3. **The gap is the opportunity.** The difference between the current and desired level is the improvement roadmap.
+1. **Maturity is measured, not declared.** Optimistic self-assessments are the enemy of real progress. [EXPLICIT]
+2. **Every level has its value.** Not every organization needs the maximum level — the goal is the right level for its objectives. [EXPLICIT]
+3. **The gap is the opportunity.** The difference between the current and desired level is the improvement roadmap. [EXPLICIT]
 
 ## TL;DR
 
@@ -42,7 +42,7 @@ actual vs target, y generacion de roadmap de evolucion.
 
 ## Inputs
 
-Parse `$1` como **nombre de la organizacion/equipo**, `$2` como **dominios a evaluar**.
+Parse `$1` como **nombre de la organizacion/equipo**, `$2` como **dominios a evaluar**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -186,3 +186,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/maturity-assessment" — Run the full maturity assessment workflow
+- "maturity assessment on this project" — Apply to current context
+

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Test web accessibility with axe-core, screen reader testing, keyboard
-  navigation, and color contrast validation for WCAG compliance.
+  navigation, and color contrast validation for WCAG compliance. [EXPLICIT]
   Trigger: "accessibility", "a11y", "WCAG", "screen reader", "axe-core"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides comprehensive accessibility testing — automated scanning with axe-core, manual keyboard navigation testing, screen reader verification, color contrast validation, and WCAG 2.1 AA compliance checking. Use when auditing, building, or maintaining accessible web applications.
+Guides comprehensive accessibility testing — automated scanning with axe-core, manual keyboard navigation testing, screen reader verification, color contrast validation, and WCAG 2.1 AA compliance checking. Use when auditing, building, or maintaining accessible web applications. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides comprehensive accessibility testing — automated scanning with axe-core,
 
 - `modal-dialog-patterns` — focus management is critical for modal accessibility
 - `navigation-patterns` — navigation is the most common a11y failure area
+
+## Usage
+
+Example invocations:
+
+- "/accessibility-testing" — Run the full accessibility testing workflow
+- "accessibility testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

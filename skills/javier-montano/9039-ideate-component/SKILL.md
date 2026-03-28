@@ -1,10 +1,10 @@
 ---
 name: ideate-component
 author: JM Labs (Javier Montaño)
-description: >
-  Brainstorm individual plugin components (skill, agent, command, hook) for existing or planned plugins.
-  Trigger: ideate component, brainstorm skill, new agent idea, component concept, add skill to plugin.
-argument-hint: "<component-type> [plugin-path]"
+description: 
+  Brainstorm individual plugin components (skill, agent, command, hook) for existing or planned plugins. [EXPLICIT]
+  Trigger: ideate component, brainstorm skill, new agent idea, component concept, add skill to plugin. [EXPLICIT]
+argument-hint: "component-type [plugin-path]"
 allowed-tools:
   - Read
   - Glob
@@ -16,9 +16,9 @@ allowed-tools:
 
 > "A component earns its place by doing one thing that no other component does."
 
-Brainstorm individual components (skill, agent, command, or hook) for an existing or planned plugin. Produces a concept card that defines the component's responsibility, relationships, and placement within the plugin structure.
+Brainstorm individual components (skill, agent, command, or hook) for an existing or planned plugin. Produces a concept card that defines the component's responsibility, relationships, and placement within the plugin structure. [EXPLICIT]
 
-This is a **read-only** skill. It proposes but never creates files.
+This is a **read-only** skill. It proposes but never creates files. [EXPLICIT]
 
 ---
 
@@ -63,10 +63,10 @@ This is a **read-only** skill. It proposes but never creates files.
 ### Step 6 -- Determine MOAT Depth
 
 - Assess the component's complexity to recommend MOAT asset depth:
-  - `MINIMAL`: SKILL.md only (simple, self-contained components).
-  - `STANDARD`: SKILL.md + references/ (needs reference material).
-  - `FULL`: SKILL.md + references/ + examples/ (complex, benefits from examples).
-  - `DEEP`: SKILL.md + references/ + examples/ + prompts/ (user-facing, needs prompt templates).
+  - `MINIMAL`: SKILL.md only (simple, self-contained components). [EXPLICIT]
+  - `STANDARD`: SKILL.md + references/ (needs reference material). [EXPLICIT]
+  - `FULL`: SKILL.md + references/ + examples/ (complex, benefits from examples). [EXPLICIT]
+  - `DEEP`: SKILL.md + references/ + examples/ + prompts/ (user-facing, needs prompt templates). [EXPLICIT]
 
 ### Step 7 -- Output Concept Card
 
@@ -111,7 +111,7 @@ This is a **read-only** skill. It proposes but never creates files.
 - Name: do-stuff
 - Responsibility: Does stuff.
 ```
-Missing: no movement, no dependencies, no conflicts, no MOAT depth, no tools.
+Missing: no movement, no dependencies, no conflicts, no MOAT depth, no tools. [EXPLICIT]
 
 **Good concept card:**
 ```
@@ -126,17 +126,25 @@ Missing: no movement, no dependencies, no conflicts, no MOAT depth, no tools.
 - Tools Needed: Read, Glob, Grep
 - Estimated Lines: 80-120
 ```
-Includes: type, descriptive name, precise responsibility, movement placement, dependencies, conflict analysis, MOAT depth with rationale, tool list, line estimate.
+Includes: type, descriptive name, precise responsibility, movement placement, dependencies, conflict analysis, MOAT depth with rationale, tool list, line estimate. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Proposing a component that duplicates an existing one without acknowledging the overlap.
-2. Creating a skill for something that should be a command alias.
-3. Designing an agent that manages only one skill (merge into the parent agent).
-4. Recommending DEEP MOAT depth for every component regardless of complexity.
+1. Proposing a component that duplicates an existing one without acknowledging the overlap. [EXPLICIT]
+2. Creating a skill for something that should be a command alias. [EXPLICIT]
+3. Designing an agent that manages only one skill (merge into the parent agent). [EXPLICIT]
+4. Recommending DEEP MOAT depth for every component regardless of complexity. [EXPLICIT]
 
 ## Edge Cases
 
-1. User wants to add a component to a plugin that has no architecture plan -- ideate the component in isolation, note the lack of context.
-2. The proposed component requires tools not available in the plugin sandbox -- document the constraint and propose alternatives.
-3. User wants a hook but the event they need is not compatible with their hook type -- reference the compatibility matrix and suggest alternatives.
+1. User wants to add a component to a plugin that has no architecture plan -- ideate the component in isolation, note the lack of context. [EXPLICIT]
+2. The proposed component requires tools not available in the plugin sandbox -- document the constraint and propose alternatives. [EXPLICIT]
+3. User wants a hook but the event they need is not compatible with their hook type -- reference the compatibility matrix and suggest alternatives. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/ideate-component" — Run the full ideate component workflow
+- "ideate component on this project" — Apply to current context
+

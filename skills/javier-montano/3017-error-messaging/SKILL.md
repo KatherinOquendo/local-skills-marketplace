@@ -3,7 +3,7 @@ name: error-messaging
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Error message taxonomy, tone, actionability, recovery guidance.
+  Error message taxonomy, tone, actionability, recovery guidance. [EXPLICIT]
   Trigger: "error messaging"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Error Messaging
 > "Method over hacks."
 ## TL;DR
-Error message taxonomy, tone, actionability, recovery guidance.
+Error message taxonomy, tone, actionability, recovery guidance. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Error message taxonomy, tone, actionability, recovery guidance.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/error-messaging" — Run the full error messaging workflow
+- "error messaging on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

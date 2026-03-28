@@ -8,7 +8,7 @@ copyright: © Comunidad MetodologIA
 
 # State of the Art: Solutions Architecture (2024–2026)
 
-La arquitectura de soluciones se transforma aceleradamente: los sistemas AI-native introducen patrones de integración sin precedente, la composabilidad redefine cómo se ensamblan soluciones, event mesh evoluciona como backbone de integración enterprise, y zero-trust se consolida como propiedad fundamental — no capa adicional. Este documento captura las tendencias dominantes, herramientas emergentes y debates activos que todo arquitecto de soluciones debe considerar en 2026.
+La arquitectura de soluciones se transforma aceleradamente: los sistemas AI-native introducen patrones de integración sin precedente, la composabilidad redefine cómo se ensamblan soluciones, event mesh evoluciona como backbone de integración enterprise, y zero-trust se consolida como propiedad fundamental — no capa adicional. Este documento captura las tendencias dominantes, herramientas emergentes y debates activos que Todo arquitecto de soluciones debe considerar en 2026.
 
 ---
 
@@ -101,7 +101,7 @@ La arquitectura de soluciones se transforma aceleradamente: los sistemas AI-nati
 
 ### Opiniones en Debate
 - **Orchestration vs. choreography para composición de servicios:** orquestación (Temporal, Camunda) ofrece visibilidad y control central; coreografía (event-driven puro) ofrece menor acoplamiento. El consenso emergente: orquestación para flujos de negocio críticos, coreografía para integración entre dominios.
-- **AI como componente central vs. AI como feature:** maximalistas diseñan soluciones "AI-native" donde todo flujo pasa por un LLM; pragmáticos usan AI quirúrgicamente en puntos de alto valor (clasificación, extracción, generación) manteniendo lógica determinista para reglas de negocio.
+- **AI como componente central vs. AI como feature:** maximalistas diseñan soluciones "AI-native" donde Todo flujo pasa por un LLM; pragmáticos usan AI quirúrgicamente en puntos de alto valor (clasificación, extracción, generación) manteniendo lógica determinista para reglas de negocio.
 - **Multi-cloud real vs. marketing:** CTOs cuestionan si organizaciones realmente necesitan multi-cloud operativo o si es suficiente con portabilidad teórica. Datos muestran que <15% de workloads son genuinamente multi-cloud; el resto es multi-cloud por accidente (adquisiciones) o compliance.
 - **Observabilidad con OpenTelemetry vs. vendor lock-in:** OTel es estándar abierto pero requiere inversión en operación; vendors (Datadog, New Relic) ofrecen experiencia integrada con lock-in de datos. La recomendación pragmática: OTel para instrumentación + vendor para storage/visualization.
 

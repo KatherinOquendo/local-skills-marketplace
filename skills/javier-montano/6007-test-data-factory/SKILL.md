@@ -10,32 +10,32 @@ tags: [testing, test-data, factory, fixtures, seeding, firestore, mocking]
 # 085 — Test Data Factory {Testing}
 
 ## Purpose
-Provide consistent, type-safe, and reproducible test data across unit, integration, and E2E tests. Eliminate ad-hoc data creation in test files through centralized factory functions and Firestore seed scripts.
+Provide consistent, type-safe, and reproducible test data across unit, integration, and E2E tests. Eliminate ad-hoc data creation in test files through centralized factory functions and Firestore seed scripts. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of Single Source**: All test data originates from factory functions. No inline object literals in test files — every entity comes from a factory.
-2. **Law of Type Safety**: Factory output matches Firestore document interfaces exactly. TypeScript compiler catches schema drift.
-3. **Law of Overridability**: Factories produce sensible defaults. Tests override only the fields relevant to their assertion.
+1. **Law of Single Source**: All test data originates from factory functions. No inline object literals in test files — every entity comes from a factory. [EXPLICIT]
+2. **Law of Type Safety**: Factory output matches Firestore document interfaces exactly. TypeScript compiler catches schema drift. [EXPLICIT]
+3. **Law of Overridability**: Factories produce sensible defaults. Tests override only the fields relevant to their assertion. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Factory Architecture
-1. Create `test/factories/` directory with one factory per Firestore collection.
-2. Each factory exports `build(overrides?)` (plain object) and `create(overrides?)` (writes to emulator).
-3. Use `faker` or `@faker-js/faker` for realistic random data with seeded RNG for reproducibility.
-4. Type factories with collection interfaces: `buildUser(overrides?: Partial<User>): User`.
+1. Create `test/factories/` directory with one factory per Firestore collection. [EXPLICIT]
+2. Each factory exports `build(overrides?)` (plain object) and `create(overrides?)` (writes to emulator). [EXPLICIT]
+3. Use `faker` or `@faker-js/faker` for realistic random data with seeded RNG for reproducibility. [EXPLICIT]
+4. Type factories with collection interfaces: `buildUser(overrides?: Partial<User>): User`. [EXPLICIT]
 
 ### Phase 2 — Seed Scripts
-1. Create `test/seeds/` with scenario-based seed files: `seed-basic.ts`, `seed-full.ts`.
-2. Seeds use factories to populate Firestore emulator via Admin SDK.
-3. Script: `ts-node test/seeds/seed-basic.ts` — callable from CLI and CI.
-4. Export seed data as JSON fixtures in `test/fixtures/` for snapshot tests.
+1. Create `test/seeds/` with scenario-based seed files: `seed-basic.ts`, `seed-full.ts`. [EXPLICIT]
+2. Seeds use factories to populate Firestore emulator via Admin SDK. [EXPLICIT]
+3. Script: `ts-node test/seeds/seed-basic.ts` — callable from CLI and CI. [EXPLICIT]
+4. Export seed data as JSON fixtures in `test/fixtures/` for snapshot tests. [EXPLICIT]
 
 ### Phase 3 — Integration
-1. Unit tests: `build()` for plain objects, no Firestore writes.
-2. Integration tests: `create()` to write to emulator, return document reference.
-3. E2E tests: Run seed script before suite via `globalSetup`.
+1. Unit tests: `build()` for plain objects, no Firestore writes. [EXPLICIT]
+2. Integration tests: `create()` to write to emulator, return document reference. [EXPLICIT]
+3. E2E tests: Run seed script before suite via `globalSetup`. [EXPLICIT]
 
 ## I/O
 
@@ -48,11 +48,11 @@ Provide consistent, type-safe, and reproducible test data across unit, integrati
 
 ## Quality Gates — 5 Checks
 
-1. **Every collection has a factory** — no orphan collections without test factory.
-2. **Factory output passes TypeScript strict check** — no `as any` casts.
-3. **Seeded RNG** — `faker.seed(12345)` ensures reproducible data across runs.
-4. **Seed scripts idempotent** — running twice produces same state (clearFirestore first).
-5. **No inline test data** — lint rule flags object literals in test `describe` blocks.
+1. **Every collection has a factory** — no orphan collections without test factory. [EXPLICIT]
+2. **Factory output passes TypeScript strict check** — no `as any` casts. [EXPLICIT]
+3. **Seeded RNG** — `faker.seed(12345)` ensures reproducible data across runs. [EXPLICIT]
+4. **Seed scripts idempotent** — running twice produces same state (clearFirestore first). [EXPLICIT]
+5. **No inline test data** — lint rule flags object literals in test `describe` blocks. [EXPLICIT]
 
 ## Edge Cases
 
@@ -67,3 +67,17 @@ Provide consistent, type-safe, and reproducible test data across unit, integrati
 - New collection added → factory required before any test can be written for it.
 - Test flakiness from random data → add seed to faker or use fixed fixtures.
 - Seed script exceeds 10s → optimize with parallel batch writes.
+
+## Usage
+
+Example invocations:
+
+- "/test-data-factory" — Run the full test data factory workflow
+- "test data factory on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

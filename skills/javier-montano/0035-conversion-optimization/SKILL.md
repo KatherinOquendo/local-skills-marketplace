@@ -3,7 +3,7 @@ name: conversion-optimization
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  CRO: friction point analysis, trust signals, funnel optimization, A/B test design.
+  CRO: friction point analysis, trust signals, funnel optimization, A/B test design. [EXPLICIT]
   Trigger: "conversion optimization, cro: friction point analysis, trust signals, funnel optimization, a/b test design"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-CRO: friction point analysis, trust signals, funnel optimization, A/B test design. All outputs follow MetodologIA brand standards and evidence tagging.
+CRO: friction point analysis, trust signals, funnel optimization, A/B test design. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ CRO: friction point analysis, trust signals, funnel optimization, A/B test desig
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/conversion-optimization" — Run the full conversion optimization workflow
+- "conversion optimization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

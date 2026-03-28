@@ -1,6 +1,6 @@
 ---
 name: x-ray-skill
-description: >
+description: 
   This skill should be used when the user asks to "audit a skill",
   "review skill quality", "diagnose a skill", "score this skill",
   "x-ray this skill", or "how good is this skill". Reads an entire
@@ -9,8 +9,8 @@ description: >
   running a 13-point validation gate, and checking systemic coherence
   across all files. Use this skill whenever someone wants to understand
   the quality state of a skill before improving it, even if they just
-  say "check this skill" or provide a path to a skill directory.
-argument-hint: "<path-to-skill-directory>"
+  say "check this skill" or provide a path to a skill directory. [EXPLICIT]
+argument-hint: "path-to-skill-directory"
 allowed-tools:
   - Read
   - Glob
@@ -22,7 +22,7 @@ context: fork
 
 # Skill X-Ray
 
-Diagnostic scan for Claude Code skills. Reads every file, scores against the gold standard, and produces a prioritized gap analysis — so you know exactly what to fix and in what order.
+Diagnostic scan for Claude Code skills. Reads every file, scores against the gold standard, and produces a prioritized gap analysis — so you know exactly what to fix and in what order. [EXPLICIT]
 
 Part of the Skill Quality Suite (6 skills):
 
@@ -35,7 +35,7 @@ Part of the Skill Quality Suite (6 skills):
 | benchmark-skill | Before/after comparison | No |
 | assembly-skill | One-command full pipeline | Yes (delegates) |
 
-Each skill is standalone. Use assembly-skill to run the full pipeline in one command.
+Each skill is standalone. Use assembly-skill to run the full pipeline in one command. [EXPLICIT]
 
 ## Usage
 
@@ -45,7 +45,7 @@ Each skill is standalone. Use assembly-skill to run the full pipeline in one com
 /x-ray-skill ~/.claude/skills/some-skill
 ```
 
-Parse the argument as the path to a skill directory containing SKILL.md. If the path points to a .skill ZIP file, extract it to a temp directory first.
+Parse the argument as the path to a skill directory containing SKILL.md. If the path points to a .skill ZIP file, extract it to a temp directory first. [EXPLICIT]
 
 ## The Diagnostic Process
 
@@ -113,7 +113,7 @@ Read SKILL.md body section by section. For each expected section:
 
 ### Step 4: Quality Rubric Scoring
 
-Read `references/quality-rubric.md` for the full scoring guide. Score each dimension using the detection methods described there.
+Read `references/quality-rubric.md` for the full scoring guide. Score each dimension using the detection methods described there. [EXPLICIT]
 
 | # | Criterion | Score | Key Finding | Evidence |
 |---|-----------|-------|-------------|----------|
@@ -138,7 +138,7 @@ Read `references/quality-rubric.md` for the full scoring guide. Score each dimen
 
 ### Step 5: Meta-Validation Gate
 
-Run the 13-point gate from `references/quality-rubric.md`. Each checkpoint is binary — no partial credit.
+Run the 13-point gate from `references/quality-rubric.md`. Each checkpoint is binary — no partial credit. [EXPLICIT]
 
 | # | Checkpoint | Result | Evidence |
 |---|-----------|--------|----------|
@@ -160,7 +160,7 @@ Gate result: **PASS** (13/13) / **CONDITIONAL** (11-12) / **BLOCKED** (<11)
 
 ### Step 6: Systemic Coherence (multi-file skills only)
 
-Skip this step for single-file skills — report N/A.
+Skip this step for single-file skills — report N/A. [EXPLICIT]
 
 | Check | Method | Result | Severity |
 |-------|--------|--------|----------|
@@ -173,7 +173,7 @@ Skip this step for single-file skills — report N/A.
 
 ### Step 7: Produce Scorecard
 
-Synthesize into the X-Ray Report. This is the only deliverable — every previous step is intermediate.
+Synthesize into the X-Ray Report. This is the only deliverable — every previous step is intermediate. [EXPLICIT]
 
 ```markdown
 # X-Ray Report: {skill-name}
@@ -249,20 +249,20 @@ Synthesize into the X-Ray Report. This is the only deliverable — every previou
 
 **Bad X-Ray report:**
 ```
-Score: 7/10. The skill is mostly good. Some improvements needed.
-Recommendation: Make it better.
+Score: 7/10. The skill is mostly good. Some improvements needed. [EXPLICIT]
+Recommendation: Make it better. [EXPLICIT]
 ```
-Failure: no evidence, no specific issues, no actionable fixes.
+Failure: no evidence, no specific issues, no actionable fixes. [EXPLICIT]
 
 **Good X-Ray report:**
 ```
-Score: 7.2/10. Gate: CONDITIONAL (12/13 — fails checkpoint 6: no Good vs Bad example).
+Score: 7.2/10. Gate: CONDITIONAL (12/13 — fails checkpoint 6: no Good vs Bad example). [EXPLICIT]
 Top issues:
-1. [BLOCKER] No Good vs Bad example — affects calibration. Fix: Add concrete comparison in new section.
-2. [WARNING] Description lacks pushy context — affects triggering. Fix: Add "even if they don't explicitly ask" clause.
-3. [WARNING] references/patterns.md exists but SKILL.md never mentions it — affects progressive disclosure.
+1. [BLOCKER] No Good vs Bad example — affects calibration. Fix: Add concrete comparison in new section. [EXPLICIT]
+2. [WARNING] Description lacks pushy context — affects triggering. Fix: Add "even if they don't explicitly ask" clause. [EXPLICIT]
+3. [WARNING] references/patterns.md exists but SKILL.md never mentions it — affects progressive disclosure. [EXPLICIT]
 ```
-Success: every finding is specific, evidenced, actionable, and tagged by severity.
+Success: every finding is specific, evidenced, actionable, and tagged by severity. [EXPLICIT]
 
 ## Validation Gate
 

@@ -3,7 +3,7 @@ name: kpi-framework
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  KPI design, metric trees, leading/lagging indicators, OKR alignment.
+  KPI design, metric trees, leading/lagging indicators, OKR alignment. [EXPLICIT]
   Trigger: "kpi framework"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Kpi Framework
 > "Method over hacks."
 ## TL;DR
-KPI design, metric trees, leading/lagging indicators, OKR alignment.
+KPI design, metric trees, leading/lagging indicators, OKR alignment. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ KPI design, metric trees, leading/lagging indicators, OKR alignment.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/kpi-framework" — Run the full kpi framework workflow
+- "kpi framework on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -20,7 +20,7 @@ allowed-tools:
 
 # Output Engineering — Ghost Menu & Multi-Format Pipeline
 
-Orchestrates the ghost menu system: markdown as source of truth, format conversion on demand, **Neo-Swiss brand compliance across all output formats**, and production quality control. Owns the .md to HTML | DOCX | PPTX | XLSX | PDF pipeline.
+Orchestrates the ghost menu system: markdown as source of truth, format conversion on demand, **Neo-Swiss brand compliance across all output formats**, and production quality control. Owns the .md to HTML | DOCX | PPTX | XLSX | PDF pipeline. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -38,7 +38,7 @@ Orchestrates the ghost menu system: markdown as source of truth, format conversi
 **Every format produced by this pipeline MUST be Neo-Swiss brand-compliant.** Before generating any output:
 
 ```
-Read ${CLAUDE_SKILL_DIR}/../../references/brand-config-neoswiss.json
+Read ${CLAUDE_SKILL_DIR}/../../references/brand-config-neoswiss.json [EXPLICIT]
 ```
 
 ### Format Routing
@@ -57,13 +57,13 @@ Read ${CLAUDE_SKILL_DIR}/../../references/brand-config-neoswiss.json
 - `$1` — Source file: path to markdown deliverable (required)
 - `$2` — Target format: `html`, `docx`, `pptx`, `xlsx`, `pdf`, `all` (default: `html`)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 ## Ghost Menu Protocol
 
 ### Trigger
 
-After ANY deliverable markdown is generated and passes editorial review:
+After ANY deliverable markdown is generated and passes editorial review: [EXPLICIT]
 
 ```
 📄 Entregable listo: [filename].md
@@ -165,7 +165,7 @@ After ANY deliverable markdown is generated and passes editorial review:
 
 ## Brand Compliance Checklist (ALL Formats)
 
-Every output format MUST pass:
+Every output format MUST pass: [EXPLICIT]
 
 | Element | Neo-Swiss Standard |
 |---------|-------------------|
@@ -183,7 +183,7 @@ Every output format MUST pass:
 
 ### Legacy Token Blocklist
 
-These tokens are BANNED. If any appear in output, the deliverable FAILS brand compliance:
+These tokens are BANNED. If any appear in output, the deliverable FAILS brand compliance: [EXPLICIT]
 
 | Banned Token | Was Used In | Replaced By |
 |-------------|------------|-------------|
@@ -199,7 +199,7 @@ These tokens are BANNED. If any appear in output, the deliverable FAILS brand co
 
 ## Content Integrity Validation
 
-After format conversion, verify:
+After format conversion, verify: [EXPLICIT]
 
 | Check | Method |
 |-------|--------|
@@ -213,7 +213,7 @@ After format conversion, verify:
 
 ## Multi-Format Delivery Package
 
-When user requests `all`:
+When user requests `all`: [EXPLICIT]
 
 ```
 {project_name}/
@@ -262,3 +262,19 @@ When user requests `all`:
 
 ---
 **Autor:** Javier Montano · Comunidad MetodologIA | **Version:** 2.0.0 Neo-Swiss
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/output-engineering" — Run the full output engineering workflow
+- "output engineering on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]

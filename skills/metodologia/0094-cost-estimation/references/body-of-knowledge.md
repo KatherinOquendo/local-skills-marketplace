@@ -50,8 +50,8 @@
 
 ### 7. Function Point Analysis — IFPUG
 
-- **Relevancia**: Método de sizing independiente de tecnología que mide funcionalidad entregada al usuario. Estandarizado por IFPUG.
-- **Aplicación en el skill**: Sección S2 como método de triangulación. Los Function Points se convierten a esfuerzo-persona via tablas de productividad por lenguaje — nunca directamente a precio.
+- **Relevancia**: MéTodo de sizing independiente de tecnología que mide funcionalidad entregada al usuario. Estandarizado por IFPUG.
+- **Aplicación en el skill**: Sección S2 como méTodo de triangulación. Los Function Points se convierten a esfuerzo-persona via tablas de productividad por lenguaje — nunca directamente a precio.
 - **Conceptos clave**: External Inputs (EI), External Outputs (EO), External Inquiries (EQ), Internal Logical Files (ILF), External Interface Files (EIF), Value Adjustment Factor (VAF).
 - **Referencia**: IFPUG. (2010). *Function Point Counting Practices Manual* (CPM 4.3.1). International Function Point Users Group.
 
@@ -76,9 +76,9 @@
 | **Planning Fallacy** | Sesgo cognitivo donde los estimadores subestiman sistemáticamente el tiempo, costo y riesgos de tareas futuras. |
 | **PERT Estimation** | Program Evaluation and Review Technique. Fórmula: (Optimista + 4 × Más Probable + Pesimista) / 6. Produce expected duration. |
 | **Monte Carlo Simulation** | Técnica que ejecuta N simulaciones aleatorias sobre estimaciones de tres puntos para producir distribuciones de probabilidad (P50, P80, P95). |
-| **TCO (Total Cost of Ownership)** | Análisis integral de todos los drivers de costo a lo largo del ciclo de vida: adquisición, operación, mantenimiento, decommissioning. Expresado en categorías de drivers, no en precio final. |
+| **TCO (Total Cost of Ownership)** | Análisis integral de Todos los drivers de costo a lo largo del ciclo de vida: adquisición, operación, mantenimiento, decommissioning. Expresado en categorías de drivers, no en precio final. |
 | **WBS (Work Breakdown Structure)** | Descomposición jerárquica del alcance en entregables progresivamente más pequeños y manejables. Base para toda estimación bottom-up. |
-| **Triangulación** | Práctica de usar al menos 3 métodos de estimación independientes y comparar resultados. Divergencia >30% requiere investigación. |
+| **Triangulación** | Práctica de usar al menos 3 méTodos de estimación independientes y comparar resultados. Divergencia >30% requiere investigación. |
 | **Margen de Innovación** | 5% adicional al esfuerzo estimado, reservado explícitamente para inversión en calidad, experiencia de usuario e innovación. Separado de contingencia de riesgo. |
 | **COCOMO II** | Constructive Cost Model II. Modelo paramétrico que estima esfuerzo-persona a partir de tamaño (KSLOC/FP) ajustado por scale factors y effort multipliers. |
 | **Velocity** | Métrica ágil que mide el throughput del equipo en story points por sprint. Es dato histórico del equipo — no es transferible entre equipos. |

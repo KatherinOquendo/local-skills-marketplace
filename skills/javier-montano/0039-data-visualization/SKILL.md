@@ -4,8 +4,8 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implements data visualizations using Chart.js, D3.js, SVG, and Canvas
-  for interactive dashboards, charts, graphs, and data-driven components.
-  Covers responsive charts, accessibility, and real-time data updates.
+  for interactive dashboards, charts, graphs, and data-driven components. [EXPLICIT]
+  Covers responsive charts, accessibility, and real-time data updates. [EXPLICIT]
   Trigger: "chart", "D3", "data visualization", "dashboard", "graph", "Chart.js"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements interactive data visualizations using Chart.js for standard charts, D3.js for custom visualizations, and SVG/Canvas for specialized graphics powering dashboards and data-driven components. Use this skill when building dashboards, presenting analytics data, or when users need to explore data visually.
+Implements interactive data visualizations using Chart.js for standard charts, D3.js for custom visualizations, and SVG/Canvas for specialized graphics powering dashboards and data-driven components. Use this skill when building dashboards, presenting analytics data, or when users need to explore data visually. [EXPLICIT]
 
 ## Procedure
 
@@ -78,3 +78,25 @@ Implements interactive data visualizations using Chart.js for standard charts, D
 - `responsive-design` — responsive chart container strategies
 - `accessibility-design` — accessible chart patterns and alternatives
 - `performance-architecture` — canvas rendering for large datasets
+
+## Usage
+
+Example invocations:
+
+- "/data-visualization" — Run the full data visualization workflow
+- "data visualization on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

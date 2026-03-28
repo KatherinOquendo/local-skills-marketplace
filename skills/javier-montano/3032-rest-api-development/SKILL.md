@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build RESTful APIs on Cloud Functions with Express, including middleware,
-  input validation, error handling, and API documentation.
+  input validation, error handling, and API documentation. [EXPLICIT]
   Trigger: "REST API", "express API", "API endpoint", "API design"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides RESTful API development on Cloud Functions using Express — route design, middleware chains, input validation, error handling, authentication, and API documentation. Use when building backend APIs for web or mobile clients on Firebase infrastructure.
+Guides RESTful API development on Cloud Functions using Express — route design, middleware chains, input validation, error handling, authentication, and API documentation. Use when building backend APIs for web or mobile clients on Firebase infrastructure. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides RESTful API development on Cloud Functions using Express — route design
 
 - `cloud-functions` — Express APIs run on Cloud Functions
 - `webhook-handling` — incoming webhooks are a specialized API pattern
+
+## Usage
+
+Example invocations:
+
+- "/rest-api-development" — Run the full rest api development workflow
+- "rest api development on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

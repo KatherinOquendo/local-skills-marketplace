@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Develops React applications using modern patterns: Hooks, Server Components
   (RSC), Suspense boundaries, Context API, and React 19 features. Covers
-  Next.js App Router and client/server component separation.
+  Next.js App Router and client/server component separation. [EXPLICIT]
   Trigger: "React", "hooks", "Server Components", "RSC", "Suspense", "Next.js"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Develops React applications using modern patterns including Hooks, React Server Components (RSC), Suspense for data loading, and the Context API for dependency injection and theming. Use this skill when building React applications, migrating to React 19 patterns, or establishing React best practices.
+Develops React applications using modern patterns including Hooks, React Server Components (RSC), Suspense for data loading, and the Context API for dependency injection and theming. Use this skill when building React applications, migrating to React 19 patterns, or establishing React best practices. [EXPLICIT]
 
 ## Procedure
 
@@ -72,3 +72,25 @@ Develops React applications using modern patterns including Hooks, React Server 
 - `typescript-patterns` — type-safe React with TypeScript
 - `state-management` — React state management strategies
 - `component-architecture` — component patterns applicable to React
+
+## Usage
+
+Example invocations:
+
+- "/react-development" — Run the full react development workflow
+- "react development on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

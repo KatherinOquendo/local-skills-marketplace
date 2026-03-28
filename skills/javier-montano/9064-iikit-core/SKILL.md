@@ -10,7 +10,7 @@ metadata:
 
 # Intent Integrity Kit Core
 
-Core skill providing project initialization, status checking, and workflow help.
+Core skill providing project initialization, status checking, and workflow help. [EXPLICIT]
 
 ## User Input
 
@@ -18,7 +18,7 @@ Core skill providing project initialization, status checking, and workflow help.
 $ARGUMENTS
 ```
 
-Parse the user input to determine which subcommand to execute.
+Parse the user input to determine which subcommand to execute. [EXPLICIT]
 
 ## Subcommands
 
@@ -27,15 +27,15 @@ Parse the user input to determine which subcommand to execute.
 3. **use** - Select the active feature for multi-feature projects
 4. **help** - Display workflow phases and command reference
 
-If no subcommand is provided, show help.
+If no subcommand is provided, show help. [EXPLICIT]
 
 ## Subcommand: init
 
-Initialize intent-integrity-kit in the current directory. Handles the full project bootstrap: git init, optional GitHub repo creation, or cloning an existing repo. Optionally seeds the project backlog from an existing PRD/SDD document.
+Initialize intent-integrity-kit in the current directory. Handles the full project bootstrap: git init, optional GitHub repo creation, or cloning an existing repo. Optionally seeds the project backlog from an existing PRD/SDD document. [EXPLICIT]
 
 ### Argument Parsing
 
-The `$ARGUMENTS` after `init` may include an optional path or URL to a PRD/SDD document (e.g., `/iikit-core init ./docs/prd.md` or `/iikit-core init https://example.com/prd.md`). If present, store it as `prd_source` for use in Step 6.
+The `$ARGUMENTS` after `init` may include an optional path or URL to a PRD/SDD document (e.g., `/iikit-core init ./docs/prd.md` or `/iikit-core init https://example.com/prd.md`). If present, store it as `prd_source` for use in Step 6. [EXPLICIT]
 
 ### Execution Flow
 
@@ -48,9 +48,9 @@ bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash
 # Windows: pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/git-setup.ps1 -Json
 ```
 
-JSON fields: `git_available`, `is_git_repo`, `has_remote`, `remote_url`, `is_github_remote`, `gh_available`, `gh_authenticated`, `has_iikit_artifacts`.
+JSON fields: `git_available`, `is_git_repo`, `has_remote`, `remote_url`, `is_github_remote`, `gh_available`, `gh_authenticated`, `has_iikit_artifacts`. [EXPLICIT]
 
-If `gh_available` is false, suggest: "GitHub CLI (`gh`) is not installed. Install it from https://cli.github.com/ for the best experience. Proceeding with `curl` fallback for GitHub operations."
+If `gh_available` is false, suggest: "GitHub CLI (`gh`) is not installed. Install it from https://cli.github.com/ for the best experience. Proceeding with `curl` fallback for GitHub operations." [EXPLICIT]
 
 #### Step 1 — Git/GitHub setup
 
@@ -62,7 +62,7 @@ If `gh_available` is false, suggest: "GitHub CLI (`gh`) is not installed. Instal
 | B) Clone | `git_available` | Ask for URL/`owner/name`. `gh repo clone` or `git clone`. |
 | C) Skip | — | Proceed without git. Warn: no assertion integrity hooks. |
 
-Hide options whose prerequisites aren't met. If `git_available` is false, only C is available.
+Hide options whose prerequisites aren't met. If `git_available` is false, only C is available. [EXPLICIT]
 
 #### Step 2 — Check if already initialized
 
@@ -79,45 +79,45 @@ bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash
 # Windows: pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/init-project.ps1 -Json
 ```
 
-Installs pre-commit (assertion validation) and post-commit (hash storage) hooks.
+Installs pre-commit (assertion validation) and post-commit (hash storage) hooks. [EXPLICIT]
 
-If `git_user_configured` is `false`: ask the user for their name and email, then run:
+If `git_user_configured` is `false`: ask the user for their name and email, then run: [EXPLICIT]
 ```bash
 git config user.name "<name>"
 git config user.email "<email>"
 ```
-Do NOT guess from hostname or system username.
+Do NOT guess from hostname or system username. [EXPLICIT]
 
 #### Step 5 — Create PREMISE.md
 
-If `PREMISE.md` does not exist, create it from the user's input using [premise-template.md](templates/premise-template.md). Extract from the user's init description:
+If `PREMISE.md` does not exist, create it from the user's input using [premise-template.md](templates/premise-template.md). Extract from the user's init description: [EXPLICIT]
 - **What**: project description (from the user's input text)
 - **Who**: target users (infer from context, or ask)
 - **Why**: problem being solved (infer from context, or ask)
 - **Domain**: business/technical domain
 - **Scope**: system boundaries
 
-Replace ALL bracket placeholders `[PLACEHOLDER]` with actual content. This is MANDATORY — init is not complete without PREMISE.md.
+Replace ALL bracket placeholders `[PLACEHOLDER]` with actual content. This is MANDATORY — init is not complete without PREMISE.md. [EXPLICIT]
 
-After writing PREMISE.md, validate:
+After writing PREMISE.md, validate: [EXPLICIT]
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/validate-premise.sh --json "$PROJECT_PATH"
 ```
-If validation fails (remaining placeholders or missing sections), fix and re-validate.
+If validation fails (remaining placeholders or missing sections), fix and re-validate. [EXPLICIT]
 
 #### Step 6 — Report
 
-Directories created, hook status, PREMISE.md status. Suggest `/iikit-00-constitution`.
+Directories created, hook status, PREMISE.md status. Suggest `/iikit-00-constitution`. [EXPLICIT]
 
 #### Step 7 — Seed backlog from PRD (optional)
 
 **Gate**: Requires `is_github_remote` AND user provided a PRD/SDD document. If not met, skip silently.
 
-Follow the detailed procedure in [prd-seeding.md](references/prd-seeding.md): resolve input → read document → extract and order features → present for user confirmation → create GitHub issues.
+Follow the detailed procedure in [prd-seeding.md](references/prd-seeding.md): resolve input → read document → extract and order features → present for user confirmation → create GitHub issues. [EXPLICIT]
 
 ### If Already Initialized
 
-Show constitution status, feature count, and suggest `/iikit-core status`.
+Show constitution status, feature count, and suggest `/iikit-core status`. [EXPLICIT]
 
 ## Subcommand: status
 
@@ -135,11 +135,11 @@ Show constitution status, feature count, and suggest `/iikit-core status`.
 
 ## Subcommand: use
 
-Select the active feature when multiple features exist in `specs/`.
+Select the active feature when multiple features exist in `specs/`. [EXPLICIT]
 
 ### User Input
 
-The `$ARGUMENTS` after `use` is the feature selector: a number (`1`, `001`), partial name (`user-auth`), or full directory name (`001-user-auth`).
+The `$ARGUMENTS` after `use` is the feature selector: a number (`1`, `001`), partial name (`user-auth`), or full directory name (`001-user-auth`). [EXPLICIT]
 
 ### Execution Flow
 
@@ -152,11 +152,11 @@ The `$ARGUMENTS` after `use` is the feature selector: a number (`1`, `001`), par
 
 2. **Report** active feature, stage, and suggest next command: `specified` → `/iikit-clarify` or `/iikit-02-plan` | `planned` → `/iikit-03-checklist` or `/iikit-05-tasks` | `testified` → `/iikit-05-tasks` | `tasks-ready` → `/iikit-07-implement` | `implementing-NN%` → `/iikit-07-implement` (resume) | `complete` → done. Suggest `/clear` before next skill when appropriate.
 
-If no selector, no match, or ambiguous match: show available features with stages and ask user to pick.
+If no selector, no match, or ambiguous match: show available features with stages and ask user to pick. [EXPLICIT]
 
 ## Subcommand: help (also default when no subcommand)
 
-Display the workflow reference from [help-reference.md](references/help-reference.md) verbatim.
+Display the workflow reference from [help-reference.md](references/help-reference.md) verbatim. [EXPLICIT]
 
 ## Resources
 
@@ -166,4 +166,34 @@ Display the workflow reference from [help-reference.md](references/help-referenc
 
 ## Error Handling
 
-Unknown subcommand → show help. Not in a project → suggest `init`. Git unavailable → warn but continue.
+Unknown subcommand → show help. Not in a project → suggest `init`. Git unavailable → warn but continue. [EXPLICIT]
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/iikit-core" — Run the full iikit core workflow
+- "iikit core on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

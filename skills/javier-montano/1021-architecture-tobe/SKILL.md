@@ -1,17 +1,17 @@
 ---
 name: sofka-architecture-tobe
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design the target architecture",
   "create a TO-BE architecture", "plan a migration strategy",
   "define ADRs for a new system", or "mitigate nightmare scenarios",
-  or mentions Strangler Fig, C4 diagrams, saga pattern, or legacy modernization.
+  or mentions Strangler Fig, C4 diagrams, saga pattern, or legacy modernization. [EXPLICIT]
   It produces future-state architecture designs with C4 L2 container diagrams,
-  ADRs, nightmare scenario mitigations, MVP component design, and phased migration plans.
+  ADRs, nightmare scenario mitigations, MVP component design, and phased migration plans. [EXPLICIT]
   Use this skill whenever the user needs target-state architecture, anti-corruption
   layers, or modernization roadmaps, even if they don't explicitly ask for
-  "TO-BE architecture".
-argument-hint: "<project-or-system-name>"
+  "TO-BE architecture". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -25,7 +25,7 @@ allowed-tools:
 
 # TO-BE Architecture Design
 
-Designs future-state architecture enabling legacy system gradual retirement while maintaining zero data loss and regulatory compliance. Produces C4 L2 container diagram, 6+ ADRs, nightmare scenario mitigations, MVP component design, and phased Strangler Fig migration plan.
+Designs future-state architecture enabling legacy system gradual retirement while maintaining zero data loss and regulatory compliance. Produces C4 L2 container diagram, 6+ ADRs, nightmare scenario mitigations, MVP component design, and phased Strangler Fig migration plan. [EXPLICIT]
 
 ## Principio Rector
 
@@ -33,20 +33,20 @@ Designs future-state architecture enabling legacy system gradual retirement whil
 
 ### Filosofía de Arquitectura Objetivo
 
-1. **Migración > revolución.** Strangler Fig, no big-bang. Cada fase de migración es independientemente reversible y valiosa.
-2. **Nightmare-first design.** Antes de celebrar el happy path, se modelan los 5 peores escenarios y se diseñan mitigaciones. Si no sobrevive el nightmare, no se construye.
-3. **El MVP prueba la arquitectura.** El primer componente desplegado valida patterns, performance, y operational readiness. Si el MVP falla, la arquitectura se ajusta antes de escalar.
+1. **Migración > revolución.** Strangler Fig, no big-bang. Cada fase de migración es independientemente reversible y valiosa. [EXPLICIT]
+2. **Nightmare-first design.** Antes de celebrar el happy path, se modelan los 5 peores escenarios y se diseñan mitigaciones. Si no sobrevive el nightmare, no se construye. [EXPLICIT]
+3. **El MVP prueba la arquitectura.** El primer componente desplegado valida patterns, performance, y operational readiness. Si el MVP falla, la arquitectura se ajusta antes de escalar. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para C4 y trade-offs, HITL para ADRs y nightmare scenarios.
-  - **desatendido**: Cero interrupciones. Arquitectura completa auto-generada.
-  - **supervisado**: Autónomo con checkpoint en ADRs y migration plan.
-  - **paso-a-paso**: Confirma cada layer, cada ADR, cada nightmare, y la migration.
+  - **piloto-auto**: Auto para C4 y trade-offs, HITL para ADRs y nightmare scenarios. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura completa auto-generada. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en ADRs y migration plan. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada layer, cada ADR, cada nightmare, y la migration. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — C4 diagram + trade-offs + migration phases) | `técnica` (full, default)
 
@@ -190,20 +190,20 @@ Minimum ADR topics:
 5. Deployment platform (Kubernetes + GitOps)
 6. Caching & session management (Redis)
 
-See `${CLAUDE_SKILL_DIR}/references/adr-templates.md` for detailed ADR templates with banking/enterprise examples.
+See `${CLAUDE_SKILL_DIR}/references/adr-templates.md` for detailed ADR templates with banking/enterprise examples. [EXPLICIT]
 
 ### 4. Nightmare Scenarios (5 minimum)
 
-For each scenario, document: **Problem**, **Trigger Conditions**, **Mitigations (Defense in Depth)**, **Monitoring & Early Detection** (alert definitions), **Acceptance Criteria (Go/No-Go)**.
+For each scenario, document: **Problem**, **Trigger Conditions**, **Mitigations (Defense in Depth)**, **Monitoring & Early Detection** (alert definitions), **Acceptance Criteria (Go/No-Go)**. [EXPLICIT]
 
 Minimum scenarios:
-1. **Ghost Transaction** — Payment commits in one service, fails in another. Mitigations: Saga, Outbox, idempotency keys, reconciliation, DLQ, immutable audit log.
-2. **Schema Drift** — Legacy schema changes unannounced. Mitigations: Consumer-driven contracts, schema registry, data fingerprinting, ACL validation.
-3. **Auth Service Unavailable** — OAuth2 down, all requests rejected. Mitigations: Token caching + grace period, multi-replica, circuit breaker, emergency mode, identity provider redundancy.
-4. **Cascade Failure** — One service crashes, ripple effect takes down others. Mitigations: Circuit breaker, bulkhead, rate limiting + backpressure, service mesh retry, Kafka consumer lag monitoring.
-5. **Legacy System Corruption** — Buggy ACL sends malformed data to legacy. Mitigations: Pre-flight validation, dry-run mode, rollback from snapshots, change control, post-transfer data validation.
+1. **Ghost Transaction** — Payment commits in one service, fails in another. Mitigations: Saga, Outbox, idempotency keys, reconciliation, DLQ, immutable audit log. [EXPLICIT]
+2. **Schema Drift** — Legacy schema changes unannounced. Mitigations: Consumer-driven contracts, schema registry, data fingerprinting, ACL validation. [EXPLICIT]
+3. **Auth Service Unavailable** — OAuth2 down, all requests rejected. Mitigations: Token caching + grace period, multi-replica, circuit breaker, emergency mode, identity provider redundancy. [EXPLICIT]
+4. **Cascade Failure** — One service crashes, ripple effect takes down others. Mitigations: Circuit breaker, bulkhead, rate limiting + backpressure, service mesh retry, Kafka consumer lag monitoring. [EXPLICIT]
+5. **Legacy System Corruption** — Buggy ACL sends malformed data to legacy. Mitigations: Pre-flight validation, dry-run mode, rollback from snapshots, change control, post-transfer data validation. [EXPLICIT]
 
-See `${CLAUDE_SKILL_DIR}/references/nightmare-scenarios.md` for detailed monitoring alert definitions and acceptance criteria per scenario.
+See `${CLAUDE_SKILL_DIR}/references/nightmare-scenarios.md` for detailed monitoring alert definitions and acceptance criteria per scenario. [EXPLICIT]
 
 ### 5. MVP Component
 
@@ -333,3 +333,11 @@ Design the first deployable component (typically Authentication & Session Manage
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/architecture-tobe" — Run the full architecture tobe workflow
+- "architecture tobe on this project" — Apply to current context
+

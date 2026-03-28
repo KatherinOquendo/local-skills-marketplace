@@ -3,7 +3,7 @@ name: ai-assisted-testing
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  AI-generated test cases, fuzzing, mutation testing, coverage optimization.
+  AI-generated test cases, fuzzing, mutation testing, coverage optimization. [EXPLICIT]
   Trigger: "ai assisted testing"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Ai Assisted Testing
 > "Method over hacks."
 ## TL;DR
-AI-generated test cases, fuzzing, mutation testing, coverage optimization.
+AI-generated test cases, fuzzing, mutation testing, coverage optimization. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ AI-generated test cases, fuzzing, mutation testing, coverage optimization.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/ai-assisted-testing" — Run the full ai assisted testing workflow
+- "ai assisted testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

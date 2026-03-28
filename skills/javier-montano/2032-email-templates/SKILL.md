@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Design and build HTML email templates that render correctly across all major
-  email clients. Covers MJML, responsive tables, inline CSS, and dark mode support.
+  email clients. Covers MJML, responsive tables, inline CSS, and dark mode support. [EXPLICIT]
   Trigger: "email template", "HTML email", "MJML", "newsletter design"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the creation of bulletproof HTML email templates that render consistently in Gmail, Outlook, Apple Mail, and mobile clients. Covers MJML for rapid development, table-based layouts, inline CSS, responsive patterns, and dark mode compatibility. Use when building transactional emails, newsletters, or marketing campaigns.
+Guides the creation of bulletproof HTML email templates that render consistently in Gmail, Outlook, Apple Mail, and mobile clients. Covers MJML for rapid development, table-based layouts, inline CSS, responsive patterns, and dark mode compatibility. Use when building transactional emails, newsletters, or marketing campaigns. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the creation of bulletproof HTML email templates that render consistently
 
 - `email-sending` — delivery infrastructure for these templates
 - `dark-mode` — email dark mode is a different beast than web dark mode
+
+## Usage
+
+Example invocations:
+
+- "/email-templates" — Run the full email templates workflow
+- "email templates on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

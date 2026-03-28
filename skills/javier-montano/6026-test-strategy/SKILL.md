@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Design comprehensive test strategies with the test pyramid, TDD, BDD,
-  contract testing, and coverage goals for web applications.
+  contract testing, and coverage goals for web applications. [EXPLICIT]
   Trigger: "test strategy", "test plan", "test pyramid", "TDD", "BDD"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the design of a comprehensive testing strategy — defining test levels (unit, integration, e2e), choosing methodologies (TDD, BDD), setting coverage goals, and establishing testing culture. Use when starting a new project or restructuring testing practices for an existing codebase.
+Guides the design of a comprehensive testing strategy — defining test levels (unit, integration, e2e), choosing methodologies (TDD, BDD), setting coverage goals, and establishing testing culture. Use when starting a new project or restructuring testing practices for an existing codebase. [EXPLICIT]
 
 ## Procedure
 
@@ -75,3 +75,25 @@ Guides the design of a comprehensive testing strategy — defining test levels (
 - `e2e-testing` — Implementation of end-to-end test layer
 - `bdd-full-spectrum` — Multi-angle Gherkin scenarios (Constitution XV)
 - `lighthouse-ci` — Performance budgets in CI (G2 gate)
+
+## Usage
+
+Example invocations:
+
+- "/test-strategy" — Run the full test strategy workflow
+- "test strategy on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

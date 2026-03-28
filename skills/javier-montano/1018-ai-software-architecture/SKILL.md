@@ -4,7 +4,7 @@ description: >
   AI software architecture design — modules, layers, boundaries, design patterns, ADRs, quality attributes, and technical debt strategy
   for AI-enabled systems. This skill should be used when the user asks to "design AI system structure", "define AI module boundaries",
   "select AI architecture patterns", "document AI architecture decisions", "evaluate AI code architecture", or mentions AI pipelines,
-  feature stores, model serving, drift detection, ML quality attributes, explainability architecture, or AI technical debt.
+  feature stores, model serving, drift detection, ML quality attributes, explainability architecture, or AI technical debt. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -18,7 +18,7 @@ allowed-tools:
 
 # AI Software Architecture: Internal Structure & Design Decisions for AI-Enabled Systems
 
-AI software architecture defines how code is organized internally in systems that combine traditional software components with AI/ML capabilities — module boundaries spanning data pipelines, model serving, and feature stores; layer separation across the 6-layer AI stack; design patterns bridging traditional and AI-specific concerns; and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand, maintain, and evolve AI-enabled systems.
+AI software architecture defines how code is organized internally in systems that combine traditional software components with AI/ML capabilities — module boundaries spanning data pipelines, model serving, and feature stores; layer separation across the 6-layer AI stack; design patterns bridging traditional and AI-specific concerns; and the reasoning behind technical decisions. This skill produces comprehensive architecture documentation that enables teams to understand, maintain, and evolve AI-enabled systems. [EXPLICIT]
 
 ## Principio Rector
 
@@ -26,20 +26,20 @@ AI software architecture defines how code is organized internally in systems tha
 
 ### Filosofía de Arquitectura de Software para IA
 
-1. **El modelo es un componente, no el sistema.** La arquitectura de IA es 80% ingeniería de datos, serving, y monitoreo. El modelo es el núcleo analítico, pero sin la arquitectura circundante es un notebook, no un sistema de producción.
-2. **Quality attributes mandan — incluyendo los de IA.** Performance y availability no bastan. Fairness, explainability, robustness y drift resilience son quality attributes de primera clase. Un modelo preciso pero opaco o sesgado es una bomba regulatoria.
-3. **Drift es la deuda técnica específica de IA.** En software tradicional, la deuda se acumula por decisiones de código. En IA, la deuda se acumula porque los datos cambian y el modelo no. Monitorear drift no es opcional — es higiene arquitectónica.
+1. **El modelo es un componente, no el sistema.** La arquitectura de IA es 80% ingeniería de datos, serving, y monitoreo. El modelo es el núcleo analítico, pero sin la arquitectura circundante es un notebook, no un sistema de producción. [EXPLICIT]
+2. **Quality attributes mandan — incluyendo los de IA.** Performance y availability no bastan. Fairness, explainability, robustness y drift resilience son quality attributes de primera clase. Un modelo preciso pero opaco o sesgado es una bomba regulatoria. [EXPLICIT]
+3. **Drift es la deuda técnica específica de IA.** En software tradicional, la deuda se acumula por decisiones de código. En IA, la deuda se acumula porque los datos cambian y el modelo no. Monitorear drift no es opcional — es higiene arquitectónica. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de modelo.
-  - **desatendido**: Cero interrupciones. Arquitectura documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en pattern selection, model topology, y ADRs.
-  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución.
+  - **piloto-auto**: Auto para análisis de estructura y patterns, HITL para ADRs y decisiones de modelo. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Arquitectura documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en pattern selection, model topology, y ADRs. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada module view, pattern, ADR, y plan de evolución. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{ALCANCE}`: `ejecutiva` (~40% — S1 module view + S3 patterns + S5 ADRs) | `técnica` (full 6 sections, default)
 
@@ -49,7 +49,7 @@ Before generating architecture, detect the codebase context:
 Detección automática de contexto:
   Escanear el codebase por lenguajes (Python, TypeScript, Java, Go), frameworks ML
   (PyTorch, TensorFlow, scikit-learn, LangChain, Hugging Face) para adaptar
-  recomendaciones de patrones y naming de componentes.
+  recomendaciones de patrones y naming de componentes. [EXPLICIT]
 ```
 
 Load references:
@@ -90,7 +90,7 @@ Read ${CLAUDE_SKILL_DIR}/references/ai-patterns-catalog.md
 
 ### S1: AI System Module View
 
-Maps the internal module structure through the 6-layer AI architecture stack: Hardware, Data, Model, Inference, Application, Monitoring & Control.
+Maps the internal module structure through the 6-layer AI architecture stack: Hardware, Data, Model, Inference, Application, Monitoring & Control. [EXPLICIT]
 
 **Includes:**
 - Module decomposition across the 6 layers — what modules exist per layer, responsibilities, dependencies
@@ -107,7 +107,7 @@ Maps the internal module structure through the 6-layer AI architecture stack: Ha
 
 ### S2: AI Component View
 
-Decomposes selected modules into components — what they do, interfaces exposed, dependencies. Focus on the five core production pipeline components.
+Decomposes selected modules into components — what they do, interfaces exposed, dependencies. Focus on the five core production pipeline components. [EXPLICIT]
 
 **Components:**
 - **Data Cleansing**: Schema validation, anomaly detection, data quality enforcement
@@ -123,7 +123,7 @@ Decomposes selected modules into components — what they do, interfaces exposed
 
 ### S3: Design Patterns
 
-Documents selected patterns with justification, detected anti-patterns, and alternatives. Bridges traditional and AI-specific pattern catalogs.
+Documents selected patterns with justification, detected anti-patterns, and alternatives. Bridges traditional and AI-specific pattern catalogs. [EXPLICIT]
 
 **AI-specific patterns** (Feature Store, Champion-Challenger, Shadow Deployment, Drift Detection, Explainability Wrapper, Canary Deployment, Bulkhead):
 - Why chosen: which AI quality attribute it enables
@@ -158,7 +158,7 @@ ATAM-style scenarios extended with AI-specific quality attributes: **Stimulus �
 
 ### S5: Architecture Decision Records (ADRs)
 
-Captures significant AI architecture decisions with context, decision, consequences, and alternatives.
+Captures significant AI architecture decisions with context, decision, consequences, and alternatives. [EXPLICIT]
 
 **AI-specific ADR topics:**
 - Model architecture selection (transformer vs. ensemble vs. linear)
@@ -176,7 +176,7 @@ Captures significant AI architecture decisions with context, decision, consequen
 
 ### S6: Debt & Evolution Plan
 
-Identifies current architectural debt — including AI-specific debt — and a strategy for evolution.
+Identifies current architectural debt — including AI-specific debt — and a strategy for evolution. [EXPLICIT]
 
 **AI-specific debt types:**
 - **Model drift debt**: Models serving stale predictions because monitoring is absent or ignored
@@ -235,19 +235,19 @@ Identifies current architectural debt — including AI-specific debt — and a s
 ## Edge Cases
 
 **Greenfield AI System:**
-No existing structure; risk of over-engineering for hypothetical scale. Start with monolithic pipeline, defer microservice decomposition. Use ADRs for reversible decisions. Prioritize monitoring from day one.
+No existing structure; risk of over-engineering for hypothetical scale. Start with monolithic pipeline, defer microservice decomposition. Use ADRs for reversible decisions. Prioritize monitoring from day one. [EXPLICIT]
 
 **Legacy System Adding AI:**
-Existing architecture not designed for AI workloads. Watch for: impedance mismatch between request-response web app and batch training pipelines, data access patterns that don't support feature engineering, deployment processes that can't handle model artifacts. Use strangler fig for gradual AI integration.
+Existing architecture not designed for AI workloads. Watch for: impedance mismatch between request-response web app and batch training pipelines, data access patterns that don't support feature engineering, deployment processes that can't handle model artifacts. Use strangler fig for gradual AI integration. [EXPLICIT]
 
 **Multi-Model System:**
-Multiple models serving different use cases from shared data. Risk of resource contention, dependency conflicts, cascade failures. Apply Bulkhead pattern. Feature Store becomes essential. Model registry is non-optional.
+Multiple models serving different use cases from shared data. Risk of resource contention, dependency conflicts, cascade failures. Apply Bulkhead pattern. Feature Store becomes essential. Model registry is non-optional. [EXPLICIT]
 
 **Real-Time AI System:**
-Latency requirements constrain model complexity, feature computation, and explanation depth. May need edge inference, model compression, or prediction caching. Quality attribute trade-offs between accuracy and latency must be explicit in ADRs.
+Latency requirements constrain model complexity, feature computation, and explanation depth. May need edge inference, model compression, or prediction caching. Quality attribute trade-offs between accuracy and latency must be explicit in ADRs. [EXPLICIT]
 
 **Regulated AI System (Finance, Healthcare):**
-Compliance requirements (audit trails, explainability, fairness) are architectural constraints, not afterthoughts. Explainability Wrapper pattern is mandatory. Data lineage tracking at every pipeline stage. Model governance workflows built into CI/CD.
+Compliance requirements (audit trails, explainability, fairness) are architectural constraints, not afterthoughts. Explainability Wrapper pattern is mandatory. Data lineage tracking at every pipeline stage. Model governance workflows built into CI/CD. [EXPLICIT]
 
 ---
 
@@ -304,7 +304,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

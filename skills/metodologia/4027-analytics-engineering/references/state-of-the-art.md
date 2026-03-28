@@ -100,8 +100,8 @@
 - **Posicion del skill:** S5 recomienda definir metricas lo mas cerca posible de los modelos (MetricFlow si usa dbt). Evitar definiciones duplicadas en dashboards.
 
 ### 3.3 Incremental vs Full Refresh
-- **Debate:** Los incremental models son mas complejos de mantener y debuggear. Algunos equipos prefieren full refresh para todo y pagar el costo de warehouse. La pregunta es: ¿cuando el ahorro justifica la complejidad?
-- **Estado 2026:** El consenso es pragmatico: incremental para tablas >10M filas con writes frecuentes. Full refresh para todo lo demas. La estrategia microbatch (dbt v1.9+) reduce la complejidad de incrementales para event tables.
+- **Debate:** Los incremental models son mas complejos de mantener y debuggear. Algunos equipos prefieren full refresh para Todo y pagar el costo de warehouse. La pregunta es: ¿cuando el ahorro justifica la complejidad?
+- **Estado 2026:** El consenso es pragmatico: incremental para tablas >10M filas con writes frecuentes. Full refresh para Todo lo demas. La estrategia microbatch (dbt v1.9+) reduce la complejidad de incrementales para event tables.
 - **Posicion del skill:** S3 documenta el threshold de decision y S6 incluye analisis de costo comparativo.
 
 ### 3.4 Mono-Project vs Multi-Project (dbt Mesh)
@@ -118,7 +118,7 @@
 | **The God Model** | Un modelo SQL de 500+ lineas con joins de 15 tablas | No se descompuso en staging/intermediate | Refactorizar: extraer staging e intermediate models |
 | **Tests as Afterthought** | Modelos en produccion sin tests. "Ya los agregamos despues" | No se incluyo testing en definition of done | Regla: no merge sin tests para mart models |
 | **source() Everywhere** | Modelos mart que referencian raw tables directamente | Saltaron la staging layer | Agregar staging models 1:1 con sources |
-| **Materialization Cargo Cult** | Todo materializado como table. O todo como incremental | No se evaluo el trade-off por modelo | S3: view para staging, ephemeral para intermediate, table/incremental para marts |
+| **Materialization Cargo Cult** | Todo materializado como table. O Todo como incremental | No se evaluo el trade-off por modelo | S3: view para staging, ephemeral para intermediate, table/incremental para marts |
 | **Documentation Desert** | 200 modelos, 0 columnas documentadas | Documentacion no es parte del workflow | AI-assisted documentation + requirement en PR review |
 | **Metric Sprawl** | Misma metrica definida 5 veces en 5 dashboards con 3 resultados diferentes | No hay semantic layer ni definicion unica | Implementar MetricFlow o Cube. Una definicion, multiples consumos |
 

@@ -7,7 +7,7 @@ description: >
   technology engagements beyond T&M. Use when the user asks to "define business model",
   "structure the deal", "identify value capture", "design pricing strategy", "explore
   commercial models", or mentions earned value, joint venture, revenue share, outcome-based,
-  licensing model, or commercial structure.
+  licensing model, or commercial structure. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -24,29 +24,29 @@ allowed-tools:
 Identifies the optimal commercial model for a technology transformation engagement. Goes beyond
 time-and-materials to explore value-based, outcome-based, and hybrid structures that align
 incentives between delivery team and client. Produces model recommendations with trade-offs,
-NOT pricing — pricing is a separate commercial decision.
+NOT pricing — pricing is a separate commercial decision. [EXPLICIT]
 
 ## Grounding Guideline
 
 **This skill identifies BUSINESS MODELS and COMMERCIAL STRUCTURES — it does not produce prices,
-rates, or margins.** The final pricing decision belongs to the commercial team with inputs from this analysis.
+rates, or margins.** The final pricing decision belongs to the commercial team with inputs from this analysis. [EXPLICIT]
 
 ### Commercial Philosophy
 
-1. **Model before price.** The commercial structure defines the relationship — the price is a subsequent detail. This skill designs the structure, not the rate.
-2. **Aligned incentives = sustainable relationship.** Pure T&M misaligns: the provider profits when the project extends. Hybrid models create skin-in-the-game.
-3. **Radical transparency.** The client must understand the structure — not just accept it. Trust is built with clarity, not contractual complexity.
+1. **Model before price.** The commercial structure defines the relationship — the price is a subsequent detail. This skill designs the structure, not the rate. [EXPLICIT]
+2. **Aligned incentives = sustainable relationship.** Pure T&M misaligns: the provider profits when the project extends. Hybrid models create skin-in-the-game. [EXPLICIT]
+3. **Radical transparency.** The client must understand the structure — not just accept it. Trust is built with clarity, not contractual complexity. [EXPLICIT]
 
 ## Inputs
 
-Parse `$1` as **project name**. Requires cost driver analysis (Phase 4) and scenario context.
+Parse `$1` as **project name**. Requires cost driver analysis (Phase 4) and scenario context. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para catálogo de modelos y análisis de fit, HITL para recomendación de modelo y deal canvas.
-  - **desatendido**: Zero interruptions. Modelo recomendado automáticamente. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en recomendación antes de deal canvas.
-  - **paso-a-paso**: Confirma value map, cada modelo evaluado, y la estructura final.
+  - **piloto-auto**: Auto para catálogo de modelos y análisis de fit, HITL para recomendación de modelo y deal canvas. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Modelo recomendado automáticamente. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en recomendación antes de deal canvas. [EXPLICIT]
+  - **paso-a-paso**: Confirma value map, cada modelo evaluado, y la estructura final. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 value map + S4 recommendation + S5 canvas) | `técnica` (full 6 sections, default)
 
@@ -65,7 +65,7 @@ Identifica las fuentes de valor que la transformación genera para el cliente:
 | **Compliance** | Cumplimiento regulatorio evita multas/sanctions | Sí — valor de multa evitada | Inmediato |
 | **Scalability** | Capacidad de crecimiento sin rediseño | Parcial — capacidad × pricing | 18-36 meses |
 
-Para cada fuente: cuantificar en rango de magnitud, identificar cómo se mediría.
+Para cada fuente: cuantificar en rango de magnitud, identificar cómo se mediría. [EXPLICIT]
 
 ### S2: Commercial Model Catalog
 
@@ -133,7 +133,7 @@ Evalúa cada modelo contra el contexto del proyecto:
 | Relationship maturity | ★★★★★ | ★★★ | ★★ | ★ | ★★ | ★★★ | ★★★ |
 | **FIT SCORE** | ? | ? | ? | ? | ? | ? | ? |
 
-Score per dimension (1-5), weighted by project context.
+Score per dimension (1-5), weighted by project context. [EXPLICIT]
 
 ### S4: Recommended Model & Structure
 
@@ -296,7 +296,7 @@ DEAL STRUCTURE CANVAS
 ```
 {fase}_Commercial_Model_{project}_{WIP}.html
 ```
-HTML self-contained branded (Design System MetodologIA v5). Commercial page type. Incluye Deal Structure Canvas visual, model fit heatmap interactivo, y value map con comparativa de escenarios. WCAG AA, responsive.
+HTML self-contained branded (Design System MetodologIA v5). Commercial page type. Incluye Deal Structure Canvas visual, model fit heatmap interactivo, y value map con comparativa de escenarios. WCAG AA, responsive. [EXPLICIT]
 
 **Formato PPTX (para presentacion comercial):**
 
@@ -350,7 +350,7 @@ Slide 8: Proximos Pasos (secuencia de negociacion)
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 
@@ -362,3 +362,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Autor:** Javier Montaño | **Última actualización:** 12 de marzo de 2026
+
+## Usage
+
+Example invocations:
+
+- "/commercial-model" — Run the full commercial model workflow
+- "commercial model on this project" — Apply to current context
+

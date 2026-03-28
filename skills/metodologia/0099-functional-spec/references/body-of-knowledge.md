@@ -29,7 +29,7 @@ La tradición de las ciencias de la computación ubica la especificación formal
 El estándar IEEE 830 (1998) y su sucesor IEEE 29148 (2018) definen la estructura canónica de una SRS: introducción, descripción general, requisitos específicos (funcionales, no funcionales, de interfaz). Aporta el vocabulario de **funciones del sistema**, **interfaces externas**, **restricciones de diseño**, y **atributos de calidad**. La especificación funcional del MetodologIA Framework es compatible con esta estructura pero la extiende con elementos de discovery (módulos MVP, complejidad/riesgo).
 
 ### 2.2 Casos de Uso — Alistair Cockburn
-Alistair Cockburn sistematizó los casos de uso como la unidad narrativa fundamental para capturar objetivos de actores. Su libro *Writing Effective Use Cases* (2000) introduce el **nivel de meta** (sea-level = objetivo de usuario, kite-level = objetivo corporativo, fish-level = sub-función), la distinción entre **flujo principal**, **extensiones** y **variantes**, y el formato de tabla estructurada que el MetodologIA Framework adopta como formato Cockburn. Cockburn también introduce el concepto de **stakeholder interests** — cada caso de uso debe ser evaluado desde los intereses de todos los stakeholders, no solo del actor primario.
+Alistair Cockburn sistematizó los casos de uso como la unidad narrativa fundamental para capturar objetivos de actores. Su libro *Writing Effective Use Cases* (2000) introduce el **nivel de meta** (sea-level = objetivo de usuario, kite-level = objetivo corporativo, fish-level = sub-función), la distinción entre **flujo principal**, **extensiones** y **variantes**, y el formato de tabla estructurada que el MetodologIA Framework adopta como formato Cockburn. Cockburn también introduce el concepto de **stakeholder interests** — cada caso de uso debe ser evaluado desde los intereses de Todos los stakeholders, no solo del actor primario.
 
 ### 2.3 User Stories + Criterios de Aceptación — Kent Beck / Mike Cohn
 En el espectro ágil, los User Stories (Beck, XP, 1999; Cohn, *User Stories Applied*, 2004) son una alternativa ligera al formato Cockburn. El template `Como [rol], quiero [acción], para [beneficio]` captura la perspectiva del usuario con mínima fricción. Los **criterios de aceptación** en formato Gherkin (`Given/When/Then`) conectan la historia con la prueba automatizada, cerrando el ciclo especificación-validación. El MetodologIA Framework adopta criterios de aceptación per-módulo como sección obligatoria.
@@ -134,7 +134,7 @@ Reglas de negocio que viven solo en el código o en la cabeza del desarrollador.
 | Atributo | Definición | Indicador de Violación |
 |----------|-----------|----------------------|
 | **Correcto** | Refleja fielmente las necesidades del negocio | Diferencias entre spec y comportamiento esperado por stakeholder |
-| **Completo** | Cubre todos los comportamientos del sistema | Casos de uso sin flujos de excepción, módulos sin use cases |
+| **Completo** | Cubre Todos los comportamientos del sistema | Casos de uso sin flujos de excepción, módulos sin use cases |
 | **No ambiguo** | Una sola interpretación posible | Palabras como "rápido", "grande", "generalmente" sin cuantificar |
 | **Consistente** | Sin contradicciones entre requisitos | Business rules que se contradicen entre sí |
 | **Verificable** | Criterios de aceptación comprobables | "El sistema debe ser amigable" — no verificable |

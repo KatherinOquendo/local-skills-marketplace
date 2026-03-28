@@ -3,7 +3,7 @@ name: permission-fast-path
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Auto-approve read-only operations to reduce LLM overhead.
+  Auto-approve read-only operations to reduce LLM overhead. [EXPLICIT]
   Trigger: "permission fast path"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Permission Fast Path
 > "Method over hacks."
 ## TL;DR
-Auto-approve read-only operations to reduce LLM overhead.
+Auto-approve read-only operations to reduce LLM overhead. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Auto-approve read-only operations to reduce LLM overhead.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/permission-fast-path" — Run the full permission fast path workflow
+- "permission fast path on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

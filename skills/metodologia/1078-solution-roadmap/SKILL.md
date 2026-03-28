@@ -7,7 +7,7 @@ description: >
   risk-adjusted timeline, and estimation pivot points. Use when the user asks to "create a roadmap",
   "plan the transformation", "build an investment case", "team sizing",
   "risk-adjusted timeline", or mentions "Phase 4", "solution roadmap", "transformation plan",
-  "phased execution", "PoC validation criteria", "kill criteria", "go/no-go gates".
+  "phased execution", "PoC validation criteria", "kill criteria", "go/no-go gates". [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Solution Roadmap — Transformation Blueprint
 
-Defines the complete transformation plan AFTER scenario approval but BEFORE PoC validation. Covers transformation vision, phased execution (Foundation > Build > Integrate > Optimize > Scale), investment horizon with TCO/ROI, team ramp-up curve, estimation pivot points with PoC validation, risk management with cascade failure analysis, and governance framework.
+Defines the complete transformation plan AFTER scenario approval but BEFORE PoC validation. Covers transformation vision, phased execution (Foundation > Build > Integrate > Optimize > Scale), investment horizon with TCO/ROI, team ramp-up curve, estimation pivot points with PoC validation, risk management with cascade failure analysis, and governance framework. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -29,8 +29,8 @@ Defines the complete transformation plan AFTER scenario approval but BEFORE PoC 
 
 ### Transformation Philosophy
 
-1. **Phases, not big-bang.** Each phase is independently valuable. If the project stops at Phase 2, what was built in Phase 1 has value on its own.
-2. **Honest estimates.** Ranges with P50/P80/P95 — never an exact number. The Cone of Uncertainty is respected.
+1. **Phases, not big-bang.** Each phase is independently valuable. If the project stops at Phase 2, what was built in Phase 1 has value on its own. [EXPLICIT]
+2. **Honest estimates.** Ranges with P50/P80/P95 — never an exact number. The Cone of Uncertainty is respected. [EXPLICIT]
 3. **Explicit kill criteria.** Each phase has conditions under which it stops, gets re-planned, or pivots. There is no "press on at all costs."
 
 ## Inputs
@@ -38,14 +38,14 @@ Defines the complete transformation plan AFTER scenario approval but BEFORE PoC 
 - `$1` — Transformation duration target in months (default: 18-24)
 - `$2` — Budget range: `under2m`, `2m-5m`, `5m-10m`, `over10m` (default: `2m-5m`)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para construcción de fases y timeline, HITL para validación de gates y kill criteria.
-  - **desatendido**: Zero interruptions. Roadmap completo auto-generado. Assumptions documented.
-  - **supervisado**: Autónomo con checkpoint en estructura de fases y antes del governance plan.
-  - **paso-a-paso**: Confirma cada fase, cada gate, y cada pivot point.
+  - **piloto-auto**: Auto para construcción de fases y timeline, HITL para validación de gates y kill criteria. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Roadmap completo auto-generado. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en estructura de fases y antes del governance plan. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada fase, cada gate, y cada pivot point. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 vision + S2 phases + S3 investment) | `técnica` (full 7 sections, default)
 
@@ -71,7 +71,7 @@ Parse from `$ARGUMENTS`.
 - Team sizing: +/-20% variance expected from PoC learnings
 
 ### Cannot Predict
-Market disruptions, regulatory changes mid-transformation, organizational restructuring, key person dependencies, exact talent availability for emerging technologies.
+Market disruptions, regulatory changes mid-transformation, organizational restructuring, key person dependencies, exact talent availability for emerging technologies. [EXPLICIT]
 
 ## Conditional Logic
 
@@ -126,7 +126,7 @@ IF team resistance detected in Phase 1:
 ## Delivery Structure
 
 ### Section 1: Transformation Vision
-Business objective alignment with approved scenario. Success metrics table (baseline > 18-month target > 36-month target > owner). North star metric. Strategic capabilities unlocked per phase.
+Business objective alignment with approved scenario. Success metrics table (baseline > 18-month target > 36-month target > owner). North star metric. Strategic capabilities unlocked per phase. [EXPLICIT]
 
 ### Section 2: Transformation Phases
 
@@ -138,18 +138,18 @@ Business objective alignment with approved scenario. Success metrics table (base
 | 4 | Optimize | 4-6 months | 16-18 | 10-15% | Cost reduction targets met |
 | 5 | Scale | 6-12 months | 20-24 | Varies | Multi-region, innovation velocity |
 
-Each phase has explicit GO/NO-GO criteria. NO-GO halts downstream phases.
+Each phase has explicit GO/NO-GO criteria. NO-GO halts downstream phases. [EXPLICIT]
 
 **Per phase:** team composition and roles, key deliverables with acceptance criteria, dependency map, risk table with mitigations, gate criteria with measurable thresholds.
 
 ### Section 3: Investment Horizon
-3-year TCO projection, year-by-year breakdown, cost categories (labor, infrastructure, licensing, training, contingency), phased funding release points, kill points, break-even timeline, ROI modeling, cost/timeline variance scenarios (optimistic/likely/pessimistic/severe).
+3-year TCO projection, year-by-year breakdown, cost categories (labor, infrastructure, licensing, training, contingency), phased funding release points, kill points, break-even timeline, ROI modeling, cost/timeline variance scenarios (optimistic/likely/pessimistic/severe). [EXPLICIT]
 
 ### Section 4: Team Roadmap
-Month-by-month headcount, skill gap analysis (current to required), training roadmap (bootcamp to pair programming to autonomous), technology introduction sequence, knowledge transfer milestones, technical debt retirement schedule.
+Month-by-month headcount, skill gap analysis (current to required), training roadmap (bootcamp to pair programming to autonomous), technology introduction sequence, knowledge transfer milestones, technical debt retirement schedule. [EXPLICIT]
 
 ### Section 5: Estimation Pivot Points
-5+ key assumptions that drive estimates. Per assumption: current estimate impact, why it matters, PoC validation criteria (specific measurable tests), pivot options if invalidated, decision gate timing.
+5+ key assumptions that drive estimates. Per assumption: current estimate impact, why it matters, PoC validation criteria (specific measurable tests), pivot options if invalidated, decision gate timing. [EXPLICIT]
 
 **Pivot Decision Framework:**
 ```
@@ -159,13 +159,13 @@ IF FAILS with major issue (>4 weeks) -> pause, 2-day re-plan, steering committee
 IF showstopper (pivot cost >$500K) -> escalate to board for viability decision
 ```
 
-Risk-adjusted timeline with Monte Carlo confidence intervals (P10/P50/P90) for key milestones.
+Risk-adjusted timeline with Monte Carlo confidence intervals (P10/P50/P90) for key milestones. [EXPLICIT]
 
 ### Section 6: Risk Management
-Risk timeline (when each risk peaks per phase), risk-by-phase breakdown tables, cascade failure chains (3+ documented), mitigation investment vs exposure analysis, early warning indicators (Green/Yellow/Red per metric per phase), kill criteria (hard stops and soft stops).
+Risk timeline (when each risk peaks per phase), risk-by-phase breakdown tables, cascade failure chains (3+ documented), mitigation investment vs exposure analysis, early warning indicators (Green/Yellow/Red per metric per phase), kill criteria (hard stops and soft stops). [EXPLICIT]
 
 ### Section 7: Governance Plan
-Steering committee structure and cadence, technical architecture forum, phase gate review board, risk management committee, escalation hierarchy, RACI matrix, three-tier change control process (minor/significant/major), reporting dashboard (monthly/weekly/real-time).
+Steering committee structure and cadence, technical architecture forum, phase gate review board, risk management committee, escalation hierarchy, RACI matrix, three-tier change control process (minor/significant/major), reporting dashboard (monthly/weekly/real-time). [EXPLICIT]
 
 ## Output Artifact
 
@@ -197,7 +197,7 @@ Steering committee structure and cadence, technical architecture forum, phase ga
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - Gantt chart: phased timeline with P50/P80/P95 markers
@@ -287,3 +287,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026
+
+## Usage
+
+Example invocations:
+
+- "/solution-roadmap" — Run the full solution roadmap workflow
+- "solution roadmap on this project" — Apply to current context
+

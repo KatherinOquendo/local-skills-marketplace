@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Plans technology and data migrations using strangler fig pattern, parallel
   run strategies, data migration pipelines, and rollback plans. Covers
-  legacy system decomposition and incremental modernization.
+  legacy system decomposition and incremental modernization. [EXPLICIT]
   Trigger: "migration", "strangler fig", "data migration", "rollback", "modernization"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Plans technology and data migrations using incremental strategies like strangler fig, parallel runs, and feature flagging to minimize risk and enable rollback at every stage. Use this skill when modernizing legacy systems, migrating databases, switching cloud providers, or upgrading major framework versions.
+Plans technology and data migrations using incremental strategies like strangler fig, parallel runs, and feature flagging to minimize risk and enable rollback at every stage. Use this skill when modernizing legacy systems, migrating databases, switching cloud providers, or upgrading major framework versions. [EXPLICIT]
 
 ## Procedure
 
@@ -73,3 +73,25 @@ Plans technology and data migrations using incremental strategies like strangler
 - `system-architecture` — target architecture for the migrated system
 - `risk-assessment` — risk analysis specific to migration scenarios
 - `database-design` — target data model for migrated data
+
+## Usage
+
+Example invocations:
+
+- "/migration-planning" — Run the full migration planning workflow
+- "migration planning on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

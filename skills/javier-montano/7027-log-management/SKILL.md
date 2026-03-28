@@ -3,7 +3,7 @@ name: log-management
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Structured logging, log levels, retention policies, search patterns.
+  Structured logging, log levels, retention policies, search patterns. [EXPLICIT]
   Trigger: "log management"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Log Management
 > "Method over hacks."
 ## TL;DR
-Structured logging, log levels, retention policies, search patterns.
+Structured logging, log levels, retention policies, search patterns. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Structured logging, log levels, retention policies, search patterns.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/log-management" — Run the full log management workflow
+- "log management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

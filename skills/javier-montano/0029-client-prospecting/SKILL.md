@@ -3,7 +3,7 @@ name: client-prospecting
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  AI-driven client prospecting by geography and sector. Research targets, score by fit, generate outreach strategy. Output: branded HTML report.
+  AI-driven client prospecting by geography and sector. Research targets, score by fit, generate outreach strategy. Output: branded HTML report. [EXPLICIT]
   Trigger: "prospect clients", "find leads", "outreach", "target geography", "Miami", "Orlando"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-AI-driven client prospecting by geography and sector. Research targets, score by fit, generate outreach strategy. Output: branded HTML report. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html).
+AI-driven client prospecting by geography and sector. Research targets, score by fit, generate outreach strategy. Output: branded HTML report. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html). [EXPLICIT]
 
 ## Procedure
 
@@ -66,3 +66,25 @@ AI-driven client prospecting by geography and sector. Research targets, score by
 
 - branded-html-output — Base skill for all HTML generation
 - guardrails-management — Check user guardrails before generating
+
+## Usage
+
+Example invocations:
+
+- "/client-prospecting" — Run the full client prospecting workflow
+- "client prospecting on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

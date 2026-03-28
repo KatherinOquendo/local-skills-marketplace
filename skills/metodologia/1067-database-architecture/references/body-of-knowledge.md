@@ -82,7 +82,7 @@
 | **MVCC** | Multi-Version Concurrency Control — mecanismo que permite lecturas y escrituras concurrentes sin bloqueos, manteniendo versiones de cada fila. |
 | **Partial Index** | Índice que cubre solo un subconjunto de filas (definido por WHERE). Menor tamaño, mayor eficiencia para queries filtradas. |
 | **Partition Pruning** | Optimización donde el planificador de queries lee solo las particiones relevantes basándose en los filtros del query. |
-| **Polyglot Persistence** | Uso de múltiples motores de base de datos especializados según el tipo de workload, en lugar de un único motor para todo. |
+| **Polyglot Persistence** | Uso de múltiples motores de base de datos especializados según el tipo de workload, en lugar de un único motor para pending. |
 | **RLS (Row-Level Security)** | Políticas que restringen acceso a filas específicas según el usuario o rol. Esencial para multi-tenancy. |
 | **RPO (Recovery Point Objective)** | Máxima pérdida de datos aceptable, medida en tiempo. RPO=0 requiere replicación síncrona. |
 | **RTO (Recovery Time Objective)** | Tiempo máximo aceptable de inactividad durante un failover. Auto-failover reduce RTO a segundos. |

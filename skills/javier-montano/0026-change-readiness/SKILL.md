@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Assesses organizational readiness for change using the ADKAR adoption model,
   maps resistance sources, and designs targeted interventions to drive
-  successful technology and process adoption.
+  successful technology and process adoption. [EXPLICIT]
   Trigger: "change management", "ADKAR", "adoption", "resistance", "change readiness"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Evaluates organizational readiness for technology or process changes using the ADKAR model, identifies resistance sources, and designs targeted interventions to ensure successful adoption. Use this skill before major rollouts, platform migrations, or when previous change initiatives have struggled.
+Evaluates organizational readiness for technology or process changes using the ADKAR model, identifies resistance sources, and designs targeted interventions to ensure successful adoption. Use this skill before major rollouts, platform migrations, or when previous change initiatives have struggled. [EXPLICIT]
 
 ## Procedure
 
@@ -72,3 +72,25 @@ Evaluates organizational readiness for technology or process changes using the A
 - `stakeholder-mapping` — identifies who is affected and their influence
 - `workshop-design` — facilitates change readiness sessions
 - `executive-pitch` — secures sponsor commitment for change initiatives
+
+## Usage
+
+Example invocations:
+
+- "/change-readiness" — Run the full change readiness workflow
+- "change readiness on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -2,10 +2,10 @@
 name: apex-discovery-retrospective
 description: >
   Use when the user asks to "run a project discovery retrospective", "review discovery outcomes",
-  "assess discovery effectiveness", "calibrate pipeline parameters", or "measure discovery quality".
+  "assess discovery effectiveness", "calibrate pipeline parameters", or "measure discovery quality". [EXPLICIT]
   Activates when a stakeholder needs to conduct a quantitative post-discovery review, measure
   pipeline execution quality, assess deliverable completeness, evaluate estimation accuracy,
-  or update APEX pipeline parameters based on retrospective findings.
+  or update APEX pipeline parameters based on retrospective findings. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -20,7 +20,7 @@ allowed-tools:
 **TL;DR**: Conducts a quantitative post-discovery retrospective analyzing pipeline execution quality, deliverable completeness, stakeholder satisfaction, estimation accuracy, and methodology fit. Produces measurable insights that improve future discovery cycles and calibrate APEX pipeline parameters.
 
 ## Principio Rector
-La retrospectiva de discovery no es un ejercicio de catarsis — es un instrumento de calibración. Cada ciclo de discovery debe producir datos que mejoren el siguiente: cuánto tardamos, cuánto acertamos, qué supuestos se validaron. Sin métricas, la mejora es ilusión.
+La retrospectiva de discovery no es un ejercicio de catarsis — es un instrumento de calibración. Cada ciclo de discovery debe producir datos que mejoren el siguiente: cuánto tardamos, cuánto acertamos, qué supuestos se validaron. Sin métricas, la mejora es ilusión. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes discovery pipeline has been executed with deliverables produced [PLAN]
@@ -107,7 +107,7 @@ La retrospectiva de discovery no es un ejercicio de catarsis — es un instrumen
 | Calibration updates | Pipeline parameters adjusted with rationale |
 
 **Bad Discovery Retrospective:**
-A meeting where everyone says "it went well" without metrics, scoring, or timeline analysis. No assumption validation. No calibration updates. Fails because feel-good retrospectives produce no data for improvement — the next discovery cycle will repeat the same patterns.
+A meeting where everyone says "it went well" without metrics, scoring, or timeline analysis. No assumption validation. No calibration updates. Fails because feel-good retrospectives produce no data for improvement — the next discovery cycle will repeat the same patterns. [EXPLICIT]
 
 ## Validation Gate
 - [ ] Every deliverable scored against its quality checklist with quantified score

@@ -3,7 +3,7 @@ name: backup-strategy
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Firestore exports, scheduled backups, recovery testing, retention.
+  Firestore exports, scheduled backups, recovery testing, retention. [EXPLICIT]
   Trigger: "backup strategy"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Backup Strategy
 > "Method over hacks."
 ## TL;DR
-Firestore exports, scheduled backups, recovery testing, retention.
+Firestore exports, scheduled backups, recovery testing, retention. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Firestore exports, scheduled backups, recovery testing, retention.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/backup-strategy" — Run the full backup strategy workflow
+- "backup strategy on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

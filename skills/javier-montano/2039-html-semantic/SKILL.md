@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Implements semantic HTML5 with proper document structure, landmark elements,
   forms, tables, multimedia, and SEO-friendly markup. Ensures content is
-  meaningful, accessible, and machine-readable.
+  meaningful, accessible, and machine-readable. [EXPLICIT]
   Trigger: "semantic HTML", "HTML5", "forms", "tables", "landmarks", "markup"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements semantic HTML5 using proper document structure, landmark elements, accessible forms and tables, and multimedia markup that is meaningful to browsers, assistive technologies, and search engines. Use this skill when building new pages, auditing markup quality, or when div-soup needs to be replaced with meaningful structure.
+Implements semantic HTML5 using proper document structure, landmark elements, accessible forms and tables, and multimedia markup that is meaningful to browsers, assistive technologies, and search engines. Use this skill when building new pages, auditing markup quality, or when div-soup needs to be replaced with meaningful structure. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Implements semantic HTML5 using proper document structure, landmark elements, ac
 - `accessibility-design` — semantic HTML is the foundation of accessibility
 - `seo-architecture` — semantic markup improves search engine understanding
 - `form-engineering` — detailed form implementation patterns
+
+## Usage
+
+Example invocations:
+
+- "/html-semantic" — Run the full html semantic workflow
+- "html semantic on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

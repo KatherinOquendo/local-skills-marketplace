@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Creates strategic product roadmaps with prioritized backlogs, value stream
   alignment, and release planning. Uses frameworks like RICE, MoSCoW, and
-  Kano to make defensible prioritization decisions.
+  Kano to make defensible prioritization decisions. [EXPLICIT]
   Trigger: "roadmap", "prioritization", "backlog", "product strategy", "release plan"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Builds strategic product roadmaps with evidence-based prioritization using RICE, MoSCoW, or Kano frameworks, aligned to business value streams and user needs. Use this skill when planning a new product, defining release strategy, or when the backlog needs strategic ordering beyond gut feeling.
+Builds strategic product roadmaps with evidence-based prioritization using RICE, MoSCoW, or Kano frameworks, aligned to business value streams and user needs. Use this skill when planning a new product, defining release strategy, or when the backlog needs strategic ordering beyond gut feeling. [EXPLICIT]
 
 ## Procedure
 
@@ -67,3 +67,25 @@ Builds strategic product roadmaps with evidence-based prioritization using RICE,
 - `cost-estimation` — effort estimates feeding into roadmap feasibility
 - `requirements-engineering` — detailed specs for roadmap items
 - `executive-pitch` — presenting the roadmap to leadership
+
+## Usage
+
+Example invocations:
+
+- "/product-roadmapping" — Run the full product roadmapping workflow
+- "product roadmapping on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

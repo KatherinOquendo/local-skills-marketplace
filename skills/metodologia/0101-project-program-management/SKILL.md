@@ -1,15 +1,15 @@
 ---
 name: metodologia-project-program-management
 author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<project-or-program-name>"
-description: >
+argument-hint: "project-or-program-name"
+description: 
   PMO governance backbone — portfolio tracking, phase gate management, resource orchestration,
   dependency control, and proposal QA validation across the entire discovery pipeline. Use when
   the user asks to "track the discovery", "manage the portfolio", "validate the proposal",
   "run governance check", "check phase dependencies", "coordinate resources", or mentions
   PMO, program management, portfolio governance, phase gates, proposal readiness, milestone
   tracking, or cross-phase dependency management. Works as the structural glue that holds
-  the entire discovery pipeline together — from Phase 0 through Handover.
+  the entire discovery pipeline together — from Phase 0 through Handover. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -23,10 +23,10 @@ allowed-tools:
 
 # Project & Program Management: PMO Governance Backbone
 
-Structural governance layer that manages the discovery pipeline as a formal program —
+Structural governance layer that manages the discovery pipeline as a formal program — [EXPLICIT]
 tracking phases, gates, resources, dependencies, risks, and proposal readiness. Operates
 as the connective tissue between all 48 skills, ensuring nothing falls through cracks,
-phases don't skip prerequisites, and the final proposal is validated before client delivery.
+phases don't skip prerequisites, and the final proposal is validated before client delivery. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -38,25 +38,25 @@ between "we did a discovery" and "we executed a reliable discovery program."
 ### Governance Philosophy
 
 1. **Governance is not bureaucracy.** Governance exists to enable speed with confidence,
-   not to slow things down. Every control must justify its existence with a risk it mitigates.
+   not to slow things down. Every control must justify its existence with a risk it mitigates. [EXPLICIT]
 
 2. **Total traceability.** Every decision, scope change, materialized risk, and
-   resolved dependency is recorded. The program can be audited at any time.
+   resolved dependency is recorded. The program can be audited at any time. [EXPLICIT]
 
 3. **Proposal QA = Final Quality Gate.** Proposal v1 does not go out until it passes a
    multidimensional validation that verifies technical coherence, viability, completeness, and
-   alignment with discovery findings.
+   alignment with discovery findings. [EXPLICIT]
 
 ## Inputs
 
-Parse `$1` as **project/program name**. Detect discovery context from repo.
+Parse `$1` as **project/program name**. Detect discovery context from repo. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para tracking rutinario, HITL para decisiones de gate, cambios de alcance, y validación de propuesta.
-  - **desatendido**: Zero interruptions. Gates auto-evaluados. Assumptions documented.
-  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en gates y QA de propuesta.
-  - **paso-a-paso**: Confirms before cada evaluación de gate y cada sección de QA.
+  - **piloto-auto**: Auto para tracking rutinario, HITL para decisiones de gate, cambios de alcance, y validación de propuesta. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Gates auto-evaluados. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en gates y QA de propuesta. [EXPLICIT]
+  - **paso-a-paso**: Confirms before cada evaluación de gate y cada sección de QA. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -102,13 +102,13 @@ Parse `$1` as **project/program name**. Detect discovery context from repo.
 
 ### S2: Phase Gate Management
 
-Para cada quality gate, evalúa:
+Para cada quality gate, evalúa: [EXPLICIT]
 
 **Gate Evaluation Protocol:**
 ```
 GATE EVALUATION: {gate_name}
 ════════════════════════════
-Phase Completing: {phase}
+Phase Completing: {phase} [EXPLICIT]
 Date: {date}
 
 ENTRY CRITERIA:
@@ -180,11 +180,11 @@ VERDICT: PASS / CONDITIONAL PASS / FAIL
 
 **SECCIÓN CRÍTICA — el validador final antes de que la propuesta llegue al cliente.**
 
-La Propuesta v1 se construye de los outputs de Phases 4-5b. Antes de enviar al cliente,
+La Propuesta v1 se construye de los outputs de Phases 4-5b. Antes de enviar al cliente, [EXPLICIT]
 pasa por una validación multidimensional:
 
 **Trazabilidad de Fallas QA → Fase Origen:**
-Si una dimensión QA falla, la remediación se traza directamente a la(s) fase(s) responsable(s):
+Si una dimensión QA falla, la remediación se traza directamente a la(s) fase(s) responsable(s): [EXPLICIT]
 - Coherencia falla → re-verificar Phase 3b (feasibility) y Phase 4 (roadmap)
 - Completitud falla → re-verificar fase productora del deliverable faltante
 - Viabilidad falla → re-verificar Phase 4 (magnitudes) y Phase 5b (pitch claims)
@@ -217,8 +217,8 @@ Si una dimensión QA falla, la remediación se traza directamente a la(s) fase(s
 ```
 PROPOSAL QA SCORECARD
 ═════════════════════
-Proyecto: {nombre}
-Propuesta v1 — Validación Pre-Envío
+Proyecto: {nombre} [EXPLICIT]
+Propuesta v1 — Validación Pre-Envío [EXPLICIT]
 
 | Dimensión | Score | Hallazgos | Acción |
 |---|---|---|---|
@@ -232,7 +232,7 @@ COMPOSITE: [X.X]/5.0
 VEREDICTO: APROBADA / APROBADA CON CONDICIONES / RECHAZADA
   Threshold mínimo: 3.5/5.0 composite, ninguna dimensión <3
 
-Condiciones (si aplica):
+Condiciones (si aplica): [EXPLICIT]
   1. {condición}
 
 LISTA PARA ENVÍO A CLIENTE: SÍ / NO
@@ -262,7 +262,7 @@ LISTA PARA ENVÍO A CLIENTE: SÍ / NO
 
 ## Prompt Integration Protocol
 
-El project manager es el backbone de governance que acompaña TODOS los prompts. Se activa implícitamente en cada ejecución de prompt.
+El project manager es el backbone de governance que acompaña TODOS los prompts. Se activa implícitamente en cada ejecución de prompt. [EXPLICIT]
 
 ### Rol en Cada Prompt
 
@@ -298,12 +298,12 @@ El project manager es el backbone de governance que acompaña TODOS los prompts.
 
 ### Asset Inventory
 
-Todos los 48 skills tienen `examples/` con:
+Todos los 48 skills tienen `examples/` con: [EXPLICIT]
 - `sample-output.md` — Output markdown de referencia (Acme Corp Banking Modernization)
 - `sample-output.html` — Output HTML branded (Design System CSS)
 - `README.md` — Índice de assets
 
-Ubicación: `plugins/metodologia-discovery-framework/skills/{skill-name}/examples/`
+Ubicación: `plugins/metodologia-discovery-framework/skills/{skill-name}/examples/` [EXPLICIT]
 
 ## Trade-off Matrix
 
@@ -406,7 +406,7 @@ graph TD
 ```
 
 **Formato DOCX:**
-Reporte formal de gobernanza PMO: charter con firmas, evaluaciones de gate documentadas, scorecard de propuesta con trazabilidad a fase origen, dashboard de estado con graficos de tendencia, y log de decisiones auditable.
+Reporte formal de gobernanza PMO: charter con firmas, evaluaciones de gate documentadas, scorecard de propuesta con trazabilidad a fase origen, dashboard de estado con graficos de tendencia, y log de decisiones auditable. [EXPLICIT]
 
 **Formato XLSX (bajo demanda):**
 - Filename: `{fase}_project_program_management_{cliente}_{WIP}.xlsx`
@@ -439,7 +439,7 @@ Reporte formal de gobernanza PMO: charter con firmas, evaluaciones de gate docum
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

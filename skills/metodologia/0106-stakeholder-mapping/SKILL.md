@@ -1,10 +1,10 @@
 ---
 name: metodologia-stakeholder-mapping
 description: >
-  Stakeholder analysis — influence/interest matrix, communication plan, RACI, change readiness.
+  Stakeholder analysis — influence/interest matrix, communication plan, RACI, change readiness. [EXPLICIT]
   Use when the user asks to "map stakeholders", "build influence matrix", "create communication plan",
   "assign RACI", "assess change readiness", "identify champions",
-  or mentions stakeholder analysis, power/interest grid, engagement strategy, or adoption curve.
+  or mentions stakeholder analysis, power/interest grid, engagement strategy, or adoption curve. [EXPLICIT]
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[project-or-initiative-name]"
 model: opus
@@ -20,7 +20,7 @@ allowed-tools:
 
 # Stakeholder Mapping: Analysis, Engagement & Change Readiness
 
-Stakeholder mapping identifies who matters for a project or transformation, how much influence and interest they hold, what communication they need, and how ready they are for change. Produces actionable stakeholder maps that prevent surprises, accelerate adoption, and align decision-making.
+Stakeholder mapping identifies who matters for a project or transformation, how much influence and interest they hold, what communication they need, and how ready they are for change. Produces actionable stakeholder maps that prevent surprises, accelerate adoption, and align decision-making. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -28,13 +28,13 @@ Stakeholder mapping identifies who matters for a project or transformation, how 
 
 ### Stakeholder Mapping Philosophy
 
-1. **Informal power surpasses formal power.** Org charts show who should decide; mapping reveals who actually decides. Always investigate both.
-2. **Silence is the most dangerous signal.** A stakeholder who does not respond is not an aligned stakeholder — it is an unquantified risk requiring immediate action.
-3. **The map is a living organism.** Power dynamics change with every sprint, every reorganization, every success, and every failure. A static map is a lying map.
+1. **Informal power surpasses formal power.** Org charts show who should decide; mapping reveals who actually decides. Always investigate both. [EXPLICIT]
+2. **Silence is the most dangerous signal.** A stakeholder who does not respond is not an aligned stakeholder — it is an unquantified risk requiring immediate action. [EXPLICIT]
+3. **The map is a living organism.** Power dynamics change with every sprint, every reorganization, every success, and every failure. A static map is a lying map. [EXPLICIT]
 
 ## Inputs
 
-The user provides a project or initiative name as `$ARGUMENTS`. Parse `$1` as the **project/initiative name** used throughout all output artifacts.
+The user provides a project or initiative name as `$ARGUMENTS`. Parse `$1` as the **project/initiative name** used throughout all output artifacts. [EXPLICIT]
 
 Before generating stakeholder analysis, detect organizational context:
 
@@ -42,14 +42,14 @@ Before generating stakeholder analysis, detect organizational context:
 find . -name "*.md" -o -name "*.docx" -o -name "*.xlsx" -o -name "org*" -o -name "stakeholder*" | head -20
 ```
 
-Use detected org charts, project documents, and existing stakeholder lists to tailor analysis scope and depth.
+Use detected org charts, project documents, and existing stakeholder lists to tailor analysis scope and depth. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para identificación y categorización de stakeholders, HITL para validación de influencia y decisiones de escalamiento.
-  - **desatendido**: Zero interruptions. Stakeholders inferidos de documentación disponible. Assumptions documented.
-  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en conflictos de poder o ambigüedad de RACI.
-  - **paso-a-paso**: Confirms before cada categorización, asignación RACI y estrategia de engagement.
+  - **piloto-auto**: Auto para identificación y categorización de stakeholders, HITL para validación de influencia y decisiones de escalamiento. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Stakeholders inferidos de documentación disponible. Assumptions documented. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en conflictos de poder o ambigüedad de RACI. [EXPLICIT]
+  - **paso-a-paso**: Confirms before cada categorización, asignación RACI y estrategia de engagement. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -67,7 +67,7 @@ Use detected org charts, project documents, and existing stakeholder lists to ta
 
 ### S1: Stakeholder Identification & Hidden Stakeholder Detection
 
-Discovers all individuals and groups with a stake in the project outcome, including those invisible on org charts.
+Discovers all individuals and groups with a stake in the project outcome, including those invisible on org charts. [EXPLICIT]
 
 **Includes:**
 - Discovery interview guide: questions to surface stakeholders not on org charts
@@ -91,7 +91,7 @@ Discovers all individuals and groups with a stake in the project outcome, includ
 
 ### S2: Influence-Interest Matrix
 
-Plots stakeholders on a power/interest grid and defines engagement strategy per quadrant.
+Plots stakeholders on a power/interest grid and defines engagement strategy per quadrant. [EXPLICIT]
 
 **Includes:**
 - Power assessment criteria: decision authority, budget control, political capital, expertise
@@ -108,7 +108,7 @@ Plots stakeholders on a power/interest grid and defines engagement strategy per 
 
 ### S3: RACI & Decision Rights
 
-Assigns clear responsibilities and decision authority to prevent confusion and delays.
+Assigns clear responsibilities and decision authority to prevent confusion and delays. [EXPLICIT]
 
 **Includes:**
 - RACI matrix: Responsible, Accountable, Consulted, Informed per deliverable
@@ -120,7 +120,7 @@ Assigns clear responsibilities and decision authority to prevent confusion and d
 
 ### S4: Communication Plan
 
-Designs targeted communication for each stakeholder group.
+Designs targeted communication for each stakeholder group. [EXPLICIT]
 
 **Includes:**
 - Communication matrix: stakeholder group x channel x frequency x format x owner
@@ -132,16 +132,16 @@ Designs targeted communication for each stakeholder group.
 
 ### S5: Change Readiness Assessment
 
-Evaluates how prepared the organization and individuals are for the change.
+Evaluates how prepared the organization and individuals are for the change. [EXPLICIT]
 
 **Includes:**
 - Adoption curve mapping: innovators, early adopters, early majority, late majority, laggards
 - **Resistance archetypes** — identify and tailor response per type:
-  - **The Skeptic:** Intellectually unconvinced. Needs data, evidence, pilot results. Can become strongest advocate once convinced.
-  - **The Blocker:** Actively opposes, often protecting territory or budget. Needs to be heard, then given a role. Escalate if persists.
-  - **The Passive Resister:** Appears agreeable but doesn't follow through. Needs explicit commitments with visible accountability.
-  - **The Saboteur:** Undermines behind the scenes. Requires direct confrontation (privately), clear consequences, executive sponsor intervention.
-  - **The Mourner:** Genuinely grieving what's being lost. Needs acknowledgment, transition time, connection to what's preserved.
+  - **The Skeptic:** Intellectually unconvinced. Needs data, evidence, pilot results. Can become strongest advocate once convinced. [EXPLICIT]
+  - **The Blocker:** Actively opposes, often protecting territory or budget. Needs to be heard, then given a role. Escalate if persists. [EXPLICIT]
+  - **The Passive Resister:** Appears agreeable but doesn't follow through. Needs explicit commitments with visible accountability. [EXPLICIT]
+  - **The Saboteur:** Undermines behind the scenes. Requires direct confrontation (privately), clear consequences, executive sponsor intervention. [EXPLICIT]
+  - **The Mourner:** Genuinely grieving what's being lost. Needs acknowledgment, transition time, connection to what's preserved. [EXPLICIT]
 - Champion identification: who will advocate and model new behaviors
 - Training needs analysis: skill gaps, learning preferences, support requirements
 - Organizational change capacity: how many concurrent changes can the org absorb
@@ -149,7 +149,7 @@ Evaluates how prepared the organization and individuals are for the change.
 
 ### S6: Engagement Monitoring
 
-Tracks stakeholder sentiment and participation throughout the project lifecycle.
+Tracks stakeholder sentiment and participation throughout the project lifecycle. [EXPLICIT]
 
 **Includes:**
 - Sentiment tracking: periodic pulse surveys, meeting observation, informal check-ins
@@ -328,7 +328,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

@@ -1,12 +1,12 @@
 ---
 name: sofka-performance-engineering
-argument-hint: "<project-or-system-name>"
-description: >
-  Produces performance assessments covering load testing, capacity planning, bottleneck analysis, caching, CDN, and SLAs.
+argument-hint: "project-or-system-name"
+description: 
+  Produces performance assessments covering load testing, capacity planning, bottleneck analysis, caching, CDN, and SLAs. [EXPLICIT]
   Activates when the user says "analyze performance", "design load tests", "plan capacity", "optimize caching",
-  or "define SLAs". Also triggers on mentions of latency, throughput, p95, saturation, cache hit ratio, or edge compute.
-  Use this skill even if the user only mentions a vague slowness concern — it diagnoses and structures the full assessment.
-argument-hint: "<project-or-system-name>"
+  or "define SLAs". Also triggers on mentions of latency, throughput, p95, saturation, cache hit ratio, or edge compute. [EXPLICIT]
+  Use this skill even if the user only mentions a vague slowness concern — it diagnoses and structures the full assessment. [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -20,7 +20,7 @@ allowed-tools:
 
 # Performance Engineering: Assessment, Optimization & Capacity Strategy
 
-Performance engineering ensures systems meet latency, throughput, and reliability targets under current and projected load. The skill produces actionable performance baselines, load testing strategies, capacity models, caching architectures, CDN configurations, and SLA/SLO definitions that translate technical metrics into business guarantees.
+Performance engineering ensures systems meet latency, throughput, and reliability targets under current and projected load. The skill produces actionable performance baselines, load testing strategies, capacity models, caching architectures, CDN configurations, and SLA/SLO definitions that translate technical metrics into business guarantees. [EXPLICIT]
 
 ## Principio Rector
 
@@ -28,20 +28,20 @@ Performance engineering ensures systems meet latency, throughput, and reliabilit
 
 ### Filosofía de Performance Engineering
 
-1. **SLOs before SLIs.** Primero se define qué significa "suficientemente rápido" para el negocio. Después se instrumenta para medirlo. Instrumentar sin SLOs es coleccionar métricas sin propósito.
-2. **Load testing in CI.** Si el test de carga se corre "antes del release", ya es demasiado tarde. Benchmarks livianos en cada release candidate, regresiones detectadas automáticamente.
-3. **Capacity planning uses data, not hope.** USL (Universal Scalability Law) reemplaza la adivinanza con un modelo matemático. 3-5 mediciones de throughput predicen el punto de saturación sin hardware adicional.
+1. **SLOs before SLIs.** Primero se define qué significa "suficientemente rápido" para el negocio. Después se instrumenta para medirlo. Instrumentar sin SLOs es coleccionar métricas sin propósito. [EXPLICIT]
+2. **Load testing in CI.** Si el test de carga se corre "antes del release", ya es demasiado tarde. Benchmarks livianos en cada release candidate, regresiones detectadas automáticamente. [EXPLICIT]
+3. **Capacity planning uses data, not hope.** USL (Universal Scalability Law) reemplaza la adivinanza con un modelo matemático. 3-5 mediciones de throughput predicen el punto de saturación sin hardware adicional. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or service name as `$ARGUMENTS`. Parse `$1` as the **system/service name** used throughout all output artifacts.
+The user provides a system or service name as `$ARGUMENTS`. Parse `$1` as the **system/service name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para baseline measurement y caching analysis, HITL para SLO definition y capacity model decisions.
-  - **desatendido**: Cero interrupciones. Performance assessment documentado automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en load test design y SLO targets.
-  - **paso-a-paso**: Confirma cada baseline metric, test scenario, caching decision, y SLO target.
+  - **piloto-auto**: Auto para baseline measurement y caching analysis, HITL para SLO definition y capacity model decisions. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Performance assessment documentado automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en load test design y SLO targets. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada baseline metric, test scenario, caching decision, y SLO target. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 baseline + S3 capacity + S6 SLOs) | `técnica` (full 6 sections, default)
 
@@ -53,7 +53,7 @@ The user provides a system or service name as `$ARGUMENTS`. Parse `$1` as the **
 ```
 X(N) = N / (1 + alpha*(N-1) + beta*N*(N-1))
 ```
-Where: alpha = contention (serialization), beta = coherency (crosstalk/coordination). When beta > 0, throughput *decreases* past a peak — retrograde scalability. Collect throughput at 3-5 concurrency levels, fit USL parameters, extrapolate the saturation point without full-scale hardware.
+Where: alpha = contention (serialization), beta = coherency (crosstalk/coordination). When beta > 0, throughput *decreases* past a peak — retrograde scalability. Collect throughput at 3-5 concurrency levels, fit USL parameters, extrapolate the saturation point without full-scale hardware. [EXPLICIT]
 
 **Practical workflow:** Run load tests at N=1, 2, 4, 8, 16 concurrent users. Fit alpha and beta. If beta > 0.001, investigate coordination overhead (locks, distributed consensus, shared caches). USL replaces guesswork in capacity planning with a mathematical model.
 
@@ -94,7 +94,7 @@ Read ${CLAUDE_SKILL_DIR}/references/performance-patterns.md
 
 ### S1: Performance Baseline
 
-Establish current system performance through measurement, profiling, and bottleneck identification.
+Establish current system performance through measurement, profiling, and bottleneck identification. [EXPLICIT]
 
 **Latency distribution per critical endpoint:**
 
@@ -118,7 +118,7 @@ Establish current system performance through measurement, profiling, and bottlen
 
 ### S2: Load Testing Strategy
 
-Design comprehensive load testing covering tool selection, scenario modeling, and execution.
+Design comprehensive load testing covering tool selection, scenario modeling, and execution. [EXPLICIT]
 
 **Tool Selection Matrix:**
 
@@ -151,7 +151,7 @@ Design comprehensive load testing covering tool selection, scenario modeling, an
 
 ### S3: Capacity Planning
 
-Forecast demand, calculate headroom, define scaling triggers, and model cost implications.
+Forecast demand, calculate headroom, define scaling triggers, and model cost implications. [EXPLICIT]
 
 **Demand forecasting:** Historical growth trends + business projections + seasonal patterns
 **Headroom:** Current capacity vs. projected demand with 30-50% safety margin
@@ -178,7 +178,7 @@ Forecast demand, calculate headroom, define scaling triggers, and model cost imp
 
 ### S4: Caching Architecture
 
-Design multi-layer caching with invalidation strategies and consistency trade-offs.
+Design multi-layer caching with invalidation strategies and consistency trade-offs. [EXPLICIT]
 
 **Cache layers:** Browser -> CDN edge -> API gateway -> Application (L1 in-process / L2 Redis) -> Database query cache
 
@@ -206,7 +206,7 @@ Design multi-layer caching with invalidation strategies and consistency trade-of
 
 ### S5: CDN & Edge Strategy
 
-Classify content, design cache rules, and leverage edge compute for global performance.
+Classify content, design cache rules, and leverage edge compute for global performance. [EXPLICIT]
 
 **Content classification:** Static assets (hours-days TTL), dynamic HTML (seconds-minutes), API responses (vary by auth), media (immutable + long TTL), real-time streams (no cache)
 **Origin shielding:** Funnel edge misses through a shield POP to reduce origin load by 60-80%
@@ -221,7 +221,7 @@ Classify content, design cache rules, and leverage edge compute for global perfo
 
 ### S6: SLA/SLO Design
 
-Define measurable targets with error budgets and alerting.
+Define measurable targets with error budgets and alerting. [EXPLICIT]
 
 **Percentile-Based SLOs (concrete targets):**
 
@@ -231,7 +231,7 @@ Define measurable targets with error budgets and alerting.
 | **Standard** (catalog, search) | <200ms | <500ms | <2s | 99.9% (43min/mo) | <0.5% |
 | **Best-effort** (reports, batch) | <1s | <3s | <10s | 99% (7.3h/mo) | <1% |
 
-Never define SLOs on averages — averages hide outliers. Always use percentiles.
+Never define SLOs on averages — averages hide outliers. Always use percentiles. [EXPLICIT]
 
 **Percentile Divergence Alert:** When p99 > 3x p50 for >15 minutes, trigger investigation. Indicates concurrency ceiling where some requests pay severe penalties while median barely moves.
 
@@ -316,7 +316,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

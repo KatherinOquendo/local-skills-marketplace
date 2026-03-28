@@ -4,7 +4,7 @@ description: >
   AI pipeline architecture design — development pipelines, production pipelines, data stores, model registry, CI/CD for AI,
   and non-functional requirements. This skill should be used when the user asks to "design AI pipelines", "architect ML pipelines",
   "select data stores for AI", "design model registry", "implement CI/CD for ML", "define AI pipeline requirements",
-  or mentions MLOps, training pipeline, inference pipeline, feature pipeline, Blue and Gold deployment, or pipeline patterns.
+  or mentions MLOps, training pipeline, inference pipeline, feature pipeline, Blue and Gold deployment, or pipeline patterns. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -18,7 +18,7 @@ allowed-tools:
 
 # AI Pipeline Architecture: Development & Production Pipelines for AI Systems
 
-AI pipeline architecture defines how data flows through AI systems — from raw ingestion through model training and serving to production monitoring. This skill produces comprehensive pipeline architecture documentation covering development pipelines (experimentation to model artifact), production pipelines (data ingestion to prediction delivery), data store selection, model registry design, CI/CD strategy, and measurable requirements.
+AI pipeline architecture defines how data flows through AI systems — from raw ingestion through model training and serving to production monitoring. This skill produces comprehensive pipeline architecture documentation covering development pipelines (experimentation to model artifact), production pipelines (data ingestion to prediction delivery), data store selection, model registry design, CI/CD strategy, and measurable requirements. [EXPLICIT]
 
 ## Principio Rector
 
@@ -26,13 +26,13 @@ AI pipeline architecture defines how data flows through AI systems — from raw 
 
 ### Filosofía de Pipeline Architecture
 
-1. **Dos pipelines, un registro.** Development pipeline y production pipeline son sistemas distintos con requisitos distintos (experimentación vs. confiabilidad). El model registry es el puente que los conecta. Sin registro, no hay reproducibilidad.
-2. **Data quality es el primer gate, no el último test.** En pipelines de IA, basura entra, basura sale — con la agravante de que el modelo amplifica los sesgos de datos malos. Quality gates al inicio del pipeline, no al final.
-3. **Blue y Gold, no YOLO deploy.** Desplegar un modelo nuevo directamente a producción es irresponsable. La estrategia Blue (producción) y Gold (staging con validación) garantiza que ningún modelo llega a usuarios sin pasar gates automatizados.
+1. **Dos pipelines, un registro.** Development pipeline y production pipeline son sistemas distintos con requisitos distintos (experimentación vs. confiabilidad). El model registry es el puente que los conecta. Sin registro, no hay reproducibilidad. [EXPLICIT]
+2. **Data quality es el primer gate, no el último test.** En pipelines de IA, basura entra, basura sale — con la agravante de que el modelo amplifica los sesgos de datos malos. Quality gates al inicio del pipeline, no al final. [EXPLICIT]
+3. **Blue y Gold, no YOLO deploy.** Desplegar un modelo nuevo directamente a producción es irresponsable. La estrategia Blue (producción) y Gold (staging con validación) garantiza que ningún modelo llega a usuarios sin pasar gates automatizados. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -45,7 +45,7 @@ Before generating architecture, detect the codebase context:
 Detección automática de contexto:
   Escanear el codebase por frameworks ML (PyTorch, TensorFlow, scikit-learn),
   orquestadores (Airflow, Dagster, Prefect, Kubeflow), y serving frameworks
-  (TensorFlow Serving, TorchServe, Triton, vLLM) para adaptar recomendaciones.
+  (TensorFlow Serving, TorchServe, Triton, vLLM) para adaptar recomendaciones. [EXPLICIT]
 ```
 
 Load references:
@@ -83,7 +83,7 @@ Read ${CLAUDE_SKILL_DIR}/references/requirements-tables.md
 
 ### S1: Development Pipeline Architecture
 
-Maps the experimentation-to-artifact pipeline where models are built, trained, and validated.
+Maps the experimentation-to-artifact pipeline where models are built, trained, and validated. [EXPLICIT]
 
 **Stages:**
 - **Data Quality Checks**: Schema validation, anomaly detection, distribution analysis, business rule verification
@@ -102,7 +102,7 @@ Maps the experimentation-to-artifact pipeline where models are built, trained, a
 
 ### S2: Production Pipeline Architecture
 
-Maps the data-to-prediction pipeline that serves AI capabilities in production.
+Maps the data-to-prediction pipeline that serves AI capabilities in production. [EXPLICIT]
 
 **Stages:**
 - **Data Cleansing**: Automated validation, anomaly detection, quality enforcement with feedback loops
@@ -120,7 +120,7 @@ Maps the data-to-prediction pipeline that serves AI capabilities in production.
 
 ### S3: Data Store Technology Selection
 
-Selects appropriate storage technologies for each pipeline component.
+Selects appropriate storage technologies for each pipeline component. [EXPLICIT]
 
 **Store types and AI use cases:**
 - **Relational** (PostgreSQL, MySQL): Metadata, experiment tracking, model registry, audit trails
@@ -135,7 +135,7 @@ Selects appropriate storage technologies for each pipeline component.
 
 ### S4: Model Registry & Versioning
 
-Designs the bridge between development and production pipelines.
+Designs the bridge between development and production pipelines. [EXPLICIT]
 
 **Registry capabilities:**
 - Model artifact storage with version history
@@ -153,7 +153,7 @@ Designs the bridge between development and production pipelines.
 
 ### S5: CI/CD for AI (Blue & Gold)
 
-Designs the deployment strategy connecting development artifacts to production serving.
+Designs the deployment strategy connecting development artifacts to production serving. [EXPLICIT]
 
 **Blue Pipeline** (Production): Currently serving, fully validated, rollback target.
 **Gold Pipeline** (Staging): New version under validation, receives shadow/canary traffic.
@@ -176,7 +176,7 @@ Designs the deployment strategy connecting development artifacts to production s
 
 ### S6: Requirements Framework (AP/NF/SEC/CP)
 
-Defines measurable requirements across four categories with thresholds and objectives.
+Defines measurable requirements across four categories with thresholds and objectives. [EXPLICIT]
 
 **Performance (AP-1 to AP-13):** Data processing speed, model accuracy, fairness, explainability, robustness.
 
@@ -224,16 +224,16 @@ Defines measurable requirements across four categories with thresholds and objec
 ## Edge Cases
 
 **Notebook-to-Production Migration:**
-Data scientists work in Jupyter notebooks; production requires orchestrated pipelines. Bridge with notebook-aware orchestrators (Papermill, Ploomber). Prioritize extracting feature engineering and model training into reusable pipeline stages.
+Data scientists work in Jupyter notebooks; production requires orchestrated pipelines. Bridge with notebook-aware orchestrators (Papermill, Ploomber). Prioritize extracting feature engineering and model training into reusable pipeline stages. [EXPLICIT]
 
 **Multi-Team Pipeline Ownership:**
-Different teams own different pipeline stages (data eng owns ingestion, ML eng owns training, platform owns serving). Clear data contracts between stages are essential. Feature store becomes the coordination point.
+Different teams own different pipeline stages (data eng owns ingestion, ML eng owns training, platform owns serving). Clear data contracts between stages are essential. Feature store becomes the coordination point. [EXPLICIT]
 
 **Real-Time + Batch Hybrid:**
-System needs both real-time predictions (online serving) and batch analytics (offline scoring). Lambda or Kappa architecture patterns. Feature store must support both online (low-latency) and offline (batch) serving.
+System needs both real-time predictions (online serving) and batch analytics (offline scoring). Lambda or Kappa architecture patterns. Feature store must support both online (low-latency) and offline (batch) serving. [EXPLICIT]
 
 **Regulated Pipeline (Finance, Healthcare):**
-Every pipeline stage must produce audit-worthy artifacts. Data lineage tracking from source to prediction. Model governance gates require human approval before production promotion.
+Every pipeline stage must produce audit-worthy artifacts. Data lineage tracking from source to prediction. Model governance gates require human approval before production promotion. [EXPLICIT]
 
 ---
 

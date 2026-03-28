@@ -1,10 +1,10 @@
 ---
 name: metodologia-compliance-assessment
-description: >
-  Regulatory and standards compliance assessment — GDPR, SOX, PCI-DSS, HIPAA, ISO 27001, NIST CSF.
+description: 
+  Regulatory and standards compliance assessment — GDPR, SOX, PCI-DSS, HIPAA, ISO 27001, NIST CSF. [EXPLICIT]
   Use when the user asks to "evaluate compliance", "audit regulatory gaps", "assess GDPR readiness",
-  "review PCI-DSS compliance", or mentions regulatory frameworks, data protection, compliance matrix.
-argument-hint: "<project-or-system-name>"
+  "review PCI-DSS compliance", or mentions regulatory frameworks, data protection, compliance matrix. [EXPLICIT]
+argument-hint: "project-or-system-name"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
@@ -19,15 +19,15 @@ allowed-tools:
 
 # Compliance Assessment: Regulatory & Standards Gap Analysis
 
-Compliance assessment identifies gaps between an organization's current practices and applicable regulatory or standards requirements. The skill produces compliance gap matrices, remediation roadmaps, and risk heat maps that enable informed prioritization of compliance investments.
+Compliance assessment identifies gaps between an organization's current practices and applicable regulatory or standards requirements. The skill produces compliance gap matrices, remediation roadmaps, and risk heat maps that enable informed prioritization of compliance investments. [EXPLICIT]
 
 ## Grounding Guideline
 
 > *Compliance without evidence is a statement of intentions. Compliance with evidence is a guarantee.*
 
-1. **Traceable evidence.** Every control must have verifiable evidence, not just declarative documentation.
-2. **Regulation as a design constraint.** Regulatory requirements are not added at the end — they are incorporated from the start.
-3. **The cost of non-compliance always exceeds the cost of compliance.** Fines, sanctions, and loss of trust are exponentially more expensive than compliance investment.
+1. **Traceable evidence.** Every control must have verifiable evidence, not just declarative documentation. [EXPLICIT]
+2. **Regulation as a design constraint.** Regulatory requirements are not added at the end — they are incorporated from the start. [EXPLICIT]
+3. **The cost of non-compliance always exceeds the cost of compliance.** Fines, sanctions, and loss of trust are exponentially more expensive than compliance investment. [EXPLICIT]
 
 ## TL;DR
 
@@ -39,7 +39,7 @@ Compliance assessment identifies gaps between an organization's current practice
 
 ## Inputs
 
-The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **project/system name**.
+The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **project/system name**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -86,17 +86,17 @@ The user provides a project or system name as `$ARGUMENTS`. Parse `$1` as the **
 
 ## Edge Cases
 
-1. **Multiple overlapping regulatory frameworks** — When GDPR + PCI-DSS + SOX apply simultaneously, the skill generates a unified control matrix that maps shared requirements to avoid effort duplication.
-2. **Organization without control documentation** — If no policies or documented procedures exist, the skill generates an inventory based on interviews/inference tagged with [SUPUESTO] and prioritizes documentation as the first remediation step.
-3. **Local regulation not covered by standard frameworks** — For local regulations (e.g., Ley 1581 Colombia, LGPD Brazil), the skill structures the evaluation with the same principles but requires user input on specific requirements.
-4. **Early-stage startup without formal controls** — The skill adapts the evaluation to identify minimum viable controls and generates a pragmatic roadmap instead of an exhaustive gap analysis.
+1. **Multiple overlapping regulatory frameworks** — When GDPR + PCI-DSS + SOX apply simultaneously, the skill generates a unified control matrix that maps shared requirements to avoid effort duplication. [EXPLICIT]
+2. **Organization without control documentation** — If no policies or documented procedures exist, the skill generates an inventory based on interviews/inference tagged with [SUPUESTO] and prioritizes documentation as the first remediation step. [EXPLICIT]
+3. **Local regulation not covered by standard frameworks** — For local regulations (e.g., Ley 1581 Colombia, LGPD Brazil), the skill structures the evaluation with the same principles but requires user input on specific requirements. [EXPLICIT]
+4. **Early-stage startup without formal controls** — The skill adapts the evaluation to identify minimum viable controls and generates a pragmatic roadmap instead of an exhaustive gap analysis. [EXPLICIT]
 
 ## Decisions and Trade-offs
 
-1. **Multi-framework default vs. single framework** — Default multi because most organizations are subject to multiple regulations; a single framework creates a false sense of completeness.
-2. **100% gap analysis vs. sampling** — 100% coverage of framework requirements is required because external auditors evaluate against the entirety; sampling is insufficient for certification.
-3. **Visual heat map vs. detailed table** — Both are produced: heat map for executive communication and detailed table for remediation teams; the additional cost is justified by the different audiences.
-4. **Mandatory legal disclaimer vs. optional** — Always mandatory; the skill produces technical evaluation, never legal advice, and this must be explicit to protect the user.
+1. **Multi-framework default vs. single framework** — Default multi because most organizations are subject to multiple regulations; a single framework creates a false sense of completeness. [EXPLICIT]
+2. **100% gap analysis vs. sampling** — 100% coverage of framework requirements is required because external auditors evaluate against the entirety; sampling is insufficient for certification. [EXPLICIT]
+3. **Visual heat map vs. detailed table** — Both are produced: heat map for executive communication and detailed table for remediation teams; the additional cost is justified by the different audiences. [EXPLICIT]
+4. **Mandatory legal disclaimer vs. optional** — Always mandatory; the skill produces technical evaluation, never legal advice, and this must be explicit to protect the user. [EXPLICIT]
 
 ## Knowledge Graph
 
@@ -168,3 +168,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0
+
+## Usage
+
+Example invocations:
+
+- "/compliance-assessment" — Run the full compliance assessment workflow
+- "compliance assessment on this project" — Apply to current context
+

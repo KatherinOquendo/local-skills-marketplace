@@ -1,10 +1,10 @@
 ---
 name: ideate-plugin
 author: JM Labs (Javier Montaño)
-description: >
-  Generate a structured plugin concept brief from a user idea. Trigger: ideate plugin, brainstorm plugin, plugin concept, new plugin idea, create plugin concept.
-  Researches existing plugins for overlap, proposes movement structure and component counts.
-argument-hint: "<plugin-idea or problem-statement>"
+description: 
+  Generate a structured plugin concept brief from a user idea. Trigger: ideate plugin, brainstorm plugin, plugin concept, new plugin idea, create plugin concept. [EXPLICIT]
+  Researches existing plugins for overlap, proposes movement structure and component counts. [EXPLICIT]
+argument-hint: "plugin-idea or problem-statement"
 allowed-tools:
   - Read
   - Glob
@@ -16,9 +16,9 @@ allowed-tools:
 
 > "Every great plugin begins as a clear problem statement, not a feature list."
 
-Generate a structured plugin concept brief from a user's idea or problem statement. This skill transforms vague intentions into a concrete, reviewable document that serves as the foundation for architecture planning.
+Generate a structured plugin concept brief from a user's idea or problem statement. This skill transforms vague intentions into a concrete, reviewable document that serves as the foundation for architecture planning. [EXPLICIT]
 
-This is a **read-only** skill. It researches and proposes but never creates plugin files.
+This is a **read-only** skill. It researches and proposes but never creates plugin files. [EXPLICIT]
 
 ---
 
@@ -112,18 +112,18 @@ This is a **read-only** skill. It researches and proposes but never creates plug
 **Bad plugin brief:**
 ```
 # Plugin Brief: my-tool
-This plugin does linting and formatting and validation and reporting.
-Skills: lint, format, validate, report.
+This plugin does linting and formatting and validation and reporting. [EXPLICIT]
+Skills: lint, format, validate, report. [EXPLICIT]
 ```
-Missing: no problem statement, no target audience, no overlap analysis, no movement structure, no feasibility.
+Missing: no problem statement, no target audience, no overlap analysis, no movement structure, no feasibility. [EXPLICIT]
 
 **Good plugin brief:**
 ```
 # Plugin Brief: code-quality-gate
 ## Problem Statement
-Developers lack a single command to enforce code quality standards before committing.
+Developers lack a single command to enforce code quality standards before committing. [EXPLICIT]
 ## Target Audience
-Teams using Claude Code for development who need pre-commit quality checks.
+Teams using Claude Code for development who need pre-commit quality checks. [EXPLICIT]
 ## Overlap Analysis
 - `plugin-qa` covers plugin QA, not general code quality. Overlap: NONE.
 ## Proposed Name: code-quality-gate (alternatives: pre-commit-check, quality-enforcer)
@@ -133,19 +133,27 @@ Teams using Claude Code for development who need pre-commit quality checks.
 Skills: 5 | Agents: 1 | Commands: 6 (4 canonical + 2 aliases) | Complexity: STANDARD
 ## Feasibility: HIGH — all capabilities within plugin spec constraints.
 ```
-Includes: clear problem, audience, evidence-based overlap, movement structure, estimates with rationale, feasibility.
+Includes: clear problem, audience, evidence-based overlap, movement structure, estimates with rationale, feasibility. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Skipping the overlap research and assuming the idea is novel without evidence.
-2. Proposing names that duplicate existing plugin names in the ecosystem.
-3. Creating movements with only one skill each -- that is a flat structure pretending to be organized.
-4. Estimating component counts without understanding the use cases first.
-5. Writing the brief file to disk without user approval (this is a read-only skill).
+1. Skipping the overlap research and assuming the idea is novel without evidence. [EXPLICIT]
+2. Proposing names that duplicate existing plugin names in the ecosystem. [EXPLICIT]
+3. Creating movements with only one skill each -- that is a flat structure pretending to be organized. [EXPLICIT]
+4. Estimating component counts without understanding the use cases first. [EXPLICIT]
+5. Writing the brief file to disk without user approval (this is a read-only skill). [EXPLICIT]
 
 ## Edge Cases
 
-1. User provides a fully formed spec instead of an idea -- validate it against the framework rather than starting from scratch.
-2. Overlap analysis finds a near-exact match -- recommend contributing to the existing plugin instead.
-3. The idea requires capabilities beyond Claude Code plugins (e.g., persistent servers, databases) -- document the constraint and propose workarounds or scope reduction.
-4. User wants a plugin with a single skill and no movements -- valid for micro-plugins, document as `MINIMAL` complexity.
+1. User provides a fully formed spec instead of an idea -- validate it against the framework rather than starting from scratch. [EXPLICIT]
+2. Overlap analysis finds a near-exact match -- recommend contributing to the existing plugin instead. [EXPLICIT]
+3. The idea requires capabilities beyond Claude Code plugins (e.g., persistent servers, databases) -- document the constraint and propose workarounds or scope reduction. [EXPLICIT]
+4. User wants a plugin with a single skill and no movements -- valid for micro-plugins, document as `MINIMAL` complexity. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/ideate-plugin" — Run the full ideate plugin workflow
+- "ideate plugin on this project" — Apply to current context
+

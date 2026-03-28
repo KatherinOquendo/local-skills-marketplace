@@ -1,13 +1,13 @@
 ---
 name: sofka-observability
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "design observability", "set up monitoring",
   "implement tracing", "configure alerting", or "define SLOs". Also triggers on mentions of
   OpenTelemetry, Prometheus, Grafana, ELK, correlation IDs, burn rate, or runbooks. Use this
   skill even if the user only asks about one pillar like logging — the full three-pillar
-  observability context is always relevant for production systems.
-argument-hint: "<project-or-system-name>"
+  observability context is always relevant for production systems. [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Observability Architecture: Instrumentation, Detection & Response
 
-Observability architecture enables teams to understand system behavior from external outputs — logs, traces, and metrics. The skill produces comprehensive observability strategies covering the three pillars, alerting frameworks, and incident response integration that transform raw telemetry into actionable operational intelligence.
+Observability architecture enables teams to understand system behavior from external outputs — logs, traces, and metrics. The skill produces comprehensive observability strategies covering the three pillars, alerting frameworks, and incident response integration that transform raw telemetry into actionable operational intelligence. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,20 +29,20 @@ Observability architecture enables teams to understand system behavior from exte
 
 ### Filosofía de Observability
 
-1. **3 pillars are minimum.** Logs, métricas y traces son la base — no el techo. Exemplars conectan métricas con traces. Service maps conectan traces con topología. Sin las tres, hay monitoring — no observability.
-2. **SLO-based alerting > threshold alerting.** Alertar cuando CPU > 80% es ruido. Alertar cuando el error budget burn rate consume 14.4x en 1 hora es acción. Las alertas sirven al negocio, no a la infraestructura.
-3. **Incident response starts with observability.** Si el equipo no puede diagnosticar un incidente en <15 minutos con dashboards, traces y logs correlacionados, la arquitectura de observabilidad falló. Post-mortem retroalimenta la instrumentación.
+1. **3 pillars are minimum.** Logs, métricas y traces son la base — no el techo. Exemplars conectan métricas con traces. Service maps conectan traces con topología. Sin las tres, hay monitoring — no observability. [EXPLICIT]
+2. **SLO-based alerting > threshold alerting.** Alertar cuando CPU > 80% es ruido. Alertar cuando el error budget burn rate consume 14.4x en 1 hora es acción. Las alertas sirven al negocio, no a la infraestructura. [EXPLICIT]
+3. **Incident response starts with observability.** Si el equipo no puede diagnosticar un incidente en <15 minutos con dashboards, traces y logs correlacionados, la arquitectura de observabilidad falló. Post-mortem retroalimenta la instrumentación. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts.
+The user provides a system or platform name as `$ARGUMENTS`. Parse `$1` as the **system/platform name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para instrumentation design y log architecture, HITL para SLO targets y alerting thresholds.
-  - **desatendido**: Cero interrupciones. Observability architecture documentada automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en collector topology y alert rule design.
-  - **paso-a-paso**: Confirma cada log standard, trace sampling strategy, metric naming, y alert rule.
+  - **piloto-auto**: Auto para instrumentation design y log architecture, HITL para SLO targets y alerting thresholds. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Observability architecture documentada automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en collector topology y alert rule design. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada log standard, trace sampling strategy, metric naming, y alert rule. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 strategy + S4 metrics/dashboards + S5 alerting) | `técnica` (full 6 sections, default)
 
@@ -83,7 +83,7 @@ Read ${CLAUDE_SKILL_DIR}/references/observability-patterns.md
 
 ### S1: Observability Strategy
 
-Define the overarching approach to system understanding through the three pillars.
+Define the overarching approach to system understanding through the three pillars. [EXPLICIT]
 
 **Three-pillar assessment:** Evaluate current maturity of logging, tracing, and metrics. Score each 1-5 (ad hoc -> optimized).
 
@@ -113,7 +113,7 @@ Define the overarching approach to system understanding through the three pillar
 
 ### S2: Logging Architecture
 
-Design structured logging with aggregation, correlation, and retention management.
+Design structured logging with aggregation, correlation, and retention management. [EXPLICIT]
 
 **Mandatory structured log fields (JSON):**
 ```
@@ -144,7 +144,7 @@ timestamp, level, service, traceId, spanId, message, environment, version
 
 ### S3: Distributed Tracing
 
-Implement trace propagation, span design, and cross-signal correlation.
+Implement trace propagation, span design, and cross-signal correlation. [EXPLICIT]
 
 **Trace propagation:** W3C Trace Context headers across HTTP, gRPC metadata, message queue headers (Kafka record headers, AMQP properties)
 
@@ -164,7 +164,7 @@ Implement trace propagation, span design, and cross-signal correlation.
 - Tail-based sampling at Gateway Collector for slow/error traces
 
 **Exemplars — Metrics-to-Traces Linking:**
-Exemplars attach a trace/span reference to a specific metric data point. Configure both OTel metric and trace SDKs; record metrics within an active span context. This enables clicking from a latency spike on a dashboard directly to the offending trace — the critical bridge between "what is happening" (metrics) and "why" (traces). Enable exemplars in Prometheus (--enable-feature=exemplar-storage) and Grafana (exemplar data source configuration).
+Exemplars attach a trace/span reference to a specific metric data point. Configure both OTel metric and trace SDKs; record metrics within an active span context. This enables clicking from a latency spike on a dashboard directly to the offending trace — the critical bridge between "what is happening" (metrics) and "why" (traces). Enable exemplars in Prometheus (--enable-feature=exemplar-storage) and Grafana (exemplar data source configuration). [EXPLICIT]
 
 **Service map:** Auto-generate topology from trace data. Review weekly for unexpected dependencies.
 
@@ -172,7 +172,7 @@ Exemplars attach a trace/span reference to a specific metric data point. Configu
 
 ### S4: Metrics & Dashboards
 
-Define metric types, naming conventions, collection methods, and dashboard hierarchy.
+Define metric types, naming conventions, collection methods, and dashboard hierarchy. [EXPLICIT]
 
 **Metric types:** Counters (requests total), Gauges (active connections), Histograms (latency distribution)
 
@@ -204,7 +204,7 @@ Define metric types, naming conventions, collection methods, and dashboard hiera
 
 ### S5: Alerting Framework
 
-Build SLO-based alerting with burn rate windows, severity levels, and runbook integration.
+Build SLO-based alerting with burn rate windows, severity levels, and runbook integration. [EXPLICIT]
 
 **Alert Fatigue Prevention — Error Budget Burn Rate Model (Google SRE):**
 
@@ -214,7 +214,7 @@ Build SLO-based alerting with burn rate windows, severity levels, and runbook in
 | **Medium burn** | 6x | 6 hours | 30 minutes | Page during hours (P2) |
 | **Slow burn** | 1x | 3 days | 6 hours | Create ticket (P3) |
 
-This dual-window approach reduces false positives while maintaining sensitivity. Alert only when error budget burn rate is sustained — eliminates transient noise.
+This dual-window approach reduces false positives while maintaining sensitivity. Alert only when error budget burn rate is sustained — eliminates transient noise. [EXPLICIT]
 
 **Severity Levels:**
 
@@ -235,7 +235,7 @@ This dual-window approach reduces false positives while maintaining sensitivity.
 
 ### S6: Incident Response Integration
 
-Connect observability to incident management with on-call, classification, and post-mortem feedback.
+Connect observability to incident management with on-call, classification, and post-mortem feedback. [EXPLICIT]
 
 **On-call:** Rotation schedules (weekly), follow-the-sun for distributed teams, primary + secondary
 **Classification:** Severity matrix (impact x urgency), auto-suggest severity from SLO data
@@ -343,7 +343,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

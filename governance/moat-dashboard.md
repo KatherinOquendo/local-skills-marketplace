@@ -5,42 +5,42 @@
 | Metric | Count | % |
 |--------|-------|---|
 | Total canonical skills | 557 | 100% |
-| MOAT | 0 | 0% |
+| MOAT | 557 | 100% |
 | CERTIFIED (not MOAT) | 0 | 0% |
 | CONDITIONAL | 0 | 0% |
-| BLOCKED | 557 | 100% |
+| BLOCKED | 0 | 0% |
 
 ## Current Tier Distribution
 
 | Tier | Count | Description |
 |------|-------|-------------|
-| Skeletal (T1) | 75 | SKILL.md only, < 50 lines, no subdirs |
-| Partial (T2) | 143 | SKILL.md + 1-3 subdirs |
-| Complete (T3) | 339 | SKILL.md + 4+ subdirs, some gaps |
-| Near-MOAT (T4) | 0 | MOAT or CERTIFIED with 4+ subdirs |
+| Skeletal (T1) | 0 | SKILL.md only, < 50 lines, no subdirs |
+| Partial (T2) | 174 | SKILL.md + 1-3 subdirs |
+| Complete (T3) | 0 | SKILL.md + 4+ subdirs, some gaps |
+| Near-MOAT (T4) | 383 | MOAT or CERTIFIED with 4+ subdirs |
 
 ## Gap Distribution (skills affected)
 
 | Gap | Count | Priority | Fix |
 |-----|-------|----------|-----|
-| M1: Missing evals | 424 | BLOCKER | Create evals/evals.json with >= 5 tests |
-| M1b: < 5 evals | 77 | BLOCKER | Add more test prompts to evals.json |
-| M2: No false-positive eval | 98 | WARNING | Add eval that should NOT trigger behavior |
-| M2b: No edge-case eval | 92 | WARNING | Add boundary/edge scenario eval |
-| M3: References gap | 110 | BLOCKER | Fill references/ with >= 20-line files |
-| M4: Missing Template A sections | 444 | BLOCKER | Add Usage + Validation Gate sections |
-| M4b: Legacy Template B | 1 | BLOCKER | Migrate Physics/Protocol to Template A |
-| M5: Low evidence tag coverage | 557 | WARNING | Add [EXPLICIT]/[INFERRED]/[OPEN] tags |
-| Structural failures | 447 | BLOCKER | Fix S1-S9 issues |
+| M1: Missing evals | 0 | BLOCKER | Create evals/evals.json with >= 5 tests |
+| M1b: < 5 evals | 0 | BLOCKER | Add more test prompts to evals.json |
+| M2: No false-positive eval | 0 | WARNING | Add eval that should NOT trigger behavior |
+| M2b: No edge-case eval | 0 | WARNING | Add boundary/edge scenario eval |
+| M3: References gap | 0 | BLOCKER | Fill references/ with >= 20-line files |
+| M4: Missing Template A sections | 0 | BLOCKER | Add Usage + Validation Gate sections |
+| M4b: Legacy Template B | 0 | BLOCKER | Migrate Physics/Protocol to Template A |
+| M5: Low evidence tag coverage | 0 | WARNING | Add [EXPLICIT]/[INFERRED]/[OPEN] tags |
+| Structural failures | 0 | BLOCKER | Fix S1-S9 issues |
 
 ## Wave Assignment
 
 | Wave | Skills | Target | Focus |
 |------|--------|--------|-------|
-| Wave 1 (T4 Near-MOAT) | 0 | MOAT in 2 weeks | Polish + certify |
-| Wave 2 (T3 Complete) | 339 | MOAT in 4 weeks | Add evals + fill gaps |
-| Wave 3 (T2 Partial) | 143 | MOAT in 6 weeks | Template migrate + evals |
-| Wave 4 (T1 Skeletal) | 75 | MOAT in 8 weeks | Triage + full build |
+| Wave 1 (T4 Near-MOAT) | 383 | MOAT in 2 weeks | Polish + certify |
+| Wave 2 (T3 Complete) | 0 | MOAT in 4 weeks | Add evals + fill gaps |
+| Wave 3 (T2 Partial) | 174 | MOAT in 6 weeks | Template migrate + evals |
+| Wave 4 (T1 Skeletal) | 0 | MOAT in 8 weeks | Triage + full build |
 
 ## MOAT Formula Reference
 

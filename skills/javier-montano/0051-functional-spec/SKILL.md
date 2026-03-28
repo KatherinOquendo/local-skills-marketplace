@@ -1,13 +1,13 @@
 ---
 name: functional-spec
-argument-hint: "<module-or-system-name>"
-description: >
+argument-hint: "module-or-system-name"
+description: 
   This skill should be used when the user asks to "write functional specs",
   "document use cases", "define business rules", "create requirements",
-  or mentions functional specification, MVP scope, acceptance criteria, or complexity/risk matrix.
-  It generates comprehensive functional specifications including MVP module inventories, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrices, data models, and per-module acceptance criteria.
-  Use this skill whenever the user needs to formalize system behavior into a contractual specification, even if they don't explicitly ask for "functional spec".
-argument-hint: "<module-or-system-name>"
+  or mentions functional specification, MVP scope, acceptance criteria, or complexity/risk matrix. [EXPLICIT]
+  It generates comprehensive functional specifications including MVP module inventories, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrices, data models, and per-module acceptance criteria. [EXPLICIT]
+  Use this skill whenever the user needs to formalize system behavior into a contractual specification, even if they don't explicitly ask for "functional spec". [EXPLICIT]
+argument-hint: "module-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Functional Specification
 
-Generates detailed functional specifications: MVP modules, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrix, explicit scope boundaries, data model overview, integration specs, and per-module acceptance criteria.
+Generates detailed functional specifications: MVP modules, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrix, explicit scope boundaries, data model overview, integration specs, and per-module acceptance criteria. [EXPLICIT]
 
 ## Principio Rector
 
@@ -30,22 +30,22 @@ Generates detailed functional specifications: MVP modules, 8+ use cases with com
 ### Filosofía de Especificación
 
 1. **QUÉ, no CÓMO.** La spec describe comportamiento observable, no implementación. "El sistema valida la edad del cliente" — no "usar un IF/ELSE en el controller."
-2. **Cada regla tiene dueño.** Las business rules no validadas son bombas de tiempo. UNVALIDATED es un status, no un permiso para avanzar.
-3. **Scope explícito > scope exhaustivo.** Una lista clara de qué está IN y qué está OUT previene el 80% del scope creep.
+2. **Cada regla tiene dueño.** Las business rules no validadas son bombas de tiempo. UNVALIDATED es un status, no un permiso para avanzar. [EXPLICIT]
+3. **Scope explícito > scope exhaustivo.** Una lista clara de qué está IN y qué está OUT previene el 80% del scope creep. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — MVP module count target (default: 3-5)
 - `$2` — Use case depth: `actor-goal` (1 page, fast) or `cockburn` (5+ pages, detailed; default)
 
-Parse from `$ARGUMENTS`. Use `actor-goal` for MVP speed; `cockburn` for critical/complex flows.
+Parse from `$ARGUMENTS`. Use `actor-goal` for MVP speed; `cockburn` for critical/complex flows. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario de módulos y use cases, HITL para validación de business rules y scope boundaries.
-  - **desatendido**: Cero interrupciones. Spec completa auto-generada. Reglas marcadas UNVALIDATED.
-  - **supervisado**: Autónomo con checkpoint en scope definition y business rules.
-  - **paso-a-paso**: Confirma cada módulo, cada use case, y cada business rule.
+  - **piloto-auto**: Auto para inventario de módulos y use cases, HITL para validación de business rules y scope boundaries. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Spec completa auto-generada. Reglas marcadas UNVALIDATED. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en scope definition y business rules. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada módulo, cada use case, y cada business rule. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 modules + S4 risk matrix + S5 scope) | `técnica` (full 8 sections, default)
 
@@ -110,17 +110,17 @@ IF no business stakeholder available:
 ## 8-Section Delivery Structure
 
 ### Section 1: MVP Module Inventory (3-5 modules)
-Card grid. Per card: module name, description (1-2 sentences), key features (3+), related use case IDs, business rule IDs, complexity rating (1-5 with explanation), risk rating (1-5 with factors), upstream/downstream dependencies.
+Card grid. Per card: module name, description (1-2 sentences), key features (3+), related use case IDs, business rule IDs, complexity rating (1-5 with explanation), risk rating (1-5 with factors), upstream/downstream dependencies. [EXPLICIT]
 
 ### Section 2: Use Cases (8-12 minimum)
-Per use case structured table: ID, name (verb-noun), primary actor, preconditions, main flow (numbered steps), alternative flows (2+ per use case), exception flows (1+ per use case), postconditions, linked business rules, data entities, priority (High/Medium/Low), frequency (Daily/Session/Ad-hoc).
+Per use case structured table: ID, name (verb-noun), primary actor, preconditions, main flow (numbered steps), alternative flows (2+ per use case), exception flows (1+ per use case), postconditions, linked business rules, data entities, priority (High/Medium/Low), frequency (Daily/Session/Ad-hoc). [EXPLICIT]
 
 ### Section 3: Business Rules (6+ minimum)
 | ID | Rule Name | Description | Validation Logic | Severity | Module | Validation Status |
-Severity: CRITICAL (blocks release), HIGH (major impact), MEDIUM (nice-to-have), LOW (documentation).
+Severity: CRITICAL (blocks release), HIGH (major impact), MEDIUM (nice-to-have), LOW (documentation). [EXPLICIT]
 
 ### Section 4: Complexity & Risk Matrix
-3x3 heatmap. X-axis: complexity (Low/Mid/High). Y-axis: risk (Low/Mid/High). Each feature positioned with rationale. Bottom-left = quick wins first. Top-right = detailed planning + spike required.
+3x3 heatmap. X-axis: complexity (Low/Mid/High). Y-axis: risk (Low/Mid/High). Each feature positioned with rationale. Bottom-left = quick wins first. Top-right = detailed planning + spike required. [EXPLICIT]
 
 ### Section 5: Scope Definition
 **In Scope (MVP):** checklist with rationale per feature.
@@ -128,13 +128,13 @@ Severity: CRITICAL (blocks release), HIGH (major impact), MEDIUM (nice-to-have),
 **Boundary Conditions:** max records/query, concurrent users, API SLA, data retention, uptime target.
 
 ### Section 6: Acceptance Criteria per Module
-Per module: Functional completeness (use cases tested, rules validated, alternative/exception flows working, data consistency). Non-functional (response time, load tested, no SPOF, audit trail). Security & compliance (auth, authz, encryption, PII handling). Quality (code review zero critical, coverage >80% unit / >70% integration). Sign-offs (business owner, QA lead, tech lead).
+Per module: Functional completeness (use cases tested, rules validated, alternative/exception flows working, data consistency). Non-functional (response time, load tested, no SPOF, audit trail). Security & compliance (auth, authz, encryption, PII handling). Quality (code review zero critical, coverage >80% unit / >70% integration). Sign-offs (business owner, QA lead, tech lead). [EXPLICIT]
 
 ### Section 7: Data Model Overview
-Per entity: fields (name, type, constraints), relationships (belongs-to, has-many), lifecycle (create/update/delete conditions). Entity-to-business-rule mapping.
+Per entity: fields (name, type, constraints), relationships (belongs-to, has-many), lifecycle (create/update/delete conditions). Entity-to-business-rule mapping. [EXPLICIT]
 
 ### Section 8: Integration Specifications
-Per external system: endpoint, method, payload, response, SLA. Failure modes and fallback documented. Circuit breaker and retry policies.
+Per external system: endpoint, method, payload, response, SLA. Failure modes and fallback documented. Circuit breaker and retry policies. [EXPLICIT]
 
 ## Output Artifact
 
@@ -167,7 +167,15 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/functional-spec" — Run the full functional spec workflow
+- "functional spec on this project" — Apply to current context
+

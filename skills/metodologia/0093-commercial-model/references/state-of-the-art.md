@@ -9,7 +9,7 @@
 ### 1.1 Usage-Based Pricing (Consumption Models)
 
 - **Qué está pasando:** La migración de modelos seat-based a consumption-based se ha acelerado. OpenMeter, Amberflo, Metronome, y Orb han emergido como plataformas de metering. Según OpenView Partners (2025), el 61% de las empresas SaaS incluyen algún componente usage-based, vs. 34% en 2020. El modelo pure usage-based es raro — la mayoría adopta "usage-based hybrid" (base + variable).
-- **Impacto en el skill:** M5 (Usage-Based) ya no es solo para APIs y plataformas — es relevante para cualquier engagement donde el valor sea proporcional al consumo. S4 (Recommended Model) debe evaluar componentes de consumo en casi todo hybrid (M7). S5 (Deal Structure Canvas) necesita metering infrastructure como requisito técnico del deal.
+- **Impacto en el skill:** M5 (Usage-Based) ya no es solo para APIs y plataformas — es relevante para cualquier engagement donde el valor sea proporcional al consumo. S4 (Recommended Model) debe evaluar componentes de consumo en casi Todo hybrid (M7). S5 (Deal Structure Canvas) necesita metering infrastructure como requisito técnico del deal.
 - **Debate abierto:** Revenue predictability vs. customer alignment. CFOs prefieren predictibilidad (subscription), clientes prefieren pagar por uso. El mercado converge en committed-use discounts (como los Reserved Instances de cloud).
 - **Fuentes:** OpenView Partners (2025) "State of Usage-Based Pricing"; Kyle Poyar (2024) "Growth Unhinged Newsletter"; Bessemer Venture Partners (2025) "State of the Cloud".
 
@@ -89,7 +89,7 @@ La EU Digital Markets Act (DMA) y regulaciones similares en LATAM están forzand
 
 | Tendencia | Secciones Impactadas | Acción Recomendada |
 |---|---|---|
-| Usage-based pricing | S2, S4, S5 | Evaluar metering requirements en todo modelo hybrid |
+| Usage-based pricing | S2, S4, S5 | Evaluar metering requirements en Todo modelo hybrid |
 | PLG | S2, S5 | Incluir tier design cuando engagement produce producto |
 | AI/ML pricing | S2, S4, S5 | Nuevos modelos per-token/per-inference en catálogo |
 | Outcome-based | S1, S3, S4 | Reforzar rigor de value map y mecanismos de medición |

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Design and build high-converting landing pages with hero sections, CTAs,
-  social proof, and A/B testing. Covers conversion optimization and analytics.
+  social proof, and A/B testing. Covers conversion optimization and analytics. [EXPLICIT]
   Trigger: "landing page", "hero section", "CTA", "conversion optimization"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the creation of high-converting landing pages with persuasive copy structure, compelling CTAs, social proof sections, and measurable A/B testing. Use when launching a product, campaign, or lead generation funnel that needs a focused, single-purpose page.
+Guides the creation of high-converting landing pages with persuasive copy structure, compelling CTAs, social proof sections, and measurable A/B testing. Use when launching a product, campaign, or lead generation funnel that needs a focused, single-purpose page. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the creation of high-converting landing pages with persuasive copy struct
 
 - `google-analytics` — tracking conversions and funnel drop-off
 - `image-optimization` — fast hero images are critical for LCP
+
+## Usage
+
+Example invocations:
+
+- "/landing-pages" — Run the full landing pages workflow
+- "landing pages on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

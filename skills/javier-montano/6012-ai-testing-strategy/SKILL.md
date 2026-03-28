@@ -5,7 +5,7 @@ description: >
   data quality testing, compliance and fairness testing, integration approaches, and CI/CD test automation. This skill
   should be used when the user asks to "define AI testing strategy", "test ML models", "design data quality tests",
   "plan fairness testing", "test AI pipelines", "design integration tests for ML", or mentions adversarial testing,
-  drift simulation, model regression testing, bias testing, explainability testing, or AI test automation.
+  drift simulation, model regression testing, bias testing, explainability testing, or AI test automation. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # AI Testing Strategy: Comprehensive Verification for AI-Enabled Systems
 
-AI testing strategy defines how to verify that an AI system behaves correctly, fairly, securely, and reliably across all layers — from data ingestion through model inference to production monitoring. This skill produces a testing strategy document covering the testing scope matrix, model and prediction tests, data quality tests, compliance and fairness tests, integration approaches, and CI/CD test automation for AI pipelines.
+AI testing strategy defines how to verify that an AI system behaves correctly, fairly, securely, and reliably across all layers — from data ingestion through model inference to production monitoring. This skill produces a testing strategy document covering the testing scope matrix, model and prediction tests, data quality tests, compliance and fairness tests, integration approaches, and CI/CD test automation for AI pipelines. [EXPLICIT]
 
 ## Principio Rector
 
@@ -27,13 +27,13 @@ AI testing strategy defines how to verify that an AI system behaves correctly, f
 
 ### Filosofía de Testing para IA
 
-1. **La matriz completa o nada.** Testing parcial en sistemas de IA es peor que no testear — da falsa confianza. Un modelo con 95% accuracy pero sin fairness testing puede ser discriminatorio. Un pipeline con integration tests pero sin data quality tests puede procesar basura silenciosamente.
-2. **Data quality testing ES el test más importante.** En sistemas tradicionales, los bugs están en el código. En sistemas de IA, los bugs están en los datos. Schema validation, distribution testing, lineage tracking, y training-serving skew detection son la primera línea de defensa.
-3. **Testing continuo, no testing puntual.** Los modelos degradan con el tiempo (drift). Los datos cambian. Las features evolucionan. La estrategia de testing debe incluir monitoreo continuo en producción, no solo gates en el pipeline de deployment.
+1. **La matriz completa o nada.** Testing parcial en sistemas de IA es peor que no testear — da falsa confianza. Un modelo con 95% accuracy pero sin fairness testing puede ser discriminatorio. Un pipeline con integration tests pero sin data quality tests puede procesar basura silenciosamente. [EXPLICIT]
+2. **Data quality testing ES el test más importante.** En sistemas tradicionales, los bugs están en el código. En sistemas de IA, los bugs están en los datos. Schema validation, distribution testing, lineage tracking, y training-serving skew detection son la primera línea de defensa. [EXPLICIT]
+3. **Testing continuo, no testing puntual.** Los modelos degradan con el tiempo (drift). Los datos cambian. Las features evolucionan. La estrategia de testing debe incluir monitoreo continuo en producción, no solo gates en el pipeline de deployment. [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -46,7 +46,7 @@ Before generating testing strategy, detect the codebase context:
 Detección automática de contexto:
   Escanear el codebase por frameworks de testing (pytest, unittest, Great Expectations,
   deepchecks), herramientas CI/CD (GitHub Actions, Jenkins, GitLab CI), y monitoring
-  (Evidently, WhyLabs, Prometheus) para adaptar recomendaciones.
+  (Evidently, WhyLabs, Prometheus) para adaptar recomendaciones. [EXPLICIT]
 ```
 
 If reference materials exist, load them:
@@ -85,7 +85,7 @@ Load references:
 
 ### S1: Testing Scope Matrix
 
-Defines the complete testing landscape across 6 test types and 6 system layers.
+Defines the complete testing landscape across 6 test types and 6 system layers. [EXPLICIT]
 
 **Test types:**
 - **Functional**: Correctness of predictions, transformations, orchestration, and data flows
@@ -105,7 +105,7 @@ Defines the complete testing landscape across 6 test types and 6 system layers.
 
 ### S2: Model & Prediction Testing
 
-Defines tests that verify model behavior, accuracy, robustness, and regression safety.
+Defines tests that verify model behavior, accuracy, robustness, and regression safety. [EXPLICIT]
 
 **Test categories:**
 - **Accuracy & metrics**: Holdout evaluation, slice-based analysis, calibration testing, threshold sensitivity
@@ -127,7 +127,7 @@ Defines tests that verify model behavior, accuracy, robustness, and regression s
 
 ### S3: Data Quality & Pipeline Testing
 
-Defines tests for data integrity, feature quality, and pipeline reliability.
+Defines tests for data integrity, feature quality, and pipeline reliability. [EXPLICIT]
 
 **Data quality tests:**
 - Schema validation (types, formats, ranges, cardinality)
@@ -154,7 +154,7 @@ Defines tests for data integrity, feature quality, and pipeline reliability.
 
 ### S4: Compliance, Fairness & Ethics Testing
 
-Defines tests for regulatory adherence, bias detection, and ethical AI operation.
+Defines tests for regulatory adherence, bias detection, and ethical AI operation. [EXPLICIT]
 
 **Compliance tests:**
 - Model governance workflow verification (approval gates, documentation requirements)
@@ -183,7 +183,7 @@ Defines tests for regulatory adherence, bias detection, and ethical AI operation
 
 ### S5: Integration Approaches & Harness Design
 
-Selects the integration testing strategy and designs the test harness for end-to-end validation.
+Selects the integration testing strategy and designs the test harness for end-to-end validation. [EXPLICIT]
 
 **Approaches:**
 - **Top-Down**: Start from API, stub model and data, progressively replace. Best for user-facing systems.
@@ -212,7 +212,7 @@ Selects the integration testing strategy and designs the test harness for end-to
 
 ### S6: CI/CD Test Automation for AI
 
-Defines how tests are automated within the CI/CD pipeline for continuous validation.
+Defines how tests are automated within the CI/CD pipeline for continuous validation. [EXPLICIT]
 
 **Automation tiers:**
 - **T1 Unit** (every commit): Feature computations, transformations, utility functions
@@ -285,19 +285,19 @@ Defines how tests are automated within the CI/CD pipeline for continuous validat
 ## Edge Cases
 
 **No Ground Truth Available:**
-Some AI systems (unsupervised, generative) lack clear ground truth. Use proxy metrics (human evaluation, downstream task performance), A/B testing against baselines, and consistency testing (similar inputs should produce similar outputs).
+Some AI systems (unsupervised, generative) lack clear ground truth. Use proxy metrics (human evaluation, downstream task performance), A/B testing against baselines, and consistency testing (similar inputs should produce similar outputs). [EXPLICIT]
 
 **Regulated Environment with Audit Requirements:**
-Every test execution must produce evidence artifacts. Test reports must be immutable and timestamped. Consider the Integration Harness as mandatory for reproducible audit-ready testing. Bottom-Up integration approach ensures data compliance is validated first.
+Every test execution must produce evidence artifacts. Test reports must be immutable and timestamped. Consider the Integration Harness as mandatory for reproducible audit-ready testing. Bottom-Up integration approach ensures data compliance is validated first. [EXPLICIT]
 
 **Continuous Learning System:**
-Model updates frequently with new data. Testing strategy must handle continuous model versioning. Regression testing must compare against stable baseline, not just previous version. Drift detection thresholds need regular recalibration.
+Model updates frequently with new data. Testing strategy must handle continuous model versioning. Regression testing must compare against stable baseline, not just previous version. Drift detection thresholds need regular recalibration. [EXPLICIT]
 
 **Multi-Model Ensemble:**
-Testing individual models is necessary but insufficient. Ensemble behavior must be tested as a unit. Disagreement patterns between models should be analyzed. Voting/aggregation logic needs dedicated tests.
+Testing individual models is necessary but insufficient. Ensemble behavior must be tested as a unit. Disagreement patterns between models should be analyzed. Voting/aggregation logic needs dedicated tests. [EXPLICIT]
 
 **Privacy-Constrained Testing:**
-Production data cannot be used for testing (GDPR, HIPAA). Synthetic data generation must match production distributions without exposing real data. Differential privacy techniques for test data. Anonymization verification before test data creation.
+Production data cannot be used for testing (GDPR, HIPAA). Synthetic data generation must match production distributions without exposing real data. Differential privacy techniques for test data. Anonymization verification before test data creation. [EXPLICIT]
 
 ---
 

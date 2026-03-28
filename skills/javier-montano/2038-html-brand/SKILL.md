@@ -7,7 +7,7 @@ description: >
   brand standards", "fix broken Sofka styles", or mentions Sofka HTML, entregable,
   brand deliverable, Design System v4, or any combination of Sofka + document/report/
   summary/analysis/roadmap. Also use when batch-upgrading existing HTML files to
-  Sofka brand compliance, even if the user does not explicitly say "brand".
+  Sofka brand compliance, even if the user does not explicitly say "brand". [EXPLICIT]
 argument-hint: "[executive|technical] [output-path]"
 model: opus
 context: fork
@@ -22,7 +22,7 @@ allowed-tools:
 
 # Sofka HTML Brand — Document Generator
 
-Generate beautiful, accessible, on-brand HTML deliverables following the Sofka Design System v4. Every output is a self-contained single-file HTML document with all CSS inline, no external dependencies, and full WCAG AA accessibility.
+Generate beautiful, accessible, on-brand HTML deliverables following the Sofka Design System v4. Every output is a self-contained single-file HTML document with all CSS inline, no external dependencies, and full WCAG AA accessibility. [EXPLICIT]
 
 ## Principio Rector
 
@@ -30,11 +30,11 @@ Generate beautiful, accessible, on-brand HTML deliverables following the Sofka D
 
 ### Filosofía de Brand HTML
 
-1. **Brand = Confianza visual.** Cada elemento del Design System existe para transmitir profesionalismo y consistencia. Romper un token de marca es romper la promesa visual al cliente.
+1. **Brand = Confianza visual.** Cada elemento del Design System existe para transmitir profesionalismo y consistencia. Romper un token de marca es romper la promesa visual al cliente. [EXPLICIT]
 
-2. **Self-contained = Portabilidad garantizada.** Un archivo HTML que depende de recursos externos es un deliverable frágil. La autonomía del archivo es un requisito funcional, no una preferencia técnica.
+2. **Self-contained = Portabilidad garantizada.** Un archivo HTML que depende de recursos externos es un deliverable frágil. La autonomía del archivo es un requisito funcional, no una preferencia técnica. [EXPLICIT]
 
-3. **Accesibilidad = Alcance real.** WCAG AA no es compliance — es la garantía de que el 100% de los stakeholders pueden consumir el entregable sin barreras. Un documento bonito que no se puede leer tiene impacto cero.
+3. **Accesibilidad = Alcance real.** WCAG AA no es compliance — es la garantía de que el 100% de los stakeholders pueden consumir el entregable sin barreras. Un documento bonito que no se puede leer tiene impacto cero. [EXPLICIT]
 
 ---
 
@@ -72,14 +72,14 @@ Generate beautiful, accessible, on-brand HTML deliverables following the Sofka D
 /sofka-html-brand --batch ./legacy-docs/          # upgrade 3+ files in parallel
 ```
 
-Parse `$1` as document type (`executive`, `technical`, `transformation`) or `--batch` flag. Parse `$2` as output path.
+Parse `$1` as document type (`executive`, `technical`, `transformation`) or `--batch` flag. Parse `$2` as output path. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para generación rutinaria, HITL para decisiones de marca y accesibilidad.
-  - **desatendido**: Cero interrupciones. Supuestos documentados.
-  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en decisiones de marca.
-  - **paso-a-paso**: Confirma antes de cada componente y decisión de diseño.
+  - **piloto-auto**: Auto para generación rutinaria, HITL para decisiones de marca y accesibilidad. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo en decisiones de marca. [EXPLICIT]
+  - **paso-a-paso**: Confirma antes de cada componente y decisión de diseño. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40%) | `técnica` (full, default)
 
@@ -154,7 +154,7 @@ Every Sofka HTML deliverable follows this skeleton:
 
 ## Color Rules
 
-Design System v4 uses yellow for success states because it maintains brand coherence with the warm Sofka palette — green introduces a cold tone that clashes.
+Design System v4 uses yellow for success states because it maintains brand coherence with the warm Sofka palette — green introduces a cold tone that clashes. [EXPLICIT]
 
 | Semantic State | Color | Variable | Usage |
 |---------------|-------|----------|-------|
@@ -163,9 +163,9 @@ Design System v4 uses yellow for success states because it maintains brand coher
 | Critical/Error | Red #DC2626 | `--sofka-critical` | Failures, blockers, high severity |
 | Info | Blue #2563EB | `--sofka-info` | Neutral informational, recommended |
 
-Green (#42D36F), teal, violet, and pink exist only for charts and data visualization — never for semantic states.
+Green (#42D36F), teal, violet, and pink exist only for charts and data visualization — never for semantic states. [EXPLICIT]
 
-See `references/design-tokens.md` for the complete CSS variable system.
+See `references/design-tokens.md` for the complete CSS variable system. [EXPLICIT]
 
 ## Content Density by Document Type
 
@@ -278,7 +278,7 @@ See `references/design-tokens.md` for the complete CSS variable system.
 </header>
 ```
 
-Differences: hardcoded hex instead of CSS variables, green instead of orange accent, Arial instead of Clash Grotesk, ALL CAPS title, no underscore in wordmark, 6 KPIs exceeds 4-max limit, gray border instead of orange.
+Differences: hardcoded hex instead of CSS variables, green instead of orange accent, Arial instead of Clash Grotesk, ALL CAPS title, no underscore in wordmark, 6 KPIs exceeds 4-max limit, gray border instead of orange. [EXPLICIT]
 
 ## Validation Gate
 
@@ -300,7 +300,7 @@ Before delivering any HTML document, verify:
 
 ## Batch Processing
 
-When upgrading 3+ files at once, use parallel sub-agents. Read `references/operations-guide.md` for the squad pattern, concurrency limits, and error handling.
+When upgrading 3+ files at once, use parallel sub-agents. Read `references/operations-guide.md` for the squad pattern, concurrency limits, and error handling. [EXPLICIT]
 
 ## Reference Files
 
@@ -342,7 +342,7 @@ When upgrading 3+ files at once, use parallel sub-agents. Read `references/opera
 | `html` | Yes | Self-contained branded HTML (Design System v4). Always the primary output. |
 | `dual` | On demand | HTML + Markdown source for version control. |
 
-Default output is self-contained HTML. This skill always produces HTML — it is the brand rendering engine.
+Default output is self-contained HTML. This skill always produces HTML — it is the brand rendering engine. [EXPLICIT]
 
 ## Output Artifact
 

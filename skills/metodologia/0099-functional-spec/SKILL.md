@@ -4,10 +4,10 @@ author: Javier Montaño · Comunidad MetodologIA
 argument-hint: "[module-count: 3-5] [depth: actor-goal|cockburn] [service-type: SDA|QA|Management|RPA|Data-AI|Cloud|SAS|UX-Design]"
 description: >
   Comprehensive functional specification with use cases, business rules, and complexity/risk matrix,
-  service specification, deliverable specification, and engagement spec.
+  service specification, deliverable specification, and engagement spec. [EXPLICIT]
   Use when the user asks to "write functional specs", "document use cases", "define business rules",
   "create requirements", "specification document", or mentions "Phase 5a", "functional specification",
-  "MVP scope", "acceptance criteria", "casos de uso", "reglas de negocio".
+  "MVP scope", "acceptance criteria", "casos de uso", "reglas de negocio". [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Functional Specification — Universal Deliverable Specification
 
-Generates detailed functional specifications: MVP modules, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrix, explicit scope boundaries, data model overview, integration specs, and per-module acceptance criteria.
+Generates detailed functional specifications: MVP modules, 8+ use cases with complete flows, 6+ business rules with validation logic, complexity/risk matrix, explicit scope boundaries, data model overview, integration specs, and per-module acceptance criteria. [EXPLICIT]
 
 > **Nota de universalidad:** Este skill genera especificaciones funcionales para CUALQUIER tipo de servicio MetodologIA. Para SDA produce especificaciones de software (módulos, casos de uso, modelos de datos). Para otros tipos de servicio, adapta la estructura a los entregables propios de cada línea.
 
@@ -32,22 +32,22 @@ Generates detailed functional specifications: MVP modules, 8+ use cases with com
 ### Specification Philosophy
 
 1. **WHAT, not HOW.** The spec describes observable behavior, not implementation. "The system validates the customer's age" — not "use an IF/ELSE in the controller."
-2. **Every rule has an owner.** Unvalidated business rules are ticking time bombs. UNVALIDATED is a status, not permission to proceed.
-3. **Explicit scope > exhaustive scope.** A clear list of what is IN and what is OUT prevents 80% of scope creep.
+2. **Every rule has an owner.** Unvalidated business rules are ticking time bombs. UNVALIDATED is a status, not permission to proceed. [EXPLICIT]
+3. **Explicit scope > exhaustive scope.** A clear list of what is IN and what is OUT prevents 80% of scope creep. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — MVP module count target (default: 3-5)
 - `$2` — Use case depth: `actor-goal` (1 page, fast) or `cockburn` (5+ pages, detailed; default)
 
-Parse from `$ARGUMENTS`. Use `actor-goal` for MVP speed; `cockburn` for critical/complex flows.
+Parse from `$ARGUMENTS`. Use `actor-goal` for MVP speed; `cockburn` for critical/complex flows. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario de módulos y use cases, HITL para validación de business rules y scope boundaries.
-  - **desatendido**: Zero interruptions. Spec completa auto-generada. Reglas marcadas UNVALIDATED.
-  - **supervisado**: Autónomo con checkpoint en scope definition y business rules.
-  - **paso-a-paso**: Confirma cada módulo, cada use case, y cada business rule.
+  - **piloto-auto**: Auto para inventario de módulos y use cases, HITL para validación de business rules y scope boundaries. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Spec completa auto-generada. Reglas marcadas UNVALIDATED. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en scope definition y business rules. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada módulo, cada use case, y cada business rule. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 modules + S4 risk matrix + S5 scope) | `técnica` (full 8 sections, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
@@ -115,7 +115,7 @@ IF no business stakeholder available:
 ## 8-Section Delivery Structure
 
 ### Section 1: MVP Module Inventory (3-5 modules)
-Card grid. Per card: module name, description (1-2 sentences), key features (3+), related use case IDs, business rule IDs, complexity rating (1-5 with explanation), risk rating (1-5 with factors), upstream/downstream dependencies.
+Card grid. Per card: module name, description (1-2 sentences), key features (3+), related use case IDs, business rule IDs, complexity rating (1-5 with explanation), risk rating (1-5 with factors), upstream/downstream dependencies. [EXPLICIT]
 
 #### Service-Type Deliverable Inventory
 
@@ -131,14 +131,14 @@ Card grid. Per card: module name, description (1-2 sentences), key features (3+)
 | UX-Design | Design deliverables | Design System, User Research Program, Prototype Suite |
 
 ### Section 2: Use Cases (8-12 minimum)
-Per use case structured table: ID, name (verb-noun), primary actor, preconditions, main flow (numbered steps), alternative flows (2+ per use case), exception flows (1+ per use case), postconditions, linked business rules, data entities, priority (High/Medium/Low), frequency (Daily/Session/Ad-hoc).
+Per use case structured table: ID, name (verb-noun), primary actor, preconditions, main flow (numbered steps), alternative flows (2+ per use case), exception flows (1+ per use case), postconditions, linked business rules, data entities, priority (High/Medium/Low), frequency (Daily/Session/Ad-hoc). [EXPLICIT]
 
 ### Section 3: Business Rules (6+ minimum)
 | ID | Rule Name | Description | Validation Logic | Severity | Module | Validation Status |
-Severity: CRITICAL (blocks release), HIGH (major impact), MEDIUM (nice-to-have), LOW (documentation).
+Severity: CRITICAL (blocks release), HIGH (major impact), MEDIUM (nice-to-have), LOW (documentation). [EXPLICIT]
 
 ### Section 4: Complexity & Risk Matrix
-3x3 heatmap. X-axis: complexity (Low/Mid/High). Y-axis: risk (Low/Mid/High). Each feature positioned with rationale. Bottom-left = quick wins first. Top-right = detailed planning + spike required.
+3x3 heatmap. X-axis: complexity (Low/Mid/High). Y-axis: risk (Low/Mid/High). Each feature positioned with rationale. Bottom-left = quick wins first. Top-right = detailed planning + spike required. [EXPLICIT]
 
 ### Section 5: Scope Definition
 **In Scope (MVP):** checklist with rationale per feature.
@@ -146,7 +146,7 @@ Severity: CRITICAL (blocks release), HIGH (major impact), MEDIUM (nice-to-have),
 **Boundary Conditions:** max records/query, concurrent users, API SLA, data retention, uptime target.
 
 ### Section 6: Acceptance Criteria per Module
-Per module: Functional completeness (use cases tested, rules validated, alternative/exception flows working, data consistency). Non-functional (response time, load tested, no SPOF, audit trail). Security & compliance (auth, authz, encryption, PII handling). Quality (code review zero critical, coverage >80% unit / >70% integration). Sign-offs (business owner, QA lead, tech lead).
+Per module: Functional completeness (use cases tested, rules validated, alternative/exception flows working, data consistency). Non-functional (response time, load tested, no SPOF, audit trail). Security & compliance (auth, authz, encryption, PII handling). Quality (code review zero critical, coverage >80% unit / >70% integration). Sign-offs (business owner, QA lead, tech lead). [EXPLICIT]
 
 #### Service-Type Acceptance Criteria
 
@@ -162,10 +162,10 @@ Per module: Functional completeness (use cases tested, rules validated, alternat
 | UX-Design | Usability score >80 (SUS), accessibility WCAG AA compliant, design system adoption >70%, stakeholder approval |
 
 ### Section 7: Data Model Overview
-Per entity: fields (name, type, constraints), relationships (belongs-to, has-many), lifecycle (create/update/delete conditions). Entity-to-business-rule mapping.
+Per entity: fields (name, type, constraints), relationships (belongs-to, has-many), lifecycle (create/update/delete conditions). Entity-to-business-rule mapping. [EXPLICIT]
 
 ### Section 8: Integration Specifications
-Per external system: endpoint, method, payload, response, SLA. Failure modes and fallback documented. Circuit breaker and retry policies.
+Per external system: endpoint, method, payload, response, SLA. Failure modes and fallback documented. Circuit breaker and retry policies. [EXPLICIT]
 
 ## Output Artifact
 
@@ -198,7 +198,7 @@ Per external system: endpoint, method, payload, response, SLA. Failure modes and
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Edge Cases
 
@@ -282,3 +282,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño | **Ultima actualizacion:** 15 de marzo de 2026
+
+## Usage
+
+Example invocations:
+
+- "/functional-spec" — Run the full functional spec workflow
+- "functional spec on this project" — Apply to current context
+

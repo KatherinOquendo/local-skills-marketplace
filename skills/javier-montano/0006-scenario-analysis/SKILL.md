@@ -1,6 +1,6 @@
 ---
 name: scenario-analysis
-description: Evaluate 3+ implementation scenarios. Weighted criteria matrix. Risk/reward. Firebase/Google stack constrained.
+description: Evaluate 3+ implementation scenarios. Weighted criteria matrix. Risk/reward. Firebase/Google stack constrained. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -9,24 +9,24 @@ tags: [analysis, scenarios, trade-offs, evaluation]
 # scenario-analysis {Analysis} (v1.0)
 > **"Analyze with evidence. Every claim tagged. Every finding actionable."**
 ## Purpose
-Evaluate 3+ implementation scenarios. Weighted criteria matrix. Risk/reward. Firebase/Google stack constrained.
+Evaluate 3+ implementation scenarios. Weighted criteria matrix. Risk/reward. Firebase/Google stack constrained. [EXPLICIT]
 **When to use:** During analysis mode (MAO DNA). Before architecture or development begins.
-## 1. The Physics
-1. **Law of Evidence:** Every finding tagged [CODE], [CONFIG], [DOC], [INFERENCE], or [ASSUMPTION] (R-001).
-2. **Law of Completeness:** No analysis deliverable ships without covering all required sections.
-3. **Law of Firebase Lens:** All assessments evaluated through Firebase/Google/Hostinger feasibility.
-## 2. The Protocol
+## Core Principles
+1. **Law of Evidence:** Every finding tagged [CODE], [CONFIG], [DOC], [INFERENCE], or [ASSUMPTION] (R-001). [EXPLICIT]
+2. **Law of Completeness:** No analysis deliverable ships without covering all required sections. [EXPLICIT]
+3. **Law of Firebase Lens:** All assessments evaluated through Firebase/Google/Hostinger feasibility. [EXPLICIT]
+## Core Process
 ### Phase 1: Gather
-1. Collect inputs (documents, code, conversations, existing systems).
-2. Parse for requirements, constraints, and context.
+1. Collect inputs (documents, code, conversations, existing systems). [EXPLICIT]
+2. Parse for requirements, constraints, and context. [EXPLICIT]
 ### Phase 2: Analyze
-1. Apply domain-specific analysis methodology.
-2. Tag all findings with evidence tags.
-3. Score/evaluate using the skill's specific metrics.
+1. Apply domain-specific analysis methodology. [EXPLICIT]
+2. Tag all findings with evidence tags. [EXPLICIT]
+3. Score/evaluate using the skill's specific metrics. [EXPLICIT]
 ### Phase 3: Document
-1. Produce the analysis deliverable in markdown.
-2. Include evidence tag summary (% by tag type).
-3. If >30% [ASSUMPTION], add WARNING banner.
+1. Produce the analysis deliverable in markdown. [EXPLICIT]
+2. Include evidence tag summary (% by tag type). [EXPLICIT]
+3. If >30% [ASSUMPTION], add WARNING banner. [EXPLICIT]
 ## 3. Inputs / Outputs
 | Input | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -34,7 +34,7 @@ Evaluate 3+ implementation scenarios. Weighted criteria matrix. Risk/reward. Fir
 | Output | Type | Description |
 |--------|------|-------------|
 | Analysis deliverable | Markdown | Evidence-tagged findings |
-## 4. Quality Gates
+## Validation Gate
 - [ ] All findings have evidence tags
 - [ ] Firebase feasibility assessed
 - [ ] Deliverable follows R-008 output standards
@@ -44,3 +44,25 @@ Evaluate 3+ implementation scenarios. Weighted criteria matrix. Risk/reward. Fir
 > [!WARNING]
 > IF >30% claims are [ASSUMPTION] THEN add prominent WARNING banner.
 > IF analysis contains implementation details THEN move to plan (Art. 1.5 phase separation).
+
+## Usage
+
+Example invocations:
+
+- "/scenario-analysis" — Run the full scenario analysis workflow
+- "scenario analysis on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

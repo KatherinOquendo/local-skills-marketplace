@@ -3,7 +3,7 @@ name: http-headers
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Security headers, caching headers, compression, content negotiation.
+  Security headers, caching headers, compression, content negotiation. [EXPLICIT]
   Trigger: "http headers"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Http Headers
 > "Method over hacks."
 ## TL;DR
-Security headers, caching headers, compression, content negotiation.
+Security headers, caching headers, compression, content negotiation. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Security headers, caching headers, compression, content negotiation.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/http-headers" — Run the full http headers workflow
+- "http headers on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -213,7 +213,7 @@ Create a GitHub Actions workflow triggered on push to `develop`. Extract story I
 - GitLens — trace artifact changes through Git history
 
 **Snippets** (`.vscode/bmad.code-snippets`): Create two snippets:
-- `bmad-story` (prefix) — Generates full story frontmatter (story-id, epic-ref, title, status, points with choice picker {1,2,3,5,8}, priority picker, fr-refs) plus AC template with Given/When/Then placeholders
+- `bmad-story` (prefix) — Generates full story frontmatter (story-id, epic-ref, title, status, points with choice picker {1,2,3,5,8}, priority picker, fr-refs) plus AC template with Given/When/Then templates
 - `bmad-rapid` (prefix) — Generates the rapid spec template (Request, Rationale, Scope, Approach, Acceptance, Risk picker {Low,Medium}, Traceability)
 
 ### Claude Code Integration

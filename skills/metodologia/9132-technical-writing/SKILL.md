@@ -1,12 +1,12 @@
 ---
 name: metodologia-technical-writing
 author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<doc-type: analysis|spec|handover|architecture|assessment> <depth: ejecutivo|tecnico|exhaustivo>"
-description: >
+argument-hint: "doc-type: analysis|spec|handover|architecture|assessment depth: ejecutivo|tecnico|exhaustivo"
+description: 
   Technical documentation precision — progressive disclosure, terminology consistency,
   evidence attribution, and reproducible analysis. Use when writing AS-IS analyses,
   functional specs, architecture documents, handover guides, or any deliverable
-  requiring technical rigor and documentation standards.
+  requiring technical rigor and documentation standards. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Technical Writing — Documentation Precision & Progressive Disclosure
 
-Ensures technical deliverables are precise, reproducible, and progressively disclosed. Owns terminology consistency, evidence attribution, structural patterns, and anti-pattern enforcement across all discovery documentation.
+Ensures technical deliverables are precise, reproducible, and progressively disclosed. Owns terminology consistency, evidence attribution, structural patterns, and anti-pattern enforcement across all discovery documentation. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,17 +27,17 @@ Ensures technical deliverables are precise, reproducible, and progressively disc
 
 ### Documentation Philosophy
 
-1. **Progressive disclosure.** TL;DR → sections → details → appendix. The executive reads 2 pages, the architect reads 20, the implementer reads 50.
-2. **Terminology as contract.** One term = one meaning across the entire discovery. Zero ambiguous synonyms.
-3. **Traceable evidence.** Every data point carries a source tag. The reader can verify without asking.
-4. **Information density.** Every sentence contributes new information. Zero filler, zero repetition.
+1. **Progressive disclosure.** TL;DR → sections → details → appendix. The executive reads 2 pages, the architect reads 20, the implementer reads 50. [EXPLICIT]
+2. **Terminology as contract.** One term = one meaning across the entire discovery. Zero ambiguous synonyms. [EXPLICIT]
+3. **Traceable evidence.** Every data point carries a source tag. The reader can verify without asking. [EXPLICIT]
+4. **Information density.** Every sentence contributes new information. Zero filler, zero repetition. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Document type: `analysis`, `spec`, `handover`, `architecture`, `assessment` (default: `analysis`)
 - `$2` — Depth: `ejecutivo`, `técnico`, `exhaustivo` (default: `técnico`)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 ## Document Structure Patterns
 
@@ -339,3 +339,11 @@ graph TD
 
 - This skill owns **documentation precision and structure**. It does NOT own narrative persuasion (that's metodologia-copywriting) or visual format production (that's metodologia-output-engineering).
 - Follows markdown-excellence standard as baseline.
+
+## Usage
+
+Example invocations:
+
+- "/technical-writing" — Run the full technical writing workflow
+- "technical writing on this project" — Apply to current context
+

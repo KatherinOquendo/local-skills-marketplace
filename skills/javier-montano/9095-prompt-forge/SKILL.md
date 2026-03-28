@@ -1,12 +1,12 @@
 ---
 name: prompt-forge
-description: >
+description: 
   Creates, reviews, evolves, repairs, and ports system prompts across LLM platforms using the Playbook format,
   a 10-criterion evaluation rubric, and context engineering principles. Activates when the user says "create a
-  system prompt", "review this prompt", "optimize this prompt", "port this prompt to GPT", or "fix my prompt".
-  Also triggers on mentions of prompt engineering, prompt evaluation, prompt porting, or Playbook format.
-  Use this skill even if the user just pastes a prompt without instructions — it defaults to review mode.
-argument-hint: "<mode: create|review|evolve|repair|port> <domain or prompt-path> [--platform claude-project|custom-gpt|gemini-gem|api]"
+  system prompt", "review this prompt", "optimize this prompt", "port this prompt to GPT", or "fix my prompt". [EXPLICIT]
+  Also triggers on mentions of prompt engineering, prompt evaluation, prompt porting, or Playbook format. [EXPLICIT]
+  Use this skill even if the user just pastes a prompt without instructions — it defaults to review mode. [EXPLICIT]
+argument-hint: "mode: create|review|evolve|repair|port domain or prompt-path [--platform claude-project|custom-gpt|gemini-gem|api]"
 model: opus
 context: fork
 allowed-tools:
@@ -22,7 +22,7 @@ allowed-tools:
 
 # Prompt Forge
 
-Turn vague assistant ideas into structured, high-performance system prompts — portable across Claude, GPT, and Gemini.
+Turn vague assistant ideas into structured, high-performance system prompts — portable across Claude, GPT, and Gemini. [EXPLICIT]
 
 ## Operation Modes
 
@@ -38,15 +38,15 @@ Turn vague assistant ideas into structured, high-performance system prompts — 
 
 ## Core Design Principles
 
-1. **Hybrid Role** — Composite expert identity (domain + methodology + communication style). Not "You are a marketing expert" but a specific archetype with boundaries.
-2. **Conversational Flow** — Structure interaction in phases (discovery, execution, delivery) with entry/exit criteria.
-3. **Deliverable-Oriented** — Define what the user walks away with. Concrete output format, not vague "help with X".
-4. **Dynamic Intelligence** — Build reasoning techniques (chain-of-thought, structured analysis) into the prompt natively.
-5. **Executive Tone** — Professional, decisive. The AI sounds like a senior consultant, not a cautious intern.
-6. **Complete Structure** — Use the Playbook format as canonical output.
-7. **Iterative Co-Design** — Build self-correction triggers into the prompt.
+1. **Hybrid Role** — Composite expert identity (domain + methodology + communication style). Not "You are a marketing expert" but a specific archetype with boundaries. [EXPLICIT]
+2. **Conversational Flow** — Structure interaction in phases (discovery, execution, delivery) with entry/exit criteria. [EXPLICIT]
+3. **Deliverable-Oriented** — Define what the user walks away with. Concrete output format, not vague "help with X". [EXPLICIT]
+4. **Dynamic Intelligence** — Build reasoning techniques (chain-of-thought, structured analysis) into the prompt natively. [EXPLICIT]
+5. **Executive Tone** — Professional, decisive. The AI sounds like a senior consultant, not a cautious intern. [EXPLICIT]
+6. **Complete Structure** — Use the Playbook format as canonical output. [EXPLICIT]
+7. **Iterative Co-Design** — Build self-correction triggers into the prompt. [EXPLICIT]
 
-For deep explanations and examples, read `references/design-principles.md`.
+For deep explanations and examples, read `references/design-principles.md`. [EXPLICIT]
 
 ## The Playbook Format
 
@@ -89,11 +89,11 @@ Universal output template for generated prompts:
 [Patterns that signal recalibration]
 ```
 
-For per-section guidance, read `references/playbook-template.md`.
+For per-section guidance, read `references/playbook-template.md`. [EXPLICIT]
 
 ## Evaluation Rubric
 
-Every prompt scored 1-10 on each dimension. Target: 8+ on all for production quality.
+Every prompt scored 1-10 on each dimension. Target: 8+ on all for production quality. [EXPLICIT]
 
 | # | Criterion | Measures |
 |---|-----------|----------|
@@ -108,11 +108,11 @@ Every prompt scored 1-10 on each dimension. Target: 8+ on all for production qua
 | 9 | Coherence | All sections reinforce each other? |
 | 10 | Value | User gets meaningfully better results? |
 
-For detailed scoring and repair protocols, read `references/evaluation-rubric.md`.
+For detailed scoring and repair protocols, read `references/evaluation-rubric.md`. [EXPLICIT]
 
 ## Context Engineering
 
-Modern prompt design manages everything the model sees, not just instruction text.
+Modern prompt design manages everything the model sees, not just instruction text. [EXPLICIT]
 
 | Layer | Scope | Example |
 |-------|-------|---------|
@@ -120,9 +120,9 @@ Modern prompt design manages everything the model sees, not just instruction tex
 | L2: Warm | Uploaded docs, knowledge base | Reference PDFs, style guides |
 | L3: Cold | RAG retrieval, tool outputs | Dynamic data from APIs |
 
-Design for all three layers. A great L1 with poor L2 design underperforms.
+Design for all three layers. A great L1 with poor L2 design underperforms. [EXPLICIT]
 
-For context hierarchy patterns and token optimization, read `references/context-engineering.md`.
+For context hierarchy patterns and token optimization, read `references/context-engineering.md`. [EXPLICIT]
 
 ## Multi-Platform Deployment
 
@@ -133,35 +133,35 @@ For context hierarchy patterns and token optimization, read `references/context-
 | Gemini Gems | System instructions | Google Docs/Drive | Extensions |
 | API / Code | `system` parameter | RAG pipeline | Function calling |
 
-For platform-specific limits and deployment guides, read `references/platform-guides.md`.
+For platform-specific limits and deployment guides, read `references/platform-guides.md`. [EXPLICIT]
 
 ## Workflow by Mode
 
 ### Create (most common)
-1. **Capture** — domain, user outcome, target platform.
-2. **Draft** — fill every Playbook section. Generate first, confirm after.
-3. **Evaluate** — score against rubric. Fix anything below 8.
-4. **Deliver** — format for target platform with deployment instructions.
+1. **Capture** — domain, user outcome, target platform. [EXPLICIT]
+2. **Draft** — fill every Playbook section. Generate first, confirm after. [EXPLICIT]
+3. **Evaluate** — score against rubric. Fix anything below 8. [EXPLICIT]
+4. **Deliver** — format for target platform with deployment instructions. [EXPLICIT]
 
 ### Review
-1. Read the prompt completely.
-2. Score against rubric.
-3. Deliver scorecard + prioritized fix list.
+1. Read the prompt completely. [EXPLICIT]
+2. Score against rubric. [EXPLICIT]
+3. Deliver scorecard + prioritized fix list. [EXPLICIT]
 
 ### Evolve
-1. Identify weakest rubric dimensions.
-2. Apply targeted improvements (density compression, constraint sharpening, flow restructuring).
-3. Re-evaluate to confirm improvement.
+1. Identify weakest rubric dimensions. [EXPLICIT]
+2. Apply targeted improvements (density compression, constraint sharpening, flow restructuring). [EXPLICIT]
+3. Re-evaluate to confirm improvement. [EXPLICIT]
 
 ### Repair
-1. Diagnose the failure pattern.
-2. Apply surgical fix to the specific section causing issues.
-3. Add a self-correction trigger to prevent recurrence.
+1. Diagnose the failure pattern. [EXPLICIT]
+2. Apply surgical fix to the specific section causing issues. [EXPLICIT]
+3. Add a self-correction trigger to prevent recurrence. [EXPLICIT]
 
 ### Port
-1. Identify source platform features and constraints.
-2. Map to target platform equivalents.
-3. Adapt format, adjust for token limits, replace unsupported features.
+1. Identify source platform features and constraints. [EXPLICIT]
+2. Map to target platform equivalents. [EXPLICIT]
+3. Adapt format, adjust for token limits, replace unsupported features. [EXPLICIT]
 
 ## Antipatterns
 
@@ -213,3 +213,11 @@ Before delivering a prompt, confirm:
 
 ---
 **Author:** Javier Montaño | **Last updated:** March 12, 2026
+
+## Usage
+
+Example invocations:
+
+- "/prompt-forge" — Run the full prompt forge workflow
+- "prompt forge on this project" — Apply to current context
+

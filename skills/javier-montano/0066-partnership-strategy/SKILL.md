@@ -3,7 +3,7 @@ name: partnership-strategy
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Partner identification, co-marketing programs, referral system design.
+  Partner identification, co-marketing programs, referral system design. [EXPLICIT]
   Trigger: "partnership strategy, partner identification, co-marketing programs, referral system design"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Partner identification, co-marketing programs, referral system design. All outputs follow MetodologIA brand standards and evidence tagging.
+Partner identification, co-marketing programs, referral system design. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ Partner identification, co-marketing programs, referral system design. All outpu
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/partnership-strategy" — Run the full partnership strategy workflow
+- "partnership strategy on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

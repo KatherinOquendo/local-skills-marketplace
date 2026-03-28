@@ -87,7 +87,7 @@ Estándar CNCF para instrumentación de observabilidad. Unifica los tres pilares
 
 Patrones arquitectónicos para sistemas de alta escala:
 - **CQRS**: separa lecturas (queries) de escrituras (commands) para optimizar cada lado independientemente.
-- **Event Sourcing**: el estado del sistema es la proyección de todos los eventos históricos. Permite auditoría completa y reconstrucción de estado.
+- **Event Sourcing**: el estado del sistema es la proyección de Todos los eventos históricos. Permite auditoría completa y reconstrucción de estado.
 
 ---
 
@@ -202,7 +202,7 @@ Metodología para migrar sistemas legacy sin big-bang:
 |--------|----------|----------------|
 | Circuit Breaker | Cascada de fallos entre servicios | Closed/Open/Half-Open; umbral de errores configurable |
 | Retry + Backoff | Fallos transitorios de red | Exponential backoff + jitter; max retries; idempotency |
-| Bulkhead | Un subsistema consume todos los recursos | Thread pools separados por dependencia |
+| Bulkhead | Un subsistema consume Todos los recursos | Thread pools separados por dependencia |
 | Timeout | Llamadas que nunca responden bloquean el hilo | Timeout agresivo por tipo de operación |
 | Fallback | Degradar funcionalidad con gracia | Caché estático, respuesta por defecto, modo offline |
 | Saga | Transacciones distribuidas sin 2PC | Coreografía (eventos) o Orquestación (coordinator) |

@@ -1,13 +1,13 @@
 ---
 name: technical-feasibility
-argument-hint: "<project-name> [codebase-path]"
-description: >
+argument-hint: "project-name [codebase-path]"
+description: 
   Technical fact-checking and multidimensional feasibility analysis — validates claims, assumptions,
   and technical decisions from scenario analysis against evidence. Use when the user asks to "validate
   feasibility", "fact-check the scenario", "verify technical claims", "run feasibility analysis",
   "stress-test the approach", or mentions technical due diligence, feasibility study, risk validation,
-  or "Phase 3b" verification work.
-argument-hint: "<project-name> [codebase-path]"
+  or "Phase 3b" verification work. [EXPLICIT]
+argument-hint: "project-name [codebase-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -21,35 +21,35 @@ allowed-tools:
 
 # Technical Feasibility: Fact-Checking & Multidimensional Feasibility Analysis
 
-Validates the approved modernization scenario against hard evidence before committing resources.
+Validates the approved modernization scenario against hard evidence before committing resources. [EXPLICIT]
 Operates as a rigorous verification layer — the "red team" that stress-tests every technical claim,
 assumption, and decision from the scenario analysis. Catches optimism bias, unfounded assumptions,
-and hidden blockers BEFORE they become costly surprises in execution.
+and hidden blockers BEFORE they become costly surprises in execution. [EXPLICIT]
 
 ## Principio Rector
 
 **No procedes por intuición. Procedes por evidencia.** Toda validación lleva origen explícito:
 `[CÓDIGO]`, `[CONFIG]`, `[DOC]`, `[BENCHMARK]`, `[VENDOR-DOC]`, o `[INFERENCIA]`.
-Si no hay evidencia, se declara como supuesto no validado y se escala. La feasibility no es un trámite — es la última línea de defensa antes de comprometer presupuesto y reputación en una transformación.
+Si no hay evidencia, se declara como supuesto no validado y se escala. La feasibility no es un trámite — es la última línea de defensa antes de comprometer presupuesto y reputación en una transformación. [EXPLICIT]
 
 ### Filosofía de Validación Técnica
 
-1. **Evidencia sobre optimismo.** Cada claim técnico se valida contra código, configuración o benchmark real. La inferencia es el último recurso — nunca el primero. El sesgo de confirmación es el enemigo principal del feasibility analysis.
-2. **Las 6 dimensiones son indivisibles.** Un proyecto técnicamente brillante que ignora capacidad organizacional o compliance regulatorio fracasa igual. La feasibility parcial es feasibility falsa.
-3. **Escalar es fortaleza, no debilidad.** Cuando la evidencia no alcanza para validar un claim, se declara UNVALIDATED y se recomienda spike/PoC. Inventar certeza donde no existe es la forma más cara de fallar.
+1. **Evidencia sobre optimismo.** Cada claim técnico se valida contra código, configuración o benchmark real. La inferencia es el último recurso — nunca el primero. El sesgo de confirmación es el enemigo principal del feasibility analysis. [EXPLICIT]
+2. **Las 6 dimensiones son indivisibles.** Un proyecto técnicamente brillante que ignora capacidad organizacional o compliance regulatorio fracasa igual. La feasibility parcial es feasibility falsa. [EXPLICIT]
+3. **Escalar es fortaleza, no debilidad.** Cuando la evidencia no alcanza para validar un claim, se declara UNVALIDATED y se recomienda spike/PoC. Inventar certeza donde no existe es la forma más cara de fallar. [EXPLICIT]
 
 ## Inputs
 
-Parse `$1` as **project name**, `$2` as **scenario name** (from Phase 3).
-Requires: approved scenario from Phase 3, AS-IS analysis, flow mapping.
-Recommended: codebase access, vendor documentation, benchmark data.
+Parse `$1` as **project name**, `$2` as **scenario name** (from Phase 3). [EXPLICIT]
+Requires: approved scenario from Phase 3, AS-IS analysis, flow mapping. [EXPLICIT]
+Recommended: codebase access, vendor documentation, benchmark data. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario de claims y análisis dimensional, HITL para veredicto de feasibility y recomendaciones de PoC.
-  - **desatendido**: Cero interrupciones. Veredicto automático. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en veredicto antes de entrega.
-  - **paso-a-paso**: Confirma cada claim, cada dimensión, y el veredicto final.
+  - **piloto-auto**: Auto para inventario de claims y análisis dimensional, HITL para veredicto de feasibility y recomendaciones de PoC. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Veredicto automático. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en veredicto antes de entrega. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada claim, cada dimensión, y el veredicto final. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 claims + S5 verdict only) | `técnica` (full 6D analysis, default)
 
@@ -125,7 +125,7 @@ Evaluate the scenario across 6 feasibility dimensions:
 - Knowledge transfer from discovery team to operations
 - Parallel running requirements and duration
 
-Per dimension: score 1-5, evidence summary, risks, mitigations.
+Per dimension: score 1-5, evidence summary, risks, mitigations. [EXPLICIT]
 
 ### S3: Spike & PoC Recommendations
 
@@ -234,7 +234,7 @@ Merge new risks discovered during feasibility analysis into the cumulative risk 
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

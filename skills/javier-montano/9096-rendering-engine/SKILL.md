@@ -4,7 +4,7 @@ description: >
   Use when the user asks to "render to PNG", "convert to PDF",
   "export Mermaid diagrams", "generate printable deliverables", "create branded exports",
   or mentions rendering engine, Mermaid-to-PNG, markdown-to-PDF, format rendering,
-  export engine, visual format conversion.
+  export engine, visual format conversion. [EXPLICIT]
 allowed-tools:
   - Read
   - Write
@@ -19,7 +19,7 @@ allowed-tools:
 **TL;DR**: Converts project deliverables between formats: Mermaid diagrams to PNG/SVG images, Markdown to styled PDF with APEX branding, and HTML to print-ready PDF. Ensures visual fidelity across format conversions while maintaining brand consistency.
 
 ## Principio Rector
-El formato de entrega debe ser el que el receptor puede consumir. No todos los stakeholders pueden renderizar Mermaid o leer Markdown. El rendering engine es el puente entre el formato de trabajo (Markdown + Mermaid) y el formato de distribución (PDF, PNG, HTML). La fidelidad visual en la conversión es no negociable.
+El formato de entrega debe ser el que el receptor puede consumir. No todos los stakeholders pueden renderizar Mermaid o leer Markdown. El rendering engine es el puente entre el formato de trabajo (Markdown + Mermaid) y el formato de distribución (PDF, PNG, HTML). La fidelidad visual en la conversión es no negociable. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes source content (Markdown, Mermaid, HTML) is syntactically valid before rendering [PLAN]
@@ -81,10 +81,10 @@ El formato de entrega debe ser el que el receptor puede consumir. No todos los s
 10. **Distribution** — Deliver rendered output per communication plan
 
 ## Edge Cases
-1. **Mermaid diagram too complex for single PNG** — Split into sub-diagrams or increase canvas size. For diagrams with >50 nodes, recommend SVG format for scalability [INFERENCIA].
-2. **PDF page breaks split tables or diagrams** — Apply CSS page-break-inside: avoid rules. For long tables, add repeated headers [PLAN].
-3. **Rendering tool not installed** — Provide installation instructions. Fall back to HTML output which requires no external tools. Document the limitation [SUPUESTO].
-4. **Brand colors render differently on screen vs print** — Use CMYK-safe color equivalents for print PDF. Verify with test print before distribution [PLAN].
+1. **Mermaid diagram too complex for single PNG** — Split into sub-diagrams or increase canvas size. For diagrams with >50 nodes, recommend SVG format for scalability [INFERENCIA]. [EXPLICIT]
+2. **PDF page breaks split tables or diagrams** — Apply CSS page-break-inside: avoid rules. For long tables, add repeated headers [PLAN]. [EXPLICIT]
+3. **Rendering tool not installed** — Provide installation instructions. Fall back to HTML output which requires no external tools. Document the limitation [SUPUESTO]. [EXPLICIT]
+4. **Brand colors render differently on screen vs print** — Use CMYK-safe color equivalents for print PDF. Verify with test print before distribution [PLAN]. [EXPLICIT]
 
 ## Example: Good vs Bad
 
@@ -100,7 +100,7 @@ El formato de entrega debe ser el que el receptor puede consumir. No todos los s
 | Accessibility | Alt text included for PNG, tagged PDF structure |
 
 **Bad example — Broken rendering:**
-PNG exported at 72dpi with text too small to read, brand colors replaced with default Mermaid theme, and Spanish characters showing as encoding artifacts. Low-resolution exports fail the professional standard test and damage credibility.
+PNG exported at 72dpi with text too small to read, brand colors replaced with default Mermaid theme, and Spanish characters showing as encoding artifacts. Low-resolution exports fail the professional standard test and damage credibility. [EXPLICIT]
 
 ## Salida (Deliverables)
 - Rendered output in target format

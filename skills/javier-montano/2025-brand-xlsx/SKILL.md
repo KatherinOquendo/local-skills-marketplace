@@ -1,14 +1,14 @@
 ---
 name: brand-xlsx
-description: >
+description: 
   This skill should be used when the user asks to "generate a branded spreadsheet",
   "create an Excel file with brand colors", "build an XLSX report",
-  "apply brand styling to a spreadsheet", or mentions openpyxl or brand tokens.
+  "apply brand styling to a spreadsheet", or mentions openpyxl or brand tokens. [EXPLICIT]
   It generates brand-compliant Excel spreadsheets (.xlsx) using openpyxl with
-  configurable color fills, typography, layout patterns, KPI boxes, and footers.
+  configurable color fills, typography, layout patterns, KPI boxes, and footers. [EXPLICIT]
   Use this skill whenever the user needs any styled or branded Excel output,
-  even if they don't explicitly ask for "brand-xlsx".
-argument-hint: "<sheet-title> [brand-config-path]"
+  even if they don't explicitly ask for "brand-xlsx". [EXPLICIT]
+argument-hint: "sheet-title [brand-config-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -22,7 +22,7 @@ allowed-tools:
 
 # Brand XLSX — Spreadsheet Generator
 
-Generate brand-compliant Excel spreadsheets (.xlsx) using openpyxl. Reads brand tokens from config and applies consistent colors, typography, layout patterns.
+Generate brand-compliant Excel spreadsheets (.xlsx) using openpyxl. Reads brand tokens from config and applies consistent colors, typography, layout patterns. [EXPLICIT]
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ Generate brand-compliant Excel spreadsheets (.xlsx) using openpyxl. Reads brand 
 
 ## Brand Configuration
 
-Search for config:
+Search for config: [EXPLICIT]
 1. Path passed as argument
 2. `./brand-config.json`
 3. `~/.claude/brand-config.json`
@@ -73,7 +73,7 @@ def load_fills(config):
 
 ## Typography
 
-Brand display fonts are typically unavailable in Excel. Use system fallbacks:
+Brand display fonts are typically unavailable in Excel. Use system fallbacks: [EXPLICIT]
 
 ```python
 def load_fonts(config):
@@ -90,16 +90,16 @@ def load_fonts(config):
 ## Sheet Layout Pattern
 
 ```
-Row 1:   Title bar      primary fill, bold dark text, height 36
-Row 2:   Subtitle       dark fill, small primary-color text, height 18
-Row 3:   Spacer
-Row 4+:  Section label  primary fill, white text
-Row 5+:  Column headers dark fill, primary-color bold text
-Row 6+:  Data rows      alternating white / background
-Last:    Footer         dark fill, muted text
+Row 1:   Title bar      primary fill, bold dark text, height 36 [EXPLICIT]
+Row 2:   Subtitle       dark fill, small primary-color text, height 18 [EXPLICIT]
+Row 3:   Spacer [EXPLICIT]
+Row 4+:  Section label  primary fill, white text [EXPLICIT]
+Row 5+:  Column headers dark fill, primary-color bold text [EXPLICIT]
+Row 6+:  Data rows      alternating white / background [EXPLICIT]
+Last:    Footer         dark fill, muted text [EXPLICIT]
 ```
 
-Tab color: always set to primary color.
+Tab color: always set to primary color. [EXPLICIT]
 
 ## Core Functions
 
@@ -269,3 +269,11 @@ def auto_fit(ws, min_w=10, max_w=50):
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/brand-xlsx" — Run the full brand xlsx workflow
+- "brand xlsx on this project" — Apply to current context
+

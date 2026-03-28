@@ -1,15 +1,15 @@
 ---
 name: software-viability
-argument-hint: "<project-name> [codebase-path]"
-description: >
+argument-hint: "project-name [codebase-path]"
+description: 
   This skill should be used when the user asks to "validate technology viability", "detect
   vaporware", "verify AI claims", "assess software maturity", "check if this tech actually
   works", or mentions technology due diligence, software validation, AI feasibility, vendor
   evaluation, or tech-stack viability. Deep forensic analysis of whether proposed software
   solutions, AI/ML components, and technology choices are viable substance or speculative
   smoke. Use this skill whenever technology choices need validation or vendor claims need
-  scrutiny, even if they don't explicitly ask for "software-viability".
-argument-hint: "<project-name> [codebase-path]"
+  scrutiny, even if they don't explicitly ask for "software-viability". [EXPLICIT]
+argument-hint: "project-name [codebase-path]"
 model: opus
 context: fork
 allowed-tools:
@@ -25,10 +25,10 @@ allowed-tools:
 # Software Viability: Substance vs Smoke Technology Validator
 
 Forensic validation of whether proposed software solutions, technology choices, and AI/ML
-components are viable, mature, and fit-for-purpose — or speculative, overhyped, and risky.
-This is NOT the multidimensional feasibility analysis (technical-feasibility covers that).
+components are viable, mature, and fit-for-purpose — or speculative, overhyped, and risky. [EXPLICIT]
+This is NOT the multidimensional feasibility analysis (technical-feasibility covers that). [EXPLICIT]
 This is a **devoted, deep-cut software validator** that operates at the level of code, APIs,
-vendor maturity, community health, and real-world production evidence.
+vendor maturity, community health, and real-world production evidence. [EXPLICIT]
 
 ## Principio Rector
 
@@ -36,9 +36,9 @@ vendor maturity, community health, and real-world production evidence.
 
 ### Filosofía de Validación de Software
 
-1. **Evidencia > narrativa.** Un benchmark reproducible vale más que diez testimonios de clientes. Si la evidencia no existe, el veredicto es provisional — y se documenta como tal.
-2. **El humo se detecta en los detalles.** Claims vagos ("state of the art", "enterprise-grade", "AI-powered") sin métricas específicas, datasets documentados, o casos de producción verificables son señales de humo hasta que se demuestre lo contrario.
-3. **Viabilidad es contextual.** Una tecnología puede ser 🟢 SUBSTANCIA para un equipo con experiencia y 🟠 RIESGO ALTO para otro sin ella. El veredicto siempre se emite en el contexto del proyecto, el equipo, y las restricciones específicas.
+1. **Evidencia > narrativa.** Un benchmark reproducible vale más que diez testimonios de clientes. Si la evidencia no existe, el veredicto es provisional — y se documenta como tal. [EXPLICIT]
+2. **El humo se detecta en los detalles.** Claims vagos ("state of the art", "enterprise-grade", "AI-powered") sin métricas específicas, datasets documentados, o casos de producción verificables son señales de humo hasta que se demuestre lo contrario. [EXPLICIT]
+3. **Viabilidad es contextual.** Una tecnología puede ser 🟢 SUBSTANCIA para un equipo con experiencia y 🟠 RIESGO ALTO para otro sin ella. El veredicto siempre se emite en el contexto del proyecto, el equipo, y las restricciones específicas. [EXPLICIT]
 
 Escala de veredicto:
 - 🟢 **SUBSTANCIA** — producción comprobada, comunidad activa, API estable
@@ -48,15 +48,15 @@ Escala de veredicto:
 
 ## Inputs
 
-Parse `$1` as **project name**, `$2` as **technology/solution to validate**.
-Accepts: technology names, vendor products, AI/ML proposals, architectural patterns, library choices.
+Parse `$1` as **project name**, `$2` as **technology/solution to validate**. [EXPLICIT]
+Accepts: technology names, vendor products, AI/ML proposals, architectural patterns, library choices. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario y análisis de madurez, HITL para veredictos de AI/ML y evaluación de vendors.
-  - **desatendido**: Cero interrupciones. Scorecard generado automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en scorecard antes de entrega.
-  - **paso-a-paso**: Confirma cada tecnología evaluada, cada score, y el veredicto global.
+  - **piloto-auto**: Auto para inventario y análisis de madurez, HITL para veredictos de AI/ML y evaluación de vendors. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Scorecard generado automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en scorecard antes de entrega. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada tecnología evaluada, cada score, y el veredicto global. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 inventory + S6 scorecard only) | `técnica` (full forensic analysis, default)
 
@@ -239,7 +239,7 @@ TECNOLOGÍAS DESCARTADAS: [lista]
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 
@@ -251,3 +251,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/software-viability" — Run the full software viability workflow
+- "software viability on this project" — Apply to current context
+

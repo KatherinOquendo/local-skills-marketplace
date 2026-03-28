@@ -3,7 +3,7 @@ name: proposal-writing
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  RFP response, scope definition, pricing tables, timeline, risk section.
+  RFP response, scope definition, pricing tables, timeline, risk section. [EXPLICIT]
   Trigger: "proposal writing"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Proposal Writing
 > "Method over hacks."
 ## TL;DR
-RFP response, scope definition, pricing tables, timeline, risk section.
+RFP response, scope definition, pricing tables, timeline, risk section. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ RFP response, scope definition, pricing tables, timeline, risk section.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/proposal-writing" — Run the full proposal writing workflow
+- "proposal writing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

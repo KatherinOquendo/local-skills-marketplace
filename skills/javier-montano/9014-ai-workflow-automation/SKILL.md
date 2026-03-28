@@ -3,7 +3,7 @@ name: ai-workflow-automation
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  LLM-in-the-loop workflows, human-AI handoff, approval gates.
+  LLM-in-the-loop workflows, human-AI handoff, approval gates. [EXPLICIT]
   Trigger: "ai workflow automation"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Ai Workflow Automation
 > "Method over hacks."
 ## TL;DR
-LLM-in-the-loop workflows, human-AI handoff, approval gates.
+LLM-in-the-loop workflows, human-AI handoff, approval gates. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ LLM-in-the-loop workflows, human-AI handoff, approval gates.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/ai-workflow-automation" — Run the full ai workflow automation workflow
+- "ai workflow automation on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

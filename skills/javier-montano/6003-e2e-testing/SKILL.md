@@ -10,33 +10,33 @@ tags: [testing, e2e, cypress, playwright, page-object-model, ci, visual-assertio
 # 081 — E2E Testing {Testing}
 
 ## Purpose
-Validate complete user journeys through the application using Cypress or Playwright. Ensure critical paths work end-to-end against a Firebase test environment with real UI interactions.
+Validate complete user journeys through the application using Cypress or Playwright. Ensure critical paths work end-to-end against a Firebase test environment with real UI interactions. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of User Truth**: E2E tests simulate real user behavior — clicks, navigation, form fills. No direct API calls or DOM manipulation shortcuts.
-2. **Law of Critical Path**: Only test critical user journeys (auth, CRUD, payments). E2E is expensive — unit/integration cover the rest.
-3. **Law of Stability**: E2E tests use explicit waits, data-testid selectors, and retry logic. No `cy.wait(5000)` or fragile CSS selectors.
+1. **Law of User Truth**: E2E tests simulate real user behavior — clicks, navigation, form fills. No direct API calls or DOM manipulation shortcuts. [EXPLICIT]
+2. **Law of Critical Path**: Only test critical user journeys (auth, CRUD, payments). E2E is expensive — unit/integration cover the rest. [EXPLICIT]
+3. **Law of Stability**: E2E tests use explicit waits, data-testid selectors, and retry logic. No `cy.wait(5000)` or fragile CSS selectors. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Framework Setup
-1. Choose framework: Playwright (multi-browser, auto-wait) or Cypress (DX, component testing).
-2. Configure `playwright.config.ts` or `cypress.config.ts` with base URL pointing to Firebase emulator hosting.
-3. Create `e2e/pages/` directory with Page Object Model classes.
-4. Set up test user seeding via Auth emulator API.
+1. Choose framework: Playwright (multi-browser, auto-wait) or Cypress (DX, component testing). [EXPLICIT]
+2. Configure `playwright.config.ts` or `cypress.config.ts` with base URL pointing to Firebase emulator hosting. [EXPLICIT]
+3. Create `e2e/pages/` directory with Page Object Model classes. [EXPLICIT]
+4. Set up test user seeding via Auth emulator API. [EXPLICIT]
 
 ### Phase 2 — Test Authoring
-1. Define Page Objects: `LoginPage`, `DashboardPage`, `SettingsPage` — encapsulate selectors and actions.
-2. Write test scenarios as user stories: `should login and see dashboard`.
-3. Use `data-testid` attributes exclusively for element selection.
-4. Add visual assertions: screenshot comparison at key states.
+1. Define Page Objects: `LoginPage`, `DashboardPage`, `SettingsPage` — encapsulate selectors and actions. [EXPLICIT]
+2. Write test scenarios as user stories: `should login and see dashboard`. [EXPLICIT]
+3. Use `data-testid` attributes exclusively for element selection. [EXPLICIT]
+4. Add visual assertions: screenshot comparison at key states. [EXPLICIT]
 
 ### Phase 3 — CI Pipeline
-1. Run against Firebase emulator hosting (`firebase emulators:start --only hosting,auth,firestore`).
-2. Execute in headless mode: `npx playwright test` or `npx cypress run`.
-3. Generate HTML report + video recordings for failures.
-4. Upload artifacts to CI (GitHub Actions `actions/upload-artifact`).
+1. Run against Firebase emulator hosting (`firebase emulators:start --only hosting,auth,firestore`). [EXPLICIT]
+2. Execute in headless mode: `npx playwright test` or `npx cypress run`. [EXPLICIT]
+3. Generate HTML report + video recordings for failures. [EXPLICIT]
+4. Upload artifacts to CI (GitHub Actions `actions/upload-artifact`). [EXPLICIT]
 
 ## I/O
 
@@ -49,11 +49,11 @@ Validate complete user journeys through the application using Cypress or Playwri
 
 ## Quality Gates — 5 Checks
 
-1. **All critical paths covered** — login, CRUD, navigation, error states.
-2. **Page Object Model enforced** — no raw selectors in test files.
-3. **data-testid on all interactive elements** — no CSS/XPath selectors.
-4. **CI passes 3 consecutive runs** — no flaky tests.
-5. **Execution time < 5 minutes** — parallelize if exceeding.
+1. **All critical paths covered** — login, CRUD, navigation, error states. [EXPLICIT]
+2. **Page Object Model enforced** — no raw selectors in test files. [EXPLICIT]
+3. **data-testid on all interactive elements** — no CSS/XPath selectors. [EXPLICIT]
+4. **CI passes 3 consecutive runs** — no flaky tests. [EXPLICIT]
+5. **Execution time < 5 minutes** — parallelize if exceeding. [EXPLICIT]
 
 ## Edge Cases
 
@@ -68,3 +68,17 @@ Validate complete user journeys through the application using Cypress or Playwri
 - E2E suite exceeds 5 min → split into parallel shards.
 - Page Object missing for new page → block PR until POM created.
 - Visual regression > 0.1% pixel diff → review and update baseline or fix.
+
+## Usage
+
+Example invocations:
+
+- "/e2e-testing" — Run the full e2e testing workflow
+- "e2e testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build Cloud Functions for Firebase with HTTP, Firestore, Auth, Storage,
-  and PubSub triggers. Covers TypeScript setup, error handling, and deployment.
+  and PubSub triggers. Covers TypeScript setup, error handling, and deployment. [EXPLICIT]
   Trigger: "cloud function", "firebase function", "serverless function", "trigger"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Cloud Functions for Firebase development — HTTP endpoints, Firestore document triggers, Auth event handlers, Storage upload triggers, and PubSub messaging. Covers TypeScript patterns, error handling, cold start optimization, and deployment strategies. Use when you need server-side logic in a Firebase project.
+Guides Cloud Functions for Firebase development — HTTP endpoints, Firestore document triggers, Auth event handlers, Storage upload triggers, and PubSub messaging. Covers TypeScript patterns, error handling, cold start optimization, and deployment strategies. Use when you need server-side logic in a Firebase project. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides Cloud Functions for Firebase development — HTTP endpoints, Firestore do
 
 - `firebase-setup` — Functions are initialized as part of Firebase project setup
 - `serverless-patterns` — general serverless patterns apply to Cloud Functions
+
+## Usage
+
+Example invocations:
+
+- "/cloud-functions" — Run the full cloud functions workflow
+- "cloud functions on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

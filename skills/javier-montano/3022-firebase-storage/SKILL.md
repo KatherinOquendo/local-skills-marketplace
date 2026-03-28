@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Manage file uploads and downloads with Firebase Storage, including image
-  resizing, security rules, progress tracking, and CDN delivery.
+  resizing, security rules, progress tracking, and CDN delivery. [EXPLICIT]
   Trigger: "firebase storage", "file upload", "image resize", "storage rules"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Firebase Storage implementation — file upload with progress tracking, download URL generation, security rules for access control, automatic image resizing via extensions, and organized file path strategies. Use when your app needs to store and serve user-uploaded files (images, documents, media).
+Guides Firebase Storage implementation — file upload with progress tracking, download URL generation, security rules for access control, automatic image resizing via extensions, and organized file path strategies. Use when your app needs to store and serve user-uploaded files (images, documents, media). [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Firebase Storage implementation — file upload with progress tracking, d
 
 - `image-optimization` — optimize images before or after upload
 - `firestore-security-rules` — storage security rules follow similar patterns
+
+## Usage
+
+Example invocations:
+
+- "/firebase-storage" — Run the full firebase storage workflow
+- "firebase storage on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

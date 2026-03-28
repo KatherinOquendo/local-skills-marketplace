@@ -39,12 +39,12 @@ Tendencias, avances y direccion del ecosistema de diseno y facilitacion de talle
 
 ## 3. Talleres Asincronos y Semi-Sincronos
 
-**Estado:** El formato "todos al mismo tiempo en la misma sala" se complementa con talleres asincronos (cada participante contribuye en su horario) y semi-sincronos (actividad asincrona + sesion sincrona de convergencia). Herramientas como Loom, Miro async, y Notion habilitan contribucion distribuida en el tiempo.
+**Estado:** El formato "Todos al mismo tiempo en la misma sala" se complementa con talleres asincronos (cada participante contribuye en su horario) y semi-sincronos (actividad asincrona + sesion sincrona de convergencia). Herramientas como Loom, Miro async, y Notion habilitan contribucion distribuida en el tiempo.
 
 **Impacto en el skill:**
 - El skill asume talleres sincronos (time-boxed, agenda lineal). Los talleres asincronos requieren un diseno diferente: instrucciones auto-contenidas, deadlines por fase, y mecanismos de convergencia explicitos.
 - Oportunidad: agregar un formato "async" a la seleccion de tecnica (S1) con patrones especificos: async brainstorming > sync clustering > async voting > sync decision.
-- Caso de uso: equipos distribuidos en multiples zonas horarias donde reunir a todos es costoso o imposible.
+- Caso de uso: equipos distribuidos en multiples zonas horarias donde reunir a Todos es costoso o imposible.
 
 **Senales:**
 - Miro async: comments, mentions, y reactions para colaboracion no-sincrona en boards.

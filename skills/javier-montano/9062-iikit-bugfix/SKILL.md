@@ -10,7 +10,7 @@ metadata:
 
 # Intent Integrity Kit Bugfix
 
-Report a bug against an existing feature, create a structured `bugs.md` record, and generate fix tasks in `tasks.md`.
+Report a bug against an existing feature, create a structured `bugs.md` record, and generate fix tasks in `tasks.md`. [EXPLICIT]
 
 ## User Input
 
@@ -18,25 +18,25 @@ Report a bug against an existing feature, create a structured `bugs.md` record, 
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty).
+You **MUST** consider the user input before proceeding (if not empty). [EXPLICIT]
 
 ## Constitution Loading
 
-Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (soft mode — warn if missing, proceed without).
+Load constitution per [constitution-loading.md](../iikit-core/references/constitution-loading.md) (soft mode — warn if missing, proceed without). [EXPLICIT]
 
 ## Execution Flow
 
-The text after `/iikit-bugfix` is either a `#number` (GitHub issue) or a text bug description.
+The text after `/iikit-bugfix` is either a `#number` (GitHub issue) or a text bug description. [EXPLICIT]
 
 ### 1. Parse Input
 
-Determine the input type:
+Determine the input type: [EXPLICIT]
 
 - **`#number` pattern** (e.g., `#42`): GitHub inbound flow (Step 2a)
 - **Text description**: Text description flow (Step 2b)
 - **Empty**: ERROR with usage example: `/iikit-bugfix 'Login fails when email contains plus sign'` or `/iikit-bugfix #42`
 
-If input contains BOTH `#number` and text, prioritize the `#number` and warn that text is ignored.
+If input contains BOTH `#number` and text, prioritize the `#number` and warn that text is ignored. [EXPLICIT]
 
 ### 2a. GitHub Inbound Flow
 
@@ -57,7 +57,7 @@ If input contains BOTH `#number` and text, prioritize the `#number` and warn tha
 
 ### 3. Select Target Feature
 
-Run feature listing:
+Run feature listing: [EXPLICIT]
 
 **Unix/macOS/Linux:**
 ```bash
@@ -68,20 +68,20 @@ bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash
 pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/bugfix-helpers.ps1 --list-features
 ```
 
-Parse the JSON array. If empty: ERROR with "No features found. Run `/iikit-01-specify` first to create a feature."
+Parse the JSON array. If empty: ERROR with "No features found. Run `/iikit-01-specify` first to create a feature." [EXPLICIT]
 
-Present a numbered table of features:
+Present a numbered table of features: [EXPLICIT]
 
 | # | Feature | Stage |
 |---|---------|-------|
 | 1 | 001-user-auth | implementing-50% |
 | 2 | 002-api-gateway | specified |
 
-Prompt user to select a feature by number.
+Prompt user to select a feature by number. [EXPLICIT]
 
 ### 4. Validate Feature
 
-After selection, validate:
+After selection, validate: [EXPLICIT]
 
 **Unix/macOS/Linux:**
 ```bash
@@ -92,7 +92,7 @@ bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash
 pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/bugfix-helpers.ps1 --validate-feature "<feature_dir>"
 ```
 
-If invalid: ERROR with the message from the JSON response.
+If invalid: ERROR with the message from the JSON response. [EXPLICIT]
 
 ### 5. Gather Bug Details
 
@@ -117,7 +117,7 @@ pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powe
 
 ### 7. Write bugs.md
 
-Create or append to `<feature_dir>/bugs.md` using the template at [bugs-template.md](references/bugs-template.md).
+Create or append to `<feature_dir>/bugs.md` using the template at [bugs-template.md](references/bugs-template.md). [EXPLICIT]
 
 Fill in:
 - **BUG-ID**: from Step 6
@@ -130,13 +130,13 @@ Fill in:
 - **Root Cause**: `_(empty until investigation)_`
 - **Fix Reference**: `_(empty until implementation)_`
 
-If `bugs.md` already exists, append with `---` separator before the new entry. Do NOT modify existing entries.
+If `bugs.md` already exists, append with `---` separator before the new entry. Do NOT modify existing entries. [EXPLICIT]
 
-If `bugs.md` does not exist, create it with the header `# Bug Reports: <feature-name>` followed by the entry.
+If `bugs.md` does not exist, create it with the header `# Bug Reports: <feature-name>` followed by the entry. [EXPLICIT]
 
 ### 8. Outbound GitHub Issue (Text Input Only)
 
-For text-input bugs only (NOT for GitHub inbound — issue already exists):
+For text-input bugs only (NOT for GitHub inbound — issue already exists): [EXPLICIT]
 
 1. Create issue: use `gh issue create --title "<description>" --body "<bugs.md entry content>" --label "bug"` if `gh` available, otherwise `curl` the GitHub API (`POST /repos/{owner}/{repo}/issues`)
 2. Store returned issue number in the bugs.md GitHub Issue field
@@ -153,11 +153,11 @@ bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash
 pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/testify-tdd.ps1 assess-tdd "CONSTITUTION.md"
 ```
 
-Parse JSON response for `determination` field.
+Parse JSON response for `determination` field. [EXPLICIT]
 
 ### 10. BDD/TDD Flow (If Mandatory)
 
-If TDD is mandatory (`determination` = `mandatory`):
+If TDD is mandatory (`determination` = `mandatory`): [EXPLICIT]
 
 1. Create `<feature_dir>/tests/features/` if it doesn't exist
 2. Create `<feature_dir>/tests/features/bugfix_<BUG-NNN>.feature`:
@@ -183,7 +183,7 @@ If TDD is mandatory (`determination` = `mandatory`):
 
 **Bug fix tasks use the `T-B` prefix** (e.g., T-B001, T-B002) to distinguish them from regular tasks (T001, T002). This is mandatory — the dashboard and parsers rely on the `T-B` prefix to identify bug fix tasks and calculate implementation progress correctly.
 
-Get next task IDs:
+Get next task IDs: [EXPLICIT]
 
 **Unix/macOS/Linux:**
 ```bash
@@ -211,9 +211,9 @@ pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powe
 - [ ] T-BNNN+1 [BUG-NNN] Verify fix passes test TS-NNN for BUG-NNN: <description>
 ```
 
-If GitHub issue is linked, include reference in task descriptions (e.g., `(GitHub #42)`).
+If GitHub issue is linked, include reference in task descriptions (e.g., `(GitHub #42)`). [EXPLICIT]
 
-Append to existing `<feature_dir>/tasks.md`. If tasks.md does not exist, create it with:
+Append to existing `<feature_dir>/tasks.md`. If tasks.md does not exist, create it with: [EXPLICIT]
 ```markdown
 # Tasks: <feature-name>
 
@@ -222,7 +222,7 @@ Append to existing `<feature_dir>/tasks.md`. If tasks.md does not exist, create 
 [tasks here]
 ```
 
-Do NOT modify existing entries or task IDs in tasks.md.
+Do NOT modify existing entries or task IDs in tasks.md. [EXPLICIT]
 
 ### 12. Commit
 
@@ -233,19 +233,19 @@ git commit -m "bugfix: <BUG-ID> <short-description>"
 
 ### 13. Dashboard Refresh (optional, never blocks)
 
-Regenerate the dashboard so the pipeline reflects the new bug and tasks:
+Regenerate the dashboard so the pipeline reflects the new bug and tasks: [EXPLICIT]
 
 ```bash
 bash .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/bash/generate-dashboard-safe.sh
 ```
-Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1`
+Windows: `pwsh .tessl/tiles/tessl-labs/intent-integrity-kit/skills/iikit-core/scripts/powershell/generate-dashboard-safe.ps1` [EXPLICIT]
 
 ### 13. Report
 
-Output a summary:
+Output a summary: [EXPLICIT]
 
 ```
-Bug reported successfully!
+Bug reported successfully! [EXPLICIT]
 
   Bug ID:      BUG-NNN
   Feature:     <feature-name>
@@ -253,7 +253,7 @@ Bug reported successfully!
   GitHub Issue: #number (or N/A)
   Tasks:       T-BNNN through T-BNNN+N
 
-Files modified:
+Files modified: [EXPLICIT]
   - <feature_dir>/bugs.md (created/appended)
   - <feature_dir>/tasks.md (appended)
   - <feature_dir>/tests/features/bugfix_BUG-NNN.feature (created, TDD only)
@@ -279,3 +279,33 @@ Next step:
 | TDD required, no test artifacts | ERROR: "Run `/iikit-04-testify` first" |
 | Existing bugs.md | Append without modifying existing entries |
 | Existing tasks.md | Append without modifying existing entries |
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/iikit-bugfix" — Run the full iikit bugfix workflow
+- "iikit bugfix on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

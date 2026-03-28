@@ -1,22 +1,22 @@
----
-name: agent-creator
-description: >
-  This skill should be used when the user asks to "create an agent",
-  "add a subagent", "make a custom agent", "define agent definition",
-  or "build an agent for X". Creates Claude Code custom agent definitions
-  with system prompts, tool restrictions, model selection, and reasoning
-  discipline. Use this skill whenever someone needs a new autonomous
-  subprocess for their project, even if they just say "I need something
-  to handle X automatically".
-argument-hint: <agent-name> [description]
-model: opus
-context: fork
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep
+--- [EXPLICIT]
+name: agent-creator [EXPLICIT]
+description:  [EXPLICIT]
+  This skill should be used when the user asks to "create an agent", [EXPLICIT]
+  "add a subagent", "make a custom agent", "define agent definition", [EXPLICIT]
+  or "build an agent for X". Creates Claude Code custom agent definitions [EXPLICIT]
+  with system prompts, tool restrictions, model selection, and reasoning [EXPLICIT]
+  discipline. Use this skill whenever someone needs a new autonomous [EXPLICIT]
+  subprocess for their project, even if they just say "I need something [EXPLICIT]
+  to handle X automatically". [EXPLICIT]
+argument-hint: agent-name [description] [EXPLICIT]
+model: opus [EXPLICIT]
+context: fork [EXPLICIT]
+allowed-tools: Read, Write, Edit, Bash, Glob, Grep [EXPLICIT]
 ---
 
 # Agent Creator
 
-Create custom Claude Code agents — autonomous subprocesses with isolated context, specific tools, and tailored system prompts.
+Create custom Claude Code agents — autonomous subprocesses with isolated context, specific tools, and tailored system prompts. [EXPLICIT]
 
 ## Assumptions & Limits
 
@@ -41,7 +41,7 @@ Create custom Claude Code agents — autonomous subprocesses with isolated conte
 /agent-creator test-writer                    # interview mode
 ```
 
-Parse `$1` as agent name (kebab-case), `$2` as description. If `$2` absent, ask:
+Parse `$1` as agent name (kebab-case), `$2` as description. If `$2` absent, ask: [EXPLICIT]
 1. What should this agent analyze or produce?
 2. Should it modify files or only read/report?
 3. What complexity level? (haiku=simple, sonnet=balanced, opus=complex reasoning)
@@ -54,7 +54,7 @@ Parse `$1` as agent name (kebab-case), `$2` as description. If `$2` absent, ask:
 
 ## Agent File Anatomy
 
-File: `.claude/agents/{name}.md` (project) or `~/.claude/agents/{name}.md` (global)
+File: `.claude/agents/{name}.md` (project) or `~/.claude/agents/{name}.md` (global) [EXPLICIT]
 
 ```markdown
 ---
@@ -67,7 +67,7 @@ tools: ["{minimum tool set}"]
 
 # {Agent Name}
 
-You are {Name}, a specialized agent that {concrete role}.
+You are {Name}, a specialized agent that {concrete role}. [EXPLICIT]
 
 ## Your Task
 
@@ -88,7 +88,7 @@ You are {Name}, a specialized agent that {concrete role}.
 
 ## Reasoning Discipline
 
-Apply structured thinking to every analysis and recommendation.
+Apply structured thinking to every analysis and recommendation. [EXPLICIT]
 
 1. **Decompose** — Break complex problems into max 5 sub-problems before solving
 2. **Evidence-check** — Tag every claim with confidence `[CONFIANZA: alta|media|baja]` and evidence source
@@ -144,7 +144,7 @@ Apply structured thinking to every analysis and recommendation.
 ```markdown
 ---
 name: Dependency Auditor
-description: Audit package dependencies for security vulnerabilities, license compliance, and update availability. Spawn when user asks about dependencies, security, or runs npm audit.
+description: Audit package dependencies for security vulnerabilities, license compliance, and update availability. Spawn when user asks about dependencies, security, or runs npm audit. [EXPLICIT]
 model: sonnet
 color: "#FF6B35"
 tools: ["Read", "Glob", "Grep", "Bash"]
@@ -152,11 +152,11 @@ tools: ["Read", "Glob", "Grep", "Bash"]
 
 # Dependency Auditor
 
-You are Dependency Auditor. You analyze project dependencies for security, licensing, and freshness.
+You are Dependency Auditor. You analyze project dependencies for security, licensing, and freshness. [EXPLICIT]
 
 ## Your Task
 
-Audit all dependency files (package.json, requirements.txt, Cargo.toml, go.mod) in the project and produce a structured report.
+Audit all dependency files (package.json, requirements.txt, Cargo.toml, go.mod) in the project and produce a structured report. [EXPLICIT]
 
 ## Process
 

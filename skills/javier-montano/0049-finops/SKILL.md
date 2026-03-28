@@ -5,7 +5,7 @@ description: >
   de responsabilidad financiera. Usar cuando el usuario pida "optimizar costos cloud",
   "implementar FinOps", "gobernanza de costos", "cost allocation", "showback/chargeback",
   o mencione FinOps, cloud cost management, reserved instances, savings plans, right-sizing,
-  cost anomaly detection, o unit economics para cloud.
+  cost anomaly detection, o unit economics para cloud. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -21,17 +21,17 @@ allowed-tools:
 
 Financial Operations para cloud — visibilidad completa de costos, optimización de rate y usage,
 gobernanza financiera, forecasting, y unit economics. Transforma cloud cost de un gasto opaco
-en un driver de decisiones de negocio con responsabilidad distribuida por equipos.
+en un driver de decisiones de negocio con responsabilidad distribuida por equipos. [EXPLICIT]
 
 ---
 
 ## Principio Rector
 
-1. **Everyone takes ownership of their cloud usage** — FinOps is a cultural shift, not just a tooling exercise. Engineers, finance, and leadership share accountability for cloud spend. Sin ownership distribuido, la optimización es un juego de whack-a-mole centralizado.
+1. **Everyone takes ownership of their cloud usage** — FinOps is a cultural shift, not just a tooling exercise. Engineers, finance, and leadership share accountability for cloud spend. Sin ownership distribuido, la optimización es un juego de whack-a-mole centralizado. [EXPLICIT]
 
-2. **Decisions are driven by business value, not just cost reduction** — a $10K/month service that generates $100K revenue is well-spent. El objetivo no es "gastar menos" sino "gastar mejor". Cost efficiency sin business context es austeridad ciega.
+2. **Decisions are driven by business value, not just cost reduction** — a $10K/month service that generates $100K revenue is well-spent. El objetivo no es "gastar menos" sino "gastar mejor". Cost efficiency sin business context es austeridad ciega. [EXPLICIT]
 
-3. **Cloud cost is a variable, manageable expense** — real-time data enables real-time decisions. A diferencia de infraestructura on-premise (CAPEX fijo), cloud es OPEX variable. Esto es una ventaja competitiva si se gestiona activamente; un riesgo financiero si se ignora.
+3. **Cloud cost is a variable, manageable expense** — real-time data enables real-time decisions. A diferencia de infraestructura on-premise (CAPEX fijo), cloud es OPEX variable. Esto es una ventaja competitiva si se gestiona activamente; un riesgo financiero si se ignora. [EXPLICIT]
 
 ---
 
@@ -46,10 +46,10 @@ Parametros:
   ALCANCE:      [visibility | optimization | governance | full]
 
 Modos de autonomia:
-  - piloto-auto: Auto para analisis y recomendaciones, HITL para decisiones de compra (RI/SP).
-  - desatendido: Cero interrupciones. Analisis completo con supuestos documentados.
-  - supervisado: Autonomo con checkpoint en compras comprometidas y cambios de gobernanza.
-  - paso-a-paso: Confirma cada seccion, cada recomendacion, y cada calculo.
+  - piloto-auto: Auto para analisis y recomendaciones, HITL para decisiones de compra (RI/SP). [EXPLICIT]
+  - desatendido: Cero interrupciones. Analisis completo con supuestos documentados. [EXPLICIT]
+  - supervisado: Autonomo con checkpoint en compras comprometidas y cambios de gobernanza. [EXPLICIT]
+  - paso-a-paso: Confirma cada seccion, cada recomendacion, y cada calculo. [EXPLICIT]
 
 Deteccion automatica:
   - Si existe billing data o Cost Explorer → CLOUD se infiere del provider
@@ -87,7 +87,7 @@ Deteccion automatica:
 
 ### S1: Cost Visibility & Allocation
 
-Establece la base de visibilidad: saber quien gasta que, donde, y por que.
+Establece la base de visibilidad: saber quien gasta que, donde, y por que. [EXPLICIT]
 
 ```
 Load references:
@@ -115,7 +115,7 @@ Load references:
 
 ### S2: Rate Optimization
 
-Reducir el precio unitario de los recursos cloud sin cambiar el consumo.
+Reducir el precio unitario de los recursos cloud sin cambiar el consumo. [EXPLICIT]
 
 ```
 Load references:
@@ -143,7 +143,7 @@ Load references:
 
 ### S3: Usage Optimization
 
-Reducir el consumo eliminando waste y ajustando el tamaño de los recursos.
+Reducir el consumo eliminando waste y ajustando el tamaño de los recursos. [EXPLICIT]
 
 ```
 Load references:
@@ -175,7 +175,7 @@ Load references:
 
 ### S4: FinOps Operating Model
 
-Estructura organizacional, procesos, y cadencia para sostener FinOps.
+Estructura organizacional, procesos, y cadencia para sostener FinOps. [EXPLICIT]
 
 ```
 Load references:
@@ -207,7 +207,7 @@ Load references:
 
 ### S5: Forecasting & Budgeting
 
-Predecir y controlar el gasto cloud con precision creciente.
+Predecir y controlar el gasto cloud con precision creciente. [EXPLICIT]
 
 **Forecasting Methods:**
 - Trend-based: historical extrapolation (± seasonal adjustment)
@@ -236,7 +236,7 @@ Predecir y controlar el gasto cloud con precision creciente.
 
 ### S6: Unit Economics & Business Alignment
 
-Conectar cloud cost con metricas de negocio para decisiones informadas.
+Conectar cloud cost con metricas de negocio para decisiones informadas. [EXPLICIT]
 
 ```
 Load references:
@@ -302,15 +302,15 @@ Load references:
 
 ## Edge Cases
 
-1. **Startup sin historico**: Usar industry benchmarks y driver-based forecasting. Establecer tagging desde dia 1. Focus en S1 y S4 antes de optimizar.
+1. **Startup sin historico**: Usar industry benchmarks y driver-based forecasting. Establecer tagging desde dia 1. Focus en S1 y S4 antes de optimizar. [EXPLICIT]
 
-2. **Multi-cloud environment**: Normalizar costos cross-provider. Usar herramientas multi-cloud (CloudHealth, Apptio, Spot.io). Allocation model debe ser provider-agnostic.
+2. **Multi-cloud environment**: Normalizar costos cross-provider. Usar herramientas multi-cloud (CloudHealth, Apptio, Spot.io). Allocation model debe ser provider-agnostic. [EXPLICIT]
 
-3. **Acquired company integration**: Mapear tagging strategies, unificar cost centers, reconciliar contratos de RI/SP, consolidar billing accounts.
+3. **Acquired company integration**: Mapear tagging strategies, unificar cost centers, reconciliar contratos de RI/SP, consolidar billing accounts. [EXPLICIT]
 
-4. **Massive AI/ML spend**: AI workloads tienen patrones unicos (GPU burst, training vs. inference). Separar AI cost center. Evaluar Inferentia/Trainium, spot para training.
+4. **Massive AI/ML spend**: AI workloads tienen patrones unicos (GPU burst, training vs. inference). Separar AI cost center. Evaluar Inferentia/Trainium, spot para training. [EXPLICIT]
 
-5. **Regulated industry**: Cost data puede contener metadata sensible. Chargeback reports deben cumplir data governance. Shared cost allocation debe ser auditable.
+5. **Regulated industry**: Cost data puede contener metadata sensible. Chargeback reports deben cumplir data governance. Shared cost allocation debe ser auditable. [EXPLICIT]
 
 ## Manejo de Inputs Ambiguos
 

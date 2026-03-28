@@ -1,13 +1,13 @@
 ---
 name: executive-pitch
-argument-hint: "<project-or-engagement-name>"
-description: >
+argument-hint: "project-or-engagement-name"
+description: 
   This skill should be used when the user asks to "create a pitch",
   "build a business case", "justify the investment", "present to executives",
-  or mentions ROI analysis, NPV, IRR, payback period, or C-level presentation.
-  It generates executive pitch decks with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models, and PAS persuasion architecture.
-  Use this skill whenever the user needs to persuade decision-makers with data-driven narratives, even if they don't explicitly ask for "executive pitch".
-argument-hint: "<project-or-engagement-name>"
+  or mentions ROI analysis, NPV, IRR, payback period, or C-level presentation. [EXPLICIT]
+  It generates executive pitch decks with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models, and PAS persuasion architecture. [EXPLICIT]
+  Use this skill whenever the user needs to persuade decision-makers with data-driven narratives, even if they don't explicitly ask for "executive pitch". [EXPLICIT]
+argument-hint: "project-or-engagement-name"
 model: opus
 context: fork
 allowed-tools:
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Executive Pitch & Business Case
 
-Generates C-level presentations with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models (NPV, IRR, payback), and decision frameworks. Uses Problem-Agitate-Solve (PAS) persuasion architecture.
+Generates C-level presentations with quantified problem statements, 4-pillar value propositions, 3-option comparison analysis, investment summaries with financial models (NPV, IRR, payback), and decision frameworks. Uses Problem-Agitate-Solve (PAS) persuasion architecture. [EXPLICIT]
 
 ## Principio Rector
 
@@ -29,23 +29,23 @@ Generates C-level presentations with quantified problem statements, 4-pillar val
 
 ### Filosofía de Persuasión Ejecutiva
 
-1. **Datos > opiniones.** Cada afirmación lleva un número. Cada número lleva una fuente o supuesto explícito. Sin números no hay credibilidad.
-2. **Costo de inacción > costo de acción.** El anchor no es el precio — es lo que pasa si NO se actúa. La urgencia no se declara, se demuestra con el burn rate de inacción.
-3. **Opciones, no mandatos.** 3 opciones con trade-offs claros. El decisor elige — el consultor recomienda con evidencia, no con presión.
+1. **Datos > opiniones.** Cada afirmación lleva un número. Cada número lleva una fuente o supuesto explícito. Sin números no hay credibilidad. [EXPLICIT]
+2. **Costo de inacción > costo de acción.** El anchor no es el precio — es lo que pasa si NO se actúa. La urgencia no se declara, se demuestra con el burn rate de inacción. [EXPLICIT]
+3. **Opciones, no mandatos.** 3 opciones con trade-offs claros. El decisor elige — el consultor recomienda con evidencia, no con presión. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Decision-maker type: `cfo`, `cto`, `ceo`, `board` (default: `ceo`)
 - `$2` — Budget range indicator: `under1m`, `1m-5m`, `over5m` (default: `1m-5m`)
 
-Parse from `$ARGUMENTS`. Adapts emphasis based on audience.
+Parse from `$ARGUMENTS`. Adapts emphasis based on audience. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para construcción de narrativa y modelado financiero, HITL para validación de claims y call to action.
-  - **desatendido**: Cero interrupciones. Pitch completo auto-generado. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en financial model y call to action.
-  - **paso-a-paso**: Confirma problem statement, cada value pillar, financial model, y call to action.
+  - **piloto-auto**: Auto para construcción de narrativa y modelado financiero, HITL para validación de claims y call to action. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Pitch completo auto-generado. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en financial model y call to action. [EXPLICIT]
+  - **paso-a-paso**: Confirma problem statement, cada value pillar, financial model, y call to action. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 hero + S5 investment + S6 call to action) | `técnica` (full 7 sections, default)
 
@@ -86,7 +86,7 @@ IF budget > $5M:
 - **Sensitivity Analysis:** +/-20% cost variance and +/-10% benefit variance on payback/NPV.
 - **Break-Even:** What adoption rate or efficiency gain needed to break even.
 
-Every financial input must cite its source or state its assumption explicitly.
+Every financial input must cite its source or state its assumption explicitly. [EXPLICIT]
 
 ## Persuasion Architecture (PAS)
 
@@ -101,25 +101,25 @@ Every financial input must cite its source or state its assumption explicitly.
 ## 7-Section Delivery Structure
 
 ### Section 1: Executive Summary (Hero)
-3-4 hero KPIs: Cost Savings, Timeline, ROI Payback, Risk Reduction. 150-word narrative: opportunity, urgency, recommendation.
+3-4 hero KPIs: Cost Savings, Timeline, ROI Payback, Risk Reduction. 150-word narrative: opportunity, urgency, recommendation. [EXPLICIT]
 
 ### Section 2: Problem Statement & Current Pain
-Business impact metrics table (current vs target vs gap vs annual impact). Pain points severity-rated (CRITICAL/HIGH/MEDIUM). Root cause analysis (technical, process, resource). Cost of inaction table (3-year projection).
+Business impact metrics table (current vs target vs gap vs annual impact). Pain points severity-rated (CRITICAL/HIGH/MEDIUM). Root cause analysis (technical, process, resource). Cost of inaction table (3-year projection). [EXPLICIT]
 
 ### Section 3: Strategic Value — 4-Pillar Proposition
-Four value cards: Cost Reduction, Revenue Acceleration, Risk Mitigation, Technical Modernization. Each with metric, mechanism, ROI timeline, Year 1 impact. Cumulative 3-year financial metrics (TCO, NPV, IRR, payback).
+Four value cards: Cost Reduction, Revenue Acceleration, Risk Mitigation, Technical Modernization. Each with metric, mechanism, ROI timeline, Year 1 impact. Cumulative 3-year financial metrics (TCO, NPV, IRR, payback). [EXPLICIT]
 
 ### Section 4: Approach Comparison (3+ Options)
-Comparison matrix: Do Nothing vs Alternative vs Recommended. Dimensions: upfront cost, annual cost, 3-year TCO, payback, risk reduction, tech debt, scalability, compliance, velocity, implementation risk. Each option with pros/cons/outcome/financial impact.
+Comparison matrix: Do Nothing vs Alternative vs Recommended. Dimensions: upfront cost, annual cost, 3-year TCO, payback, risk reduction, tech debt, scalability, compliance, velocity, implementation risk. Each option with pros/cons/outcome/financial impact. [EXPLICIT]
 
 ### Section 5: Investment Summary
-Timeline and team table. Budget breakdown card (services, infrastructure, contingency, monthly burn). Phased investment table with gates.
+Timeline and team table. Budget breakdown card (services, infrastructure, contingency, monthly burn). Phased investment table with gates. [EXPLICIT]
 
 ### Section 6: Call to Action & Decision Framework
-What we ask for (approach, budget range, timeline, decision deadline). Approval checklist (CFO, CTO, business sponsor, steering). Next steps timeline (week-by-week post-approval). Cost of delay (monthly consequences).
+What we ask for (approach, budget range, timeline, decision deadline). Approval checklist (CFO, CTO, business sponsor, steering). Next steps timeline (week-by-week post-approval). Cost of delay (monthly consequences). [EXPLICIT]
 
 ### Section 7: Risk Assessment & Mitigation
-Risk table: probability, impact, mitigation, owner. Linked to findings from prior analysis phases.
+Risk table: probability, impact, mitigation, owner. Linked to findings from prior analysis phases. [EXPLICIT]
 
 ## Edge Cases
 
@@ -176,7 +176,7 @@ Risk table: probability, impact, mitigation, owner. Linked to findings from prio
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ### Diagrams (Mermaid)
 - Mindmap: 4 value pillars with key metrics
@@ -184,3 +184,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations:
+
+- "/executive-pitch" — Run the full executive pitch workflow
+- "executive pitch on this project" — Apply to current context
+

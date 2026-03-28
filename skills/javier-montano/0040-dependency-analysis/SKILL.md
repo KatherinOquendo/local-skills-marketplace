@@ -1,12 +1,12 @@
----
-name: metodologia-dependency-analysis
-description: >
-  System and library dependency mapping, vulnerability scanning, upgrade risk assessment, and
-  license compliance analysis. Use when the user asks to "map dependencies", "analyze dependency risk",
-  "check license compliance", "assess upgrade risk", or mentions dependency graph, vulnerability scanning,
-  or supply chain security.
-author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<proyecto> [repositorio-o-sistema]"
+--- [EXPLICIT]
+name: metodologia-dependency-analysis [EXPLICIT]
+description:  [EXPLICIT]
+  System and library dependency mapping, vulnerability scanning, upgrade risk assessment, and [EXPLICIT]
+  license compliance analysis. Use when the user asks to "map dependencies", "analyze dependency risk", [EXPLICIT]
+  "check license compliance", "assess upgrade risk", or mentions dependency graph, vulnerability scanning, [EXPLICIT]
+  or supply chain security. [EXPLICIT]
+author: Javier Montaño · Comunidad MetodologIA [EXPLICIT]
+argument-hint: "proyecto [repositorio-o-sistema]"
 model: opus
 context: fork
 allowed-tools:
@@ -21,16 +21,16 @@ allowed-tools:
 
 # Analisis de Dependencias
 
-Mapeo exhaustivo de dependencias de sistema y librerias, con evaluacion de vulnerabilidades,
-riesgo de upgrade y cumplimiento de licencias.
+Mapeo exhaustivo de dependencias de sistema y librerias, con evaluacion de vulnerabilidades, [EXPLICIT]
+riesgo de upgrade y cumplimiento de licencias. [EXPLICIT]
 
 ## Grounding Guideline
 
 > *Invisible dependencies are the number one cause of cascading failures.*
 
-1. **Map before moving.** No transformation can be planned without a complete map of technical and organizational dependencies.
-2. **Dependency does not equal risk; unmanaged dependency equals risk.** The problem is not having dependencies — it is not knowing them.
-3. **Human dependencies are as critical as technical ones.** Knowledge concentrated in one person is a single point of failure dependency.
+1. **Map before moving.** No transformation can be planned without a complete map of technical and organizational dependencies. [EXPLICIT]
+2. **Dependency does not equal risk; unmanaged dependency equals risk.** The problem is not having dependencies — it is not knowing them. [EXPLICIT]
+3. **Human dependencies are as critical as technical ones.** Knowledge concentrated in one person is a single point of failure dependency. [EXPLICIT]
 
 ## TL;DR
 
@@ -42,7 +42,7 @@ riesgo de upgrade y cumplimiento de licencias.
 
 ## Inputs
 
-Parse `$1` como **nombre del proyecto**, `$2` como **repositorio o sistema a analizar**.
+Parse `$1` como **nombre del proyecto**, `$2` como **repositorio o sistema a analizar**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -181,3 +181,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/dependency-analysis" — Run the full dependency analysis workflow
+- "dependency analysis on this project" — Apply to current context
+

@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Deploy Firebase projects with firebase deploy, preview channels, rollback
-  strategies, and multi-site configuration management.
+  strategies, and multi-site configuration management. [EXPLICIT]
   Trigger: "firebase deploy", "deploy functions", "preview channel", "rollback"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Firebase project deployment — deploying Hosting, Functions, Firestore rules, and Storage rules with preview channels, selective deployments, rollback procedures, and multi-site management. Use when deploying Firebase projects to staging or production environments.
+Guides Firebase project deployment — deploying Hosting, Functions, Firestore rules, and Storage rules with preview channels, selective deployments, rollback procedures, and multi-site management. Use when deploying Firebase projects to staging or production environments. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides Firebase project deployment — deploying Hosting, Functions, Firestore r
 
 - `firebase-hosting` — hosting configuration that deployment pushes
 - `github-actions-ci` — CI/CD pipeline for automated Firebase deployment
+
+## Usage
+
+Example invocations:
+
+- "/firebase-deployment" — Run the full firebase deployment workflow
+- "firebase deployment on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

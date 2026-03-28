@@ -162,7 +162,7 @@
 
 | Termino | Definicion |
 |---|---|
-| **Zero Trust** | Modelo de seguridad que no asume confianza implicita en ningun actor, sistema, red o servicio; todo acceso se autentica y autoriza explicitamente |
+| **Zero Trust** | Modelo de seguridad que no asume confianza implicita en ningun actor, sistema, red o servicio; Todo acceso se autentica y autoriza explicitamente |
 | **STRIDE** | Metodologia de threat modeling: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege |
 | **PASTA** | Process for Attack Simulation and Threat Analysis — metodologia risk-centric de threat modeling en 7 etapas |
 | **DFD** | Data Flow Diagram — diagrama que muestra procesos, almacenes de datos, flujos de datos, entidades externas y trust boundaries |

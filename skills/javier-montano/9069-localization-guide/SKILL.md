@@ -3,7 +3,7 @@ name: localization-guide
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Translation workflows, context for translators, glossaries, RTL support.
+  Translation workflows, context for translators, glossaries, RTL support. [EXPLICIT]
   Trigger: "localization guide"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Localization Guide
 > "Method over hacks."
 ## TL;DR
-Translation workflows, context for translators, glossaries, RTL support.
+Translation workflows, context for translators, glossaries, RTL support. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Translation workflows, context for translators, glossaries, RTL support.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/localization-guide" — Run the full localization guide workflow
+- "localization guide on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

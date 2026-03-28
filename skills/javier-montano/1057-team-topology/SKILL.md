@@ -1,10 +1,10 @@
 ---
 name: metodologia-team-topology
-description: >
-  Conway's Law analysis, team interaction modes, cognitive load assessment, organizational design.
+description: 
+  Conway's Law analysis, team interaction modes, cognitive load assessment, organizational design. [EXPLICIT]
   Use when the user asks to "design team structure", "assess cognitive load", "map team interactions",
-  "apply Conway's Law", or mentions stream-aligned teams, platform teams, enabling teams, team-first thinking.
-argument-hint: "<organization-or-department-name>"
+  "apply Conway's Law", or mentions stream-aligned teams, platform teams, enabling teams, team-first thinking. [EXPLICIT]
+argument-hint: "organization-or-department-name"
 author: Javier Montaño · Comunidad MetodologIA
 model: opus
 context: fork
@@ -19,15 +19,15 @@ allowed-tools:
 
 # Team Topology: Organizational Design for Fast Flow
 
-Team topology designs organizational structures that optimize for fast flow of change while managing cognitive load. The skill produces team topology maps, interaction matrices, and evolution plans based on the Team Topologies framework (Skelton & Pais).
+Team topology designs organizational structures that optimize for fast flow of change while managing cognitive load. The skill produces team topology maps, interaction matrices, and evolution plans based on the Team Topologies framework (Skelton & Pais). [EXPLICIT]
 
 ## Grounding Guideline
 
 > *Software architecture reflects team architecture. Change one without changing the other and the system will resist.*
 
-1. **Conway's Law is not a suggestion — it is a law.** Teams produce designs that mirror their communication structure.
-2. **Cognitive load as a design constraint.** If a team cannot comprehend its entire domain, the domain is poorly partitioned.
-3. **Deliberate interactions.** Interaction modes between teams (collaboration, X-as-a-Service, facilitation) must be explicit and designed.
+1. **Conway's Law is not a suggestion — it is a law.** Teams produce designs that mirror their communication structure. [EXPLICIT]
+2. **Cognitive load as a design constraint.** If a team cannot comprehend its entire domain, the domain is poorly partitioned. [EXPLICIT]
+3. **Deliberate interactions.** Interaction modes between teams (collaboration, X-as-a-Service, facilitation) must be explicit and designed. [EXPLICIT]
 
 ## TL;DR
 
@@ -39,7 +39,7 @@ Team topology designs organizational structures that optimize for fast flow of c
 
 ## Inputs
 
-The user provides an organization or department name as `$ARGUMENTS`. Parse `$1` as the **organization/department name**.
+The user provides an organization or department name as `$ARGUMENTS`. Parse `$1` as the **organization/department name**. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -86,17 +86,17 @@ The user provides an organization or department name as `$ARGUMENTS`. Parse `$1`
 
 ## Edge Cases
 
-1. **Organizacion con estructura matricial rigida** — Cuando los reportes funcionales no pueden cambiar, el skill propone topologias virtuales (squads cross-funcionales) que operan dentro de la estructura formal, con mecanismos de alineacion dual.
-2. **Equipo unico responsable de todo (startup temprana)** — El skill no fuerza los 4 tipos; en su lugar identifica responsabilidades que deberian separarse primero y define triggers de division basados en carga cognitiva medible.
-3. **Fusion o adquisicion con equipos duplicados** — El skill mapea capacidades duplicadas, propone consolidacion basada en fortalezas complementarias y disena plan de transicion que minimiza perdida de conocimiento institucional.
-4. **Equipos distribuidos en multiples paises con diferencia cultural** — La matriz de interacciones se ajusta por zona horaria y cultura de comunicacion, priorizando X-as-a-service sobre colaboracion para minimizar dependencia de comunicacion sincrona.
+1. **Organizacion con estructura matricial rigida** — Cuando los reportes funcionales no pueden cambiar, el skill propone topologias virtuales (squads cross-funcionales) que operan dentro de la estructura formal, con mecanismos de alineacion dual. [EXPLICIT]
+2. **Equipo unico responsable de todo (startup temprana)** — El skill no fuerza los 4 tipos; en su lugar identifica responsabilidades que deberian separarse primero y define triggers de division basados en carga cognitiva medible. [EXPLICIT]
+3. **Fusion o adquisicion con equipos duplicados** — El skill mapea capacidades duplicadas, propone consolidacion basada en fortalezas complementarias y disena plan de transicion que minimiza perdida de conocimiento institucional. [EXPLICIT]
+4. **Equipos distribuidos en multiples paises con diferencia cultural** — La matriz de interacciones se ajusta por zona horaria y cultura de comunicacion, priorizando X-as-a-service sobre colaboracion para minimizar dependencia de comunicacion sincrona. [EXPLICIT]
 
 ## Decisions & Trade-offs
 
-1. **4 tipos de equipo vs. taxonomia libre** — Se usa el framework de Skelton & Pais porque provee vocabulario compartido y anti-patrones documentados; taxonomia libre genera ambiguedad organizacional.
-2. **Carga cognitiva como metrica principal vs. delivery velocity** — Carga cognitiva porque es la causa raiz; velocity baja es frecuentemente el sintoma de sobrecarga cognitiva, no de falta de capacidad.
-3. **Evolucion incremental vs. reorganizacion big-bang** — Incremental siempre, porque reorganizaciones big-bang destruyen redes informales de conocimiento y generan 3-6 meses de baja productividad.
-4. **Tamano maximo de equipo 9 vs. flexible** — Hard limit en 9 (Dunbar's sub-group) porque equipos mas grandes pierden cohesion y aumentan overhead de comunicacion cuadraticamente.
+1. **4 tipos de equipo vs. taxonomia libre** — Se usa el framework de Skelton & Pais porque provee vocabulario compartido y anti-patrones documentados; taxonomia libre genera ambiguedad organizacional. [EXPLICIT]
+2. **Carga cognitiva como metrica principal vs. delivery velocity** — Carga cognitiva porque es la causa raiz; velocity baja es frecuentemente el sintoma de sobrecarga cognitiva, no de falta de capacidad. [EXPLICIT]
+3. **Evolucion incremental vs. reorganizacion big-bang** — Incremental siempre, porque reorganizaciones big-bang destruyen redes informales de conocimiento y generan 3-6 meses de baja productividad. [EXPLICIT]
+4. **Tamano maximo de equipo 9 vs. flexible** — Hard limit en 9 (Dunbar's sub-group) porque equipos mas grandes pierden cohesion y aumentan overhead de comunicacion cuadraticamente. [EXPLICIT]
 
 ## Knowledge Graph
 
@@ -168,3 +168,11 @@ graph TD
 
 ---
 **Autor:** Javier Montaño · Comunidad MetodologIA | **Version:** 1.0.0
+
+## Usage
+
+Example invocations:
+
+- "/team-topology" — Run the full team topology workflow
+- "team topology on this project" — Apply to current context
+

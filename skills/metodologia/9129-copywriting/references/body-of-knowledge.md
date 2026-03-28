@@ -182,7 +182,7 @@ El headline es la pieza más importante. Reglas:
 #### Mixed — Audiencia Heterogénea
 - **Lead with**: Headline de impacto + profundidad progresiva
 - **Técnica**: Progressive disclosure — cada nivel añade detalle
-- **Formato**: Executive summary (todos) → detalle técnico (quien quiera)
+- **Formato**: Executive summary (TBDs) → detalle técnico (quien quiera)
 
 ---
 

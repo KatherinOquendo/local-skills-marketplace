@@ -10,34 +10,34 @@ tags: [testing, firebase-emulator, firestore, auth, functions, storage, hosting,
 # 087 — Firebase Emulator Setup {Testing}
 
 ## Purpose
-Configure and maintain the Firebase Emulator Suite as the local development and testing backbone. All services (Firestore, Auth, Functions, Storage, Hosting) run locally with reproducible seed data.
+Configure and maintain the Firebase Emulator Suite as the local development and testing backbone. All services (Firestore, Auth, Functions, Storage, Hosting) run locally with reproducible seed data. [EXPLICIT]
 
 ## Physics — 3 Immutable Laws
 
-1. **Law of Local Parity**: The emulator environment mirrors production Firebase services. Code that works on emulators works on production (barring quota/scale).
-2. **Law of Zero Cloud Cost**: All development and testing happens on emulators. No reads/writes/invocations against live Firebase during dev.
-3. **Law of Reproducible State**: Emulators start from exported seed data. Every developer and CI run begins from the same known state.
+1. **Law of Local Parity**: The emulator environment mirrors production Firebase services. Code that works on emulators works on production (barring quota/scale). [EXPLICIT]
+2. **Law of Zero Cloud Cost**: All development and testing happens on emulators. No reads/writes/invocations against live Firebase during dev. [EXPLICIT]
+3. **Law of Reproducible State**: Emulators start from exported seed data. Every developer and CI run begins from the same known state. [EXPLICIT]
 
 ## Protocol
 
 ### Phase 1 — Configuration
-1. Run `firebase init emulators` — select Firestore, Auth, Functions, Storage, Hosting.
+1. Run `firebase init emulators` — select Firestore, Auth, Functions, Storage, Hosting. [EXPLICIT]
 2. Configure ports in `firebase.json` (non-default to avoid conflicts):
-   - Firestore: 8080, Auth: 9099, Functions: 5001, Storage: 9199, Hosting: 5000, UI: 4000.
-3. Add emulator config to `firebase.json` under `"emulators"` key.
-4. Set `"download"` path for emulator binaries: `.cache/firebase/emulators/`.
+   - Firestore: 8080, Auth: 9099, Functions: 5001, Storage: 9199, Hosting: 5000, UI: 4000. [EXPLICIT]
+3. Add emulator config to `firebase.json` under `"emulators"` key. [EXPLICIT]
+4. Set `"download"` path for emulator binaries: `.cache/firebase/emulators/`. [EXPLICIT]
 
 ### Phase 2 — Seed Data
-1. Start emulators, populate manually or via seed script (skill 085).
-2. Export state: `firebase emulators:export ./test/emulator-data`.
-3. Commit `./test/emulator-data/` to repo for reproducibility.
-4. Start with import: `firebase emulators:start --import=./test/emulator-data`.
+1. Start emulators, populate manually or via seed script (skill 085). [EXPLICIT]
+2. Export state: `firebase emulators:export ./test/emulator-data`. [EXPLICIT]
+3. Commit `./test/emulator-data/` to repo for reproducibility. [EXPLICIT]
+4. Start with import: `firebase emulators:start --import=./test/emulator-data`. [EXPLICIT]
 
 ### Phase 3 — Developer Workflow
-1. Add npm script: `"emulators": "firebase emulators:start --import=./test/emulator-data"`.
-2. App code detects emulator via `connectFirestoreEmulator()`, `connectAuthEmulator()`, etc.
-3. Use environment variable `FIREBASE_EMULATOR=true` to toggle emulator connections.
-4. Emulator UI at `localhost:4000` for manual inspection.
+1. Add npm script: `"emulators": "firebase emulators:start --import=./test/emulator-data"`. [EXPLICIT]
+2. App code detects emulator via `connectFirestoreEmulator()`, `connectAuthEmulator()`, etc. [EXPLICIT]
+3. Use environment variable `FIREBASE_EMULATOR=true` to toggle emulator connections. [EXPLICIT]
+4. Emulator UI at `localhost:4000` for manual inspection. [EXPLICIT]
 
 ## I/O
 
@@ -50,11 +50,11 @@ Configure and maintain the Firebase Emulator Suite as the local development and 
 
 ## Quality Gates — 5 Checks
 
-1. **All 5 emulators configured** — Firestore, Auth, Functions, Storage, Hosting.
-2. **Seed data committed** — `test/emulator-data/` exists in repo.
-3. **App auto-connects to emulators** when `FIREBASE_EMULATOR=true`.
-4. **CI uses emulators** — no live Firebase calls in test pipeline.
-5. **Emulator UI accessible** at `localhost:4000` for debugging.
+1. **All 5 emulators configured** — Firestore, Auth, Functions, Storage, Hosting. [EXPLICIT]
+2. **Seed data committed** — `test/emulator-data/` exists in repo. [EXPLICIT]
+3. **App auto-connects to emulators** when `FIREBASE_EMULATOR=true`. [EXPLICIT]
+4. **CI uses emulators** — no live Firebase calls in test pipeline. [EXPLICIT]
+5. **Emulator UI accessible** at `localhost:4000` for debugging. [EXPLICIT]
 
 ## Edge Cases
 
@@ -69,3 +69,17 @@ Configure and maintain the Firebase Emulator Suite as the local development and 
 - Seed data out of sync with schema → re-export after schema migration.
 - Developer uses live Firebase accidentally → add runtime check that blocks live calls in dev mode.
 - CI emulator timeout → increase `--inspect-functions` timeout, optimize function cold starts.
+
+## Usage
+
+Example invocations:
+
+- "/firebase-emulator-setup" — Run the full firebase emulator setup workflow
+- "firebase emulator setup on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]

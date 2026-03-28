@@ -3,7 +3,7 @@ name: motion-design
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Page transitions, scroll-triggered animations, parallax, performance.
+  Page transitions, scroll-triggered animations, parallax, performance. [EXPLICIT]
   Trigger: "motion design"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Motion Design
 > "Method over hacks."
 ## TL;DR
-Page transitions, scroll-triggered animations, parallax, performance.
+Page transitions, scroll-triggered animations, parallax, performance. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Page transitions, scroll-triggered animations, parallax, performance.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/motion-design" — Run the full motion design workflow
+- "motion design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

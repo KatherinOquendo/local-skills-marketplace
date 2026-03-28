@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Designs data architecture, governance frameworks, quality standards, and
   pipeline strategies. Covers data modeling, cataloging, lineage tracking,
-  and analytics enablement.
+  and analytics enablement. [EXPLICIT]
   Trigger: "data architecture", "data governance", "data quality", "data pipeline", "data strategy"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Designs comprehensive data strategies covering architecture, governance, quality, and pipeline design to enable analytics, AI, and operational excellence. Use this skill when building data platforms, establishing data governance, or when data quality issues are impacting business decisions.
+Designs comprehensive data strategies covering architecture, governance, quality, and pipeline design to enable analytics, AI, and operational excellence. Use this skill when building data platforms, establishing data governance, or when data quality issues are impacting business decisions. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Designs comprehensive data strategies covering architecture, governance, quality
 - `database-design` — physical data modeling and schema design
 - `compliance-assessment` — data protection regulatory requirements
 - `event-architecture` — event-driven data pipeline patterns
+
+## Usage
+
+Example invocations:
+
+- "/data-strategy" — Run the full data strategy workflow
+- "data strategy on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

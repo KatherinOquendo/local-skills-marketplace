@@ -175,7 +175,7 @@ Instead of a big-bang migration of all 15+ Excel files on go-live day, each Exce
 | 3 (MVP) | Asignaciones (staffing) | Resource-project mapping | PS (WBS assignments) | Medium | Medium |
 | 4 | Validador (ETL->BI) | Data validation, reporting | SAP Analytics Cloud (post-MVP) | Low | High |
 | 5 | Python Tool (Leonardo) | Master project data | Coexistence — SAP PS receives, Python originates | Low | Low (interface only) |
-| Deferred | Remaining 10+ Excel | Various operational data | Phase 2+ | Assess after MVP | TBD |
+| Deferred | Remaining 10+ Excel | Various operational data | Phase 2+ | Assess after MVP | Todo |
 
 ### Migration Protocol per Excel
 1. **Map**: Document every column, formula, and business rule in the Excel

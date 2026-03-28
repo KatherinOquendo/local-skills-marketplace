@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implement Firebase Authentication with email/password, Google, GitHub, phone,
-  and anonymous sign-in. Covers auth state management and custom claims.
+  and anonymous sign-in. Covers auth state management and custom claims. [EXPLICIT]
   Trigger: "firebase auth", "sign in", "authentication", "custom claims"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides Firebase Authentication implementation — configuring sign-in providers (email/password, Google, GitHub, phone, anonymous), managing auth state across the application, setting custom claims for role-based access, and handling auth edge cases. Use when adding user authentication to a Firebase-powered application.
+Guides Firebase Authentication implementation — configuring sign-in providers (email/password, Google, GitHub, phone, anonymous), managing auth state across the application, setting custom claims for role-based access, and handling auth edge cases. Use when adding user authentication to a Firebase-powered application. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides Firebase Authentication implementation — configuring sign-in providers 
 
 - `firestore-security-rules` — rules rely on auth identity and custom claims
 - `cloud-functions` — custom claims must be set via Admin SDK in functions
+
+## Usage
+
+Example invocations:
+
+- "/firebase-auth" — Run the full firebase auth workflow
+- "firebase auth on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

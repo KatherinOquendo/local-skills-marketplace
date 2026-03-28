@@ -91,7 +91,7 @@
 
 - **Debate:** Equipos centrales de seguridad de 5-10 personas no escalan a organizaciones de 500+ developers. Pero federar seguridad a equipos de desarrollo (Security Champions) diluye expertise.
 - **Pro-centralizado:** "La seguridad requiere expertise profundo. Generalistas cometen errores."
-- **Pro-federado:** "10 personas no pueden revisar todo el codigo de 50 equipos. Necesitas champions distribuidos."
+- **Pro-federado:** "10 personas no pueden revisar Todo el codigo de 50 equipos. Necesitas champions distribuidos."
 - **Posicion del skill:** Modelo hibrido. Equipo central define politicas, herramientas y frameworks. Security Champions (1 por equipo, 10-20% del tiempo) ejecutan first-pass reviews. Central escala via automation (SAST/DAST/SCA automatizado), no via headcount.
 
 ### 3.3 SBOM: Mandato Regulatorio o Carga Administrativa
@@ -107,7 +107,7 @@
 
 ### 4.1 Google BeyondCorp — Zero Trust a Escala Enterprise
 
-- **Contexto:** Google implemento BeyondCorp (2014-2018), eliminando la VPN corporativa y moviendo todos los accesos a un modelo identity-centric. 100,000+ empleados acceden a recursos corporativos desde cualquier red, autenticados y autorizados por request.
+- **Contexto:** Google implemento BeyondCorp (2014-2018), eliminando la VPN corporativa y moviendo Todos los accesos a un modelo identity-centric. 100,000+ empleados acceden a recursos corporativos desde cualquier red, autenticados y autorizados por request.
 - **Relevancia:** Referencia para S2 (Zero Trust). Demuestra que ZT a escala enterprise es viable pero requiere multiples anos de inversion.
 - **Fuente:** Google (2014) "BeyondCorp: A New Approach to Enterprise Security"; Google (2024) "BeyondCorp Enterprise".
 

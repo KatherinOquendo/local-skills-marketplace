@@ -1,12 +1,12 @@
 ---
 name: metodologia-storytelling
 author: Javier Montaño · Comunidad MetodologIA
-argument-hint: "<story-type: transformation|scenario|risk|success|cross-deliverable> <audience: executive|technical|mixed>"
-description: >
-  Narrative arc design and transformation metodologia-storytelling for discovery deliverables.
+argument-hint: "story-type: transformation|scenario|risk|success|cross-deliverable audience: executive|technical|mixed"
+description: 
+  Narrative arc design and transformation metodologia-storytelling for discovery deliverables. [EXPLICIT]
   Use when structuring the overall narrative across deliverables, building scenario
   narratives, crafting transformation stories (current pain → decision → future state),
-  or designing risk narratives and success reference stories.
+  or designing risk narratives and success reference stories. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # Storytelling — Narrative Arc & Transformation Stories
 
-Designs the narrative architecture that transforms raw analysis into compelling transformation stories. Owns story arcs across deliverables, scenario narratives, risk stories, and evidence-based transformation narratives.
+Designs the narrative architecture that transforms raw analysis into compelling transformation stories. Owns story arcs across deliverables, scenario narratives, risk stories, and evidence-based transformation narratives. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -27,17 +27,17 @@ Designs the narrative architecture that transforms raw analysis into compelling 
 
 ### Narrative Philosophy
 
-1. **Every story has tension.** Without conflict there is no narrative. The conflict in discovery is: current state vs. desired state. The gap is the story.
-2. **Characters are real.** The end user, the operator, the decision-maker — each one experiences the gap differently. Their perspectives enrich the narrative.
-3. **Evidence is the anchor.** A story without data is fiction. Data without a story is noise. Storytelling unites them.
-4. **The arc spans all deliverables.** From Plan (00) to Handover (09), there is ONE narrative arc: discovery → revelation → decision → transformation.
+1. **Every story has tension.** Without conflict there is no narrative. The conflict in discovery is: current state vs. desired state. The gap is the story. [EXPLICIT]
+2. **Characters are real.** The end user, the operator, the decision-maker — each one experiences the gap differently. Their perspectives enrich the narrative. [EXPLICIT]
+3. **Evidence is the anchor.** A story without data is fiction. Data without a story is noise. Storytelling unites them. [EXPLICIT]
+4. **The arc spans all deliverables.** From Plan (00) to Handover (09), there is ONE narrative arc: discovery → revelation → decision → transformation. [EXPLICIT]
 
 ## Inputs
 
 - `$1` — Story type: `transformation`, `scenario`, `risk`, `success`, `cross-deliverable` (default: `transformation`)
 - `$2` — Audience: `executive`, `technical`, `mixed` (default: `mixed`)
 
-Parse from `$ARGUMENTS`.
+Parse from `$ARGUMENTS`. [EXPLICIT]
 
 ## Narrative Architectures
 
@@ -110,8 +110,8 @@ Tone: Factual, not alarmist
 
 ```
 Pattern: Industry Analogy
-  "[Empresa comparable en sector] enfrentó [dolor similar].
-   Con [enfoque seleccionado], logró [resultado cuantificado] en [plazo].
+  "[Empresa comparable en sector] enfrentó [dolor similar]. [EXPLICIT]
+   Con [enfoque seleccionado], logró [resultado cuantificado] en [plazo]. [EXPLICIT]
    Nuestro escenario B sigue un patrón similar, adaptado a [contexto cliente]."
 
 Source: metodologia-sector-intelligence skill provides benchmarks
@@ -343,3 +343,11 @@ graph TD
 
 - This skill owns **narrative structure and story arcs**. It does NOT own prose quality (that's metodologia-copywriting) or data visualization narratives (that's metodologia-data-viz-storytelling).
 - Stories must always be anchored in evidence. Speculation must be explicitly tagged [SUPUESTO].
+
+## Usage
+
+Example invocations:
+
+- "/storytelling" — Run the full storytelling workflow
+- "storytelling on this project" — Apply to current context
+

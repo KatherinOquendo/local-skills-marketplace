@@ -1,0 +1,9 @@
+[
+  {"id": "user-research-happy-path", "type": "happy_path", "input": "Run user research on this project", "expected_behavior": "Skill activates and produces the expected user research output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "user-research-explicit-trigger", "type": "happy_path", "input": "Apply user research analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the user research workflow", "tags": ["trigger", "recognition"]},
+  {"id": "user-research-with-context", "type": "happy_path", "input": "Apply user research to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive user research analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "user-research-minimal-input", "type": "happy_path", "input": "Quick user research", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "user-research-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to user research", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "user-research-edge-empty-input", "type": "edge_case", "input": "Run user research but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "user-research-edge-conflicting", "type": "edge_case", "input": "Apply user research but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

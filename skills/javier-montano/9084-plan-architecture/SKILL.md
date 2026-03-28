@@ -1,10 +1,10 @@
 ---
 name: plan-architecture
 author: JM Labs (Javier Montaño)
-description: >
-  Generate plugin architecture plan with agent roles, skill-movement mapping, hook strategy, and command routing.
-  Trigger: plan architecture, design plugin structure, architect plugin, plugin architecture, plan plugin layout.
-argument-hint: "<plugin-brief-path>"
+description: 
+  Generate plugin architecture plan with agent roles, skill-movement mapping, hook strategy, and command routing. [EXPLICIT]
+  Trigger: plan architecture, design plugin structure, architect plugin, plugin architecture, plan plugin layout. [EXPLICIT]
+argument-hint: "plugin-brief-path"
 allowed-tools:
   - Read
   - Write
@@ -17,7 +17,7 @@ allowed-tools:
 
 > "Architecture is the art of making decisions you will not regret when the plugin grows."
 
-Generate a complete architecture plan for a Claude Code plugin. Takes a plugin concept brief (from `ideate-plugin`) and produces a detailed technical plan covering agents, skills, hooks, commands, quality gates, and execution flows.
+Generate a complete architecture plan for a Claude Code plugin. Takes a plugin concept brief (from `ideate-plugin`) and produces a detailed technical plan covering agents, skills, hooks, commands, quality gates, and execution flows. [EXPLICIT]
 
 ---
 
@@ -35,59 +35,59 @@ Generate a complete architecture plan for a Claude Code plugin. Takes a plugin c
 - For each movement, decide whether it needs a dedicated agent or shares the plugin's primary agent.
 - Apply the heuristic: a movement gets its own agent if it has 5+ skills OR fundamentally different tool needs.
 - For each agent, define:
-  - **Name**: kebab-case, role-descriptive (e.g., `code-analyzer`, `report-generator`).
-  - **Boundary**: What it owns and what it delegates.
-  - **Tool allowlist**: Minimum tools needed (least privilege).
-  - **maxTurns**: Estimated based on skill count and complexity.
+  - **Name**: kebab-case, role-descriptive (e.g., `code-analyzer`, `report-generator`). [EXPLICIT]
+  - **Boundary**: What it owns and what it delegates. [EXPLICIT]
+  - **Tool allowlist**: Minimum tools needed (least privilege). [EXPLICIT]
+  - **maxTurns**: Estimated based on skill count and complexity. [EXPLICIT]
 - Record the plugin subagent constraint: no hooks, mcpServers, or permissionMode in agent frontmatter. `[CONFIG]`
 
 ### Step 3 -- Map Skills to Movements
 
 - For each movement from the brief, list the skills with:
-  - **Name**: kebab-case verb-noun (e.g., `validate-structure`, `generate-report`).
-  - **Purpose**: One sentence.
-  - **Inputs**: What data/files it reads.
-  - **Outputs**: What it produces (findings, artifacts, reports).
-  - **Agent**: Which agent orchestrates it.
-  - **Sequence**: Order within the movement (parallel or sequential).
+  - **Name**: kebab-case verb-noun (e.g., `validate-structure`, `generate-report`). [EXPLICIT]
+  - **Purpose**: One sentence. [EXPLICIT]
+  - **Inputs**: What data/files it reads. [EXPLICIT]
+  - **Outputs**: What it produces (findings, artifacts, reports). [EXPLICIT]
+  - **Agent**: Which agent orchestrates it. [EXPLICIT]
+  - **Sequence**: Order within the movement (parallel or sequential). [EXPLICIT]
 - Verify no skill appears in multiple movements. `[DOC]`
 
 ### Step 4 -- Select Hooks from Compatibility Matrix
 
 - Review the 22 lifecycle events available in Claude Code.
 - For each proposed hook from the brief, validate against the type-event compatibility matrix:
-  - `type:command` -- compatible with all 22 events.
-  - `type:http` -- compatible with all 22 events.
-  - `type:prompt` -- compatible with PreToolUse, PostToolUse, and PermissionRequest ONLY (requires ToolUseContext).
-  - `type:agent` -- compatible with PreToolUse, PostToolUse, and PermissionRequest ONLY (requires ToolUseContext).
+  - `type:command` -- compatible with all 22 events. [EXPLICIT]
+  - `type:http` -- compatible with all 22 events. [EXPLICIT]
+  - `type:prompt` -- compatible with PreToolUse, PostToolUse, and PermissionRequest ONLY (requires ToolUseContext). [EXPLICIT]
+  - `type:agent` -- compatible with PreToolUse, PostToolUse, and PermissionRequest ONLY (requires ToolUseContext). [EXPLICIT]
 - Flag any incompatible combinations as `CRITICAL` (prompt/agent on non-ToolUseContext events) and propose alternatives.
 - Document the hook strategy: which events, which types, what behavior. `[CONFIG]`
 
 ### Step 5 -- Define Command Routing
 
 - For each user-facing operation, create a command entry:
-  - **Canonical command**: Full descriptive name (e.g., `/prefix:validate`).
-  - **Alias**: Optional single-letter shortcut (e.g., `/prefix:v`).
-  - **Target**: Which skill or agent the command invokes.
-  - **Arguments**: What the command passes through.
+  - **Canonical command**: Full descriptive name (e.g., `/prefix:validate`). [EXPLICIT]
+  - **Alias**: Optional single-letter shortcut (e.g., `/prefix:v`). [EXPLICIT]
+  - **Target**: Which skill or agent the command invokes. [EXPLICIT]
+  - **Arguments**: What the command passes through. [EXPLICIT]
 - Verify no command name conflicts with existing commands in the plugin ecosystem.
 - Total commands = canonical + aliases. Document the count. `[DOC]`
 
 ### Step 6 -- Place Quality Gates
 
 - Define quality gates between movements:
-  - **Gate name**: Descriptive (e.g., `G1: Analysis Complete`).
-  - **Trigger**: What must be true to pass (e.g., "all validate-* skills pass with zero CRITICALs").
-  - **Blocker behavior**: What happens if the gate fails (pause, skip, abort).
+  - **Gate name**: Descriptive (e.g., `G1: Analysis Complete`). [EXPLICIT]
+  - **Trigger**: What must be true to pass (e.g., "all validate-* skills pass with zero CRITICALs"). [EXPLICIT]
+  - **Blocker behavior**: What happens if the gate fails (pause, skip, abort). [EXPLICIT]
 - Minimum: one gate between each movement boundary.
 - Gate criteria must be testable and evidence-based. `[DOC]`
 
 ### Step 7 -- Generate Architecture Diagrams
 
 - Produce Mermaid diagrams for:
-  1. **Component map**: Agents, skills, commands, hooks and their relationships.
-  2. **Execution flow**: Sequential/parallel skill execution within each movement.
-  3. **Delegation graph**: Agent-to-skill ownership.
+  1. **Component map**: Agents, skills, commands, hooks and their relationships. [EXPLICIT]
+  2. **Execution flow**: Sequential/parallel skill execution within each movement. [EXPLICIT]
+  3. **Delegation graph**: Agent-to-skill ownership. [EXPLICIT]
 - Diagrams must be valid Mermaid syntax. `[CODIGO]`
 
 ### Step 8 -- Write Architecture Plan
@@ -137,7 +137,7 @@ Generate a complete architecture plan for a Claude Code plugin. Takes a plugin c
 - Agent 1: handles stuff
 - Agent 2: handles other stuff
 ```
-Missing: no tool allowlist, no boundaries, no maxTurns, no skill assignments.
+Missing: no tool allowlist, no boundaries, no maxTurns, no skill assignments. [EXPLICIT]
 
 **Good architecture plan excerpt:**
 ```
@@ -147,19 +147,27 @@ Missing: no tool allowlist, no boundaries, no maxTurns, no skill assignments.
 | code-analyzer | Owns validation movement. Reads only. | validate-structure, validate-manifest, validate-components | Read, Glob, Grep | 25 |
 | report-generator | Owns reporting movement. Writes report files. | generate-qa-report, generate-qa-scorecard | Read, Glob, Write | 15 |
 ```
-Includes: agent name, boundary, skills owned, tool allowlist, maxTurns estimate.
+Includes: agent name, boundary, skills owned, tool allowlist, maxTurns estimate. [EXPLICIT]
 
 ## Anti-Patterns
 
-1. Creating one agent per skill -- agents should manage groups of related skills.
-2. Using `type:prompt` hooks on Stop or Compact events (runtime error).
-3. Defining quality gates without measurable criteria ("it looks good" is not a gate).
-4. Creating aliases for commands that are rarely used (aliases are for frequent operations).
-5. Putting all skills in a single movement (defeats the purpose of movement-based organization).
+1. Creating one agent per skill -- agents should manage groups of related skills. [EXPLICIT]
+2. Using `type:prompt` hooks on Stop or Compact events (runtime error). [EXPLICIT]
+3. Defining quality gates without measurable criteria ("it looks good" is not a gate). [EXPLICIT]
+4. Creating aliases for commands that are rarely used (aliases are for frequent operations). [EXPLICIT]
+5. Putting all skills in a single movement (defeats the purpose of movement-based organization). [EXPLICIT]
 
 ## Edge Cases
 
-1. Plugin with a single movement -- valid for simple plugins. Skip quality gates between movements but add an exit gate.
-2. Plugin with no hooks -- valid. Many plugins operate entirely on-demand. Document the decision.
-3. Brief proposes more than 4 agents -- review whether some can be merged. More than 4 agents is a code smell for plugins.
-4. A skill needs Write access but the movement is labeled "read-only" -- resolve the contradiction before proceeding.
+1. Plugin with a single movement -- valid for simple plugins. Skip quality gates between movements but add an exit gate. [EXPLICIT]
+2. Plugin with no hooks -- valid. Many plugins operate entirely on-demand. Document the decision. [EXPLICIT]
+3. Brief proposes more than 4 agents -- review whether some can be merged. More than 4 agents is a code smell for plugins. [EXPLICIT]
+4. A skill needs Write access but the movement is labeled "read-only" -- resolve the contradiction before proceeding. [EXPLICIT]
+
+## Usage
+
+Example invocations:
+
+- "/plan-architecture" — Run the full plan architecture workflow
+- "plan architecture on this project" — Apply to current context
+

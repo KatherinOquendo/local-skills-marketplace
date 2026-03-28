@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build reusable UI components using Web Components standards — Custom Elements,
-  Shadow DOM, HTML templates, and slots. Includes Lit framework patterns.
+  Shadow DOM, HTML templates, and slots. Includes Lit framework patterns. [EXPLICIT]
   Trigger: "web component", "custom element", "shadow DOM", "Lit element"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the creation of framework-agnostic UI components using Web Components standards (Custom Elements v1, Shadow DOM, slots, HTML templates) and the Lit library for ergonomic development. Use when you need reusable components that work across any framework or vanilla HTML.
+Guides the creation of framework-agnostic UI components using Web Components standards (Custom Elements v1, Shadow DOM, slots, HTML templates) and the Lit library for ergonomic development. Use when you need reusable components that work across any framework or vanilla HTML. [EXPLICIT]
 
 ## Procedure
 
@@ -67,3 +67,25 @@ Guides the creation of framework-agnostic UI components using Web Components sta
 
 - `dark-mode` — CSS custom properties bridge theme tokens into Shadow DOM
 - `accessibility-testing` — Shadow DOM requires careful ARIA and focus management
+
+## Usage
+
+Example invocations:
+
+- "/web-components" — Run the full web components workflow
+- "web components on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

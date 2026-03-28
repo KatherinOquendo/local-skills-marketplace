@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build e-commerce frontend interfaces including product listings, shopping cart,
-  checkout flow, and payment UI integration. Covers UX best practices for conversion.
+  checkout flow, and payment UI integration. Covers UX best practices for conversion. [EXPLICIT]
   Trigger: "ecommerce", "shopping cart", "checkout", "product page"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides the implementation of e-commerce frontend features — product listing pages with filtering/sorting, product detail pages, persistent shopping cart, multi-step checkout flow, and payment UI integration. Use when building online stores or adding commerce features to existing applications.
+Guides the implementation of e-commerce frontend features — product listing pages with filtering/sorting, product detail pages, persistent shopping cart, multi-step checkout flow, and payment UI integration. Use when building online stores or adding commerce features to existing applications. [EXPLICIT]
 
 ## Procedure
 
@@ -68,3 +68,25 @@ Guides the implementation of e-commerce frontend features — product listing pa
 
 - `payment-integration` — Stripe/PayPal backend integration
 - `image-optimization` — product image loading performance
+
+## Usage
+
+Example invocations:
+
+- "/ecommerce-frontend" — Run the full ecommerce frontend workflow
+- "ecommerce frontend on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -1,7 +1,7 @@
 ---
 name: input-analyst
 description: "Pre-processing layer that analyzes raw user input — detecting surface errors, performing root-cause analysis (5 Whys), impact tracing (7 So-Whats), and intent gap analysis — then reformulates into a precise, actionable prompt."
-argument-hint: "<raw user input> [--passes 1,2,3,4,5] [--json]"
+argument-hint: "raw user input [--passes 1,2,3,4,5] [--json]"
 model: opus
 context: fork
 allowed-tools:
@@ -13,11 +13,11 @@ allowed-tools:
 
 # Input Analyst
 
-Transform messy human input into precise, actionable prompts. Catch what the user meant, not just what they typed.
+Transform messy human input into precise, actionable prompts. Catch what the user meant, not just what they typed. [EXPLICIT]
 
 ## When to Activate
 
-This is a pre-processing layer. It runs BEFORE other skills activate.
+This is a pre-processing layer. It runs BEFORE other skills activate. [EXPLICIT]
 
 | Input Quality | Passes to Run | Example |
 |---------------|---------------|---------|
@@ -26,7 +26,7 @@ This is a pre-processing layer. It runs BEFORE other skills activate.
 | Messy + clear intent | Passes 1, 5 | "cn u fix teh bugg in login" |
 | Messy + vague | All 5 passes | "i need somthing for the meeting tmrw about that thing" |
 
-Do NOT over-analyze simple, well-formed requests.
+Do NOT over-analyze simple, well-formed requests. [EXPLICIT]
 
 ## The Five Passes
 
@@ -36,7 +36,7 @@ Raw Input → SURFACE → 5 WHYS → 7 SO WHATS → INTENT → REFORMULATE → S
 
 ### Pass 1: Surface Analysis
 
-Detect and catalog surface-level issues.
+Detect and catalog surface-level issues. [EXPLICIT]
 
 **What to catch:**
 - Typos and misspellings (including dyslexia patterns: letter reversals, phonetic substitutions, missing vowels)
@@ -50,11 +50,11 @@ Detect and catalog surface-level issues.
 
 **Critical rule:** Preserve intent when correcting. Fix surface errors only — never change meaning.
 
-For pattern libraries and detection heuristics, read `references/analysis-patterns.md`.
+For pattern libraries and detection heuristics, read `references/analysis-patterns.md`. [EXPLICIT]
 
 ### Pass 2: Five Whys Analysis
 
-Dig beneath the surface request to find the root need.
+Dig beneath the surface request to find the root need. [EXPLICIT]
 
 **Protocol:**
 ```
@@ -66,7 +66,7 @@ Why 4: Why does that matter now? → Budget planning depends on it
 Why 5: Why is budget at risk? → Need to justify continued investment
 
 Root need: A persuasive case for continued investment despite Q4 misses,
-           formatted as a quarterly review.
+           formatted as a quarterly review. [EXPLICIT]
 ```
 
 **Rules:**
@@ -74,7 +74,7 @@ Root need: A persuasive case for continued investment despite Q4 misses,
 - Each "why" must be answerable from context or reasonable inference.
 - If a "why" requires unavailable information, note it as an open question — do not guess.
 
-For the complete protocol with examples, read `references/five-whys-guide.md`.
+For the complete protocol with examples, read `references/five-whys-guide.md`. [EXPLICIT]
 
 ### Pass 3: Seven So-Whats Analysis
 
@@ -87,11 +87,11 @@ Trace implications forward. If we solve this, what happens next?
 - Stop when implications become speculative.
 - Use the result to set quality calibration for downstream skills.
 
-For the complete protocol, read `references/seven-so-whats-guide.md`.
+For the complete protocol, read `references/seven-so-whats-guide.md`. [EXPLICIT]
 
 ### Pass 4: Intent Analysis
 
-Compare what was typed with what was meant. Identify the gap.
+Compare what was typed with what was meant. Identify the gap. [EXPLICIT]
 
 **Gap types:**
 
@@ -104,16 +104,16 @@ Compare what was typed with what was meant. Identify the gap.
 | Context | Missing references | Assumes shared knowledge not stated |
 
 **Protocol:**
-1. List explicit statements (what they literally said).
-2. List implicit signals (tone, word choice, what they didn't say).
-3. Identify gaps between explicit and implicit.
-4. Formulate the "real ask" — what they would say with perfect clarity.
+1. List explicit statements (what they literally said). [EXPLICIT]
+2. List implicit signals (tone, word choice, what they didn't say). [EXPLICIT]
+3. Identify gaps between explicit and implicit. [EXPLICIT]
+4. Formulate the "real ask" — what they would say with perfect clarity. [EXPLICIT]
 
-For detailed heuristics, read `references/intent-detection.md`.
+For detailed heuristics, read `references/intent-detection.md`. [EXPLICIT]
 
 ### Pass 5: Reformulation
 
-Synthesize all passes into a high-quality prompt.
+Synthesize all passes into a high-quality prompt. [EXPLICIT]
 
 **Reformulation targets:**
 - Clear objective (action verb + measurable outcome)
@@ -137,7 +137,7 @@ Expected output: [Deliverable format and scope]
 [input-analyst] → [task-engine] → [excellence-loop] → User
 ```
 
-The reformulated prompt from Pass 5 becomes input for task-engine. Higher quality input raises baseline confidence, reducing iterations downstream.
+The reformulated prompt from Pass 5 becomes input for task-engine. Higher quality input raises baseline confidence, reducing iterations downstream. [EXPLICIT]
 
 ## Assumptions & Limits
 

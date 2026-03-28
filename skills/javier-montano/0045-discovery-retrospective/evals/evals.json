@@ -1,38 +1,9 @@
 [
-  {
-    "prompt": "Conduct a retrospective after completing a 6-month project delivery.",
-    "assertions": [
-      "gathers feedback from all team roles",
-      "identifies what worked well and what didn't",
-      "extracts actionable lessons learned",
-      "documents recommendations for future projects"
-    ]
-  },
-  {
-    "prompt": "Retrospective for a failed project that was cancelled at 60% completion.",
-    "assertions": [
-      "creates safe space for honest reflection",
-      "identifies root causes of failure",
-      "distinguishes controllable from uncontrollable factors",
-      "extracts prevention strategies for future projects"
-    ]
-  },
-  {
-    "prompt": "Mid-project retrospective for a team that hasn't done one before.",
-    "assertions": [
-      "introduces retrospective concept and value",
-      "uses beginner-friendly format",
-      "establishes ground rules for constructive feedback",
-      "generates actionable improvement items"
-    ]
-  },
-  {
-    "prompt": "Synthesize lessons from 3 completed projects to identify patterns.",
-    "assertions": [
-      "identifies recurring themes across projects",
-      "distinguishes project-specific vs systemic issues",
-      "creates pattern-based recommendations",
-      "proposes organizational process changes"
-    ]
-  }
+  {"id": "discovery-retrospective-happy-path", "type": "happy_path", "input": "Run discovery retrospective on this project", "expected_behavior": "Skill activates and produces the expected discovery retrospective output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "discovery-retrospective-explicit-trigger", "type": "happy_path", "input": "Apply discovery retrospective analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the discovery retrospective workflow", "tags": ["trigger", "recognition"]},
+  {"id": "discovery-retrospective-with-context", "type": "happy_path", "input": "Apply discovery retrospective to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive discovery retrospective analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "discovery-retrospective-minimal-input", "type": "happy_path", "input": "Quick discovery retrospective", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "discovery-retrospective-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to discovery retrospective", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "discovery-retrospective-edge-empty-input", "type": "edge_case", "input": "Run discovery retrospective but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "discovery-retrospective-edge-conflicting", "type": "edge_case", "input": "Apply discovery retrospective but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

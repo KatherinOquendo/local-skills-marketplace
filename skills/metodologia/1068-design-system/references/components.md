@@ -258,7 +258,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 - `.card-dark`: Black background with white text (background: #000000, color: #FFFFFF)
 
 **Edge Cases:**
-- **Empty card**: Shows empty white box (use placeholder or remove)
+- **Empty card**: Shows empty white box (use template or remove)
 - **Very long content**: Overflow handled by parent container
 - **No title**: Still use semantic heading for accessibility
 - **Nested cards**: Use with caution, padding compounds
@@ -743,7 +743,7 @@ Complete, copy-paste HTML snippets for all MetodologIA design system components.
 **Edge Cases:**
 - **Long lines**: Overflow-x: auto enables horizontal scroll
 - **Unicode/special chars**: Renders correctly in monospace
-- **Empty diagram**: Shows empty dark box (use placeholder)
+- **Empty diagram**: Shows empty dark box (use template)
 - **Mobile**: Horizontal scroll required for wide diagrams
 
 **Responsive:**

@@ -6,7 +6,7 @@ description: >
   Design, evaluate, and optimize prompts for LLMs. Covers system prompts,
   few-shot patterns, chain-of-thought, structured output, guardrails,
   meta-prompting, and prompt evaluation. Produces Zettelkasten-ready
-  knowledge artifacts and branded deliverables.
+  knowledge artifacts and branded deliverables. [EXPLICIT]
   Trigger: "prompt engineering", "system prompt", "few-shot", "chain of thought", "prompt design"
 allowed-tools:
   - Read
@@ -38,7 +38,7 @@ Design, evaluate, and optimize prompts for any LLM. This skill covers
 the full lifecycle: understanding the task → selecting the right pattern
 (few-shot, CoT, system prompt, meta-prompt) → writing the prompt →
 evaluating output quality → iterating. Produces Zettelkasten-ready
-knowledge artifacts and branded deliverables (HTML, DOCX, XLSX).
+knowledge artifacts and branded deliverables (HTML, DOCX, XLSX). [EXPLICIT]
 
 ## Sub-Agents
 
@@ -122,3 +122,25 @@ knowledge artifacts and branded deliverables (HTML, DOCX, XLSX).
 - `templates/output.html` — Branded HTML prompt documentation
 - `templates/output.docx.md` — Word document spec for prompt library
 - `templates/output.xlsx.md` — Evaluation matrix spreadsheet
+
+## Usage
+
+Example invocations:
+
+- "/prompt-engineering" — Run the full prompt engineering workflow
+- "prompt engineering on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

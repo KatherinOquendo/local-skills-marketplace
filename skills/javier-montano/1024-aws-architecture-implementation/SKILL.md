@@ -5,7 +5,7 @@ description: >
   API Gateway configuration, security hardening, cost controls, and deployment automation. This skill should be used when
   the user asks to "implement AI on AWS", "set up Bedrock", "deploy SageMaker pipeline", "configure OpenSearch for RAG",
   "implement AWS AI security", "set up AWS AI monitoring", or mentions AWS AI deployment, Bedrock Knowledge Base setup,
-  SageMaker endpoint deployment, AWS GenAI implementation, or AWS AI CI/CD pipeline.
+  SageMaker endpoint deployment, AWS GenAI implementation, or AWS AI CI/CD pipeline. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -22,17 +22,17 @@ allowed-tools:
 Guiar la implementación de arquitecturas AI/GenAI en AWS — desde la configuración de servicios
 (Bedrock, SageMaker, OpenSearch Serverless) hasta deployment automation, security hardening, y
 cost controls. Produce guías de implementación paso-a-paso, templates de IaC, patrones de
-deployment, y configuración de monitoreo con servicios AWS nativos.
+deployment, y configuración de monitoreo con servicios AWS nativos. [EXPLICIT]
 
 ---
 
 ## Principio Rector
 
-1. **IaC from day one.** Toda configuración AWS se define en código (CDK, CloudFormation, Terraform). La consola se usa para exploración, no para producción. Sin IaC no hay reproducibilidad, no hay audit trail, no hay promotion entre ambientes.
+1. **IaC from day one.** Toda configuración AWS se define en código (CDK, CloudFormation, Terraform). La consola se usa para exploración, no para producción. Sin IaC no hay reproducibilidad, no hay audit trail, no hay promotion entre ambientes. [EXPLICIT]
 
-2. **Security by default, not by request.** VPC endpoints, KMS encryption, IAM least privilege, Guardrails, y WAF se implementan en la primera iteración, no como "hardening posterior". Un endpoint Bedrock sin Guardrails no debería existir en producción.
+2. **Security by default, not by request.** VPC endpoints, KMS encryption, IAM least privilege, Guardrails, y WAF se implementan en la primera iteración, no como "hardening posterior". Un endpoint Bedrock sin Guardrails no debería existir en producción. [EXPLICIT]
 
-3. **Multi-environment parity.** Dev, staging, y producción usan el mismo template IaC con parámetros distintos (instance size, throughput, model selection). Si funciona en staging debe funcionar en producción, y viceversa.
+3. **Multi-environment parity.** Dev, staging, y producción usan el mismo template IaC con parámetros distintos (instance size, throughput, model selection). Si funciona en staging debe funcionar en producción, y viceversa. [EXPLICIT]
 
 ---
 
@@ -83,7 +83,7 @@ Detección automática:
 
 ### S1: Foundation & IaC Setup
 
-Establece el foundation: estructura de IaC, networking, security baseline, y environment management.
+Establece el foundation: estructura de IaC, networking, security baseline, y environment management. [EXPLICIT]
 
 ```
 Load references:
@@ -124,7 +124,7 @@ AI-Monitoring-Stack:
 
 ### S2: Bedrock Implementation
 
-Implementa los servicios Bedrock: model access, Knowledge Bases, Agents, y Guardrails.
+Implementa los servicios Bedrock: model access, Knowledge Bases, Agents, y Guardrails. [EXPLICIT]
 
 ```
 Load references:
@@ -161,7 +161,7 @@ Load references:
 
 ### S3: SageMaker Implementation
 
-Implementa el pipeline SageMaker: training, registry, endpoints, y monitoring.
+Implementa el pipeline SageMaker: training, registry, endpoints, y monitoring. [EXPLICIT]
 
 **Training Pipeline:**
 1. Configure S3 for training data and model artifacts
@@ -194,7 +194,7 @@ Implementa el pipeline SageMaker: training, registry, endpoints, y monitoring.
 
 ### S4: Security Hardening
 
-Implementa la postura de seguridad completa para el stack AI.
+Implementa la postura de seguridad completa para el stack AI. [EXPLICIT]
 
 **Network Security:**
 - VPC endpoints for all AI services (no internet egress)
@@ -230,7 +230,7 @@ Implementa la postura de seguridad completa para el stack AI.
 
 ### S5: Deployment Automation (CI/CD)
 
-Implementa el pipeline de deployment para modelos y aplicaciones AI.
+Implementa el pipeline de deployment para modelos y aplicaciones AI. [EXPLICIT]
 
 ```
 Load references:
@@ -271,7 +271,7 @@ Load references:
 
 ### S6: Monitoring & Cost Controls
 
-Implementa observabilidad completa y controles de costo para AI en AWS.
+Implementa observabilidad completa y controles de costo para AI en AWS. [EXPLICIT]
 
 **CloudWatch Setup:**
 - Dashboard: model latency (P50/P95/P99), token usage, error rate, guardrail blocks
@@ -341,15 +341,15 @@ Implementa observabilidad completa y controles de costo para AI en AWS.
 
 ## Edge Cases
 
-1. **Región sin Bedrock**: Usar cross-region inference profile. Si compliance impide cross-region, implementar con SageMaker (self-hosted model) como alternativa completa.
+1. **Región sin Bedrock**: Usar cross-region inference profile. Si compliance impide cross-region, implementar con SageMaker (self-hosted model) como alternativa completa. [EXPLICIT]
 
-2. **Migración desde otro cloud**: Mapear servicios (Vertex AI→Bedrock/SageMaker, Azure OpenAI→Bedrock). Implementar abstraction layer si multi-cloud es requisito futuro. Priorizar data migration (S3) antes de service migration.
+2. **Migración desde otro cloud**: Mapear servicios (Vertex AI→Bedrock/SageMaker, Azure OpenAI→Bedrock). Implementar abstraction layer si multi-cloud es requisito futuro. Priorizar data migration (S3) antes de service migration. [EXPLICIT]
 
-3. **Presupuesto mínimo**: Bedrock on-demand (sin upfront), Lambda (pay-per-use), Aurora Serverless v2 con pgvector (si ya existe Aurora). Diferir OpenSearch Serverless hasta que el volumen justifique el costo. Usar batch inference para todo lo que tolere latencia.
+3. **Presupuesto mínimo**: Bedrock on-demand (sin upfront), Lambda (pay-per-use), Aurora Serverless v2 con pgvector (si ya existe Aurora). Diferir OpenSearch Serverless hasta que el volumen justifique el costo. Usar batch inference para todo lo que tolere latencia. [EXPLICIT]
 
-4. **Compliance estricto (HIPAA/PCI)**: BAA firmado antes de implementar. VPC-only (no internet). KMS CMK (no AWS-managed). CloudTrail con log file validation. Macie continuous. Implementar compliance evidence collection automatizado.
+4. **Compliance estricto (HIPAA/PCI)**: BAA firmado antes de implementar. VPC-only (no internet). KMS CMK (no AWS-managed). CloudTrail con log file validation. Macie continuous. Implementar compliance evidence collection automatizado. [EXPLICIT]
 
-5. **Equipo sin experiencia AWS**: Extender Fase 1 (Foundation) con workshop AWS. Empezar con Bedrock console (validar concepto) antes de IaC. Usar AWS Well-Architected Labs como guía práctica.
+5. **Equipo sin experiencia AWS**: Extender Fase 1 (Foundation) con workshop AWS. Empezar con Bedrock console (validar concepto) antes de IaC. Usar AWS Well-Architected Labs como guía práctica. [EXPLICIT]
 
 ## Manejo de Inputs Ambiguos
 

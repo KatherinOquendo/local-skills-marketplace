@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Implement dark mode with prefers-color-scheme media query, CSS custom properties,
-  user toggle with persistence, and proper image/shadow handling.
+  user toggle with persistence, and proper image/shadow handling. [EXPLICIT]
   Trigger: "dark mode", "dark theme", "color scheme", "theme toggle"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides dark mode implementation using CSS custom properties for theming, `prefers-color-scheme` for system preference detection, a manual toggle with localStorage persistence, and proper handling of images, shadows, and elevation in dark contexts. Use when adding theme switching to any web application.
+Guides dark mode implementation using CSS custom properties for theming, `prefers-color-scheme` for system preference detection, a manual toggle with localStorage persistence, and proper handling of images, shadows, and elevation in dark contexts. Use when adding theme switching to any web application. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides dark mode implementation using CSS custom properties for theming, `prefer
 
 - `web-components` — CSS custom properties bridge themes into Shadow DOM
 - `accessibility-testing` — contrast ratio validation in both themes
+
+## Usage
+
+Example invocations:
+
+- "/dark-mode" — Run the full dark mode workflow
+- "dark mode on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

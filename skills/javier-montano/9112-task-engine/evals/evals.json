@@ -1,81 +1,9 @@
-{
-  "skill_name": "task-engine",
-  "description": "Evaluates the DSVSR meta-cognitive reasoning engine across different complexity levels, confidence thresholds, and edge cases. Each eval targets a specific protocol stage or decision point.",
-  "evals": [
-    {
-      "id": 1,
-      "name": "full-dsvsr-complex-problem",
-      "prompt": "Should we migrate our monolithic Python Django app to microservices using Go, or refactor the monolith with better module boundaries? We have 15 developers, 2M monthly active users, and deploy twice a week.",
-      "expected_output": "Full DSVSR protocol: decomposes into 3-7 sub-problems, solves each with confidence scores, verifies across 4 dimensions, synthesizes with global confidence, and reflects on weaknesses.",
-      "files": [],
-      "expectations": [
-        "DECOMPOSE produces 3-7 sub-problems with dependency mapping",
-        "Each sub-problem has explicit confidence score with justification",
-        "VERIFY checks logic, facts, completeness, and bias for each sub-answer",
-        "Verification changes at least one confidence score (or documents why all confirmed)",
-        "SYNTHESIZE computes global confidence using weighted formula",
-        "Metadata block includes global confidence, sub-problem scores, sources, weaknesses, rigidity level",
-        "Conflict between options explicitly resolved with trade-off analysis"
-      ]
-    },
-    {
-      "id": 2,
-      "name": "fast-path-simple-question",
-      "prompt": "What is the difference between a LEFT JOIN and an INNER JOIN in SQL?",
-      "expected_output": "Fast path activated: answers directly without full DSVSR. Fewer than 2 complexity signals detected.",
-      "files": [],
-      "expectations": [
-        "Does NOT run full DSVSR protocol (single-domain, factual, low ambiguity)",
-        "Answers directly with clarity and relevant caveats",
-        "No sub-problem decomposition (unnecessary overhead for simple question)",
-        "Implicit high confidence (factual, verifiable answer)",
-        "Response is concise and direct, not wrapped in DSVSR framework"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "low-confidence-escalation",
-      "prompt": "Will quantum computing make current encryption obsolete within 5 years, and should we start preparing our banking infrastructure now?",
-      "expected_output": "DSVSR with multiple sub-problems below 0.70 confidence. Flags speculative sub-problems, escalates uncertainty, and presents options rather than a single recommendation.",
-      "files": [],
-      "expectations": [
-        "At least one sub-problem flagged below 0.70 confidence (quantum timeline is speculative)",
-        "Never inflates confidence on inherently uncertain predictions",
-        "REFLECT identifies weakest sub-problem and diagnoses gap type (data gap, unknowable)",
-        "Fundamentally unknowable aspects stated clearly (exact quantum timeline)",
-        "Rigidity level set to 'exploratory' (multiple valid paths)",
-        "Presents options rather than a single recommendation given low confidence"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "circular-dependency-edge-case",
-      "prompt": "Design a pricing strategy for our SaaS product where the price depends on the number of users, but the number of users depends on the price. Also factor in competitor pricing and our cost structure.",
-      "expected_output": "DECOMPOSE detects circular dependency between price and user count. Merges them into a single sub-problem or introduces an assumption to break the cycle.",
-      "files": [],
-      "expectations": [
-        "Detects circular dependency between pricing and user count sub-problems",
-        "Resolves cycle by merging into single sub-problem or introducing breaking assumption",
-        "Breaking assumption is explicitly stated and flagged as a key sensitivity",
-        "Other sub-problems (competitor analysis, cost structure) handled independently",
-        "Global confidence accounts for the introduced assumption",
-        "Metadata documents the circular dependency resolution approach"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "custom-confidence-target",
-      "prompt": "Analyze whether our Node.js API can handle 10x traffic growth. Target confidence: 0.90. We currently serve 500 RPS with p99 latency of 200ms.",
-      "expected_output": "DSVSR with custom 0.90 confidence target. REFLECT loop continues until 0.90 reached or identifies what would be needed to reach it.",
-      "files": [],
-      "expectations": [
-        "Custom confidence target of 0.90 honored (not default 0.95)",
-        "Sub-problems include capacity analysis, bottleneck identification, scaling strategy",
-        "Concrete data points used: 500 RPS baseline, 5000 RPS target, 200ms p99 current",
-        "If confidence < 0.90, REFLECT identifies what additional info would close the gap",
-        "Maximum 3 REFLECT retries enforced to prevent infinite loops",
-        "Would-increase-to field populated for sub-problems below target"
-      ]
-    }
-  ]
-}
+[
+  {"id": "task-engine-happy-path", "type": "happy_path", "input": "Run task engine on this project", "expected_behavior": "Skill activates and produces the expected task engine output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "task-engine-explicit-trigger", "type": "happy_path", "input": "Apply task engine analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the task engine workflow", "tags": ["trigger", "recognition"]},
+  {"id": "task-engine-with-context", "type": "happy_path", "input": "Apply task engine to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive task engine analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "task-engine-minimal-input", "type": "happy_path", "input": "Quick task engine", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "task-engine-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to task engine", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "task-engine-edge-empty-input", "type": "edge_case", "input": "Run task engine but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "task-engine-edge-conflicting", "type": "edge_case", "input": "Apply task engine but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

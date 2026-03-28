@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Maintain changelog.md with semantic entries for decisions, completions, amendments,
-  insights, blockers, and discoveries. Cross-session continuity log.
+  insights, blockers, and discoveries. Cross-session continuity log. [EXPLICIT]
   Trigger: "changelog", "log decision", "record change", "what happened", "session log"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Maintains `changelog.md` as the cross-session continuity log. Records significant decisions, completions, amendments, insights, blockers, and discoveries with date, type, description, rationale, and constitutional principle references. Read during session protocol (Step 2: State Recovery) to understand what happened in recent sessions.
+Maintains `changelog.md` as the cross-session continuity log. Records significant decisions, completions, amendments, insights, blockers, and discoveries with date, type, description, rationale, and constitutional principle references. Read during session protocol (Step 2: State Recovery) to understand what happened in recent sessions. [EXPLICIT]
 
 ## Procedure
 
@@ -67,3 +67,25 @@ Maintains `changelog.md` as the cross-session continuity log. Records significan
 - `session-protocol` — Reads changelog during state recovery
 - `tasklog-management` — Complementary log for task tracking
 - `continuous-learning` — Insights logged here and in insights/
+
+## Usage
+
+Example invocations:
+
+- "/changelog-management" — Run the full changelog management workflow
+- "changelog management on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

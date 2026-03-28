@@ -1,0 +1,9 @@
+[
+  {"id": "spa-routing-happy-path", "type": "happy_path", "input": "Run spa routing on this project", "expected_behavior": "Skill activates and produces the expected spa routing output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "spa-routing-explicit-trigger", "type": "happy_path", "input": "Apply spa routing analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the spa routing workflow", "tags": ["trigger", "recognition"]},
+  {"id": "spa-routing-with-context", "type": "happy_path", "input": "Apply spa routing to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive spa routing analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "spa-routing-minimal-input", "type": "happy_path", "input": "Quick spa routing", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "spa-routing-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to spa routing", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "spa-routing-edge-empty-input", "type": "edge_case", "input": "Run spa routing but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "spa-routing-edge-conflicting", "type": "edge_case", "input": "Apply spa routing but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

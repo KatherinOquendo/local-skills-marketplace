@@ -1,0 +1,9 @@
+[
+  {"id": "task-automation-happy-path", "type": "happy_path", "input": "Run task automation on this project", "expected_behavior": "Skill activates and produces the expected task automation output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "task-automation-explicit-trigger", "type": "happy_path", "input": "Apply task automation analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the task automation workflow", "tags": ["trigger", "recognition"]},
+  {"id": "task-automation-with-context", "type": "happy_path", "input": "Apply task automation to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive task automation analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "task-automation-minimal-input", "type": "happy_path", "input": "Quick task automation", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "task-automation-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to task automation", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "task-automation-edge-empty-input", "type": "edge_case", "input": "Run task automation but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "task-automation-edge-conflicting", "type": "edge_case", "input": "Apply task automation but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

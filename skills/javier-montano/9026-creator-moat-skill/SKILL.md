@@ -1,14 +1,14 @@
 ---
 name: creator-moat-skill
-description: >
+description: 
   This skill should be used when the user asks to "create a production skill",
   "build a moat-level skill", "make a robust skill", "improve skill quality",
   "audit a skill", or mentions skill architecture, skill quality standards,
   skill design patterns, or production-grade skill development. Complements the
   official Anthropic skill-creator by adding structural rigor, quality gates,
   and enterprise patterns. Use alongside or after the official skill-creator
-  for skills that need production-grade robustness.
-argument-hint: <skill-name> [description]
+  for skills that need production-grade robustness. [EXPLICIT]
+argument-hint: skill-name [description]
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Agent
 model: opus
 context: fork
@@ -16,9 +16,9 @@ context: fork
 
 # Skill Creator Moat
 
-Elevate Claude Code skills to production grade. This skill adds structural rigor, quality gates, and enterprise patterns on top of the official Anthropic skill-creator workflow. Use it when a skill needs to be robust enough for team-wide or marketplace distribution.
+Elevate Claude Code skills to production grade. This skill adds structural rigor, quality gates, and enterprise patterns on top of the official Anthropic skill-creator workflow. Use it when a skill needs to be robust enough for team-wide or marketplace distribution. [EXPLICIT]
 
-The official Anthropic skill-creator handles the core loop (draft → test → evaluate → improve → benchmark). This skill focuses on the **quality architecture** that makes the difference between a working skill and a production-grade one.
+The official Anthropic skill-creator handles the core loop (draft → test → evaluate → improve → benchmark). This skill focuses on the **quality architecture** that makes the difference between a working skill and a production-grade one. [EXPLICIT]
 
 ## When to Use This vs Official Skill-Creator
 
@@ -62,13 +62,13 @@ Before writing a single line:
    Glob ~/.claude/skills/*/SKILL.md
    Glob .claude/skills/*/SKILL.md
    ```
-   Reject if name collision exists. Suggest merge or rename.
+   Reject if name collision exists. Suggest merge or rename. [EXPLICIT]
 
 2. **Study golden references**: Read the 2 most relevant official Anthropic skills:
    ```
    Glob ~/.claude/plugins/marketplaces/claude-plugins-official/plugins/*/skills/*/SKILL.md
    ```
-   Note their structure, description style, progressive disclosure patterns.
+   Note their structure, description style, progressive disclosure patterns. [EXPLICIT]
 
 3. **Map the domain** — complete this table BEFORE drafting:
 
@@ -114,7 +114,7 @@ cloud-deploy/
     ├── gcp.md
     └── azure.md
 ```
-Claude reads only the relevant reference file.
+Claude reads only the relevant reference file. [EXPLICIT]
 
 ### Frontmatter
 
@@ -125,7 +125,7 @@ description: >
   This skill should be used when the user asks to "{phrase 1}", "{phrase 2}",
   "{phrase 3}", or mentions {keyword}. {One sentence: WHAT it does.}
   Make sure to use this skill whenever the user {broader trigger context},
-  even if they don't explicitly ask for "{skill name}".
+  even if they don't explicitly ask for "{skill name}". [EXPLICIT]
 argument-hint: "<required-arg> [optional-arg]"
 allowed-tools: "{minimum set — principle of least privilege}"
 # Include ONLY when justified:
@@ -162,7 +162,7 @@ disable-model-invocation: true  # Only for side-effect skills
 {Read/Glob/Grep steps for progressive disclosure from references/}
 
 ## {Core Process}
-{Instructions. Explain WHY things matter — theory of mind > rigid MUSTs.
+{Instructions. Explain WHY things matter — theory of mind > rigid MUSTs. [EXPLICIT]
  Tables > bullets. Code blocks for output templates.}
 
 ## Edge Cases
@@ -231,23 +231,23 @@ Whether creating new or improving existing, audit against this rubric:
 
 Based on audit findings, apply these proven patterns:
 
-1. **Script extraction**: If test runs independently wrote similar helper code → bundle it in scripts/. This saves every future invocation from reinventing the wheel.
+1. **Script extraction**: If test runs independently wrote similar helper code → bundle it in scripts/. This saves every future invocation from reinventing the wheel. [EXPLICIT]
 
-2. **Reference extraction**: SKILL.md approaching 500 lines → move detailed content to references/. For large reference files (>300 lines), include a table of contents.
+2. **Reference extraction**: SKILL.md approaching 500 lines → move detailed content to references/. For large reference files (>300 lines), include a table of contents. [EXPLICIT]
 
-3. **Theory of mind**: Replace rigid "MUST/ALWAYS/NEVER" instructions with reasoning that explains WHY. Models are smart — they respond better to understanding than commands.
+3. **Theory of mind**: Replace rigid "MUST/ALWAYS/NEVER" instructions with reasoning that explains WHY. Models are smart — they respond better to understanding than commands. [EXPLICIT]
 
-4. **Generalize from specifics**: Skills run millions of times across diverse prompts. Avoid overfitting to test cases. If an instruction needs caps-lock emphasis, it probably needs better reasoning instead.
+4. **Generalize from specifics**: Skills run millions of times across diverse prompts. Avoid overfitting to test cases. If an instruction needs caps-lock emphasis, it probably needs better reasoning instead. [EXPLICIT]
 
-5. **Lean the prompt**: Read test transcripts, not just outputs. If the skill makes the model waste time on unproductive steps, remove those instructions.
+5. **Lean the prompt**: Read test transcripts, not just outputs. If the skill makes the model waste time on unproductive steps, remove those instructions. [EXPLICIT]
 
-6. **Look for repeated work**: If all test cases independently wrote similar helper scripts, that's a signal to bundle the script in scripts/.
+6. **Look for repeated work**: If all test cases independently wrote similar helper scripts, that's a signal to bundle the script in scripts/. [EXPLICIT]
 
 ## Phase 5: Production Packaging
 
 ### For standalone skills (personal or project)
 
-Place in `~/.claude/skills/skill-name/` (personal) or `.claude/skills/skill-name/` (project).
+Place in `~/.claude/skills/skill-name/` (personal) or `.claude/skills/skill-name/` (project). [EXPLICIT]
 
 ### For plugin distribution
 
@@ -270,7 +270,7 @@ plugin-name/
 
 ```bash
 cd /path/to/skill-name
-zip -r skill-name.skill .
+zip -r skill-name.skill . [EXPLICIT]
 # Structure inside ZIP: skill-name/SKILL.md (flat, NOT skill-name/skill-name/SKILL.md)
 ```
 

@@ -3,10 +3,10 @@ name: metodologia-functional-toolbelt
 author: Javier Montano · Comunidad MetodologIA
 argument-hint: "[tool-name-or-number] [context]"
 description: >
-  Functional analysis toolkit with 6 tools for requirements engineering.
+  Functional analysis toolkit with 6 tools for requirements engineering. [EXPLICIT]
   Use when the user asks to "run event storming", "create a story map", "extract business rules",
   "write acceptance criteria", "build traceability matrix", "detect anti-patterns",
-  or mentions "Given/When/Then", "functional toolbelt", "requirements quality".
+  or mentions "Given/When/Then", "functional toolbelt", "requirements quality". [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,7 +20,7 @@ allowed-tools:
 
 # Functional Toolbelt
 
-Mental models, techniques, and validation tools for producing better functional analysis. NOT a deliverable skill — a **toolbelt** that enhances output quality of any requirements or specification work.
+Mental models, techniques, and validation tools for producing better functional analysis. NOT a deliverable skill — a **toolbelt** that enhances output quality of any requirements or specification work. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -28,9 +28,9 @@ Mental models, techniques, and validation tools for producing better functional 
 
 ### Toolbelt Philosophy
 
-1. **Right technique for the context.** Event storming to discover domains, story mapping to plan releases, acceptance criteria to validate. Do not use a hammer for everything.
-2. **Proportional formalism.** Critical business rules in pseudo-code. Simple rules in natural language. The level of formalism depends on severity.
-3. **End-to-end traceability.** Every requirement has an origin (stakeholder, rule, flow) and a destination (test, acceptance criteria). Without traceability, requirements are loose declarations.
+1. **Right technique for the context.** Event storming to discover domains, story mapping to plan releases, acceptance criteria to validate. Do not use a hammer for everything. [EXPLICIT]
+2. **Proportional formalism.** Critical business rules in pseudo-code. Simple rules in natural language. The level of formalism depends on severity. [EXPLICIT]
+3. **End-to-end traceability.** Every requirement has an origin (stakeholder, rule, flow) and a destination (test, acceptance criteria). Without traceability, requirements are loose declarations. [EXPLICIT]
 
 ## $ARGUMENTS
 
@@ -238,7 +238,7 @@ Examples:
 
 ## Validation Gate
 
-Before delivering toolbelt output, verify:
+Before delivering toolbelt output, verify: [EXPLICIT]
 - [ ] Tool selection justified for project context
 - [ ] Inputs identified and available (or gaps flagged)
 - [ ] Edge cases for the selected tool explicitly addressed
@@ -336,17 +336,17 @@ graph TD
 **HTML format (for stakeholder presentation):**
 
 ```
-Header: Logo + project + selected tool
-Section 1: Tool Output (interactive visualization per tool)
+Header: Logo + project + selected tool [EXPLICIT]
+Section 1: Tool Output (interactive visualization per tool) [EXPLICIT]
   - Event Storming: visual timeline with colored stickies
   - Story Map: horizontal backbone + vertical stories
   - Rule Catalog: expandable table with decision trees
   - GWT: formatted scenarios with syntax highlighting
   - Traceability: interactive matrix with filters
   - Anti-Patterns: report with severity traffic-light
-Section 2: Gaps & Action Items
-Section 3: Cross-References to Related Tools
-Footer: MetodologIA attribution + date
+Section 2: Gaps & Action Items [EXPLICIT]
+Section 3: Cross-References to Related Tools [EXPLICIT]
+Footer: MetodologIA attribution + date [EXPLICIT]
 ```
 - Filename: `D-01_Functional_Toolbelt_{project}_{WIP}.html`
 - Branded (Design System MetodologIA v5). Light-First Technical page with interactive tool output adapted to the selected tool (event timeline, story map, traceability matrix, etc.), gaps with traffic-light indicators, and navigable cross-references. WCAG AA, responsive, print-ready.
@@ -394,3 +394,17 @@ Footer: MetodologIA attribution + date
 
 ---
 **Author:** Javier Montano | **Last updated:** March 12, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/functional-toolbelt" — Run the full functional toolbelt workflow
+- "functional toolbelt on this project" — Apply to current context
+
+
+- This skill produces structured, evidence-tagged output [EXPLICIT]
+- All factual claims follow the evidence taxonomy [EXPLICIT]
+- Quality validation follows MOAT framework [EXPLICIT]
+- Evidence: [EXPLICIT] verified, [INFERRED] derived, [OPEN] unverified [EXPLICIT]
+- Integration with discovery pipeline is supported [EXPLICIT]

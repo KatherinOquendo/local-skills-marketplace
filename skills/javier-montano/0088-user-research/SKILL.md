@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Designs and executes user research activities including persona creation,
   empathy maps, user journey mapping, and interview guides. Transforms
-  qualitative insights into actionable design decisions.
+  qualitative insights into actionable design decisions. [EXPLICIT]
   Trigger: "persona", "empathy map", "user journey", "user research", "interview"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Creates personas, empathy maps, and user journey maps from qualitative and quantitative research to ground product decisions in real user needs. Use this skill when starting a new product, redesigning an experience, or when the team is making assumptions about user behavior without evidence.
+Creates personas, empathy maps, and user journey maps from qualitative and quantitative research to ground product decisions in real user needs. Use this skill when starting a new product, redesigning an experience, or when the team is making assumptions about user behavior without evidence. [EXPLICIT]
 
 ## Procedure
 
@@ -67,3 +67,25 @@ Creates personas, empathy maps, and user journey maps from qualitative and quant
 - `requirements-engineering` — translates user needs into specifications
 - `accessibility-design` — ensures inclusive design for all users
 - `workshop-design` — facilitates collaborative research synthesis
+
+## Usage
+
+Example invocations:
+
+- "/user-research" — Run the full user research workflow
+- "user research on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

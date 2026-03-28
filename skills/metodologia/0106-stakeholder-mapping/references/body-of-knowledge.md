@@ -11,7 +11,7 @@ updated: 2026-03-13
 
 ## 1. Fundamentos Teóricos
 
-El mapeo de stakeholders tiene raíces en la teoría de sistemas de Freeman (1984), quien amplió el concepto del "stakeholder" más allá de los accionistas para incluir a todo aquel que afecta o es afectado por las decisiones de una organización. Esta perspectiva pluralista reemplazó la visión shareholder-céntrica del management clásico.
+El mapeo de stakeholders tiene raíces en la teoría de sistemas de Freeman (1984), quien amplió el concepto del "stakeholder" más allá de los accionistas para incluir a Todo aquel que afecta o es afectado por las decisiones de una organización. Esta perspectiva pluralista reemplazó la visión shareholder-céntrica del management clásico.
 
 La gestión de stakeholders en proyectos tecnológicos y de transformación se asienta sobre tres pilares teóricos complementarios: (1) **teoría de agencia** (Jensen & Meckling, 1976), que explica cómo los intereses divergentes entre principal y agente generan fricción y resistencia; (2) **teoría de la dependencia de recursos** (Pfeffer & Salancik, 1978), que revela cómo el poder organizacional emana del control de recursos críticos; y (3) **teoría de redes sociales** (Burt, 2004), que demuestra cómo los "brokers" en posiciones de intermediación ejercen influencia desproporcionada respecto a su autoridad formal.
 
@@ -51,7 +51,7 @@ Proceso secuencial para liderar cambios organizacionales a gran escala. Los prim
 
 ## 4. Metodologías de Identificación
 
-**Método Snowball (Bola de Nieve):** Inicia con stakeholders conocidos y pregunta a cada uno "¿quién más debería estar involucrado?" Itera hasta saturación. Efectivo para descubrir redes informales; riesgo de sesgo de homofilia (las personas señalan a sus propios allegados).
+**MéTodo Snowball (Bola de Nieve):** Inicia con stakeholders conocidos y pregunta a cada uno "¿quién más debería estar involucrado?" Itera hasta saturación. Efectivo para descubrir redes informales; riesgo de sesgo de homofilia (las personas señalan a sus propios allegados).
 
 **Arqueología de Reuniones:** Revisión de listas de asistentes de iniciativas similares pasadas. Revela quiénes participaron, quiénes fueron ignorados, y quiénes vetaron sin aparecer formalmente. Fuente de datos subestimada.
 
@@ -78,7 +78,7 @@ Proceso secuencial para liderar cambios organizacionales a gran escala. Los prim
 
 El poder en organizaciones tiene múltiples fuentes (French & Raven, 1959): coercitivo, de recompensa, legítimo (formal), experto y referente (carismático). El mapeo sofisticado identifica el **tipo** de poder que ejerce cada stakeholder, no solo su nivel.
 
-**Coalición Mínima Ganadora:** Principio de teoría de juegos aplicado a organizaciones. Para que una iniciativa avance, no se necesita apoyo universal — solo el conjunto mínimo de actores con poder suficiente para aprobar, implementar y sostener el cambio. Identificar esta coalición y activarla estratégicamente es más eficiente que intentar convencer a todos.
+**Coalición Mínima Ganadora:** Principio de teoría de juegos aplicado a organizaciones. Para que una iniciativa avance, no se necesita apoyo universal — solo el conjunto mínimo de actores con poder suficiente para aprobar, implementar y sostener el cambio. Identificar esta coalición y activarla estratégicamente es más eficiente que intentar convencer a TBDs.
 
 **Brokerage y Agujeros Estructurales (Burt, 2004):** Los stakeholders que conectan grupos separados (brokers) tienen influencia desproporcionada. Su apoyo abre canales a múltiples grupos; su oposición puede aislar el proyecto de segmentos enteros de la organización.
 

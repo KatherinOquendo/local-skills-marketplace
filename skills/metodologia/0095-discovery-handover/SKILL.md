@@ -1,12 +1,12 @@
 ---
 name: metodologia-discovery-handover
-description: >
+description: 
   Discovery-to-execution handover — operational transition package, commercial activation,
   governance transfer, and Phase 1 kickoff plan. Use when the user asks to "create handover",
   "transition to operations", "prepare delivery handoff", "activate commercial proposal",
   "hand off discovery", "prepare operations package", "close discovery engagement",
-  or mentions handover, transition, delivery kickoff, proposal preparation, or discovery close-out.
-argument-hint: "<project_name>"
+  or mentions handover, transition, delivery kickoff, proposal preparation, or discovery close-out. [EXPLICIT]
+argument-hint: "project_name"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
@@ -21,7 +21,7 @@ allowed-tools:
 
 # Discovery Handover — Phase 6: Transition to Execution
 
-Generates the operational transition package that translates discovery deliverables (Phases 0-5) into execution-ready artifacts for Operations and/or Commercial teams.
+Generates the operational transition package that translates discovery deliverables (Phases 0-5) into execution-ready artifacts for Operations and/or Commercial teams. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -29,13 +29,13 @@ Generates the operational transition package that translates discovery deliverab
 
 ### Transition Philosophy
 
-1. **Continuity > documentation.** The handover is not "delivering documents" — it is transferring understanding. Roles change; knowledge is preserved.
-2. **Assumptions are debt.** Every unvalidated assumption from discovery is inherited as execution risk. The handover makes them explicit with owners and deadlines.
-3. **The first sprint is the most important.** Sprint 0 validates whether the plan survives contact with reality. The handover designs Sprint 0, not just mentions it.
+1. **Continuity > documentation.** The handover is not "delivering documents" — it is transferring understanding. Roles change; knowledge is preserved. [EXPLICIT]
+2. **Assumptions are debt.** Every unvalidated assumption from discovery is inherited as execution risk. The handover makes them explicit with owners and deadlines. [EXPLICIT]
+3. **The first sprint is the most important.** Sprint 0 validates whether the plan survives contact with reality. The handover designs Sprint 0, not just mentions it. [EXPLICIT]
 
 ## Inputs (Consumed from Previous Phases)
 
-The handover REQUIRES Gate 3 to be approved. Before generating, validate that the following exist:
+The handover REQUIRES Gate 3 to be approved. Before generating, validate that the following exist: [EXPLICIT]
 
 | Source | Required Deliverable | Expected File |
 |--------|---------------------|------------------|
@@ -47,20 +47,20 @@ The handover REQUIRES Gate 3 to be approved. Before generating, validate that th
 | Phase 5a | Functional specification | `07_Especificacion_Funcional.html` |
 | Phase 5b | Executive pitch + financial | `08_Pitch_Ejecutivo.html` |
 
-If any deliverable is missing, STOP and list what is missing before proceeding.
+If any deliverable is missing, STOP and list what is missing before proceeding. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto for deliverable compilation and 90-day plan, HITL for pricing validation and owner assignment.
-  - **desatendido**: Zero interruptions. Full handover auto-generated. Owners marked as {Assign}.
-  - **supervisado**: Autonomous with checkpoint at commercial package and governance.
-  - **paso-a-paso**: Confirms each handover section and each owner assignment.
+  - **piloto-auto**: Auto for deliverable compilation and 90-day plan, HITL for pricing validation and owner assignment. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Full handover auto-generated. Owners marked as {Assign}. [EXPLICIT]
+  - **supervisado**: Autonomous with checkpoint at commercial package and governance. [EXPLICIT]
+  - **paso-a-paso**: Confirms each handover section and each owner assignment. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 summary + S2 commercial + S6 tracker) | `tecnica` (full 8 sections, default)
 
 ## Handover Recipients
 
-The skill must ask the user which is the primary recipient:
+The skill must ask the user which is the primary recipient: [EXPLICIT]
 
 | Recipient | Package Focus |
 |----------|-------------------|
@@ -70,7 +70,7 @@ The skill must ask the user which is the primary recipient:
 
 ## S1: Executive Transition Summary
 
-Synthesize in 1 page maximum:
+Synthesize in 1 page maximum: [EXPLICIT]
 - **Discovery status**: Phases completed, gates approved, closing date
 - **Approved scenario**: Name + final score of the selected scenario (from Phase 3)
 - **Approved investment**: Budget range + timeline (from Phase 4/5b)
@@ -79,7 +79,7 @@ Synthesize in 1 page maximum:
 
 ## S2: Commercial Activation Package
 
-Derive from `08_Pitch_Ejecutivo.html`:
+Derive from `08_Pitch_Ejecutivo.html`: [EXPLICIT]
 
 ### 2.1 Proposal Narrative
 - **Client context**: Quantified pain points (from Problem Statement)
@@ -121,7 +121,7 @@ Derive from `08_Pitch_Ejecutivo.html`:
 
 ## S3: Operational Readiness Checklist
 
-Map the 9+ prerequisites from the roadmap (Phase 4) to operational tasks:
+Map the 9+ prerequisites from the roadmap (Phase 4) to operational tasks: [EXPLICIT]
 
 ### 3.1 Team
 | Role | Quantity | Status | Hiring Owner | Deadline |
@@ -149,7 +149,7 @@ Map the 9+ prerequisites from the roadmap (Phase 4) to operational tasks:
 
 ## S4: Kickoff Plan — First 90 Days
 
-Derive from Phase 1 (Foundation) of `06_Solution_Roadmap.html`:
+Derive from Phase 1 (Foundation) of `06_Solution_Roadmap.html`: [EXPLICIT]
 
 ### 4.1 Sprint 0 (Weeks 1-2): Setup
 | Day | Activity | Responsible | Output |
@@ -208,15 +208,15 @@ Derive from Phase 1 (Foundation) of `06_Solution_Roadmap.html`:
 
 ### 5.3 Escalation Path
 ```
-Level 1: Dev Team → Tech Lead (resolution < 4h)
-Level 2: Tech Lead → PM / PO (resolution < 24h)
-Level 3: PM → Steering Committee (resolution < 1 week)
-Level 4: Steering → Executive Sponsor (scope/budget/timeline decisions)
+Level 1: Dev Team → Tech Lead (resolution < 4h) [EXPLICIT]
+Level 2: Tech Lead → PM / PO (resolution < 24h) [EXPLICIT]
+Level 3: PM → Steering Committee (resolution < 1 week) [EXPLICIT]
+Level 4: Steering → Executive Sponsor (scope/budget/timeline decisions) [EXPLICIT]
 ```
 
 ## S6: Assumptions & Risks Validation Tracker
 
-Operationalize the pivot points from Phase 4:
+Operationalize the pivot points from Phase 4: [EXPLICIT]
 
 ### 6.1 Critical Assumptions (from Phase 4 Estimation Pivots)
 | # | Assumption | Proposed Validation | Deadline | Owner | Status |
@@ -243,7 +243,7 @@ Operationalize the pivot points from Phase 4:
 
 ## S7: Stakeholder Transition Matrix
 
-Transform the Phase 0 stakeholder map into execution roles:
+Transform the Phase 0 stakeholder map into execution roles: [EXPLICIT]
 
 | Stakeholder | Discovery Role (Phase 0) | Execution Role | Engagement Shift | Communication |
 |-------------|------------------------|---------------|-----------------|-------------|
@@ -258,7 +258,7 @@ Transform the Phase 0 stakeholder map into execution roles:
 `09_Handover_Operaciones_{project}.md` (or `.html` if `{FORMATO}=html|dual`)
 
 ### Document Structure
-Produce a document with the 8 previous sections, using the brand design system (READ `references/handover-templates.md` for the HTML structure when `{FORMATO}=html|dual`).
+Produce a document with the 8 previous sections, using the brand design system (READ `references/handover-templates.md` for the HTML structure when `{FORMATO}=html|dual`). [EXPLICIT]
 
 ## Validation Gate
 
@@ -401,7 +401,7 @@ graph TD
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 
@@ -414,3 +414,11 @@ Default output is Markdown with embedded Mermaid diagrams. HTML generation requi
 
 ---
 **Author:** Javier Montano | **Last updated:** March 12, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/discovery-handover" — Run the full discovery handover workflow
+- "discovery handover on this project" — Apply to current context
+

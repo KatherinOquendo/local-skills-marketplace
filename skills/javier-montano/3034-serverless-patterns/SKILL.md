@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Apply serverless architecture patterns — cold start mitigation, connection
-  pooling, idempotency, fan-out/fan-in, and cost optimization.
+  pooling, idempotency, fan-out/fan-in, and cost optimization. [EXPLICIT]
   Trigger: "serverless", "cold start", "idempotency", "connection pooling"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides serverless architecture patterns for Cloud Functions and similar platforms — cold start optimization, database connection management, idempotent function design, fan-out/fan-in patterns, and cost optimization strategies. Use when designing or optimizing serverless architectures.
+Guides serverless architecture patterns for Cloud Functions and similar platforms — cold start optimization, database connection management, idempotent function design, fan-out/fan-in patterns, and cost optimization strategies. Use when designing or optimizing serverless architectures. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides serverless architecture patterns for Cloud Functions and similar platform
 
 - `cloud-functions` — Cloud Functions are the primary serverless platform
 - `scheduled-functions` — scheduled serverless execution patterns
+
+## Usage
+
+Example invocations:
+
+- "/serverless-patterns" — Run the full serverless patterns workflow
+- "serverless patterns on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

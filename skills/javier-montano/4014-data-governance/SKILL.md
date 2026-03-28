@@ -1,15 +1,15 @@
 ---
 name: sofka-data-governance
-argument-hint: "<project-or-system-name>"
-description: >
+argument-hint: "project-or-system-name"
+description: 
   This skill should be used when the user asks to "build a data catalog",
   "define data ownership", "classify sensitive data", "design retention policies",
-  or mentions GDPR, CCPA, data stewardship, PII, or federated governance.
+  or mentions GDPR, CCPA, data stewardship, PII, or federated governance. [EXPLICIT]
   It produces governance frameworks covering catalog design, ownership models,
-  classification taxonomies, retention policies, privacy compliance, and data mesh governance.
+  classification taxonomies, retention policies, privacy compliance, and data mesh governance. [EXPLICIT]
   Use this skill whenever the user needs data governance strategy,
-  even if they don't explicitly ask for "data-governance".
-argument-hint: "<project-or-system-name>"
+  even if they don't explicitly ask for "data-governance". [EXPLICIT]
+argument-hint: "project-or-system-name"
 model: opus
 context: fork
 allowed-tools:
@@ -23,7 +23,7 @@ allowed-tools:
 
 # Data Governance: Catalog, Ownership, Classification & Compliance
 
-Data governance defines how data assets are discovered, owned, classified, retained, and protected across an organization. This skill produces governance frameworks that enable trust in data, regulatory compliance, and scalable self-serve data access.
+Data governance defines how data assets are discovered, owned, classified, retained, and protected across an organization. This skill produces governance frameworks that enable trust in data, regulatory compliance, and scalable self-serve data access. [EXPLICIT]
 
 ## Principio Rector
 
@@ -31,14 +31,14 @@ Data governance defines how data assets are discovered, owned, classified, retai
 
 ## Inputs
 
-The user provides an organization or data domain as `$ARGUMENTS`. Parse `$1` as the **organization/domain name** used throughout all output artifacts.
+The user provides an organization or data domain as `$ARGUMENTS`. Parse `$1` as the **organization/domain name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Auto para inventario y clasificación, HITL para ownership assignments y privacy decisions.
-  - **desatendido**: Cero interrupciones. Catálogo, clasificación y políticas generados automáticamente. Supuestos documentados.
-  - **supervisado**: Autónomo con checkpoint en classification taxonomy y retention policies.
-  - **paso-a-paso**: Confirma cada asset, clasificación, owner y política de retención.
+  - **piloto-auto**: Auto para inventario y clasificación, HITL para ownership assignments y privacy decisions. [EXPLICIT]
+  - **desatendido**: Cero interrupciones. Catálogo, clasificación y políticas generados automáticamente. Supuestos documentados. [EXPLICIT]
+  - **supervisado**: Autónomo con checkpoint en classification taxonomy y retention policies. [EXPLICIT]
+  - **paso-a-paso**: Confirma cada asset, clasificación, owner y política de retención. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 catalog + S3 classification + S5 privacy compliance) | `técnica` (full 6 sections, default)
 
@@ -48,7 +48,7 @@ Before generating governance artifacts, detect the data landscape:
 !find . -name "*.sql" -o -name "*.py" -o -name "*.yaml" -o -name "*.json" -o -name "schema*" | head -30
 ```
 
-Use detected schemas, pipelines, and data sources to tailor catalog structure, classification rules, and ownership recommendations.
+Use detected schemas, pipelines, and data sources to tailor catalog structure, classification rules, and ownership recommendations. [EXPLICIT]
 
 If reference materials exist, load them:
 
@@ -60,7 +60,7 @@ Read ${CLAUDE_SKILL_DIR}/references/governance-frameworks.md
 
 ## Framework Comparison
 
-Select or combine based on organizational context. These are complementary, not mutually exclusive.
+Select or combine based on organizational context. These are complementary, not mutually exclusive. [EXPLICIT]
 
 | Criterion | DAMA DMBOK 3.0 | DCAM (EDM Council) | ISO 38505 | COBIT |
 |---|---|---|---|---|
@@ -77,7 +77,7 @@ Select or combine based on organizational context. These are complementary, not 
 
 ## Governance Maturity Model
 
-Assess current state before prescribing solutions. 5-level model aligned with DAMA DMBOK and CMMI.
+Assess current state before prescribing solutions. 5-level model aligned with DAMA DMBOK and CMMI. [EXPLICIT]
 
 | Level | Name | Characteristics | Governance Style | Acceptance Criteria |
 |---|---|---|---|---|
@@ -113,7 +113,7 @@ Assess current state before prescribing solutions. 5-level model aligned with DA
 
 ### S1: Data Catalog & Discovery
 
-Maps data assets across the organization.
+Maps data assets across the organization. [EXPLICIT]
 
 **Catalog platform selection criteria:**
 
@@ -139,7 +139,7 @@ Maps data assets across the organization.
 
 ### S2: Ownership & Stewardship Model
 
-Defines who is accountable for data assets and who maintains them.
+Defines who is accountable for data assets and who maintains them. [EXPLICIT]
 
 **Includes:**
 - Domain ownership model: each business domain owns its data products
@@ -156,7 +156,7 @@ Defines who is accountable for data assets and who maintains them.
 
 ### S3: Classification & Sensitivity
 
-Assigns sensitivity tiers enabling proportional security and handling.
+Assigns sensitivity tiers enabling proportional security and handling. [EXPLICIT]
 
 **Includes:**
 - Taxonomy: Public, Internal, Confidential, Restricted, Highly Restricted
@@ -173,7 +173,7 @@ Assigns sensitivity tiers enabling proportional security and handling.
 
 ### S4: Retention & Lifecycle
 
-Governs how long data is kept, when archived, when purged.
+Governs how long data is kept, when archived, when purged. [EXPLICIT]
 
 **Includes:**
 - Retention policy matrix: data type x regulation x business need = retention period
@@ -190,7 +190,7 @@ Governs how long data is kept, when archived, when purged.
 
 ### S5: Privacy & Compliance
 
-Maps privacy regulations to data assets and operationalizes compliance workflows.
+Maps privacy regulations to data assets and operationalizes compliance workflows. [EXPLICIT]
 
 **Regulation mapping (specific provisions):**
 
@@ -216,7 +216,7 @@ Maps privacy regulations to data assets and operationalizes compliance workflows
 
 ### S6: Computational Governance & Data Products
 
-Applies governance as executable code in federated architectures.
+Applies governance as executable code in federated architectures. [EXPLICIT]
 
 **Data product thinking:** Each dataset treated as a product with:
 - Owner and consumer contracts (SLOs for freshness, completeness, accuracy)
@@ -300,7 +300,7 @@ Before finalizing delivery, verify:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 

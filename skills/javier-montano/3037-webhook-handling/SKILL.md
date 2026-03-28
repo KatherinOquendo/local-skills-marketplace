@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Handle incoming webhooks from Stripe, GitHub, and other services with
-  signature verification, idempotency, and reliable processing.
+  signature verification, idempotency, and reliable processing. [EXPLICIT]
   Trigger: "webhook", "stripe webhook", "github webhook", "webhook handler"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides reliable webhook handling — receiving, verifying, and processing webhooks from services like Stripe, GitHub, and custom integrations. Covers signature verification, idempotent processing, retry handling, and event ordering. Use when your application needs to react to events from external services.
+Guides reliable webhook handling — receiving, verifying, and processing webhooks from services like Stripe, GitHub, and custom integrations. Covers signature verification, idempotent processing, retry handling, and event ordering. Use when your application needs to react to events from external services. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides reliable webhook handling — receiving, verifying, and processing webhoo
 
 - `payment-integration` — Stripe webhooks are critical for payment flow completion
 - `rest-api-development` — webhooks are a specialized HTTP endpoint pattern
+
+## Usage
+
+Example invocations:
+
+- "/webhook-handling" — Run the full webhook handling workflow
+- "webhook handling on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

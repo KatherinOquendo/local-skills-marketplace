@@ -5,7 +5,7 @@ version: 1.0.0
 description: >
   Implements technical SEO with structured data (JSON-LD), sitemaps, robots.txt,
   canonical URLs, meta tags, and SSR/SSG strategies for search engine
-  discoverability and ranking.
+  discoverability and ranking. [EXPLICIT]
   Trigger: "SEO", "structured data", "sitemap", "robots.txt", "meta tags"
 allowed-tools:
   - Read
@@ -21,7 +21,7 @@ allowed-tools:
 
 ## TL;DR
 
-Implements technical SEO architecture including structured data (JSON-LD), XML sitemaps, robots.txt, canonical URLs, Open Graph tags, and rendering strategies (SSR/SSG) for maximum search discoverability. Use this skill when building content-driven sites, fixing SEO issues, or establishing technical SEO standards.
+Implements technical SEO architecture including structured data (JSON-LD), XML sitemaps, robots.txt, canonical URLs, Open Graph tags, and rendering strategies (SSR/SSG) for maximum search discoverability. Use this skill when building content-driven sites, fixing SEO issues, or establishing technical SEO standards. [EXPLICIT]
 
 ## Procedure
 
@@ -71,3 +71,25 @@ Implements technical SEO architecture including structured data (JSON-LD), XML s
 - `performance-architecture` — Core Web Vitals are a ranking factor
 - `html-semantic` — semantic HTML supports SEO understanding
 - `pwa-architecture` — SSR/prerendering for PWA SEO
+
+## Usage
+
+Example invocations:
+
+- "/seo-architecture" — Run the full seo architecture workflow
+- "seo architecture on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

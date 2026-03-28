@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Build CI/CD pipelines with GitHub Actions — test, lint, build, deploy
-  workflows with matrix builds, caching, and environment management.
+  workflows with matrix builds, caching, and environment management. [EXPLICIT]
   Trigger: "GitHub Actions", "CI/CD", "CI pipeline", "deploy workflow"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides GitHub Actions CI/CD pipeline creation — building workflows for linting, testing, building, and deploying with matrix strategies, dependency caching, environment secrets, and deployment protection rules. Use when setting up or improving continuous integration and deployment for a project.
+Guides GitHub Actions CI/CD pipeline creation — building workflows for linting, testing, building, and deploying with matrix strategies, dependency caching, environment secrets, and deployment protection rules. Use when setting up or improving continuous integration and deployment for a project. [EXPLICIT]
 
 ## Procedure
 
@@ -70,3 +70,25 @@ Guides GitHub Actions CI/CD pipeline creation — building workflows for linting
 
 - `firebase-deployment` — Firebase deploy steps in GitHub Actions
 - `linting-formatting` — lint step in CI pipeline
+
+## Usage
+
+Example invocations:
+
+- "/github-actions-ci" — Run the full github actions ci workflow
+- "github actions ci on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

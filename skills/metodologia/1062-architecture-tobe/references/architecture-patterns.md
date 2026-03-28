@@ -517,7 +517,7 @@ Effectiveness: 99%+ (prevents payment loss; event may be delayed but eventually 
 **Communication**:
 - Notify: Finance team (potential money discrepancy), CTO (critical incident)
 - Timeline: Within 1 hour of detection
-- Template: "Detected N transactions may not have been properly debited. Investigating cause. Customer impact: TBD."
+- Template: "Detected N transactions may not have been properly debited. Investigating cause. Customer impact: pending."
 
 ### Post-Incident
 

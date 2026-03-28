@@ -4,7 +4,7 @@ author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
   Write effective unit tests with Jest, Vitest, or Jasmine — including mocking,
-  fixtures, snapshot testing, and test organization patterns.
+  fixtures, snapshot testing, and test organization patterns. [EXPLICIT]
   Trigger: "unit test", "Jest", "Vitest", "mock", "test case"
 allowed-tools:
   - Read
@@ -20,7 +20,7 @@ allowed-tools:
 
 ## TL;DR
 
-Guides unit test implementation with Jest, Vitest, or Jasmine — covering test structure, mocking strategies, fixture management, snapshot testing, and test organization patterns. Use when writing or improving unit tests for functions, components, or modules.
+Guides unit test implementation with Jest, Vitest, or Jasmine — covering test structure, mocking strategies, fixture management, snapshot testing, and test organization patterns. Use when writing or improving unit tests for functions, components, or modules. [EXPLICIT]
 
 ## Procedure
 
@@ -69,3 +69,25 @@ Guides unit test implementation with Jest, Vitest, or Jasmine — covering test 
 
 - `test-strategy` — unit tests are the base of the test pyramid
 - `linting-formatting` — ESLint plugin for test best practices
+
+## Usage
+
+Example invocations:
+
+- "/unit-testing" — Run the full unit testing workflow
+- "unit testing on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

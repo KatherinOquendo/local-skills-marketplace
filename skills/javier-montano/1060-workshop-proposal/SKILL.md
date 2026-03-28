@@ -3,7 +3,7 @@ name: workshop-proposal
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Workshop design and proposal. Objectives, audience, agenda, activities, resources, logistics. Output: branded HTML proposal.
+  Workshop design and proposal. Objectives, audience, agenda, activities, resources, logistics. Output: branded HTML proposal. [EXPLICIT]
   Trigger: "workshop", "training proposal", "workshop design", "agenda", "corporate training"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Workshop design and proposal. Objectives, audience, agenda, activities, resources, logistics. Output: branded HTML proposal. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html).
+Workshop design and proposal. Objectives, audience, agenda, activities, resources, logistics. Output: branded HTML proposal. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html). [EXPLICIT]
 
 ## Procedure
 
@@ -66,3 +66,25 @@ Workshop design and proposal. Objectives, audience, agenda, activities, resource
 
 - branded-html-output — Base skill for all HTML generation
 - guardrails-management — Check user guardrails before generating
+
+## Usage
+
+Example invocations:
+
+- "/workshop-proposal" — Run the full workshop proposal workflow
+- "workshop proposal on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

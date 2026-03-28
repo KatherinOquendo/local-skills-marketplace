@@ -1,6 +1,6 @@
 ---
 name: skill-forge
-description: The Meta-Cognitive Architect. Creates new 10x skills following the MOAT pattern with reference sub-repo, self-evaluation rubric, and knowledge graph.
+description: The Meta-Cognitive Architect. Creates new 10x skills following the MOAT pattern with reference sub-repo, self-evaluation rubric, and knowledge graph. [EXPLICIT]
 version: 1.0.0
 status: production
 owner: Javier Montaño
@@ -13,7 +13,7 @@ tags: [core, forge, meta-cognitive, scaffold]
 
 ## Purpose
 
-The factory for all new skills in the JM Agentic Development Kit. Creates skills that follow the MOAT pattern (reference/, prompts/, examples/, tests/) and meet the 10x quality standard.
+The factory for all new skills in the JM Agentic Development Kit. Creates skills that follow the MOAT pattern (reference/, prompts/, examples/, tests/) and meet the 10x quality standard. [EXPLICIT]
 
 **When to use:**
 
@@ -23,41 +23,41 @@ The factory for all new skills in the JM Agentic Development Kit. Creates skills
 
 ---
 
-## 1. The Physics (Immutable Laws)
+## Core Principles (Immutable Laws)
 
-1. **Law of Context-First:** Load your mind from `reference/` before writing a single line. Read knowledge_graph → best_practices → output_template → self_evaluation.
-2. **Law of Density:** Zero fluff. Every sentence must be prescriptive (specific tools, flags, paths). Ban: "ensure", "optimize", "carefully", "various", "properly".
-3. **Law of 10/10:** No skill ships below 10/10 on the self-evaluation rubric. No exceptions.
+1. **Law of Context-First:** Load your mind from `reference/` before writing a single line. Read knowledge_graph → best_practices → output_template → self_evaluation. [EXPLICIT]
+2. **Law of Density:** Zero fluff. Every sentence must be prescriptive (specific tools, flags, paths). Ban: "ensure", "optimize", "carefully", "various", "properly". [EXPLICIT]
+3. **Law of 10/10:** No skill ships below 10/10 on the self-evaluation rubric. No exceptions. [EXPLICIT]
 
 ---
 
-## 2. The Protocol (Step-by-Step)
+## Core Process (Step-by-Step)
 
 ### Phase 1: Context Loading (Alfa)
 
 1. **Read `reference/knowledge_graph.md`**
-   - *Why:* Understand the ontology and relationships before manufacturing.
+   - *Why:* Understand the ontology and relationships before manufacturing. [EXPLICIT]
 2. **Read `reference/best_practices.md`**
-   - *Why:* Internalize the immutable laws and injection triggers.
+   - *Why:* Internalize the immutable laws and injection triggers. [EXPLICIT]
 3. **Read `reference/output_template.md`**
-   - *Why:* Hold the canonical SKILL.md skeleton in memory.
+   - *Why:* Hold the canonical SKILL.md skeleton in memory. [EXPLICIT]
 4. **Read `reference/self_evaluation.md`**
-   - *Why:* Know the rubric before drafting.
+   - *Why:* Know the rubric before drafting. [EXPLICIT]
 
 ### Phase 2: Manufacturing (Atoms)
 
-1. **Decompose the request** into the knowledge graph's taxonomy.
-2. **Draft the SKILL.md** using the output template.
-   - Apply the 10x Standard from knowledge_graph.md.
-   - Apply the no-fluff rule from best_practices.md.
-3. **Create reference/ files** if the skill has >3 laws or >5 protocol steps.
-4. **Create prompts/** with at least one use-case prompt.
+1. **Decompose the request** into the knowledge graph's taxonomy. [EXPLICIT]
+2. **Draft the SKILL.md** using the output template. [EXPLICIT]
+   - Apply the 10x Standard from knowledge_graph.md. [EXPLICIT]
+   - Apply the no-fluff rule from best_practices.md. [EXPLICIT]
+3. **Create reference/ files** if the skill has >3 laws or >5 protocol steps. [EXPLICIT]
+4. **Create prompts/** with at least one use-case prompt. [EXPLICIT]
 
 ### Phase 3: Verification (Beta)
 
-1. **Score against self_evaluation.md** — must achieve 10/10.
-2. **Run adversarial tests:** Ambiguity, Edge Case, Contradiction, Stress, Security.
-3. **Polish** — only ship when Score = 10/10.
+1. **Score against self_evaluation.md** — must achieve 10/10. [EXPLICIT]
+2. **Run adversarial tests:** Ambiguity, Edge Case, Contradiction, Stress, Security. [EXPLICIT]
+3. **Polish** — only ship when Score = 10/10. [EXPLICIT]
 
 ---
 
@@ -83,7 +83,7 @@ The factory for all new skills in the JM Agentic Development Kit. Creates skills
 
 ---
 
-## 4. Quality Gates (10x Checklist)
+## Validation Gate (10x Checklist)
 
 - [ ] **Structure:** Has `SKILL.md` + `reference/` + `prompts/` + `examples/` + `tests/`
 - [ ] **Frontmatter:** YAML with name, description, version, status, owner, tags
@@ -136,3 +136,25 @@ The factory for all new skills in the JM Agentic Development Kit. Creates skills
 - `reference/best_practices.md` — Laws & injection triggers
 - `reference/output_template.md` — Canonical SKILL.md scaffold
 - `reference/self_evaluation.md` — 10/10 rubric with adversarial tests
+
+## Usage
+
+Example invocations:
+
+- "/skill-forge" — Run the full skill forge workflow
+- "skill forge on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

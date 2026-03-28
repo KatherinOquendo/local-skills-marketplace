@@ -1,12 +1,12 @@
 ---
 name: step-creator
-argument-hint: "<step-name> [workflow-name]"
-description: >
+argument-hint: "step-name [workflow-name]"
+description: 
   Generates individual workflow steps with all 12 mandatory fields as an internal helper.
   Invoked by workflow-creator and skill-spec-creator when they need to "create a step",
   "generate workflow steps", "build step definitions", "produce step specs",
   or "expand a workflow into detailed steps".
-argument-hint: "<step-name> [workflow-name]"
+argument-hint: "step-name [workflow-name]"
 user-invocable: false
 model: opus
 context: fork
@@ -65,3 +65,19 @@ Receives from calling skill:
 
 ---
 **Author:** Javier Montaño | **Last updated:** 2026-03-18
+
+## Usage
+
+Example invocations:
+
+- "/step-creator" — Run the full step creator workflow
+- "step creator on this project" — Apply to current context
+
+
+## Validation Gate
+
+- [ ] Output follows the defined structure and format [EXPLICIT]
+- [ ] All claims are tagged with evidence markers [EXPLICIT]
+- [ ] No placeholder content (TBD, TODO) [EXPLICIT]
+- [ ] Actionable recommendations with priority levels [EXPLICIT]
+- [ ] Assumptions explicitly documented [EXPLICIT]

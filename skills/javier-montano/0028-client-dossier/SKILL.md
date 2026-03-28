@@ -3,7 +3,7 @@ name: client-dossier
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Deep research dossier for target companies. Profile, leadership, tech stack, pain points, competitors, talking points. Output: branded HTML dossier.
+  Deep research dossier for target companies. Profile, leadership, tech stack, pain points, competitors, talking points. Output: branded HTML dossier. [EXPLICIT]
   Trigger: "client dossier", "company research", "deep research", "due diligence", "prospect analysis"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-Deep research dossier for target companies. Profile, leadership, tech stack, pain points, competitors, talking points. Output: branded HTML dossier. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html).
+Deep research dossier for target companies. Profile, leadership, tech stack, pain points, competitors, talking points. Output: branded HTML dossier. All HTML outputs use the MetodologIA brand design system (references/brand/design-tokens.json + html-template.html). [EXPLICIT]
 
 ## Procedure
 
@@ -66,3 +66,25 @@ Deep research dossier for target companies. Profile, leadership, tech stack, pai
 
 - branded-html-output — Base skill for all HTML generation
 - guardrails-management — Check user guardrails before generating
+
+## Usage
+
+Example invocations:
+
+- "/client-dossier" — Run the full client dossier workflow
+- "client dossier on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

@@ -160,7 +160,7 @@ Isolate the emotional charge from technical content in an input so the downstrea
 ESCANEAR el input buscando MARCADORES EMOCIONALES:
 
 MARCADORES LÉXICOS:
-- Amplificadores: "siempre", "nunca", "nadie", "todo el mundo", "otra vez"
+- Amplificadores: "siempre", "nunca", "nadie", "Todo el mundo", "otra vez"
 - Intensificadores: "maldito", "bendito", "dichoso", "famoso" (irónico)
 - Urgencia: "URGENTE", "YA", "AHORA", mayúsculas sostenidas
 - Hedging: "creo que", "no sé si", "tal vez", "quizás", "a lo mejor"
@@ -169,7 +169,7 @@ MARCADORES LÉXICOS:
 
 MARCADORES ESTRUCTURALES:
 - Puntuación emocional: múltiples signos (!!!, ???, !!!???)
-- Mayúsculas sostenidas en fragmentos (no todo-mayúsculas, que es afán de teclado)
+- Mayúsculas sostenidas en fragmentos (no pending-mayúsculas, que es afán de teclado)
 - Repetición de palabras o frases para énfasis
 - Oraciones cada vez más cortas al final del mensaje (escalada emocional)
 
@@ -188,7 +188,7 @@ PROTOCOLO DE SEPARACIÓN:
 
   2. PRODUCIR contenido técnico puro:
      - Eliminar marcadores emocionales del texto
-     - Preservar TODOS los datos, requisitos y restricciones
+     - Preservar TBDS los datos, requisitos y restricciones
      - Reconstruir oraciones si la eliminación las rompe sintácticamente
      - El contenido técnico puro debe ser procesable por cualquier skill
        sin contexto emocional
@@ -279,7 +279,7 @@ DESPUÉS de completar los Pases 1-4, ANTES de generar el prompt reformulado:
 4. VALIDACIÓN PRE-ENVÍO:
    Antes de enviar al pipeline, verificar:
    - [ ] El prompt reformulado tiene OBJETIVO con verbo de acción
-   - [ ] CONTEXTO incluye todo lo descubierto en Pases 2-3
+   - [ ] CONTEXTO incluye Todo lo descubierto en Pases 2-3
    - [ ] RESTRICCIONES incluye tanto explícitas como inferidas (etiquetadas)
    - [ ] OUTPUT ESPERADO especifica tipo de entregable, no solo el tema
    - [ ] Ambigüedades no resolubles están declaradas, no ocultas

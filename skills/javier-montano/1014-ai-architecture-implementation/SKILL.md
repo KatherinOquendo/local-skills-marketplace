@@ -5,7 +5,7 @@ description: >
   monitoring deployment, and CI/CD automation. This skill should be used when the user asks to "implement AI architecture",
   "build ML pipeline", "set up model serving", "deploy AI system", "implement MLOps", "configure drift monitoring",
   "set up feature store", or mentions AI implementation plan, ML infrastructure setup, model deployment guide,
-  RAG implementation, or agent framework setup.
+  RAG implementation, or agent framework setup. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -20,19 +20,19 @@ allowed-tools:
 # AI Architecture Implementation: From Design to Production
 
 Guiar la implementación de arquitecturas AI desde el diseño hasta producción — selección de tecnología,
-implementación de pipelines, configuración de serving, despliegue de monitoreo, y automatización CI/CD.
+implementación de pipelines, configuración de serving, despliegue de monitoreo, y automatización CI/CD. [EXPLICIT]
 Produce blueprints de implementación, guías de selección de tecnología, y un playbook fase-a-fase que
-transforma decisiones arquitectónicas en infraestructura operativa.
+transforma decisiones arquitectónicas en infraestructura operativa. [EXPLICIT]
 
 ---
 
 ## Principio Rector
 
-1. **Phased delivery, not big bang.** Implementar en fases con valor entregable por fase. Fase 0 (Foundation) → Fase 1 (Data Pipeline) → Fase 2 (Model Development) → Fase 3 (Serving) → Fase 4 (CI/CD) → Fase 5 (Monitoring). Cada fase produce capacidad usable.
+1. **Phased delivery, not big bang.** Implementar en fases con valor entregable por fase. Fase 0 (Foundation) → Fase 1 (Data Pipeline) → Fase 2 (Model Development) → Fase 3 (Serving) → Fase 4 (CI/CD) → Fase 5 (Monitoring). Cada fase produce capacidad usable. [EXPLICIT]
 
-2. **Start simple, evolve with evidence.** No sobre-ingenierar para escala hipotética. Empezar con la implementación más simple que resuelva el problema actual. Feature Store no es necesario para un modelo; multi-model tiering no es necesario para un tier.
+2. **Start simple, evolve with evidence.** No sobre-ingenierar para escala hipotética. Empezar con la implementación más simple que resuelva el problema actual. Feature Store no es necesario para un modelo; multi-model tiering no es necesario para un tier. [EXPLICIT]
 
-3. **Tests and monitoring from Phase 0, not Phase 5.** La infraestructura de testing y monitoreo se establece en la primera fase, no se agrega después de incidentes. Cada componente implementado incluye sus tests y sus métricas desde el día uno.
+3. **Tests and monitoring from Phase 0, not Phase 5.** La infraestructura de testing y monitoreo se establece en la primera fase, no se agrega después de incidentes. Cada componente implementado incluye sus tests y sus métricas desde el día uno. [EXPLICIT]
 
 ---
 
@@ -82,7 +82,7 @@ Detección automática:
 
 ### S1: Technology Stack Selection
 
-Selecciona las tecnologías para cada componente del sistema AI con justificación basada en constraints.
+Selecciona las tecnologías para cada componente del sistema AI con justificación basada en constraints. [EXPLICIT]
 
 ```
 Load references:
@@ -113,7 +113,7 @@ Load references:
 
 ### S2: Data Pipeline Implementation
 
-Implementa el pipeline de datos desde ingestion hasta feature serving.
+Implementa el pipeline de datos desde ingestion hasta feature serving. [EXPLICIT]
 
 ```
 Load references:
@@ -139,7 +139,7 @@ Load references:
 
 ### S3: Model Development & Registry Setup
 
-Implementa el ciclo de desarrollo de modelos con tracking, registro, y evaluación.
+Implementa el ciclo de desarrollo de modelos con tracking, registro, y evaluación. [EXPLICIT]
 
 **Componentes a implementar:**
 - Experiment tracking setup (MLflow/W&B)
@@ -159,7 +159,7 @@ Implementa el ciclo de desarrollo de modelos con tracking, registro, y evaluaci�
 
 ### S4: Serving & Inference Implementation
 
-Implementa model serving, API layer, caching, y fallback mechanisms.
+Implementa model serving, API layer, caching, y fallback mechanisms. [EXPLICIT]
 
 **Componentes a implementar:**
 - Model serving deployment (vLLM/Triton/TorchServe/Seldon)
@@ -180,7 +180,7 @@ Implementa model serving, API layer, caching, y fallback mechanisms.
 
 ### S5: CI/CD & Deployment Automation
 
-Implementa Blue & Gold deployment con validation gates automatizados.
+Implementa Blue & Gold deployment con validation gates automatizados. [EXPLICIT]
 
 **Componentes a implementar:**
 - Code CI (linting, type checking, unit tests, security scan)
@@ -202,7 +202,7 @@ Implementa Blue & Gold deployment con validation gates automatizados.
 
 ### S6: Monitoring & Observability Implementation
 
-Implementa el stack de observabilidad completo para el sistema AI.
+Implementa el stack de observabilidad completo para el sistema AI. [EXPLICIT]
 
 **Componentes a implementar:**
 - Infrastructure monitoring (CPU, GPU, memory, storage, network)
@@ -257,15 +257,15 @@ Implementa el stack de observabilidad completo para el sistema AI.
 
 ## Edge Cases
 
-1. **Equipo sin experiencia ML**: Fase 0 extendida con capacitación. Empezar con managed services (SageMaker, Vertex). Reducir complejidad de Feature Store y multi-model tiering hasta que el equipo madure.
+1. **Equipo sin experiencia ML**: Fase 0 extendida con capacitación. Empezar con managed services (SageMaker, Vertex). Reducir complejidad de Feature Store y multi-model tiering hasta que el equipo madure. [EXPLICIT]
 
-2. **Migración desde notebooks**: Priorizar extracción de feature engineering y training logic a módulos Python testeables. Notebooks quedan solo para exploración. Fase 2 se convierte en la fase más larga.
+2. **Migración desde notebooks**: Priorizar extracción de feature engineering y training logic a módulos Python testeables. Notebooks quedan solo para exploración. Fase 2 se convierte en la fase más larga. [EXPLICIT]
 
-3. **Remediación post-auditoría**: Ordenar implementación por priority score del audit report, no por la secuencia estándar de fases. Puede requerir empezar por Fase 5 (monitoring) si el hallazgo crítico es "no hay observabilidad".
+3. **Remediación post-auditoría**: Ordenar implementación por priority score del audit report, no por la secuencia estándar de fases. Puede requerir empezar por Fase 5 (monitoring) si el hallazgo crítico es "no hay observabilidad". [EXPLICIT]
 
-4. **Sistema GenAI puro (sin ML tradicional)**: Fases 2 y 3 se fusionan en "RAG/Agent Implementation". Feature Store no aplica. Focus en guardrails, vector DB, prompt management, cost controls.
+4. **Sistema GenAI puro (sin ML tradicional)**: Fases 2 y 3 se fusionan en "RAG/Agent Implementation". Feature Store no aplica. Focus en guardrails, vector DB, prompt management, cost controls. [EXPLICIT]
 
-5. **Restricciones de presupuesto extremas**: Open-source everything. MLflow (free), Feast (free), Evidently (free), GitHub Actions (free tier). Docker Compose para desarrollo, single-instance para producción inicial.
+5. **Restricciones de presupuesto extremas**: Open-source everything. MLflow (free), Feast (free), Evidently (free), GitHub Actions (free tier). Docker Compose para desarrollo, single-instance para producción inicial. [EXPLICIT]
 
 ---
 

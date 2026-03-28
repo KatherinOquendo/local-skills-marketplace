@@ -1,0 +1,9 @@
+[
+  {"id": "sales-collateral-happy-path", "type": "happy_path", "input": "Run sales collateral on this project", "expected_behavior": "Skill activates and produces the expected sales collateral output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "sales-collateral-explicit-trigger", "type": "happy_path", "input": "Apply sales collateral analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the sales collateral workflow", "tags": ["trigger", "recognition"]},
+  {"id": "sales-collateral-with-context", "type": "happy_path", "input": "Apply sales collateral to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive sales collateral analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "sales-collateral-minimal-input", "type": "happy_path", "input": "Quick sales collateral", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "sales-collateral-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to sales collateral", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "sales-collateral-edge-empty-input", "type": "edge_case", "input": "Run sales collateral but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "sales-collateral-edge-conflicting", "type": "edge_case", "input": "Apply sales collateral but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

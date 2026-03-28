@@ -1,13 +1,13 @@
 ---
 name: rule-forge
-description: >
+description: 
   This skill should be used when the user asks to "create a rule", "define a constraint",
   "write a governance rule", "enforce a code standard", or mentions binary Pass/Fail rules,
   enforceability testing, code constraints, linting rules, or rule validation. Creates and
   validates binary governance rules with enforceability testing, scoped examples, and
   self-evaluation. Use this skill whenever the user needs to codify a repeatable constraint
-  into a formal rule, even if they don't explicitly ask for "rule-forge".
-argument-hint: "<constraint description> [--scope 'src/**/*.ts'] [--validate path/to/rule.md]"
+  into a formal rule, even if they don't explicitly ask for "rule-forge". [EXPLICIT]
+argument-hint: "constraint description [--scope 'src/**/*.ts'] [--validate path/to/rule.md]"
 model: opus
 context: fork
 allowed-tools:
@@ -21,11 +21,11 @@ allowed-tools:
 
 # Rule Forge
 
-Rules are binary: Pass or Fail. No "try to avoid", no subjective judgment. If you can't express it as Pass/Fail, it's a guideline, not a rule.
+Rules are binary: Pass or Fail. No "try to avoid", no subjective judgment. If you can't express it as Pass/Fail, it's a guideline, not a rule. [EXPLICIT]
 
 ## Rule Anatomy
 
-Every rule has five mandatory parts:
+Every rule has five mandatory parts: [EXPLICIT]
 
 | Part | Purpose | Example |
 |------|---------|---------|
@@ -35,16 +35,16 @@ Every rule has five mandatory parts:
 | Bad example | Concrete violation | Code snippet showing the problem |
 | Good example | Corrected version | Same code with only the violation fixed |
 
-Rules are named `R-kebab-case.md`. For the full template, read `references/output-template.md`.
+Rules are named `R-kebab-case.md`. For the full template, read `references/output-template.md`. [EXPLICIT]
 
 ## Creation Protocol
 
 ### Step 1: Define What's Forbidden
 
-Start with the bad pattern. The litmus test: **can a script detect this violation?**
+Start with the bad pattern. The litmus test: **can a script detect this violation?** [EXPLICIT]
 
 ```
-Good rule candidates:          Not rules (guidelines):
+Good rule candidates:          Not rules (guidelines): [EXPLICIT]
 ──────────────────────         ──────────────────────
 "No console.log"               "Write clean code"
 "Max 50 lines per function"    "Keep functions small"
@@ -52,44 +52,44 @@ Good rule candidates:          Not rules (guidelines):
 "All API responses need status" "Design good APIs"
 ```
 
-If a regex, AST analysis, or linter could find it, it's a rule. If it requires human judgment, it's a guideline.
+If a regex, AST analysis, or linter could find it, it's a rule. If it requires human judgment, it's a guideline. [EXPLICIT]
 
 ### Step 2: Define the Scope
 
-Which files does this rule apply to? Scope precision prevents false positives and missed violations.
+Which files does this rule apply to? Scope precision prevents false positives and missed violations. [EXPLICIT]
 
 ```
-Dangerous:  *                   (everything — almost never correct)
-Broad:      **/*.ts             (all TypeScript — sometimes appropriate)
-Precise:    src/api/**/*.ts     (API layer only — usually right)
-Surgical:   src/api/routes/*.ts (specific directory — very targeted)
+Dangerous:  *                   (everything — almost never correct) [EXPLICIT]
+Broad:      **/*.ts             (all TypeScript — sometimes appropriate) [EXPLICIT]
+Precise:    src/api/**/*.ts     (API layer only — usually right) [EXPLICIT]
+Surgical:   src/api/routes/*.ts (specific directory — very targeted) [EXPLICIT]
 ```
 
 **Trade-off:** Start narrow. Widening scope later is friction-free; narrowing after adoption causes resistance.
 
 ### Step 3: Write the Reasoning
 
-Every rule needs a "Why" section. Rules without reasoning get ignored or deliberately bypassed.
+Every rule needs a "Why" section. Rules without reasoning get ignored or deliberately bypassed. [EXPLICIT]
 
 ```
-Weak:   "Because it's best practice."
-Strong: "Untyped API responses silently propagate wrong data structures,
+Weak:   "Because it's best practice." [EXPLICIT]
+Strong: "Untyped API responses silently propagate wrong data structures, [EXPLICIT]
          causing runtime errors that are hard to trace to the API layer."
 ```
 
-Explain what **failure** this prevents, not what "best practice" it follows.
+Explain what **failure** this prevents, not what "best practice" it follows. [EXPLICIT]
 
 ### Step 4: Provide Paired Examples
 
-Bad example (violation) and Good example (compliance) should be **as close as possible** — ideally the same code with only the violation changed. The smaller the diff, the clearer the rule.
+Bad example (violation) and Good example (compliance) should be **as close as possible** — ideally the same code with only the violation changed. The smaller the diff, the clearer the rule. [EXPLICIT]
 
 ### Step 5: Document Exceptions
 
-Most rules have legitimate exceptions. A test file might need `console.log`. Document these in an "Exceptions" section. Otherwise, the entire rule gets bypassed because of one edge case.
+Most rules have legitimate exceptions. A test file might need `console.log`. Document these in an "Exceptions" section. Otherwise, the entire rule gets bypassed because of one edge case. [EXPLICIT]
 
 ### Step 6: Validate
 
-Check structure, enforceability, and naming:
+Check structure, enforceability, and naming: [EXPLICIT]
 
 ```bash
 python tools/rule-validator.py path/to/R-your-rule.md
@@ -99,7 +99,7 @@ python tools/rule-validator.py path/to/rules/ --json    # machine-readable
 
 ## The Enforceability Test
 
-The most important quality check:
+The most important quality check: [EXPLICIT]
 
 | Question | If "No"... |
 |----------|------------|
@@ -127,7 +127,7 @@ The most important quality check:
 
 ## Validation Gate
 
-Before delivering a rule, confirm:
+Before delivering a rule, confirm: [EXPLICIT]
 
 - [ ] Constraint is binary (Pass/Fail, no gray area)
 - [ ] Scope (globs) is specific enough to avoid false positives
@@ -146,3 +146,11 @@ Before delivering a rule, confirm:
 
 ---
 **Author:** Javier Montano | **Last updated:** March 18, 2026
+
+## Usage
+
+Example invocations: [EXPLICIT]
+
+- "/rule-forge" — Run the full rule forge workflow
+- "rule forge on this project" — Apply to current context
+

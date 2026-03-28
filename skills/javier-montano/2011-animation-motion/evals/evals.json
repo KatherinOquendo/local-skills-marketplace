@@ -1,0 +1,9 @@
+[
+  {"id": "animation-motion-happy-path", "type": "happy_path", "input": "Run animation motion on this project", "expected_behavior": "Skill activates and produces the expected animation motion output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "animation-motion-explicit-trigger", "type": "happy_path", "input": "Apply animation motion analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the animation motion workflow", "tags": ["trigger", "recognition"]},
+  {"id": "animation-motion-with-context", "type": "happy_path", "input": "Apply animation motion to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive animation motion analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "animation-motion-minimal-input", "type": "happy_path", "input": "Quick animation motion", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "animation-motion-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to animation motion", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "animation-motion-edge-empty-input", "type": "edge_case", "input": "Run animation motion but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "animation-motion-edge-conflicting", "type": "edge_case", "input": "Apply animation motion but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

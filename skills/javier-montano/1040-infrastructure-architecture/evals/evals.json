@@ -1,32 +1,9 @@
 [
-  {
-    "id": "infra-happy-cloud-design",
-    "title": "Full cloud infrastructure design",
-    "prompt": "Design the cloud infrastructure for our new e-commerce platform on AWS",
-    "expected_behavior": "Produces all 7 sections: network topology (VPC with public/private/protected subnets), compute strategy, storage architecture, HA/DR with multi-AZ, IAM model, cloud landing zone, and cost optimization."
-  },
-  {
-    "id": "infra-happy-kubernetes",
-    "title": "Kubernetes platform architecture",
-    "prompt": "Plan a Kubernetes platform for our microservices with auto-scaling and HA",
-    "expected_behavior": "Covers EKS/GKE/AKS control plane, worker node auto-scaling, ingress, namespace strategy, resource limits, and multi-AZ deployment for HA."
-  },
-  {
-    "id": "infra-edge-multicloud",
-    "title": "Multi-cloud complexity",
-    "prompt": "We need infrastructure spanning AWS and Azure with consistent governance",
-    "expected_behavior": "Addresses multi-cloud complexity: abstraction layer (Kubernetes), consistent tagging strategy, multi-cloud governance, no unified API caveat, Transit Gateway / ExpressRoute interconnect."
-  },
-  {
-    "id": "infra-edge-cost-constrained",
-    "title": "Startup with limited budget",
-    "prompt": "Design infrastructure for our startup — we have almost no budget but need to scale",
-    "expected_behavior": "Recommends serverless where possible, auto-scaling, spot instances for batch, avoids reserved instances initially, emphasizes FinOps from day one."
-  },
-  {
-    "id": "infra-false-positive",
-    "title": "False positive — application code architecture",
-    "prompt": "Design the internal module structure and dependency injection for our Java backend",
-    "expected_behavior": "Does NOT activate this skill. Recognizes this is software architecture (internal code structure), not infrastructure. Defers to software-architecture skill."
-  }
+  {"id": "infrastructure-architecture-happy-path", "type": "happy_path", "input": "Run infrastructure architecture on this project", "expected_behavior": "Skill activates and produces the expected infrastructure architecture output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "infrastructure-architecture-explicit-trigger", "type": "happy_path", "input": "Apply infrastructure architecture analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the infrastructure architecture workflow", "tags": ["trigger", "recognition"]},
+  {"id": "infrastructure-architecture-with-context", "type": "happy_path", "input": "Apply infrastructure architecture to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive infrastructure architecture analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "infrastructure-architecture-minimal-input", "type": "happy_path", "input": "Quick infrastructure architecture", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "infrastructure-architecture-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to infrastructure architecture", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "infrastructure-architecture-edge-empty-input", "type": "edge_case", "input": "Run infrastructure architecture but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "infrastructure-architecture-edge-conflicting", "type": "edge_case", "input": "Apply infrastructure architecture but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
 ]

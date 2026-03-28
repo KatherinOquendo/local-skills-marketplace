@@ -5,7 +5,7 @@ description: >
   architecture, knowledge connectors, and GenAI quality assurance. This skill should be used when the user asks to "design RAG
   architecture", "architect LLM system", "select vector database", "design AI agents", "implement knowledge retrieval",
   "plan GenAI quality", or mentions RAG, embeddings, vector search, LLM orchestration, agent framework, context-aware
-  generation, hallucination reduction, or multi-model routing.
+  generation, hallucination reduction, or multi-model routing. [EXPLICIT]
 model: opus
 context: fork
 allowed-tools:
@@ -19,7 +19,7 @@ allowed-tools:
 
 # GenAI Architecture: Architecture for Generative AI Systems
 
-GenAI architecture defines how LLM-powered systems retrieve knowledge, orchestrate models, execute agent workflows, and ensure quality. This skill produces comprehensive architecture documentation covering RAG design, LLM orchestration with multi-model tiering, agent workflows, vector database selection, knowledge connector integration, and quality assurance for generative AI systems.
+GenAI architecture defines how LLM-powered systems retrieve knowledge, orchestrate models, execute agent workflows, and ensure quality. This skill produces comprehensive architecture documentation covering RAG design, LLM orchestration with multi-model tiering, agent workflows, vector database selection, knowledge connector integration, and quality assurance for generative AI systems. [EXPLICIT]
 
 ## Principio Rector
 
@@ -27,13 +27,13 @@ GenAI architecture defines how LLM-powered systems retrieve knowledge, orchestra
 
 ### Filosofía de GenAI Architecture
 
-1. **Retrieval quality > Generation quality.** El LLM más avanzado del mundo producirá respuestas incorrectas si la información recuperada es irrelevante o incompleta. La inversión arquitectónica debe priorizar la calidad de retrieval (chunking, embeddings, re-ranking, hybrid search) sobre la selección del LLM.
-2. **Multi-model tiering, no model monolito.** Usar el modelo más grande y costoso para cada consulta es insostenible. La arquitectura debe enrutar consultas al tier apropiado: modelos ligeros para tareas simples, modelos frontier para razonamiento complejo, cache para patrones conocidos.
-3. **Guardrails son arquitectura, no afterthought.** Hallucination detection, safety filtering, PII masking, cost controls, y rate limiting son componentes arquitectónicos de primera clase, no checks opcionales que se agregan "después del MVP".
+1. **Retrieval quality > Generation quality.** El LLM más avanzado del mundo producirá respuestas incorrectas si la información recuperada es irrelevante o incompleta. La inversión arquitectónica debe priorizar la calidad de retrieval (chunking, embeddings, re-ranking, hybrid search) sobre la selección del LLM. [EXPLICIT]
+2. **Multi-model tiering, no model monolito.** Usar el modelo más grande y costoso para cada consulta es insostenible. La arquitectura debe enrutar consultas al tier apropiado: modelos ligeros para tareas simples, modelos frontier para razonamiento complejo, cache para patrones conocidos. [EXPLICIT]
+3. **Guardrails son arquitectura, no afterthought.** Hallucination detection, safety filtering, PII masking, cost controls, y rate limiting son componentes arquitectónicos de primera clase, no checks opcionales que se agregan "después del MVP". [EXPLICIT]
 
 ## Inputs
 
-The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts.
+The user provides a system or project name as `$ARGUMENTS`. Parse `$1` as the **system/project name** used throughout all output artifacts. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
@@ -46,7 +46,7 @@ Before generating architecture, detect the codebase context:
 Detección automática de contexto:
   Escanear el codebase por frameworks LLM (LangChain, LlamaIndex, Haystack, Semantic Kernel),
   vector DBs (Pinecone, Qdrant, Weaviate, Chroma, pgvector), y modelos de embedding
-  para adaptar recomendaciones.
+  para adaptar recomendaciones. [EXPLICIT]
 ```
 
 If reference materials exist, load them:
@@ -85,7 +85,7 @@ Load references:
 
 ### S1: RAG Architecture & Retrieval Design
 
-Designs the complete retrieval-augmented generation pipeline from query to validated response.
+Designs the complete retrieval-augmented generation pipeline from query to validated response. [EXPLICIT]
 
 **Pipeline stages:**
 - **Query processing**: Entity extraction, intent classification, query expansion, query rewriting
@@ -110,7 +110,7 @@ Designs the complete retrieval-augmented generation pipeline from query to valid
 
 ### S2: LLM Orchestration & Multi-Model Tiering
 
-Designs the model routing and orchestration layer for cost-effective, performant LLM usage.
+Designs the model routing and orchestration layer for cost-effective, performant LLM usage. [EXPLICIT]
 
 **Tier structure:**
 - **Tier 1 (Primary)**: Frontier models for complex reasoning and generation
@@ -134,7 +134,7 @@ Designs the model routing and orchestration layer for cost-effective, performant
 
 ### S3: Agent Workflow Architecture
 
-Designs agentic AI systems with tool use, reasoning, and multi-step execution.
+Designs agentic AI systems with tool use, reasoning, and multi-step execution. [EXPLICIT]
 
 **Core agent flow:**
 Query Input -> Entity Extraction -> Intent Classification -> Intelligent Routing -> Contextual Augmentation -> Response Generation -> Validation -> Output
@@ -160,7 +160,7 @@ Query Input -> Entity Extraction -> Intent Classification -> Intelligent Routing
 
 ### S4: Vector Database & Embedding Design
 
-Selects vector database technology and designs the embedding pipeline.
+Selects vector database technology and designs the embedding pipeline. [EXPLICIT]
 
 **Vector DB selection criteria:** Scale, latency, accuracy (recall), metadata filtering, update frequency, cost, ecosystem integration.
 
@@ -191,7 +191,7 @@ Selects vector database technology and designs the embedding pipeline.
 
 ### S5: Knowledge Connectors & Integration
 
-Designs integration with structured knowledge sources alongside unstructured RAG retrieval.
+Designs integration with structured knowledge sources alongside unstructured RAG retrieval. [EXPLICIT]
 
 **Connector types:**
 - **CRM** (Salesforce, HubSpot): Customer profiles, interaction history, account data
@@ -220,7 +220,7 @@ Designs integration with structured knowledge sources alongside unstructured RAG
 
 ### S6: Quality Assurance for GenAI
 
-Defines the quality framework for GenAI systems covering hallucination reduction, grounding, and continuous improvement.
+Defines the quality framework for GenAI systems covering hallucination reduction, grounding, and continuous improvement. [EXPLICIT]
 
 **Hallucination reduction:**
 - Factual grounding: verify every claim against retrieved context
@@ -294,19 +294,19 @@ Defines the quality framework for GenAI systems covering hallucination reduction
 ## Edge Cases
 
 **Enterprise with Strict Data Residency:**
-Cloud-managed vector DBs may not meet data residency requirements. Self-hosted vector DB (Qdrant, Milvus) with region-specific deployment. Self-hosted LLM (vLLM, TGI) if data cannot leave premises. All connectors must enforce data residency at query level.
+Cloud-managed vector DBs may not meet data residency requirements. Self-hosted vector DB (Qdrant, Milvus) with region-specific deployment. Self-hosted LLM (vLLM, TGI) if data cannot leave premises. All connectors must enforce data residency at query level. [EXPLICIT]
 
 **Multi-Language Knowledge Base:**
-Embedding model must support all required languages. Multilingual models (Cohere multilingual, mE5) for cross-language retrieval. Consider language-specific collections for highest quality. Query language detection for routing to appropriate collection.
+Embedding model must support all required languages. Multilingual models (Cohere multilingual, mE5) for cross-language retrieval. Consider language-specific collections for highest quality. Query language detection for routing to appropriate collection. [EXPLICIT]
 
 **High-Volume, Low-Latency Requirements:**
-CAG for core knowledge + aggressive caching + Tier 3 models for common queries. Pre-computed responses for high-frequency patterns. Streaming for perceived latency reduction. Vector DB with in-memory index for sub-millisecond retrieval.
+CAG for core knowledge + aggressive caching + Tier 3 models for common queries. Pre-computed responses for high-frequency patterns. Streaming for perceived latency reduction. Vector DB with in-memory index for sub-millisecond retrieval. [EXPLICIT]
 
 **Rapidly Changing Knowledge:**
-Real-time indexing pipeline for new documents. Stale content detection and automatic removal. Version-aware retrieval (prefer recent documents). Web search integration for real-time information not yet indexed.
+Real-time indexing pipeline for new documents. Stale content detection and automatic removal. Version-aware retrieval (prefer recent documents). Web search integration for real-time information not yet indexed. [EXPLICIT]
 
 **Multi-Tenant GenAI System:**
-Namespace or collection isolation per tenant. Row-level security in structured connectors per tenant. Cost allocation and rate limiting per tenant. Tenant-specific fine-tuning or prompt customization.
+Namespace or collection isolation per tenant. Row-level security in structured connectors per tenant. Cost allocation and rate limiting per tenant. Tenant-specific fine-tuning or prompt customization. [EXPLICIT]
 
 ---
 

@@ -17,7 +17,7 @@ allowed-tools:
 **TL;DR**: Scans project artifacts for exposed credentials, API keys, passwords, tokens, and sensitive data. Implements Gate G0: no pipeline execution proceeds with unmasked secrets. Detects patterns across configuration files, documents, and code artifacts, then masks or flags findings for remediation.
 
 ## Principio Rector
-Un solo secreto expuesto puede comprometer todo el proyecto. Gate G0 es un hard stop: si se detectan credenciales sin enmascarar en cualquier artefacto del proyecto, el pipeline se detiene hasta que se remedien. La seguridad no es una fase — es una precondición.
+Un solo secreto expuesto puede comprometer todo el proyecto. Gate G0 es un hard stop: si se detectan credenciales sin enmascarar en cualquier artefacto del proyecto, el pipeline se detiene hasta que se remedien. La seguridad no es una fase — es una precondición. [EXPLICIT]
 
 ## Assumptions & Limits
 - Assumes project workspace path is provided and accessible [PLAN]
@@ -81,10 +81,10 @@ Un solo secreto expuesto puede comprometer todo el proyecto. Gate G0 es un hard 
 8. **Report generation** — Compile security scan report (without exposing secrets in report)
 
 ## Edge Cases
-1. **Active production credentials found** — CRITICAL. Immediate notification to security team. Recommend credential rotation within 24 hours. Do not include the actual credential in the report [PLAN].
-2. **High false positive rate** — Refine pattern matching with context rules. Add project-specific allowlist for known safe patterns (e.g., example API keys in documentation) [INFERENCIA].
-3. **Secrets in git history** — Current scan only detects in working tree. Recommend `git log` scan or BFG Repo-Cleaner for historical secrets [SUPUESTO].
-4. **Encrypted or base64-encoded secrets** — Flag base64-encoded strings that match key length patterns. Document limitation for truly encrypted content [INFERENCIA].
+1. **Active production credentials found** — CRITICAL. Immediate notification to security team. Recommend credential rotation within 24 hours. Do not include the actual credential in the report [PLAN]. [EXPLICIT]
+2. **High false positive rate** — Refine pattern matching with context rules. Add project-specific allowlist for known safe patterns (e.g., example API keys in documentation) [INFERENCIA]. [EXPLICIT]
+3. **Secrets in git history** — Current scan only detects in working tree. Recommend `git log` scan or BFG Repo-Cleaner for historical secrets [SUPUESTO]. [EXPLICIT]
+4. **Encrypted or base64-encoded secrets** — Flag base64-encoded strings that match key length patterns. Document limitation for truly encrypted content [INFERENCIA]. [EXPLICIT]
 
 ## Example: Good vs Bad
 
@@ -100,7 +100,7 @@ Un solo secreto expuesto puede comprometer todo el proyecto. Gate G0 es un hard 
 | Report | Findings described without exposing actual secrets |
 
 **Bad example — Superficial scan:**
-Scan of only `.env` files, ignoring documentation, YAML, and JSON. No severity classification, no context analysis. A narrow scan gives false confidence — secrets hide in unexpected places (README examples, CI configs, integration docs).
+Scan of only `.env` files, ignoring documentation, YAML, and JSON. No severity classification, no context analysis. A narrow scan gives false confidence — secrets hide in unexpected places (README examples, CI configs, integration docs). [EXPLICIT]
 
 ## Salida (Deliverables)
 - G0 security scan report (pass/fail)

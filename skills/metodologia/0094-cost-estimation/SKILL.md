@@ -1,13 +1,13 @@
 ---
 name: metodologia-cost-estimation
-description: >
+description: 
   Cost driver identification — effort inductors, scope drivers, magnitude estimation, team composition
   modeling, risk-adjusted timeline ranges, service engagement sizing, consulting effort, automation ROI,
   and staffing model. Use when the user asks to "estimate effort", "identify
   cost drivers", "size the project", "plan team composition", "identify effort inductors", or mentions
   WBS, sizing, contingency, burn rate, PERT, Monte Carlo, or "Phase 4" cost work. NEVER produces
-  final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers.
-argument-hint: "<project-or-initiative-name>"
+  final prices — produces drivers, ranges, and magnitude indicators with costing disclaimers. [EXPLICIT]
+argument-hint: "project-or-initiative-name"
 author: Javier Montano · Comunidad MetodologIA
 model: opus
 context: fork
@@ -23,8 +23,8 @@ allowed-tools:
 # Cost Estimation: Effort Drivers, Magnitude Indicators & Investment Framing
 
 Translates technical scope into effort drivers, magnitude indicators, team composition models, and
-risk-adjusted timeline ranges. Produces structured analysis of WHAT drives cost — not WHAT things cost.
-Every output carries explicit disclaimers separating cost identification from pricing decisions.
+risk-adjusted timeline ranges. Produces structured analysis of WHAT drives cost — not WHAT things cost. [EXPLICIT]
+Every output carries explicit disclaimers separating cost identification from pricing decisions. [EXPLICIT]
 
 ## Grounding Guideline
 
@@ -32,26 +32,26 @@ Every output carries explicit disclaimers separating cost identification from pr
 
 ### Estimation Philosophy
 
-1. **Drivers, not prices.** The value of this skill is not in producing a final number — it is in identifying EVERYTHING that composes that number. Drivers are the truth; the price is a subsequent decision.
+1. **Drivers, not prices.** The value of this skill is not in producing a final number — it is in identifying EVERYTHING that composes that number. Drivers are the truth; the price is a subsequent decision. [EXPLICIT]
 
-2. **Mandatory triangulation.** A single estimation method is an opinion. Two methods are a hypothesis. Three convergent methods are confidence. Always triangulate.
+2. **Mandatory triangulation.** A single estimation method is an opinion. Two methods are a hypothesis. Three convergent methods are confidence. Always triangulate. [EXPLICIT]
 
-3. **Explicit uncertainty.** Ranges, not points. Scenarios, not certainties. The Cone of Uncertainty is not weakness — it is professional honesty that builds confidence.
+3. **Explicit uncertainty.** Ranges, not points. Scenarios, not certainties. The Cone of Uncertainty is not weakness — it is professional honesty that builds confidence. [EXPLICIT]
 
 ## Regla Cardinal
 
 **NUNCA producir valores finales de costo, precio o tarifa.** Este skill identifica CONDUCTORES de
-costo, INDUCTORES de esfuerzo, y NOCIONES DE MAGNITUD.
+costo, INDUCTORES de esfuerzo, y NOCIONES DE MAGNITUD. [EXPLICIT]
 
 ### Costing Philosophy
 
 1. **Costear ≠ Cobrar ≠ Ingresos.** El costeo existe para entender qué cuestan las cosas — completamente
-   desconectado de lo que se cobra. El revenue es una decisión comercial posterior e independiente.
-   Este skill vive exclusivamente en el dominio del costeo.
+   desconectado de lo que se cobra. El revenue es una decisión comercial posterior e independiente. [EXPLICIT]
+   Este skill vive exclusivamente en el dominio del costeo. [EXPLICIT]
 
 2. **Costear para la Excelencia.** El propósito del costeo NO es solo presupuestar — es asegurar calidad,
    excelencia, y un "wow factor" de **hospitalidad irracional**. Cuando sabes lo que las cosas
-   verdaderamente cuestan, puedes invertir apropiadamente en calidad. Costear bien = habilitar excelencia.
+   verdaderamente cuestan, puedes invertir apropiadamente en calidad. Costear bien = habilitar excelencia. [EXPLICIT]
 
 3. **Margen de innovación = inversión en futuro.** El 5% adicional no es contingencia — es la declaración
    de que la excelencia no es accidental. Es presupuesto deliberado para sorprender al cliente
@@ -74,28 +74,28 @@ Todo output DEBE incluir al pie:
 ```
 DISCLAIMER DE COSTEO
 ═══════════════════
-Este análisis identifica conductores de costo e inductores de esfuerzo.
-NO constituye una cotización, presupuesto ni compromiso financiero.
+Este análisis identifica conductores de costo e inductores de esfuerzo. [EXPLICIT]
+NO constituye una cotización, presupuesto ni compromiso financiero. [EXPLICIT]
 Los valores finales requieren: (1) validación de tarifas vigentes,
-(2) negociación comercial, (3) aprobación de alcance definitivo.
-Costear ≠ Cobrar. Este documento informa lo primero.
+(2) negociación comercial, (3) aprobación de alcance definitivo. [EXPLICIT]
+Costear ≠ Cobrar. Este documento informa lo primero. [EXPLICIT]
 ```
 
 ### Cone of Uncertainty
 
-Estimates narrow as projects progress. At concept phase: 0.25x-4x. After requirements: 0.67x-1.5x.
-After detailed design: 0.8x-1.25x. Communicate ranges, not points. Re-estimate at each phase gate.
+Estimates narrow as projects progress. At concept phase: 0.25x-4x. After requirements: 0.67x-1.5x. [EXPLICIT]
+After detailed design: 0.8x-1.25x. Communicate ranges, not points. Re-estimate at each phase gate. [EXPLICIT]
 
 ## Inputs
 
-Parse `$1` as **project/initiative name**. Detect project context from repo.
+Parse `$1` as **project/initiative name**. Detect project context from repo. [EXPLICIT]
 
 **Parameters:**
 - `{MODO}`: `piloto-auto` (default) | `desatendido` | `supervisado` | `paso-a-paso`
-  - **piloto-auto**: Automático para rutina, HITL para decisiones críticas (selección de magnitud, aprobación de escenarios). Reporta en milestones.
-  - **desatendido**: Zero interruptions. Todo auto-resuelto.
-  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo ante ambigüedades genuinas.
-  - **paso-a-paso**: Confirms before cada sección.
+  - **piloto-auto**: Automático para rutina, HITL para decisiones críticas (selección de magnitud, aprobación de escenarios). Reporta en milestones. [EXPLICIT]
+  - **desatendido**: Zero interruptions. Todo auto-resuelto. [EXPLICIT]
+  - **supervisado**: Autónomo con reportes en milestones. Preguntas solo ante ambigüedades genuinas. [EXPLICIT]
+  - **paso-a-paso**: Confirms before cada sección. [EXPLICIT]
 - `{FORMATO}`: `markdown` (default) | `html` | `dual`
 - `{VARIANTE}`: `ejecutiva` (~40% — S1 scope + S4 drivers + S6 magnitude) | `técnica` (full 7 sections, default)
 - `{TIPO_SERVICIO}`: `SDA` (default) | `QA` | `Management` | `RPA` | `Data-AI` | `Cloud` | `SAS` | `UX-Design`
@@ -244,7 +244,7 @@ Por cada driver:
 - **Margen de Innovación (5%)**: Toda estimación incluye un 5% de sobre-costo explícitamente
   reservado para invertir en innovación, mejora de experiencia, y mejora continua para
   usuarios/clientes. Este margen NO es contingencia (que se calcula aparte) — es inversión
-  deliberada en excelencia y hospitalidad irracional.
+  deliberada en excelencia y hospitalidad irracional. [EXPLICIT]
 
 ### S7: Costing Governance & Disclaimers
 
@@ -253,7 +253,7 @@ Por cada driver:
 - Cognitive bias mitigation: optimism, anchoring, planning fallacy
 - **Separación costeo vs cobro**: este skill informa COSTEO (qué recursos se necesitan);
   COBRO (qué se le cobra al cliente) es decisión comercial separada que depende de
-  modelo de negocio, margen, estrategia competitiva, y negociación.
+  modelo de negocio, margen, estrategia competitiva, y negociación. [EXPLICIT]
 
 ## Trade-off Matrix
 
@@ -302,7 +302,7 @@ Por cada driver:
 | `html` | On demand | Branded HTML (Design System). Visual impact. |
 | `dual` | On demand | Both formats. |
 
-Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter.
+Default output is Markdown with embedded Mermaid diagrams. HTML generation requires explicit `{FORMATO}=html` parameter. [EXPLICIT]
 
 ## Output Artifact
 
@@ -424,7 +424,7 @@ graph TD
 ```
 06_Cost_Drivers_{TIPO_SERVICIO}_{project}_{WIP}.html
 ```
-HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye cost driver taxonomy mindmap interactivo, magnitude framing visual, y Gantt de ramp-up del equipo. WCAG AA, responsive, print-ready.
+HTML self-contained branded (Design System MetodologIA v5). Light-First Technical. Incluye cost driver taxonomy mindmap interactivo, magnitude framing visual, y Gantt de ramp-up del equipo. WCAG AA, responsive, print-ready. [EXPLICIT]
 
 **Formato XLSX (bajo demanda):**
 
@@ -443,7 +443,7 @@ Sheet 7: Sensitivity Analysis — driver, impact on magnitude, risk level
 ```
 06_Cost_Drivers_{TIPO_SERVICIO}_{project}_{WIP}.docx
 ```
-Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents.
+Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/footers branded, tablas zebra. Poppins headings (navy), Trebuchet MS body, gold accents. [EXPLICIT]
 
 **Formato PPTX (bajo demanda):**
 - Filename: `{fase}_{entregable}_{cliente}_{WIP}.pptx`
@@ -464,3 +464,11 @@ Via python-docx con Design System MetodologIA v5. Cover page, TOC auto, headers/
 
 ---
 **Autor:** Javier Montano · Comunidad MetodologIA | **Ultima actualizacion:** 15 de marzo de 2026
+
+## Usage
+
+Example invocations:
+
+- "/cost-estimation" — Run the full cost estimation workflow
+- "cost estimation on this project" — Apply to current context
+

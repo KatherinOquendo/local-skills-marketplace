@@ -1,0 +1,9 @@
+[
+  {"id": "b2b-outreach-happy-path", "type": "happy_path", "input": "Run b2b outreach on this project", "expected_behavior": "Skill activates and produces the expected b2b outreach output following the defined process", "tags": ["basic", "activation"]},
+  {"id": "b2b-outreach-explicit-trigger", "type": "happy_path", "input": "Apply b2b outreach analysis", "expected_behavior": "Skill recognizes the trigger phrase and executes the b2b outreach workflow", "tags": ["trigger", "recognition"]},
+  {"id": "b2b-outreach-with-context", "type": "happy_path", "input": "Apply b2b outreach to analyze the current codebase with detailed output", "expected_behavior": "Skill produces comprehensive b2b outreach analysis with evidence-tagged findings", "tags": ["detailed", "comprehensive"]},
+  {"id": "b2b-outreach-minimal-input", "type": "happy_path", "input": "Quick b2b outreach", "expected_behavior": "Skill activates with minimal input, applies reasonable defaults", "tags": ["minimal", "defaults"]},
+  {"id": "b2b-outreach-false-positive", "type": "false_positive", "input": "What is the weather forecast for tomorrow?", "expected_behavior": "Skill should NOT activate — this input has no relation to b2b outreach", "tags": ["false_positive", "should-not-activate"]},
+  {"id": "b2b-outreach-edge-empty-input", "type": "edge_case", "input": "Run b2b outreach but I have no files or documentation yet", "expected_behavior": "Skill handles gracefully — requests minimum viable input or produces gap analysis", "tags": ["edge_case", "empty-input", "boundary"]},
+  {"id": "b2b-outreach-edge-conflicting", "type": "edge_case", "input": "Apply b2b outreach but requirements contradict each other", "expected_behavior": "Skill detects contradiction, flags with [OPEN] tag, proposes resolution", "tags": ["edge_case", "conflict", "corner"]}
+]

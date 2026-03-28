@@ -75,7 +75,7 @@
 
 ## 3. Debates Abiertos en la Industria
 
-### 3.1 ¿Cómo evaluar viabilidad de IA cuando todo claim "IA"?
+### 3.1 ¿Cómo evaluar viabilidad de IA cuando Todo claim "IA"?
 
 **El problema de 2025-2026:**
 - **Posición escéptica:** "El 80% de productos AI-powered son wrappers de GPT-4 con un system prompt. La verdadera IA en producción es rara y costosa."

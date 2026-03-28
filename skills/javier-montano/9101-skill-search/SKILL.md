@@ -3,7 +3,7 @@ name: skill-search
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  BM25 full-text search over PRISTINO-INDEX.md skill names and descriptions. Ranked results.
+  BM25 full-text search over PRISTINO-INDEX.md skill names and descriptions. Ranked results. [EXPLICIT]
   Trigger: "skill search"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-BM25 full-text search over PRISTINO-INDEX.md skill names and descriptions. Ranked results. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md.
+BM25 full-text search over PRISTINO-INDEX.md skill names and descriptions. Ranked results. This is an orchestration-layer skill used internally by Pristino and the adk-orchestrator. Protocol details in PRISTINO.md. [EXPLICIT]
 
 ## Procedure
 
@@ -49,3 +49,25 @@ BM25 full-text search over PRISTINO-INDEX.md skill names and descriptions. Ranke
 ## Related Skills
 
 - See PRISTINO.md for full orchestration protocol
+
+## Usage
+
+Example invocations:
+
+- "/skill-search" — Run the full skill search workflow
+- "skill search on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

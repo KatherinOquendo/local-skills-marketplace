@@ -3,7 +3,7 @@ name: funnel-design
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  TOFU/MOFU/BOFU content mapping, lead scoring, nurture flow design.
+  TOFU/MOFU/BOFU content mapping, lead scoring, nurture flow design. [EXPLICIT]
   Trigger: "funnel design, tofu/mofu/bofu content mapping, lead scoring, nurture flow design"
 allowed-tools:
   - Read
@@ -19,7 +19,7 @@ allowed-tools:
 
 ## TL;DR
 
-TOFU/MOFU/BOFU content mapping, lead scoring, nurture flow design. All outputs follow MetodologIA brand standards and evidence tagging.
+TOFU/MOFU/BOFU content mapping, lead scoring, nurture flow design. All outputs follow MetodologIA brand standards and evidence tagging. [EXPLICIT]
 
 ## Procedure
 
@@ -61,3 +61,25 @@ TOFU/MOFU/BOFU content mapping, lead scoring, nurture flow design. All outputs f
 ## Related Skills
 
 - Related domain skills in this category
+
+## Usage
+
+Example invocations:
+
+- "/funnel-design" — Run the full funnel design workflow
+- "funnel design on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |

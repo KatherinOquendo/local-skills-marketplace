@@ -3,7 +3,7 @@ name: etl-patterns
 author: JM Labs (Javier Montaño)
 version: 1.0.0
 description: >
-  Extract-transform-load pipelines, batch vs stream, error recovery.
+  Extract-transform-load pipelines, batch vs stream, error recovery. [EXPLICIT]
   Trigger: "etl patterns"
 allowed-tools:
   - Read
@@ -15,7 +15,7 @@ allowed-tools:
 # Etl Patterns
 > "Method over hacks."
 ## TL;DR
-Extract-transform-load pipelines, batch vs stream, error recovery.
+Extract-transform-load pipelines, batch vs stream, error recovery. [EXPLICIT]
 ## Procedure
 ### Step 1: Discover
 - Gather context and requirements
@@ -29,3 +29,25 @@ Extract-transform-load pipelines, batch vs stream, error recovery.
 - [ ] Evidence tags applied
 - [ ] Constitution-compliant
 - [ ] Actionable output
+
+## Usage
+
+Example invocations:
+
+- "/etl-patterns" — Run the full etl patterns workflow
+- "etl patterns on this project" — Apply to current context
+
+
+## Assumptions & Limits
+
+- Assumes access to project artifacts (code, docs, configs) [EXPLICIT]
+- Requires English-language output unless otherwise specified [EXPLICIT]
+- Does not replace domain expert judgment for final decisions [EXPLICIT]
+
+## Edge Cases
+
+| Scenario | Handling |
+|----------|----------|
+| Empty or minimal input | Request clarification before proceeding |
+| Conflicting requirements | Flag conflicts explicitly, propose resolution |
+| Out-of-scope request | Redirect to appropriate skill or escalate |
