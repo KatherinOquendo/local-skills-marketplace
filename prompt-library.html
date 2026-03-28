@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JM Labs — Prompt Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #122562; --gold: #FFD700; --blue: #137DC5;
+    --dark: #1F2833; --lavender: #BBA0CC; --off-white: #F8F9FC;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Trebuchet MS', sans-serif; background: var(--off-white); color: var(--dark); }
+  h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
+
+  .hero { background: var(--navy); color: white; padding: 60px 40px 48px; text-align: center; }
+  .hero-badge { display: inline-block; background: var(--gold); color: var(--navy); font-family: 'Poppins',sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; padding: 5px 16px; border-radius: 20px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(1.8rem,4vw,3rem); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { opacity: 0.8; max-width: 580px; margin: 0 auto; line-height: 1.7; font-size: 0.95rem; }
+
+  /* TAB NAV */
+  .tab-nav { background: white; border-bottom: 2px solid #e8ecf5; position: sticky; top: 0; z-index: 100; }
+  .tab-nav-inner { max-width: 1100px; margin: 0 auto; display: flex; padding: 0 40px; }
+  .tab-btn {
+    padding: 16px 28px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; border: none; background: none; color: #888;
+    border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+  }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+  .tab-btn:hover { color: var(--navy); }
+
+  /* CONTENT */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .section { padding: 48px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-header { margin-bottom: 32px; }
+  .section-header h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .section-header p { color: #666; font-size: 0.9rem; line-height: 1.6; max-width: 680px; }
+
+  /* PROMPT CARD */
+  .prompts-grid { display: grid; gap: 20px; }
+  .prompt-card {
+    background: white; border-radius: 12px;
+    border: 1px solid #e8ecf5; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(18,37,98,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .prompt-card:hover { box-shadow: 0 6px 24px rgba(18,37,98,0.10); transform: translateY(-2px); }
+  .prompt-header { padding: 20px 24px 0; display: flex; align-items: flex-start; gap: 16px; }
+  .prompt-num {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    background: var(--navy); color: var(--gold);
+    font-family: 'Poppins',sans-serif; font-weight: 800; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .prompt-meta { flex: 1; }
+  .prompt-meta h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .prompt-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .tag.skill { background: rgba(19,125,197,0.1); color: var(--blue); }
+  .tag.agent { background: rgba(18,37,98,0.08); color: var(--navy); }
+  .tag.plugin { background: rgba(187,160,204,0.2); color: #7a5295; }
+  .tag.mode { background: rgba(255,215,0,0.2); color: #8a6000; }
+
+  .prompt-body { padding: 16px 24px; }
+  .prompt-text {
+    background: #0d1a40; color: #e8f0ff; font-family: monospace; font-size: 0.88rem;
+    border-radius: 8px; padding: 16px 18px; line-height: 1.7;
+    position: relative; white-space: pre-wrap; word-break: break-word;
+  }
+  .prompt-text .var { color: var(--gold); font-style: italic; }
+  .copy-btn {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(255,215,0,0.15); color: var(--gold); border: none;
+    font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; cursor: pointer;
+    font-family: 'Poppins',sans-serif; font-weight: 600;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: rgba(255,215,0,0.3); }
+  .copy-btn.copied { background: rgba(19,125,197,0.3); color: #90d0ff; }
+
+  .prompt-footer { padding: 12px 24px 20px; display: flex; gap: 24px; flex-wrap: wrap; }
+  .prompt-info { font-size: 0.78rem; color: #888; }
+  .prompt-info strong { color: var(--dark); }
+
+  /* META PROMPT CARD */
+  .meta-card {
+    background: white; border-radius: 12px;
+    border-left: 4px solid var(--navy); overflow: hidden;
+    box-shadow: 0 2px 12px rgba(18,37,98,0.05);
+    margin-bottom: 24px;
+  }
+  .meta-header { padding: 20px 24px 0; display: flex; gap: 16px; align-items: flex-start; }
+  .meta-num {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    background: var(--gold); color: var(--navy);
+    font-family: 'Poppins',sans-serif; font-weight: 800; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .meta-meta { flex: 1; }
+  .meta-meta h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .meta-where { font-size: 0.75rem; color: var(--blue); font-weight: 600; margin-bottom: 6px; }
+  .meta-body { padding: 16px 24px 20px; }
+  .meta-text {
+    background: #f4f5f8; color: var(--dark); font-family: monospace; font-size: 0.8rem;
+    border-radius: 8px; padding: 16px 18px; line-height: 1.7;
+    white-space: pre-wrap; word-break: break-word; position: relative;
+  }
+  .meta-text .directive { color: var(--navy); font-weight: bold; }
+  .meta-text .comment { color: #888; font-style: italic; }
+  .meta-text .value { color: #8a6000; }
+
+  /* HOW IT WORKS */
+  .how-section { background: var(--navy); color: white; padding: 48px 40px; }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+  .how-inner h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+  .how-inner > p { opacity: 0.8; margin-bottom: 32px; }
+  .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; }
+  .how-card { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; }
+  .how-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: var(--gold); }
+  .how-card p { font-size: 0.8rem; opacity: 0.75; line-height: 1.6; }
+
+  footer { background: #0d1a40; color: rgba(255,255,255,0.5); padding: 28px 40px; text-align: center; font-size: 0.8rem; }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  @media (max-width:768px) {
+    .hero { padding: 40px 24px; }
+    .section { padding: 32px 24px; }
+    .tab-nav-inner { padding: 0 16px; overflow-x: auto; }
+    .how-section { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-badge">⚡ JM Labs · Prompt Library v1.0</div>
+  <h1>10 Prompts + 10 <span>Meta-Prompts</span></h1>
+  <p>El entorno infiere tu intención desde 0–2 inputs y auto-selecciona skills, agentes, orden y esquema de orquestación. Máximo output con mínima fricción.</p>
+</section>
+
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="switchTab('prompts', this)">10 Prompts de Usuario</button>
+    <button class="tab-btn" onclick="switchTab('meta', this)">10 Meta-Prompts</button>
+    <button class="tab-btn" onclick="switchTab('how', this)">Cómo Funciona</button>
+  </div>
+</nav>
+
+<!-- ─── TAB: PROMPTS ─── -->
+<div id="tab-prompts" class="tab-content active">
+  <div class="section">
+    <div class="section-header">
+      <h2>10 Prompts de Usuario</h2>
+      <p>Cada prompt está diseñado para activar el conjunto óptimo de skills, agentes y orquestación con 0–2 inputs variables. El ecosistema infiere el resto.</p>
+    </div>
+    <div class="prompts-grid">
+
+      <!-- P1 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">1</div>
+          <div class="prompt-meta">
+            <h3>Discovery Express</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">MAO</span>
+              <span class="tag skill">flow-mapping · asis-analysis · stakeholder-mapping</span>
+              <span class="tag mode">Express (1 sesión)</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Haz un discovery express de <span class="var">[empresa/proyecto]</span>. Necesito entender el AS-IS, los flujos críticos y los stakeholders clave en una sola sesión.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> asis-analysis → flow-mapping → stakeholder-mapping</div>
+          <div class="prompt-info"><strong>Agentes:</strong> discovery-conductor + domain-analyst + mao:change-catalyst</div>
+          <div class="prompt-info"><strong>Output:</strong> AS-IS + mapa de flujos + matriz de stakeholders</div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">2</div>
+          <div class="prompt-meta">
+            <h3>Arquitectura de Sistema</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">SA</span>
+              <span class="tag skill">solutions-architecture · technical-feasibility · mermaid-diagramming</span>
+              <span class="tag mode">Deep</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Diseña la arquitectura de <span class="var">[descripción del sistema]</span> para <span class="var">[contexto: escala/industria/restricciones]</span>.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> solutions-architecture → technical-feasibility → mermaid-diagramming → scenario-analysis</div>
+          <div class="prompt-info"><strong>Agentes:</strong> sa:principal-architect + sa:solutions-architect + sa:backend-specialist</div>
+          <div class="prompt-info"><strong>Output:</strong> C4 diagrams + ADRs + trade-off matrix</div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">3</div>
+          <div class="prompt-meta">
+            <h3>Auditoría de Seguridad</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">SA</span>
+              <span class="tag skill">open-claude-security · security-architecture · devsecops-architecture</span>
+              <span class="tag mode">Audit</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Audita la postura de seguridad de <span class="var">[sistema/entorno]</span> y dame un plan de hardening priorizado.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> open-claude-security → security-architecture → devsecops-architecture</div>
+          <div class="prompt-info"><strong>Agentes:</strong> sa:security-specialist + sa:auth-architect</div>
+          <div class="prompt-info"><strong>Output:</strong> STRIDE analysis + hardening roadmap + checklist</div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">4</div>
+          <div class="prompt-meta">
+            <h3>Estimación de Costos</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">MAO · PM</span>
+              <span class="tag skill">cost-estimation · commercial-model · scenario-analysis</span>
+              <span class="tag mode">Express</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Estima el esfuerzo y costo de construir <span class="var">[solución]</span> con un equipo de <span class="var">[tamaño/perfil]</span>.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> cost-estimation → scenario-analysis → commercial-model</div>
+          <div class="prompt-info"><strong>Agentes:</strong> pm:apex-cost-estimator + mao:delivery-manager</div>
+          <div class="prompt-info"><strong>Output:</strong> FTE-meses por fase + 3 escenarios (optimista/base/pesimista)</div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">5</div>
+          <div class="prompt-meta">
+            <h3>Roadmap de Producto</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">MAO · SA</span>
+              <span class="tag skill">solution-roadmap · technical-feasibility · scenario-analysis</span>
+              <span class="tag mode">Guided</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Crea un roadmap técnico de 12 meses para <span class="var">[producto/iniciativa]</span> considerando <span class="var">[restricciones: presupuesto/equipo/deuda técnica]</span>.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> solution-roadmap → technical-feasibility → risk-controlling-dynamics</div>
+          <div class="prompt-info"><strong>Agentes:</strong> mao:domain-analyst + sa:principal-architect + mao:delivery-manager</div>
+          <div class="prompt-info"><strong>Output:</strong> Roadmap Mermaid + milestones + risk register</div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">6</div>
+          <div class="prompt-meta">
+            <h3>Análisis de Viabilidad</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">MAO</span>
+              <span class="tag skill">software-viability · technical-feasibility · scenario-analysis</span>
+              <span class="tag mode">Auto</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">¿Es viable construir <span class="var">[idea/solución]</span> con el stack actual? Dame un análisis de factibilidad técnica y de negocio.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> software-viability → technical-feasibility → scenario-analysis → risk-controlling-dynamics</div>
+          <div class="prompt-info"><strong>Agentes:</strong> mao:technical-architect + mao:domain-analyst + sa:evidence-auditor</div>
+          <div class="prompt-info"><strong>Output:</strong> Go/No-Go con evidencia + 3 escenarios + assumption log</div>
+        </div>
+      </div>
+
+      <!-- P7 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">7</div>
+          <div class="prompt-meta">
+            <h3>Diseño de Sistema OpenClaw Personal</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">SA</span>
+              <span class="tag skill">open-claude-security · openclaw-isolation · openclaw-personal-deploy</span>
+              <span class="tag mode">Deep</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Diseña y despliega un OpenClaw seguro para uso personal con acceso controlado a <span class="var">[tools: filesystem/terminal/browser/APIs]</span>.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> open-claude-security → openclaw-isolation → openclaw-tool-auth → openclaw-personal-deploy</div>
+          <div class="prompt-info"><strong>Agentes:</strong> sa:security-specialist + sa:devops-engineer</div>
+          <div class="prompt-info"><strong>Output:</strong> docker-compose + settings.json + hook scripts + checklist de hardening</div>
+        </div>
+      </div>
+
+      <!-- P8 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">8</div>
+          <div class="prompt-meta">
+            <h3>Onboarding de Proyecto</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">PM</span>
+              <span class="tag skill">project-charter · stakeholder-register · scope-wbs</span>
+              <span class="tag mode">Kickoff</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Prepara el paquete de kickoff para el proyecto <span class="var">[nombre]</span>: charter, WBS inicial y registro de stakeholders.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> project-charter → scope-wbs → stakeholder-register → communication-plan</div>
+          <div class="prompt-info"><strong>Agentes:</strong> pm:apex-delivery-lead + pm:apex-scope-analyst + pm:apex-stakeholder-engagement-specialist</div>
+          <div class="prompt-info"><strong>Output:</strong> Project charter + WBS + RACI + plan de comunicaciones</div>
+        </div>
+      </div>
+
+      <!-- P9 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">9</div>
+          <div class="prompt-meta">
+            <h3>Spec Funcional Completo</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">MAO · SA</span>
+              <span class="tag skill">functional-spec · user-representative · flow-mapping</span>
+              <span class="tag mode">Guided</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Escribe el spec funcional completo de <span class="var">[feature/módulo]</span> con criterios de aceptación y flujos de usuario.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> functional-spec → user-representative → flow-mapping → requirements-engineering</div>
+          <div class="prompt-info"><strong>Agentes:</strong> mao:domain-analyst + sa:frontend-specialist + sa:ux-engineer</div>
+          <div class="prompt-info"><strong>Output:</strong> Spec markdown + user stories + acceptance criteria + Mermaid flows</div>
+        </div>
+      </div>
+
+      <!-- P10 -->
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-num">10</div>
+          <div class="prompt-meta">
+            <h3>Pitch Ejecutivo</h3>
+            <div class="prompt-tags">
+              <span class="tag plugin">MAO</span>
+              <span class="tag skill">executive-pitch · commercial-model · storytelling</span>
+              <span class="tag mode">Express</span>
+            </div>
+          </div>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-text">Crea un pitch ejecutivo de <span class="var">[solución/propuesta]</span> para <span class="var">[audiencia: CTO/CEO/Junta/Cliente]</span>. Necesito convencer en 10 minutos.<button class="copy-btn" onclick="copyPrompt(this)">Copiar</button></div>
+        </div>
+        <div class="prompt-footer">
+          <div class="prompt-info"><strong>Skills activados:</strong> executive-pitch → storytelling → commercial-model → data-storytelling</div>
+          <div class="prompt-info"><strong>Agentes:</strong> mao:domain-analyst + mao:metodologia-executive-communicator</div>
+          <div class="prompt-info"><strong>Output:</strong> Deck estructura 10 slides + narrative arc + one-pager</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── TAB: META-PROMPTS ─── -->
+<div id="tab-meta" class="tab-content">
+  <div class="section">
+    <div class="section-header">
+      <h2>10 Meta-Prompts</h2>
+      <p>Instrucciones de sistema para CLAUDE.md o settings.json que configuran el entorno para auto-seleccionar skills, agentes y orquestación infiriendo la intención del usuario con 0–2 inputs.</p>
+    </div>
+
+    <!-- M1 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M1</div>
+        <div class="meta-meta">
+          <h3>Intent Router Universal</h3>
+          <div class="meta-where">📍 CLAUDE.md (raíz del proyecto) — Sección: Routing automático</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Auto-Routing de Intención</span>
+
+<span class="comment"># Detectar tipo de tarea por señales en el primer mensaje:</span>
+<span class="directive">SI</span> "diseña / arquitectura / sistema / stack" → <span class="value">activar SA · skills: solutions-architecture, mermaid-diagramming</span>
+<span class="directive">SI</span> "discovery / diagnóstico / AS-IS / flujos" → <span class="value">activar MAO · skills: asis-analysis, flow-mapping, stakeholder-mapping</span>
+<span class="directive">SI</span> "proyecto / charter / plan / sprint / riesgo" → <span class="value">activar PM · skills: project-charter, risk-register, schedule-baseline</span>
+<span class="directive">SI</span> "seguridad / hack / vulnerabilidad / audit" → <span class="value">activar SA · skills: open-claude-security, security-architecture</span>
+<span class="directive">SI</span> "costo / presupuesto / estimación / ROI" → <span class="value">activar MAO+PM · skills: cost-estimation, commercial-model</span>
+<span class="directive">SI</span> "pitch / presentación / deck / ejecutivo" → <span class="value">activar MAO · skills: executive-pitch, storytelling</span>
+
+<span class="comment"># Modo de ejecución por complejidad:</span>
+<span class="directive">0 inputs variables</span> → modo Express (3 entregables máximo)
+<span class="directive">1 input variable</span>  → modo Guided (pipeline completo con checkpoints)
+<span class="directive">2 inputs variables</span> → modo Deep (comité de expertos + quality gates)</div>
+      </div>
+    </div>
+
+    <!-- M2 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M2</div>
+        <div class="meta-meta">
+          <h3>Skill Selection Engine</h3>
+          <div class="meta-where">📍 CLAUDE.md del plugin activo — Sección: Ontología Viva</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Selección Automática de Skills</span>
+
+<span class="comment"># Cargar en nivel L1 (metadata) siempre. Escalar a L2/L3 por demanda.</span>
+Cuando el usuario describe una tarea:
+1. <span class="value">Inferir dominio</span>: ¿Discovery? ¿Architecture? ¿Security? ¿PM? ¿Frontend?
+2. <span class="value">Mapear al rango</span>: 0001-0991 | 1001-1060 | 2001-2060 | 5001-5025 | 9001-9128
+3. <span class="value">Seleccionar 3-5 skills</span>: núcleo + complementarios + output
+4. <span class="value">Definir orden</span>: análisis → diseño → validación → entregable
+5. <span class="value">Cargar L2</span> para los skills seleccionados antes de ejecutar
+
+<span class="comment"># Nunca cargar todos los skills. Máximo 5 activos por sesión.</span>
+<span class="comment"># Si el dominio es ambiguo, preguntar UNA sola vez antes de proceder.</span></div>
+      </div>
+    </div>
+
+    <!-- M3 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M3</div>
+        <div class="meta-meta">
+          <h3>Agent Committee Spawner</h3>
+          <div class="meta-where">📍 CLAUDE.md del plugin — Sección: Comité de Expertos</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Composición Automática de Comité</span>
+
+<span class="comment"># Regla: mínimo 3 agentes por tarea compleja, máximo 5.</span>
+<span class="comment"># Siempre incluir: orquestador + experto de dominio + quality guardian.</span>
+
+Dado {TIPO_TAREA}:
+- <span class="value">Discovery</span>   → mao:discovery-conductor + mao:domain-analyst + mao:quality-guardian
+- <span class="value">Architecture</span> → sa:principal-architect + sa:solutions-architect + sa:quality-guardian
+- <span class="value">Security</span>     → sa:security-specialist + sa:auth-architect + sa:evidence-auditor
+- <span class="value">PM</span>           → pm:apex-delivery-lead + pm:apex-risk-manager + pm:apex-quality-auditor
+- <span class="value">Data</span>         → mao:data-strategist + mao:metodologia-data-architect + sa:database-specialist
+
+<span class="comment"># Activar experto adicional si se detecta señal específica:</span>
+"migración" → + sa:migration-specialist
+"compliance" → + mao:metodologia-compliance-analyst
+"presupuesto" → + pm:apex-budget-controller</div>
+      </div>
+    </div>
+
+    <!-- M4 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M4</div>
+        <div class="meta-meta">
+          <h3>Orchestration Mode Selector</h3>
+          <div class="meta-where">📍 CLAUDE.md — Sección: Inicio Rápido</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Selección Automática de Modo de Orquestación</span>
+
+<span class="comment"># Detectar urgencia y profundidad del request:</span>
+
+<span class="value">Express</span>  → señales: "rápido", "resumen", "en 1 sesión", "overview", pregunta cerrada
+           → pipeline: Input → 1 análisis → 3 entregables → Ghost menu
+           → tiempo: ~30 min
+
+<span class="value">Guided</span>   → señales: "guíame", "paso a paso", "con checkpoints", pregunta abierta
+           → pipeline: Input → G0 → Fase1 → G1 → Fase2 → G2 → Entregable
+           → tiempo: ~90 min
+
+<span class="value">Auto</span>     → señales: "autónomo", "hazlo tú", "completo", sin restricciones de tiempo
+           → pipeline: todos los pasos con gates, sin interrupciones
+           → tiempo: ~3 hrs
+
+<span class="value">Deep</span>     → señales: "profundo", "exhaustivo", "Think Tank", decisión crítica
+           → pipeline: Auto + comité multi-agente + validación cruzada
+           → tiempo: ~5 hrs</div>
+      </div>
+    </div>
+
+    <!-- M5 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M5</div>
+        <div class="meta-meta">
+          <h3>Zero-Input Bootstrap</h3>
+          <div class="meta-where">📍 CLAUDE.md — SessionStart hook</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Bootstrap Automático (0 inputs del usuario)</span>
+
+Al iniciar sesión sin contexto explícito:
+1. <span class="value">Escanear el directorio actual</span>: detectar tipo de proyecto
+   - `package.json` → proyecto Node/React/Angular
+   - `*.tf` / `docker-compose.yml` → infra/DevOps
+   - `discovery/` o `priming-rag-*.md` → sesión MAO activa
+   - `sa/` o `project/` → sesión SA/PM activa
+
+2. <span class="value">Leer SESSION-README.md</span> si existe → cargar contexto previo
+
+3. <span class="value">Inferir intención probable</span>:
+   - Proyecto nuevo + sin docs → sugerir `/sa:init` o `/mao:run-express`
+   - Sesión existente → retomar desde último estado en `session-state.json`
+   - Solo código → activar SA con `/sa:analyze`
+
+4. <span class="value">Presentar Ghost Menu</span> con 3 opciones inferidas antes de preguntar</div>
+      </div>
+    </div>
+
+    <!-- M6 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M6</div>
+        <div class="meta-meta">
+          <h3>Evidence Tagging Auto-Enforcer</h3>
+          <div class="meta-where">📍 CLAUDE.md — Sección: Zero-Hallucination Protocol</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Etiquetado de Evidencia Automático</span>
+
+<span class="comment"># Aplicar en CADA entregable. Sin excepciones.</span>
+
+[EXPLICIT]   → Dato extraído de código, config, doc o input del usuario
+[INFERRED]   → Deducción razonada de evidencia disponible
+[OPEN]       → Dato desconocido, requiere validación del usuario
+
+<span class="value">Regla de densidad</span>: ≥80% de claims factuales deben llevar etiqueta
+<span class="value">Si >30% son [OPEN]</span>: mostrar banner de advertencia antes del entregable
+<span class="value">NUNCA</span> presentar [INFERRED] como si fuera [EXPLICIT]
+
+<span class="comment"># Auto-trigger de validación:</span>
+Si el usuario pregunta sobre: costos, tiempos, tecnologías específicas, personas/roles
+→ Marcar como [OPEN] hasta obtener confirmación explícita</div>
+      </div>
+    </div>
+
+    <!-- M7 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M7</div>
+        <div class="meta-meta">
+          <h3>Progressive MOAT Loading Controller</h3>
+          <div class="meta-where">📍 CLAUDE.md — Sección: Ontología Viva</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Control de Carga Progresiva de Skills</span>
+
+<span class="comment"># NO cargar todos los skills al inicio. Protocolo de 3 niveles:</span>
+
+<span class="value">L1 — Metadata</span> (~20 líneas/skill): Solo frontmatter + TL;DR
+  → Usar para: routing, selección inicial, exploración
+  → Cargar: SIEMPRE al inicio de sesión para skills candidatos
+
+<span class="value">L2 — Core</span> (~200 líneas/skill): SKILL.md completo
+  → Usar para: ejecución estándar del skill
+  → Cargar: cuando el skill es seleccionado para ejecutar
+
+<span class="value">L3 — Deep</span> (~500+ líneas/skill): SKILL.md + references/ + examples/
+  → Usar para: análisis profundo, casos edge, calibración
+  → Cargar: solo si L2 no es suficiente (señal: "profundo", "exhaustivo")
+
+<span class="comment"># Límite de contexto: máximo 5 skills en L2 simultáneamente.</span>
+<span class="comment"># Usar lazy-load-resolver.sh para determinar nivel por fase y tipo.</span></div>
+      </div>
+    </div>
+
+    <!-- M8 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M8</div>
+        <div class="meta-meta">
+          <h3>OpenClaw Security Auto-Gate</h3>
+          <div class="meta-where">📍 settings.json — hooks.PreToolUse + CLAUDE.md sección Security</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Gates de Seguridad Automáticos</span>
+
+<span class="comment"># Aplicar ANTES de cada tool use. Fail-closed (exit 2 = block).</span>
+
+Bash:
+  <span class="value">BLOCK si contiene</span>: rm -rf | dd if= | mkfs | wget | curl -o | chmod 777
+  <span class="value">BLOCK si path fuera de</span>: ~/projects/ ~/workspace/ /tmp/
+  <span class="value">WARN si contiene</span>: sudo | su - | passwd | export ANTHROPIC
+
+Write/Edit:
+  <span class="value">BLOCK si path contiene</span>: .env | .ssh | /etc/ | /sys/ | /proc/
+  <span class="value">WARN si archivo > 1MB</span>: confirmar antes de escribir
+
+WebFetch:
+  <span class="value">BLOCK si dominio no en allowlist</span>: solo docs.anthropic.com + github.com + npmjs.com
+  <span class="value">BLOCK si URL contiene</span>: ?redirect= | data: | javascript:
+
+<span class="comment"># Logging: toda acción bloqueada → ~/.claude/security-audit.log</span>
+<span class="comment"># Activar con skill: /sa:open-claude-security --personal</span></div>
+      </div>
+    </div>
+
+    <!-- M9 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M9</div>
+        <div class="meta-meta">
+          <h3>Output Excellence Enforcer</h3>
+          <div class="meta-where">📍 CLAUDE.md — Sección: Output Standards + Excellence Loop</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Excellence Loop — 10 Criterios por Entregable</span>
+
+<span class="comment"># Evaluar CADA entregable contra estos 10 criterios antes de entregar:</span>
+
+1. <span class="value">Claridad</span>      → ¿El TL;DR responde la pregunta en ≤3 líneas?
+2. <span class="value">Completitud</span>   → ¿Cubre todos los aspectos del request?
+3. <span class="value">Evidencia</span>     → ¿≥80% de claims tienen etiqueta [EXPLICIT/INFERRED/OPEN]?
+4. <span class="value">Estructura</span>    → ¿Tiene headings claros, bullets y Mermaid donde aplica?
+5. <span class="value">Accionabilidad</span> → ¿El usuario sabe exactamente qué hacer después?
+6. <span class="value">Precisión</span>     → ¿Sin fabricaciones? ¿Números con fuente?
+7. <span class="value">Tamaño</span>        → ¿SKILL.md ≤500 líneas? ¿Response ≤2000 palabras?
+8. <span class="value">Consistencia</span>  → ¿Alineado con entregables previos de la sesión?
+9. <span class="value">Ghost Menu</span>    → ¿Incluye opciones de siguiente paso al final?
+10. <span class="value">Branding</span>     → ¿Idioma correcto? ¿Tokens CSS del Design System?
+
+<span class="comment"># Si algún criterio falla → corregir ANTES de entregar. Sin excepción.</span></div>
+      </div>
+    </div>
+
+    <!-- M10 -->
+    <div class="meta-card">
+      <div class="meta-header">
+        <div class="meta-num">M10</div>
+        <div class="meta-meta">
+          <h3>Session Continuity Protocol</h3>
+          <div class="meta-where">📍 CLAUDE.md — Sección: Sesión Automática + hooks/session-context</div>
+        </div>
+      </div>
+      <div class="meta-body">
+        <div class="meta-text"><span class="directive">## Protocolo de Continuidad de Sesión</span>
+
+<span class="comment"># Al INICIO de cada sesión:</span>
+1. Leer `session-state.json` → conocer fase actual y decisiones tomadas
+2. Leer `session-changelog.md` → últimas 10 acciones
+3. Si hay `assumption-log.md` → verificar supuestos pendientes de validación
+4. Presentar resumen: "Continuando desde [fase] — [última acción] — [siguiente paso]"
+
+<span class="comment"># Durante la sesión:</span>
+5. Registrar CADA decisión en `session-changelog.md` con timestamp
+6. Actualizar `session-state.json` al completar cada fase
+7. Crear `priming-rag-{fuente}.md` por cada URL/adjunto investigado
+
+<span class="comment"># Al FINAL de cada sesión (o al detectar /compact o contexto >80%):</span>
+8. Ejecutar pre-compact hook: resumir estado crítico en ≤500 palabras
+9. Actualizar `ghost-menu.md` con opciones para retomar
+10. Exportar `calibration-digest.md` con skills cargados y nivel L1/L2/L3</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── TAB: HOW IT WORKS ─── -->
+<div id="tab-how" class="tab-content">
+  <section class="how-section">
+    <div class="how-inner">
+      <h2>Cómo Funciona la Auto-Selección</h2>
+      <p>El ecosistema infiere intención desde señales lingüísticas en 0–2 inputs y activa el stack óptimo de skills, agentes y orquestación.</p>
+      <div class="how-grid">
+        <div class="how-card">
+          <h4>0 inputs — Bootstrap</h4>
+          <p>El SessionStart hook escanea el directorio, lee session-state.json y presenta un Ghost Menu con las 3 acciones más probables. El usuario solo necesita elegir.</p>
+        </div>
+        <div class="how-card">
+          <h4>1 input — Routing</h4>
+          <p>El Intent Router detecta el dominio (Discovery / Architecture / Security / PM) y selecciona 3–5 skills canónicos en orden óptimo. Modo Express por defecto.</p>
+        </div>
+        <div class="how-card">
+          <h4>2 inputs — Personalización</h4>
+          <p>Con contexto + restricciones, el Agent Committee Spawner activa agentes especializados y escala al modo Guided o Deep según complejidad detectada.</p>
+        </div>
+        <div class="how-card">
+          <h4>Progressive Loading</h4>
+          <p>Los skills se cargan en L1 (metadata) para routing. Solo los seleccionados escalan a L2 (core) o L3 (deep). Máximo 5 skills activos simultáneamente.</p>
+        </div>
+        <div class="how-card">
+          <h4>Evidence-First</h4>
+          <p>Todo claim se etiqueta automáticamente [EXPLICIT/INFERRED/OPEN]. Si >30% son supuestos, el sistema avisa antes de entregar. Zero hallucination por diseño.</p>
+        </div>
+        <div class="how-card">
+          <h4>Continuidad</h4>
+          <p>Session-state.json + changelog garantizan continuidad entre conversaciones. El sistema recuerda la fase, las decisiones y los supuestos pendientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="section">
+    <div class="section-header">
+      <h2>Señales de Activación por Ecosistema</h2>
+      <p>El router detecta estas palabras clave en los primeros 2 mensajes para activar el ecosistema correcto.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+      <div style="background:white;border-radius:10px;padding:24px;border-top:4px solid #122562;">
+        <h3 style="font-size:1rem;margin-bottom:12px;color:#122562;">SA — Sovereign Architect</h3>
+        <p style="font-size:0.82rem;color:#666;line-height:1.8;">arquitectura · diseña · sistema · código · review · refactor · deuda técnica · performance · scaffold · api · database · seguridad · infra · CI/CD · observability</p>
+      </div>
+      <div style="background:white;border-radius:10px;padding:24px;border-top:4px solid #137DC5;">
+        <h3 style="font-size:1rem;margin-bottom:12px;color:#137DC5;">PM — PMO-APEX</h3>
+        <p style="font-size:0.82rem;color:#666;line-height:1.8;">proyecto · plan · cronograma · riesgo · presupuesto · charter · sprint · retrospectiva · PMO · scrum · kanban · portafolio · entregable · milestone · stakeholders</p>
+      </div>
+      <div style="background:white;border-radius:10px;padding:24px;border-top:4px solid #BBA0CC;">
+        <h3 style="font-size:1rem;margin-bottom:12px;color:#7a5295;">MAO — MetodologIA</h3>
+        <p style="font-size:0.82rem;color:#666;line-height:1.8;">discovery · diagnóstico · AS-IS · flujos · oportunidad · viabilidad · pitch · cliente · consultoría · propuesta · roadmap · transformación · RPA · AI adoption</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>JM Labs Prompt Library v1.0</strong> · 10 prompts · 10 meta-prompts · Auto-selección por intención<br>
+  GPL-3.0 (MetodologIA) · MIT (JM Labs) · © 2026 Javier Montaño
+</footer>
+
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function copyPrompt(btn) {
+  const text = btn.parentElement.textContent.replace('Copiar','').replace('Copiado','').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

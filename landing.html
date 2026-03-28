@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JM Labs — Canonical Skill Registry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #122562;
+    --gold: #FFD700;
+    --blue: #137DC5;
+    --dark: #1F2833;
+    --lavender: #BBA0CC;
+    --off-white: #F8F9FC;
+    --success: #137DC5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Trebuchet MS', sans-serif; background: var(--off-white); color: var(--dark); }
+  h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,215,0,0.06);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { font-size: 1.1rem; opacity: 0.8; max-width: 640px; margin: 0 auto 32px; line-height: 1.7; }
+  .hero-stats {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  /* SECTION */
+  .section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-title {
+    font-size: 1.75rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 2px; background: linear-gradient(to right, var(--gold), transparent);
+  }
+  .section-sub { color: #666; margin-bottom: 36px; font-size: 0.95rem; }
+
+  /* ARCHITECTURE DIAGRAM */
+  .arch-container { background: white; border-radius: 12px; padding: 40px; box-shadow: 0 2px 20px rgba(18,37,98,0.08); margin-bottom: 48px; }
+  .arch-flow {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; flex-wrap: wrap;
+  }
+  .arch-node {
+    background: var(--navy); color: white;
+    border-radius: 10px; padding: 20px 24px;
+    text-align: center; min-width: 160px;
+    position: relative;
+  }
+  .arch-node.canonical { background: var(--navy); border: 2px solid var(--gold); }
+  .arch-node.plugin { background: #1a3a7a; }
+  .arch-node h4 { font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+  .arch-node .count { font-size: 1.5rem; font-weight: 800; color: var(--gold); }
+  .arch-node .sub { font-size: 0.7rem; opacity: 0.7; margin-top: 2px; }
+  .arch-arrow {
+    font-size: 1.2rem; color: var(--gold); padding: 0 12px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .arch-arrow span { font-size: 0.65rem; color: #888; white-space: nowrap; }
+
+  /* PLUGIN CARDS */
+  .plugins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .plugin-card {
+    background: white; border-radius: 12px; padding: 28px;
+    box-shadow: 0 2px 16px rgba(18,37,98,0.06);
+    border-top: 4px solid var(--navy);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .plugin-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(18,37,98,0.12); }
+  .plugin-card.sa { border-top-color: var(--navy); }
+  .plugin-card.pm { border-top-color: var(--blue); }
+  .plugin-card.mao { border-top-color: var(--lavender); }
+  .plugin-tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; padding: 3px 10px; border-radius: 4px; margin-bottom: 12px;
+  }
+  .sa .plugin-tag { background: rgba(18,37,98,0.1); color: var(--navy); }
+  .pm .plugin-tag { background: rgba(19,125,197,0.1); color: var(--blue); }
+  .mao .plugin-tag { background: rgba(187,160,204,0.2); color: #7a5295; }
+  .plugin-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+  .plugin-card .tagline { font-size: 0.85rem; color: #666; margin-bottom: 16px; line-height: 1.5; }
+  .plugin-metrics { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .plugin-metric { text-align: center; }
+  .plugin-metric .num { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--navy); }
+  .plugin-metric .lbl { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cmd-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cmd { background: var(--off-white); border-radius: 4px; padding: 3px 8px; font-size: 0.75rem; font-family: monospace; color: var(--navy); border: 1px solid #e0e5f0; }
+
+  /* TAXONOMY */
+  .taxonomy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .tax-card {
+    background: white; border-radius: 10px; padding: 20px;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+  }
+  .tax-range { font-family: monospace; font-size: 0.7rem; color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+  .tax-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
+  .tax-count { font-size: 0.8rem; color: #888; }
+
+  /* OPENCLAW KIT */
+  .kit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .kit-card {
+    background: white; border-radius: 10px; padding: 24px;
+    border: 1px solid #e0e5f0;
+    position: relative; overflow: hidden;
+  }
+  .kit-card::before {
+    content: attr(data-num);
+    position: absolute; top: -10px; right: 16px;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
+    font-size: 4rem; color: rgba(18,37,98,0.04);
+  }
+  .kit-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .kit-card p { font-size: 0.82rem; color: #666; line-height: 1.6; margin-bottom: 12px; }
+  .moat-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.7rem; font-weight: 700; color: var(--gold); background: rgba(255,215,0,0.12); padding: 3px 8px; border-radius: 4px; }
+
+  /* FLOW */
+  .flow-container { background: var(--navy); color: white; border-radius: 12px; padding: 40px; }
+  .flow-steps { display: flex; align-items: flex-start; gap: 0; overflow-x: auto; }
+  .flow-step { min-width: 160px; text-align: center; flex: 1; }
+  .flow-step .step-num {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--gold); color: var(--navy);
+    font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+  }
+  .flow-step h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+  .flow-step p { font-size: 0.75rem; opacity: 0.7; }
+  .flow-connector { flex: 0 0 40px; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.5rem; margin-top: 24px; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--navy); color: white;
+    padding: 60px 40px; text-align: center;
+  }
+  .cta-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+  .cta-section h2 span { color: var(--gold); }
+  .cta-section p { opacity: 0.8; margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 12px 28px; border-radius: 8px; font-family: 'Poppins', sans-serif;
+    font-weight: 600; font-size: 0.9rem; cursor: pointer; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: #ffe44d; transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3); }
+  .btn-secondary:hover { border-color: white; }
+
+  /* FOOTER */
+  footer {
+    background: #0d1a40; color: rgba(255,255,255,0.5);
+    padding: 32px 40px; text-align: center; font-size: 0.8rem;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  @media (max-width: 768px) {
+    .hero { padding: 48px 24px 40px; }
+    .section { padding: 40px 24px; }
+    .arch-flow { flex-direction: column; gap: 8px; }
+    .arch-arrow { transform: rotate(90deg); }
+    .flow-steps { flex-direction: column; align-items: center; }
+    .flow-connector { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🎯 Milestone v1.0 · 2026-03-27</div>
+  <h1>JM Labs<br><span>Canonical Skill Registry</span></h1>
+  <p>Una fuente de verdad. Tres ecosistemas inteligentes. 557 skills MOAT certificados. Todo centralizado, sincronizado y listo para actuar.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">557</div>
+      <div class="stat-label">Skills canónicos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">MOAT certified</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">215</div>
+      <div class="stat-label">Agentes activos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Ecosistemas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">331</div>
+      <div class="stat-label">Comandos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section">
+  <h2 class="section-title">Arquitectura</h2>
+  <p class="section-sub">Una edición en el canónico. Propagación automática a todos los ecosistemas.</p>
+  <div class="arch-container">
+    <div class="arch-flow">
+      <div class="arch-node canonical">
+        <h4>CANONICAL REGISTRY</h4>
+        <div class="count">557</div>
+        <div class="sub">skills · 0001–9999</div>
+        <div class="sub">javier-montano + metodologia</div>
+      </div>
+      <div class="arch-arrow">→<span>skill-sync.sh</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="arch-node plugin">
+          <h4>Sovereign Architect (SA)</h4>
+          <div class="count">134</div>
+          <div class="sub">66 agents · 119 commands</div>
+        </div>
+        <div class="arch-node plugin">
+          <h4>PMO-APEX (PM)</h4>
+          <div class="count">113</div>
+          <div class="sub">48 agents · 103 commands</div>
+        </div>
+        <div class="arch-node plugin">
+          <h4>MetodologIA (MAO)</h4>
+          <div class="count">115</div>
+          <div class="sub">101 agents · 109 commands</div>
+        </div>
+      </div>
+      <div class="arch-arrow">→<span>git push</span></div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="arch-node plugin" style="background:#0d3b6e;">
+          <h4>github.com/KatherinOquendo</h4>
+          <div class="sub">MetodologIA · jm-labs-shared</div>
+        </div>
+        <div class="arch-node plugin" style="background:#0d3b6e;">
+          <h4>github.com/javiermontano-sofka</h4>
+          <div class="sub">jm-labs (origin)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLUGINS -->
+<section class="section" style="background: white; max-width: 100%; padding: 60px 40px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <h2 class="section-title">Ecosistemas Activos</h2>
+    <p class="section-sub">Cada plugin consume del canónico y añade sus propias capacidades especializadas.</p>
+    <div class="plugins-grid">
+      <div class="plugin-card sa">
+        <span class="plugin-tag">SA</span>
+        <h3>Sovereign Architect</h3>
+        <p class="tagline">Principal Software Architect para development. Evidence-based technical leadership.</p>
+        <div class="plugin-metrics">
+          <div class="plugin-metric"><div class="num">134</div><div class="lbl">Skills</div></div>
+          <div class="plugin-metric"><div class="num">66</div><div class="lbl">Agentes</div></div>
+          <div class="plugin-metric"><div class="num">119</div><div class="lbl">Comandos</div></div>
+        </div>
+        <div class="cmd-list">
+          <span class="cmd">/sa:analyze</span>
+          <span class="cmd">/sa:run-auto</span>
+          <span class="cmd">/sa:audit-security</span>
+          <span class="cmd">/sa:design-architecture</span>
+        </div>
+      </div>
+      <div class="plugin-card pm">
+        <span class="plugin-tag">PM</span>
+        <h3>PMO-APEX</h3>
+        <p class="tagline">Agentic Project Excellence. Tu IDE como oficina de proyectos inteligente.</p>
+        <div class="plugin-metrics">
+          <div class="plugin-metric"><div class="num">113</div><div class="lbl">Skills</div></div>
+          <div class="plugin-metric"><div class="num">48</div><div class="lbl">Agentes</div></div>
+          <div class="plugin-metric"><div class="num">103</div><div class="lbl">Comandos</div></div>
+        </div>
+        <div class="cmd-list">
+          <span class="cmd">/pm:init</span>
+          <span class="cmd">/pm:run-auto</span>
+          <span class="cmd">/pm:charter</span>
+          <span class="cmd">/pm:risks</span>
+        </div>
+      </div>
+      <div class="plugin-card mao">
+        <span class="plugin-tag">MAO</span>
+        <h3>MetodologIA</h3>
+        <p class="tagline">MetodologIA de Aprovechamiento de Oportunidades. Tu IDE como agencia de discovery.</p>
+        <div class="plugin-metrics">
+          <div class="plugin-metric"><div class="num">115</div><div class="lbl">Skills</div></div>
+          <div class="plugin-metric"><div class="num">101</div><div class="lbl">Agentes</div></div>
+          <div class="plugin-metric"><div class="num">109</div><div class="lbl">Comandos</div></div>
+        </div>
+        <div class="cmd-list">
+          <span class="cmd">/mao:run-auto</span>
+          <span class="cmd">/mao:discovery</span>
+          <span class="cmd">/mao:arch</span>
+          <span class="cmd">/mao:feasibility</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAXONOMY -->
+<section class="section">
+  <h2 class="section-title">Taxonomía 0000–9999</h2>
+  <p class="section-sub">Numeración por proximidad al usuario. Cuanto más bajo el número, más cerca del cliente.</p>
+  <div class="taxonomy-grid">
+    <div class="tax-card"><div class="tax-range">0001–0991</div><div class="tax-name">Discovery & Strategy</div><div class="tax-count">91 skills</div></div>
+    <div class="tax-card"><div class="tax-range">1001–1060</div><div class="tax-name">Architecture & Design</div><div class="tax-count">60 skills</div></div>
+    <div class="tax-card"><div class="tax-range">2001–2060</div><div class="tax-name">Frontend & UI/UX</div><div class="tax-count">60 skills</div></div>
+    <div class="tax-card"><div class="tax-range">3001–3038</div><div class="tax-name">Backend & APIs</div><div class="tax-count">38 skills</div></div>
+    <div class="tax-card"><div class="tax-range">4001–4026</div><div class="tax-name">Data & Analytics</div><div class="tax-count">26 skills</div></div>
+    <div class="tax-card"><div class="tax-range">5001–5025</div><div class="tax-name">Security & Compliance</div><div class="tax-count">25 skills</div></div>
+    <div class="tax-card"><div class="tax-range">6001–6029</div><div class="tax-name">Quality & Testing</div><div class="tax-count">29 skills</div></div>
+    <div class="tax-card"><div class="tax-range">7001–7030</div><div class="tax-name">DevOps & Infra</div><div class="tax-count">30 skills</div></div>
+    <div class="tax-card"><div class="tax-range">8001–8020</div><div class="tax-name">Performance & SEO</div><div class="tax-count">20 skills</div></div>
+    <div class="tax-card"><div class="tax-range">9001–9128</div><div class="tax-name">Meta-skills & AI</div><div class="tax-count">128 skills</div></div>
+  </div>
+</section>
+
+<!-- OPENCLAW KIT -->
+<section class="section" style="background: white; max-width: 100%; padding: 60px 40px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <h2 class="section-title">Capstone: OpenClaw Security Kit</h2>
+    <p class="section-sub">4 skills que cierran el ciclo — diseño seguro, aislamiento, gates y despliegue personal.</p>
+    <div class="kit-grid">
+      <div class="kit-card" data-num="5022">
+        <h4>5022 · open-claude-security</h4>
+        <p>Diseño completo de arquitectura segura para Claude Code. STRIDE × 7 superficies. S1–S7: threat model, injection defense, permission model, MCP security, subagent isolation, container design, audit trail.</p>
+        <div class="moat-badge">★ MOAT · 8 evals · 4 refs</div>
+      </div>
+      <div class="kit-card" data-num="5023">
+        <h4>5023 · openclaw-isolation</h4>
+        <p>Aislamiento Docker con cap_drop ALL, sistema de archivos read-only, red interna sin egress. Patrones para desarrollo local y producción compartida.</p>
+        <div class="moat-badge">★ MOAT · 6 evals · 1 ref</div>
+      </div>
+      <div class="kit-card" data-num="5024">
+        <h4>5024 · openclaw-tool-auth</h4>
+        <p>Gates PreToolUse fail-closed en Python. Blocklists de Bash, control de paths de archivo, autenticación de gateway, scope de MCP. 4 scripts de producción.</p>
+        <div class="moat-badge">★ MOAT · 6 evals · 1 ref</div>
+      </div>
+      <div class="kit-card" data-num="5025">
+        <h4>5025 · openclaw-personal-deploy</h4>
+        <p>Despliegue personal guiado en 5 fases. 11 templates de producción. Modos --personal, --team, --enterprise. Gateway → Core → Tools completo.</p>
+        <div class="moat-badge">★ MOAT · 6 evals · 1 ref</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANONICAL FLOW -->
+<section class="section">
+  <h2 class="section-title">Flujo Canónico</h2>
+  <p class="section-sub">Una edición. Validación automática. Propagación a todos los ecosistemas.</p>
+  <div class="flow-container">
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <h4>Editar Canónico</h4>
+        <p>skills/javier-montano/ o skills/metodologia/</p>
+      </div>
+      <div class="flow-connector">→</div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <h4>Pre-commit Gate</h4>
+        <p>moat-audit.sh valida M1–M5 automáticamente</p>
+      </div>
+      <div class="flow-connector">→</div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <h4>Sync Plugins</h4>
+        <p>skill-sync.sh propaga a SA · PM · MAO</p>
+      </div>
+      <div class="flow-connector">→</div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <h4>Push Remotes</h4>
+        <p>MetodologIA · JM Labs · Shared</p>
+      </div>
+      <div class="flow-connector">→</div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <h4>Activo</h4>
+        <p>Disponible en todos los asistentes y IDEs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>El conocimiento <span>centralizado</span><br>es el conocimiento que escala.</h2>
+  <p>557 skills. 215 agentes. 331 comandos. Todo desde un solo repositorio canónico.</p>
+  <div class="cta-buttons">
+    <a href="prompt-library.html" class="btn btn-primary">Ver Prompt Library</a>
+    <a href="governance/moat-dashboard.md" class="btn btn-secondary">MOAT Dashboard</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>JM Labs Canonical Skill Registry v1.0</strong> · Centralizado. Certificado. Sincronizado.<br>
+  GPL-3.0 (MetodologIA) · MIT (JM Labs) · © 2026 Javier Montaño
+</footer>
+
+</body>
+</html>
